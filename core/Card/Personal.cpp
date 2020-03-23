@@ -3,6 +3,7 @@
 #include "Origin.h"
 #include "Profession.h"
 #include "Specialization.h"
+#include "Disease.h"
 
 Personal::Personal(QObject *parent) : QObject(parent)
 {
@@ -49,6 +50,11 @@ Specialization *Personal::specialization() const
     return m_specialization;
 }
 
+Disease *Personal::disease() const
+{
+    return m_disease;
+}
+
 void Personal::setName(const QString &name)
 {
     m_name = name;
@@ -77,6 +83,11 @@ void Personal::setProfession(Profession *profession)
 void Personal::setSpecialization(Specialization *specialization)
 {
     m_specialization = specialization;
+}
+
+void Personal::setDisease(Disease *disease)
+{
+    m_disease = disease;
 }
 
 void Personal::setReputation(const QString &place, const int &value)

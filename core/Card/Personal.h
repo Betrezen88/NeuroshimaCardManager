@@ -7,6 +7,7 @@
 class Origin;
 class Profession;
 class Specialization;
+class Disease;
 
 class Personal : public QObject
 {
@@ -22,6 +23,7 @@ public:
     Origin *origin() const;
     Profession *profession() const;
     Specialization *specialization() const;
+    Disease *disease() const;
 
 public slots:
     void setName(const QString &name);
@@ -31,6 +33,7 @@ public slots:
     void setOrigin(Origin *origin);
     void setProfession(Profession *profession);
     void setSpecialization(Specialization *specialization);
+    void setDisease(Disease *disease);
 
     void setReputation(const QString &place, const int &value);
 
@@ -42,6 +45,7 @@ private:
     Origin *m_origin{nullptr};
     Profession *m_profession{nullptr};
     Specialization *m_specialization{nullptr};
+    Disease *m_disease{nullptr};
 
     QMap<QString, int> m_reputation;
     int m_fame{0};
