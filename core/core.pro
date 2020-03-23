@@ -19,6 +19,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     Card/Card.cpp \
     Card/Disease.cpp \
+    Card/Feature.cpp \
     Card/Origin.cpp \
     Card/Personal.cpp \
     Card/Profession.cpp \
@@ -27,6 +28,7 @@ SOURCES += \
 HEADERS += \
     Card/Card.h \
     Card/Disease.h \
+    Card/Feature.h \
     Card/Origin.h \
     Card/Personal.h \
     Card/Profession.h \
