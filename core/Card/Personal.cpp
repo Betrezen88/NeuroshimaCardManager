@@ -40,6 +40,11 @@ Profession *Personal::profession() const
     return m_profession;
 }
 
+Specialization *Personal::specialization() const
+{
+    return m_specialization;
+}
+
 void Personal::setName(const QString &name)
 {
     m_name = name;
@@ -63,4 +68,9 @@ void Personal::setOrigin(Origin *origin)
 void Personal::setProfession(Profession *profession)
 {
     m_profession = profession;
+}
+
+void Personal::setSpecialization(Specialization *specialization)
+{
+    m_specialization = specialization;
 }

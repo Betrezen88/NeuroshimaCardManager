@@ -6,6 +6,7 @@
 
 class Origin;
 class Profession;
+class Specialization;
 
 class Personal : public QObject
 {
@@ -20,6 +21,7 @@ public:
 
     Origin *origin() const;
     Profession *profession() const;
+    Specialization *specialization() const;
 
 public slots:
     void setName(const QString &name);
@@ -28,6 +30,7 @@ public slots:
 
     void setOrigin(Origin *origin);
     void setProfession(Profession *profession);
+    void setSpecialization(Specialization *specialization);
 
 private:
     QString m_name;
@@ -36,6 +39,7 @@ private:
 
     Origin *m_origin{nullptr};
     Profession *m_profession{nullptr};
+    Specialization *m_specialization{nullptr};
 };
 
 #endif // PERSONAL_H
