@@ -1,5 +1,5 @@
-#include "Card.h"
+﻿#include "Card.h"
 
-Core::Core()
+Card::Card()
 {
 }
