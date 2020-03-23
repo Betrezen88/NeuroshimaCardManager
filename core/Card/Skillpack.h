@@ -17,6 +17,7 @@ public:
     QMap<QString, Skill*> skills() const;
 
     bool hasSpecialization(const QString &specialization) const;
+    bool hasSkill(const QString &name);
 
 signals:
 

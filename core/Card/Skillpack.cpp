@@ -26,6 +26,11 @@ bool Skillpack::hasSpecialization(const QString &specialization) const
     return m_specializations.contains(specialization);
 }
 
+bool Skillpack::hasSkill(const QString &name)
+{
+    return m_skills.contains(name);
+}
+
 void Skillpack::setName(const QString &name)
 {
     m_name = name;
