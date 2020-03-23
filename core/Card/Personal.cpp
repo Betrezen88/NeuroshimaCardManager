@@ -1,5 +1,9 @@
 ﻿#include "Personal.h"
 
+#include "Origin.h"
+#include "Profession.h"
+#include "Specialization.h"
+
 Personal::Personal(QObject *parent) : QObject(parent)
 {
 
