@@ -21,6 +21,7 @@ SOURCES += \
     Card/Disease.cpp \
     Card/Feature.cpp \
     Card/Origin.cpp \
+    Card/Pages/Stats.cpp \
     Card/Personal.cpp \
     Card/Profession.cpp \
     Card/Specialization.cpp \
@@ -30,6 +31,7 @@ HEADERS += \
     Card/Disease.h \
     Card/Feature.h \
     Card/Origin.h \
+    Card/Pages/Stats.h \
     Card/Personal.h \
     Card/Profession.h \
     Card/Specialization.h \
