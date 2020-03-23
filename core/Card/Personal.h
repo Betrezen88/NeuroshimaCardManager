@@ -4,11 +4,11 @@
 #include <QObject>
 #include <QString>
 
-class Personal
+class Personal : public QObject
 {
     Q_OBJECT
 public:
-    Personal();
+    explicit Personal(QObject *parent = nullptr);
 
     QString name() const;
     QString surname() const;

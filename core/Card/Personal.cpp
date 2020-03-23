@@ -1,6 +1,6 @@
 ﻿#include "Personal.h"
 
-Personal::Personal()
+Personal::Personal(QObject *parent) : QObject(parent)
 {
 
 }
