@@ -25,6 +25,7 @@ SOURCES += \
     Card/Pages/Stats.cpp \
     Card/Personal.cpp \
     Card/Profession.cpp \
+    Card/Skill.cpp \
     Card/Skillpack.cpp \
     Card/Specialization.cpp \
 
@@ -37,6 +38,7 @@ HEADERS += \
     Card/Pages/Stats.h \
     Card/Personal.h \
     Card/Profession.h \
+    Card/Skill.h \
     Card/Skillpack.h \
     Card/Specialization.h \
     core_global.h
