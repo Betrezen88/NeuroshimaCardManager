@@ -3,10 +3,12 @@
 
 #include "core_global.h"
 
-class CORE_EXPORT Card
+#include <QObject>
+
+class CORE_EXPORT Card : public QObject
 {
 public:
-    Card();
+    explicit Card(QObject *parent = nullptr);
 };
 
 #endif // CORE_H
