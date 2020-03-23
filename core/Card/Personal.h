@@ -2,7 +2,7 @@
 #define PERSONAL_H
 
 #include <QObject>
-#include <QString>
+#include <QMap>
 
 class Origin;
 class Profession;
@@ -32,6 +32,8 @@ public slots:
     void setProfession(Profession *profession);
     void setSpecialization(Specialization *specialization);
 
+    void setReputation(const QString &place, const int &value);
+
 private:
     QString m_name;
     QString m_surname;
@@ -40,6 +42,9 @@ private:
     Origin *m_origin{nullptr};
     Profession *m_profession{nullptr};
     Specialization *m_specialization{nullptr};
+
+    QMap<QString, int> m_reputation;
+    int m_fame{0};
 };
 
 #endif // PERSONAL_H

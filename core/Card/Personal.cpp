@@ -74,3 +74,8 @@ void Personal::setSpecialization(Specialization *specialization)
 {
     m_specialization = specialization;
 }
+
+void Personal::setReputation(const QString &place, const int &value)
+{
+    m_reputation.insert(place, value);
+}
