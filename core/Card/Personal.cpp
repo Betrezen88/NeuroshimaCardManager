@@ -30,6 +30,16 @@ QString Personal::fullname() const
     return full;
 }
 
+Origin *Personal::origin() const
+{
+    return m_origin;
+}
+
+Profession *Personal::profession() const
+{
+    return m_profession;
+}
+
 void Personal::setName(const QString &name)
 {
     m_name = name;
@@ -43,4 +53,14 @@ void Personal::setSurname(const QString &surname)
 void Personal::setNickname(const QString &nickname)
 {
     m_nickname = nickname;
+}
+
+void Personal::setOrigin(Origin *origin)
+{
+    m_origin = origin;
+}
+
+void Personal::setProfession(Profession *profession)
+{
+    m_profession = profession;
 }
