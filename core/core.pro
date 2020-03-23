@@ -17,14 +17,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Card.cpp \
     Card/Card.cpp \
     Card/Disease.cpp \
     Card/Origin.cpp \
     Card/Personal.cpp \
     Card/Profession.cpp \
     Card/Specialization.cpp \
-    Origin.cpp
 
 HEADERS += \
     Card/Card.h \
@@ -33,10 +31,7 @@ HEADERS += \
     Card/Personal.h \
     Card/Profession.h \
     Card/Specialization.h \
-    Origin.h \
-    Personal.h \
-    core_global.h \
-    Card.h
+    core_global.h
 
 # Default rules for deployment.
 unix {
