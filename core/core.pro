@@ -21,12 +21,14 @@ SOURCES += \
     Card/Card.cpp \
     Card/Origin.cpp \
     Card/Personal.cpp \
+    Card/Profession.cpp \
     Origin.cpp
 
 HEADERS += \
     Card/Card.h \
     Card/Origin.h \
     Card/Personal.h \
+    Card/Profession.h \
     Origin.h \
     Personal.h \
     core_global.h \
