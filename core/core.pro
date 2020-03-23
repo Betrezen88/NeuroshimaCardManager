@@ -23,6 +23,7 @@ SOURCES += \
     Card/Origin.cpp \
     Card/Personal.cpp \
     Card/Profession.cpp \
+    Card/Specialization.cpp \
     Origin.cpp
 
 HEADERS += \
@@ -31,6 +32,7 @@ HEADERS += \
     Card/Origin.h \
     Card/Personal.h \
     Card/Profession.h \
+    Card/Specialization.h \
     Origin.h \
     Personal.h \
     core_global.h \
