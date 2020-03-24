@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>Card/Card.qml</file>
         <file>Card/Page/Stats.qml</file>
         <file>Card/Section/Personal.qml</file>
         <file>Card/Element/Portrait.qml</file>
