@@ -7,7 +7,7 @@ Item {
     id: main
 
     width: portrait.width
-    height: portrait.height
+    height: mainHeight()
 
     Column {
         anchors.fill: main
@@ -112,5 +112,13 @@ Item {
             value: "0"
             description: "Określa jaki z Ciebie badass"
         }
+    }
+
+    function mainHeight() {
+        return portrait.height + personalLabel.height
+                + name.height + origin.height + profession.height
+                + specialization.height + disease.height
+                + originFeature.height + professionFeature.height
+                + reputation.height + fame.height + (11*2);
     }
 }
