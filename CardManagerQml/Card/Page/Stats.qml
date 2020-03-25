@@ -5,9 +5,13 @@ import "./../Section"
 Item {
     id: main
 
+    height: personal.height
+    width: personal.width
+
     Row {
         id: row
         anchors.fill: main
+        spacing: 2
 
         Column {
             id: column1
