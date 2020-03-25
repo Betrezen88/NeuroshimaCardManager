@@ -22,10 +22,12 @@ Item {
             id: pageView
             width: main.width - row.spacing - sidePanel.width
             height: main.height
+            contentHeight: stats.height
+            contentWidth: stats.width
+            clip: true
 
             Stats {
                 id: stats
-                anchors.fill: parent
             }
         }
     }
