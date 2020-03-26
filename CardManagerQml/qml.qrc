@@ -7,5 +7,6 @@
         <file>Card/Element/Portrait.qml</file>
         <file>Card/Element/PersonalField.qml</file>
         <file>Card/Section/Tricks.qml</file>
+        <file>Card/Element/Trick.qml</file>
     </qresource>
 </RCC>
