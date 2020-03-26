@@ -93,7 +93,7 @@ Item {
         Button {
             id: reputation
             width: main.width
-            height: 40
+            height: 30
             text: "Reputacja"
             font.pointSize: 10
             font.bold: true
