@@ -5,7 +5,7 @@ import "./../Section"
 Item {
     id: main
 
-    height: personal.height
+    height: personal.height + tricks.height + 2
     width: personal.width
 
     Row {
@@ -15,9 +15,15 @@ Item {
 
         Column {
             id: column1
+            spacing: 2
 
             Personal {
                 id: personal
+            }
+
+            Tricks {
+                id: tricks
+                width: main.width
             }
         }
 
