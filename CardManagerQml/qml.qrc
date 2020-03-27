@@ -8,5 +8,6 @@
         <file>Card/Element/PersonalField.qml</file>
         <file>Card/Section/Tricks.qml</file>
         <file>Card/Element/Trick.qml</file>
+        <file>Card/Element/Skill.qml</file>
     </qresource>
 </RCC>
