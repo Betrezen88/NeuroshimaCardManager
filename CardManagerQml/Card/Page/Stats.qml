@@ -251,6 +251,11 @@ Item {
                     ]
                 })
             }
+
+            OtherSkills {
+                id: otherSkills
+                width: 250
+            }
         }
     }
 }
