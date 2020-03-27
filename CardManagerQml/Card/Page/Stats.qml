@@ -112,6 +112,11 @@ Item {
                     ]
                 })
             }
+
+            Wounds {
+                id: wounds
+                width: 250
+            }
         }
 
         Column {
