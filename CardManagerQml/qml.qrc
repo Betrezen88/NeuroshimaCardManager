@@ -9,5 +9,6 @@
         <file>Card/Section/Tricks.qml</file>
         <file>Card/Element/Trick.qml</file>
         <file>Card/Element/Skill.qml</file>
+        <file>Card/Element/Skillpack.qml</file>
     </qresource>
 </RCC>
