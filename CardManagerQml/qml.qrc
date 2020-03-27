@@ -8,6 +8,7 @@
         <file>Card/Element/PersonalField.qml</file>
         <file>Card/Section/Tricks.qml</file>
         <file>Card/Element/Trick.qml</file>
+        <file>Card/Section/Attribute.qml</file>
         <file>Card/Element/ValueBox.qml</file>
         <file>Card/Element/ValueBoxRow.qml</file>
         <file>Card/Element/Skill.qml</file>
