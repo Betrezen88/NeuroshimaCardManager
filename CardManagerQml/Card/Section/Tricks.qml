@@ -6,14 +6,14 @@ import "./../Element"
 Item {
     id: main
 
-    height: personalLabel.height + tricksList.height + 2
+    height: title.height + tricksList.height + 2
 
     Column {
         anchors.fill: main
         spacing: 2
 
         Label {
-            id: personalLabel
+            id: title
             height: 30
             width: main.width
             text: "Sztuczki"
