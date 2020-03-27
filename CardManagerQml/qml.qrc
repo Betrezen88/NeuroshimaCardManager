@@ -13,5 +13,6 @@
         <file>Card/Element/ValueBoxRow.qml</file>
         <file>Card/Element/Skill.qml</file>
         <file>Card/Element/Skillpack.qml</file>
+        <file>Card/Element/OtherSkill.qml</file>
     </qresource>
 </RCC>
