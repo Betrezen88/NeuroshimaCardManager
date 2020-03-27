@@ -14,5 +14,6 @@
         <file>Card/Element/Skill.qml</file>
         <file>Card/Element/Skillpack.qml</file>
         <file>Card/Element/OtherSkill.qml</file>
+        <file>Card/Section/OtherSkills.qml</file>
     </qresource>
 </RCC>
