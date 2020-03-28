@@ -17,6 +17,7 @@
         <file>Card/Section/OtherSkills.qml</file>
         <file>Card/Element/WoundRow.qml</file>
         <file>Card/Section/Wounds.qml</file>
+        <file>Card/Section/Modifiers.qml</file>
         <file>Card/Element/Modifier.qml</file>
     </qresource>
 </RCC>
