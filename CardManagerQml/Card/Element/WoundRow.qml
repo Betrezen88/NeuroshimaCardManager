@@ -17,7 +17,7 @@ Item {
             id: label
             textFormat: Text.PlainText
             verticalAlignment: Text.AlignVCenter
-            font.pixelSize: 12
+            font.pointSize: 10
             width: 70
         }
 
@@ -33,7 +33,7 @@ Item {
                 textFormat: Text.PlainText
                 padding: 3
                 verticalAlignment: Text.AlignVCenter
-                font.pixelSize: 10
+                font.pointSize: 8
                 anchors.fill: parent
             }
         }
