@@ -200,6 +200,11 @@ Item {
                     ]
                 })
             }
+
+            Modifiers {
+                id: modifiers
+                width: 250
+            }
         }
 
         Column {
