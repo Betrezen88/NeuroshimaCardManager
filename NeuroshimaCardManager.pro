@@ -1,5 +1,10 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    CardManagerQml \
-    core
+    core \
+    CardManagerQml
+
+CardManagerQml.subdir = CardManagerQml
+core.subdir = core
+
+CardManagerQml.depends = core
