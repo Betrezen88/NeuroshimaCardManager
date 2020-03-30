@@ -7,14 +7,16 @@ class Profession : public QObject
 {
     Q_OBJECT
 public:
-    explicit Profession(QObject *parent = nullptr);
+    explicit Profession(const QString &name,
+                        const QString &description,
+                        QObject *parent = nullptr);
 
     QString name() const;
-
-signals:
+    QString description() const;
 
 private:
     QString m_name;
+    QString m_description;
 };
 
 #endif // PROFESSION_H
