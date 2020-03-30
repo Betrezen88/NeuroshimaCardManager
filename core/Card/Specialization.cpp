@@ -1,6 +1,11 @@
 ﻿#include "Specialization.h"
 
-Specialization::Specialization(QObject *parent) : QObject(parent)
+Specialization::Specialization(const QString &name,
+                               const QString &description,
+                               QObject *parent)
+    : QObject(parent),
+      m_name(name),
+      m_description(description)
 {
 
 }
@@ -13,14 +18,4 @@ QString Specialization::name() const
 QString Specialization::description() const
 {
     return m_description;
-}
-
-void Specialization::setName(const QString &name)
-{
-    m_name = name;
-}
-
-void Specialization::setDescription(const QString &description)
-{
-    m_description = description;
 }
