@@ -28,6 +28,7 @@ SOURCES += \
     Card/Skill.cpp \
     Card/Skillpack.cpp \
     Card/Specialization.cpp \
+    Utils/DataReader.cpp
 
 HEADERS += \
     Card/Attribute.h \
@@ -41,6 +42,7 @@ HEADERS += \
     Card/Skill.h \
     Card/Skillpack.h \
     Card/Specialization.h \
+    Utils/DataReader.h \
     core_global.h
 
 # Default rules for deployment.
