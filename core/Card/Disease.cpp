@@ -1,6 +1,11 @@
 ﻿#include "Disease.h"
 
-Disease::Disease(QObject *parent) : QObject(parent)
+Disease::Disease(const QString &name,
+                 const QString &description,
+                 QObject *parent)
+    : QObject(parent),
+      m_name(name),
+      m_description(description)
 {
 
 }
@@ -8,4 +13,9 @@ Disease::Disease(QObject *parent) : QObject(parent)
 QString Disease::name() const
 {
     return m_name;
+}
+
+QString Disease::description() const
+{
+    return m_description;
 }

@@ -7,14 +7,16 @@ class Disease : public QObject
 {
     Q_OBJECT
 public:
-    explicit Disease(QObject *parent = nullptr);
+    explicit Disease(const QString &name,
+                     const QString &description,
+                     QObject *parent = nullptr);
 
     QString name() const;
-
-signals:
+    QString description() const;
 
 private:
     QString m_name;
+    QString m_description;
 };
 
 #endif // DISEASE_H
