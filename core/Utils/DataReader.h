@@ -6,11 +6,6 @@
 #include "core_global.h"
 
 class Card;
-class Personal;
-class Origin;
-class Profession;
-class Specialization;
-class Disease;
 
 class CORE_EXPORT DataReader : public QObject
 {
@@ -21,10 +16,7 @@ public:
 signals:
 
 public slots:
-    void open(const QString &file);
-
-private:
-    Personal *personal(const QJsonObject &data);
+    Card *loadCard(const QString &filePath);
 };
 
 #endif // DATAREADER_H
