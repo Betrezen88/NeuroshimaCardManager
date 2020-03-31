@@ -28,6 +28,7 @@ SOURCES += \
     Card/Elements/Stats/Skill.cpp \
     Card/Elements/Stats/Skillpack.cpp \
     Card/Elements/Stats/Specialization.cpp \
+    Utils/CardBuilder.cpp \
     Utils/DataReader.cpp
 
 HEADERS += \
@@ -42,6 +43,7 @@ HEADERS += \
     Card/Elements/Stats/Skill.h \
     Card/Elements/Stats/Skillpack.h \
     Card/Elements/Stats/Specialization.h \
+    Utils/CardBuilder.h \
     Utils/DataReader.h \
     core_global.h
 
