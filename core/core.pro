@@ -17,31 +17,31 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Card/Attribute.cpp \
     Card/Card.cpp \
-    Card/Disease.cpp \
-    Card/Feature.cpp \
-    Card/Origin.cpp \
     Card/Pages/Stats.cpp \
-    Card/Personal.cpp \
-    Card/Profession.cpp \
-    Card/Skill.cpp \
-    Card/Skillpack.cpp \
-    Card/Specialization.cpp \
+    Card/Elements/Stats/Attribute.cpp \
+    Card/Elements/Stats/Disease.cpp \
+    Card/Elements/Stats/Feature.cpp \
+    Card/Elements/Stats/Origin.cpp \
+    Card/Elements/Stats/Personal.cpp \
+    Card/Elements/Stats/Profession.cpp \
+    Card/Elements/Stats/Skill.cpp \
+    Card/Elements/Stats/Skillpack.cpp \
+    Card/Elements/Stats/Specialization.cpp \
     Utils/DataReader.cpp
 
 HEADERS += \
-    Card/Attribute.h \
     Card/Card.h \
-    Card/Disease.h \
-    Card/Feature.h \
-    Card/Origin.h \
     Card/Pages/Stats.h \
-    Card/Personal.h \
-    Card/Profession.h \
-    Card/Skill.h \
-    Card/Skillpack.h \
-    Card/Specialization.h \
+    Card/Elements/Stats/Attribute.h \
+    Card/Elements/Stats/Disease.h \
+    Card/Elements/Stats/Feature.h \
+    Card/Elements/Stats/Origin.h \
+    Card/Elements/Stats/Personal.h \
+    Card/Elements/Stats/Profession.h \
+    Card/Elements/Stats/Skill.h \
+    Card/Elements/Stats/Skillpack.h \
+    Card/Elements/Stats/Specialization.h \
     Utils/DataReader.h \
     core_global.h
 
