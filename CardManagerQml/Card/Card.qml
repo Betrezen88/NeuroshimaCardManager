@@ -4,6 +4,8 @@ import QtQuick.Controls 2.5
 import "./Page"
 
 Item {
+    property var cardData
+
     id: main
 
     Row {
