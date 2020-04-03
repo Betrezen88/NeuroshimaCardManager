@@ -2,7 +2,6 @@
 
 #include "CardBuilder.h"
 #include "Card/CardData.h"
-#include "Card/Pages/StatsData.h"
 
 #include <QFile>
 #include <QJsonArray>
