@@ -19,4 +19,4 @@ private:
     QString m_description;
 };
 
-#endif // SPECIALIZATION_H
+#endif // SPECIALIZATIONDATA_H

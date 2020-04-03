@@ -28,6 +28,7 @@ Item {
 
             Stats {
                 id: stats
+                statsData: pCard.stats
             }
         }
     }

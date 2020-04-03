@@ -3,6 +3,8 @@
 #include <QQmlContext>
 
 #include "cpp/Card/Card.h"
+#include "cpp/Page/Stats.h"
+#include "cpp/Element/Personal.h"
 
 #include "Utils/DataReader.h"
 
@@ -11,6 +13,10 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QGuiApplication app(argc, argv);
+
+    qmlRegisterType<Card>("cpp.card", 1, 0, "CppCard");
+    qmlRegisterType<Stats>("cpp.card", 1, 0, "CppStats");
+    qmlRegisterType<Personal>("cpp.card", 1, 0, "CppPersonal");
 
     DataReader reader;
     Card *pCard = new Card( reader.loadCard("c:/Users/Michał/Documents/!NsHeroes/Nick 'Happy' Sax.json") );

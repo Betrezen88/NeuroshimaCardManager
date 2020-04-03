@@ -1,5 +1,5 @@
-﻿#ifndef PROFESSION_H
-#define PROFESSION_H
+﻿#ifndef PROFESSIONDATA_H
+#define PROFESSIONDATA_H
 
 #include <QString>
 
@@ -19,4 +19,4 @@ private:
     QString m_description;
 };
 
-#endif // PROFESSION_H
+#endif // PROFESSIONDATA_H

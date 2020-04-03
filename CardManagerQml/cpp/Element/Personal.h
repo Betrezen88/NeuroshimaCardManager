@@ -13,6 +13,7 @@ class Personal : public QObject
     Q_PROPERTY(QString nickname READ nickname CONSTANT)
     Q_PROPERTY(QString fullname READ fullname CONSTANT)
 public:
+    Personal(QObject *parent = nullptr);
     explicit Personal(PersonalData *personalData, QObject *parent = nullptr);
 
     QString name() const;

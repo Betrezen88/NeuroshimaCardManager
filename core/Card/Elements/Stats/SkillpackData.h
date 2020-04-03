@@ -1,5 +1,5 @@
-﻿#ifndef SKILLPACK_H
-#define SKILLPACK_H
+﻿#ifndef SKILLPACKDATA_H
+#define SKILLPACKDATA_H
 
 #include <QObject>
 #include <QMap>
@@ -30,4 +30,4 @@ private:
     QMap<QString, SkillData*> m_skills;
 };
 
-#endif // SKILLPACK_H
+#endif // SKILLPACKDATA_H

@@ -1,5 +1,5 @@
-﻿#ifndef FEATURE_H
-#define FEATURE_H
+﻿#ifndef FEATUREDATA_H
+#define FEATUREDATA_H
 
 #include <QString>
 
@@ -21,4 +21,4 @@ private:
     QString m_description;
 };
 
-#endif // FEATURE_H
+#endif // FEATUREDATA_H

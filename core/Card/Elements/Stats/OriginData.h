@@ -1,5 +1,5 @@
-﻿#ifndef ORIGIN_H
-#define ORIGIN_H
+﻿#ifndef ORIGINDATA_H
+#define ORIGINDATA_H
 
 #include <QString>
 
@@ -19,4 +19,4 @@ private:
     QString m_description;
 };
 
-#endif // ORIGIN_H
+#endif // ORIGINDATA_H

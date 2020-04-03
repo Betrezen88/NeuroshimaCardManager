@@ -1,5 +1,5 @@
-﻿#ifndef PERSONAL_H
-#define PERSONAL_H
+﻿#ifndef PERSONALDATA_H
+#define PERSONALDATA_H
 
 #include <QString>
 #include <QMap>
@@ -51,4 +51,4 @@ private:
     int m_fame{0};
 };
 
-#endif // PERSONAL_H
+#endif // PERSONALDATA_H

@@ -1,5 +1,5 @@
-﻿#ifndef SKILL_H
-#define SKILL_H
+﻿#ifndef SKILLDATA_H
+#define SKILLDATA_H
 
 #include <QString>
 
@@ -21,4 +21,4 @@ private:
     int m_value{0};
 };
 
-#endif // SKILL_H
+#endif // SKILLDATA_H

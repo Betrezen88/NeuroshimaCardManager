@@ -1,5 +1,5 @@
-﻿#ifndef STATS_H
-#define STATS_H
+﻿#ifndef STATSDATA_H
+#define STATSDATA_H
 
 #include <QString>
 
@@ -20,4 +20,4 @@ private:
     PersonalData *m_personal{nullptr};
 };
 
-#endif // STATS_H
+#endif // STATSDATA_H

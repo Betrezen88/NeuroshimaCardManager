@@ -1,5 +1,5 @@
-﻿#ifndef ATTRIBUTE_H
-#define ATTRIBUTE_H
+﻿#ifndef ATTRIBUTEDATA_H
+#define ATTRIBUTEDATA_H
 
 #include <QString>
 #include <QMap>
@@ -30,4 +30,4 @@ private:
     QMap<QString, SkillpackData*> m_skillpacks;
 };
 
-#endif // ATTRIBUTE_H
+#endif // ATTRIBUTEDATA_H

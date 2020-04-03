@@ -1,5 +1,5 @@
-﻿#ifndef DISEASE_H
-#define DISEASE_H
+﻿#ifndef DISEASEDATA_H
+#define DISEASEDATA_H
 
 #include <QString>
 
@@ -19,4 +19,4 @@ private:
     QString m_description;
 };
 
-#endif // DISEASE_H
+#endif // DISEASEDATA_H

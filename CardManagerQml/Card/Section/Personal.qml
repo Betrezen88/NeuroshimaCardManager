@@ -4,6 +4,8 @@ import QtQuick.Controls 2.5
 import "./../Element"
 
 Item {
+    property var personalData
+
     id: main
 
     width: portrait.width
@@ -38,7 +40,7 @@ Item {
             id: name
             width: main.width
             name: "Imię"
-            value: "Nick 'Happy' Sax with bick dick and very hairy balls who smokes and drinks"
+            value: personalData.fullname //"Nick 'Happy' Sax with bick dick and very hairy balls who smokes and drinks"
             description: "Imię, ksywa i nazwisko bohatera"
         }
 

@@ -1,5 +1,5 @@
-﻿#ifndef CORE_H
-#define CORE_H
+﻿#ifndef CARDDATA_H
+#define CARDDATA_H
 
 #include "core_global.h"
 
@@ -20,4 +20,4 @@ private:
     StatsData *m_stats{nullptr};
 };
 
-#endif // CORE_H
+#endif // CARDDATA_H
