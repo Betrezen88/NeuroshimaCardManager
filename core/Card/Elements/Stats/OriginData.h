@@ -3,7 +3,9 @@
 
 #include <QString>
 
-class OriginData
+#include "core_global.h"
+
+class CORE_EXPORT OriginData
 {
 public:
     OriginData(const QString &name,

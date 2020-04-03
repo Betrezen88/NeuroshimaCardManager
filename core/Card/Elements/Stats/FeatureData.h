@@ -3,7 +3,9 @@
 
 #include <QString>
 
-class FeatureData
+#include "core_global.h"
+
+class CORE_EXPORT FeatureData
 {
 public:
     FeatureData();

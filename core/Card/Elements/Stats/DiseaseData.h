@@ -3,7 +3,9 @@
 
 #include <QString>
 
-class DiseaseData
+#include "core_global.h"
+
+class CORE_EXPORT DiseaseData
 {
 public:
     DiseaseData(const QString &name,

@@ -4,9 +4,11 @@
 #include <QString>
 #include <QMap>
 
+#include "core_global.h"
+
 class SkillpackData;
 
-class AttributeData
+class CORE_EXPORT AttributeData
 {
 public:
     AttributeData();

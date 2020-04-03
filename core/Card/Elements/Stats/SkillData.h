@@ -3,7 +3,9 @@
 
 #include <QString>
 
-class SkillData
+#include "core_global.h"
+
+class CORE_EXPORT SkillData
 {
 public:
     SkillData();

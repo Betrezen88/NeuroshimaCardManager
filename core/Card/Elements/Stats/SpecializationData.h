@@ -3,7 +3,9 @@
 
 #include <QString>
 
-class SpecializationData
+#include "core_global.h"
+
+class CORE_EXPORT SpecializationData
 {
 public:
     SpecializationData(const QString &name,

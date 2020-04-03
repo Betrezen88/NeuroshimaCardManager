@@ -4,12 +4,14 @@
 #include <QString>
 #include <QMap>
 
+#include "core_global.h"
+
 class OriginData;
 class ProfessionData;
 class SpecializationData;
 class DiseaseData;
 
-class PersonalData
+class CORE_EXPORT PersonalData
 {
 public:
     PersonalData();

@@ -3,7 +3,9 @@
 
 #include <QString>
 
-class ProfessionData
+#include "core_global.h"
+
+class CORE_EXPORT ProfessionData
 {
 public:
     ProfessionData(const QString &name,
