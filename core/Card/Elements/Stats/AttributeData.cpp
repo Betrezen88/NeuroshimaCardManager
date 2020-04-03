@@ -1,7 +1,7 @@
 ﻿#include "AttributeData.h"
 #include "SkillpackData.h"
 
-AttributeData::AttributeData(QObject *parent) : QObject(parent)
+AttributeData::AttributeData()
 {
 
 }

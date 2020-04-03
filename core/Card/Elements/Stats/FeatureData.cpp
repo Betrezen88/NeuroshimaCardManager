@@ -1,6 +1,6 @@
 ﻿#include "FeatureData.h"
 
-FeatureData::FeatureData(QObject *parent) : QObject(parent)
+FeatureData::FeatureData()
 {
 
 }

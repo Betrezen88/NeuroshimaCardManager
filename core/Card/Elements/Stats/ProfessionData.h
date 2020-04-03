@@ -1,15 +1,13 @@
 ﻿#ifndef PROFESSIONDATA_H
 #define PROFESSIONDATA_H
 
-#include <QObject>
+#include <QString>
 
-class ProfessionData : public QObject
+class ProfessionData
 {
-    Q_OBJECT
 public:
-    explicit ProfessionData(const QString &name,
-                            const QString &description,
-                            QObject *parent = nullptr);
+    ProfessionData(const QString &name,
+                   const QString &description);
 
     QString name() const;
     QString description() const;

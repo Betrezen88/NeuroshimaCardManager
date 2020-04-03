@@ -1,6 +1,6 @@
 ﻿#include "SkillData.h"
 
-SkillData::SkillData(QObject *parent) : QObject(parent)
+SkillData::SkillData()
 {
 
 }

@@ -1,20 +1,16 @@
 ﻿#ifndef FEATUREDATA_H
 #define FEATUREDATA_H
 
-#include <QObject>
+#include <QString>
 
-class FeatureData : public QObject
+class FeatureData
 {
-    Q_OBJECT
 public:
-    explicit FeatureData(QObject *parent = nullptr);
+    FeatureData();
 
     QString name() const;
     QString description() const;
 
-signals:
-
-public slots:
     void setName(const QString &name);
     void setDescription(const QString &description);
 

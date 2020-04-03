@@ -1,15 +1,13 @@
 ﻿#ifndef SPECIALIZATIONDATA_H
 #define SPECIALIZATIONDATA_H
 
-#include <QObject>
+#include <QString>
 
-class SpecializationData : public QObject
+class SpecializationData
 {
-    Q_OBJECT
 public:
-    explicit SpecializationData(const QString &name,
-                                const QString &description,
-                                QObject *parent = nullptr);
+    SpecializationData(const QString &name,
+                       const QString &description);
 
     QString name() const;
     QString description() const;

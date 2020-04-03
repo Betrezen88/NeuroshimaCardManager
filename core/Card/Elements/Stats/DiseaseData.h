@@ -1,15 +1,13 @@
 ﻿#ifndef DISEASEDATA_H
 #define DISEASEDATA_H
 
-#include <QObject>
+#include <QString>
 
-class DiseaseData : public QObject
+class DiseaseData
 {
-    Q_OBJECT
 public:
-    explicit DiseaseData(const QString &name,
-                         const QString &description,
-                         QObject *parent = nullptr);
+    DiseaseData(const QString &name,
+                const QString &description);
 
     QString name() const;
     QString description() const;

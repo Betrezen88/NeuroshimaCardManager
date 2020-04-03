@@ -1,8 +1,7 @@
 ﻿#include "CardData.h"
-
 #include "Pages/StatsData.h"
 
-CardData::CardData(QObject *parent) : QObject(parent)
+CardData::CardData()
 {
 
 }

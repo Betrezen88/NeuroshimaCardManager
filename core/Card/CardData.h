@@ -3,18 +3,14 @@
 
 #include "core_global.h"
 
-#include <QObject>
-
 class StatsData;
 
-class CORE_EXPORT CardData : public QObject
+class CORE_EXPORT CardData
 {
 public:
-    explicit CardData(QObject *parent = nullptr);
+    CardData();
 
     StatsData *stats() const;
-
-public slots:
     void setStats(StatsData *stats);
 
 private:

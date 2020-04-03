@@ -1,15 +1,13 @@
 ﻿#ifndef ORIGINDATA_H
 #define ORIGINDATA_H
 
-#include <QObject>
+#include <QString>
 
-class OriginData : public QObject
+class OriginData
 {
-    Q_OBJECT
 public:
-    explicit OriginData(const QString &name,
-                        const QString &description,
-                        QObject *parent = nullptr);
+    OriginData(const QString &name,
+               const QString &description);
 
     QString name() const;
     QString description() const;

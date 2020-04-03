@@ -5,7 +5,7 @@
 #include "SpecializationData.h"
 #include "DiseaseData.h"
 
-PersonalData::PersonalData(QObject *parent) : QObject(parent)
+PersonalData::PersonalData()
 {
 
 }

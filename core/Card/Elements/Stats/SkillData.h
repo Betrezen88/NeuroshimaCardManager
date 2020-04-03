@@ -1,20 +1,16 @@
 ﻿#ifndef SKILLDATA_H
 #define SKILLDATA_H
 
-#include <QObject>
+#include <QString>
 
-class SkillData : public QObject
+class SkillData
 {
-    Q_OBJECT
 public:
-    explicit SkillData(QObject *parent = nullptr);
+    SkillData();
 
     QString name() const;
     int value() const;
 
-signals:
-
-public slots:
     void setName(const QString &name);
     void setValue(const int &value);
 

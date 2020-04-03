@@ -1,16 +1,15 @@
 ﻿#ifndef SKILLPACKDATA_H
 #define SKILLPACKDATA_H
 
-#include <QObject>
+#include <QString>
 #include <QMap>
 
 class SkillData;
 
-class SkillpackData : public QObject
+class SkillpackData
 {
-    Q_OBJECT
 public:
-    explicit SkillpackData(QObject *parent = nullptr);
+    SkillpackData();
 
     QString name() const;
     QStringList specializations() const;
@@ -19,9 +18,6 @@ public:
     bool hasSpecialization(const QString &specialization) const;
     bool hasSkill(const QString &name);
 
-signals:
-
-public slots:
     void setName(const QString &name);
     void setSpecializations(const QStringList &specializations);
     void setSkills(const QMap<QString, SkillData*> &skills);

@@ -1,7 +1,7 @@
 ﻿#ifndef PERSONALDATA_H
 #define PERSONALDATA_H
 
-#include <QObject>
+#include <QString>
 #include <QMap>
 
 class OriginData;
@@ -9,11 +9,10 @@ class ProfessionData;
 class SpecializationData;
 class DiseaseData;
 
-class PersonalData : public QObject
+class PersonalData
 {
-    Q_OBJECT
 public:
-    explicit PersonalData(QObject *parent = nullptr);
+    PersonalData();
 
     QString name() const;
     QString surname() const;
@@ -25,7 +24,6 @@ public:
     SpecializationData *specialization() const;
     DiseaseData *disease() const;
 
-public slots:
     void setName(const QString &name);
     void setSurname(const QString &surname);
     void setNickname(const QString &nickname);

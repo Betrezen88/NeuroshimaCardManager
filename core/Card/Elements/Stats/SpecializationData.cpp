@@ -1,10 +1,8 @@
 ﻿#include "SpecializationData.h"
 
 SpecializationData::SpecializationData(const QString &name,
-                                       const QString &description,
-                                       QObject *parent)
-    : QObject(parent),
-      m_name(name),
+                                       const QString &description)
+    : m_name(name),
       m_description(description)
 {
 
