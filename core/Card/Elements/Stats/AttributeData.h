@@ -1,35 +1,33 @@
 ﻿#ifndef ATTRIBUTE_H
 #define ATTRIBUTE_H
 
-#include <QObject>
+#include <QString>
 #include <QMap>
 
-class Skillpack;
+#include "core_global.h"
 
-class Attribute : public QObject
+class SkillpackData;
+
+class CORE_EXPORT AttributeData
 {
-    Q_OBJECT
 public:
-    explicit Attribute(QObject *parent = nullptr);
+    AttributeData();
 
     QString name() const;
     int value() const;
 
-    QMap<QString, Skillpack*> skillpacks() const;
+    QMap<QString, SkillpackData*> skillpacks() const;
 
     bool hasSkillpack(const QString &name) const;
 
-signals:
-
-public slots:
     void setName(const QString &name);
     void setValue(const int &value);
-    void setSkillpacks(const QMap<QString, Skillpack*> skillpacks);
+    void setSkillpacks(const QMap<QString, SkillpackData*> skillpacks);
 
 private:
     QString m_name;
     int m_value;
-    QMap<QString, Skillpack*> m_skillpacks;
+    QMap<QString, SkillpackData*> m_skillpacks;
 };
 
 #endif // ATTRIBUTE_H

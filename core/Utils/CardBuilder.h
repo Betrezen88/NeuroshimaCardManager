@@ -4,9 +4,9 @@
 #include <QObject>
 #include <QJsonObject>
 
-class Card;
-class Stats;
-class Personal;
+class CardData;
+class StatsData;
+class PersonalData;
 
 class CardBuilder : public QObject
 {
@@ -17,11 +17,11 @@ public:
 signals:
 
 public slots:
-    Card *build(const QJsonObject &json);
+    CardData *build(const QJsonObject &json);
 
 private:
-    Stats *stats(const QJsonObject &stats);
-    Personal *personal(const QJsonObject &personal);
+    StatsData *stats(const QJsonObject &stats);
+    PersonalData *personal(const QJsonObject &personal);
 };
 
 #endif // CARDBUILDER_H

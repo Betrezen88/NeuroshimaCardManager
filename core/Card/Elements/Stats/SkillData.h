@@ -1,20 +1,18 @@
 ﻿#ifndef SKILL_H
 #define SKILL_H
 
-#include <QObject>
+#include <QString>
 
-class Skill : public QObject
+#include "core_global.h"
+
+class CORE_EXPORT SkillData
 {
-    Q_OBJECT
 public:
-    explicit Skill(QObject *parent = nullptr);
+    SkillData();
 
     QString name() const;
     int value() const;
 
-signals:
-
-public slots:
     void setName(const QString &name);
     void setValue(const int &value);
 

@@ -14,4 +14,6 @@ ApplicationWindow {
         width: parent.width
         height: parent.height
     }
+
+    Component.onCompleted: console.log("pCard:", pCard.fullname);
 }

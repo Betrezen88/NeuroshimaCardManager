@@ -1,5 +1,10 @@
-#include <QGuiApplication>
+﻿#include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
+
+#include "cpp/Card/Card.h"
+
+#include "Utils/DataReader.h"
 
 int main(int argc, char *argv[])
 {
@@ -7,7 +12,12 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
 
+    DataReader reader;
+    Card *pCard = new Card( reader.loadCard("c:/Users/Michał/Documents/!NsHeroes/Nick 'Happy' Sax.json") );
+
     QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("pCard", pCard);
+
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {

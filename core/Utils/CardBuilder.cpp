@@ -1,39 +1,39 @@
 ﻿#include "CardBuilder.h"
 
-#include "Card/Card.h"
-#include "Card/Pages/Stats.h"
-#include "Card/Elements/Stats/Personal.h"
-#include "Card/Elements/Stats/Origin.h"
-#include "Card/Elements/Stats/Profession.h"
-#include "Card/Elements/Stats/Specialization.h"
-#include "Card/Elements/Stats/Disease.h"
+#include "Card/CardData.h"
+#include "Card/Pages/StatsData.h"
+#include "Card/Elements/Stats/PersonalData.h"
+#include "Card/Elements/Stats/OriginData.h"
+#include "Card/Elements/Stats/ProfessionData.h"
+#include "Card/Elements/Stats/SpecializationData.h"
+#include "Card/Elements/Stats/DiseaseData.h"
 
 CardBuilder::CardBuilder(QObject *parent) : QObject(parent)
 {
 
 }
 
-Card *CardBuilder::build(const QJsonObject &json)
+CardData *CardBuilder::build(const QJsonObject &json)
 {
-    Card *pCard = new Card();
+    CardData *pCard = new CardData();
 
     pCard->setStats( stats(json.value("stats").toObject()) );
 
     return pCard;
 }
 
-Stats *CardBuilder::stats(const QJsonObject &stats)
+StatsData *CardBuilder::stats(const QJsonObject &stats)
 {
-    Stats *pStats = new Stats();
+    StatsData *pStats = new StatsData();
 
     pStats->setPersonal( personal(stats.value("personal").toObject()) );
 
     return pStats;
 }
 
-Personal *CardBuilder::personal(const QJsonObject &personal)
+PersonalData *CardBuilder::personal(const QJsonObject &personal)
 {
-    Personal *pPersonal = new Personal();
+    PersonalData *pPersonal = new PersonalData();
 
     const QJsonObject &name = personal.value("name").toObject();
     pPersonal->setName( name.value("name").toString() );
@@ -41,20 +41,20 @@ Personal *CardBuilder::personal(const QJsonObject &personal)
     pPersonal->setSurname( name.value("surname").toString() );
 
     const QJsonObject &origin = personal.value("origin").toObject();
-    pPersonal->setOrigin( new Origin(origin.value("name").toString(),
-                                     origin.value("description").toString()) );
+    pPersonal->setOrigin( new OriginData(origin.value("name").toString(),
+                                         origin.value("description").toString()) );
 
     const QJsonObject &profession = personal.value("profession").toObject();
-    pPersonal->setProfession( new Profession(profession.value("name").toString(),
-                                             profession.value("description").toString()) );
+    pPersonal->setProfession( new ProfessionData(profession.value("name").toString(),
+                                                 profession.value("description").toString()) );
 
     const QJsonObject &specialization = personal.value("specialization").toObject();
-    pPersonal->setSpecialization( new Specialization(specialization.value("name").toString(),
-                                                     specialization.value("description").toString()) );
+    pPersonal->setSpecialization( new SpecializationData(specialization.value("name").toString(),
+                                                         specialization.value("description").toString()) );
 
     const QJsonObject &disease = personal.value("disease").toObject();
-    pPersonal->setDisease( new Disease(disease.value("name").toString(),
-                                       disease.value("description").toString()) );
+    pPersonal->setDisease( new DiseaseData(disease.value("name").toString(),
+                                           disease.value("description").toString()) );
 
     return pPersonal;
 }
