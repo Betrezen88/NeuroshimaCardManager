@@ -1,13 +1,13 @@
-﻿#ifndef FEATURE_H
-#define FEATURE_H
+﻿#ifndef FEATUREDATA_H
+#define FEATUREDATA_H
 
 #include <QObject>
 
-class Feature : public QObject
+class FeatureData : public QObject
 {
     Q_OBJECT
 public:
-    explicit Feature(QObject *parent = nullptr);
+    explicit FeatureData(QObject *parent = nullptr);
 
     QString name() const;
     QString description() const;
@@ -23,4 +23,4 @@ private:
     QString m_description;
 };
 
-#endif // FEATURE_H
+#endif // FEATUREDATA_H

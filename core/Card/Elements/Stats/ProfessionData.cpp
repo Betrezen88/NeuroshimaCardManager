@@ -1,6 +1,6 @@
-﻿#include "Specialization.h"
+﻿#include "ProfessionData.h"
 
-Specialization::Specialization(const QString &name,
+ProfessionData::ProfessionData(const QString &name,
                                const QString &description,
                                QObject *parent)
     : QObject(parent),
@@ -10,12 +10,12 @@ Specialization::Specialization(const QString &name,
 
 }
 
-QString Specialization::name() const
+QString ProfessionData::name() const
 {
     return m_name;
 }
 
-QString Specialization::description() const
+QString ProfessionData::description() const
 {
     return m_description;
 }

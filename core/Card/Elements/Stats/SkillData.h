@@ -1,13 +1,13 @@
-﻿#ifndef SKILL_H
-#define SKILL_H
+﻿#ifndef SKILLDATA_H
+#define SKILLDATA_H
 
 #include <QObject>
 
-class Skill : public QObject
+class SkillData : public QObject
 {
     Q_OBJECT
 public:
-    explicit Skill(QObject *parent = nullptr);
+    explicit SkillData(QObject *parent = nullptr);
 
     QString name() const;
     int value() const;
@@ -23,4 +23,4 @@ private:
     int m_value{0};
 };
 
-#endif // SKILL_H
+#endif // SKILLDATA_H

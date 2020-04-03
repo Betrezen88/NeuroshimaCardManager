@@ -1,8 +1,8 @@
 ﻿#include "DataReader.h"
 
 #include "CardBuilder.h"
-#include "Card/Card.h"
-#include "Card/Pages/Stats.h"
+#include "Card/CardData.h"
+#include "Card/Pages/StatsData.h"
 
 #include <QFile>
 #include <QJsonArray>
@@ -18,7 +18,7 @@ DataReader::DataReader(QObject *parent) : QObject(parent)
 
 }
 
-Card *DataReader::loadCard(const QString &filePath)
+CardData *DataReader::loadCard(const QString &filePath)
 {
     QFile file(filePath);
 

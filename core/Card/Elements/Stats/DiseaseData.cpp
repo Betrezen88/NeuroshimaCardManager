@@ -1,6 +1,6 @@
-﻿#include "Disease.h"
+﻿#include "DiseaseData.h"
 
-Disease::Disease(const QString &name,
+DiseaseData::DiseaseData(const QString &name,
                  const QString &description,
                  QObject *parent)
     : QObject(parent),
@@ -10,12 +10,12 @@ Disease::Disease(const QString &name,
 
 }
 
-QString Disease::name() const
+QString DiseaseData::name() const
 {
     return m_name;
 }
 
-QString Disease::description() const
+QString DiseaseData::description() const
 {
     return m_description;
 }

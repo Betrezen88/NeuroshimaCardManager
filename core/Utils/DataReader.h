@@ -5,7 +5,7 @@
 
 #include "core_global.h"
 
-class Card;
+class CardData;
 
 class CORE_EXPORT DataReader : public QObject
 {
@@ -16,7 +16,7 @@ public:
 signals:
 
 public slots:
-    Card *loadCard(const QString &filePath);
+    CardData *loadCard(const QString &filePath);
 };
 
 #endif // DATAREADER_H

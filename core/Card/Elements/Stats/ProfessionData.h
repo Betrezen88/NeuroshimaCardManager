@@ -1,13 +1,13 @@
-﻿#ifndef SPECIALIZATION_H
-#define SPECIALIZATION_H
+﻿#ifndef PROFESSIONDATA_H
+#define PROFESSIONDATA_H
 
 #include <QObject>
 
-class Specialization : public QObject
+class ProfessionData : public QObject
 {
     Q_OBJECT
 public:
-    explicit Specialization(const QString &name,
+    explicit ProfessionData(const QString &name,
                             const QString &description,
                             QObject *parent = nullptr);
 
@@ -19,4 +19,4 @@ private:
     QString m_description;
 };
 
-#endif // SPECIALIZATION_H
+#endif // PROFESSIONDATA_H

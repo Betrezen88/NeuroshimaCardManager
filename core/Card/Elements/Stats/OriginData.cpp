@@ -1,6 +1,6 @@
-﻿#include "Profession.h"
+﻿#include "OriginData.h"
 
-Profession::Profession(const QString &name,
+OriginData::OriginData(const QString &name,
                        const QString &description,
                        QObject *parent)
     : QObject(parent),
@@ -10,12 +10,12 @@ Profession::Profession(const QString &name,
 
 }
 
-QString Profession::name() const
+QString OriginData::name() const
 {
     return m_name;
 }
 
-QString Profession::description() const
+QString OriginData::description() const
 {
     return m_description;
 }

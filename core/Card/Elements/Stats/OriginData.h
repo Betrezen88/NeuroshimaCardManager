@@ -1,13 +1,13 @@
-﻿#ifndef PROFESSION_H
-#define PROFESSION_H
+﻿#ifndef ORIGINDATA_H
+#define ORIGINDATA_H
 
 #include <QObject>
 
-class Profession : public QObject
+class OriginData : public QObject
 {
     Q_OBJECT
 public:
-    explicit Profession(const QString &name,
+    explicit OriginData(const QString &name,
                         const QString &description,
                         QObject *parent = nullptr);
 
@@ -19,4 +19,4 @@ private:
     QString m_description;
 };
 
-#endif // PROFESSION_H
+#endif // ORIGINDATA_H
