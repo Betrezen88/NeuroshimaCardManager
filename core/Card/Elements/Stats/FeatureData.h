@@ -8,7 +8,7 @@
 class CORE_EXPORT FeatureData
 {
 public:
-    FeatureData();
+    FeatureData(const QString &name, const QString &description);
 
     QString name() const;
     QString description() const;

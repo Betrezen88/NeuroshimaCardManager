@@ -1,6 +1,8 @@
 ﻿#include "FeatureData.h"
 
-FeatureData::FeatureData()
+FeatureData::FeatureData(const QString &name, const QString &description)
+    : m_name(name),
+      m_description(description)
 {
 
 }
