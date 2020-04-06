@@ -17,6 +17,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        cpp/Card/CardWrapper.cpp \
+        cpp/Element/DiseaseWrapper.cpp \
+        cpp/Element/FeatureWrapper.cpp \
+        cpp/Element/OriginWrapper.cpp \
+        cpp/Element/ProfessionWrapper.cpp \
+        cpp/Element/SpecializationWrapper.cpp \
+        cpp/Page/StatsWrapper.cpp \
+        cpp/Section/PersonalWrapper.cpp \
         main.cpp
 
 RESOURCES += qml.qrc
@@ -38,3 +46,13 @@ else:unix: LIBS += -L$$OUT_PWD/../core/ -lcore
 
 INCLUDEPATH += $$PWD/../core
 DEPENDPATH += $$PWD/../core
+
+HEADERS += \
+    cpp/Card/CardWrapper.h \
+    cpp/Element/DiseaseWrapper.h \
+    cpp/Element/FeatureWrapper.h \
+    cpp/Element/OriginWrapper.h \
+    cpp/Element/ProfessionWrapper.h \
+    cpp/Element/SpecializationWrapper.h \
+    cpp/Page/StatsWrapper.h \
+    cpp/Section/PersonalWrapper.h
