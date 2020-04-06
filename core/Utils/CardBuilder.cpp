@@ -7,6 +7,7 @@
 #include "Card/Elements/Stats/ProfessionData.h"
 #include "Card/Elements/Stats/SpecializationData.h"
 #include "Card/Elements/Stats/DiseaseData.h"
+#include "Card/Elements/Stats/FeatureData.h"
 
 CardBuilder::CardBuilder(QObject *parent) : QObject(parent)
 {
@@ -55,6 +56,15 @@ PersonalData *CardBuilder::personal(const QJsonObject &personal)
     const QJsonObject &disease = personal.value("disease").toObject();
     pPersonal->setDisease( new DiseaseData(disease.value("name").toString(),
                                        disease.value("description").toString()) );
+
+    const QJsonObject &features = personal.value("features").toObject();
+    const QJsonObject &originFeature = features.value("origin").toObject();
+    pPersonal->setOriginFeature( new FeatureData(originFeature.value("name").toString(),
+                                                 originFeature.value("description").toString()) );
+
+    const QJsonObject &professionFeature = features.value("profession").toObject();
+    pPersonal->setProfessionFeature( new FeatureData(professionFeature.value("name").toString(),
+                                                     professionFeature.value("description").toString()) );
 
     return pPersonal;
 }
