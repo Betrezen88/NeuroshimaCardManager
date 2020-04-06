@@ -10,6 +10,7 @@ class OriginData;
 class ProfessionData;
 class SpecializationData;
 class DiseaseData;
+class FeatureData;
 
 class CORE_EXPORT PersonalData
 {
@@ -25,6 +26,8 @@ public:
     ProfessionData *profession() const;
     SpecializationData *specialization() const;
     DiseaseData *disease() const;
+    FeatureData *originFeature() const;
+    FeatureData *professionFeature() const;
 
     void setName(const QString &name);
     void setSurname(const QString &surname);
@@ -34,6 +37,8 @@ public:
     void setProfession(ProfessionData *profession);
     void setSpecialization(SpecializationData *specialization);
     void setDisease(DiseaseData *disease);
+    void setOriginFeature(FeatureData *originFeature);
+    void setProfessionFeature(FeatureData *professionFeature);
 
     void setReputation(const QString &place, const int &value);
 
@@ -46,6 +51,9 @@ private:
     ProfessionData *m_profession{nullptr};
     SpecializationData *m_specialization{nullptr};
     DiseaseData *m_disease{nullptr};
+
+    FeatureData *m_pOriginFeature{nullptr};
+    FeatureData *m_pProfessionData{nullptr};
 
     QMap<QString, int> m_reputation;
     int m_fame{0};

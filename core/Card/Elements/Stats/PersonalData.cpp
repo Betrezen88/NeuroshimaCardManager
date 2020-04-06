@@ -55,6 +55,16 @@ DiseaseData *PersonalData::disease() const
     return m_disease;
 }
 
+FeatureData *PersonalData::originFeature() const
+{
+    return m_pOriginFeature;
+}
+
+FeatureData *PersonalData::professionFeature() const
+{
+    return m_pProfessionData;
+}
+
 void PersonalData::setName(const QString &name)
 {
     m_name = name;
@@ -88,6 +98,16 @@ void PersonalData::setSpecialization(SpecializationData *specialization)
 void PersonalData::setDisease(DiseaseData *disease)
 {
     m_disease = disease;
+}
+
+void PersonalData::setOriginFeature(FeatureData *originFeature)
+{
+    m_pOriginFeature = originFeature;
+}
+
+void PersonalData::setProfessionFeature(FeatureData *professionFeature)
+{
+    m_pProfessionData = professionFeature;
 }
 
 void PersonalData::setReputation(const QString &place, const int &value)
