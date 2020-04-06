@@ -30,6 +30,7 @@ Item {
 
             Stats {
                 id: stats
+                statsData: cardData.stats
             }
         }
     }

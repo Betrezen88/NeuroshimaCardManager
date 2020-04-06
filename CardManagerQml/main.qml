@@ -11,6 +11,7 @@ ApplicationWindow {
 
     Card {
         id: card
+        cardData: pCardData
         width: parent.width
         height: parent.height
     }

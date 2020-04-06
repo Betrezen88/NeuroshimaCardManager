@@ -3,6 +3,8 @@
 import "./../Section"
 
 Item {
+    property var statsData
+
     id: main
 
     height: personal.height + tricks.height + 2
@@ -23,6 +25,7 @@ Item {
 
             Personal {
                 id: personal
+                personalData: statsData.personal
             }
 
             Tricks {

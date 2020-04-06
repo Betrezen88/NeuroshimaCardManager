@@ -4,6 +4,8 @@ import QtQuick.Controls 2.5
 import "./../Element"
 
 Item {
+    property var personalData
+
     id: main
 
     width: portrait.width
@@ -38,56 +40,55 @@ Item {
             id: name
             width: main.width
             name: "Imię"
-            value: "Nick 'Happy' Sax with bick dick and very hairy balls who smokes and drinks"
-            description: "Imię, ksywa i nazwisko bohatera"
+            value: personalData.fullname
         }
 
         PersonalField {
             id: origin
             width: main.width
             name: "Pochodzenie"
-            value: "Południowa Hegemonia"
-            description: "Meksykańskie zabijaki"
+            value: personalData.origin.name
+            description: personalData.origin.description
         }
 
         PersonalField {
             id: profession
             width: main.width
             name: "Profesja"
-            value: "Ochroniarz"
-            description: "Ochrania ludzi przed innymi"
+            value: personalData.profession.name
+            description: personalData.profession.description
         }
 
         PersonalField {
             id: specialization
             width: main.width
             name: "Specjalizacja"
-            value: "Wojownik"
-            description: "Duży, zły i groźny, wyćwiczony w walce"
+            value: personalData.specialization.name
+            description: personalData.specialization.description
         }
 
         PersonalField {
             id: disease
             width: main.width
             name: "Choroba"
-            value: "Gorączka sobotniej nocy"
-            description: "Tańczysz jak John Travolta"
+            value: personalData.disease.name
+            description: personalData.disease.description
         }
 
         PersonalField {
             id: originFeature
             width: main.width
             name: "Cecha z pochodzenia"
-            value: "Zabijaka"
-            description: "Skutecznie zabijasz"
+            value: personalData.originFeature.name
+            description: personalData.originFeature.description
         }
 
         PersonalField {
             id: professionFeature
             width: main.width
             name: "Cecha z profesji"
-            value: "Zanim on!"
-            description: "Jesteś szybszy niż typek co to chce Ci ubić klienta"
+            value: personalData.professionFeature.name
+            description: personalData.professionFeature.description
         }
 
         Button {
