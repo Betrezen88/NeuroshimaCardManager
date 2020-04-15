@@ -18,10 +18,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         cpp/Card/CardWrapper.cpp \
+        cpp/Element/AttributeWrapper.cpp \
         cpp/Element/DiseaseWrapper.cpp \
         cpp/Element/FeatureWrapper.cpp \
         cpp/Element/OriginWrapper.cpp \
         cpp/Element/ProfessionWrapper.cpp \
+        cpp/Element/SkillWrapper.cpp \
+        cpp/Element/SkillpackWrapper.cpp \
         cpp/Element/SpecializationWrapper.cpp \
         cpp/Page/StatsWrapper.cpp \
         cpp/Section/PersonalWrapper.cpp \
@@ -49,10 +52,13 @@ DEPENDPATH += $$PWD/../core
 
 HEADERS += \
     cpp/Card/CardWrapper.h \
+    cpp/Element/AttributeWrapper.h \
     cpp/Element/DiseaseWrapper.h \
     cpp/Element/FeatureWrapper.h \
     cpp/Element/OriginWrapper.h \
     cpp/Element/ProfessionWrapper.h \
+    cpp/Element/SkillWrapper.h \
+    cpp/Element/SkillpackWrapper.h \
     cpp/Element/SpecializationWrapper.h \
     cpp/Page/StatsWrapper.h \
     cpp/Section/PersonalWrapper.h
