@@ -1,6 +1,8 @@
 ﻿#include "SkillData.h"
 
-SkillData::SkillData()
+SkillData::SkillData(const QString &name, const int value)
+    : m_name(name),
+      m_value(value)
 {
 
 }

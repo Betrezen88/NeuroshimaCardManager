@@ -8,7 +8,7 @@
 class CORE_EXPORT SkillData
 {
 public:
-    SkillData();
+    SkillData(const QString &name, const int value);
 
     QString name() const;
     int value() const;
