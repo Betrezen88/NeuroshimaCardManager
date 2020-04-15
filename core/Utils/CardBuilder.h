@@ -2,11 +2,14 @@
 #define CARDBUILDER_H
 
 #include <QObject>
+#include <QJsonArray>
 #include <QJsonObject>
+#include <QMap>
 
 class CardData;
 class StatsData;
 class PersonalData;
+class AttributeData;
 
 class CardBuilder : public QObject
 {
@@ -22,6 +25,7 @@ public slots:
 private:
     StatsData *stats(const QJsonObject &stats);
     PersonalData *personal(const QJsonObject &personal);
+    QList<AttributeData *> attributes(const QJsonArray &attributes);
 };
 
 #endif // CARDBUILDER_H

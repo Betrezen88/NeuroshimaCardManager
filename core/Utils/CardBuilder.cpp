@@ -8,6 +8,11 @@
 #include "Card/Elements/Stats/SpecializationData.h"
 #include "Card/Elements/Stats/DiseaseData.h"
 #include "Card/Elements/Stats/FeatureData.h"
+#include "Card/Elements/Stats/AttributeData.h"
+#include "Card/Elements/Stats/SkillpackData.h"
+#include "Card/Elements/Stats/SkillData.h"
+
+#include <QJsonValue>
 
 CardBuilder::CardBuilder(QObject *parent) : QObject(parent)
 {
@@ -28,6 +33,7 @@ StatsData *CardBuilder::stats(const QJsonObject &stats)
     StatsData *pStats = new StatsData();
 
     pStats->setPersonal( personal(stats.value("personal").toObject()) );
+    pStats->setAttributes( attributes(stats.value("attributes").toArray()) );
 
     return pStats;
 }
@@ -67,4 +73,38 @@ PersonalData *CardBuilder::personal(const QJsonObject &personal)
                                                      professionFeature.value("description").toString()) );
 
     return pPersonal;
+}
+
+QList<AttributeData *> CardBuilder::attributes(const QJsonArray &attributes)
+{
+    QList<AttributeData*> attributeList;
+
+    for ( const QJsonValue &attribute: attributes ) {
+        const QJsonObject &tAttribute = attribute.toObject();
+        AttributeData *pAttribute = new AttributeData( tAttribute.value("name").toString(),
+                                                       tAttribute.value("value").toInt() );
+        for ( const QJsonValue &skillpack: tAttribute.value("skillpacks").toArray() ) {
+            const QJsonObject &tSkillpack = skillpack.toObject();
+
+            QStringList specializations;
+            for ( const QJsonValue &specialization: tSkillpack.value("specializations").toArray() ) {
+                specializations << specialization.toString();
+            }
+
+            SkillpackData *pSkillpack = new SkillpackData( tSkillpack.value("name").toString(),
+                                                           specializations );
+
+            for ( const QJsonValue &skill: tSkillpack.value("skills").toArray() ) {
+                const QJsonObject &tSkill = skill.toObject();
+                SkillData *pSkill = new SkillData( tSkill.value("name").toString(),
+                                                   tSkill.value("value").toInt() );
+                pSkillpack->addSkill( pSkill );
+            }
+            pAttribute->addSkillpack( pSkillpack );
+        }
+
+        attributeList.push_back( pAttribute );
+    }
+
+    return attributeList;
 }
