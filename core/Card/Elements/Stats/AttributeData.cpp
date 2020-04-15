@@ -1,7 +1,9 @@
 ﻿#include "AttributeData.h"
 #include "SkillpackData.h"
 
-AttributeData::AttributeData()
+AttributeData::AttributeData(const QString &name, const int value)
+    : m_name(name),
+      m_value(value)
 {
 
 }
@@ -16,14 +18,19 @@ int AttributeData::value() const
     return m_value;
 }
 
-QMap<QString, SkillpackData *> AttributeData::skillpacks() const
+QList<SkillpackData *> AttributeData::skillpacks() const
 {
     return m_skillpacks;
 }
 
 bool AttributeData::hasSkillpack(const QString &name) const
 {
-    return m_skillpacks.contains(name);
+    for ( SkillpackData *pSkillpack: m_skillpacks ) {
+        if ( name == pSkillpack->name() )
+            return true;
+    }
+
+    return false;
 }
 
 void AttributeData::setName(const QString &name)
@@ -36,7 +43,7 @@ void AttributeData::setValue(const int &value)
     m_value = value;
 }
 
-void AttributeData::setSkillpacks(const QMap<QString, SkillpackData *> skillpacks)
+void AttributeData::addSkillpack(SkillpackData *skillpack)
 {
-    m_skillpacks = skillpacks;
+    m_skillpacks.push_back( skillpack );
 }

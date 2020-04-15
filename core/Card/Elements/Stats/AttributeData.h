@@ -2,7 +2,7 @@
 #define ATTRIBUTEDATA_H
 
 #include <QString>
-#include <QMap>
+#include <QList>
 
 #include "core_global.h"
 
@@ -11,23 +11,23 @@ class SkillpackData;
 class CORE_EXPORT AttributeData
 {
 public:
-    AttributeData();
+    AttributeData(const QString &name, const int value);
 
     QString name() const;
     int value() const;
 
-    QMap<QString, SkillpackData*> skillpacks() const;
+    QList<SkillpackData*> skillpacks() const;
 
     bool hasSkillpack(const QString &name) const;
 
     void setName(const QString &name);
     void setValue(const int &value);
-    void setSkillpacks(const QMap<QString, SkillpackData*> skillpacks);
+    void addSkillpack(SkillpackData *skillpack);
 
 private:
     QString m_name;
     int m_value;
-    QMap<QString, SkillpackData*> m_skillpacks;
+    QList<SkillpackData*> m_skillpacks;
 };
 
 #endif // ATTRIBUTEDATA_H
