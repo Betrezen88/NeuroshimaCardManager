@@ -22,6 +22,7 @@ SOURCES += \
         cpp/Element/DiseaseWrapper.cpp \
         cpp/Element/FeatureWrapper.cpp \
         cpp/Element/OriginWrapper.cpp \
+        cpp/Element/OtherSkillWrapper.cpp \
         cpp/Element/ProfessionWrapper.cpp \
         cpp/Element/SkillWrapper.cpp \
         cpp/Element/SkillpackWrapper.cpp \
@@ -56,6 +57,7 @@ HEADERS += \
     cpp/Element/DiseaseWrapper.h \
     cpp/Element/FeatureWrapper.h \
     cpp/Element/OriginWrapper.h \
+    cpp/Element/OtherSkillWrapper.h \
     cpp/Element/ProfessionWrapper.h \
     cpp/Element/SkillWrapper.h \
     cpp/Element/SkillpackWrapper.h \
