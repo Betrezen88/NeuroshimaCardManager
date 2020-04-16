@@ -1,8 +1,10 @@
 ﻿#include "StatsWrapper.h"
 #include "cpp/Section/PersonalWrapper.h"
 #include "cpp/Element/AttributeWrapper.h"
+#include "cpp/Element/OtherSkillWrapper.h"
 #include "Card/Pages/StatsData.h"
 #include "Card/Elements/Stats/AttributeData.h"
+#include "Card/Elements/Stats/OtherSkillData.h"
 
 StatsWrapper::StatsWrapper(QObject *parent) : QObject(parent)
 {
@@ -16,6 +18,9 @@ StatsWrapper::StatsWrapper(StatsData *statsData, QObject *parent)
 {
     for ( AttributeData *pAttributeData: m_pStatsData->attributes() ) {
         appendAttribute( new AttributeWrapper(pAttributeData, this) );
+    }
+    for ( OtherSkillData *pOtherSkill: m_pStatsData->otherSkills() ) {
+        appendOtherSkill( new OtherSkillWrapper(pOtherSkill, this) );
     }
 }
 
@@ -53,6 +58,35 @@ void StatsWrapper::clearAttributes()
     m_attributes.clear();
 }
 
+QQmlListProperty<OtherSkillWrapper> StatsWrapper::otherSkills()
+{
+    return QQmlListProperty<OtherSkillWrapper>(this, this,
+                                               &StatsWrapper::appendOtherSkill,
+                                               &StatsWrapper::otherSkillsCount,
+                                               &StatsWrapper::otherSkill,
+                                               &StatsWrapper::clearOtherSkills);
+}
+
+void StatsWrapper::appendOtherSkill(OtherSkillWrapper *otherSkill)
+{
+    m_otherSkills.push_back(otherSkill);
+}
+
+int StatsWrapper::otherSkillsCount() const
+{
+    return m_otherSkills.count();
+}
+
+OtherSkillWrapper *StatsWrapper::otherSkill(int index) const
+{
+    return m_otherSkills.at(index);
+}
+
+void StatsWrapper::clearOtherSkills()
+{
+    m_otherSkills.clear();
+}
+
 void StatsWrapper::appendAttribute(QQmlListProperty<AttributeWrapper> *list, AttributeWrapper *attribute)
 {
     reinterpret_cast<StatsWrapper*>(list->data)->appendAttribute(attribute);
@@ -71,4 +105,24 @@ AttributeWrapper *StatsWrapper::attribute(QQmlListProperty<AttributeWrapper> *li
 void StatsWrapper::clearAttributes(QQmlListProperty<AttributeWrapper> *list)
 {
     reinterpret_cast<StatsWrapper*>(list->data)->clearAttributes();
+}
+
+void StatsWrapper::appendOtherSkill(QQmlListProperty<OtherSkillWrapper> *list, OtherSkillWrapper *otherSkill)
+{
+    reinterpret_cast<StatsWrapper*>(list->data)->appendOtherSkill(otherSkill);
+}
+
+int StatsWrapper::otherSkillsCount(QQmlListProperty<OtherSkillWrapper> *list)
+{
+    return reinterpret_cast<StatsWrapper*>(list->data)->otherSkillsCount();
+}
+
+OtherSkillWrapper *StatsWrapper::otherSkill(QQmlListProperty<OtherSkillWrapper> *list, int index)
+{
+    return reinterpret_cast<StatsWrapper*>(list->data)->otherSkill(index);
+}
+
+void StatsWrapper::clearOtherSkills(QQmlListProperty<OtherSkillWrapper> *list)
+{
+    reinterpret_cast<StatsWrapper*>(list->data)->clearOtherSkills();
 }
