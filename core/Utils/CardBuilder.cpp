@@ -11,6 +11,7 @@
 #include "Card/Elements/Stats/AttributeData.h"
 #include "Card/Elements/Stats/SkillpackData.h"
 #include "Card/Elements/Stats/SkillData.h"
+#include "Card/Elements/Stats/OtherSkillData.h"
 
 #include <QJsonValue>
 
@@ -34,6 +35,9 @@ StatsData *CardBuilder::stats(const QJsonObject &stats)
 
     pStats->setPersonal( personal(stats.value("personal").toObject()) );
     pStats->setAttributes( attributes(stats.value("attributes").toArray()) );
+
+    if ( stats.contains("otherSkills") )
+        pStats->setOtherSkills( otherSkills(stats.value("otherSkills").toArray()) );
 
     return pStats;
 }
@@ -107,4 +111,19 @@ QList<AttributeData *> CardBuilder::attributes(const QJsonArray &attributes)
     }
 
     return attributeList;
+}
+
+QList<OtherSkillData *> CardBuilder::otherSkills(const QJsonArray &otherSkills)
+{
+    QList<OtherSkillData*> otherSkillsList;
+
+    for ( const QJsonValue &otherSkill: otherSkills ) {
+        const QJsonObject &tOtherSkill = otherSkill.toObject();
+        OtherSkillData *pOtherSkill = new OtherSkillData( tOtherSkill.value("name").toString(),
+                                                          tOtherSkill.value("value").toInt(),
+                                                          tOtherSkill.value("attribute").toString() );
+        otherSkillsList.push_back( pOtherSkill );
+    }
+
+    return otherSkillsList;
 }

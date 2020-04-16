@@ -10,6 +10,7 @@ class CardData;
 class StatsData;
 class PersonalData;
 class AttributeData;
+class OtherSkillData;
 
 class CardBuilder : public QObject
 {
@@ -26,6 +27,7 @@ private:
     StatsData *stats(const QJsonObject &stats);
     PersonalData *personal(const QJsonObject &personal);
     QList<AttributeData *> attributes(const QJsonArray &attributes);
+    QList<OtherSkillData *> otherSkills(const QJsonArray &otherSkills);
 };
 
 #endif // CARDBUILDER_H
