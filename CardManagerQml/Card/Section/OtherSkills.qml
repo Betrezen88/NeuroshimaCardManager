@@ -4,7 +4,7 @@ import QtQuick.Controls 2.5
 import "./../Element"
 
 Item {
-    property variant skills
+    property var skills
 
     id: main
     height: title.height + skillsList.height + 2
@@ -44,14 +44,10 @@ Item {
 
                 delegate: OtherSkill {
                     width: main.width
-                    skill: ({ name: name, value: value, attribute: attribute })
+                    skill: model
                 }
 
-                model: ListModel {
-                    ListElement { name: "Pilotowanie"; attribute: "Spryt"; value: 1 }
-                    ListElement { name: "Żeglowanie"; attribute: "Spryt"; value: 1 }
-                    ListElement { name: "Język Hiszpanski"; attribute: "Spryt"; value: 1 }
-                }
+                model: main.skills
             }
         }
     }

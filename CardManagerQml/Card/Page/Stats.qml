@@ -90,6 +90,7 @@ Item {
 
             OtherSkills {
                 id: otherSkills
+                skills: statsData.otherSkills
                 width: 250
             }
         }
