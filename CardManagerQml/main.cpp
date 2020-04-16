@@ -15,6 +15,7 @@
 #include "cpp/Element/AttributeWrapper.h"
 #include "cpp/Element/SkillpackWrapper.h"
 #include "cpp/Element/SkillWrapper.h"
+#include "cpp/Element/OtherSkillWrapper.h"
 
 int main(int argc, char *argv[])
 {
@@ -31,6 +32,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<AttributeWrapper>("cpp", 1, 0, "AttributeWrapper");
     qmlRegisterType<SkillpackWrapper>("cpp", 1, 0, "SkillpackWrapper");
     qmlRegisterType<SkillWrapper>("cpp", 1, 0, "SkillWrapper");
+    qmlRegisterType<OtherSkillWrapper>("cpp", 1, 0, "OtherSkillWrapper");
 
     QGuiApplication app(argc, argv);
 
