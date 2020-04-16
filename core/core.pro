@@ -22,6 +22,7 @@ SOURCES += \
     Card/Elements/Stats/DiseaseData.cpp \
     Card/Elements/Stats/FeatureData.cpp \
     Card/Elements/Stats/OriginData.cpp \
+    Card/Elements/Stats/OtherSkillData.cpp \
     Card/Elements/Stats/PersonalData.cpp \
     Card/Elements/Stats/ProfessionData.cpp \
     Card/Elements/Stats/SkillData.cpp \
@@ -38,6 +39,7 @@ HEADERS += \
     Card/Elements/Stats/DiseaseData.h \
     Card/Elements/Stats/FeatureData.h \
     Card/Elements/Stats/OriginData.h \
+    Card/Elements/Stats/OtherSkillData.h \
     Card/Elements/Stats/PersonalData.h \
     Card/Elements/Stats/ProfessionData.h \
     Card/Elements/Stats/SkillData.h \
