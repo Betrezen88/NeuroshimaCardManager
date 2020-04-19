@@ -12,6 +12,7 @@
 #include "Card/Elements/Stats/SkillpackData.h"
 #include "Card/Elements/Stats/SkillData.h"
 #include "Card/Elements/Stats/OtherSkillData.h"
+#include "Card/Elements/Stats/TrickData.h"
 
 #include <QJsonValue>
 
@@ -38,6 +39,9 @@ StatsData *CardBuilder::stats(const QJsonObject &stats)
 
     if ( stats.contains("otherSkills") )
         pStats->setOtherSkills( otherSkills(stats.value("otherSkills").toArray()) );
+
+    if ( stats.contains("tricks") )
+        pStats->setTricks( tricks(stats.value("tricks").toArray()) );
 
     return pStats;
 }
@@ -126,4 +130,20 @@ QList<OtherSkillData *> CardBuilder::otherSkills(const QJsonArray &otherSkills)
     }
 
     return otherSkillsList;
+}
+
+QList<TrickData *> CardBuilder::tricks(const QJsonArray &tricks)
+{
+    QList<TrickData*> tricksList;
+
+    for ( const QJsonValue &trick: tricks ) {
+        const QJsonObject &tTrick = trick.toObject();
+
+        TrickData *pTrick = new TrickData( tTrick.value("name").toString(),
+                                           tTrick.value("description").toString(),
+                                           tTrick.value("action").toString() );
+        tricksList.push_back( pTrick );
+    }
+
+    return tricksList;
 }
