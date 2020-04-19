@@ -2,9 +2,11 @@
 #include "cpp/Section/PersonalWrapper.h"
 #include "cpp/Element/AttributeWrapper.h"
 #include "cpp/Element/OtherSkillWrapper.h"
+#include "cpp/Element/TrickWrapper.h"
 #include "Card/Pages/StatsData.h"
 #include "Card/Elements/Stats/AttributeData.h"
 #include "Card/Elements/Stats/OtherSkillData.h"
+#include "Card/Elements/Stats/TrickData.h"
 
 StatsWrapper::StatsWrapper(QObject *parent) : QObject(parent)
 {
@@ -21,6 +23,9 @@ StatsWrapper::StatsWrapper(StatsData *statsData, QObject *parent)
     }
     for ( OtherSkillData *pOtherSkill: m_pStatsData->otherSkills() ) {
         appendOtherSkill( new OtherSkillWrapper(pOtherSkill, this) );
+    }
+    for ( TrickData *pTrick: m_pStatsData->tricks() ) {
+        appendTrick( new TrickWrapper(pTrick, this) );
     }
 }
 
@@ -87,6 +92,35 @@ void StatsWrapper::clearOtherSkills()
     m_otherSkills.clear();
 }
 
+QQmlListProperty<TrickWrapper> StatsWrapper::tricks()
+{
+    return QQmlListProperty<TrickWrapper>(this, this,
+                                          &StatsWrapper::appendTrick,
+                                          &StatsWrapper::tricksCount,
+                                          &StatsWrapper::trick,
+                                          &StatsWrapper::clearTricks);
+}
+
+void StatsWrapper::appendTrick(TrickWrapper *trick)
+{
+    m_tricks.push_back(trick);
+}
+
+int StatsWrapper::tricksCount() const
+{
+    return m_tricks.count();
+}
+
+TrickWrapper *StatsWrapper::trick(int index) const
+{
+    return m_tricks.at(index);
+}
+
+void StatsWrapper::clearTricks()
+{
+    m_tricks.clear();
+}
+
 void StatsWrapper::appendAttribute(QQmlListProperty<AttributeWrapper> *list, AttributeWrapper *attribute)
 {
     reinterpret_cast<StatsWrapper*>(list->data)->appendAttribute(attribute);
@@ -125,4 +159,24 @@ OtherSkillWrapper *StatsWrapper::otherSkill(QQmlListProperty<OtherSkillWrapper> 
 void StatsWrapper::clearOtherSkills(QQmlListProperty<OtherSkillWrapper> *list)
 {
     reinterpret_cast<StatsWrapper*>(list->data)->clearOtherSkills();
+}
+
+void StatsWrapper::appendTrick(QQmlListProperty<TrickWrapper> *list, TrickWrapper *trick)
+{
+    reinterpret_cast<StatsWrapper*>(list->data)->appendTrick(trick);
+}
+
+int StatsWrapper::tricksCount(QQmlListProperty<TrickWrapper> *list)
+{
+    return reinterpret_cast<StatsWrapper*>(list->data)->tricksCount();
+}
+
+TrickWrapper *StatsWrapper::trick(QQmlListProperty<TrickWrapper> *list, int index)
+{
+    return reinterpret_cast<StatsWrapper*>(list->data)->trick(index);
+}
+
+void StatsWrapper::clearTricks(QQmlListProperty<TrickWrapper> *list)
+{
+    reinterpret_cast<StatsWrapper*>(list->data)->clearTricks();
 }

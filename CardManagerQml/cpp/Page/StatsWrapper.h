@@ -9,6 +9,7 @@ class StatsData;
 class PersonalWrapper;
 class AttributeWrapper;
 class OtherSkillWrapper;
+class TrickWrapper;
 
 class StatsWrapper : public QObject
 {
@@ -16,6 +17,7 @@ class StatsWrapper : public QObject
     Q_PROPERTY(PersonalWrapper *personal READ personal NOTIFY attributesChanged)
     Q_PROPERTY(QQmlListProperty<AttributeWrapper> attributes READ attributes NOTIFY attributesChanged)
     Q_PROPERTY(QQmlListProperty<OtherSkillWrapper> otherSkills READ otherSkills NOTIFY otherSkillsChanged)
+    Q_PROPERTY(QQmlListProperty<TrickWrapper> tricks READ tricks NOTIFY tricksChanged)
 
 public:
     explicit StatsWrapper(QObject *parent = nullptr);
@@ -35,9 +37,16 @@ public:
     OtherSkillWrapper *otherSkill(int) const;
     void clearOtherSkills();
 
+    QQmlListProperty<TrickWrapper> tricks();
+    void appendTrick(TrickWrapper*);
+    int tricksCount() const;
+    TrickWrapper *trick(int) const;
+    void clearTricks();
+
 signals:
     void attributesChanged();
     void otherSkillsChanged();
+    void tricksChanged();
 
 private:
     static void appendAttribute(QQmlListProperty<AttributeWrapper> *, AttributeWrapper *);
@@ -50,11 +59,17 @@ private:
     static OtherSkillWrapper *otherSkill(QQmlListProperty<OtherSkillWrapper> *, int);
     static void clearOtherSkills(QQmlListProperty<OtherSkillWrapper> *);
 
+    static void appendTrick(QQmlListProperty<TrickWrapper> *, TrickWrapper *);
+    static int tricksCount(QQmlListProperty<TrickWrapper> *);
+    static TrickWrapper *trick(QQmlListProperty<TrickWrapper> *, int);
+    static void clearTricks(QQmlListProperty<TrickWrapper> *);
+
 private:
     StatsData *m_pStatsData{nullptr};
     PersonalWrapper *m_pPersonalWrapper{nullptr};
     QList<AttributeWrapper*> m_attributes;
     QList<OtherSkillWrapper*> m_otherSkills;
+    QList<TrickWrapper*> m_tricks;
 };
 
 #endif // STATSWRAPPER_H
