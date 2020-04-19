@@ -27,6 +27,7 @@ SOURCES += \
         cpp/Element/SkillWrapper.cpp \
         cpp/Element/SkillpackWrapper.cpp \
         cpp/Element/SpecializationWrapper.cpp \
+        cpp/Element/TrickWrapper.cpp \
         cpp/Page/StatsWrapper.cpp \
         cpp/Section/PersonalWrapper.cpp \
         main.cpp
@@ -62,5 +63,6 @@ HEADERS += \
     cpp/Element/SkillWrapper.h \
     cpp/Element/SkillpackWrapper.h \
     cpp/Element/SpecializationWrapper.h \
+    cpp/Element/TrickWrapper.h \
     cpp/Page/StatsWrapper.h \
     cpp/Section/PersonalWrapper.h
