@@ -6,10 +6,10 @@
 
 #include "core_global.h"
 
-class CORE_EXPORT Trick
+class CORE_EXPORT TrickData
 {
 public:
-    Trick(const QString &name, const QString &description, const QString &action);
+    TrickData(const QString &name, const QString &description, const QString &action);
 
     QString name() const;
     QString description() const;
