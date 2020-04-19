@@ -4,6 +4,7 @@ import QtQuick.Controls 2.5
 import "./../Element"
 
 Item {
+    property var tricks
     id: main
 
     height: title.height + tricksList.height + 2
@@ -34,22 +35,14 @@ Item {
             spacing: 2
             clip: true
 
-            model: ListModel {
-                ListElement { name: "1, 2, 3 Boom!"; description: "Description" }
-                ListElement { name: "Ośmiornica"; description: "Description" }
-                ListElement { name: "Siekierezada"; description: "Description" }
-                ListElement { name: "Pierwotny instynkt"; description: "Description" }
-                ListElement { name: "Szybki Bill"; description: "Description" }
-                ListElement { name: "Medyk polowy"; description: "Description" }
-                ListElement { name: "Gun fight"; description: "Description" }
-                ListElement { name: "Taranowanie"; description: "Description" }
-                ListElement { name: "Padnij/Powstań"; description: "Description" }
-            }
+            model: main.tricks
 
             delegate: Trick {
-                trick: ({name: name, description: description})
+                trick: model
                 width: main.width
             }
         }
     }
+
+    onTricksChanged: console.log("Tricks length:", main.tricks.length);
 }

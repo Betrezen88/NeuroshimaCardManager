@@ -30,6 +30,7 @@ Item {
 
             Tricks {
                 id: tricks
+                tricks: statsData.tricks
                 width: personal.width
             }
         }
