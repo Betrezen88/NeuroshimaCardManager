@@ -4,6 +4,8 @@
 
 #include "Utils/DataReader.h"
 
+#include "cpp/CardManager.h"
+
 #include "cpp/Card/CardWrapper.h"
 #include "cpp/Page/StatsWrapper.h"
 #include "cpp/Section/PersonalWrapper.h"
@@ -22,6 +24,7 @@ int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
+    qmlRegisterType<CardWrapper>("cpp", 1, 0, "CardManager");
     qmlRegisterType<CardWrapper>("cpp", 1, 0, "CardWrapper");
     qmlRegisterType<StatsWrapper>("cpp", 1, 0, "StatsWrapper");
     qmlRegisterType<PersonalWrapper>("cpp", 1, 0, "PersonalWrapper");
@@ -38,12 +41,16 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
 
+    CardManager manager;
+
     DataReader reader;
     CardWrapper *pCard = new CardWrapper(reader.loadCard("c:/Users/Michał/Documents/!NsHeroes/Nick 'Happy' Sax.json"), &app);
 
+    manager.appendCard( pCard );
+
     QQmlApplicationEngine engine;
 
-    engine.rootContext()->setContextProperty("pCardData", pCard);
+    engine.rootContext()->setContextProperty("cardManager", &manager);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
