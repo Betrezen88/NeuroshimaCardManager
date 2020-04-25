@@ -6,7 +6,6 @@
 #include <QFile>
 #include <QJsonArray>
 #include <QJsonDocument>
-#include <QJsonObject>
 #include <QJsonValue>
 #include <QJsonParseError>
 
@@ -15,6 +14,33 @@
 DataReader::DataReader(QObject *parent) : QObject(parent)
 {
 
+}
+
+std::tuple<bool, QJsonObject, QString> DataReader::load(const QString &filePath)
+{
+    QFile file(filePath);
+    QString errorStr;
+
+    if ( !file.exists() ) {
+        errorStr = "Plik nie istnieje:"+filePath;
+        return std::make_tuple(false, QJsonObject(), errorStr);
+    }
+
+    if ( !file.open(QIODevice::ReadOnly) ) {
+        errorStr = "Nie można otworzyć pliku:"+filePath;
+        return std::make_tuple(false, QJsonObject(), errorStr);
+    }
+
+    QJsonParseError error;
+    QJsonDocument json = QJsonDocument::fromJson(file.readAll(), &error);
+
+    if ( QJsonParseError::NoError != error.error ) {
+        errorStr = "Błąd parsowania pliku:"+filePath +
+                "\n"+error.errorString()+"\nOffset:" + error.offset;
+        return std::make_tuple(false, QJsonObject(), errorStr);
+    }
+
+    return std::make_tuple(true, json.object(), errorStr);
 }
 
 CardData *DataReader::loadCard(const QString &filePath)

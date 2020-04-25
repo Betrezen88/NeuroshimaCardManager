@@ -2,6 +2,11 @@
 
 #include "cpp/Card/CardWrapper.h"
 
+#include "Utils/DataReader.h"
+#include "Utils/CardBuilder.h"
+
+#include <tuple>
+
 CardManager::CardManager(QObject *parent) : QObject(parent)
 {
 
@@ -36,6 +41,22 @@ void CardManager::clearCards()
 {
     m_pCards.clear();
     emit cardsChanged();
+}
+
+void CardManager::loadCard(const QString &fileName)
+{
+    DataReader reader;
+
+    std::tuple<bool, QJsonObject, QString> data = reader.load( fileName );
+
+    if ( !std::get<0>(data) ) {
+        emit errorMessage( std::get<2>(data) );
+        return;
+    }
+
+    CardBuilder builder;
+
+    appendCard( new CardWrapper(builder.build(std::get<1>(data))) );
 }
 
 void CardManager::appendCard(QQmlListProperty<CardWrapper> *list, CardWrapper *card)
