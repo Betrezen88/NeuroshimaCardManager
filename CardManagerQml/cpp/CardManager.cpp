@@ -8,6 +8,7 @@
 #include <tuple>
 
 #include <QUrl>
+#include <QDebug>
 
 CardManager::CardManager(QObject *parent) : QObject(parent)
 {
@@ -54,10 +55,13 @@ void CardManager::loadCard(const QString &fileName)
 
     if ( !std::get<0>(data) ) {
         emit errorMessage( std::get<2>(data) );
+        qDebug() << std::get<2>(data);
         return;
     }
 
     CardBuilder builder;
+
+    qDebug() << "Card loaded:" << fileName;
 
     appendCard( new CardWrapper(builder.build(std::get<1>(data))) );
 }
