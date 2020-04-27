@@ -73,6 +73,13 @@ ApplicationWindow {
         }
     }
 
+    MessageDialog {
+        id: messageDialog
+        title: "Błąd"
+        visible: false
+        onAccepted: visible = false;
+    }
+
     CardsView {
         id: cardsView
         width: main.width
@@ -81,6 +88,9 @@ ApplicationWindow {
 
     Connections {
         target: cardManager
-        onErrorMessage: console.log(message);
+        onErrorMessage: {
+            messageDialog.text = message;
+            messageDialog.visible = true;
+        }
     }
 }
