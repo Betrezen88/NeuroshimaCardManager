@@ -22,12 +22,12 @@ std::tuple<bool, QJsonObject, QString> DataReader::load(const QString &filePath)
     QString errorStr;
 
     if ( !file.exists() ) {
-        errorStr = "Plik nie istnieje:"+filePath;
+        errorStr = "Plik nie istnieje: "+filePath;
         return std::make_tuple(false, QJsonObject(), errorStr);
     }
 
     if ( !file.open(QIODevice::ReadOnly) ) {
-        errorStr = "Nie można otworzyć pliku:"+filePath;
+        errorStr = "Nie można otworzyć pliku: "+filePath;
         return std::make_tuple(false, QJsonObject(), errorStr);
     }
 
@@ -35,7 +35,7 @@ std::tuple<bool, QJsonObject, QString> DataReader::load(const QString &filePath)
     QJsonDocument json = QJsonDocument::fromJson(file.readAll(), &error);
 
     if ( QJsonParseError::NoError != error.error ) {
-        errorStr = "Błąd parsowania pliku:"+filePath +
+        errorStr = "Błąd parsowania pliku: "+filePath +
                 "\n"+error.errorString()+"\nOffset:" + error.offset;
         return std::make_tuple(false, QJsonObject(), errorStr);
     }
