@@ -6,6 +6,8 @@
 #include <QJsonObject>
 #include <QMap>
 
+#include "core_global.h"
+
 class CardData;
 class StatsData;
 class PersonalData;
@@ -13,7 +15,7 @@ class AttributeData;
 class OtherSkillData;
 class TrickData;
 
-class CardBuilder : public QObject
+class CORE_EXPORT CardBuilder : public QObject
 {
     Q_OBJECT
 public:
