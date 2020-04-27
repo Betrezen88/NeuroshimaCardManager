@@ -1,9 +1,13 @@
 ﻿import QtQuick 2.14
 import QtQuick.Controls 2.5
+import QtQuick.Dialogs 1.2
 
 import "./Card"
 
 ApplicationWindow {
+    signal load(string filePath)
+
+    id: main
     visible: true
     width: 640
     height: 480
@@ -42,6 +46,7 @@ ApplicationWindow {
 
             MenuItem {
                 text: "Wczytaj"
+                onClicked: loadDialog.visible = true
             }
 
             MenuItem {
@@ -54,10 +59,28 @@ ApplicationWindow {
         }
     }
 
-    Card {
-        id: card
-        cardData: cardManager.cards[0]
-        width: parent.width
-        height: parent.height
+    FileDialog {
+        id: loadDialog
+        title: "Wczytaj postać..."
+        folder: shortcuts.home
+        visible: false
+        onAccepted: {
+            main.load(fileUrl);
+            visible = false;
+        }
+        onRejected: {
+            visible = false;
+        }
+    }
+
+    CardsView {
+        id: cardsView
+        width: main.width
+        height: main.height
+    }
+
+    Connections {
+        target: cardManager
+        onErrorMessage: console.log(message);
     }
 }
