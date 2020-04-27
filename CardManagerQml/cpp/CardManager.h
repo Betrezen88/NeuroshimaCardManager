@@ -24,10 +24,11 @@ public:
 
 signals:
     void cardsChanged();
+    void cardAdded(CardWrapper *card);
     void errorMessage(QString message);
 
 public slots:
-    void loadCard(const QString &fileName);
+    Q_INVOKABLE void loadCard(const QString &fileName);
 
 private:
     static void appendCard(QQmlListProperty<CardWrapper>*, CardWrapper*);

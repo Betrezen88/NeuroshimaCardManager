@@ -7,6 +7,8 @@
 
 #include <tuple>
 
+#include <QUrl>
+
 CardManager::CardManager(QObject *parent) : QObject(parent)
 {
 
@@ -25,6 +27,7 @@ void CardManager::appendCard(CardWrapper *card)
 {
     m_pCards.append(card);
     emit cardsChanged();
+    emit cardAdded(card);
 }
 
 int CardManager::cardsCount() const
@@ -47,7 +50,7 @@ void CardManager::loadCard(const QString &fileName)
 {
     DataReader reader;
 
-    std::tuple<bool, QJsonObject, QString> data = reader.load( fileName );
+    std::tuple<bool, QJsonObject, QString> data = reader.load( QUrl(fileName).toLocalFile() );
 
     if ( !std::get<0>(data) ) {
         emit errorMessage( std::get<2>(data) );
