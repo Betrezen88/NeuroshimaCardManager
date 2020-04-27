@@ -43,11 +43,6 @@ int main(int argc, char *argv[])
 
     CardManager manager;
 
-    DataReader reader;
-    CardWrapper *pCard = new CardWrapper(reader.loadCard("c:/Users/Michał/Documents/!NsHeroes/Nick 'Happy' Sax.json"), &app);
-
-    manager.appendCard( pCard );
-
     QQmlApplicationEngine engine;
 
     engine.rootContext()->setContextProperty("cardManager", &manager);
@@ -59,6 +54,9 @@ int main(int argc, char *argv[])
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
     engine.load(url);
+
+    QObject *item = engine.rootObjects().first();
+    QObject::connect(item, SIGNAL(load(QString)), &manager, SLOT(loadCard(QString)));
 
     return app.exec();
 }
