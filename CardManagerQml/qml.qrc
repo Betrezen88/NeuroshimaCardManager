@@ -19,6 +19,7 @@
         <file>Card/Section/Wounds.qml</file>
         <file>Card/Section/Modifiers.qml</file>
         <file>Card/Element/Modifier.qml</file>
+        <file>Card/CardsView.qml</file>
         <file>Card/CardButton.qml</file>
     </qresource>
 </RCC>
