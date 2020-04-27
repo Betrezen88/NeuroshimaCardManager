@@ -8,7 +8,6 @@
 #include <tuple>
 
 #include <QUrl>
-#include <QDebug>
 
 CardManager::CardManager(QObject *parent) : QObject(parent)
 {
@@ -50,20 +49,20 @@ void CardManager::clearCards()
 void CardManager::loadCard(const QString &fileName)
 {
     DataReader reader;
+    QUrl filePath(fileName);
 
-    std::tuple<bool, QJsonObject, QString> data = reader.load( QUrl(fileName).toLocalFile() );
+    std::tuple<bool, QJsonObject, QString> data = reader.load( filePath.toLocalFile() );
 
     if ( !std::get<0>(data) ) {
         emit errorMessage( std::get<2>(data) );
-        qDebug() << std::get<2>(data);
         return;
     }
 
     CardBuilder builder;
 
-    qDebug() << "Card loaded:" << fileName;
-
-    appendCard( new CardWrapper(builder.build(std::get<1>(data))) );
+    appendCard( new CardWrapper(filePath.toLocalFile(),
+                                builder.build(std::get<1>(data)),
+                                this) );
 }
 
 void CardManager::appendCard(QQmlListProperty<CardWrapper> *list, CardWrapper *card)

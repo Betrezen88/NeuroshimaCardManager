@@ -40,7 +40,7 @@ std::tuple<bool, QJsonObject, QString> DataReader::load(const QString &filePath)
         return std::make_tuple(false, QJsonObject(), errorStr);
     }
 
-    return std::make_tuple(true, json.object(), errorStr);
+    return std::make_tuple(true, json.object(), filePath);
 }
 
 CardData *DataReader::loadCard(const QString &filePath)
