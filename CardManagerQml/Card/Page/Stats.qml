@@ -25,12 +25,12 @@ Item {
 
             Personal {
                 id: personal
-                personalData: statsData.personal
+                //personalData: statsData.personal
             }
 
             Tricks {
                 id: tricks
-                tricks: statsData.tricks
+                //tricks: statsData.tricks
                 width: personal.width
             }
         }
@@ -42,13 +42,13 @@ Item {
             Attribute {
                 id: budowa
                 width: 250
-                attribute: statsData.attributes[0]
+//                attribute: statsData.attributes[0]
             }
 
             Attribute {
                 id: dexterity
                 width: 250
-                attribute: statsData.attributes[1]
+//                attribute: statsData.attributes[1]
             }
 
             Wounds {
@@ -64,13 +64,13 @@ Item {
             Attribute {
                 id: character
                 width: 250
-                attribute: statsData.attributes[2]
+//                attribute: statsData.attributes[2]
             }
 
             Attribute {
                 id: perception
                 width: 250
-                attribute: statsData.attributes[3]
+//                attribute: statsData.attributes[3]
             }
 
             Modifiers {
@@ -86,14 +86,25 @@ Item {
             Attribute {
                 id: cleaverness
                 width: 250
-                attribute: statsData.attributes[4]
+//                attribute: statsData.attributes[4]
             }
 
             OtherSkills {
                 id: otherSkills
-                skills: statsData.otherSkills
+//                skills: statsData.otherSkills
                 width: 250
             }
         }
+    }
+
+    onStatsDataChanged: {
+        personal.personalData = statsData.personal;
+        tricks.tricks = statsData.tricks;
+        budowa.attribute = statsData.attributes[0];
+        dexterity.attribute = statsData.attributes[1];
+        character.attribute = statsData.attributes[2];
+        perception.attribute = statsData.attributes[3];
+        cleaverness.attribute = statsData.attributes[4];
+        otherSkills.skills = statsData.otherSkills;
     }
 }

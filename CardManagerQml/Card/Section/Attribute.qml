@@ -30,7 +30,6 @@ Item {
 
             ValueBoxRow {
                 id: valueRow
-                value: attribute.value
                 width: main.width
             }
 
@@ -45,6 +44,7 @@ Item {
     }
 
     onAttributeChanged: {
+        valueRow.value = attribute.value;
         title.text = attribute.name;
         for ( var i in attribute.skillpacks ) {
             var component = Qt.createComponent("./../Element/Skillpack.qml");
@@ -53,14 +53,24 @@ Item {
                             width: main.width - column.rightPadding - column.leftPadding,
                             skillpack: attribute.skillpacks[i]
                         });
+
             column.objects.push(object);
         }
+        main.height = mainHeight();
     }
 
     function mainHeight() {
+        var h = 0;
         var objCount = column.objects.length;
-        return title.height + valueRow.height
-                + (objCount * column.objects[0].height)
-                + ((objCount + 1) * 2) + 2;
+
+        if ( "undefined" !== typeof(title) )
+            h += title.height
+        if ( "undefined" !== typeof(valueRow) )
+            h += valueRow.height
+        if ( 0 < objCount ) {
+            h += (objCount * column.objects[0].height)
+            + ((objCount + 1) * 2) + 2;
+        }
+        return h;
     }
 }

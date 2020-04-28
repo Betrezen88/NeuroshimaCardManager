@@ -5,8 +5,6 @@ Item {
 
     id: main
 
-    height: title.height
-
     Row {
         anchors.fill: main
         anchors.leftMargin: 10
@@ -14,11 +12,13 @@ Item {
 
         Text {
             id: title
-            text: main.skill.name
+            text: "Skill"
             textFormat: Text.PlainText
             font.pointSize: 10
             horizontalAlignment: Text.AlignLeft
             width: (main.width / 3)*1.7
+
+            onHeightChanged: main.height = title.height;
         }
 
         Rectangle {
@@ -31,12 +31,17 @@ Item {
 
             Text {
                 id: number
-                text: main.skill.value
+                text: "0"
                 textFormat: Text.PlainText
                 font.pointSize: 9
                 horizontalAlignment: Text.AlignHCenter
                 anchors.fill: parent
             }
         }
+    }
+
+    onSkillChanged: {
+        title.text = main.skill.name;
+        number.text = main.skill.value;
     }
 }

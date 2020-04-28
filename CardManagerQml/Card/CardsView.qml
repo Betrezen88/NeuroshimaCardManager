@@ -31,7 +31,6 @@ Item {
     Connections {
         target: cardManager
         onCardsChanged: {
-            console.log("Cards on list: ", cardManager.cards.length);
             var length = cardManager.cards.length;
             if ( 0 < length ) {
                 var component = Qt.createComponent("CardButton.qml");
@@ -39,7 +38,6 @@ Item {
                                                         card: cardManager.cards[length-1],
                                                         height: upperPanel.height
                                                     });
-                console.log("CardButton.size: ", object.width, object.height);
                 if ( 1 === length ) {
                     card.cardData = cardManager.cards[length-1];
                     card.visible = true;

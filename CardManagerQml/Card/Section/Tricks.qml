@@ -43,6 +43,4 @@ Item {
             }
         }
     }
-
-    onTricksChanged: console.log("Tricks length:", main.tricks.length);
 }

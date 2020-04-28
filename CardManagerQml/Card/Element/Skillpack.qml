@@ -1,9 +1,10 @@
-﻿import QtQuick 2.0
+﻿import QtQuick 2.9
 
 Item {
     property var skillpack
 
     id: main
+    height: mainHeight()
 
     Rectangle {
         anchors.fill: parent
@@ -13,6 +14,8 @@ Item {
         radius: 10
 
         Column {
+            property var objects: []
+
             id: skills
             anchors.fill: parent
             anchors.margins: 3
@@ -23,17 +26,15 @@ Item {
                 textFormat: Text.PlainText
                 font.pointSize: 10
                 font.bold: true
-                anchors.left: parent.left
-                anchors.leftMargin: 10
+                leftPadding: 10
+
+                onHeightChanged: main.height = mainHeight();
             }
         }
     }
 
-    Component.onCompleted: main.height += title.height + skills.spacing + 1;
-
     onSkillpackChanged: {
         title.text = main.skillpack.name + specs();
-        var h = 0;
         for ( var i in skillpack.skills ) {
             var component = Qt.createComponent("Skill.qml");
             var object = component.createObject(skills,
@@ -41,9 +42,9 @@ Item {
                                                     skill: skillpack.skills[i],
                                                     width: main.width
                                                 });
-            h += object.height + skills.spacing + 1;
+            skills.objects.push(object);
         }
-        main.height = h;;
+        main.height = mainHeight();
     }
 
     function specs() {
@@ -55,5 +56,19 @@ Item {
         }
         text += ")";
         return text;
+    }
+
+    function mainHeight() {
+        var h = 0;
+        var objCount = skills.objects.length;
+
+        if ( "undefined" !== typeof(title) )
+            h += title.height;
+        if ( 0 < objCount )
+            h += (objCount * skills.objects[0].height)
+                    + ((objCount+1) * skills.spacing)
+                    + (skills.anchors.margins * 2);
+
+        return h;
     }
 }

@@ -30,8 +30,11 @@ Item {
 
             Stats {
                 id: stats
-                statsData: cardData.stats
             }
         }
+    }
+
+    onCardDataChanged: {
+        stats.statsData = cardData.stats;
     }
 }
