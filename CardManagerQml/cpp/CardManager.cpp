@@ -27,7 +27,7 @@ void CardManager::appendCard(CardWrapper *card)
 {
     m_pCards.append(card);
     m_cardsFiles.append(card->filePath());
-    emit cardsChanged();
+    emit cardsChanged(true);
     emit cardAdded(card);
 }
 
@@ -44,7 +44,7 @@ CardWrapper *CardManager::card(int index) const
 void CardManager::clearCards()
 {
     m_pCards.clear();
-    emit cardsChanged();
+    emit cardsChanged(false);
 }
 
 void CardManager::loadCard(const QString &fileName)
@@ -64,6 +64,19 @@ void CardManager::loadCard(const QString &fileName)
     appendCard( new CardWrapper(filePath.toLocalFile(),
                                 builder.build(std::get<1>(data)),
                                 this) );
+}
+
+void CardManager::closeCard(const QString &fileName)
+{
+    if ( !m_cardsFiles.contains(fileName) )
+        emit errorMessage("Brak karty, którą chcesz zamknąć.");
+
+    const int index = m_cardsFiles.indexOf(fileName);
+
+    m_pCards.removeAt( index );
+    m_cardsFiles.removeAt( index );
+
+    emit cardsChanged(false);
 }
 
 void CardManager::appendCard(QQmlListProperty<CardWrapper> *list, CardWrapper *card)

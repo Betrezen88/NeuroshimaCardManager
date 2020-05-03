@@ -37,7 +37,10 @@ Rectangle {
 
             MouseArea {
                 anchors.fill: parent
-                onClicked: console.log("Closing card");
+                onClicked: {
+                    cardManager.closeCard(card.filePath);
+                    main.destroy();
+                }
             }
         }
     }

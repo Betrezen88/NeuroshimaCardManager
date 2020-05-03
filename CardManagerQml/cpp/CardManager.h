@@ -23,12 +23,13 @@ public:
     void clearCards();
 
 signals:
-    void cardsChanged();
+    void cardsChanged(bool add);
     void cardAdded(CardWrapper *card);
     void errorMessage(QString message);
 
 public slots:
     Q_INVOKABLE void loadCard(const QString &fileName);
+    Q_INVOKABLE void closeCard(const QString &fileName);
 
 private:
     static void appendCard(QQmlListProperty<CardWrapper>*, CardWrapper*);

@@ -34,7 +34,7 @@ Item {
         target: cardManager
         onCardsChanged: {
             var length = cardManager.cards.length;
-            if ( 0 < length ) {
+            if ( add ) {
                 var component = Qt.createComponent("CardButton.qml");
                 var object = component.createObject(row, {
                                                         card: cardManager.cards[length-1],
@@ -46,8 +46,7 @@ Item {
                 }
             }
             else {
-                console.log("No cards in list");
-                card.visible = false;
+                if ( 0 === length ) card.visible = false;
             }
         }
     }
