@@ -26,6 +26,7 @@ QQmlListProperty<CardWrapper> CardManager::cards()
 void CardManager::appendCard(CardWrapper *card)
 {
     m_pCards.append(card);
+    m_cardsFiles.append(card->filePath());
     emit cardsChanged();
     emit cardAdded(card);
 }

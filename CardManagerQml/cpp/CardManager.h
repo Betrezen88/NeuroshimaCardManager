@@ -38,6 +38,7 @@ private:
 
 private:
     QList<CardWrapper*> m_pCards;
+    QStringList m_cardsFiles;
 };
 
 #endif // CARDMANAGER_H
