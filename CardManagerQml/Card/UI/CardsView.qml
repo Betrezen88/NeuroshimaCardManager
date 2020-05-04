@@ -36,12 +36,15 @@ Item {
             var length = cardManager.cards.length;
             if ( add ) {
                 var component = Qt.createComponent("CardButton.qml");
+                var cardData = cardManager.cards[length-1];
                 var object = component.createObject(row, {
-                                                        card: cardManager.cards[length-1],
+                                                        cardPath: cardData.filePath,
+                                                        fullname: cardData.stats.personal.fullname,
                                                         height: upperPanel.height
                                                     });
+                object.onShow.connect(main.displayCard);
                 if ( 1 === length ) {
-                    card.cardData = cardManager.cards[length-1];
+                    main.displayCard(cardData.filePath);
                     card.visible = true;
                 }
             }
@@ -49,5 +52,9 @@ Item {
                 if ( 0 === length ) card.visible = false;
             }
         }
+    }
+
+    function displayCard(cardPath) {
+        card.cardData = cardManager.card(cardPath);
     }
 }

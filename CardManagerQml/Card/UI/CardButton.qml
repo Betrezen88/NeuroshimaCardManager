@@ -1,9 +1,10 @@
 ﻿import QtQuick 2.14
 
 Rectangle {
-    property var card
+    property string cardPath
+    property string fullname
 
-    signal show(var card)
+    signal show(string cardPath)
 
     id: main
     width: name.width + closeIcon.width
@@ -17,14 +18,14 @@ Rectangle {
 
         Text {
             id: name
-            text: card.stats.personal.fullname
+            text: main.fullname
             height: main.height
             verticalAlignment: Text.AlignVCenter
             padding: 5
 
             MouseArea {
                 anchors.fill: parent
-                onClicked: show(main.card)
+                onClicked: show(main.cardPath)
             }
         }
 
@@ -38,7 +39,7 @@ Rectangle {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    cardManager.closeCard(card.filePath);
+                    cardManager.closeCard(main.cardPath);
                     main.destroy();
                 }
             }

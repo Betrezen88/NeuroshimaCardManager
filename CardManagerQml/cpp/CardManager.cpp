@@ -9,6 +9,8 @@
 
 #include <QUrl>
 
+#include <QDebug>
+
 CardManager::CardManager(QObject *parent) : QObject(parent)
 {
 
@@ -47,6 +49,15 @@ void CardManager::clearCards()
     emit cardsChanged(false);
 }
 
+CardWrapper *CardManager::card(QString filePath) const
+{
+    if ( !m_cardsFiles.contains(filePath) ) {
+        emit errorMessage("Karta, którą chcesz wyświetlić, nie istnieje.");
+        return nullptr;
+    }
+    return m_pCards.at( m_cardsFiles.indexOf(filePath) );
+}
+
 void CardManager::loadCard(const QString &fileName)
 {
     DataReader reader;
@@ -68,8 +79,10 @@ void CardManager::loadCard(const QString &fileName)
 
 void CardManager::closeCard(const QString &fileName)
 {
-    if ( !m_cardsFiles.contains(fileName) )
+    if ( !m_cardsFiles.contains(fileName) ) {
         emit errorMessage("Brak karty, którą chcesz zamknąć.");
+        return;
+    }
 
     const int index = m_cardsFiles.indexOf(fileName);
 

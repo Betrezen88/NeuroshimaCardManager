@@ -21,11 +21,12 @@ public:
     int cardsCount() const;
     CardWrapper *card(int) const;
     void clearCards();
+    Q_INVOKABLE CardWrapper *card(QString filePath) const;
 
 signals:
     void cardsChanged(bool add);
     void cardAdded(CardWrapper *card);
-    void errorMessage(QString message);
+    void errorMessage(QString message) const;
 
 public slots:
     Q_INVOKABLE void loadCard(const QString &fileName);
