@@ -34,11 +34,17 @@ Item {
             }
 
             Column {
-                property variant objects: []
+                property var objects: []
                 id: column
                 spacing: 2
                 rightPadding: 5
                 leftPadding: 5
+
+                function clearSkillpacks() {
+                    for ( var i in objects )
+                        objects[i].destroy();
+                    objects = [];
+                }
             }
         }
     }
@@ -46,6 +52,7 @@ Item {
     onAttributeChanged: {
         valueRow.value = attribute.value;
         title.text = attribute.name;
+        column.clearSkillpacks();
         for ( var i in attribute.skillpacks ) {
             var component = Qt.createComponent("./../Element/Skillpack.qml");
             var object = component.createObject(

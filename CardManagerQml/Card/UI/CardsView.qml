@@ -15,7 +15,7 @@ Item {
             property var objects: []
             id: row
             spacing: 2
-            anchors.fill: upperPanel
+            anchors.fill: parent
 
             function deselect(cardPath) {
                 for ( var i in objects ) {
