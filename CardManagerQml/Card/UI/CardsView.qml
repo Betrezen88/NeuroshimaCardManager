@@ -61,6 +61,10 @@ Item {
             }
             else {
                 if ( 0 === length ) card.visible = false;
+                else {
+                    displayCard(row.objects[0].cardPath);
+                    row.objects[0].selected = true;
+                }
             }
         }
     }
