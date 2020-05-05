@@ -12,9 +12,18 @@ Item {
         width: main.width
 
         Row {
+            property var objects: []
             id: row
             spacing: 2
             anchors.fill: upperPanel
+
+            function deselect(cardPath) {
+                for ( var i in objects ) {
+                    var object = objects[i];
+                    if ( object.selected && object.cardPath !== cardPath )
+                        object.selected = false;
+                }
+            }
         }
     }
 
@@ -26,7 +35,6 @@ Item {
             right: main.right
             bottom: main.bottom
         }
-
         visible: false
     }
 
@@ -43,9 +51,12 @@ Item {
                                                         height: upperPanel.height
                                                     });
                 object.onShow.connect(main.displayCard);
+                object.onSelect.connect(row.deselect);
+                row.objects.push(object);
                 if ( 1 === length ) {
                     main.displayCard(cardData.filePath);
                     card.visible = true;
+                    object.selected = true;
                 }
             }
             else {
