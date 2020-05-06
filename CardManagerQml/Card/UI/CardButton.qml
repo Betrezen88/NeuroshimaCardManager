@@ -3,18 +3,12 @@
 Rectangle {
     property string cardPath
     property string fullname
-    property bool selected: false
-
-    signal show(string cardPath)
-    signal select(string cardPath)
 
     id: main
     width: name.width + closeIcon.width
     border.color: "#000"
     border.width: 2
     color: "#fff"
-
-    onSelectedChanged: main.color = (selected) ? "#9f9f9f" : "#fff";
 
     Row {
         anchors.fill: parent
@@ -30,9 +24,7 @@ Rectangle {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    selected = true;
-                    show(main.cardPath);
-                    select(main.cardPath);
+                    cardManager.selectedCard = cardPath;
                 }
             }
         }
@@ -51,6 +43,14 @@ Rectangle {
                     main.destroy();
                 }
             }
+        }
+    }
+
+    Connections {
+        target: cardManager
+        onSelectedCardChanged: {
+            main.color = ( main.cardPath === cardManager.selectedCard )
+                            ? "#9f9f9f" : "#fff";
         }
     }
 }

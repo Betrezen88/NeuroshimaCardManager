@@ -11,9 +11,13 @@ class CardManager : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QQmlListProperty<CardWrapper> cards READ cards NOTIFY cardsChanged)
+    Q_PROPERTY(QString selectedCard READ selectedCard WRITE setSelectedCard NOTIFY selectedCardChanged)
 
 public:
     explicit CardManager(QObject *parent = nullptr);
+
+    QString selectedCard() const;
+    void setSelectedCard(const QString &selectedCard);
 
     QQmlListProperty<CardWrapper> cards();
 
@@ -25,7 +29,7 @@ public:
 
 signals:
     void cardsChanged(bool add);
-    void cardAdded(CardWrapper *card);
+    void selectedCardChanged();
     void errorMessage(QString message) const;
 
 public slots:
@@ -41,6 +45,7 @@ private:
 private:
     QList<CardWrapper*> m_pCards;
     QStringList m_cardsFiles;
+    QString m_selectedCard;
 };
 
 #endif // CARDMANAGER_H

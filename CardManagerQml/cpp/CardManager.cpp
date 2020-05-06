@@ -16,6 +16,19 @@ CardManager::CardManager(QObject *parent) : QObject(parent)
 
 }
 
+QString CardManager::selectedCard() const
+{
+    return m_selectedCard;
+}
+
+void CardManager::setSelectedCard(const QString &selectedCard)
+{
+    if ( selectedCard != m_selectedCard ) {
+        m_selectedCard = selectedCard;
+        emit selectedCardChanged();
+    }
+}
+
 QQmlListProperty<CardWrapper> CardManager::cards()
 {
     return QQmlListProperty<CardWrapper>(this, this,
@@ -30,7 +43,9 @@ void CardManager::appendCard(CardWrapper *card)
     m_pCards.append(card);
     m_cardsFiles.append(card->filePath());
     emit cardsChanged(true);
-    emit cardAdded(card);
+
+    if ( 1 == m_pCards.count() )
+        setSelectedCard(card->filePath());
 }
 
 int CardManager::cardsCount() const
@@ -88,6 +103,9 @@ void CardManager::closeCard(const QString &fileName)
 
     m_pCards.removeAt( index );
     m_cardsFiles.removeAt( index );
+
+    if ( 0 < m_cardsFiles.count() && fileName == m_selectedCard )
+        setSelectedCard( m_cardsFiles.first() );
 
     emit cardsChanged(false);
 }

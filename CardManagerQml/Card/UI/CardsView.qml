@@ -16,14 +16,6 @@ Item {
             id: row
             spacing: 2
             anchors.fill: parent
-
-            function deselect(cardPath) {
-                for ( var i in objects ) {
-                    var object = objects[i];
-                    if ( object.selected && object.cardPath !== cardPath )
-                        object.selected = false;
-                }
-            }
         }
     }
 
@@ -50,26 +42,17 @@ Item {
                                                         fullname: cardData.stats.personal.fullname,
                                                         height: upperPanel.height
                                                     });
-                object.onShow.connect(main.displayCard);
-                object.onSelect.connect(row.deselect);
                 row.objects.push(object);
                 if ( 1 === length ) {
-                    main.displayCard(cardData.filePath);
                     card.visible = true;
-                    object.selected = true;
                 }
             }
             else {
                 if ( 0 === length ) card.visible = false;
-                else {
-                    displayCard(row.objects[0].cardPath);
-                    row.objects[0].selected = true;
-                }
             }
         }
-    }
-
-    function displayCard(cardPath) {
-        card.cardData = cardManager.card(cardPath);
+        onSelectedCardChanged: {
+            card.cardData = cardManager.card( cardManager.selectedCard );
+        }
     }
 }
