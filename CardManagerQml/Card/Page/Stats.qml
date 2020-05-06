@@ -7,7 +7,7 @@ Item {
 
     id: main
 
-    height: personal.height + tricks.height + 2
+    height: personal.height + tricks.height + 2 + 35
     width: (3*row.spacing)
            + personal.width
            + budowa.width
@@ -25,12 +25,10 @@ Item {
 
             Personal {
                 id: personal
-                //personalData: statsData.personal
             }
 
             Tricks {
                 id: tricks
-                //tricks: statsData.tricks
                 width: personal.width
             }
         }
@@ -42,13 +40,11 @@ Item {
             Attribute {
                 id: budowa
                 width: 250
-//                attribute: statsData.attributes[0]
             }
 
             Attribute {
                 id: dexterity
                 width: 250
-//                attribute: statsData.attributes[1]
             }
 
             Wounds {
@@ -64,13 +60,11 @@ Item {
             Attribute {
                 id: character
                 width: 250
-//                attribute: statsData.attributes[2]
             }
 
             Attribute {
                 id: perception
                 width: 250
-//                attribute: statsData.attributes[3]
             }
 
             Modifiers {
@@ -86,12 +80,10 @@ Item {
             Attribute {
                 id: cleaverness
                 width: 250
-//                attribute: statsData.attributes[4]
             }
 
             OtherSkills {
                 id: otherSkills
-//                skills: statsData.otherSkills
                 width: 250
             }
         }

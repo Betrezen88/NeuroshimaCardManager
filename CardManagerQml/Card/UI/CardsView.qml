@@ -6,28 +6,28 @@ import "../"
 Item {
     id: main
 
-    ScrollView {
-        id: upperPanel
-        height: 40
-        width: main.width
+    Column {
+        anchors.fill: parent
+        spacing: 1
+        ScrollView {
+            id: upperPanel
+            height: 40
+            width: main.width
 
-        Row {
-            property var objects: []
-            id: row
-            spacing: 2
-            anchors.fill: parent
+            Row {
+                property var objects: []
+                id: row
+                spacing: 2
+                anchors.fill: parent
+            }
         }
-    }
 
-    Card {
-        id: card
-        anchors {
-            top: upperPanel.bottom
-            left: main.left
-            right: main.right
-            bottom: main.bottom
+        Card {
+            id: card
+            visible: false
+            width: main.width
+            height: main.height - upperPanel.height
         }
-        visible: false
     }
 
     Connections {
