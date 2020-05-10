@@ -21,6 +21,7 @@
         <file>Card/Element/Modifier.qml</file>
         <file>Card/UI/CardButton.qml</file>
         <file>Card/UI/CardsView.qml</file>
+        <file>Creator/CreatorView.qml</file>
         <file>MainView.qml</file>
     </qresource>
 </RCC>
