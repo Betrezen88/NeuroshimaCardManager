@@ -4,6 +4,7 @@ import QtQuick.Dialogs 1.2
 
 import "./Card"
 import "./Card/UI"
+import "./Creator"
 
 ApplicationWindow {
     signal load(string filePath)
@@ -27,6 +28,7 @@ ApplicationWindow {
 
                 MenuItem {
                     text: "Bohatera"
+                    onClicked: mainView.currentView = "./Creator/CreatorView.qml";
                 }
 
                 Menu {
@@ -66,6 +68,7 @@ ApplicationWindow {
         folder: shortcuts.home
         visible: false
         onAccepted: {
+            mainView.currentView = "./Card/UI/CardsView.qml";
             main.load(fileUrl);
             visible = false;
         }
@@ -81,8 +84,8 @@ ApplicationWindow {
         onAccepted: visible = false;
     }
 
-    CardsView {
-        id: cardsView
+    MainView {
+        id: mainView
         width: main.width
         height: main.height
     }
