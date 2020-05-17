@@ -23,5 +23,6 @@
         <file>Card/UI/CardsView.qml</file>
         <file>Creator/CreatorView.qml</file>
         <file>MainView.qml</file>
+        <file>Views/HeroCreatorView.qml</file>
     </qresource>
 </RCC>
