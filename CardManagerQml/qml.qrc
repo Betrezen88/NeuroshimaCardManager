@@ -25,5 +25,6 @@
         <file>Views/CardsView.qml</file>
         <file>Views/MainView.qml</file>
         <file>Views/HeroCreatorView.qml</file>
+        <file>Views/Pages/HeroCard/Stats.qml</file>
     </qresource>
 </RCC>
