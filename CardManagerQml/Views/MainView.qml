@@ -54,9 +54,12 @@ Page {
             }
 
             ToolButton {
-                width: 50
-                height: 50
-                text: "Add"
+                contentItem: Image {
+                    fillMode: Image.Pad
+                    horizontalAlignment: Image.AlignHCenter
+                    verticalAlignment: Image.AlignVCenter
+                    source: "qrc:/icon/resources/icons/add.svg"
+                }
                 onClicked: addMenu.open()
 
                 Menu {
@@ -77,9 +80,12 @@ Page {
             }
 
             ToolButton {
-                width: 50
-                height: 50
-                text: "Zapisz"
+                contentItem: Image {
+                    fillMode: Image.Pad
+                    horizontalAlignment: Image.AlignHCenter
+                    verticalAlignment: Image.AlignVCenter
+                    source: "qrc:/icon/resources/icons/save.svg"
+                }
                 onClicked: saveMenu.open()
 
                 Menu {
