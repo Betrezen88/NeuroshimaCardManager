@@ -32,4 +32,9 @@
         <file>Views/Pages/HeroCard/Vehicle.qml</file>
         <file>Views/Pages/HeroCard/Beasts.qml</file>
     </qresource>
+    <qresource prefix="/icon">
+        <file>resources/icons/add.svg</file>
+        <file>resources/icons/load.svg</file>
+        <file>resources/icons/save.svg</file>
+    </qresource>
 </RCC>
