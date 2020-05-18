@@ -39,5 +39,13 @@
         <file>resources/icons/gear.svg</file>
         <file>resources/icons/list.svg</file>
         <file>resources/icons/close.svg</file>
+        <file>resources/icons/beasts.svg</file>
+        <file>resources/icons/equipment.svg</file>
+        <file>resources/icons/friends.svg</file>
+        <file>resources/icons/notes.svg</file>
+        <file>resources/icons/stats.svg</file>
+        <file>resources/icons/vehicle.svg</file>
+        <file>resources/icons/arrow_back.svg</file>
+        <file>resources/icons/arrow_forward.svg</file>
     </qresource>
 </RCC>

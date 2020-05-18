@@ -19,31 +19,37 @@ Page {
             spacing: 5
 
             ToolButton {
-                text: "St"
+                action: statsAct
+                text: "Statystyki"
             }
 
             ToolButton {
-                text: "Ek"
+                action: equipmentAct
+                text: "Ekwipunek"
             }
 
             ToolButton {
-                text: "No"
+                action: notesAct
+                text: "Notatki"
             }
 
             ToolButton {
-                text: "Zn"
+                action: friendsAct
+                text: "Znajomości"
             }
 
             ToolButton {
-                text: "Po"
+                action: vehicleAct
+                text: "Pojazd"
             }
 
             ToolButton {
-                text: "Be"
+                action: beastsAct
+                text: "Bestie"
             }
 
             ToolButton {
-                text: "<-"
+                icon.source: "qrc:/icon/resources/icons/arrow_back.svg"
                 onClicked: fullSidePanel.close()
             }
         }
@@ -64,37 +70,37 @@ Page {
                 spacing: 5
 
                 ToolButton {
-                    text: "St"
                     action: statsAct
+                    onClicked: fullSidePanel.close()
                 }
 
                 ToolButton {
-                    text: "Ek"
                     action: equipmentAct
+                    onClicked: fullSidePanel.close()
                 }
 
                 ToolButton {
-                    text: "No"
                     action: notesAct
+                    onClicked: fullSidePanel.close()
                 }
 
                 ToolButton {
-                    text: "Zn"
                     action: friendsAct
+                    onClicked: fullSidePanel.close()
                 }
 
                 ToolButton {
-                    text: "Po"
                     action: vehicleAct
+                    onClicked: fullSidePanel.close()
                 }
 
                 ToolButton {
-                    text: "Be"
                     action: beastsAct
+                    onClicked: fullSidePanel.close()
                 }
 
                 ToolButton {
-                    text: "->"
+                    icon.source: "qrc:/icon/resources/icons/arrow_forward.svg"
                     onClicked: fullSidePanel.open()
                 }
             }
@@ -113,6 +119,7 @@ Page {
 
     Action {
         id: statsAct
+        icon.source: "qrc:/icon/resources/icons/stats.svg"
         onTriggered: {
             if ( pageView.depth > 1 )
                 pageView.pop()
@@ -121,6 +128,7 @@ Page {
 
     Action {
         id: equipmentAct
+        icon.source: "qrc:/icon/resources/icons/equipment.svg"
         onTriggered: {
             main.showPage("qrc:/Views/Pages/HeroCard/Equipment.qml");
         }
@@ -128,6 +136,7 @@ Page {
 
     Action {
         id: notesAct
+        icon.source: "qrc:/icon/resources/icons/notes.svg"
         onTriggered: {
             main.showPage("qrc:/Views/Pages/HeroCard/Notes.qml");
         }
@@ -135,6 +144,7 @@ Page {
 
     Action {
         id: friendsAct
+        icon.source: "qrc:/icon/resources/icons/friends.svg"
         onTriggered: {
             main.showPage("qrc:/Views/Pages/HeroCard/Friends.qml");
         }
@@ -142,6 +152,7 @@ Page {
 
     Action {
         id: vehicleAct
+        icon.source: "qrc:/icon/resources/icons/vehicle.svg"
         onTriggered: {
             main.showPage("qrc:/Views/Pages/HeroCard/Vehicle.qml");
         }
@@ -149,6 +160,7 @@ Page {
 
     Action {
         id: beastsAct
+        icon.source: "qrc:/icon/resources/icons/beasts.svg"
         onTriggered: {
             main.showPage("qrc:/Views/Pages/HeroCard/Beasts.qml");
         }
