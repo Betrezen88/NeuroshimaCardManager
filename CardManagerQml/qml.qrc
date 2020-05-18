@@ -1,36 +1,32 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>Card/Card.qml</file>
-        <file>Card/Page/Stats.qml</file>
-        <file>Card/Section/Personal.qml</file>
-        <file>Card/Element/Portrait.qml</file>
-        <file>Card/Element/PersonalField.qml</file>
-        <file>Card/Section/Tricks.qml</file>
-        <file>Card/Element/Trick.qml</file>
-        <file>Card/Section/Attribute.qml</file>
-        <file>Card/Element/ValueBox.qml</file>
-        <file>Card/Element/ValueBoxRow.qml</file>
-        <file>Card/Element/Skill.qml</file>
-        <file>Card/Element/Skillpack.qml</file>
-        <file>Card/Element/OtherSkill.qml</file>
-        <file>Card/Section/OtherSkills.qml</file>
-        <file>Card/Element/WoundRow.qml</file>
-        <file>Card/Section/Wounds.qml</file>
-        <file>Card/Section/Modifiers.qml</file>
-        <file>Card/Element/Modifier.qml</file>
-        <file>Card/UI/CardButton.qml</file>
-        <file>Card/UI/CardsView.qml</file>
         <file>Creator/CreatorView.qml</file>
         <file>Views/CardsView.qml</file>
         <file>Views/MainView.qml</file>
         <file>Views/HeroCreatorView.qml</file>
-        <file>Views/Pages/HeroCard/Stats.qml</file>
-        <file>Views/Pages/HeroCard/Equipment.qml</file>
-        <file>Views/Pages/HeroCard/Notes.qml</file>
-        <file>Views/Pages/HeroCard/Friends.qml</file>
-        <file>Views/Pages/HeroCard/Vehicle.qml</file>
-        <file>Views/Pages/HeroCard/Beasts.qml</file>
+        <file>Views/Pages/Beasts.qml</file>
+        <file>Views/Pages/Equipment.qml</file>
+        <file>Views/Pages/Friends.qml</file>
+        <file>Views/Pages/Notes.qml</file>
+        <file>Views/Pages/Stats.qml</file>
+        <file>Views/Pages/Vehicle.qml</file>
+        <file>Views/Elements/Modifier.qml</file>
+        <file>Views/Elements/OtherSkill.qml</file>
+        <file>Views/Elements/PersonalField.qml</file>
+        <file>Views/Elements/Portrait.qml</file>
+        <file>Views/Elements/Skill.qml</file>
+        <file>Views/Elements/Skillpack.qml</file>
+        <file>Views/Elements/Trick.qml</file>
+        <file>Views/Elements/ValueBox.qml</file>
+        <file>Views/Elements/ValueBoxRow.qml</file>
+        <file>Views/Elements/WoundRow.qml</file>
+        <file>Views/Sections/Attribute.qml</file>
+        <file>Views/Sections/Modifiers.qml</file>
+        <file>Views/Sections/OtherSkills.qml</file>
+        <file>Views/Sections/Personal.qml</file>
+        <file>Views/Sections/Tricks.qml</file>
+        <file>Views/Sections/Wounds.qml</file>
     </qresource>
     <qresource prefix="/icon">
         <file>resources/icons/add.svg</file>
