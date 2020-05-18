@@ -11,11 +11,12 @@ Pane {
     ScrollView {
         width: parent.width
         height: parent.height
+        clip: true
 
 
         Row {
             id: row
-            anchors.fill: main
+            anchors.fill: parent
             spacing: 4
 
             Column {
