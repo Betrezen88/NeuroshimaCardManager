@@ -121,8 +121,10 @@ Page {
         id: statsAct
         icon.source: "qrc:/icon/resources/icons/stats.svg"
         onTriggered: {
-            if ( pageView.depth > 1 )
+            if ( pageView.depth > 1 ) {
                 pageView.pop()
+                pageView.currentPage = ""
+            }
         }
     }
 
