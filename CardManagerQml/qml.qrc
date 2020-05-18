@@ -29,5 +29,6 @@
         <file>Views/Pages/HeroCard/Equipment.qml</file>
         <file>Views/Pages/HeroCard/Notes.qml</file>
         <file>Views/Pages/HeroCard/Friends.qml</file>
+        <file>Views/Pages/HeroCard/Vehicle.qml</file>
     </qresource>
 </RCC>
