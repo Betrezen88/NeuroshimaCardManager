@@ -1,4 +1,4 @@
-﻿import QtQuick 2.0
+﻿import QtQuick 2.9
 import QtQuick.Controls 2.12
 
 Page {
@@ -118,6 +118,18 @@ Page {
             clip: true
             spacing: 5
             ScrollBar.vertical: ScrollBar{}
+
+            header: Text {
+                width: parent.width; height: 35
+                text: "Otwarte karty"
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                padding: 5
+                font {
+                    bold: true
+                    pixelSize: 12
+                }
+            }
 
             anchors {
                 top: toolButtons.bottom
