@@ -28,5 +28,6 @@
         <file>Views/Pages/HeroCard/Stats.qml</file>
         <file>Views/Pages/HeroCard/Equipment.qml</file>
         <file>Views/Pages/HeroCard/Notes.qml</file>
+        <file>Views/Pages/HeroCard/Friends.qml</file>
     </qresource>
 </RCC>
