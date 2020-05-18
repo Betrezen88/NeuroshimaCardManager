@@ -116,6 +116,7 @@ Page {
             id: cardsList
             focus: true
             clip: true
+            spacing: 5
             ScrollBar.vertical: ScrollBar{}
 
             anchors {
@@ -126,8 +127,42 @@ Page {
             }
 
             delegate: ItemDelegate {
+                id: listItem
                 width: parent.width
-                text: model.title
+                height: 40
+
+                Row {
+                    anchors.fill: parent
+                    spacing: 5
+
+                    ToolButton {
+                        icon.source: "qrc:/icon/resources/icons/close.svg"
+                        height: parent.height
+                        width: parent.height
+                    }
+
+                    Rectangle {
+                        height: parent.height
+                        width: parent.width - parent.height - 5
+                        color: listItem.ListView.isCurrentItem ? "red" : "#fff"
+
+                        Text {
+                            text: model.title
+                            height: 40
+                            width: parent.width - 45
+                            verticalAlignment: Text.AlignVCenter
+                        }
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                sidePanel.close()
+                                console.log("Show this card.")
+                                cardsList.currentIndex = index
+                            }
+                        }
+                    }
+                }
             }
 
             model: ListModel {
