@@ -1,6 +1,6 @@
 ﻿import QtQuick 2.9
 
-import "./../Element"
+import "./../Elements"
 
 Item {
     property variant attribute
