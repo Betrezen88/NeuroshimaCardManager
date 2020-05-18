@@ -10,9 +10,13 @@ Page {
 
         ToolButton {
             id: viewBtn
-            text: "="
-            height: parent.height
-            width: parent.height
+            height: parent.height; width: parent.height
+            contentItem: Image {
+                fillMode: Image.Pad
+                horizontalAlignment: Image.AlignHCenter
+                verticalAlignment: Image.AlignVCenter
+                source: "qrc:/icon/resources/icons/list.svg"
+            }
             anchors.left: parent.left
             action: panelAct
         }

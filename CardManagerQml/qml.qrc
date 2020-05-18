@@ -36,5 +36,6 @@
         <file>resources/icons/add.svg</file>
         <file>resources/icons/load.svg</file>
         <file>resources/icons/save.svg</file>
+        <file>resources/icons/gear.svg</file>
     </qresource>
 </RCC>
