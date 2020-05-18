@@ -1,7 +1,7 @@
 ﻿import QtQuick 2.0
 import QtQuick.Controls 2.12
 
-import "./Pages/HeroCard"
+import "./Pages"
 
 Page {
     id: main
@@ -130,7 +130,7 @@ Page {
         id: equipmentAct
         icon.source: "qrc:/icon/resources/icons/equipment.svg"
         onTriggered: {
-            main.showPage("qrc:/Views/Pages/HeroCard/Equipment.qml");
+            main.showPage("qrc:/Views/Pages/Equipment.qml");
         }
     }
 
@@ -138,7 +138,7 @@ Page {
         id: notesAct
         icon.source: "qrc:/icon/resources/icons/notes.svg"
         onTriggered: {
-            main.showPage("qrc:/Views/Pages/HeroCard/Notes.qml");
+            main.showPage("qrc:/Views/Pages/Notes.qml");
         }
     }
 
@@ -146,7 +146,7 @@ Page {
         id: friendsAct
         icon.source: "qrc:/icon/resources/icons/friends.svg"
         onTriggered: {
-            main.showPage("qrc:/Views/Pages/HeroCard/Friends.qml");
+            main.showPage("qrc:/Views/Pages/Friends.qml");
         }
     }
 
@@ -154,7 +154,7 @@ Page {
         id: vehicleAct
         icon.source: "qrc:/icon/resources/icons/vehicle.svg"
         onTriggered: {
-            main.showPage("qrc:/Views/Pages/HeroCard/Vehicle.qml");
+            main.showPage("qrc:/Views/Pages/Vehicle.qml");
         }
     }
 
@@ -162,7 +162,7 @@ Page {
         id: beastsAct
         icon.source: "qrc:/icon/resources/icons/beasts.svg"
         onTriggered: {
-            main.showPage("qrc:/Views/Pages/HeroCard/Beasts.qml");
+            main.showPage("qrc:/Views/Pages/Beasts.qml");
         }
     }
 
