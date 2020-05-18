@@ -38,5 +38,6 @@
         <file>resources/icons/save.svg</file>
         <file>resources/icons/gear.svg</file>
         <file>resources/icons/list.svg</file>
+        <file>resources/icons/close.svg</file>
     </qresource>
 </RCC>

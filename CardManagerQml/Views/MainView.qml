@@ -153,9 +153,11 @@ Page {
     Action {
         id: addAct
         onTriggered: {
-            title.text = "HeroCreatorView"
+            title.text = "Views.HeroCreatorView"
             stackView.push("qrc:/Views/HeroCreatorView.qml")
             sidePanel.close()
+            viewBtn.action = backAct
+            viewBtn.contentItem.source = "qrc:/icon/resources/icons/close.svg"
         }
     }
 
@@ -164,6 +166,8 @@ Page {
         onTriggered: {
             stackView.pop()
             viewBtn.action = panelAct
+            viewBtn.contentItem.source = "qrc:/icon/resources/icons/list.svg"
+            title.text = "Views.MainView"
         }
     }
 
@@ -171,7 +175,6 @@ Page {
         id: panelAct
         onTriggered: {
             sidePanel.open()
-            viewBtn.action = backAct
         }
     }
 
