@@ -1,6 +1,8 @@
 ﻿import QtQuick 2.0
 import QtQuick.Controls 2.12
 
+import "./Pages/HeroCard"
+
 Page {
     id: main
 
@@ -63,26 +65,32 @@ Page {
 
                 ToolButton {
                     text: "St"
+                    action: statsAct
                 }
 
                 ToolButton {
                     text: "Ek"
+                    action: equipmentAct
                 }
 
                 ToolButton {
                     text: "No"
+                    action: notesAct
                 }
 
                 ToolButton {
                     text: "Zn"
+                    action: friendsAct
                 }
 
                 ToolButton {
                     text: "Po"
+                    action: vehicleAct
                 }
 
                 ToolButton {
                     text: "Be"
+                    action: beastsAct
                 }
 
                 ToolButton {
@@ -93,9 +101,68 @@ Page {
         }
 
         StackView {
-            id: cardView
+            property string currentPage: ""
+
+            id: pageView
             width: main.width - quickSidePanel.width
             height: main.height
+
+            initialItem: Stats {  }
+        }
+    }
+
+    Action {
+        id: statsAct
+        onTriggered: {
+            if ( pageView.depth > 1 )
+                pageView.pop()
+        }
+    }
+
+    Action {
+        id: equipmentAct
+        onTriggered: {
+            main.showPage("qrc:/Views/Pages/HeroCard/Equipment.qml");
+        }
+    }
+
+    Action {
+        id: notesAct
+        onTriggered: {
+            main.showPage("qrc:/Views/Pages/HeroCard/Notes.qml");
+        }
+    }
+
+    Action {
+        id: friendsAct
+        onTriggered: {
+            main.showPage("qrc:/Views/Pages/HeroCard/Friends.qml");
+        }
+    }
+
+    Action {
+        id: vehicleAct
+        onTriggered: {
+            main.showPage("qrc:/Views/Pages/HeroCard/Vehicle.qml");
+        }
+    }
+
+    Action {
+        id: beastsAct
+        onTriggered: {
+            main.showPage("qrc:/Views/Pages/HeroCard/Beasts.qml");
+        }
+    }
+
+    function showPage(page) {
+        if ( pageView.currentPage !== page ) {
+            console.log("Adding page:", page)
+            if ( pageView.depth >1 ) {
+                console.log("Pop")
+                pageView.pop()
+            }
+            pageView.currentPage = page
+            pageView.push(page)
         }
     }
 
