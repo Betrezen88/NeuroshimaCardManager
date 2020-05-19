@@ -4,6 +4,8 @@ import QtQuick.Controls 2.12
 import "./Pages"
 
 Page {
+    property var cardData
+
     id: main
 
     Drawer {
@@ -113,7 +115,7 @@ Page {
             width: main.width - quickSidePanel.width
             height: main.height
 
-            initialItem: Stats {  }
+            initialItem: Stats { id: statsPage }
         }
     }
 
@@ -181,4 +183,10 @@ Page {
     }
 
     Component.onCompleted: console.log("CardsView.size(h/w):", height, width);
+
+    onCardDataChanged: {
+        if ( cardData !== "undefined" )
+            if ( cardData.stats !== null )
+                statsPage.statsData = cardData.stats
+    }
 }
