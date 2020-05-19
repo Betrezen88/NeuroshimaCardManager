@@ -1,5 +1,6 @@
 ﻿import QtQuick 2.9
 import QtQuick.Controls 2.12
+import QtQuick.Dialogs 1.2
 
 Page {
     id: main
@@ -83,6 +84,7 @@ Page {
 
                     MenuItem {
                         text: "Wczytaj kartę"
+                        action: loadAct
                     }
                 }
             }
@@ -225,12 +227,32 @@ Page {
         }
     }
 
+    Action {
+        id: loadAct
+        onTriggered: {
+            sidePanel.close()
+            loadDialog.open()
+        }
+    }
+
     StackView {
         id: stackView
         anchors.fill: parent
 
         initialItem: CardsView {
             id: cardsView
+
+    FileDialog {
+        id: loadDialog
+        title: "Wczytaj kartę"
+        folder: shortcuts.home
+        onAccepted: {
+            console.log("Chosen file:", loadDialog.fileUrl)
+            manager.cardManager.loadCard(loadDialog.fileUrl)
+            close()
+        }
+    }
+
         }
     }
 }
