@@ -54,7 +54,7 @@ Item {
         title.text = attribute.name;
         column.clearSkillpacks();
         for ( var i in attribute.skillpacks ) {
-            var component = Qt.createComponent("./../Element/Skillpack.qml");
+            var component = Qt.createComponent("./../Elements/Skillpack.qml");
             var object = component.createObject(
                             column,{
                             width: main.width - column.rightPadding - column.leftPadding,
