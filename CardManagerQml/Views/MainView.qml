@@ -141,6 +141,7 @@ Page {
             }
 
             delegate: ItemDelegate {
+                property string filePath: model.filePath
                 id: cardItem
                 width: parent.width
                 height: 40
@@ -171,8 +172,10 @@ Page {
                             anchors.fill: parent
                             onClicked: {
                                 sidePanel.close()
-                                console.log("Show this card.")
-                                cardsList.currentIndex = index
+                                if ( cardsList.currentIndex !== index ) {
+                                    cardsList.currentIndex = index
+                                    cardsView.cardData = manager.cardManager.card(cardItem.filePath)
+                                }
                             }
                         }
                     }
