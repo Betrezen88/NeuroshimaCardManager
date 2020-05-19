@@ -161,7 +161,7 @@ Page {
                         color: listItem.ListView.isCurrentItem ? "red" : "#fff"
 
                         Text {
-                            text: model.title
+                            text: model.filePath
                             height: 40
                             width: parent.width - 45
                             verticalAlignment: Text.AlignVCenter
@@ -179,23 +179,7 @@ Page {
                 }
             }
 
-            model: ListModel {
-                ListElement { title: "John Doe" }
-                ListElement { title: "Jane Doe" }
-                ListElement { title: "Mike Doe" }
-                ListElement { title: "Sven Doe" }
-                ListElement { title: "Bill Doe" }
-                ListElement { title: "John Doe" }
-                ListElement { title: "Jane Doe" }
-                ListElement { title: "Mike Doe" }
-                ListElement { title: "Sven Doe" }
-                ListElement { title: "Bill Doe" }
-                ListElement { title: "John Doe" }
-                ListElement { title: "Jane Doe" }
-                ListElement { title: "Mike Doe" }
-                ListElement { title: "Sven Doe" }
-                ListElement { title: "Bill Doe" }
-            }
+            model: manager.cardManager.cards
         }
     }
 
