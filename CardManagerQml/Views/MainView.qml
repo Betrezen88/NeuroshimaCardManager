@@ -154,6 +154,9 @@ Page {
                         icon.source: "qrc:/icon/resources/icons/close.svg"
                         height: parent.height
                         width: parent.height
+                        onClicked: {
+                            manager.cardManager.closeCard(cardItem.filePath)
+                        }
                     }
 
                     Rectangle {
@@ -184,10 +187,9 @@ Page {
 
             model: manager.cardManager.cards
 
-            onModelChanged: {
-                if ( cardsList.count === 1 ) {
+            onCurrentIndexChanged: {
+                if ( currentIndex !== -1 )
                     cardsView.cardData = manager.cardManager.card(cardsList.currentItem.filePath)
-                }
             }
         }
     }
@@ -243,12 +245,8 @@ Page {
         title: "Wczytaj kartę"
         folder: shortcuts.home
         onAccepted: {
-            console.log("Chosen file:", loadDialog.fileUrl)
             manager.cardManager.loadCard(loadDialog.fileUrl)
             close()
-        }
-    }
-
         }
     }
 }
