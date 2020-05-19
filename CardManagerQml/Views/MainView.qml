@@ -180,6 +180,12 @@ Page {
             }
 
             model: manager.cardManager.cards
+
+            onModelChanged: {
+                if ( cardsList.count === 1 ) {
+                    cardsView.cardData = manager.cardManager.card(cardsList.currentItem.filePath)
+                }
+            }
         }
     }
 
