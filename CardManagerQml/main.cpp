@@ -4,6 +4,7 @@
 
 #include "Utils/DataReader.h"
 
+#include "cpp/MainManager.h"
 #include "cpp/CardManager.h"
 
 #include "cpp/Card/CardWrapper.h"
@@ -24,7 +25,8 @@ int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
-    qmlRegisterType<CardWrapper>("cpp", 1, 0, "CardManager");
+    qmlRegisterType<MainManager>("cpp", 1, 0, "MainManager");
+    qmlRegisterType<CardManager>("cpp", 1, 0, "CardManager");
     qmlRegisterType<CardWrapper>("cpp", 1, 0, "CardWrapper");
     qmlRegisterType<StatsWrapper>("cpp", 1, 0, "StatsWrapper");
     qmlRegisterType<PersonalWrapper>("cpp", 1, 0, "PersonalWrapper");
@@ -41,11 +43,11 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
 
-    CardManager manager;
+    MainManager manager;
 
     QQmlApplicationEngine engine;
 
-    engine.rootContext()->setContextProperty("cardManager", &manager);
+    engine.rootContext()->setContextProperty("manager", &manager);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
@@ -54,9 +56,6 @@ int main(int argc, char *argv[])
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
     engine.load(url);
-
-    QObject *item = engine.rootObjects().first();
-    QObject::connect(item, SIGNAL(load(QString)), &manager, SLOT(loadCard(QString)));
 
     return app.exec();
 }
