@@ -19,13 +19,20 @@ Page {
 
             ListView {
                 id: listSidePanel
-                anchors.fill: parent
+                anchors {
+                    top: parent.top
+                    bottom: panelBtn.top
+                    left: parent.left
+                    right: parent.right
+                }
                 spacing: 5
 
                 delegate: ToolButton {
-                    height: parent.width
+                    id: sideBtn
+                    height: 50
                     width: parent.width
                     icon.source: model.icon
+                    text: model.text
                     onClicked: {
                         pageView.currentPage = model.page
                         listSidePanel.currentIndex = index
@@ -33,33 +40,69 @@ Page {
                     background: Rectangle {
                         color: parent.ListView.isCurrentItem ? "gray" : "lightGray"
                     }
+                    contentItem: Item {
+                        Row {
+                            anchors.fill: parent
+                            spacing: 10
+                            Image {
+                                source: sideBtn.icon.source
+                                width: sideBtn.height - 10
+                                height: sideBtn.height - 10
+                            }
+                            Text {
+                                text: sideBtn.text
+                                font.bold: true
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
+                        }
+                    }
                 }
 
                 model: ListModel {
                     ListElement {
                         icon: "qrc:/icon/resources/icons/stats.svg"
                         page: "qrc:/Views/Pages/Stats.qml"
+                        text: "Statystyki"
                     }
                     ListElement {
                         icon: "qrc:/icon/resources/icons/equipment.svg"
                         page: "qrc:/Views/Pages/Equipment.qml"
+                        text: "Ekwipunek"
                     }
                     ListElement {
                         icon: "qrc:/icon/resources/icons/notes.svg"
                         page: "qrc:/Views/Pages/Notes.qml"
+                        text: "Notatki"
                     }
                     ListElement {
                         icon: "qrc:/icon/resources/icons/friends.svg"
                         page: "qrc:/Views/Pages/Friends.qml"
+                        text: "Znajomości"
                     }
                     ListElement {
                         icon: "qrc:/icon/resources/icons/vehicle.svg"
                         page: "qrc:/Views/Pages/Vehicle.qml"
+                        text: "Pojazd"
                     }
                     ListElement {
                         icon: "qrc:/icon/resources/icons/beasts.svg"
                         page: "qrc:/Views/Pages/Beasts.qml"
+                        text: "Bestie"
                     }
+                }
+            }
+
+            ToolButton {
+                id: panelBtn
+                width: parent.width
+                height: 50
+                anchors.bottom: quickSidePanel.bottom
+                icon.source: (quickSidePanel.width === 50)
+                             ? "qrc:/icon/resources/icons/arrow_forward.svg"
+                             : "qrc:/icon/resources/icons/arrow_back.svg"
+                background: Rectangle { color: "lightGray" }
+                onClicked: {
+                    quickSidePanel.width = (quickSidePanel.width === 50) ? 150 : 50
                 }
             }
         }
