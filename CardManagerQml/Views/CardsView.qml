@@ -8,55 +8,6 @@ Page {
 
     id: main
 
-    Drawer {
-        id: fullSidePanel
-        width: 200
-        height: main.height
-        spacing: 5
-        y: 40
-
-        Column {
-            anchors.fill: parent
-            anchors.leftMargin: 5
-            spacing: 5
-
-            ToolButton {
-                action: statsAct
-                text: "Statystyki"
-            }
-
-            ToolButton {
-                action: equipmentAct
-                text: "Ekwipunek"
-            }
-
-            ToolButton {
-                action: notesAct
-                text: "Notatki"
-            }
-
-            ToolButton {
-                action: friendsAct
-                text: "Znajomości"
-            }
-
-            ToolButton {
-                action: vehicleAct
-                text: "Pojazd"
-            }
-
-            ToolButton {
-                action: beastsAct
-                text: "Bestie"
-            }
-
-            ToolButton {
-                icon.source: "qrc:/icon/resources/icons/arrow_back.svg"
-                onClicked: fullSidePanel.close()
-            }
-        }
-    }
-
     Row {
         anchors.fill: parent
         spacing: 2
@@ -66,44 +17,49 @@ Page {
             width: 50
             height: main.height
 
-            Column {
+            ListView {
+                id: listSidePanel
                 anchors.fill: parent
-                anchors.leftMargin: 5
                 spacing: 5
 
-                ToolButton {
-                    action: statsAct
-                    onClicked: fullSidePanel.close()
+                delegate: ToolButton {
+                    height: parent.width
+                    width: parent.width
+                    icon.source: model.icon
+                    onClicked: {
+                        pageView.currentPage = model.page
+                        listSidePanel.currentIndex = index
+                    }
+                    background: Rectangle {
+                        color: parent.ListView.isCurrentItem ? "gray" : "lightGray"
+                    }
                 }
 
-                ToolButton {
-                    action: equipmentAct
-                    onClicked: fullSidePanel.close()
-                }
-
-                ToolButton {
-                    action: notesAct
-                    onClicked: fullSidePanel.close()
-                }
-
-                ToolButton {
-                    action: friendsAct
-                    onClicked: fullSidePanel.close()
-                }
-
-                ToolButton {
-                    action: vehicleAct
-                    onClicked: fullSidePanel.close()
-                }
-
-                ToolButton {
-                    action: beastsAct
-                    onClicked: fullSidePanel.close()
-                }
-
-                ToolButton {
-                    icon.source: "qrc:/icon/resources/icons/arrow_forward.svg"
-                    onClicked: fullSidePanel.open()
+                model: ListModel {
+                    ListElement {
+                        icon: "qrc:/icon/resources/icons/stats.svg"
+                        page: "qrc:/Views/Pages/Stats.qml"
+                    }
+                    ListElement {
+                        icon: "qrc:/icon/resources/icons/equipment.svg"
+                        page: "qrc:/Views/Pages/Equipment.qml"
+                    }
+                    ListElement {
+                        icon: "qrc:/icon/resources/icons/notes.svg"
+                        page: "qrc:/Views/Pages/Notes.qml"
+                    }
+                    ListElement {
+                        icon: "qrc:/icon/resources/icons/friends.svg"
+                        page: "qrc:/Views/Pages/Friends.qml"
+                    }
+                    ListElement {
+                        icon: "qrc:/icon/resources/icons/vehicle.svg"
+                        page: "qrc:/Views/Pages/Vehicle.qml"
+                    }
+                    ListElement {
+                        icon: "qrc:/icon/resources/icons/beasts.svg"
+                        page: "qrc:/Views/Pages/Beasts.qml"
+                    }
                 }
             }
         }
@@ -115,78 +71,35 @@ Page {
             width: main.width - quickSidePanel.width
             height: main.height
 
-            initialItem: Stats { id: statsPage }
-        }
-    }
+            onCurrentPageChanged: {
+                if ( pageView.depth > 1 )
+                    pageView.pop()
 
-    Action {
-        id: statsAct
-        icon.source: "qrc:/icon/resources/icons/stats.svg"
-        onTriggered: {
-            if ( pageView.depth > 1 ) {
-                pageView.pop()
-                pageView.currentPage = ""
+                if ( "" !== currentPage ) {
+                    pageView.push(currentPage)
+
+                    switch (currentPage) {
+                        case "qrc:/Views/Pages/Stats.qml":
+                            currentItem.statsData = cardData.stats
+                            break
+                        default:
+                            console.log("Unknown page to load data")
+                    }
+                }
             }
         }
     }
-
-    Action {
-        id: equipmentAct
-        icon.source: "qrc:/icon/resources/icons/equipment.svg"
-        onTriggered: {
-            main.showPage("qrc:/Views/Pages/Equipment.qml");
-        }
-    }
-
-    Action {
-        id: notesAct
-        icon.source: "qrc:/icon/resources/icons/notes.svg"
-        onTriggered: {
-            main.showPage("qrc:/Views/Pages/Notes.qml");
-        }
-    }
-
-    Action {
-        id: friendsAct
-        icon.source: "qrc:/icon/resources/icons/friends.svg"
-        onTriggered: {
-            main.showPage("qrc:/Views/Pages/Friends.qml");
-        }
-    }
-
-    Action {
-        id: vehicleAct
-        icon.source: "qrc:/icon/resources/icons/vehicle.svg"
-        onTriggered: {
-            main.showPage("qrc:/Views/Pages/Vehicle.qml");
-        }
-    }
-
-    Action {
-        id: beastsAct
-        icon.source: "qrc:/icon/resources/icons/beasts.svg"
-        onTriggered: {
-            main.showPage("qrc:/Views/Pages/Beasts.qml");
-        }
-    }
-
-    function showPage(page) {
-        if ( pageView.currentPage !== page ) {
-            console.log("Adding page:", page)
-            if ( pageView.depth >1 ) {
-                console.log("Pop")
-                pageView.pop()
-            }
-            pageView.currentPage = page
-            pageView.push(page)
-        }
-    }
-
-    Component.onCompleted: console.log("CardsView.size(h/w):", height, width);
 
     onCardDataChanged: {
-        if ( cardData !== "undefined" )
-            if ( cardData.stats !== null )
-                statsPage.statsData = cardData.stats
+        if (pageView.depth > 0) {
+            pageView.clear()
+            pageView.currentPage = ""
+        }
+
+        if ( cardData !== "undefined" ) {
+            if ( cardData.stats !== null ) {
+                pageView.currentPage = "qrc:/Views/Pages/Stats.qml"
+            }
+        }
     }
 }

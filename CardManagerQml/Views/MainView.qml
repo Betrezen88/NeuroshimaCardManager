@@ -115,6 +115,7 @@ Page {
         }
 
         ListView {
+            property int secCurrentIndex: -1
             id: cardsList
             focus: true
             clip: true
@@ -188,8 +189,10 @@ Page {
             model: manager.cardManager.cards
 
             onCurrentIndexChanged: {
-                if ( currentIndex !== -1 )
+                if ((currentIndex !== -1) && (currentIndex !== secCurrentIndex)) {
                     cardsView.cardData = manager.cardManager.card(cardsList.currentItem.filePath)
+                    secCurrentIndex = currentIndex
+                }
             }
         }
     }
