@@ -222,9 +222,12 @@ Page {
     StackView {
         id: stackView
         anchors.fill: parent
+        visible: cardsList.count > 0
 
         initialItem: CardsView {
             id: cardsView
+        }
+    }
 
     FileDialog {
         id: loadDialog
