@@ -141,7 +141,7 @@ Page {
             }
 
             delegate: ItemDelegate {
-                id: listItem
+                id: cardItem
                 width: parent.width
                 height: 40
 
@@ -158,10 +158,10 @@ Page {
                     Rectangle {
                         height: parent.height
                         width: parent.width - parent.height - 5
-                        color: listItem.ListView.isCurrentItem ? "red" : "#fff"
+                        color: cardItem.ListView.isCurrentItem ? "red" : "#fff"
 
                         Text {
-                            text: model.filePath
+                            text: model.stats.personal.fullname
                             height: 40
                             width: parent.width - 45
                             verticalAlignment: Text.AlignVCenter
