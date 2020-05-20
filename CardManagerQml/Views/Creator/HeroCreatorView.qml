@@ -16,6 +16,7 @@ Page {
 
         Form { id: form }
 
+        Origin { id: origin }
     }
 
     footer: ListView {
@@ -41,6 +42,7 @@ Page {
 
         model: ListModel {
             ListElement { text: "Formularz" }
+            ListElement { text: "Pochodzenie" }
         }
     }
 }
