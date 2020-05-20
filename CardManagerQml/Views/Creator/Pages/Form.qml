@@ -9,4 +9,5 @@ Page {
         height: parent.height
         clip: true
 
+    }
 }
