@@ -23,6 +23,8 @@ Page {
         Attributes { id: attributes }
 
         Specialization { id: specialization }
+
+        Disease { id: disease }
     }
 
     footer: ListView {
@@ -52,6 +54,7 @@ Page {
             ListElement { text: "Profesja" }
             ListElement { text: "Atrybuty" }
             ListElement { text: "Specjalizacja" }
+            ListElement { text: "Choroba" }
         }
     }
 }
