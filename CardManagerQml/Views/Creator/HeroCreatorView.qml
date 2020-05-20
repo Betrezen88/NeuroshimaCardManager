@@ -21,6 +21,8 @@ Page {
         Profession { id: profession }
 
         Attributes { id: attributes }
+
+        Specialization { id: specialization }
     }
 
     footer: ListView {
@@ -49,6 +51,7 @@ Page {
             ListElement { text: "Pochodzenie" }
             ListElement { text: "Profesja" }
             ListElement { text: "Atrybuty" }
+            ListElement { text: "Specjalizacja" }
         }
     }
 }
