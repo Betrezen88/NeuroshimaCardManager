@@ -201,7 +201,7 @@ Page {
         id: addAct
         onTriggered: {
             title.text = "Views.HeroCreatorView"
-            stackView.push("qrc:/Views/HeroCreatorView.qml")
+            stackView.push("qrc:/Views/Creator/HeroCreatorView.qml")
             sidePanel.close()
             viewBtn.action = backAct
             viewBtn.contentItem.source = "qrc:/icon/resources/icons/close.svg"
@@ -236,7 +236,7 @@ Page {
     StackView {
         id: stackView
         anchors.fill: parent
-        visible: cardsList.count > 0
+        visible: cardsList.count > 0 || depth > 1
 
         initialItem: CardsView {
             id: cardsView
