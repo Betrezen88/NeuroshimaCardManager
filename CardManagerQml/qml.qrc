@@ -31,6 +31,7 @@
         <file>Views/Creator/HeroCreatorView.qml</file>
         <file>Views/Creator/Pages/Origin.qml</file>
         <file>Views/Creator/Pages/Profession.qml</file>
+        <file>Views/Creator/Pages/Attributes.qml</file>
     </qresource>
     <qresource prefix="/icon">
         <file>resources/icons/add.svg</file>

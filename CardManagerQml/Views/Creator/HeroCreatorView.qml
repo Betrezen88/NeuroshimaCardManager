@@ -19,6 +19,8 @@ Page {
         Origin { id: origin }
 
         Profession { id: profession }
+
+        Attributes { id: attributes }
     }
 
     footer: ListView {
@@ -45,6 +47,8 @@ Page {
         model: ListModel {
             ListElement { text: "Formularz" }
             ListElement { text: "Pochodzenie" }
+            ListElement { text: "Profesja" }
+            ListElement { text: "Atrybuty" }
         }
     }
 }
