@@ -34,6 +34,7 @@
         <file>Views/Creator/Pages/Attributes.qml</file>
         <file>Views/Creator/Pages/Specialization.qml</file>
         <file>Views/Creator/Pages/Disease.qml</file>
+        <file>Views/Creator/Pages/Skills.qml</file>
     </qresource>
     <qresource prefix="/icon">
         <file>resources/icons/add.svg</file>
