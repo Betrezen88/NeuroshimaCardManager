@@ -17,6 +17,8 @@ Page {
         Form { id: form }
 
         Origin { id: origin }
+
+        Profession { id: profession }
     }
 
     footer: ListView {
