@@ -4,7 +4,6 @@
         <file>Creator/CreatorView.qml</file>
         <file>Views/CardsView.qml</file>
         <file>Views/MainView.qml</file>
-        <file>Views/HeroCreatorView.qml</file>
         <file>Views/Pages/Beasts.qml</file>
         <file>Views/Pages/Equipment.qml</file>
         <file>Views/Pages/Friends.qml</file>
