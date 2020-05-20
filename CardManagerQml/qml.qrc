@@ -27,6 +27,7 @@
         <file>Views/Sections/Personal.qml</file>
         <file>Views/Sections/Tricks.qml</file>
         <file>Views/Sections/Wounds.qml</file>
+        <file>Views/Creator/Pages/Form.qml</file>
         <file>Views/Creator/HeroCreatorView.qml</file>
     </qresource>
     <qresource prefix="/icon">

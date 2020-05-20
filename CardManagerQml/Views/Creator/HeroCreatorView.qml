@@ -1,6 +1,7 @@
 ﻿import QtQuick 2.9
 import QtQuick.Controls 2.12
 
+import "./Pages"
 
 Page {
     id: main
@@ -10,5 +11,36 @@ Page {
     SwipeView {
         id: view
         anchors.fill: parent
+
+        currentIndex: buttons.currentIndex
+
+        Form { id: form }
+
+    }
+
+    footer: ListView {
+        id: buttons
+        width: parent.width
+        height: 50
+        spacing: 5
+        orientation: Qt.Horizontal
+
+        delegate: Button {
+            id: buttonItem
+            text: model.text
+            font {
+                bold: true
+                pixelSize: 12
+            }
+            padding: 15
+            onClicked: buttons.currentIndex = view.currentIndex = index
+            background: Rectangle {
+                color: buttonItem.ListView.isCurrentItem ? "gray" : "lightGray"
+            }
+        }
+
+        model: ListModel {
+            ListElement { text: "Formularz" }
+        }
     }
 }
