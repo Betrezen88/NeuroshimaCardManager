@@ -27,6 +27,8 @@ Page {
         Disease { id: disease }
 
         Skills { id: skills }
+
+        Equipment { id: equipment }
     }
 
     footer: ListView {
@@ -58,6 +60,7 @@ Page {
             ListElement { text: "Specjalizacja" }
             ListElement { text: "Choroba" }
             ListElement { text: "Umiejętności" }
+            ListElement { text: "Ekwipunek" }
         }
     }
 }
