@@ -29,6 +29,8 @@ Page {
         Skills { id: skills }
 
         Equipment { id: equipment }
+
+        Friends { id: friends }
     }
 
     footer: ListView {
@@ -61,6 +63,7 @@ Page {
             ListElement { text: "Choroba" }
             ListElement { text: "Umiejętności" }
             ListElement { text: "Ekwipunek" }
+            ListElement { text: "Znajomości" }
         }
     }
 }
