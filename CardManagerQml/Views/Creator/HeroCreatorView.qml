@@ -29,6 +29,11 @@ Page {
         Equipment { id: equipment }
 
         Friends { id: friends }
+
+        onCurrentIndexChanged: {
+            if ( currentIndex !== buttons.currentIndex )
+                buttons.currentIndex = currentIndex
+        }
     }
 
     footer: ListView {
