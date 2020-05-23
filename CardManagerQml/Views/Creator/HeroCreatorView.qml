@@ -5,8 +5,6 @@ import "./Pages"
 
 Page {
     id: main
-    width: parent.width
-    height: parent.height
 
     SwipeView {
         id: view
