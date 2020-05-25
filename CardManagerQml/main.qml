@@ -2,8 +2,6 @@
 import QtQuick.Controls 2.5
 import QtQuick.Dialogs 1.2
 
-import "./Creator"
-
 import "./Views"
 
 ApplicationWindow {
