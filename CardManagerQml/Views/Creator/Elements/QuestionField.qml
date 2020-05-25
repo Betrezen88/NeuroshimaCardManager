@@ -30,21 +30,26 @@ Column {
         horizontalAlignment: Text.AlignJustify
     }
 
-    ScrollView {
+    Rectangle {
         id: answerView
+        border.color: "#000"
+        border.width: 2
+        radius: 10
         width: main.width
         height: 60
 
-        TextArea {
-            id: answerTxt
-            text: qsTr("")
-            font.pointSize: 10
+        ScrollView {
             anchors.fill: parent
-            placeholderText: "Odpowiedź"
-            wrapMode: Text.WordWrap
-            horizontalAlignment: Text.AlignJustify
+
+            TextArea {
+                id: answerTxt
+                text: qsTr("")
+                font.pointSize: 10
+                width: main.width
+                placeholderText: "Odpowiedź"
+                wrapMode: Text.WordWrap
+                horizontalAlignment: Text.AlignJustify
+            }
         }
     }
 }
-
-
