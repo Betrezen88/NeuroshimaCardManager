@@ -1,21 +1,20 @@
-import QtQuick 2.0
+﻿import QtQuick 2.0
 import QtQuick.Controls 2.12
 
 Column {
-    id: feature
-    width: column1.width
-    height: feature.implicitHeight
+    id: main
+    height: main.implicitHeight
     
     RadioButton {
-        id: featureBtn
+        id: button
         text: qsTr("Nazwa cechy")
         font.bold: true
         font.pointSize: 10
     }
     
     Text {
-        id: featureDescription
-        width: feature.width
+        id: description
+        width: main.width
         text: qsTr("Opis")
         font.pointSize: 10
         wrapMode: Text.WordWrap
