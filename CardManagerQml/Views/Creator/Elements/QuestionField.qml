@@ -7,7 +7,10 @@ Column {
     property alias answer: answerTxt.text
 
     id: main
-    height: questionTxt.height + descriptionTxt.height + answerView.height + (main.spacing * 2)
+    height: questionTxt.height
+            + descriptionTxt.height
+            + answerView.height
+            + (main.spacing * 2)
     spacing: 5
 
     Text {
