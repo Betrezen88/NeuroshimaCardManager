@@ -5,8 +5,6 @@ import QtQuick.Dialogs 1.2
 import "./Views"
 
 ApplicationWindow {
-    signal load(string filePath)
-
     id: main
     visible: true
     width: 640
