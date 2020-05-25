@@ -61,32 +61,32 @@ Page {
                 model: ListModel {
                     ListElement {
                         icon: "qrc:/icon/resources/icons/stats.svg"
-                        page: "qrc:/Views/Pages/Stats.qml"
+                        page: "qrc:/Views/Card/Pages/Stats.qml"
                         text: "Statystyki"
                     }
                     ListElement {
                         icon: "qrc:/icon/resources/icons/equipment.svg"
-                        page: "qrc:/Views/Pages/Equipment.qml"
+                        page: "qrc:/Views/Card/Pages/Equipment.qml"
                         text: "Ekwipunek"
                     }
                     ListElement {
                         icon: "qrc:/icon/resources/icons/notes.svg"
-                        page: "qrc:/Views/Pages/Notes.qml"
+                        page: "qrc:/Views/Card/Pages/Notes.qml"
                         text: "Notatki"
                     }
                     ListElement {
                         icon: "qrc:/icon/resources/icons/friends.svg"
-                        page: "qrc:/Views/Pages/Friends.qml"
+                        page: "qrc:/Views/Card/Pages/Friends.qml"
                         text: "Znajomości"
                     }
                     ListElement {
                         icon: "qrc:/icon/resources/icons/vehicle.svg"
-                        page: "qrc:/Views/Pages/Vehicle.qml"
+                        page: "qrc:/Views/Card/Pages/Vehicle.qml"
                         text: "Pojazd"
                     }
                     ListElement {
                         icon: "qrc:/icon/resources/icons/beasts.svg"
-                        page: "qrc:/Views/Pages/Beasts.qml"
+                        page: "qrc:/Views/Card/Pages/Beasts.qml"
                         text: "Bestie"
                     }
                 }
@@ -122,7 +122,7 @@ Page {
                     pageView.push(currentPage)
 
                     switch (currentPage) {
-                        case "qrc:/Views/Pages/Stats.qml":
+                        case "qrc:/Views/Card/Pages/Stats.qml":
                             currentItem.statsData = cardData.stats
                             break
                         default:
@@ -141,7 +141,7 @@ Page {
 
         if ( cardData !== "undefined" ) {
             if ( cardData.stats !== null ) {
-                pageView.currentPage = "qrc:/Views/Pages/Stats.qml"
+                pageView.currentPage = "qrc:/Views/Card/Pages/Stats.qml"
             }
         }
     }
