@@ -42,6 +42,14 @@ Page {
                 font.pointSize: 10
                 wrapMode: Text.WordWrap
             }
+
+            Text {
+                id: extra
+                width: column.width
+                text: qsTr("Dodatkowy opis")
+                wrapMode: Text.WordWrap
+                font.pointSize: 10
+            }
         }
 
     }
