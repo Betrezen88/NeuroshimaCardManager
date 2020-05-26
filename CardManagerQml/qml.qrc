@@ -37,6 +37,7 @@
         <file>Views/Card/Elements/ValueBox.qml</file>
         <file>Views/Card/Elements/ValueBoxRow.qml</file>
         <file>Views/Card/Elements/WoundRow.qml</file>
+        <file>Views/Creator/Elements/AttributeRow.qml</file>
     </qresource>
     <qresource prefix="/icon">
         <file>resources/icons/add.svg</file>
