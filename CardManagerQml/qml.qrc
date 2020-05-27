@@ -39,6 +39,7 @@
         <file>Views/Card/Elements/WoundRow.qml</file>
         <file>Views/Creator/Elements/AttributeRow.qml</file>
         <file>Views/Creator/Elements/Symptom.qml</file>
+        <file>Views/Creator/Elements/Attribute.qml</file>
     </qresource>
     <qresource prefix="/icon">
         <file>resources/icons/add.svg</file>
