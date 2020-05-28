@@ -59,17 +59,17 @@ Page {
 
                     TextField {
                         id: name
-                        text: qsTr("Text Field")
+                        placeholderText: "Imię"
                     }
 
                     TextField {
                         id: surname
-                        text: qsTr("Text Field")
+                        placeholderText: "Nazwisko"
                     }
 
                     TextField {
                         id: nickname
-                        text: qsTr("Text Field")
+                        placeholderText: "Ksywa"
                     }
                 }
 
