@@ -19,6 +19,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         cpp/Card/CardWrapper.cpp \
         cpp/CardManager.cpp \
+        cpp/Creators/HeroCreatorManager.cpp \
         cpp/Element/AttributeWrapper.cpp \
         cpp/Element/DiseaseWrapper.cpp \
         cpp/Element/FeatureWrapper.cpp \
@@ -57,6 +58,7 @@ DEPENDPATH += $$PWD/../core
 HEADERS += \
     cpp/Card/CardWrapper.h \
     cpp/CardManager.h \
+    cpp/Creators/HeroCreatorManager.h \
     cpp/Element/AttributeWrapper.h \
     cpp/Element/DiseaseWrapper.h \
     cpp/Element/FeatureWrapper.h \
