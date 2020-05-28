@@ -18,10 +18,8 @@ public:
 
     std::tuple<bool, QJsonObject, QString> load(const QString &filePath);
 
-signals:
-
-public slots:
-    CardData *loadCard(const QString &filePath);
+private:
+    std::tuple<bool, QString> readFile(const QString &filePath);
 };
 
 #endif // DATAREADER_H
