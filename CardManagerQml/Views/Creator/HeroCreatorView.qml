@@ -4,6 +4,8 @@ import QtQuick.Controls 2.12
 import "./Pages"
 
 Page {
+    property var heroCreator
+
     id: main
 
     SwipeView {
@@ -12,7 +14,10 @@ Page {
 
         currentIndex: buttons.currentIndex
 
-        Form { id: form }
+        Form {
+            id: form
+            heroCreator: main.heroCreator
+        }
 
         Origin { id: origin }
 

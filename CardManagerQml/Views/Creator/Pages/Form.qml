@@ -5,6 +5,8 @@ import QtQuick.Dialogs 1.2
 import "./../Elements"
 
 Page {
+    property var heroCreator
+
     id: main
 
     ScrollView {
@@ -60,16 +62,19 @@ Page {
                     TextField {
                         id: name
                         placeholderText: "Imię"
+                        onEditingFinished: heroCreator.setName(name.text)
                     }
 
                     TextField {
                         id: surname
                         placeholderText: "Nazwisko"
+                        onEditingFinished: heroCreator.setSurname(surname.text)
                     }
 
                     TextField {
                         id: nickname
                         placeholderText: "Ksywa"
+                        onEditingFinished: heroCreator.setNickname(nickname.text)
                     }
                 }
 
