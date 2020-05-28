@@ -6,6 +6,7 @@
 
 #include "cpp/MainManager.h"
 #include "cpp/CardManager.h"
+#include "cpp/Creators/HeroCreatorManager.h"
 
 #include "cpp/Card/CardWrapper.h"
 #include "cpp/Page/StatsWrapper.h"
@@ -26,6 +27,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     qmlRegisterType<MainManager>("cpp", 1, 0, "MainManager");
+    qmlRegisterType<HeroCreatorManager>("cpp", 1, 0, "HeroCreatorManager");
     qmlRegisterType<CardManager>("cpp", 1, 0, "CardManager");
     qmlRegisterType<CardWrapper>("cpp", 1, 0, "CardWrapper");
     qmlRegisterType<StatsWrapper>("cpp", 1, 0, "StatsWrapper");
