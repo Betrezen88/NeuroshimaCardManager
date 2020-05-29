@@ -8,6 +8,7 @@
 #include <tuple>
 
 #include <QUrl>
+#include <QJsonDocument>
 
 #include <QDebug>
 
@@ -78,7 +79,7 @@ void CardManager::loadCard(const QString &fileName)
     DataReader reader;
     QUrl filePath(fileName);
 
-    std::tuple<bool, QJsonObject, QString> data = reader.load( filePath.toLocalFile() );
+    std::tuple<bool, QJsonDocument, QString> data = reader.load( filePath.toLocalFile() );
 
     if ( !std::get<0>(data) ) {
         emit errorMessage( std::get<2>(data) );
@@ -88,7 +89,7 @@ void CardManager::loadCard(const QString &fileName)
     CardBuilder builder;
 
     appendCard( new CardWrapper(filePath.toLocalFile(),
-                                builder.build(std::get<1>(data)),
+                                builder.build(std::get<1>(data).object()),
                                 this) );
 }
 

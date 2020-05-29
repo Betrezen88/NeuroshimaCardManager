@@ -16,7 +16,7 @@ class CORE_EXPORT DataReader : public QObject
 public:
     explicit DataReader(QObject *parent = nullptr);
 
-    std::tuple<bool, QJsonObject, QString> load(const QString &filePath);
+    std::tuple<bool, QJsonDocument, QString> load(const QString &filePath);
 
 private:
     std::tuple<bool, QString> readFile(const QString &filePath);

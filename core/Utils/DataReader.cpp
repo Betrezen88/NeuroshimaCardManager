@@ -16,24 +16,24 @@ DataReader::DataReader(QObject *parent) : QObject(parent)
 
 }
 
-std::tuple<bool, QJsonObject, QString> DataReader::load(const QString &filePath)
+std::tuple<bool, QJsonDocument, QString> DataReader::load(const QString &filePath)
 {
     std::tuple<bool, QString> fileData = readFile(filePath);
 
     if (!std::get<0>(fileData)) {
-        return std::make_tuple(false, QJsonObject(), std::get<1>(fileData));
+        return std::make_tuple(false, QJsonDocument(), std::get<1>(fileData));
     }
 
     QJsonParseError error;
     QJsonDocument json = QJsonDocument::fromJson(std::get<1>(fileData).toUtf8(), &error);
 
     if ( QJsonParseError::NoError != error.error ) {
-        return std::make_tuple(false, QJsonObject(),
+        return std::make_tuple(false, QJsonDocument(),
                                "Błąd parsowania pliku: "+filePath +
                                 "\n"+error.errorString()+"\nOffset:" + error.offset);
     }
 
-    return std::make_tuple(true, json.object(), filePath);
+    return std::make_tuple(true, json, filePath);
 }
 
 std::tuple<bool, QString> DataReader::readFile(const QString &filePath)
