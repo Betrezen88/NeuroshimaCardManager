@@ -57,4 +57,18 @@
         <file>resources/icons/arrow_back.svg</file>
         <file>resources/icons/arrow_forward.svg</file>
     </qresource>
+    <qresource prefix="/pictures">
+        <file>resources/pictures/origins/appalachy.PNG</file>
+        <file>resources/pictures/origins/detroit.PNG</file>
+        <file>resources/pictures/origins/hegemonia.PNG</file>
+        <file>resources/pictures/origins/miami.PNG</file>
+        <file>resources/pictures/origins/missisipi.PNG</file>
+        <file>resources/pictures/origins/nie_twoj_interes.PNG</file>
+        <file>resources/pictures/origins/nowy_york.PNG</file>
+        <file>resources/pictures/origins/posterunek.PNG</file>
+        <file>resources/pictures/origins/pustynia.PNG</file>
+        <file>resources/pictures/origins/salt_lake_city.PNG</file>
+        <file>resources/pictures/origins/texas.PNG</file>
+        <file>resources/pictures/origins/vegas.PNG</file>
+    </qresource>
 </RCC>
