@@ -4,6 +4,8 @@ import QtQuick.Controls 2.12
 import "./../Elements"
 
 Page {
+    property var heroCreatorData
+
     id: main
 
     ScrollView {
@@ -23,8 +25,7 @@ Page {
                 spacing: 5
 
                 Text {
-                    id: originLabel
-                    height: comboBox.height
+                    height: originsList.height
                     text: qsTr("Pochodzenie:")
                     verticalAlignment: Text.AlignVCenter
                     font.pointSize: 14
@@ -32,13 +33,36 @@ Page {
                 }
 
                 ComboBox {
-                    id: comboBox
+                    id: originsList
                     width: 200
+                    model: main.heroCreatorData.origins
+                    textRole: 'name'
+                    onCurrentIndexChanged: {
+                        var item = main.heroCreatorData.origins[currentIndex]
+                        bonus.text = "+"+item.value+" "+item.attribute
+                        description.text = item.description
+                        picture.source = "qrc:/pictures/resources/pictures/origins/"+item.image
+
+                        if ( 0 < featuresColumn.objects.length ) {
+                            for ( var i in featuresColumn.objects )
+                                featuresColumn.objects[i].destroy()
+                            featuresColumn.objects = []
+                        }
+
+                        for ( var j in item.features ) {
+                            var component = Qt.createComponent("./../Elements/Feature.qml")
+                            var object = component.createObject(featuresColumn, {
+                                                                    feature: item.features[j],
+                                                                    width: featuresColumn.width
+                                                                })
+                            featuresColumn.objects.push(object)
+                        }
+                    }
                 }
 
                 Text {
                     id: bonus
-                    height: originLabel.height
+                    height: originsList.height
                     text: qsTr("(+1 Budowa)")
                     verticalAlignment: Text.AlignVCenter
                     font.bold: true
@@ -54,42 +78,35 @@ Page {
                 font.pixelSize: 12
             }
 
-            Flow {
+            Row {
                 id: features
                 width: main.width - column.anchors.margins * 2
                 height: features.implicitHeight
                 spacing: 5
 
                 Column {
+                    property var objects: []
                     id: featuresColumn
                     width: features.width * 0.6
                     height: featuresColumn.implicitHeight
 
                     Text {
-                        id: featuresLabel
                         text: qsTr("Cecha z pochodzenia")
                         font.bold: true
                         font.pointSize: 10
                     }
 
-                    Feature {
-                        id: feature
-                    }
-
-                    Feature {
-                        id: feature1
-                    }
-
-                    Feature {
-                        id: feature2
+                    onWidthChanged: {
+                        for ( var i in objects )
+                            objects[i].width = width
                     }
                 }
 
                 Image {
                     id: picture
-                    width: main.width * 0.3
+                    width: features.width * 0.3
                     fillMode: Image.PreserveAspectFit
-                    source: "file:///c:/Users/Michał/Pictures/Neuroshima Images/hegemonia.PNG"
+                    source: "qrc:/pictures/resources/pictures/origins/appalachy.PNG"
                     horizontalAlignment: Qt.AlignRight
                 }
             }
