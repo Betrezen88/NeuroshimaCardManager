@@ -8,6 +8,9 @@
 #include "cpp/CardManager.h"
 #include "cpp/Creators/HeroCreatorManager.h"
 
+#include "cpp/Creators/Data/Origin.h"
+#include "cpp/Creators/Data/Feature.h"
+
 #include "cpp/Card/CardWrapper.h"
 #include "cpp/Page/StatsWrapper.h"
 #include "cpp/Section/PersonalWrapper.h"
@@ -26,6 +29,8 @@ int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
+    qmlRegisterType<Origin>("cpp", 1, 0, "Origin");
+    qmlRegisterType<Feature>("cpp", 1, 0, "Feature");
     qmlRegisterType<MainManager>("cpp", 1, 0, "MainManager");
     qmlRegisterType<HeroCreatorManager>("cpp", 1, 0, "HeroCreatorManager");
     qmlRegisterType<CardManager>("cpp", 1, 0, "CardManager");
