@@ -1,5 +1,7 @@
 ﻿#include "HeroCreatorManager.h"
 
+#include "Data/HeroCreatorData.h"
+
 #include "Card/Pages/StatsData.h"
 #include "Card/Elements/Stats/PersonalData.h"
 #include "Card/Elements/Stats/OriginData.h"
@@ -11,6 +13,7 @@
 
 HeroCreatorManager::HeroCreatorManager(QObject *parent)
     : QObject(parent),
+      m_pHeroCreatorData(new HeroCreatorData(this)),
       m_pCardData(nullptr),
       m_pStatsData(new StatsData),
       m_pPersonalData(new PersonalData)
@@ -21,6 +24,11 @@ HeroCreatorManager::HeroCreatorManager(QObject *parent)
 CardData *HeroCreatorManager::cardData() const
 {
     return m_pCardData;
+}
+
+HeroCreatorData *HeroCreatorManager::heroCreatorData()
+{
+    return m_pHeroCreatorData;
 }
 
 void HeroCreatorManager::setName(const QString &name)

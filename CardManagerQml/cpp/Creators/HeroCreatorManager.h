@@ -12,13 +12,19 @@ class SpecializationData;
 class DiseaseData;
 class FeatureData;
 
+class HeroCreatorData;
+
 class HeroCreatorManager : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(HeroCreatorData *heroCreatorData READ heroCreatorData CONSTANT)
+
 public:
     explicit HeroCreatorManager(QObject *parent = nullptr);
 
     CardData *cardData() const;
+
+    HeroCreatorData *heroCreatorData();
 
 signals:
     void originFeatureChanged();
@@ -34,6 +40,7 @@ public slots:
     Q_INVOKABLE void setProfessionFeature(FeatureData *feature);
 
 private:
+    HeroCreatorData *m_pHeroCreatorData{nullptr};
     CardData *m_pCardData{nullptr};
     StatsData *m_pStatsData{nullptr};
     PersonalData *m_pPersonalData{nullptr};
