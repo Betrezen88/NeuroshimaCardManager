@@ -19,7 +19,10 @@ Page {
             heroCreator: main.heroCreator
         }
 
-        Origin { id: origin }
+        Origin {
+            id: origin
+            heroCreatorData: main.heroCreator.heroCreatorData
+        }
 
         Profession { id: profession }
 
