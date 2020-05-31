@@ -20,6 +20,7 @@ SOURCES += \
         cpp/Card/CardWrapper.cpp \
         cpp/CardManager.cpp \
         cpp/Creators/Data/Feature.cpp \
+        cpp/Creators/Data/Origin.cpp \
         cpp/Creators/HeroCreatorManager.cpp \
         cpp/Element/AttributeWrapper.cpp \
         cpp/Element/DiseaseWrapper.cpp \
@@ -60,6 +61,7 @@ HEADERS += \
     cpp/Card/CardWrapper.h \
     cpp/CardManager.h \
     cpp/Creators/Data/Feature.h \
+    cpp/Creators/Data/Origin.h \
     cpp/Creators/HeroCreatorManager.h \
     cpp/Element/AttributeWrapper.h \
     cpp/Element/DiseaseWrapper.h \
