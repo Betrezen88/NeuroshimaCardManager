@@ -2,6 +2,8 @@
 import QtQuick.Controls 2.12
 
 Column {
+    property var feature
+
     id: main
     height: main.implicitHeight
     
@@ -19,4 +21,11 @@ Column {
         font.pointSize: 10
         wrapMode: Text.WordWrap
     }
+
+    onFeatureChanged: {
+        button.text = feature.name
+        description.text = feature.description
+    }
+
+    onWidthChanged: console.log("Feature.onWidthChanged:", width)
 }
