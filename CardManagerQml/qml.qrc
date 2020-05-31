@@ -57,6 +57,9 @@
         <file>resources/icons/arrow_back.svg</file>
         <file>resources/icons/arrow_forward.svg</file>
     </qresource>
+    <qresource prefix="/json">
+        <file>resources/json/Origins.json</file>
+    </qresource>
     <qresource prefix="/pictures">
         <file>resources/pictures/origins/appalachy.PNG</file>
         <file>resources/pictures/origins/detroit.PNG</file>

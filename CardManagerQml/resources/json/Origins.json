@@ -1,0 +1,360 @@
+﻿[
+    {
+        "name": "Południowa Hegemonia",
+        "description": "W świecie rządzonym prze mordercę, reguły są jasne i proste. Trzeba umieć walczyć, by przeżyć. Jeśli ktoś coś Ci ukradł, to znaczy, że źle tego strzegłeś. Jeśli ktoś obił Ci mordę, to znaczy, że Ci sie należało.
+        Nie ma sądów. Nie ma dziesięciu przykazań. Nie ma gadki o nie pożądaniu żony bliźniego swego. Co się tak gapisz?! Tak, pochodzę z Hegemoni i jakoś nie narzekam. To twarda szkoła życia, ale wierz mi, nie chciałbym urodzić się gdzie indziej. Nasz świat jest prosty, albo ktoś mówi Ci prawdę, albo strzelasz mu w łeb. Albo potrafisz udowodnić, że jesteś mężczyzną, albo kopiesz w kalendarz nim dożyjesz dwudziestki.
+        Dlatego Hegemonia się rozrasta, a Ty szczasz na mój widok i kulisz za każdym razem, kiedy podnoszę głos. Pochodzę z Hegemonii i we mnie jest siła.
+        Jeśli spotkasz kogoś, kto wychował się u nas, nie zadzieraj z nim. Nie próbuj go oszukać, ani okłamać. Nie próbuj być cwany. Nie warto.",
+        "image": "hegemonia.PNG",
+        "bonus": {
+            "name": "Budowa",
+            "value": 1
+        },
+        "features": [
+            {
+                "name": "Urodzony morderca",
+                "description": "Wyrzuciliby Cię z Areny za szczególne bestialstwo. Wybierz sobie dowolny pakiet Umiejętności Wojownika. Wszystkie umiejętności z paczki posiadasz na poziomie +2.",
+                "bonus": {
+                    "type": "Skillpack",
+                    "value": 2,
+                    "list": [ "Walka wręcz", "Broń strzelecka", "Broń dystansowa", "Siła woli", "Pirotechnika" ]
+                }
+            },
+            {
+                "name": "Wiesz, zjadłem własnego psa",
+                "description": "Budzisz grozę. Twój widok paraliżuje. Jeśli udało Ci się kogoś zastraszyć (test Morale prze walką), w walce z nim automatycznie wygrywasz inicjatywę."
+            },
+            {
+                "name": "Zawzięty sukinkot",
+                "description": "Mówią o Tobie, że pociągniesz do grobu swojego zabójcę. To prawda. Jesteś uparty, twardy i nie popuszczasz. Raz w ciągu sesji, podczas wykonywania testu Umiejętności, zamiast wymaganego Współczynnika możesz użyć Charakteru."
+            }
+        ]
+    },
+    {
+        "name": "Vegas",
+        "description": "Vegas to mieszanka mafiozów spod ciemnej gwiazdy i świrów. Gdy widzę - bez urazy - takich palantów jak Ty, spluwa sama wskakuje mi do ręki. Wszędzie węszycie interes i zysk, a najlepiej, gdy można jeszcze w coś zagrać i zgarnąć podwójną pulę. To jakaś choroba, nie wiem czym pieprznął w was Moloch, ale siadło wam na mózg i zlasowało go bez reszty. Nie potraficie żyć bez ryzyka.
+        No dobra, ale kilku rzeczy nie można wam odmówić. Macie farta, zasrańcy, o tym wiedzą wszyscy. Nie wiem, czy to jakieś promieniowanie, czy inna cholera, ale to działa. Wtedy, dwa lata temu, zanim rozwaliłem tego palanta od drabiny, dwa razy pod rząd zaciął mi się Glock. Chłopcze, to się nie zdarza. No chyba, że akurat walisz do kogoś z Vegas.
+        A nie uważasz tego za śmieszne, że wy wszyscy wierzycie w każddy głupie przesąd i dziecinne opowieści o duchach?
+        A wiesz, co najbardziej mnie wkurza? Brak zasad. Wasze podejście do życia, ciągłe kantowanie i matactwa. Kombinowanie, jak zrobić krzywdę drugiemu, jak podłożyć mu nogę i zająć jego miejsce. Fakt, to daje wam niezłą odporność na działania innych. Fakt, zrobić w wała kogoś z Vegas, to sztuka. Fakt, często wychodzi na Twoje, bo potrafisz ściemniać jak nikt inny. Ale nie myśli, że Cię za to szanują. Ani trochę, cholerny, zakłamany, wierzący w duchy palancie.",
+        "image": "vegas.PNG",
+        "bonus": {
+            "name": "Zręczność",
+            "value": 1
+        },
+        "features": [
+            {
+                "name": "Fart",
+                "description": "No i czego się cieszysz? Myślisz, że masz farta i właśnie dlatego jesteś bezpieczny, jak jajeczko szczęście? Popatrz, załaduję jedną kulkę i zagramy w rosyjską ruletkę, chcesz? Co, tak... Poważnie chcesz? Jesteś chory.
+                Wiesz, zróbmy tak, że trzyktornie podczas sesji możesz powtórzyć jeden nieudany rzut na dowolnej z trzech kości."
+            },
+            {
+                "name": "Hazardzista",
+                "description": "Zwinne paluszki to bogactwo naturalne. Znasz tysiąc oszustw. Miałeś kiedyś okazję wyćwiczyć swoje dłonie i manupulujesz nimi lepiej niż japoński robot. Zaczynasz grę posiadając (gratisowo) wszystkie Umiejętności z pakietu Zdolności manualne na poziomie +2.",
+                "bonus": {
+                    "type": "Skillpack",
+                    "value": 2,
+                    "list": [ "Zdolności Manualne" ]
+                }
+            },
+            {
+                "name": "Telepata",
+                "description": "A ty telepata jesteś? Skąd wiesz, że on blefuje? Co znaczy, że on nas nie zabije? Masz to gdzieś na piśmie? Chyba nie myślisz, że ci uwierzę!
+                Poziom trudności wszystkich testów Blefu, Perswazji i Zastraszania w stosunku do ciebie jest większany o jeden w górę."
+            }
+        ]
+    },
+    {
+        "name": "Człowiek pustyni",
+        "description": "Wtedy, gdy zrzucali bomby, nikt, ale to nikt nie celował w rezerwaty czerwonoskórych. Indiańce przetrwali wojnę niemal nie ruszeni. I wiesz co? Gdy wszystko ucichło, wyleźli z rezerwatów i zaczeli dyktować warunki. Nie wleźli do ruin Vegas, ani nie zapędzieli się w okolice Miami. Są na pustyni. I mają się tam cholerne dobrze.
+        Łatwo ich rozpoznać: smagła cera i spokojne podejście do życia. Nie wszyscy są czerwonoskórzy. Teraz po pustyniach łazi od groma ludzi, którzy lubią przestrzeń i spokój. Białych, czarnych, nawet żółtych. Nie liczy się kolor skóry, ale filozofia życia, a głównie to, że wojna wcale ich nie zmartwiła. Łażą sobie po świecie i delektują się przyrodą, popaprańcy. Wyglądają na szczęśliwych, słowo daję. Nigdzie się nie spieszą. Są zadowoleni z siebie i pewni tego, że na pustyni są czempionami przetrwania.
+        Wędrowałem kiedyś z jednym taki i powiem Ci, w końcu kazałem mu się wunosić w diabły. Polubiłem go trochę i tylko dlatego nie władowałem mu kuli w łeb. Był irytujący. Nie jedz tyle, marnujesz jedzenie. Nie pij tyle, przecież nie chce Ci się pić. Sugerował nawet bym zostawił na pustyni swój karabin. Jest ciężki, po co go nosisz? Tracisz niepotrzebne siły. Doprowadzał mnie tym do pasji. Cokolwiek robiłem, marnowałem energię, siły i sprzęt. Raz rozbił mnie już zupełnie. Wyskoczył zza załomu jakiś mutant, więc władowałem mu serię prosto w bebechy. Biały Sokół spojrzał na mnie i mówi, że jestem głupcem. \"Wystarczyła jedna kula. Marnujesz amunicję\".
+        Kazałem mu wypieprzać. No i poszedł sobie. Zostawił mnie na tej cholernej pustyni i omal się nie upiekłem. Cudem doczołgałem się do jakiejś osady. Jak go kiedyś spotkam...",
+        "image": "pustynia.PNG",
+        "bonus": {
+            "name": "Percepcja",
+            "value": 1
+        },
+        "features": [
+            {
+                "name": "Towarzysz",
+                "description": "Ten skorpion to też twój przyjaciel? Wiesz, psa bym zrozumiał, może jakiegoś ptaka, czy coś. Ale skorpion? Wybierz sobie inne.
+            Możesz wybrać jedno zwierzę, które będzie twoim kompanem, będzie cie służył, ale musisz je kochać. Zwierzęciem może być dowolny ssak, ptak, gad lub inne stworzenie za pozwoleniem MG. Od tej pory jest was dwóch. Gdybyś na przykład miał tandem, moglibyście sobie pojeździć po pustynie, he, he...
+            Takiemu towarzyszowi możesz wydawać kilka rodzajów poleceń np, \"bierz go\", \"do nogi\", \"cicho\", \"leżeć\", itp.",
+                "bonus": {
+                    "type": "Pet"
+                }
+            },
+            {
+                "name": "Jestem duchem pustyni",
+                "description": "Nauczyłeś się przydatnej sztuczki, W trudnych warunkach (wysoka temperatura lub brak pożywienia i wody), potrafisz pogrążyć się w katalepsji i przeżyć. W stanie uśpienia leżysz nieruchomo i nie odbierasz żadnych bodźców zewnętrznych do czasu, aż warunki staną się bardziej sprzyjające. W ten sposób możesz przetrwać trzy miesiące."
+            },
+            {
+                "name": "Polegam tylko na sobie",
+                "description": "Jeżeli posługujesz się bronią własnej roboty (nie dotyczy broni palnej) lub jakimkolwiek innym wykonanym przez siebie narzędziem w każdym teście z jego wykorzystaniem możesz odjąć dwa oczka od rzutu na jednej z kostek."
+            }
+        ]
+    },
+    {
+        "name": "Nowy Jork",
+        "description": "Wszyscy Nowojorczycy, jak jeden mąż, są zawzięci jak diabli, do tego są patetyczni do obrzydliwości. Dziw, że nie łażą ubrani w amerykańską flagę. Trzydzieści lat temu chyba najbardziej oberwał Waszyngton i właśnie Nowy Jork. Dziś Waszyngton to czarna dziura, NJ zaś rozwija się i zadziornie wymachuje flagą w kierunku Molocha. Nowojorczycy jeszcze przed wojną dostali srogo po dupie, bo to zawsze było miasto, w które każdy chciał uderzyć. Kiedy wybuchła wojna, mieszkańcy mieli już serdecznie dość wszelkich ataków.
+        Teraz są świetnie zorganizowani. Ogłosili NJ stolicą Stanów, a ich przywódca mianował się prezydentem. Zbroją się i odbudowują. Nigdzie indziej nie ma takiej mocy i energii, żadne inne miasto nie ma takiej ochoty stanąć na nowo na nogi i skopać dupsko Molochowi. Nowojorczycy zmienili się w niewiarygodnym stopniu. Wzieli na siebie ciężar podniesienia państwa na nogi i harują jak woły, by to się powiodło. Wykopali Tornado z granic miasta, walczą z przestępczością, inwestują w edukację. Uczą o historii Stanów i wielkich bohaterach dawnych dni.
+        Powiem Ci, można puścić pawia słuchając tych ich przemów, widząc świętowanie Dnia Niepodległości, race i transparenty. Gdy usłyszałem, że zrobili paradę z jakiejś tam okazji, omal nie padłem. Są naprawdę mocno przejęci swoją rolą i znaczeniem. Oni naprawdę wirzą, że uratują Stany i spuszczą lanie Molochowi. Wiesz, że budują kolej? Uruchomili kilka fabryk, elektrownie, mają nawet szkoły dla dzieciaków! Śmiej się z nich, ale tak szczerze mówiąc, szanuję ich za wolę walki i odwagę. Jeśli ktoś spuści Molochowi wpieprz, to będą to właśnie Nowojorczycy. Nikt inny.",
+        "image": "nowy_york.PNG",
+        "bonus": {
+            "name": "Charakter",
+            "value": 1
+        },
+        "features": [
+            {
+                "name": "Zalety klasycznego wykształcenia",
+                "description": "Miałeś bardzo dobrych nauczycieli. Jeżeli na dalszym etapie tworzenia postaci wybierzesz jako specjalizację Technika, otrzymujesz dodatkowe 10 punktów do wydania na umiejętności oparte o Spryt.",
+                "bonus": {
+                    "type": "Skillpoints",
+                    "value": 10
+                }
+            },
+            {
+                "name": "Wizja",
+                "description": "Wiele lat odbudowywania NJ nauczyło cię, jak pracować w ruinach. Teraz możesz wjechać nawet do największej dziury, ale nie dostrzeżesz ruin i syf, lecz plac budowlany. Taki optymizm przydaje się w wielu sytuacjach. Jesteś w jakiejś zapadłej wiosce, którą w ciągu ośmiu godzin trzeba na twierdzę? Inni by płakali, Ty zabierasz się do roboty. MG jest zobowiązany podpowiedzieć ci, jak najlepiej odbudować lub przebudować daną lokację - według potrzeb (nocleg, dom, twierdza, itp.)."
+            },
+            {
+                "name": "Czas patriotów",
+                "description": "Heroizm to twoje drugie imię. Raz na sesję wykonując test Cholernie trudny możesz dodać wartość swojego Charakteru do testowanej Umiejętności. Krótko mówiąc, raz na sesje zdajesz automatycznie test, mam rację?"
+            }
+        ]
+    },
+    {
+        "name": "Texas",
+        "description": "Rodzina to świętość. Ziemia to świętość. Zwierzęta to świętość. Własność prywatna to świętość i prawo gościnności to także świętość.
+        Teksańczycy to przesympatyczni ludzie o bardzo silnych, ugruntowanych regułach życia i niesamowicie stabilnym światopoglądzie. Wierzą w co wierzą. I nie dają się łatwo z tej wiary wybić. Najważniejsza jest dla nich rodzina i dom. To jedyni ludzie na ziemi, którzy ugoszczą Cię, nakarmią, pomodlą się za Ciebie przed snem i jeszcze dadzą prowiant, gdy będziesz odjeżdzał. Pomogą naprawić wóz, dadzą trochę leków na drogę. Zrobią to wszystko i jeszcze więcej. Zrobią to, jeśli oczywiście nie jesteś Chińczykiem, lub murzynem. Teksańczycy nie przepadają za kolorowymi. Prawdę mówiąc, nie lubią też mormonów. No i oczywiście arabów, tych to nawet bardzo nie lubią. Mają pewien uraz do mutacji, więc jeśli masz jakieś kłopoty z ciałem, lepiej jendak się nie zapędzaj w tamte strony. Mam nadzieję, ze nie jesteś też zboczeńcem, to nie moja sprawa, ale oni... Aha, i lepiej, byś nie miał jakiegoś przewlekłego, zaraźliwego choróbska. Teksańczycy mają takie powiedzienie: \"Chore bydło trzeba odstrzelić dla dobra całego stada.\"
+        Poza tym są całkiem tolerancyjni. To bardzo mili ludzie. Pomogą, doradzą... Aha, zapomniałbym, nie ćpaj Tornado. Tego też nie uznają.",
+        "image": "texas.PNG",
+        "bonus": {
+            "name": "Budowa",
+            "value": 1
+        },
+        "features": [
+            {
+                "name": "Człowiek zwany koniem",
+                "description": "Jesteś silny jak wół, zwinny jak puma i twardy jak głaz. Kiedy idziesz po górach, powodujesz lawinę. Kiedy dosiadasz konia, to koń... Co ja ci zresztą będę opowiadał? Wybierz pakiet Umiejętności Sprawność albo Jeździectwo z wybranej grupy jest jest obniżony o jeden poziom.",
+                "bonus": {
+                    "type": "SkillpackPT",
+                    "list": [ "Sprawność", "Jeździectwo" ]
+                }
+            },
+            {
+                "name": "Doktor Quinn",
+                "description": "Nigdy nie słyszałeś o doktor Qiunn? Żona \"człowieka obrusa\", najsłynniejsza felczerka z Teksasu. Jeździ i leczy. Zresztą nie tylko ona! Każda kobieta pochodząca z Teksasu posiada wszystkie Umiejętności z pakietu Medycyna na poziomie +4, Każdą, dasz wiarę?",
+                "bonus": {
+                    "type": "Skillpack",
+                    "value": 4,
+                    "list": [ "Medycyna" ]
+                }
+            },
+            {
+                "name": "Zdrowa okolica",
+                "description": "Wychowałeś się w zdrowej, nieskażonej okolicy. Jesteś dobrze odżywiony i nie zostałeś napromieniowany. Na etapie tworzenia postaci nie musisz wykonywać rzutu określającego choroby, jakich się nabawiłeś. I jak? Teraz zastanów się, po co ci żona felczerka, panie Quinn...",
+                "bonus": {
+                    "type": "Health"
+                }
+            }
+        ]
+    },
+    {
+        "name": "Federacja Appalachów",
+        "description": "Gościa z Federacji poznasz na kilometr albo i dwa. Łazi wyprostowany, głowa podniesiona wyoko. Facet taksuje wszystkich wokół, jak jakiś wizytator. Tam, w Federacji, mają system kastowy, jest szlachta, magnaci, są też chłopi, którzy harują jak niewolnicy. Mają też kastę żołnierzy, którym nadano ziemię i tytuły. Czujesz to? Pół Stanów rozpieprzonych w drobny mak, a Ci nadają sobie ziemię.
+        Niezłe jaja, nie? Zadrwij z gokoś z Federacji, a uzna, że go obraziłeś i zechce się z Tobą pojedynkować. Wyciągnie z bagażnika szpadę, lub dwa rewolwery, a jeśli będziesz wybrzydzał, bez mrugnięcia okiem położy Cię serią z kałacha. Są honorowi i wzorują się na dawnych, oficerskich tradycjach. Przystosowali jednak dawne prawa do nowego świata. Stare reguły i zwyczaje stosują, gdy można, lecz jeśli trzeba być elastycznym, bez zastanowienia działają po nowemu, kałachem lub granatnikiem. Dryg oficerski, zasady, honor i szacunek pomiędzy sobą, a dla pospólstwa granat. Goście mają fantazję, trzeba im przyznać.
+        Jeśli spotkasz kogoś z Federacji, bądź ostrożny, to facet lub babka, którzy pochodzą z autonomicznego księstewka, pełnego zasad i zwyczajów. A ponieważ nie do każdego z tych frajerów dociera, że poza Federacją ich kasty i tytuły mogą sobie \"wsadzić\", zawsze ciągną się za nimi kłopoty.",
+        "image": "appalachy.PNG",
+        "bonus": {
+            "name": "Charakter",
+            "value": 1
+        },
+        "features": [
+            {
+                "name": "Szlachetnie urodzony",
+                "description": "Urodziłeś się, by panować nad innymi. Wiesz jak traktować ludzi. Wybierz sobie jeden pakiet Umiejętności opartych o Charakter. Każdą z Umiejętności w pakiecie posiadasz na poziomie +2.",
+                "bonus": {
+                    "type": "Skillpack",
+                    "value": 2,
+                    "list": [ "Negocjacje", "Empatia", "Siła woli" ]
+                }
+            },
+            {
+                "name": "Pojedynkowicz",
+                "description": "Nigdy nie przepuściłeś okazji, by zmierzyć się z przeciwnikiem. Dawałeś wrogom nauczkę i sam się czegoś nauczyłeś. Najwazniejsza nauka jaką wyciągnąłeś, to ta, iż każdego można pokonać. Podczas walki sam na sam ignorujesz pierwszą Lekką ranę lub Draśnięcia. Żaden przeciwnik nie zdoła cię przerazić i dlatego właśnie jesteś twardzielem."
+            },
+            {
+                "name": "Wychuchana spluwa",
+                "description": "Wybierz jedną z broni palnych, które nosisz przy sobie. Każdego wieczoru czyścisz ją, chuchasz, dmuchasz i w efekcie możesz dla niej zawsze powtórzyć rzut na efekt zacięcia broni."
+            }
+        ]
+    },
+    {
+        "name": "Miami",
+        "description": "Widziałeś kiedyś Miami? Gdybyś tam był, to wiedziałbyś wszystko. Dużo błota i zmutowane aligatory - tak wyglądałaby widokówka, którą mógłbyś wysłać kumplom. Gdybym chciał Ci polecić jakiś film o tym mieście, zaproponowałbym \"Kokodyla Dundee\". Widziałeś może?
+        Goście z Miami to prawdziwi twardziele. Ci z Hegemonii, czy Nowego Jorku to też nie mięczami, sam wiem, co Ci o nich opowiadałem, ale tam, w Miami, żyją najprawdziwsi twardziele. Nie ma bardziej prawdziwych twardzieli.
+        Faceta z tych bagien poznadsz bardzo prosto, wystarczy się przyjrzeć. Zacięta twarz, cygaro w zębach, kapelusz opuszczony na oczy. Kiedyś nawet zastanawiałem się, czy ściany ich domów są wyklejone zdjęciami Clinta Eastwooda. To, że każdy z nich udaje tego gościa, widać już z odległości pół mili. Czym będzie podchodził bliżej, tym jego poza będzie bardziej widoczna. Wiesz, kocie ruchy, niby od niechcenia, niby na luzie, a przecież dobrze wiesz, że jeden niewłaściwy ruch i masz nóż w bebechach. A tam, w Miami, noszą największe noże współczesnego świata.
+        Siedzi taki potem przy barze, nagle spluwa, kończy drinka i rzuca tekstem w stylu: \"Ale mnie łeb łupi. Idę ubić jakies cholerstwo.\" I wychodzi z knajpy. Wraca po tygodniu. Pytasz go: \"I jak?\", a on, jak gdyby nigdy nic, odpowiada: \"Ubiłem gada\". Nigdy nie wiesz, czy żartuje, czy mówi poważnie, dopiero później, jak będziesz wyjeżdżał, zobaczysz świerwo wielkości mamuta leżące przed granicą mieściny. Znak, że gość nie żartował i naprawdę polazł w teren ubić coś dużego.
+        Tacy są właśnie ludzie z Miami. Dlatego właśnie ich lubię. To nie są mięczaki, ani świrusy. Po prostu dobrze grają swoją rolę. A wiesz, ja uwielbiam stare filmy z Clintem Eastwoodem...",
+        "image": "miami.PNG",
+        "bonus": {
+            "name": "Percepcja",
+            "value": 1
+        },
+        "features": [
+            {
+                "name": "Człowiek-aligator",
+                "description": "Połowę życia spędziłeś w wodzie na trzęsawiskach lub w tropiku. W czasie każdej walki, w której wykorzystujesz do ukrycia zbiornik wodny lub bagno (gdy jesteś zanurzony), osłona maskuje cię o dwa poziomy lepiej. Dodatkowo, w przypadku błyskawicznego ataku z zaskoczenia na terenie wodnym lub bagiennym, twoi przeciwnicy sa automatycznie zaskoczeni."
+            },
+            {
+                "name": "Ja już swoje odchorowałem",
+                "description": "Żyłeś w niezdrowej okolicy Miami i uodporniłeś się na  wiele chorób i jadów. Możesz powtórzyć każdy rzut odpornościowy przeciw chorobom i truciznom pochodzenia organicznego."
+            },
+            {
+                "name": "Walkabout",
+                "description": "Siedzisz sobie w knajpie i nagle postanawiasz iść na mały walkabout. Wychodzisz i przez miesiąc włóczysz się po okolicy. Wracasz do knajpy, patrzysz, a twoje ziółka na stole wystygły. Myślisz sobie - nie będę pił zimnych. I idziesz odwiedzić kumpla z Vegas. Możesz powtórzyć każdy test Kondycji. Zaczynasz ze Sztuczką \"Dom na plecach\".",
+                "bonus": {
+                    "type": "Trick",
+                    "name": "Dom na plecach"
+                }
+            }
+        ]
+    },
+    {
+        "name": "Człowiek z... nie twój zasrany interes",
+        "description": "Z nimi jest najgorzej, jeżdżą od miasta do miasta, nie mogąc usiedzieć na dupsku. Nie mają bliskich, rodziny ani przyjaciół. Mają wielu wrogów, bo zawsze, jak się pojawiają w nowym miejscu, to brużdżą, by w końcu się wynieść. Kłopot z nimi polega na tym, że nigdy nie wiesz, czego się po nich spodziewać. Cholerni internacjałowie, jesli wiesz, co mam na myśli. Szybko się uczą, łapią nawyki, mają dryg do nauki języków i gwar. Wiedzą, co żre się w Vegas, jakie są reguły walki gladiatorów na południu i co to jest Korkcity. Jeżdżą i oglądają. Trzeba przyznać, że ta wieczna podróż hartuje ich jak mało co. Każdy z takich wędrowców wyszedł już z niejednej opresji, kazdy z nich ma dom na plecach, w kazdej chwili możę podnieść dupsko, wyjść z knajpy i ruszyć w dwumiesięczną podróż.
+        To ich styl. Ludzie z nikąd.",
+        "image": "nie_twoj_interes.PNG",
+        "bonus": {
+            "name": "Dowolny",
+            "value": 1
+        },
+        "features": [
+            {
+                "name": "Wszechstronność",
+                "description": "Złaziłeś już spory kawał świata. Aby przetrwać uczyłeś się wszystkiego po trochu. Wszystkie Umiejętności oparte na najwyższej z twoich cech, a których nie wykupiłeś, mają wartość 1. Znasz się na wszystkim. I tak naprawdę gówno umiesz, ot, moja opinia.",
+                "bonus": {
+                    "type": "Skills",
+                    "value": 1
+                }
+            },
+            {
+                "name": "Wszchstronność do kwadratu",
+                "description": "Możesz wybrać dowolną z cech innych nacji. Dowolną. No jeśli jesteś facetem, to umówmy się, że zapomnisz o \"doktor Quinn\", OK?",
+                "bonus": {
+                    "type": "Feature"
+                }
+            }
+        ]
+    },
+    {
+        "name": "Salt Lake City",
+        "description": "Czas na dobrą wiadomość. W porównaniu do wieśniaków z Salt Lake jesteś całkiem równym gościem. Jak wiesz, nie przepadam za Vegas, ale to, co doprowadza mnie do białej gorączki, to własnie palant z Salt Lake. Nie żebym miał co do mormonów, kilka ich pomysłów na życie jest całkiem OK, nie jestem fanatykiem religijnym i niekogo do niczego nie zmuszam, niech sobie wierzą w co chcą.
+        Ale do cholery! Niech nie przekonują mnie, że ich pomysły na życie są lepsze od moich! Najchętniej wysadziłbym ruiny Salt Lake w powietrze. Tylu kultów i sekt, ile tam znajdziesz, nie ma nigdzie indziej. Jesli pochodzisz z Salt Lake, to znaczy, że masz zdrowo nasrane we łbie, bo już wpadłeś w sidła jakiejś sekty, jesteś wyznawcą jednej z nowych religii, wierzysz w boga skarpetek, albo będziesz mnie przekonywał, że mutanci to takie anioły, tylko bez skrzydeł.
+        Uważaj na nich, nieopatrznie dasz sobie postawić drinka i już masz wieczór z głowy. Przysiada się taki i nawija, pyta, wyjaśnia, przekonuje. To jest obłęd jakiś, kazdy ma inne wisiory i znaki, jeden ma tatuaż na dupie, inny przekół sobie nos, a każdy z nich w jakimś celu. Mroczni goście, słowo daję. Mają tysiąc teorii i odpowiedzi na najbardziej mroczne pytania. Czytają książki, oglądają jakieś kasety, robią seanse i dużo ćpają.
+        Sekta i tyle. Najlepiej ich wszystkich wysłać do Molocha, może jego przekonają do zmiany spojrzenia na życie.",
+        "image": "salt_lake_city.PNG",
+        "bonus": {
+            "name": "Spryt",
+            "value": 1
+        },
+        "features": [
+            {
+                "name": "Cholerny kaznodzieja",
+                "description": "Potrafisz walnąć taki monolog, że słuchacze nie wiedzą, co ze sobą zrobić. Jeśli próbujesz przekonać kogoś do racji, w które sam wierzysz (sprawy wiary), w testach Perswazji odrzucasz kostkę, która najmniej ci odpowiada i mówisz, że wypadło na niej tyle co na innej. Trochę to skomplikowane, nie? Ale wiesz, sprawy wiary to trudny temat."
+            },
+            {
+                "name": "Wierzę",
+                "description": "Chłopie, nie będę lazł pięćset metrów do tej głupiej stacji tylko dlatego, że przez lornetkę widzisz tam automat z Colą. On nie działa, to nie ma sensu... Co? Co znaczy, że wierzysz, że działa? I co, chcesz bym teraz tam poszedł? Bo ty wierzysz? No bez jaj. To że raz w ciągu sesji, w sytuacji zagrożenia, możesz powiedzieć MG \"wierzę\" i wtedy MG powinien dać ci szansę wykaraskania się z sytuacji, nie oznacza, że da nam teraz tę Colę! Zrozum! Tylko w sytuacji zagrożenia! I w dodatku  ostateczna decyzja należy do MG! A przecież wiesz, że on jest złośliwy!Nie da nam tej Coli, mówię ci..."
+            },
+            {
+                "name": "Przed wojną wszystko było lepsze",
+                "description": "Przysłuchiwałeś się opowieściom doświadczonych wojowników i mądrych starców. Chłonołeś historię o czasach sprzed wojny. Wszystkie testy Sprytu związane z wiedzą o czasach sprzed Apokalipsą mogą być dla ciebie co najwyżej Trudne. Co najwyżej, łapiesz? Mistrz Gry może sobie bełkotać o Bardzo Trudnym, o Cholernie Trudnym... Wiesz co? Pokaż mi ten podręcznik, otwórz na tej stronie i daj mu to przeczytać \"Mistrzu Gry do ciebie mówię. Ten facet, co dał ci teraz podręcznik, wie o czasach sprzed wojny wszystko. Łapiesz to? Więc nie smuć o Bardzo Trudnym teście."
+            }
+        ]
+    },
+    {
+        "name": "Missisipi",
+        "description": "Ci, co żyją w okolicach Missisipi, to w zasadzie mutanci. Niby wyglądają normalnie... To tylko pozory. Łażą w ciężkich przeciwdeszczowych płaszczach, noszą maski przeciwgazowe i mają grube rękawice. Z daleka wyglądają o wiele gorzej niż mutanci.
+        Z drugiej strony, trudno im sie dziwić. Missisipi to dziś najbardziej niebezpieczny teren, ta rzeka niemal gotuje się od syfu, który zawiera. Pieni się i bulgocze.
+        Pomyśl, właziłbyś do niej bez dobrych gumowców?! Tak więc Ci, którzy pracują na Missisipi, to skubańcy łażący w naprawdę grubych gumowcach.
+        Są odporni dosłownie na wszystko. Co prawda, rzadko opuszczają swój ukochany ściek, ale jak już ruszą swe twarde dupsko, możesz być pewien dwóch rzeczy. Po pierwsze, nigdy nie wysyłaj ich do sprawdzania, czy teren jest skażony. To, że gość z Missisipi rozbił gdzieś namiot, nie oznacza, że Ty przetrwasz tam choć pięć minut. A po drugie, możesz być pewien, że koleś, który wychował się na tej rzece, widział naprawdę wszystko. Możesz go zapytać i na każdy temat usłyszysz historyjkę. Ich opowieści są naprawdę przekonujące, no ale jeśli każda minuta historyjki poparta jest prezentacją kolejnej blizny, trudno nie uwierzyć, nie?
+        Ja pierniczę, ale oni wyglądają! Życie na rzecze to nie bajka, tego jestem pewien.",
+        "image": "missisipi.PNG",
+        "bonus": {
+            "name": "Percepcja",
+            "value": 1
+        },
+        "features": [
+            {
+                "name": "Coś mi tu śmierdzi",
+                "description": "Dorastałeś na terenach opanowanych przez mutków. Wyczuwasz ich inność, choćby nie wiem jak się maskowali. Za każdym razem, gdy stajesz wobec osoby dotniętej niewidocznymi mutacjami, MG powinien wykonać sekretny rzut na Percepcję (Trudny) i w razie powodzenia testu, poinformować cię, że czujesz się nieswojo. Rączki świerzbią, nie? Spluwa się gotuje..."
+            },
+            {
+                "name": "Chodźmy, na pewno już utonął",
+                "description": "Masz płuca jak miechy. Jesteś w stanie wytrzymać pod wodą dwa razy dłużej, niż przeciętny człowiek.
+                To znaczy ile? Pół minuty za każde 4 punkty Budowy. Właśnie tyle."
+            },
+            {
+                "name": "Kwas w żyłach, chlor w płucach",
+                "description": "Urodziłeś się i mieszkałeś przy Wielkiej Rzece. Jesteś tak przesiąknięty płynącą w niej trucizną, że żadna nowa franca już w ciebie nie wejdzie. Możesz powtórzyć każdy rzut odpornościowy przecziw trującym chemikaliom i substancjom żrącym."
+            }
+        ]
+    },
+    {
+        "name": "Posterunek",
+        "description": "Posterunek to schronienie tych, którzy poświęcili się badaniu i zwalczaniu Molocha. Słyną z naukowców i techników, choć zamieszkują tam również żołnierze i ludzie nie związani z wojną. Władzę w mieście pełnią naukowcy - są najwyższą kastą i to oni decydują o stylu życia i sposobie prowadzenia wojny. Druga kasta - żołnierze - odpowiedzialna jest za zapewnienie bezpieczeństwa. Żołnierze przelewają krew w zmaganiach na froncie, służą jako zwiadowcy oraz kurierzy. Najniższą kastą jest odpowiedzialna za wyżywienie miasta i kontakty handlowe.
+        Posterunek przenosi się z miejsca na miejsce, aby uniknąć ataku skumulowaneych sił najgroźniejszego z nieprzyjaciół - Molocha. Wydawać by się mogło, że życie w bezustannej podróży nie sprzyja rozwojowi nauki i edukacji, lecz zaawansowana technologia jest kluczem do potęgi Wędrownego Miasta. Najbardziej olśniewające konstrukcje techniczne powstały poprzez podpatrywanie dzieł Molocha. Nic dziwnego, że dzieci wyrosłew stechnicyzowanym otoczeniu od urodzenia, zapoznają się ze wszelkimi tajnikami nauk inżynierskich. Nawet jeżeli przeznaczono dziecko do kasty żołnierzy, potradi ono wykazać się wiedzą techniczną.
+        Stereotypowy mieszkaniec Wędrownej Osady jest odlutkiem pochłoniętym wyznaczonymi mi zadaniami. Rygor nauczył do lakoniczności, sumienności i słuszeństwa wobec przełożonych. I cały czas pamiętają, że ich nieprzyjacielem jest Maszyna. Część z nich zmęczona nieskończonym się uciekaniem, lubi na pewien czas opuścić osadę. \"Urlop\" wiąże się przeważnie z koniecznością wypełnienia jekiejś misji, bowiem w Posterunku nikt nie może zostać bezużyteczny.",
+        "image": "posterunek.PNG",
+        "bonus": {
+            "name": "Spryt",
+            "value": 1
+        },
+        "features": [
+            {
+                "name": "Na symulatorze działało...",
+                "description": "Jak to spokojnie! Jak grałeś w to?! W co grałeś? Symulator?! O czym ty człowieku pieprzysz, strzelają do nas, nie rozumiesz?! Ja też przeszedłem służbę wojskową, w dodatku na froncie i jakoś nie jestem taki spokojny! Miałeś dostęp do komputerowych symulatorów pojazdów i pola walki? No popatrz, to po prostu wspaniale. Grałeś sobie w Quake, kiedy do mnie strzelali na froncie, tak? I każesz mi być spokojnym?! I co, trochę się z nich nauczyłeś? Możesz przerzucić jedną kostkę w testach Wozów bojowych, Maszyn Ciężkich i Komputerów? Super. To lepiej przerzucaj, bo mamy kłopoty!"
+            },
+            {
+                "name": "Hi-Tech",
+                "description": "Od maleńkości rosłes w otoczeniu wytworów zaawansowanej technologii. Mikser do pomarańczy, czasem suszarka do włosów. Co więcej, było i radio, a nawet jakiś wykrywacz ruchu... No dobra, koniec jaj. Posterunek to najlepiej wyposażony w sprzęt elektroniczny przyczółek ludzkości. W każdym teście związanym z obsługą urządzenia elektronicznego możesz przerzucić jedną z kostek, właśnie dlatego, ze dawno temu za grzechotkę robił ci słoik z porcesorami, a za łopatkę płyta główna."
+            },
+            {
+                "name": "Moloch? Coś o nim słyszałem",
+                "description": "Miałeś kontakt z Molochem i jego tworami. Znasz slangowe nazwy określajace maszyny, potrafisz rozpoznawać je i wiesz czego możesz się spodziewać po każdym z tworów Bestii. Każdy test związany z maszynami Molocha może być dla ciebie co najwyżej Bardzo Trudny."
+            }
+        ]
+    },
+    {
+        "name": "Detroit",
+        "description": "Goście z Detroit są popieprzeni. Jeśli spotkasz na swojej drodze jakiegoś popieprzeńca, spytaj go wprost: \"Co tam ciekawego w Detroit?\". Idę o zakład, ze będzie znał odpowiedź.
+        To chyba jedyni ludzie na świecie, którym wojna się spodobała.
+        Olewają Molocha, bunt maszyn i kłopoty z zakupem Snickersów. Jedyne, co robią, to jeżdżenie po mieście najszybciej jak się da i strzelanie do siebie nawzajem. Ja wiem, że to fajna rozrywka, pognać ulicami miasta z prędkością 100 mil na godzinę i jeszcze sobie postrzelać do innych \"uczestników ruchu\". Z drugiej strony... robić to od trzydziestu lat?
+        Życie w Detroit przypomina nieustanną balangę, a jego mieszkańcy zachowują się jak osiemnastolatek, który dostał na urodziny nowy wóz. To zwyczajna dziecinada. Wiesz, moim zdaniem... Co Ci się tak mordka cieszy? Chłopie, ja tu mówię o poważnych sprawach, a Tobie ci w głowie?! Wyścigi?! No nie mów, że to Ci się podoba?! Człowieku, oni są nieprzystosowani do życia! Są jak ten konik polny z tej bajki, co grał late, a w zimę tak mu piździało, że do mrówki polazł.
+        Brak mi luzu?! Co?! Brak mi czego?!
+        No chłopie, teraz przegiąłeś. My tu mamy wojnę! Mamy katastrofę ekologiczną. Mamy biedę i głów, za pięć lat Moloch zeżre nas wszystkich i jeszcze dopchnie nas Meksykańcami...
+        Co?! Jak to, dlaczego więc sobie nie poszaleć?!
+        Wiesz co, spadaj. Jedź do SDetroit. Znajdziesz tam kumpli w sam raz dla Ciebie. Im nie brak luzu, o nie!",
+        "image": "detroit.PNG",
+        "bonus": {
+            "name": "Zręczność",
+            "value": 1
+        },
+        "features": [
+            {
+                "name": "Jeśli ma silnik to ruszy",
+                "description": "W czasie nie dłuższym niż 30 sekund jesteś w stanie uruchomić dowolny pojazd z silnikiem spalinowym, pod warunkiem, że jest on zdatny do jazdy. I o ile ma, paliwo. Jeśli MG uważa, że wóz może jeździć, ty go uruchomisz. Tak to działa."
+            },
+            {
+                "name": "Siódme poty",
+                "description": "Jeżeli prowadzisz dowolny pojazd z silnikiem spalinowym, jesteś w stanie wycisnąć z niego 25% ponad maksymalną prędkość, balansując na granicy zatarcia silnika, a nawet rozpadnięcia się całej konstrukcji maszyny. Kiedy pojazd zatrzyma się, nie ruszy ponownie, aż do momentu naprawienia uszkodzeń (Bardzo Trudny test Mechaniki)"
+            },
+            {
+                "name": "Ale jazda!",
+                "description": "Lata spędzone na ulicach Detroit zrobiły swoje. Jeżeli strzelasz w ruchu - z pędzącego pojazdu, wierzchowca, spadając itp. - nie doliczasz sobie żadnych utrudnień za strzał w ruchu."
+            }
+        ]
+    }
+]
