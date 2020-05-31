@@ -26,6 +26,4 @@ Column {
         button.text = feature.name
         description.text = feature.description
     }
-
-    onWidthChanged: console.log("Feature.onWidthChanged:", width)
 }
