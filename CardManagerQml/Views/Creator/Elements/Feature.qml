@@ -3,12 +3,15 @@ import QtQuick.Controls 2.12
 
 Column {
     property var feature
+    property ButtonGroup group
+    property alias checked: button.checked
 
     id: main
     height: main.implicitHeight
     
     RadioButton {
         id: button
+        ButtonGroup.group: main.group
         text: qsTr("Nazwa cechy")
         font.bold: true
         font.pointSize: 10

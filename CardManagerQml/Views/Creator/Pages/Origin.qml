@@ -53,7 +53,9 @@ Page {
                             var component = Qt.createComponent("./../Elements/Feature.qml")
                             var object = component.createObject(featuresColumn, {
                                                                     feature: item.features[j],
-                                                                    width: featuresColumn.width
+                                                                    width: featuresColumn.width,
+                                                                    group: originGroup,
+                                                                    checked: parseInt(j) === 0
                                                                 })
                             featuresColumn.objects.push(object)
                         }
@@ -89,6 +91,8 @@ Page {
                     id: featuresColumn
                     width: features.width * 0.6
                     height: featuresColumn.implicitHeight
+
+                    ButtonGroup { id: originGroup }
 
                     Text {
                         text: qsTr("Cecha z pochodzenia")
