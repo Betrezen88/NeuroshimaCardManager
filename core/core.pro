@@ -1,4 +1,5 @@
 QT -= gui
+QT += qml
 
 TEMPLATE = lib
 DEFINES += CORE_LIBRARY
@@ -17,10 +18,40 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Card/Card.cpp \
+    Card/Data.cpp \
+    Card/Elements/Stats/Attribute.cpp \
+    Card/Elements/Stats/Disease.cpp \
+    Card/Elements/Stats/OtherSkill.cpp \
+    Card/Elements/Stats/Penalty.cpp \
+    Card/Elements/Stats/Requirement.cpp \
+    Card/Elements/Stats/Skill.cpp \
+    Card/Elements/Stats/Skillpack.cpp \
+    Card/Elements/Stats/Symptom.cpp \
+    Card/Elements/Stats/Trick.cpp \
+    Card/Pages/Page.cpp \
+    Card/Pages/Stats.cpp \
+    Managers/CardManager.cpp \
+    Managers/MainManager.cpp \
     Utils/CardBuilder.cpp \
     Utils/DataReader.cpp
 
 HEADERS += \
+    Card/Card.h \
+    Card/Data.h \
+    Card/Elements/Stats/Attribute.h \
+    Card/Elements/Stats/Disease.h \
+    Card/Elements/Stats/OtherSkill.h \
+    Card/Elements/Stats/Penalty.h \
+    Card/Elements/Stats/Requirement.h \
+    Card/Elements/Stats/Skill.h \
+    Card/Elements/Stats/Skillpack.h \
+    Card/Elements/Stats/Symptom.h \
+    Card/Elements/Stats/Trick.h \
+    Card/Pages/Page.h \
+    Card/Pages/Stats.h \
+    Managers/CardManager.h \
+    Managers/MainManager.h \
     Utils/CardBuilder.h \
     Utils/DataReader.h \
     core_global.h
