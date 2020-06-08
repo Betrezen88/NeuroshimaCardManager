@@ -40,55 +40,42 @@ Item {
             id: name
             width: main.width
             name: "Imię"
-//            value: personalData.fullname
         }
 
         PersonalField {
             id: origin
             width: main.width
             name: "Pochodzenie"
-//            value: personalData.origin.name
-//            description: personalData.origin.description
         }
 
         PersonalField {
             id: profession
             width: main.width
             name: "Profesja"
-//            value: personalData.profession.name
-//            description: personalData.profession.description
         }
 
         PersonalField {
             id: specialization
             width: main.width
             name: "Specjalizacja"
-//            value: personalData.specialization.name
-//            description: personalData.specialization.description
         }
 
         PersonalField {
             id: disease
             width: main.width
             name: "Choroba"
-//            value: personalData.disease.name
-//            description: personalData.disease.description
         }
 
         PersonalField {
             id: originFeature
             width: main.width
             name: "Cecha z pochodzenia"
-//            value: personalData.originFeature.name
-//            description: personalData.originFeature.description
         }
 
         PersonalField {
             id: professionFeature
             width: main.width
             name: "Cecha z profesji"
-//            value: personalData.professionFeature.name
-//            description: personalData.professionFeature.description
         }
 
         Button {

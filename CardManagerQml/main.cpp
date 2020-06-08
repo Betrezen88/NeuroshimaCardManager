@@ -23,6 +23,8 @@
 #include "Card/Elements/Stats/Symptom.h"
 #include "Card/Elements/Stats/Trick.h"
 
+#include <QDebug>
+
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
