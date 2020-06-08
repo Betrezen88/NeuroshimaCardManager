@@ -19,9 +19,9 @@ CardBuilder::CardBuilder(QObject *parent) : QObject(parent)
 
 }
 
-Card *CardBuilder::build(const QJsonObject &json)
+Card *CardBuilder::build(const QString &filePath, const QJsonObject &json)
 {
-    Card *pCard = new Card();
+    Card *pCard = new Card(filePath);
 
     if ( json.contains("stats") )
         pCard->addPage( statsPage(json.value("stats").toObject()) );

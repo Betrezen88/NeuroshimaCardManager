@@ -5,6 +5,13 @@ Card::Card(QObject *parent) : QObject(parent)
 
 }
 
+Card::Card(const QString &filepath, QObject *parent)
+    : QObject(parent),
+      m_filePath(filepath)
+{
+
+}
+
 void Card::addPage(Page *page)
 {
     page->setParent(this);

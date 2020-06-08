@@ -20,7 +20,7 @@ public:
 signals:
 
 public slots:
-    Card *build(const QJsonObject &json);
+    Card *build(const QString &filePath, const QJsonObject &json);
 
 private:
     Stats *statsPage(const QJsonObject &stats);

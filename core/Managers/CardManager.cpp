@@ -101,7 +101,7 @@ void CardManager::loadCard(const QString &filePath)
 
     CardBuilder builder;
 
-    appendCard( builder.build(std::get<1>(data).object()) );
+    appendCard( builder.build(filePath, std::get<1>(data).object()) );
 }
 
 void CardManager::closeCard(const QString &filePath)
