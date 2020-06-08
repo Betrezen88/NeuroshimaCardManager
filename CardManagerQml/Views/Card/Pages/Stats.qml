@@ -91,7 +91,7 @@ Pane {
     }
 
     onStatsDataChanged: {
-        personal.personalData = statsData.personal;
+        personal.personalData = statsData;
         tricks.tricks = statsData.tricks;
         budowa.attribute = statsData.attributes[0];
         dexterity.attribute = statsData.attributes[1];
