@@ -1,149 +1,114 @@
 ﻿#include "CardBuilder.h"
 
-#include "Card/CardData.h"
-#include "Card/Pages/StatsData.h"
-#include "Card/Elements/Stats/PersonalData.h"
-#include "Card/Elements/Stats/OriginData.h"
-#include "Card/Elements/Stats/ProfessionData.h"
-#include "Card/Elements/Stats/SpecializationData.h"
-#include "Card/Elements/Stats/DiseaseData.h"
-#include "Card/Elements/Stats/FeatureData.h"
-#include "Card/Elements/Stats/AttributeData.h"
-#include "Card/Elements/Stats/SkillpackData.h"
-#include "Card/Elements/Stats/SkillData.h"
-#include "Card/Elements/Stats/OtherSkillData.h"
-#include "Card/Elements/Stats/TrickData.h"
+#include "Card/Data.h"
+#include "Card/Card.h"
+#include "Card/Pages/Stats.h"
+#include "Card/Elements/Stats/Attribute.h"
+#include "Card/Elements/Stats/Skillpack.h"
+#include "Card/Elements/Stats/Skill.h"
+#include "Card/Elements/Stats/Disease.h"
+#include "Card/Elements/Stats/Trick.h"
+#include "Card/Elements/Stats/OtherSkill.h"
 
 #include <QJsonValue>
+
+#include <QDebug>
 
 CardBuilder::CardBuilder(QObject *parent) : QObject(parent)
 {
 
 }
 
-CardData *CardBuilder::build(const QJsonObject &json)
+Card *CardBuilder::build(const QJsonObject &json)
 {
-    CardData *pCard = new CardData();
+    Card *pCard = new Card();
 
-    pCard->setStats( stats(json.value("stats").toObject()) );
+    if ( json.contains("stats") )
+        pCard->addPage( statsPage(json.value("stats").toObject()) );
 
     return pCard;
 }
 
-StatsData *CardBuilder::stats(const QJsonObject &stats)
+Stats *CardBuilder::statsPage(const QJsonObject &stats)
 {
-    StatsData *pStats = new StatsData();
-
-    pStats->setPersonal( personal(stats.value("personal").toObject()) );
-    pStats->setAttributes( attributes(stats.value("attributes").toArray()) );
-
-    if ( stats.contains("otherSkills") )
-        pStats->setOtherSkills( otherSkills(stats.value("otherSkills").toArray()) );
-
-    if ( stats.contains("tricks") )
-        pStats->setTricks( tricks(stats.value("tricks").toArray()) );
-
-    return pStats;
-}
-
-PersonalData *CardBuilder::personal(const QJsonObject &personal)
-{
-    PersonalData *pPersonal = new PersonalData();
-
+    const QJsonObject &personal = stats.value("personal").toObject();
     const QJsonObject &name = personal.value("name").toObject();
-    pPersonal->setName( name.value("name").toString() );
-    pPersonal->setNickname( name.value("nickname").toString() );
-    pPersonal->setSurname( name.value("surname").toString() );
-
     const QJsonObject &origin = personal.value("origin").toObject();
-    pPersonal->setOrigin( new OriginData(origin.value("name").toString(),
-                                     origin.value("description").toString()) );
-
     const QJsonObject &profession = personal.value("profession").toObject();
-    pPersonal->setProfession( new ProfessionData(profession.value("name").toString(),
-                                             profession.value("description").toString()) );
-
     const QJsonObject &specialization = personal.value("specialization").toObject();
-    pPersonal->setSpecialization( new SpecializationData(specialization.value("name").toString(),
-                                                     specialization.value("description").toString()) );
-
     const QJsonObject &disease = personal.value("disease").toObject();
-    pPersonal->setDisease( new DiseaseData(disease.value("name").toString(),
-                                       disease.value("description").toString()) );
-
     const QJsonObject &features = personal.value("features").toObject();
-    const QJsonObject &originFeature = features.value("origin").toObject();
-    pPersonal->setOriginFeature( new FeatureData(originFeature.value("name").toString(),
-                                                 originFeature.value("description").toString()) );
+    const QJsonObject &fOrigin = features.value("origin").toObject();
+    const QJsonObject &fProfession = features.value("profession").toObject();
 
-    const QJsonObject &professionFeature = features.value("profession").toObject();
-    pPersonal->setProfessionFeature( new FeatureData(professionFeature.value("name").toString(),
-                                                     professionFeature.value("description").toString()) );
+    QVector<Symptom*> symptoms;
+    QVector<Attribute*> attributes;
 
-    return pPersonal;
-}
-
-QList<AttributeData *> CardBuilder::attributes(const QJsonArray &attributes)
-{
-    QList<AttributeData*> attributeList;
-
-    for ( const QJsonValue &attribute: attributes ) {
+    for ( const QJsonValue &attribute: stats.value("attributes").toArray() ) {
         const QJsonObject &tAttribute = attribute.toObject();
-        AttributeData *pAttribute = new AttributeData( tAttribute.value("name").toString(),
-                                                       tAttribute.value("value").toInt() );
-        for ( const QJsonValue &skillpack: tAttribute.value("skillpacks").toArray() ) {
+
+        QVector<Skillpack*> skillpacks;
+
+        for ( const QJsonValue skillpack: tAttribute.value("skillpacks").toArray() ) {
             const QJsonObject &tSkillpack = skillpack.toObject();
 
             QStringList specializations;
-            for ( const QJsonValue &specialization: tSkillpack.value("specializations").toArray() ) {
-                specializations << specialization.toString();
+            for ( const QJsonValue &spec: tSkillpack.value("specializations").toArray() ) {
+                specializations.push_back( spec.toString() );
             }
 
-            SkillpackData *pSkillpack = new SkillpackData( tSkillpack.value("name").toString(),
-                                                           specializations );
+            QVector<Skill*> skills;
 
             for ( const QJsonValue &skill: tSkillpack.value("skills").toArray() ) {
                 const QJsonObject &tSkill = skill.toObject();
-                SkillData *pSkill = new SkillData( tSkill.value("name").toString(),
-                                                   tSkill.value("value").toInt() );
-                pSkillpack->addSkill( pSkill );
+                skills.push_back( new Skill(tSkill.value("name").toString(),
+                                            tSkill.value("value").toInt()) );
             }
-            pAttribute->addSkillpack( pSkillpack );
+            skillpacks.push_back( new Skillpack(tSkillpack.value("name").toString(),
+                                                specializations,
+                                                skills) );
         }
-
-        attributeList.push_back( pAttribute );
+        attributes.push_back( new Attribute(tAttribute.value("name").toString(),
+                                            tAttribute.value("value").toInt(),
+                                            skillpacks) );
     }
 
-    return attributeList;
-}
-
-QList<OtherSkillData *> CardBuilder::otherSkills(const QJsonArray &otherSkills)
-{
-    QList<OtherSkillData*> otherSkillsList;
-
-    for ( const QJsonValue &otherSkill: otherSkills ) {
-        const QJsonObject &tOtherSkill = otherSkill.toObject();
-        OtherSkillData *pOtherSkill = new OtherSkillData( tOtherSkill.value("name").toString(),
-                                                          tOtherSkill.value("value").toInt(),
-                                                          tOtherSkill.value("attribute").toString() );
-        otherSkillsList.push_back( pOtherSkill );
-    }
-
-    return otherSkillsList;
-}
-
-QList<TrickData *> CardBuilder::tricks(const QJsonArray &tricks)
-{
-    QList<TrickData*> tricksList;
-
-    for ( const QJsonValue &trick: tricks ) {
+    QVector<Trick*> tricks;
+    for ( const QJsonValue &trick: stats.value("tricks").toArray() ) {
         const QJsonObject &tTrick = trick.toObject();
 
-        TrickData *pTrick = new TrickData( tTrick.value("name").toString(),
-                                           tTrick.value("description").toString(),
-                                           tTrick.value("action").toString() );
-        tricksList.push_back( pTrick );
+        tricks.push_back( new Trick(tTrick.value("name").toString(),
+                                    tTrick.value("description").toString(),
+                                    tTrick.value("action").toString()) );
     }
 
-    return tricksList;
+    QVector<OtherSkill*> otherSkills;
+    for ( const QJsonValue &otherSkill: stats.value("otherSkills").toArray() ) {
+        const QJsonObject &tOtherSkill = otherSkill.toObject();
+
+        otherSkills.push_back( new OtherSkill(tOtherSkill.value("name").toString(),
+                                              tOtherSkill.value("value").toInt(),
+                                              tOtherSkill.value("attribute").toString()) );
+    }
+
+    return new Stats(name.value("name").toString(),
+                     name.value("surname").toString(),
+                     name.value("nickname").toString(),
+                     new Data(origin.value("name").toString(),
+                              origin.value("description").toString()),
+                     new Data(profession.value("name").toString(),
+                              profession.value("description").toString()),
+                     new Data(fOrigin.value("name").toString(),
+                              fOrigin.value("description").toString()),
+                     new Data(fProfession.value("name").toString(),
+                              fProfession.value("description").toString()),
+                     new Data(specialization.value("name").toString(),
+                              specialization.value("description").toString()),
+                     new Disease(disease.value("name").toString(),
+                                 disease.value("disease").toString(),
+                                 disease.value("cure").toString(),
+                                 QVector<Symptom*>()),
+                     attributes,
+                     tricks,
+                     otherSkills );
 }

@@ -1,7 +1,6 @@
 ﻿#include "DataReader.h"
 
 #include "CardBuilder.h"
-#include "Card/CardData.h"
 
 #include <QFile>
 #include <QJsonArray>

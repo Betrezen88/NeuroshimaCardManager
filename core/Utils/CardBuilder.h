@@ -8,12 +8,8 @@
 
 #include "core_global.h"
 
-class CardData;
-class StatsData;
-class PersonalData;
-class AttributeData;
-class OtherSkillData;
-class TrickData;
+class Card;
+class Stats;
 
 class CORE_EXPORT CardBuilder : public QObject
 {
@@ -24,14 +20,10 @@ public:
 signals:
 
 public slots:
-    CardData *build(const QJsonObject &json);
+    Card *build(const QJsonObject &json);
 
 private:
-    StatsData *stats(const QJsonObject &stats);
-    PersonalData *personal(const QJsonObject &personal);
-    QList<AttributeData *> attributes(const QJsonArray &attributes);
-    QList<OtherSkillData *> otherSkills(const QJsonArray &otherSkills);
-    QList<TrickData *> tricks(const QJsonArray &tricks);
+    Stats *statsPage(const QJsonObject &stats);
 };
 
 #endif // CARDBUILDER_H
