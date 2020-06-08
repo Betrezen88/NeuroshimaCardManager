@@ -168,7 +168,7 @@ Page {
                         color: cardItem.ListView.isCurrentItem ? "red" : "#fff"
 
                         Text {
-                            text: model.stats.personal.fullname
+                            text: model.stats.fullname
                             height: 40
                             width: parent.width - 45
                             verticalAlignment: Text.AlignVCenter
