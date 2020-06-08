@@ -4,6 +4,8 @@ import QtQuick.Dialogs 1.2
 
 import "./Views"
 
+import core 1.0
+
 ApplicationWindow {
     id: main
     visible: true
