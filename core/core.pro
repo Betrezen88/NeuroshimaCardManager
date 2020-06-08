@@ -17,36 +17,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Card/CardData.cpp \
-    Card/Elements/Stats/AttributeData.cpp \
-    Card/Elements/Stats/DiseaseData.cpp \
-    Card/Elements/Stats/FeatureData.cpp \
-    Card/Elements/Stats/OriginData.cpp \
-    Card/Elements/Stats/OtherSkillData.cpp \
-    Card/Elements/Stats/PersonalData.cpp \
-    Card/Elements/Stats/ProfessionData.cpp \
-    Card/Elements/Stats/SkillData.cpp \
-    Card/Elements/Stats/SkillpackData.cpp \
-    Card/Elements/Stats/SpecializationData.cpp \
-    Card/Elements/Stats/TrickData.cpp \
-    Card/Pages/StatsData.cpp \
     Utils/CardBuilder.cpp \
     Utils/DataReader.cpp
 
 HEADERS += \
-    Card/CardData.h \
-    Card/Elements/Stats/AttributeData.h \
-    Card/Elements/Stats/DiseaseData.h \
-    Card/Elements/Stats/FeatureData.h \
-    Card/Elements/Stats/OriginData.h \
-    Card/Elements/Stats/OtherSkillData.h \
-    Card/Elements/Stats/PersonalData.h \
-    Card/Elements/Stats/ProfessionData.h \
-    Card/Elements/Stats/SkillData.h \
-    Card/Elements/Stats/SkillpackData.h \
-    Card/Elements/Stats/SpecializationData.h \
-    Card/Elements/Stats/TrickData.h \
-    Card/Pages/StatsData.h \
     Utils/CardBuilder.h \
     Utils/DataReader.h \
     core_global.h
