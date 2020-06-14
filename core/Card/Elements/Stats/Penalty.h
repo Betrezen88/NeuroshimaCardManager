@@ -19,7 +19,7 @@ public:
     Penalty(QObject *parent = nullptr);
     Penalty(const QString &name,
             const int &value,
-            Type &type,
+            const Type &type,
             QObject *parent = nullptr);
 
     Type type() const;
