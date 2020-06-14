@@ -63,7 +63,7 @@ public:
     QQmlListProperty<Attribute> attributes();
     int attributesCount() const;
     Attribute* attribute(const int &index) const;
-    Attribute* attribute(const QString &name);
+    Q_INVOKABLE Attribute* attribute(const QString &name);
 
     QQmlListProperty<Trick> tricks();
     int tricksCount() const;
