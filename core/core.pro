@@ -57,6 +57,7 @@ HEADERS += \
     Card/Elements/Stats/Trick.h \
     Card/Pages/Page.h \
     Card/Pages/Stats.h \
+    DataSources/DataSource.h \
     DataSources/Elements/Stats/Bonus.h \
     DataSources/Elements/Stats/Feature.h \
     DataSources/Elements/Stats/HeroData.h \
