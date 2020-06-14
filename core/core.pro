@@ -32,6 +32,7 @@ SOURCES += \
     Card/Pages/Page.cpp \
     Card/Pages/Stats.cpp \
     DataSources/Elements/Stats/Bonus.cpp \
+    DataSources/Elements/Stats/Feature.cpp \
     DataSources/Elements/Stats/HeroData.cpp \
     Managers/CardManager.cpp \
     Managers/MainManager.cpp \
@@ -53,6 +54,7 @@ HEADERS += \
     Card/Pages/Page.h \
     Card/Pages/Stats.h \
     DataSources/Elements/Stats/Bonus.h \
+    DataSources/Elements/Stats/Feature.h \
     DataSources/Elements/Stats/HeroData.h \
     Managers/CardManager.h \
     Managers/MainManager.h \
