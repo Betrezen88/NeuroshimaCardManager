@@ -31,6 +31,7 @@ SOURCES += \
     Card/Elements/Stats/Trick.cpp \
     Card/Pages/Page.cpp \
     Card/Pages/Stats.cpp \
+    DataSources/Elements/Stats/HeroData.cpp \
     Managers/CardManager.cpp \
     Managers/MainManager.cpp \
     Utils/CardBuilder.cpp \
@@ -50,6 +51,7 @@ HEADERS += \
     Card/Elements/Stats/Trick.h \
     Card/Pages/Page.h \
     Card/Pages/Stats.h \
+    DataSources/Elements/Stats/HeroData.h \
     Managers/CardManager.h \
     Managers/MainManager.h \
     Utils/CardBuilder.h \
