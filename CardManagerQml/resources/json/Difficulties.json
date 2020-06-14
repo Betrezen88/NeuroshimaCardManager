@@ -1,0 +1,51 @@
+﻿[
+    {
+        "name": {
+            "full": "Łatwy",
+            "short": "Łat."
+        },
+        "value": 2
+    },
+    {
+        "name": {
+            "full": "Przeciętny",
+            "short": "Prze."
+        },
+        "value": 0
+    },
+    {
+        "name": {
+            "full": "Problematyczny",
+            "short": "Prob."
+        },
+        "value": -2
+    },
+    {
+        "name": {
+            "full": "Trudny",
+            "short": "Trud."
+        },
+        "value": -5
+    },
+    {
+        "name": {
+            "full": "Bardzo Trudny",
+            "short": "B.Tr."
+        },
+        "value": -8
+    },
+    {
+        "name": {
+            "full": "Cholernie Trudny",
+            "short": "Ch.T."
+        },
+        "value": -11
+    },
+    {
+        "name": {
+            "full": "Fuks",
+            "short": "Fuks"
+        },
+        "value": -15
+    }
+]

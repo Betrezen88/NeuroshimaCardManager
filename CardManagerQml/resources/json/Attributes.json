@@ -1,0 +1,204 @@
+﻿[
+    {
+        "name": "Budowa",
+        "skillpacks": [
+            {
+                "name": "Sprawność",
+                "specializations": [ "Ranger" ],
+                "skills": [
+                    "Kondycja",
+                    "Pływanie",
+                    "Wspinaczka"
+                ]
+            },
+            {
+                "name": "Jeździectwo",
+                "specializations": [ "Ranger" ],
+                "skills": [
+                    "Jazda Konna",
+                    "Powożenie",
+                    "Ujeżdżanie"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Zręczność",
+        "skillpacks": [
+            {
+                "name": "Walka Wręcz",
+                "specializations": [ "Wojownik" ],
+                "skills": [
+                    "Bijatyka",
+                    "Broń Ręczna",
+                    "Rzucanie"
+                ]
+            },
+            {
+                "name": "Prowadzenie Pojazdów",
+                "specializations": [ "Technik" ],
+                "skills": [
+                    "Samochód",
+                    "Motocykl",
+                    "Ciężarówka"
+                ]
+            },
+            {
+                "name": "Zdolności Manualne",
+                "specializations": [ "Cwaniak" ],
+                "skills": [
+                    "Kradzież Kieszonkowa",
+                    "Otwieranie Zamków",
+                    "Zwinne Dłonie"
+                ]
+            },
+            {
+                "name": "Broń Strzelecka",
+                "specializations": [ "Wojownik" ],
+                "skills": [
+                    "Pistolety",
+                    "Karabiny",
+                    "Broń Maszynowa"
+                ]
+            },
+            {
+                "name": "Broń Dystansowa",
+                "specializations": [ "Ranger", "Wojownik" ],
+                "skills": [
+                    "Łuk",
+                    "Kusza",
+                    "Proca"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Charakter",
+        "skillpacks": [
+            {
+                "name": "Negocjacje",
+                "specializations": [ "Cwaniak" ],
+                "skills": [
+                    "Zastraszanie",
+                    "Perswazja",
+                    "Zdolności Przywódcze"
+                ]
+            },
+            {
+                "name": "Empatia",
+                "specializations": [ "Cwaniak" ],
+                "skills": [
+                    "Postrzeganie Emocji",
+                    "Blef",
+                    "Opieka nad Zwierzętami"
+                ]
+            },
+            {
+                "name": "Siła Woli",
+                "specializations": [ "Wojownik" ],
+                "skills": [
+                    "Odporność na Ból",
+                    "Niezłomność",
+                    "Morale"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Spryt",
+        "skillpacks": [
+            {
+                "name": "Medycyna",
+                "specializations": [ "Ranger", "Technik" ],
+                "skills": [
+                    "Pierwsza Pomoc",
+                    "Leczenie Ran",
+                    "Leczenie Chorób"
+                ]
+            },
+            {
+                "name": "Technika",
+                "specializations": [ "Technik" ],
+                "skills": [
+                    "Mechanika",
+                    "Elektronika",
+                    "Komputery"
+                ]
+            },
+            {
+                "name": "Wiedza Ogólna",
+                "specializations": [ "Technik" ],
+                "skills": [
+                    "Historia",
+                    "Biologia",
+                    "Chemia",
+                    "Geografia",
+                    "Literatura",
+                    "Języki",
+                    "Fizyka",
+                    "Matematyka",
+                    "Chirurgia"
+                ]
+            },
+            {
+                "name": "Sprzęt",
+                "specializations": [ "Technik" ],
+                "skills": [
+                    "Maszyny Ciężkie",
+                    "Wozy Bojowe",
+                    "Kutry"
+                ]
+            },
+            {
+                "name": "Pirotechnika",
+                "specializations": [ "Wojownik", "Technik" ],
+                "skills": [
+                    "Rusznikarstwo",
+                    "Wyrzutnie",
+                    "Materiały Wybuchowe"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Percepcja",
+        "skillpacks": [
+            {
+                "name": "Orientacja w Terenie",
+                "specializations": [ "Ranger" ],
+                "skills": [
+                    "Wyczucie Kierunku",
+                    "Przygotowanie Pułapki",
+                    "Tropienie"
+                ]
+            },
+            {
+                "name": "Spostrzegawczość",
+                "specializations": [ "Ranger" ],
+                "skills": [
+                    "Nasłuchiwanie",
+                    "Wypatrywanie",
+                    "Czujność"
+                ]
+            },
+            {
+                "name": "Kamuflaż",
+                "specializations": [ "Ranger", "Cwaniak" ],
+                "skills": [
+                    "Skradanie się",
+                    "Ukrywanie się",
+                    "Maskowanie"
+                ]
+            },
+            {
+                "name": "Przetrwanie",
+                "specializations": [ "Ranger" ],
+                "skills": [
+                    "Łowiectwo",
+                    "Znajomość Terenu",
+                    "Zdobywanie Wody"
+                ]
+            }
+        ]
+    }
+]

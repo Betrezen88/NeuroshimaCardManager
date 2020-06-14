@@ -1,0 +1,18 @@
+﻿[
+    {
+        "name": "Technik",
+        "description": "Tak brachu, urodziłeś się ze śubokrętem w ręce. Potrafisz naprawić dosłownie wszystko, od samochodu, przez system sterowania pociskami, na mikserze kończąc. Wystarczy, że spojrzysz na jakieś plany, a już wiesz, co przedstawiają. Wystarczy, że dotkniesz, a już działa. To dar. Nie lekceważ go."
+    },
+    {
+        "name": "Ranger",
+        "description": "Pustynia, chłopcze, to Twój żywioł. I powiem Ci, nie wiem co widzisz w tej kupie piachu, co podnieca Cię w przedzieraniu się przez krzaczory, łażeniu po lecie i polowaniu na zwierzaki. Nie mam bladego pojęcia, ale trzeba Ci przyznać jesteś w tym dobry. Potrafisz wytropić nawet mrówkę. Znaleźć źródło czystej wody na środku Mohawe. Rozpalisz ogień, rozbijesz obóz, przygotujesz posiłek i będziesz się świetnie bawił w warunkach, w których ja zdechłbym z głodu. Nie bądź taki zadowolony. To wciąż ja mam w ręce gnata. Więc nawet nie próbuj się głupio usmiechać."
+    },
+    {
+        "name": "Wojownik",
+        "description": "Różne są umiejętności, jedni wspaniale gotują, inni potrafią grać na gitarze. Ty potrafisz walczyć. Jesteś w tym dobry. Jeden z najlepszych. Rozwalić ośmiu palantów bez zmiany magazynka? To proste. Odstrzelić łeb facetowi ochranianemu przez zgraję ochroniarzy, mając w Glocku jeden pocisk? To da radę zrobić. Wylatując z piątego piętra obrócić się w powietrzu i odstrzelić łby dwójce kretynów, nim zrzucą za Tobą granat? Tak..."
+    },
+    {
+        "name": "Cwaniak",
+        "description": "Wchodzisz do nieznanej Ci dotąd osady i zawsze, trafisz do właściwej knajpy, rozmawiasz z właściwym barmanem i rozpoczynasz rozmowę tak, że facet od razu staje się Twoim przyjacielem. Wiesz jak gadać z szefem gangu, jak rozśmieszyć bandę mutantów i jak sprawić, by facet, który mierzy Ci prosto w łeb z Magnum, odłożył spluwę i spokojnie Cię wysłuchał. Potrafisz załatwić dostawę broni, skombinujesz kanister benzyny i zdobędziesz łożysko do samochodu, którego ostatni model rozpadł się dwadzieścia lat temu. A propos, potrzebuję srebrny pocisk..."
+    }
+]

@@ -59,6 +59,11 @@
     </qresource>
     <qresource prefix="/json">
         <file>resources/json/Origins.json</file>
+        <file>resources/json/Attributes.json</file>
+        <file>resources/json/Difficulties.json</file>
+        <file>resources/json/Diseases.json</file>
+        <file>resources/json/Professions.json</file>
+        <file>resources/json/Specializations.json</file>
     </qresource>
     <qresource prefix="/pictures">
         <file>resources/pictures/origins/appalachy.PNG</file>

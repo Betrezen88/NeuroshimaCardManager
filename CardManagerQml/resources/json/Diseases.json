@@ -1,0 +1,768 @@
+﻿[
+    {
+        "name": "Zwapnienie płóc",
+        "description": "Chorujesz na zwapnienie płuc? To oznacza, że będziesz miał raczej nikłe szanse podczas biegu. Na przykład, gdy spieprzasz przed wściekłym psem. Masz mniejszą, niż zdrowy człowiek, pojemność płuc. Owszem, na początku gry nie cierpisz z tego powodu. Nie narzekaj, inni mają gorzej. Będziesz się leczył, to wszystko będzie grać.",
+        "cure": "Każde, które nie pozwala na odkładanie się wapnia w organizmie. Nazwy tych leków mają w sobie coś z calcium np. Decalct (dostępność 80%, 24 tabletki wopakowaniu) czy Calcids (dostępność 60%, 50 tabletek w słoiczku). Jest powszechnie dostępny, możesz kupić go nawet w zwykłej przydrożnej knajpie.",
+        "symptoms": [
+            {
+                "name": "Pierwsze symptomy",
+                "description": "Masz krótszy oddech i łatwo dostajesz zadyszki. O bieganiu zapomnij. Odegraj to fajnie, to może Mistrz Gry podrzuci kilka opakowań leku.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -2 },
+                    { "type": "Attribute", "name": "Zręczność", "value": -2 },
+                    { "type": "Mod", "name": "Kondycja", "value": 30 }
+                ]
+            },
+            {
+                "name": "Stan ostry",
+                "description": "Oddech Ci się dalej skraca. Dostajesz niekontrolowanych ataków kaszlu.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -4 },
+                    { "type": "Attribute", "name": "Zręczność", "value": -4 },
+                    { "type": "Mod", "name": "Kondycja", "value": 60 }
+                ]
+            },
+            {
+                "name": "Stan krytyczny",
+                "description": "Oddech krótki, jak linijka pierwszoklasisty.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -10 },
+                    { "type": "Attribute", "name": "Zręczność", "value": -10 },
+                    { "type": "Attribute", "name": "Spryt", "value": -2 },
+                    { "type": "Attribute", "name": "Percepcja", "value": -2 },
+                    { "type": "Mod", "name": "Kondycja", "value": 90 }
+                ]
+            },
+            {
+                "name": "Stan terminalny",
+                "description": "Umierasz kaszląc i dławiąc się.",
+                "penalties": []
+            }
+        ]
+    },
+    {
+        "name": "Gorączka sobotniej nocy",
+        "description": "Zajebista nazwa, ale gdy na nią chorujesz, nie jest wcale tak wesoło. Gorączka sobotniej nocy, to choroba, którą przywlekli ludzie z okolic Waszyngtonu, gdzie na poczatku wojny zdetonowano chyba połowę ziemskiego potencjału militarnego: broń nuklearną, biologiczną, chemiczną. Wszystko, co tylko nadawało się do masowej eksterminacji. Cele były jasne - prezydent i reszta polityków. Retrowirus, którego tam użyto, pochodził się z labolatoriów rosyjskich, tak przynajmniej tłumaczyli to później jajogłowi. Nazwa wzieła sie od filmu, w którym John Travolta tańczy jak paralityk podczas ataku padaczki. Dlaczego? A zajrzyj do opisu objawów, to będziesz wiedział.",
+        "cure": "Valapren. Tylko i wyłączni. Lekarstwo, które produkowane było przez kilka lat w jednej fabryce, gdzieś na północnym wschodzie. Nikt nie wie gdzie - ludzie, którzy handlują lekami nie ujawniają tak łatwo swoich źródeł. Na szczęście zrobili tego straszne ilości, ale w tej chwili niestety, jest na wyczerpaniu - źródełko wysycha, a po za tym w okolicy pojawili się mutanci. Valapren jest coraz trudniej dostępny, jeśli pytasz wędrownego handlarza lekami, czy ma parę pigułek - masz 20% szans, że tak. I jest bardzo drogi. Opakowanie to słoiczek z 20 pastylkami.",
+        "symptoms": [
+            {
+                "name": "Pierwsze symptomy",
+                "description": "Mało przyjemne. Pocisz się i masz niekontrolowane skurcze mięśni. Niektórych rzeczy nie zrobisz, choćbyś się zesrał, co w Twoim stanie jest dość proste, w końcu zwieracze też są mięśniami, nie?",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -3 },
+                    { "type": "Attribute", "name": "Zręczność", "value": -3 },
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": 60 }
+                ]
+            },
+            {
+                "name": "Stan ostry",
+                "description": "Nie możesz wykonywać żadnych precyzyjnych czynności - strzelać, otwierać zamków, prowadzić samochodu. Biegać także nie możesz. Rób często Przeciętny test Budowy, jeśli go nie przejdziesz - mdlejesz na kilka chwil.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -6 },
+                    { "type": "Attribute", "name": "Zręczność", "value": -6 },
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": 90 }
+                ]
+            },
+            {
+                "name": "Stan krytyczny",
+                "description": "Nie możesz przejść więcej niż dziesięć kroków. No dobra - jedenaście przejdziesz. Dwanaście też. Chodziło mi tylko o to, że chodzisz z trudem i nawala Ci błędnik. Niekontrolowane skurcze mięśni powodują, że zaczynasz tańczyć. Dosłownie - podrygujesz, jak małpa na drucie. Taniec jest niekontrolowany i po każdym ataku (Przeciętny test Budowy) padasz nieprzytomny i leżysz tak przez dłuższy czas.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -10 },
+                    { "type": "Attribute", "name": "Zręczność", "value": -10 },
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": 120 }
+                ]
+            },
+            {
+                "name": "Stan terminalny",
+                "description": "Wygląda to, jakby na każdy Twój mięsień można wykonać rzut k20, by okreslić w którą stronę się udaje. Umierasz.",
+                "penalties": []
+            }
+        ]
+    },
+    {
+        "name": "Przewlekła gorączka krwotoczna",
+        "description": "Gdy przed wojną agencje prasowe wspominały o o wystąpieniu gdzieś na świecie gorączki krwotocznej - ludzie wpadli w panikę. Na szczęście tylko do 2013 roku, gdy wynaleziono skuteczne na nią lekarstwo. Wirus Ebola, który wywołuje gorączke krwotoczną, to jeden z najbardziej złośliwych wirusów w historii medycyny. Gdy dodatkowo został wzbogacony o kilka zjadliwych cech był doskonałą wręcz bronią biologiczną. Zabija 50% - 80% chorych. Na szczęście na terenie Stanów większości ludzi należy do tej mniejszości, która jest odporna na jego działanie. Ale nie wszystcy. Jeśli chorujesz na przewlekłą gorączkę krwotoczną - masz cholernego pecha. Jeśli nie będziesz zażywał leków, wszystko, oprócz Twoich kości, zmieni się w galaretkę.",
+        "cure": "Rookillen. Często możesz kupić na sztuki. Dostępność tego jest nienajlepsza - około 40% szans, że na to trafisz. Lepiej kupuj więcej, bo skutki tej choroby są straszne. Uważaj, jeśli masz słabe nerwy - nie choruj na nią, bo to będziesz musiał przeczytać objawy.",
+        "symptoms": [
+            {
+                "name": "Pierwsze symptomy",
+                "description": "Zaczynasz się źle czuć. Na skórze pojawiają Ci się wybroczyny - podskórne wylewy krwi. Jest to wynikiem pojawiania się skrzepów we krwi, która zaczyna płynąć coraz wolniej, a skrzepy przywierają do ścian naczyń krwionośnych.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -2 },
+                    { "type": "Attribute", "name": "Zręczność", "value": -2 },
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": 60 }
+                ]
+            },
+            {
+                "name": "Stan ostry",
+                "description": "Jeśli nie zatrzymasz inwazji wirusa, zacznie się dosłownie rozkładać Twoje ciało od wewnątrz. Ten mały skurwysyn szczególnie sobie upodobał Twoją tkankę łączną. Mnoży się tak, jak głupi. Tkanka przekształca się w papkę. Obumiera i rozpływa się pod skórą, na której, oprócz wybroczyn, pojawiają sie białe plamy. Wygląda to, nie wiem, jak pudding z tapioki. Otwierają, się rany, z których cieknie krew. Jest jej cholernie dużo, bo kapie Ci z każdego naturalnego otworu ciała: z oczu, uszu, dziąseł, gruczołów ślinowych.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -5 },
+                    { "type": "Attribute", "name": "Zręczność", "value": -4 },
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": 90 }
+                ]
+            },
+            {
+                "name": "Stan krytyczny",
+                "description": "Język staje się czerwony i nabrzmiały, nie możesz mówić. Nikogo nie oczarujesz skórą miękką jak galareta, którą możesz odrywać płatami od reszty ciała. Rzygasz czarną, przetrawioną krwią - puszczają Ci wszystkie bariery w organizmie. Serce Ci mięknie - dosłownie.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -10 },
+                    { "type": "Attribute", "name": "Zręczność", "value": -6 },
+                    { "type": "Attribute", "name": "Spryt", "value": -2 },
+                    { "type": "Attribute", "name": "Percepcja", "value": -2 },
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": 120 }
+                ]
+            },
+            {
+                "name": "Stan terminalny",
+                "description": "Ebola niszczy w znacznym stopniu żywą tkankę chociaż Ty jeszcze żyjesz. Wywołuje rozległą martwicę, która powoduje rozpływanie się Twojego ciała, jak galaretka. Skóra języka oddziela się od mięśnia i zostaje połknięta i wypluta. To cholernie boli. Nerki zablokowane skrzepami krwi przestaje działać, w wyniku czego zatruwasz się własnymi szynami. Błony śluzowe, skóra, wszystko się rozpływa. Horror. Umierasz w drgawkach rozchlapując swoją krew dookoła. Zakażona krew pada na innych ludzi. Tak właśnie przenosi się ebola. Jeśli zostałeś ochlapany - zrób sobie Trudny test Budowy. Bez żadnego Suwaka. Jeśli oblałeś (nomen omen) - wiesz, co masz robić. Nową postać.",
+                "penalites": []
+            }
+        ]
+    },
+    {
+        "name": "Mount Rushmore",
+        "description": "Ta choroba nazywa się jak góra, w której wykute były twarze prezydentów USA. Wywołuje ją pozostałość kolejnej broni biologicznej. Tym razem jednak pochodzi z okolic Vegas.",
+        "cure": "Lekarstwem na tę chorobę jest każdy środek rozkurczowy. Najbardziej dostepne są trzy z nich, każdy ma inny efekt uboczny. Po wstrzyknięciu Turbokuraryny (dostepność 70%) występuje godzinne porażenie mięśni twarzy i trudności z przełykaniem. Benzodiazepiny (dostępność 50%) jako lek miorelaksujący działający na wszystkie mięśnie poprzecznie prążkowane, powoduje senność i otępienie (+20% na dwie godziny po zażyciu), a Progabid (dostępność 40%) wywołuje drżenie nóg i rąk (+10 do czynności manualnych).",
+        "symptoms": [
+            {
+                "name": "Pierwsze symptomy",
+                "description": "To jedna z niewielu chorób, która coś Ci dodaje - masz lekko zesztywniałe mięśnie, a najbardziej te twarzy. Kamienna twarz musi dawać Ci jakieś  bonusy. Ale to nie wszystko. To samo sztywnenie mięśni to jednak takrze strzywne paluszki. Wszystko, co wymaga szybkiego poruszania się, jest dla Ciebie problemem.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -2 },
+                    { "type": "Attribute", "name": "Zręczność", "value": -2 },
+                    { "type": "Attribute", "name": "Percepcja", "value": -2 },
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": -20 }
+                ]
+            },
+            {
+                "name": "Stan ostry",
+                "description": "W przyrodzie nic nie ginie: oddawaj bonus. Twoja twarz jest kamienna (dlatego Mount Rushmore to fajny pomysł, nie?). Masz kłopoty z mówieniem, jedzeniem czy poruszaniem się.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -4 },
+                    { "type": "Attribute", "name": "Zręczność", "value": -4 },
+                    { "type": "Attribute", "name": "Percepcja", "value": -2 },
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": 30 }
+                ]
+            },
+            {
+                "name": "Stan krytyczny",
+                "description": "Jesteś sztywny, jak ten, no, po Viagrze. No wiesz, dosłownie stoisz, nie możesz się właściwie się poruszać.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -10 },
+                    { "type": "Attribute", "name": "Zręczność", "value": -10 },
+                    { "type": "Attribute", "name": "Percepcja", "value": -4 },
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": 60 }
+                ]
+            },
+            {
+                "name": "Stan terminalny",
+                "description": "Gdy ktoś Ci powie, że masz serce z kamienia, nie obrażaj się. Mówi prawdę. Umierasz.",
+                "penalties": []
+            }
+        ]
+    },
+    {
+        "name": "Syndrom Obcego",
+        "description": "Był kiedyś taki film, ganiał w nim potworek, który zamiast krwi miał stężony kwas. Jeśli zaświeciły Ci się teraz oczy, to je zgasimy - nie będziesz miał kwaśnej krwi ani dwóch szczęk. Zwiększy się za to kwasowość potu. To choroba genetyczna, będąca skutkiem mutacji. Mało przyjemna, ale raczej bezpieczna.",
+        "cure": "Coś, co obniża kwasowość potu. Możesz wymyślić jakąś fajną nazwę. Na rynku możesz dostać Pinio (dostępność 60%), sprzedawany na butelki, bo to syrop. Z jednej butelki starczy na 50 łyżek.",
+        "symptoms": [
+            {
+                "name": "Pierwsze symptomy",
+                "description": "Na skutek zwiększonej kwasowości potu, zaczyna Cię swędzieć skóra. Nie jesteś w stanie się rozglądać, bo musisz się drapać, albo jeszcze lepiej - oblewać wodą.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Percepcja", "value": -5 },
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": 30 }
+                ]
+            },
+            {
+                "name": "Stan ostry",
+                "description": "Zaczynasz śmierdzieć, W dodatku robią Ci się odparzenia na skórze.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -4 },
+                    { "type": "Attribute", "name": "Zręczność", "value": -4 },
+                    { "type": "Attribute", "name": "Percepcja", "value": -4 },
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": 90 },
+                    { "type": "ModPerm", "name": "kontakt z ludźmi", "value": 10 }
+                ]
+            },
+            {
+                "name": "Stan krytyczny",
+                "description": "Ból staje się nie do żniesienia. Śmierdzisz, jak śmierdziałeś i Twoja sytuacja nie może się już w tej kwestii pogorszyć. Po wyjściu z choroby dalej jesteś szpetny, więc załatw sobie jakąś fajną maskę.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -8 },
+                    { "type": "Attribute", "name": "Zręczność", "value": -8 },
+                    { "type": "Attribute", "name": "Percepcja", "value": -8 },
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": 90 }
+                ]
+            },
+            {
+                "name": "Stan terminalny",
+                "description": "A jednak może się pogorszyć. Nie umierasz na coś takiego. Po wejściu w stan terminalny masz jedynie mnóstwo odparzeń, więc gdy wyzdrowiejesz, wygląd nie wróci już do normy, tak już zostanie. Zasady zdrowienia jak przypadku stanu krytycznego.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -8 },
+                    { "type": "Attribute", "name": "Zręczność", "value": -8 },
+                    { "type": "Attribute", "name": "Percepcja", "value": -8 },
+                    { "type": "ModPerm", "name": "kontakty z ludźmi", "value": 90 }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Chore nery",
+        "description": "Twoje nerki, na skutek przebytych w przeszłości chorób są w strzępach. Nie działają poprawnie i czujesz to za każdym razem, gdy np. napijesz się piwa. Przed wojną mozna było się leczyć dializami. Dziś znalezienie sprawnego aparatu zakrawa na cud. Na szczęście są środki farmakologiczne.",
+        "cure": "Preparaty moczopędne, np. Uregyt, do tego kwas foliowy i preparaty żelaza (dostępność każdego 80%). Muszą być mieszane razem, osobno działają ze skutecznością 30%. Mieszanka posiada dostępność 50%.",
+        "symptoms": [
+            {
+                "name": "Pierwsze symptomy",
+                "description": "Łatwo pomyliś z niewyspaniem - jestes zmęczony, osłabiony, kleją Ci się oczy, masz problemy z koncentracją.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -2 },
+                    { "type": "Attribute", "name": "Zręczność", "value": -2 },
+                    { "type": "Attribute", "name": "Percepcja", "value": -3 },
+                    { "type": "Attribute", "name": "Spryt", "value": -2 },
+                    { "type": "Mod", "name": "do wszystkich testów", "value": 30 }
+                ]
+            },
+            {
+                "name": "Stan ostry",
+                "description": "Nie chce Ci się jeść, często chodzisz w krzaki za potrzebą, zwłaszcza nocą - bez efektu. Jest Ci duszno, a ciało masz obrzęknięte - puchniesz od wody. Nie możesz się skoncentrować.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -4 },
+                    { "type": "Attribute", "name": "Zręczność", "value": -4 },
+                    { "type": "Attribute", "name": "Percepcja", "value": -5 },
+                    { "type": "Attribute", "name": "Spryt", "value": -5 },
+                    { "type": "Mod", "name": "do wszystkich testów", "value": 60 }
+                ]
+            },
+            {
+                "name": "Stan krytyczny",
+                "description": "Leje się z Ciebie z obu stron: rzygasz jak kot i masz sraczkę. Za to nie sikasz. Pierwsze i drugie prowadzi do odwodnienia. Trzecie - do mocznicy, czyli zatrucia organizmu moczem.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -10 },
+                    { "type": "Attribute", "name": "Zręczność", "value": -6 },
+                    { "type": "Attribute", "name": "Percepcja", "value": -8 },
+                    { "type": "Attribute", "name": "Spryt", "value": -8 },
+                    { "type": "Mod", "name": "do wszystkich testów", "value": 90 }
+                ]
+            },
+            {
+                "name": "Stan terminalny",
+                "description": "Wytwory przemiany materii nie wydalone przez nerki \"rozsadzają\" Cię od środka. Umierasz na skutek mocznicy.",
+                "penalties": []
+            }
+        ]
+    },
+    {
+        "name": "Alergie",
+        "description": "Mój dziadek, który przeżył wojnę, opowiadał mi, że na przełomie tysiącleci, na alergię cierpiały rzesze ludzi. A dziś? Dziś nie ma już rzesz ludzi, ale alergicy jak byli, tak są. Alergia to tak powszechna choroba, że właściwie nie powinna się tutaj znaleźć. Jak mawiał starusze Bill Gates: to nie wada, to cecha.\n\tJesli Twoja postać choruje na alergię, musisz wylosować alergen, czyli substancję, która Cię uczula. Tutaj panuje duża dowolność - ale żeby nie było za łatwo, losujesz spośród kategorii, które niestety dość często będą się pojawiać na sesjach. Rzuć K6:\n1) Gęsta roślinność, kontakt z roślinami;\n2) Pierze i sierść zwierząt, czyli po prostu większość zwierząt;\n3) Kurz, stare domy;\n4) Wszelkie pokarmy pochodzenia roślinnego;\n5) Wszelkie pokarmy pochodzenia zwierzęcego;\n6) Masz podwójna alergię! Rzuć dwa razy, ale nie bój się, jesli znów trafisz tutaj, powtórz ten rzut.\n\tUwaga: Pierwsze symptomy występują tylko w pobliżu alergenu. Ale za to pojawiają się natychmiast, bez rzutu k20. Jeśli wydostaniesz się spod jego wpływu - przechodzą po jednym dniu bez zażywania leków. Rzut k20 na szanse przejścia choroby w kolejne stany wykonuje się nie raz na dzień, a raz na 3 godziny.",
+        "cure": "Zależne od rodzaju alergii, ale zazwyczaj pomagają leki przeciwhistaminowe (40 tabletek w opakowaniu, dostępność 30%)",
+        "symptoms": [
+            {
+                "name": "Pierwsze symptomy",
+                "description": "Zazwyczaj katar sienny. Kichasz, prychasz i charczysz. Załzawionymi oczami niewiele zobaczysz, a zatkanym nosem nic nie wyniuchasz. Widziałeś kiedyś zasmarkanego amanta? W przypadku pokarmów dostajesz wysypki i drżą Ci ręce.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Percepcja", "value": -3 },
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": 30 }
+                ]
+            },
+            {
+                "name": "Stan ostry",
+                "description": "Nie ukryjesz się już w wysokiej trawie, bo zdradzi Cię siąkanie nosem i kichanie. O skradaniu możesz zapomnieć. W przypadku pokarmów skręca Cię, pocisz się i rzygasz.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -2 },
+                    { "type": "Attribute", "name": "Zręczność", "value": -2 },
+                    { "type": "Attribute", "name": "Percepcja", "value": -5 },
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": 60 }
+                ]
+            },
+            {
+                "name": "Stan krytyczny",
+                "description": "Nadchodzi astma. Jeśli zapuścisz się tak, że jej dostaniesz, to zmieniają się nieco zasady choróbsk. Taki mały wyjątek: jeśli wyleszysz się z astmy, nie będziesz miał permanentnych zmian we Współczynnikach. W zamian za to, za każdy razem gdy znajdziesz się w zasięgu alergenu - wpadasz od razu w stan ostry. Mało przyjemna perspektywa, co? Analogicznie w przypadku uczulenia na pokarmy.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -4 },
+                    { "type": "Attribute", "name": "Zręczność", "value": -4 },
+                    { "type": "Attribute", "name": "Percepcja", "value": -5 },
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": 90 }
+                ]
+            },
+            {
+                "name": "Stan terminalny",
+                "description": "Astma dusi. Nie możesz złapać oddechu, więc umierasz. W przypadku pokarmów - rzygasz własnymi wnętrznościami i umierasz.",
+                "penalties": []
+            }
+        ]
+    },
+    {
+        "name": "Szaleństwo bostońskie",
+        "description": "Szaleństwo bostońskie, znane tez pod nazwą gorączką bostońską, to skutek ataku biologiczno-chemicznego. Na to niegdyś piękne miasto spuszczono kilka rodzajów bakterii, a do tego spryskano mieszkańców jakimś chemicznym świństwem. Skutek był taki, że Ci, co nie umarli od bakterii, umarli od bakterii, które błyskawicznie zmutowały. Tworząc, rzecz jasna nowe, zjadliwe szczepy, które okazały się nadzwyczaj skuteczne - ludzie, którzy zarazili się nimi, stawali się agresywnymi bestiami.",
+        "cure": "Szaleństwo bostońskie okazało się być tyle groźne, że ocalałe labolatoria medyczne na gwałt szukały antybiotyku na tę chorobę. Trudno było je znaleźć - większość leków jest nieskuteczna. Ten, który zabija jeden szczep, nie rusza nawet drugiego. Te małe gówienka mutują bowiem potwornie szybko. Przkładają to na ludzki język - musisz mieć mieszankę trzech leków, które osobno nie działają. Alef (dostępność 50%), Bet i Gimel (dostepność obu to około 40%).  Można też dostac mieszankę (dostępność 30%)",
+        "symptoms": [
+            {
+                "name": "Pierwsze symptomy",
+                "description": "Łatwo Cię zirytować, a nerwus nie wzbudza zaufania ludzi. Denerwuje Cię byle co, ale raczej kończy się to na narzekaniu i warczeniu na innych graczy, niż na rękoczynach.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Spryt", "value": -3 },
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": 30 }
+                ]
+            },
+            {
+                "name": "Stan ostry",
+                "description": "Oj, łatwo Cię zdenerwować, łatwo. Nie zastanawiasz się raczej nad finezyjnym sposobem rozwiązania problemu, ale napieprzasz kijem, aż urwiesz, złamiesz, po prostu - zniszczysz.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Spryt", "value": -5 },
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": 60 }
+                ]
+            },
+            {
+                "name": "Stan krytyczny",
+                "description": "Oj, łatwo Cię zdenerwować, bardzo, bardzo  ławtwo. Za każdym razem, gdy dochodzi do różnicy zdań, rwiesz się do bitki. Nie obchodzi Cię, czy Twój przeciwnik to chuchrowaty naukowiec, czy niedźwiedź z zoo. Powtrzyma Cię tylko solidne klepanie michy. Argumenty już nie działają.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": 2 },
+                    { "type": "Attribute", "name": "Spryt", "value": -8 },
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": 60 }
+                ]
+            },
+            {
+                "name": "Stan terminalny",
+                "description": "Żaden gracz nie dopuści, żeby kolega wpadł w taki stan. Prędzej go zabiją łyżeczką do herbaty. Stan terminalny w tym przypadku to kompletny, nieodwracalny i cholernie niebezpieczny berserk. Chore monstrum rzuca się na pierwszego lepszego człowieka i walczy do upadłego - nie czuje bólu, strachu ani zmęczenia. Obrażenia nie wywołują u niego żadnych efektów. Nie słabnie, chodzi na kikutach odciętych nóg. Walczy, aż zginie.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": 6 },
+                    { "type": "Attribute", "name": "Zręczność", "value": 6 },
+                    { "type": "Attribute", "name": "Percepcja", "value": -10 },
+                    { "type": "Attribute", "name": "Spryt", "value": -10 }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Syndrom Thrumana (matołek)",
+        "description": "W Kalifornii tę chorobę nazywają matołkiem. Dobrze się domyślasz - chory ma matołka, głupieje. Przywlekli ją emigranci z Europy, gdy ich ławica w 2024 przepłyneła ocean na tratwach z trzciny. Kon-Tiki sobie urzadzili, skubańcy. Nazwa wzieła się od generała Mitchella Thrumana, tego skurwiela, który kazał strezelać do emigrantów. To on był pierwszą ofiarą - wsławił się tym, że kazał swoim żołnierzom atakować pole kaktusów. Inne, przywleczone przez Europejczyków choroby jakoś się nie przyjeły w Ameryce. Tylko matołek się ostał, jakbyśmy mieli za mało własnych głupków.",
+        "cure": "Wbrew temu, co mogłoby się wydawać, amerykańskie labolatoria zareagowały dość szybko - wtedy jeszcze jakieś w ogóle działały. Zidentyfikowano przyczynę choroby i wyprodukowali coś co powsztrzymuje postęp Syndromu Thrumana. Jes to zastrzyk, który trzeba przyjmować dożylnie (musisz mieć strzykawkę i czystą igłę, jeśli nie masz czystej igły możesz wszczepić sobie jakies paskudztwo). Nazywa się toto Reminex i znaleźć to możesz z prawdopodobieństwem 40%. W pudełku masz 20 porcji.",
+        "symptoms": [
+            {
+                "name": "Pierwsze symptomy",
+                "description": "Zaczynają się Twoje problemy z koncentracją. Czynności wymagające skupienia uwagi są dla Ciebie trudniejsze niż dla innych. Zaczynasz mieć kłopoty z rzeczami, które dotychczas były dla Ciebie łatwe - np. z liczeniem pieniędzy albo ocenianiem czy kula wystrzelona z pistoletu trafi w biegnącego mutanta. Te problemy pojawiają się wtedy, kiedy najbardziej potrzebujesz skupienia, rzecz jasna.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Spryt", "value": -3 },
+                    { "type": "Mod", "name": "do wszystkich testów", "value": 30 },
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": 60 }
+                ]
+            },
+            {
+                "name": "Stan ostry",
+                "description": "IQ spada Ci, jak śnieg w ziemie. Tylko uważaj na zaspy. Zawsze w takiej sytuacji: oj bracie, masz kłopot. Teraz też tak zrobię: masz naprawde spore kłopoty.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Spryt", "value": -6 },
+                    { "type": "Mod", "name": "do wszystkich testów", "value": 60 },
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": 90 }
+                ]
+            },
+            {
+                "name": "Stan krytyczny",
+                "description": "Jestes debilem. Slinisz się i nie potrafisz przeczytać napisu \"Knajpa\". To jeszcze pół biedy, ale gdy przeoczysz napis \"Uwaga, zły pies\" - może być źle. Nikomu też nie zaimponuje śliniący się idiota. Zachowujesz się jak matoł, leziesz prosto pod koła ciężarówki, a w sytuacji, gdy kule świszczą koło uszu, śpiewasz skoczne piosenki stepując na barykadzie.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Spryt", "value": -8 },
+                    { "type": "Mod", "name": "do wszystkich testów", "value": 90 },
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": 120 }
+                ]
+            },
+            {
+                "name": "Stan terminalny",
+                "description": "Na syndrom Thrumana się nie umiera. Ale i tak nie pograsz sobie swoim herosem - stajesz się warzywem, które robi pod siebie i na gówno mówi \"papu\". Oddaj kartę postaci Mistrzowi.",
+                "penalties": []
+            }
+        ]
+    },
+    {
+        "name": "Drgawki",
+        "description": "Właściwa nazwa tej choroby mówi już wszystko. Tylko symptomy się pogłębiają. Trzęsie Tobą na potęgę. Do tego stopnia, że w kolejnych stadiach nie możesz podnieść łyżeczki od herbaty do ust, nie mówiąc już o celowaniu z pistoletu. Choroba polega chyba na jakimś uszkodzeniu mózgu - impulsy nerwowe są źle przewodzoen i stąd drgawki.",
+        "cure": "Jest na to lekarstwo, ale nie wiem jak się nazywa (Relanium czy jakoś tak) i z czego się składa. Wystarczy, że poprosisz o lekarstwo na drgawki i masz jakieś 40% szansy, że to co dostałeś, będzie skutkowało.",
+        "symptoms": [
+            {
+                "name": "Pierwsze symptomy",
+                "description": "Zaczynasz mieć trudności z opanowaniem rak. Cały drżysz, jakby było Ci zimno albo jakbyś miał wysoką gorączkę.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -2 },
+                    { "type": "Attribute", "name": "Zręczność", "value": -2 }
+                ]
+            },
+            {
+                "name": "Stan ostry",
+                "description": "Ręce trzęsą Ci się tak, że nie jesteś w stanie utrzymać poprawnie pistoletu. Podczas sikania nie zrobisz już fajnego wzorku.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -6 },
+                    { "type": "Attribute", "name": "Zręczność", "value": -6 }
+                ]
+            },
+            {
+                "name": "Stan krytyczny",
+                "description": "Raz dziennie o wybranej przez Mistrza Gry porze, zrób Trudny test Budowy. Jeśli go nie przejdziesz - padasz na ziemię, kopiesz nogami piash i drzech rękami glebę. Masz regularny atak padaczki. Dodatkowym zagrożeniem jest to, że podczas ataku możesz zrobić sobie krzywdę - masz na to jedną szansę na dwie - czyli 50%. Mistrz Gry wymysli dla Ciebie jakiś efekt.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -6 },
+                    { "type": "Attribute", "name": "Zręczność", "value": -6 }
+                ]
+            },
+            {
+                "name": "Stan terminalny",
+                "description": "Atak padaczki są tak częste, że uniemożliwiają normalne funkcjonowanie. W dodatku wycieńczony organizm odmawia posłuszeństwa - umierasz.",
+                "penalties": []
+            }
+        ]
+    },
+    {
+        "name": "Hemofilia",
+        "description": "Hemofilia to chorba genetyczna. Występuje zazwyczaj u facetów. Pewien jajogłowy tłumaczył mi, ze mamy tylko jeden chromosom, a baby mają dwa. I dlatego tak się dzieje. Mało kłopotliwa choroba, pod warunkiem, że się nie skaleczysz. Bo możesz wykrwawić się na śmierć. Hemofilia polega na braku krzepliwości krwi.",
+        "cure": "Preparaty krwiopochodne. Trudno dostepne, zazwyczaj drogie. Krioprascypitat (5 tabletek wopakowaniu, dostępność 20%) oraz Desmopresynę (10 tabletek w opakowaniu, dostepność 30%) można dostać wszędzie, ale już świeże lub mrożone osocze (dostępność 10%) tylko w dużych skupiskach ludności, stojących na wysokim poziomie cuwilizacyjnym i technicznym.\n\tMrożonego osocza nie da sie transportować na duże odległości bez specjalnej chłodni.",
+        "symptoms": [
+            {
+                "name": "Zdrowy",
+                "description": "Jeśli zostaniesz zraniony, obrażenia dostajesz podwójne: pierwszy raz, gdy dostaniesz kulkę (lub zwyczajnie się skaleczysz), a drugi raz, gdy przez pierwsze 5 minut nie wstrzykniesz sobie lekarstwa, które zwiekszy Ci krzepliwość krwi. Jeśli rana była poważna - zazwyczaj po kilku godzinach nie żyjesz. Małe ranki nie stanowią problemu.",
+                "penalties": []
+            }
+        ]
+    },
+    {
+        "name": "Drętwota Hollywood",
+        "description": "Po raz pierwszy zaobserwowano ją w Hollywood, 3 października 20202 roku. Tam własnie zachorował na nią popularny aktor filmów akcji - Robert Mallone. Od popularnego onelinera Mallone'a powstała druga nazwa choroby: I'm you worst nightmare. Prawdopodobnie choroba rozwijała się już wcześniej, ale nikt tego nie zauważył, bo gwiazdor zawsze zachowywał się jak kloc drewna. W filmach i w życiu prywatnym. Prawdopodobnie przegapiono pierwsze symptomy i stan ostry. Gdy zbadał go lekarz, było już za późno na jakikolwiek ratunek.\n\tDrętwota Hollywood, to kolejna choroba o powojennej proweniencji. Atakuje układ nerwowy i powoduje otępienie. Zmysły powoli przestają funkcjonować, aż do kompletnego zaniku.",
+        "cure": "Jest nim Mallonix. Dostępny jes prawie wszędzie - masz 80% szans, że trafisz na to lekarstwo. Jedną kroplę rozpuszczasz w szkalnce wody i pijesz. Nie możesz tego  dnia pić alkoholu, bo wtedy lek nie zadziała.\n\tWe fiolce jest około 10 kropli.",
+        "symptoms": [
+            {
+                "name": "Pierwsze symptomy",
+                "description": "Gorzej Ci idzie wypatrywanie, nasłuchiwanie, wąchanie, dotykanie. I ta kamienna twarz!",
+                "penalties": [
+                    { "type": "Attribute", "name": "Percepcja", "value": -4 },
+                    { "type": "Attribute", "name": "Spryt", "value": -2 },
+                    { "type": "Mod", "name": "do wszystkich testów", "value": 10 },
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": -20 }
+                ]
+            },
+            {
+                "name": "Stan ostry",
+                "description": "Niedowidzisz, niedosłyszysz, ale za to nie czujesz prawie bólu.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Percepcja", "value": -6 },
+                    { "type": "Attribute", "name": "Spryt", "value": -4 },
+                    { "type": "Mod", "name": "do wszystkich testów", "value": 20 },
+                    { "type": "Mod", "name": "w testach Odporności na ból Charakter", "value": 4 }
+                ]
+            },
+            {
+                "name": "Stan krytyczny",
+                "description": "Jesteś prawie ślepy i głuchy. I w dodatku otępiały.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Percepcja", "value": -10 },
+                    { "type": "Attribute", "name": "Spryt", "value": -8 },
+                    { "type": "Mod", "name": "do wszystkich testów", "value": 30 },
+                    { "type": "Mod", "name": "w testach Odporności na ból Charakter", "value": 8 },
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": 60 }
+                ]
+            },
+            {
+                "name": "Stan terminalny",
+                "description": "Zmieniasz się w kamień. No dobra - fantazjuję. Nie w kamień, ale w kompletnego autystyka. Oddaj karte postaci.",
+                "penalties": []
+            }
+        ]
+    },
+    {
+        "name": "Osteoporoza",
+        "description": "Osteoporoza, to choroba powodująca odwapnienie kości. Stają się one kruchliwe i łatwo je złamać. Dlatego nie choruj na osteoporoze, gdy masz zamiar biegać, wspinać się po górach, czy skakać na spadochronie.",
+        "cure": "Środki z wapniem, bifosfoniany i fluorek sodu. Brzmi mądrze? Wapniak, 25% szans na znalezienie.",
+        "symptoms": [
+            {
+                "name": "Pierwsze symptomy",
+                "description": "Tutaj jest pies pogrzebany, bo pierwsze objawy są niezauważalne. Nic się nie zmienia. Jesli masz Budowę poniżej 7 punktów, nie masz pierwszych symptomów. Od razu przechodzisz do stanu ostrego.",
+                "penalties": []
+            },
+            {
+                "name": "Stan ostry",
+                "description": "Musisz uważać - przy większych wstrząsach, uderzeniach, masz 50% (wynik 1-10 w rzucie k20) szans, ze sobie coś złamiesz. A jeśli złamanie się zrośnie krzywo - marny Twój los. Nie ma u nas ubezpieczeń społecznych.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -4 }
+                ]
+            },
+            {
+                "name": "Stan krytyczny",
+                "description": "Jest podobny do stanu ostrego, tyle, że szansa jest większa - 75% (1-15 na k20). Poczytaj sobie coś o złamanych szyjki udowej. Miłej zabawy.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -6 }
+                ]
+            },
+            {
+                "name": "Stan terminalny",
+                "description": "Występuje na skutek złamania szyjki udowej ze stanu krytycznego. Jeśli poczytałeś, to wiesz o co chodzi, a jak nie poczytałeś, to chyba lepiej dla Ciebie. Stajesz się inwalidą i niestety - nie możesz już grać tą postacią.",
+                "penalties": []
+            }
+        ]
+    },
+    {
+        "name": "Zawroty głowy",
+        "description": "Osobiście nie chałbym mieć żadnych kłopotów z błędnikiem. To niezbyt fajnie zataczać się i rzygać, nie będąc pijanym.",
+        "cure": "Jest taki zestaw pastylek. Dość trudny do zlokalizowania, jeden lek - zielone pigułki, nazywające się Actinix (20 pastylek w opakowaniu) znajdziesz z szaną 50%. Jednak drugi - białe pigułki o nazwie Rephidal (8 pastylek w opakowaniu) tylko w 20%.",
+        "symptoms": [
+            {
+                "name": "Pierwsze symptomy",
+                "description": "Jeśli zaniedbasz się i nie leczysz - będziesz cierpiał na chorobę lokomocyjną. Polega ona na tym, że rzygasz jak jedziesz czymkolwiek dłużej niż 10 min.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -2 }
+                ]
+            },
+            {
+                "name": "Stan ostry",
+                "description": "Masz trudności z chodzeniem - lekko się zataczasz. Może walnij sobie lufę samogonu, to będziesz wyglądał na zdrowego człowieka? Ludzie mają Cię za pijaka. Podczas leczenia musisz leżeć. Wolno Ci chodzić tylko za potrzebą!",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -4 },
+                    { "type": "Attribute", "name": "Zręczność", "value": -3 },
+                    { "type": "Mod", "name": "do wszystkich testów", "value": 20 },
+                    { "type": "Mod", "name": "kontakt z ludźmi", "value": 30 }
+                ]
+            },
+            {
+                "name": "Stan krytyczny",
+                "description": "Leżysz, bo nie jesteś w stanie się poruszać. Wywołuje to u Ciebie ogromne torsje. Dodatkowo pojawia się silny ból ucha. Tak silny, że leżysz i wyjesz.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -6 },
+                    { "type": "Attribute", "name": "Zręczność", "value": -8 },
+                    { "type": "Mod", "name": "do wszystkich testów", "value": 60 },
+                    { "type": "Mod", "name": "kontakt z ludźmi", "value": 90 }
+                ]
+            },
+            {
+                "name": "Stan terminalny",
+                "description": "Na to się nie umiera. Twoje szczęście. Stan krytyczny będzie się utrzymywał tak długo, dopóki się nie wyleczysz. Do tego czasu jesteś wyłączony z gry. Mam nadzieję, że masz dobrych kumpli...",
+                "penalties": []
+            }
+        ]
+    },
+    {
+        "name": "Niewydolność krążenia",
+        "description": "Twoje serce pracuje, jaby chciało, a nie mogło. Może to być arytmia, może coś innego. Szybko się męczysz i jesteś otępiały. Czasami występuje sinica - po prostu robisz się niebieski na pysku. Nic dobrego chłopie.",
+        "cure": "Znowu garść prochów. Stosuj leki wzmaniające kurczliwość serca. Stosuj leki przeciwzakrzepowe - kwas acetylosalicylowy, czylo mówiąc ludzkim językiem - aspiryna, a konkretniej Aspiryna K (30 tabletek w opakowaniu, dostępność 80%), na którą teraz najłatwiej trafić. I ciesz się, że nie masz nadciśnienia, bo musiałbyś zażywać nitroglicerynę.",
+        "symptoms": [
+            {
+                "name": "Pierwsze symptomy",
+                "description": "Duszno Ci podczas wysiłku. Męczysz się szybciej niż inni i jesteś generalnie uciążliwy.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -3 },
+                    { "type": "Mod", "name": "Kondycja", "value": 30 }
+                ]
+            },
+            {
+                "name": "Stan ostry",
+                "description": "Duszno Ci nawet, gdy leżysz. W dodatku masz 10% szans, że po każdym większym wysiłku przeskakujesz od razu do stanu terminalnego.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -5 },
+                    { "type": "Mod", "name": "Kondycja", "value": 60 }
+                ]
+            },
+            {
+                "name": "Stan krytyczny",
+                "description": "Boli Cię klatka oddech krótki, jesteś jedną kupką nieszczęścia. Masz kłopoty z mówieniem, oddychaniem i tak dalej. Pojawiają się obrzęki nóg. Szansa przejścia od razu w stan terminalny rośnie do 20%.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -10 },
+                    { "type": "Mod", "name": "Kondycja", "value": 90 },
+                    { "type": "Mod", "name": "kontaky z ludźmi", "value": 60 }
+                ]
+            },
+            {
+                "name": "Stan terminalny",
+                "description": "Wysiada Ci pikawa i umierasz.",
+                "penalties": []
+            }
+        ]
+    },
+    {
+        "name": "Anemia",
+        "description": "Choroba krwi. Masz za mało czerwonych krwinek lub hemoglobiny i znikający szpik kostny, co stanowczo nie jest fajne. Męczysz się szybko, jesteś blady i łamią Ci się paznokcie. Pół biedy, póki nie jesteś kobietą.",
+        "cure": "Preparaty krwiotwórcze. Oraz odpowiednie żarcie.\n\tNo dobra, to ostatnie to żart, nie każę CI jeść szpinaku albo lucerny, bo te rośliny zdziczały i mają więcej pierwiastków radioaktywnych, niż żelaza. Lekarstwo występuje w dwóch postaciach, tańsze tabletki i droższe krople. Dostępność jednego i drugiego ok. 60%. W opakowaniu ok. 40 tabletek lub 80 kropli.",
+        "symptoms": [
+            {
+                "name": "Pierwsze symptomy",
+                "description": "Masz przyspieszony oddech. Nic dziwnego - krew nie jest tak \"pojemna\", jak u zdrowych ludzi i żeby przetransportować tę samą ilość tlenu, musi szybciej krążyć.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -3 },
+                    { "type": "Attribute", "name": "Percepcja", "value": -1 },
+                    { "type": "Attribute", "name": "Spryt", "value": -1 },
+                    { "type": "Mod", "name": "Kondycja", "value": 30 },
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": 30 }
+                ]
+            },
+            {
+                "name": "Stan ostry",
+                "description": "Masz zawroty głowy, zadyszkę i poruszasz się dwa razy wolniej niż inni.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -6 },
+                    { "type": "Attribute", "name": "Zręczność", "value": -3 },
+                    { "type": "Attribute", "name": "Percepcja", "value": -2 },
+                    { "type": "Attribute", "name": "Spryt", "value": -2 },
+                    { "type": "Mod", "name": "Kondycja", "value": 60 },
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": 30 }
+                ]
+            },
+            {
+                "name": "Stan krytyczny",
+                "description": "Właściwie nie możesz chodzić, bo przy każdym wysiłku większym niż machnięcie ręką - mdlejesz.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Budowa", "value": -10 },
+                    { "type": "Attribute", "name": "Zręczność", "value": -10 },
+                    { "type": "Attribute", "name": "Percepcja", "value": -3 },
+                    { "type": "Attribute", "name": "Spryt", "value": -3 },
+                    { "type": "Mod", "name": "Kondycja", "value": 90 },
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": 30 }
+                ]
+            },
+            {
+                "name": "Stan terminalny",
+                "description": "Występuje całkowity zanik szpiku kostnego i po prostu umierasz.",
+                "penalties": []
+            }
+        ]
+    },
+    {
+        "name": "Morbus Dexteri (amnezje)",
+        "description": "Jedyne co jest fajne w tej chorobie to nazwa. Jako pierwszy rozpoznał ją lekarz z Minnesoty - Charles Dexter. Mój znajomy łapiduch mówi, ze to był szarlatan, nie lekarz - choroba ta, to zwykłe amnezje. nie wiadomo za bardzo od czego pochodzi, to prawdopodobnie choroba genetyczna. Polega ona na chwilowych zanikach pamięci, w pewnym momencie przestajesz wiedzieć kim jesteś i co tu robisz. Ten stan mija po jakimś czasie i znowu stajesz się normalny.",
+        "cure": "Mało skuteczne i rzadko spotykane. Nazywa się Memoral, ma 50 tabletek w opakowaniu i znajdziesz z szansą 30%. Ma jeden hak - masz około 50% szans, że zadziała. Nie wiadomo dlaczego tak się dzieje.",
+        "symptoms": [
+            {
+                "name": "Pierwsze symptomy",
+                "description": "Co kilka godzin tracisz na chwilę pamięć. Nie pamiętasz kim jesteś, ani jak się nazywasz. Nie rozpoznajesz swoich kolegów i nie wiesz kto jest szefem, ani podwładnym. Mistrz gry ma prawo w momencie utraty pamięci przejąć kontrolę nad Twoją postacią. Stan powtarza się co trzy, cztery godziny.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Spryt", "value": -2 }
+                ]
+            },
+            {
+                "name": "Stan ostry",
+                "description": "Dostajesz kolejnej amnezji. Tym razem jest poważniejsza, podczas ataku choroby, oprócz utraty wszystkich informacji, nie możesz wykorzystywać większości Umiejętności (decyzja MG). Jak widzisz nie jest to typowa amnezja.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Spryt", "value": -4 }
+                ]
+            },
+            {
+                "name": "Stan krytyczny",
+                "description": "Zapominasz na stałe swoje personalia i część Umiejętności (decyzja MG)",
+                "penalties": [
+                    { "type": "Attribute", "name": "Spryt", "value": -6 }
+                ]
+            },
+            {
+                "name": "Stan terminalny",
+                "description": "Dopada Cię demencja, czyli tracisz zdolność zapamiętania czegokolwiek. Oddaj kartę.",
+                "penalties": []
+            }
+        ]
+    },
+    {
+        "name": "Syndrom Draculi (światłowstręt)",
+        "description": "Chociaż Neuroshima, to nie WoD, to jednak możesz zostać istotą, która boi się światła słonecznego. Zachoruj na syndrom Draculi i masz to jak w banku. Sprowadza się do tego, że nie lubisz i nie tolerujesz światła słonecznego.",
+        "cure": "Dracophen. To gęsty i niesmaczny syrop. Ciemna, nieprzezroczysta buteleczeka zawiera około 100 ml syropu. Wystarcza go na ok 20 porcji leku. Prawdopodobieństwo znalezienia 60%.",
+        "symptoms": [
+            {
+                "name": "Pierwsze symptomy",
+                "description": "Twoja skóra źle znosi światło słońca. Staje się sucha, popękana i mocno czerwona. Piecze przy dotknięciu. Ale to nie wszystko, na skutek obrażeń otrzymujesz rany i słabniesz. Jest noc? Budowa nie spada. Siedzisz w bunkrze, oświetlony żarówką? Nie spada. Słońce jest za chmurami? Spada, Wchodzisz do solarium? Spada.",
+                "penalties": [
+                    { "type": "Mod", "name": "Budowa na dzień", "value": -1 },
+                    { "type": "Mod", "name": "Draśnięcie na dzień", "value": 1 }
+                ]
+            },
+            {
+                "name": "Stan ostry",
+                "description": "Skóra przybiera brzydki brązowożółty odcień.",
+                "penalties": [
+                    { "type": "Mod", "name": "Budowa na dzień", "value": -2 },
+                    { "type": "Mod", "name": "Lekka rana na dzień", "value": 1 },
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": 60 }
+                ]
+            },
+            {
+                "name": "Stan krytyczny",
+                "description": "Nawet księżyc Cię parzy. Z popękanej skóry toczy się śmięrdząca ropa albo krew.",
+                "penalties": [
+                    { "type": "Mod", "name": "Budowa na dzień", "value": -3 },
+                    { "type": "Mod", "name": "Ciężka rana na dzień", "value": 1 },
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": 90 }
+                ]
+            },
+            {
+                "name": "Stan terminalny",
+                "description": "Nie masz już skóry. Oddaj kartę Mistrzowi.",
+                "penalties": []
+            }
+        ]
+    },
+    {
+        "name": "Zespół wirusowej choroby języka (VSTD)",
+        "description": "Wirus, który wywołuje tę chorbę, nie jest skutkiem działania broni biologicznej, ale też ma wojenne pochodzenie. Prawdopodobnie to zmutowany wirus opryszczki, który z dość łagodnego kanapowego pieska stał się rozjuszonym pitbullem.",
+        "cure": "Cukierki do ssania o dużo mówiącej nazwie AVTDS. W jednym opakowaniu znajdziesz ich 30. Prawdopodobieństwo natrafienia na nie wynosi około 40%, a więc jest spora szansa.",
+        "symptoms": [
+            {
+                "name": "Pierwsze symptomy",
+                "description": "Język Ci puchnie. Na skótek tego mówisz, jakbyś miał pełne usta i w dodatku nie czujesz smaku. Na razie jest to dość niegroźne.",
+                "penalties": [
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": 30 }
+                ]
+            },
+            {
+                "name": "Stan ostry",
+                "description": "Tutaj sytuacja staje się trudniejsza. Nie możesz jeść, cokolwiek włożysz do ust, powoduje to silny, ostry ból. Język jest obrzękły i sączy się z niego krew. Mówisz z trudem, wolno cedząc słowa. Na skutek nie przyjmowania pokarmów - słabniesz.",
+                "penalties": [
+                    { "type": "Mod", "name": "kontaky z ludźmi", "value": 60 },
+                    { "type": "Mod", "name": "Draśnięcie na każdy posiłek (lub efekt głodu)", "value": 1 }
+                ]
+            },
+            {
+                "name": "Stan krytyczny",
+                "description": "Twój język staje się miekki i galaretowaty. Uważaj na niego, bo wystarczy, że go lekko przygryziesz, a stracisz cały. Ból jest tak silny, że promieniuje na całą głowę. Nie możesz się poruszać, bo rozsadza Ci czaszkę. Środki przeciwbólowe nie działają.",
+                "penalties": [
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": 120 },
+                    { "type": "Mod", "name": "wszystkie testy", "value": 30 },
+                    { "type": "Mod", "name": "Lekka rana na każdy posiłek (lub efekt głodu)", "value": 1 }
+                ]
+            },
+            {
+                "name": "Stan terminalny",
+                "description": "Umierasz z bólu, głodu i gorączki.",
+                "penalties": []
+            }
+        ]
+    },
+    {
+        "name": "Paranoja",
+        "description": "Zawsze wydawało mi się, że wojna wyprodukuje przedewszystkim mutantów i ludźi chorych na ciele. A tu masz: pojawiło się mnóstwo wariatów. Z takją paranoją, bracie, nie masz większych szans w grupie. Po pierwsze, wszyscy dookoła będą mieli Cię dość po kilku zdemaskowanych przez Ciebie spiskach. po drugie, Ty sam zamęczysz się psychicznie, a po trzecie wreszcie, możesz być niebezpieczny dla otoczenia i siebie.",
+        "cure": "Są psychotropy, które chamują rozwój tej choroby. Małe jednak szanse, że je znajdziesz 25% szans. Pastylka albo czopek wiesz gdzie. Opakowania zazwyczaj po 6 lub 12 sztuk leku, chociaż łatwiej dostać na sztuki.",
+        "symptoms": [
+            {
+                "name": "Pierwsze symptomy",
+                "description": "Zaczynasz uważnie obserwować towarzyszy - widzisz dokładnie, jak wszyscy szepczą po kryjomu - może coś knują przeciw Tobie? Nieźle kombinujesz. Masz tak zacięty wyraz twarzy, że strach się bać.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Percepcja", "value": 1 },
+                    { "type": "Attribute", "name": "Spryt", "value": 2 },
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": 30 }
+                ]
+            },
+            {
+                "name": "Stan ostry",
+                "description": "Musisz odkryć, kto jest Twoim ukrytym wrogiem. Nękasz (zagraj to!) swoich kolegów nieustannymi podejrzeniami - może to być ich spisek przeciw Tobie, może ktoś z drużyny jest awatarem Molocha, który postawił sobie za cel ukrzyżowanie Ciebie, swojego jedynego syna? Wymyślaj, co chcesz. W każdym razie nękaj ich, w końcu to, że wpadłeś do strumyka, nie mogło być przypadkowe. Że woda tam się ledwie do kolan ? Na pewno jest radioaktywna! Współczynniki prawie się nie zmieniają - nie chcemy Cię karać, Twoja drużyna robi to za nas!",
+                "penalties": [
+                    { "type": "Attribute", "name": "Percepcja", "value": -3 },
+                    { "type": "Attribute", "name": "Spryt", "value": -3 },
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": 60 }
+                ]
+            },
+            {
+                "name": "Stan krytyczny",
+                "description": "Najwyższy czas przejść od słów, do czynów. Wiesz już, kto w drużynie knuje przeciw Tobie. Wyrwij chwasta! Musisz udeżyć pierwszy, żeby nie dać się zaskoczyć. Stanowczo nie możesz zasnąć, bo Cię dopadną.",
+                "penalties": [
+                    { "type": "Attribute", "name": "Percepcja", "value": -6 },
+                    { "type": "Attribute", "name": "Spryt", "value": -6 },
+                    { "type": "Mod", "name": "kontakty z ludźmi", "value": 90 }
+                ]
+            },
+            {
+                "name": "Stan terminalny",
+                "description": "Nie stwierdzono. Zawsze ktoś był szybszy. Ale na wszelki wypadek - tracisz kontrolę nad postacię.",
+                "penalties": []
+            }
+        ]
+    }
+]
