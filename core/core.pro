@@ -33,6 +33,7 @@ SOURCES += \
     Card/Pages/Stats.cpp \
     Creators/CardCreator.cpp \
     Creators/DataSourceCreator.cpp \
+    Creators/StatsCreator.cpp \
     DataSources/Elements/Stats/Bonus.cpp \
     DataSources/Elements/Stats/Feature.cpp \
     DataSources/Elements/Stats/HeroData.cpp \
@@ -63,6 +64,7 @@ HEADERS += \
     Creators/CardCreator.h \
     Creators/DataSourceCreator.h \
     Creators/PageCreator.h \
+    Creators/StatsCreator.h \
     DataSources/DataSource.h \
     DataSources/Elements/Stats/Bonus.h \
     DataSources/Elements/Stats/Feature.h \
