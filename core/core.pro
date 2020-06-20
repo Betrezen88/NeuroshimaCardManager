@@ -24,7 +24,6 @@ SOURCES += \
     Card/Elements/Stats/Disease.cpp \
     Card/Elements/Stats/OtherSkill.cpp \
     Card/Elements/Stats/Penalty.cpp \
-    Card/Elements/Stats/Requirement.cpp \
     Card/Elements/Stats/Skill.cpp \
     Card/Elements/Stats/Skillpack.cpp \
     Card/Elements/Stats/Symptom.cpp \
@@ -54,7 +53,6 @@ HEADERS += \
     Card/Elements/Stats/Disease.h \
     Card/Elements/Stats/OtherSkill.h \
     Card/Elements/Stats/Penalty.h \
-    Card/Elements/Stats/Requirement.h \
     Card/Elements/Stats/Skill.h \
     Card/Elements/Stats/Skillpack.h \
     Card/Elements/Stats/Symptom.h \
