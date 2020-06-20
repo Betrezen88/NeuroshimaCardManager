@@ -11,7 +11,7 @@ class NSTrick : public Data
 {
     Q_OBJECT
     Q_PROPERTY(QString action READ action CONSTANT)
-    Q_PROPERTY(QQmlListProperty<Requirement> requirements READ requiremenets CONSTANT)
+    Q_PROPERTY(QQmlListProperty<Requirement> requirements READ requirements CONSTANT)
 
 public:
     explicit NSTrick(QObject *parent = nullptr);
