@@ -6,6 +6,9 @@
 #include "../DataSources/Elements/Stats/Profession.h"
 #include "../DataSources/Elements/Stats/Feature.h"
 
+#include "../Card/Elements/Stats/Attribute.h"
+#include "../Card/Elements/Stats/Skillpack.h"
+#include "../Card/Elements/Stats/Skill.h"
 #include "../Card/Elements/Stats/Disease.h"
 #include "../Card/Elements/Stats/Symptom.h"
 
@@ -20,12 +23,22 @@ DataSourceCreator::DataSourceCreator(QObject *parent) : QObject(parent)
 
 }
 
-DataSource *DataSourceCreator::create(const DataSource::Type &type)
+DataSource *DataSourceCreator::create(const DataSource::Type &type, const QVariantMap &dataFiles)
 {
     switch (type) {
     case DataSource::Type::STATS:
-        return stats();
+    {
+        StatsSource *pStatsSource = new StatsSource();
+
+        addOrigins(pStatsSource, dataFiles.value("origins").toString());
+        addProfessions(pStatsSource, dataFiles.value("professions").toString());
+        addAttributes(pStatsSource, dataFiles.value("attributes").toString());
+        addSpecializations(pStatsSource, dataFiles.value("specializations").toString());
+        addDiseases(pStatsSource, dataFiles.value("diseases").toString());
+
+        return pStatsSource;
         break;
+    }
     case DataSource::Type::NOTES:
         return nullptr;
         break;
@@ -49,16 +62,6 @@ DataSource *DataSourceCreator::create(const DataSource::Type &type)
     }
 }
 
-StatsSource *DataSourceCreator::stats()
-{
-    StatsSource *pStatsSource = new StatsSource();
-
-    addOrigins(pStatsSource, ":/json/resources/json/Origins.json");
-    addProfessions(pStatsSource, ":/json/resources/json/Professions.json");
-
-    return pStatsSource;
-}
-
 void DataSourceCreator::addOrigins(StatsSource *source, const QString &dataFile)
 {
     for ( const QJsonValue &origin: loadData(dataFile).array() ) {
@@ -68,7 +71,7 @@ void DataSourceCreator::addOrigins(StatsSource *source, const QString &dataFile)
         Origin* pOrigin = new Origin(tOrigin.value("name").toString(),
                                      tOrigin.value("description").toString(),
                                      tOrigin.value("image").toString(),
-                                     tBonus.value("attribute").toString(),
+                                     tBonus.value("name").toString(),
                                      tBonus.value("value").toInt());
 
         addFeatures(pOrigin, tOrigin.value("features").toArray());
@@ -164,6 +167,38 @@ void DataSourceCreator::addDiseases(StatsSource *source, const QString &dataFile
                                         tDisease.value("description").toString(),
                                         tDisease.value("cure").toString(),
                                         symptoms) );
+    }
+}
+
+void DataSourceCreator::addAttributes(StatsSource *source, const QString &dataFile)
+{
+    for ( const QJsonValue &attribute: loadData(dataFile).array() ) {
+        const QJsonObject &tAttribute = attribute.toObject();
+
+        QVector<Skillpack*> skillpacks;
+        for ( const QJsonValue &skillpack: tAttribute.value("skillpacks").toArray() ) {
+            const QJsonObject &tSkillpack = skillpack.toObject();
+
+            QStringList specs;
+            for ( const QJsonValue &specialization: tSkillpack.value("specialization").toArray() ) {
+                specs << specialization.toString();
+            }
+
+            QVector<Skill*> skills;
+            for ( const QJsonValue &skill: tSkillpack.value("skills").toArray() ) {
+                const QJsonObject &tSkill = skill.toObject();
+
+                skills.push_back(new Skill(tSkill.value("name").toString(), 0));
+            }
+
+            skillpacks.push_back( new Skillpack(tSkillpack.value("name").toString(),
+                                                specs,
+                                                skills) );
+        }
+
+        source->addAttribute( new Attribute(tAttribute.value("name").toString(),
+                                            0,
+                                            skillpacks) );
     }
 }
 
