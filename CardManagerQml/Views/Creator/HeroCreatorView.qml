@@ -90,5 +90,6 @@ Page {
                                                  "attributes": ":/json/resources/json/Attributes.json"
                                              })
         origin.dataSource = manager.cardCreator.dataSource(NSDataSource.STATS)
+        profession.dataSource = manager.cardCreator.dataSource(NSDataSource.STATS)
     }
 }
