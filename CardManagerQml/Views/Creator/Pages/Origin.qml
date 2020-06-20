@@ -82,7 +82,7 @@ Page {
                 width: main.width - column.anchors.margins * 2
                 text: qsTr("Opis pochodzenia")
                 wrapMode: Text.WordWrap
-                font.pixelSize: 12
+                font.pointSize: 12
             }
 
             Row {
