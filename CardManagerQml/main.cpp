@@ -11,6 +11,17 @@
 #include "Managers/MainManager.h"
 #include "Managers/CardManager.h"
 
+#include "Creators/CardCreator.h"
+#include "Creators/PageCreator.h"
+
+#include "DataSources/DataSource.h"
+#include "DataSources/StatsSource.h"
+
+#include "DataSources/Elements/Stats/HeroData.h"
+#include "DataSources/Elements/Stats/Origin.h"
+#include "DataSources/Elements/Stats/Profession.h"
+#include "DataSources/Elements/Stats/Feature.h"
+
 #include "Card/Data.h"
 #include "Card/Card.h"
 #include "Card/Pages/Stats.h"
@@ -31,6 +42,16 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<MainManager>("core", 1, 0, "NSMainManager");
     qmlRegisterType<CardManager>("core", 1, 0, "NSCardManager");
+    qmlRegisterType<CardCreator>("core", 1, 0, "NSCardCreator");
+    qmlRegisterType<PageCreator>("core", 1, 0, "NSPageCreator");
+    qRegisterMetaType<PageCreator::Type>("NSPageCreator::Type");
+    qmlRegisterType<DataSource>("core", 1, 0, "NSDataSource");
+    qmlRegisterType<StatsSource>("core.NSStatsSource", 1, 0, "NSStatsSource");
+    qRegisterMetaType<DataSource::Type>("NSDataSource::Type");
+    qmlRegisterType<HeroData>("core.NSHeroData", 1, 0, "NSHeroData");
+    qmlRegisterType<Origin>("core.NSOrigin", 1, 0, "NSOrigin");
+    qmlRegisterType<Profession>("core.NSProfession", 1, 0, "NSProfession");
+    qmlRegisterType<Feature>("core.NSFeature", 1, 0, "NSFeature");
     qmlRegisterType<Data>("core", 1, 0, "NSData");
     qmlRegisterType<Card>("core", 1, 0, "NSCard");
     qRegisterMetaType<Page::Type>("Page::Type");
