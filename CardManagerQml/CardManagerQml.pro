@@ -17,11 +17,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        cpp/Creators/Data/Feature.cpp \
-        cpp/Creators/Data/HeroCreatorData.cpp \
-        cpp/Creators/Data/Origin.cpp \
-        cpp/Creators/HeroCreatorManager.cpp \
         main.cpp
+
+HEADERS += \
 
 RESOURCES += qml.qrc
 
@@ -42,9 +40,3 @@ else:unix: LIBS += -L$$OUT_PWD/../core/ -lcore
 
 INCLUDEPATH += $$PWD/../core
 DEPENDPATH += $$PWD/../core
-
-HEADERS += \
-    cpp/Creators/Data/Feature.h \
-    cpp/Creators/Data/HeroCreatorData.h \
-    cpp/Creators/Data/Origin.h \
-    cpp/Creators/HeroCreatorManager.h \

@@ -4,10 +4,6 @@
 
 #include "Utils/DataReader.h"
 
-#include "cpp/Creators/Data/HeroCreatorData.h"
-#include "cpp/Creators/Data/Origin.h"
-#include "cpp/Creators/Data/Feature.h"
-
 #include "Managers/MainManager.h"
 #include "Managers/CardManager.h"
 
@@ -65,10 +61,6 @@ int main(int argc, char *argv[])
     qmlRegisterType<Skill>("core", 1, 0, "NSSkill");
     qmlRegisterType<Symptom>("core", 1, 0, "NSSymptom");
     qmlRegisterType<Trick>("core", 1, 0, "NSTrick");
-
-    qmlRegisterType<HeroCreatorData>("cpp", 1, 0, "HeroCreatorData");
-    qmlRegisterType<Origin>("cpp", 1, 0, "Origin");
-    qmlRegisterType<Feature>("cpp", 1, 0, "Feature");
 
     QGuiApplication app(argc, argv);
 
