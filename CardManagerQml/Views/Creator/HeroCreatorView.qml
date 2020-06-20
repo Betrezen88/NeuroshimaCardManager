@@ -1,10 +1,13 @@
 ﻿import QtQuick 2.9
 import QtQuick.Controls 2.12
 
+import core 1.0
+
 import "./Pages"
 
 Page {
     property var heroCreator
+    property var dataSource
 
     id: main
 
@@ -21,7 +24,6 @@ Page {
 
         Origin {
             id: origin
-            heroCreatorData: main.heroCreator.heroCreatorData
         }
 
         Profession { id: profession }
@@ -76,5 +78,17 @@ Page {
             ListElement { text: "Ekwipunek" }
             ListElement { text: "Znajomości" }
         }
+    }
+
+    Component.onCompleted: {
+        console.log("Creating StatsSource object")
+        manager.cardCreator.createDataSource(NSDataSource.STATS, {
+                                                 "origins": ":/json/resources/json/Origins.json",
+                                                 "professions": ":/json/resources/json/Professions.json",
+                                                 "specializations": ":/json/resources/json/Specializations.json",
+                                                 "diseases": ":/json/resources/json/Diseases.json",
+                                                 "attributes": ":/json/resources/json/Attributes.json"
+                                             })
+        origin.dataSource = manager.cardCreator.dataSource(NSDataSource.STATS)
     }
 }
