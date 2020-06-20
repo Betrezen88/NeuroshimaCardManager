@@ -87,7 +87,7 @@ void DataSourceCreator::addProfessions(StatsSource *source, const QString &dataF
 
         Profession* pProfession = new Profession(tProfession.value("name").toString(),
                                                  tProfession.value("description").toString(),
-                                                 tProfession.value("image").toString(),
+                                                 tProfession.value("picture").toString(),
                                                  tProfession.value("quote").toString());
 
         addFeatures(pProfession, tProfession.value("features").toArray());
