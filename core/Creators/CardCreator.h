@@ -7,6 +7,7 @@
 #include "core_global.h"
 
 #include "PageCreator.h"
+#include "DataSources/DataSource.h"
 
 class CORE_EXPORT CardCreator : public QObject
 {
@@ -21,6 +22,7 @@ private:
 
 private:
     QMap<PageCreator::Type, PageCreator*> m_pageCreators;
+    QMap<DataSource::Type, DataSource*> m_dataSources;
 };
 
 #endif // CARDCREATOR_H
