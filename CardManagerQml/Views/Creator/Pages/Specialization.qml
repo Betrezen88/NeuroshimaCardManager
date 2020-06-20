@@ -1,7 +1,12 @@
 ﻿import QtQuick 2.0
 import QtQuick.Controls 2.12
 
+import core.NSStatsSource 1.0
+import core 1.0
+
 Page {
+    property NSStatsSource dataSource
+
     id: main
 
     ScrollView {
@@ -13,6 +18,7 @@ Page {
             id: column
             anchors.fill: parent
             anchors.margins: 5
+            spacing: 5
 
             Row {
                 id: row
@@ -22,7 +28,7 @@ Page {
 
                 Text {
                     id: label
-                    height: comboBox.height
+                    height: specializationsList.height
                     text: "Specjalizacja:"
                     verticalAlignment: Text.AlignVCenter
                     font.bold: true
@@ -30,27 +36,35 @@ Page {
                 }
 
                 ComboBox {
-                    id: comboBox
+                    id: specializationsList
                     width: 200
+                    textRole: 'name'
+                    onCurrentIndexChanged: {
+                        var item = main.dataSource.specializations[currentIndex]
+                        description.text = item.description
+                    }
                 }
             }
 
             Text {
                 id: description
-                width: column.width
+                width: main.width - column.anchors.margins * 2
                 text: qsTr("Opis")
-                font.pointSize: 10
+                font.pointSize: 12
                 wrapMode: Text.WordWrap
             }
 
             Text {
                 id: extra
-                width: column.width
+                width: main.width - column.anchors.margins * 2
                 text: qsTr("Dodatkowy opis")
                 wrapMode: Text.WordWrap
-                font.pointSize: 10
+                font.pointSize: 12
             }
         }
+    }
 
+    onDataSourceChanged: {
+        specializationsList.model = main.dataSource.specializations
     }
 }
