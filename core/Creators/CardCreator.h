@@ -15,7 +15,10 @@ class CORE_EXPORT CardCreator : public QObject
 public:
     explicit CardCreator(QObject *parent = nullptr);
 
-    PageCreator* pageCreator(const PageCreator::Type &type);
+    Q_INVOKABLE PageCreator* pageCreator(const PageCreator::Type &type);
+    Q_INVOKABLE DataSource* dataSource(const DataSource::Type &type);
+    Q_INVOKABLE void createDataSource(const DataSource::Type &type,
+                                      const QVariantMap &dataFiles);
 
 private:
     PageCreator* createPageCreator(const PageCreator::Type &type);
