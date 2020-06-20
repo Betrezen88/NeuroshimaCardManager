@@ -3,8 +3,14 @@ import QtQuick.Controls 2.12
 
 import "./../Elements"
 
+import core.NSStatsSource 1.0
+import core.NSOrigin 1.0
+import core.NSHeroData 1.0
+import core.NSFeature 1.0
+import core 1.0
+
 Page {
-    property var heroCreatorData
+    property NSStatsSource dataSource
 
     id: main
 
@@ -35,10 +41,9 @@ Page {
                 ComboBox {
                     id: originsList
                     width: 200
-                    model: main.heroCreatorData.origins
                     textRole: 'name'
                     onCurrentIndexChanged: {
-                        var item = main.heroCreatorData.origins[currentIndex]
+                        var item = main.dataSource.origins[currentIndex]
                         bonus.text = "+"+item.value+" "+item.attribute
                         description.text = item.description
                         picture.source = "qrc:/pictures/resources/pictures/origins/"+item.image
@@ -90,7 +95,7 @@ Page {
                     property var objects: []
                     id: featuresColumn
                     width: features.width * 0.6
-                    height: featuresColumn.implicitHeight
+                    height: featuresColumn.implicitHeight + 20
 
                     ButtonGroup { id: originGroup }
 
@@ -115,5 +120,9 @@ Page {
                 }
             }
         }
+    }
+
+    onDataSourceChanged: {
+        originsList.model = main.dataSource.origins
     }
 }
