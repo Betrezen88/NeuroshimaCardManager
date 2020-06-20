@@ -3,7 +3,15 @@ import QtQuick.Controls 2.12
 
 import "./../Elements"
 
+import core.NSStatsSource 1.0
+import core.NSProfession 1.0
+import core.NSHeroData 1.0
+import core.NSFeature 1.0
+import core 1.0
+
 Page {
+    property NSStatsSource dataSource
+
     id: main
 
     ScrollView {
@@ -26,7 +34,7 @@ Page {
 
                 Text {
                     id: professionLabel
-                    height: comboBox.height
+                    height: professionsList.height
                     text: qsTr("Profesja:")
                     verticalAlignment: Text.AlignVCenter
                     font.bold: true
@@ -34,8 +42,32 @@ Page {
                 }
 
                 ComboBox {
-                    id: comboBox
+                    id: professionsList
                     width: 200
+                    textRole: 'name'
+                    onCurrentIndexChanged: {
+                        var item = main.dataSource.professions[currentIndex]
+                        description.text = item.description
+                        quote.text = item.quote
+                        image.source = "qrc:/pictures/resources/pictures/professions/"+item.image
+
+                        if ( 0 < featuresColumn.objects.length ) {
+                            for ( var i in featuresColumn.objects )
+                                featuresColumn.objects[i].destroy()
+                            featuresColumn.objects = []
+                        }
+
+                        for ( var j in item.features ) {
+                            var component = Qt.createComponent("./../Elements/Feature.qml")
+                            var object = component.createObject(featuresColumn, {
+                                                                    feature: item.features[j],
+                                                                    width: featuresColumn.width,
+                                                                    group: professionGroup,
+                                                                    checked: parseInt(j) === 0
+                                                                })
+                            featuresColumn.objects.push(object)
+                        }
+                    }
                 }
             }
 
@@ -64,10 +96,13 @@ Page {
                 spacing: 5
 
                 Column {
+                    property var objects: []
                     id: featuresColumn
                     width: (main.width - column.anchors.margins * 2) * 0.6
-                    height: featuresColumn.implicitHeight
+                    height: featuresColumn.implicitHeight + 20
                     spacing: 5
+
+                    ButtonGroup { id: professionGroup }
 
                     Text {
                         id: featureLabel
@@ -76,10 +111,10 @@ Page {
                         font.bold: true
                     }
 
-                    Feature { id: feature1 }
-
-                    Feature { id: feature2 }
-
+                    onWidthChanged: {
+                        for ( var i in objects )
+                            objects[i].width = width
+                    }
                 }
 
                 Image {
@@ -91,5 +126,9 @@ Page {
             }
 
         }
+    }
+
+    onDataSourceChanged: {
+        professionsList.model = main.dataSource.professions
     }
 }
