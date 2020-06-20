@@ -3,9 +3,12 @@
 
 #include <QObject>
 
-class DataSource : public QObject
+#include "core_global.h"
+
+class CORE_EXPORT DataSource : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(Type type READ type CONSTANT)
 
 public:
     enum class Type {
@@ -17,6 +20,7 @@ public:
         MACHINE,
         VEHICLE
     };
+    Q_ENUM(Type)
 
     explicit DataSource(QObject *parent = nullptr) : QObject(parent) {}
     explicit DataSource(const Type &type, QObject *parent = nullptr)
