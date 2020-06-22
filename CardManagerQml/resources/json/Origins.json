@@ -110,6 +110,7 @@
                 "description": "Miałeś bardzo dobrych nauczycieli. Jeżeli na dalszym etapie tworzenia postaci wybierzesz jako specjalizację Technika, otrzymujesz dodatkowe 10 punktów do wydania na umiejętności oparte o Spryt.",
                 "bonus": {
                     "type": "Skillpoints",
+                    "name": "Technik",
                     "value": 10
                 }
             },
