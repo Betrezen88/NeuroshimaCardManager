@@ -17,6 +17,7 @@
 #include "DataSources/Elements/Stats/Origin.h"
 #include "DataSources/Elements/Stats/Profession.h"
 #include "DataSources/Elements/Stats/Feature.h"
+#include "DataSources/Elements/Stats/Bonus.h"
 
 #include "Card/Data.h"
 #include "Card/Card.h"
@@ -48,6 +49,8 @@ int main(int argc, char *argv[])
     qmlRegisterType<Origin>("core.NSOrigin", 1, 0, "NSOrigin");
     qmlRegisterType<Profession>("core.NSProfession", 1, 0, "NSProfession");
     qmlRegisterType<Feature>("core.NSFeature", 1, 0, "NSFeature");
+    qmlRegisterType<Bonus>("core.NSBonus", 1, 0, "NSBonus");
+    qRegisterMetaType<Bonus::Type>("NSBonus::Type");
     qmlRegisterType<Data>("core", 1, 0, "NSData");
     qmlRegisterType<Card>("core", 1, 0, "NSCard");
     qRegisterMetaType<Page::Type>("Page::Type");
