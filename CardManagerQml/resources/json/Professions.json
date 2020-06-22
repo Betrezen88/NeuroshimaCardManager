@@ -34,7 +34,7 @@ Musisz dysponować labolatorium i skłanikami. Produkcja jednej działki zajmuje
                 "name": "Jeden z nich",
                 "description": "Posiadasz widoczny symbol przynależności do siejącego grozę gangu. Nikt, kto nie ma jaj ze stali, Ci nie podskoczy. Byle kto nie będzie Ci pyskować, ani się z Tobą sprzeczać, nie odważą się spojrzeć Ci w oczy, będą także bali tak po prostu Cię olać. Ale. Ale ci z jajami ze stali mogą przerobić cię na pasztet - za to tylko, że jesteś \"jednym z nich\". Dodatkowo 100 gambli na Znajomości w Gangach.",
                 "bonus": {
-                    "type": "connections",
+                    "type": "Connections",
                     "value": 100
                 }
             },
@@ -74,7 +74,7 @@ Musisz dysponować labolatorium i skłanikami. Produkcja jednej działki zajmuje
                 "name": "Trakt handlowy",
                 "description": "Nie jesteś jakimś tam stacjonarnym straganiarzem sprzedającym ogórki, bliżej Ci do twardziela pokroju wędrownego sprzedawcy bojlerów. Zdeptałeś kawał świata i poznałeś niejedno miejsce, więc wielu ludzi Cię rozpoznaje, a na niektórych możesz nawet liczyć. Zaczynasz z dodatkowymi 150 gamblami na Znajomych (nie Wojowników).",
                 "bonus": {
-                    "type": "connections",
+                    "type": "Connections",
                     "value": 150
                 }
             },
@@ -133,7 +133,7 @@ Musisz dysponować labolatorium i skłanikami. Produkcja jednej działki zajmuje
                 "name": "Znajomości",
                 "description": "Szybka bryka, czy worek granatów, nie zawsze pomogą przejść przez terytorium zajmowane przez pięć\różnych gangów, w końcu kiedyć podwinie Ci się noga i staniesz z zepsutą chłodnicą w samym centrum ziemi Brain Dogs. Wtedy przyda się znać szefa, nie sądzisz? Zaczynasz z dodatkowymi 150 gamblami, które możesz przeznaczyć na Znajomych (nie Wojowników).",
                 "bonus": {
-                    "type": "connections",
+                    "type": "Connections",
                     "value": 150
                 }
             },
@@ -191,7 +191,7 @@ Musisz dysponować labolatorium i skłanikami. Produkcja jednej działki zajmuje
                 "name": "Bezlitosny",
                 "description": "Z ludzi, którzy Cię zawiedli żyje tylko Marc. Twoi ludzie właśnie montują mu betonowe obuwie. To już jego ostatnie minuty. Z ludzi, którzy staneli na twej drodze, do wczoraj żył Długi Johny i Szybki Paul. Dziś już nie masz wrogów. Z ludzi, którzy... Zaczynasz z jednym Punktem Sławy (złej). Reputacja kosztuje Cię tylko 20PD i zawsze jest to zła sława.",
                 "bonus": {
-                    "type": "fame",
+                    "type": "Fame",
                     "value": 1,
                     "price": 20
                 }
@@ -247,8 +247,7 @@ Musisz dysponować labolatorium i skłanikami. Produkcja jednej działki zajmuje
                 "name": "Reputacja",
                 "description": "Nie nawalasz. Nie wystawiasz klienta do wiatru. Nie wycofujesz się ze zleceń. Dlatego właśnie możesz zażądać więcej od dowolnego innego jełopa - a pracodawca i tak wybierze Ciebie. Zwiększ o 15 punktów Reputację - już na starcie jesteś kimś znanym w tej branży. Ponadto Punkt Reputacji kosztuje Cię tylko 20PD.",
                 "bonus": {
-                    "text": "Zaczynasz z 15 punktami reputacji, cena reputacji to 20PD.",
-                    "type": "reputation",
+                    "type": "Reputation",
                     "value": 15,
                     "price": 20
                 }
@@ -293,7 +292,7 @@ Musisz dysponować labolatorium i skłanikami. Produkcja jednej działki zajmuje
                 "name": "Jeden z nas",
                 "description": "Nie musisz za każdym razem, gdy ustrzelisz jakiegoś gangera czy złodzieja, tracić czasu na dyskusję i przekonywanie innych stróżów prawa, ze to było konieczne, a Ty też jesteś z policji. Oni od razu widzą, coś za jeden. Dodatkowo 150 gamblii na Znajomości wśród sędziów i egzekutorów.",
                 "bonus": {
-                    "type": "connections",
+                    "type": "Connections",
                     "value": 150
                 }
             }
@@ -311,8 +310,8 @@ Musisz dysponować labolatorium i skłanikami. Produkcja jednej działki zajmuje
                 "name": "Wykształcenie",
                 "description": "W pakiecie Wiedza ogólna wszystkie Umiejętności posiadasz od razu na poziomie 2. Pamietaj, nie trzy wybrane, ale wszystkie!",
                 "bonus": {
-                    "type": "skillpack",
-                    "name": "Wiedza Ogólna",
+                    "type": "Skillpack",
+                    "list": ["Wiedza Ogólna"],
                     "value": 2
                 }
             },
@@ -444,7 +443,7 @@ Musisz dysponować labolatorium i skłanikami. Produkcja jednej działki zajmuje
                 "name": "To mój dom",
                 "description": "Przypomnij sobie tego twardziela, który przez tydzień trząśł całym Whitehorn. Kiedy w końcu przyszli po niego, zdychał samotnie jak pies. Ty zawsze masz gdzie wrócić. Masz kogo poprosić o radę i o pomoc. Jesteś członkiem grupy. Otrzymujesz 150 gambli na wykupienie czerwonoskórych Znajomych.",
                 "bonus": {
-                    "type": "connections",
+                    "type": "Connections",
                     "value": 150
                 }
             }
@@ -518,7 +517,7 @@ Musisz dysponować labolatorium i skłanikami. Produkcja jednej działki zajmuje
                 "name": "Wyszkolenie",
                 "description": "Wszystkie umiejętności z pakietów Broń Strzelecka i Pirotechnika posiadasz od razu na poziomie 1.",
                 "bonus": {
-                    "type": "skillpack",
+                    "type": "Skillpack",
                     "list": ["Broń Strzelecka", "Pirotechnika"],
                     "value": 1
                 }
