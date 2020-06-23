@@ -5,26 +5,25 @@
 
 #include "core_global.h"
 
+class OriginBonus;
+
 class CORE_EXPORT Origin : public HeroData
 {
     Q_OBJECT
-    Q_PROPERTY(QString attribute READ attribute CONSTANT)
-    Q_PROPERTY(int value READ value CONSTANT)
+    Q_PROPERTY(OriginBonus* bonus READ bonus CONSTANT)
 
 public:
     explicit Origin(QObject *parent = nullptr);
     explicit Origin(const QString &name,
                     const QString &description,
                     const QString &image,
-                    const QString &attribute,
-                    const int &value,
+                    OriginBonus* bonus,
                     QObject *parent = nullptr);
 
-    QString attribute() const;
-    int value() const;
+    OriginBonus* bonus() const;
 
 private:
-    QPair<QString, int> m_bonus;
+    OriginBonus* m_pBonus;
 };
 
 #endif // ORIGIN_H

@@ -1,4 +1,5 @@
 ﻿#include "Origin.h"
+#include "OriginBonus.h"
 
 Origin::Origin(QObject *parent) : HeroData(parent)
 {
@@ -8,21 +9,15 @@ Origin::Origin(QObject *parent) : HeroData(parent)
 Origin::Origin(const QString &name,
                const QString &description,
                const QString &image,
-               const QString &attribute,
-               const int &value,
+               OriginBonus *bonus,
                QObject *parent)
     : HeroData(name, description, image, parent),
-    m_bonus(attribute, value)
+      m_pBonus(bonus)
 {
 
 }
 
-QString Origin::attribute() const
+OriginBonus *Origin::bonus() const
 {
-    return m_bonus.first;
-}
-
-int Origin::value() const
-{
-    return m_bonus.second;
+    return m_pBonus;
 }
