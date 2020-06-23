@@ -5,6 +5,7 @@ import "./../Elements"
 
 import core.NSStatsSource 1.0
 import core.NSOrigin 1.0
+import core.NSOriginBonus 1.0
 import core.NSHeroData 1.0
 import core.NSFeature 1.0
 import core 1.0
@@ -40,13 +41,15 @@ Page {
 
                 ComboBox {
                     id: originsList
-                    width: 200
+                    width: 250
                     textRole: 'name'
                     onCurrentIndexChanged: {
                         var item = main.dataSource.origins[currentIndex]
-                        bonus.text = "+"+item.value+" "+item.attribute
                         description.text = item.description
                         picture.source = "qrc:/pictures/resources/pictures/origins/"+item.image
+
+                        bonusValue.text = "+"+item.bonus.value
+                        bonusList.model = item.bonus.attributes
 
                         if ( 0 < featuresColumn.objects.length ) {
                             for ( var i in featuresColumn.objects )
@@ -68,10 +71,18 @@ Page {
                 }
 
                 Text {
-                    id: bonus
+                    id: bonusValue
                     height: originsList.height
-                    text: qsTr("(+1 Budowa)")
+                    text: qsTr("+1")
                     verticalAlignment: Text.AlignVCenter
+                    font.bold: true
+                    font.pointSize: 14
+                }
+
+                ComboBox {
+                    id: bonusList
+                    height: originsList.height
+                    width: 150
                     font.bold: true
                     font.pointSize: 14
                 }
@@ -115,7 +126,6 @@ Page {
                     id: picture
                     width: features.width * 0.3
                     fillMode: Image.PreserveAspectFit
-                    source: "qrc:/pictures/resources/pictures/origins/appalachy.PNG"
                     horizontalAlignment: Qt.AlignRight
                 }
             }
