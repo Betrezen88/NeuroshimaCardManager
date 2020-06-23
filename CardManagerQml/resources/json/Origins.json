@@ -7,7 +7,7 @@
         Jeśli spotkasz kogoś, kto wychował się u nas, nie zadzieraj z nim. Nie próbuj go oszukać, ani okłamać. Nie próbuj być cwany. Nie warto.",
         "image": "hegemonia.PNG",
         "bonus": {
-            "name": "Budowa",
+            "name": ["Budowa"],
             "value": 1
         },
         "features": [
@@ -38,7 +38,7 @@
         A wiesz, co najbardziej mnie wkurza? Brak zasad. Wasze podejście do życia, ciągłe kantowanie i matactwa. Kombinowanie, jak zrobić krzywdę drugiemu, jak podłożyć mu nogę i zająć jego miejsce. Fakt, to daje wam niezłą odporność na działania innych. Fakt, zrobić w wała kogoś z Vegas, to sztuka. Fakt, często wychodzi na Twoje, bo potrafisz ściemniać jak nikt inny. Ale nie myśli, że Cię za to szanują. Ani trochę, cholerny, zakłamany, wierzący w duchy palancie.",
         "image": "vegas.PNG",
         "bonus": {
-            "name": "Zręczność",
+            "name": ["Zręczność"],
             "value": 1
         },
         "features": [
@@ -71,7 +71,7 @@
         Kazałem mu wypieprzać. No i poszedł sobie. Zostawił mnie na tej cholernej pustyni i omal się nie upiekłem. Cudem doczołgałem się do jakiejś osady. Jak go kiedyś spotkam...",
         "image": "pustynia.PNG",
         "bonus": {
-            "name": "Percepcja",
+            "name": ["Percepcja"],
             "value": 1
         },
         "features": [
@@ -101,7 +101,7 @@
         Powiem Ci, można puścić pawia słuchając tych ich przemów, widząc świętowanie Dnia Niepodległości, race i transparenty. Gdy usłyszałem, że zrobili paradę z jakiejś tam okazji, omal nie padłem. Są naprawdę mocno przejęci swoją rolą i znaczeniem. Oni naprawdę wirzą, że uratują Stany i spuszczą lanie Molochowi. Wiesz, że budują kolej? Uruchomili kilka fabryk, elektrownie, mają nawet szkoły dla dzieciaków! Śmiej się z nich, ale tak szczerze mówiąc, szanuję ich za wolę walki i odwagę. Jeśli ktoś spuści Molochowi wpieprz, to będą to właśnie Nowojorczycy. Nikt inny.",
         "image": "nowy_york.PNG",
         "bonus": {
-            "name": "Charakter",
+            "name": ["Charakter"],
             "value": 1
         },
         "features": [
@@ -131,7 +131,7 @@
         Poza tym są całkiem tolerancyjni. To bardzo mili ludzie. Pomogą, doradzą... Aha, zapomniałbym, nie ćpaj Tornado. Tego też nie uznają.",
         "image": "texas.PNG",
         "bonus": {
-            "name": "Budowa",
+            "name": ["Budowa"],
             "value": 1
         },
         "features": [
@@ -168,7 +168,7 @@
         Jeśli spotkasz kogoś z Federacji, bądź ostrożny, to facet lub babka, którzy pochodzą z autonomicznego księstewka, pełnego zasad i zwyczajów. A ponieważ nie do każdego z tych frajerów dociera, że poza Federacją ich kasty i tytuły mogą sobie \"wsadzić\", zawsze ciągną się za nimi kłopoty.",
         "image": "appalachy.PNG",
         "bonus": {
-            "name": "Charakter",
+            "name": ["Charakter"],
             "value": 1
         },
         "features": [
@@ -200,7 +200,7 @@
         Tacy są właśnie ludzie z Miami. Dlatego właśnie ich lubię. To nie są mięczaki, ani świrusy. Po prostu dobrze grają swoją rolę. A wiesz, ja uwielbiam stare filmy z Clintem Eastwoodem...",
         "image": "miami.PNG",
         "bonus": {
-            "name": "Percepcja",
+            "name": ["Percepcja"],
             "value": 1
         },
         "features": [
@@ -228,7 +228,7 @@
         To ich styl. Ludzie z nikąd.",
         "image": "nie_twoj_interes.PNG",
         "bonus": {
-            "name": "Dowolny",
+            "name": ["Budowa", "Zręczność", "Charakter", "Percepcja", "Spryt"],
             "value": 1
         },
         "features": [
@@ -257,7 +257,7 @@
         Sekta i tyle. Najlepiej ich wszystkich wysłać do Molocha, może jego przekonają do zmiany spojrzenia na życie.",
         "image": "salt_lake_city.PNG",
         "bonus": {
-            "name": "Spryt",
+            "name": ["Spryt"],
             "value": 1
         },
         "features": [
@@ -284,7 +284,7 @@
         Ja pierniczę, ale oni wyglądają! Życie na rzecze to nie bajka, tego jestem pewien.",
         "image": "missisipi.PNG",
         "bonus": {
-            "name": "Percepcja",
+            "name": ["Percepcja"],
             "value": 1
         },
         "features": [
@@ -310,7 +310,7 @@
         Stereotypowy mieszkaniec Wędrownej Osady jest odlutkiem pochłoniętym wyznaczonymi mi zadaniami. Rygor nauczył do lakoniczności, sumienności i słuszeństwa wobec przełożonych. I cały czas pamiętają, że ich nieprzyjacielem jest Maszyna. Część z nich zmęczona nieskończonym się uciekaniem, lubi na pewien czas opuścić osadę. \"Urlop\" wiąże się przeważnie z koniecznością wypełnienia jekiejś misji, bowiem w Posterunku nikt nie może zostać bezużyteczny.",
         "image": "posterunek.PNG",
         "bonus": {
-            "name": "Spryt",
+            "name": ["Spryt"],
             "value": 1
         },
         "features": [
@@ -340,7 +340,7 @@
         Wiesz co, spadaj. Jedź do SDetroit. Znajdziesz tam kumpli w sam raz dla Ciebie. Im nie brak luzu, o nie!",
         "image": "detroit.PNG",
         "bonus": {
-            "name": "Zręczność",
+            "name": ["Zręczność"],
             "value": 1
         },
         "features": [
