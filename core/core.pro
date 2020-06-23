@@ -69,6 +69,7 @@ HEADERS += \
     DataSources/Elements/Stats/HeroData.h \
     DataSources/Elements/Stats/NSTrick.h \
     DataSources/Elements/Stats/Origin.h \
+    DataSources/Elements/Stats/OriginBonus.h \
     DataSources/Elements/Stats/Profession.h \
     DataSources/Elements/Stats/Requirement.h \
     DataSources/StatsSource.h \
