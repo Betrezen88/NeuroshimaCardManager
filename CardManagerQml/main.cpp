@@ -15,6 +15,7 @@
 
 #include "DataSources/Elements/Stats/HeroData.h"
 #include "DataSources/Elements/Stats/Origin.h"
+#include "DataSources/Elements/Stats/OriginBonus.h"
 #include "DataSources/Elements/Stats/Profession.h"
 #include "DataSources/Elements/Stats/Feature.h"
 #include "DataSources/Elements/Stats/Bonus.h"
@@ -47,6 +48,7 @@ int main(int argc, char *argv[])
     qRegisterMetaType<DataSource::Type>("NSDataSource::Type");
     qmlRegisterType<HeroData>("core.NSHeroData", 1, 0, "NSHeroData");
     qmlRegisterType<Origin>("core.NSOrigin", 1, 0, "NSOrigin");
+    qmlRegisterType<OriginBonus>("core.NSOriginBonus", 1, 0, "NSOriginBonus");
     qmlRegisterType<Profession>("core.NSProfession", 1, 0, "NSProfession");
     qmlRegisterType<Feature>("core.NSFeature", 1, 0, "NSFeature");
     qmlRegisterType<Bonus>("core.NSBonus", 1, 0, "NSBonus");
