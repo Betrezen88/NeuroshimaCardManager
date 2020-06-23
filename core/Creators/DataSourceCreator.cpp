@@ -3,6 +3,7 @@
 #include "../DataSources/StatsSource.h"
 
 #include "../DataSources/Elements/Stats/Origin.h"
+#include "../DataSources/Elements/Stats/OriginBonus.h"
 #include "../DataSources/Elements/Stats/Profession.h"
 #include "../DataSources/Elements/Stats/Feature.h"
 
@@ -68,11 +69,18 @@ void DataSourceCreator::addOrigins(StatsSource *source, const QString &dataFile)
         const QJsonObject &tOrigin = origin.toObject();
         const QJsonObject &tBonus = tOrigin.value("bonus").toObject();
 
+        QStringList attributes;
+        for ( const QJsonValue &attribute: tBonus.value("name").toArray() ) {
+            attributes.append(attribute.toString());
+        }
+
+        OriginBonus* pBonus = new OriginBonus(attributes,
+                                              tBonus.value("value").toInt());
+
         Origin* pOrigin = new Origin(tOrigin.value("name").toString(),
                                      tOrigin.value("description").toString(),
                                      tOrigin.value("image").toString(),
-                                     tBonus.value("name").toString(),
-                                     tBonus.value("value").toInt());
+                                     pBonus);
 
         addFeatures(pOrigin, tOrigin.value("features").toArray());
 
