@@ -61,10 +61,11 @@ int main(int argc, char *argv[])
     qmlRegisterType<Attribute>("core", 1, 0, "NSAttribute");
     qmlRegisterType<Disease>("core", 1, 0, "NSDisease");
     qmlRegisterType<OtherSkill>("core", 1, 0, "NSOtherSkill");
-    qmlRegisterType<Penalty>("core", 1, 0, "NSPenalty");
+    qmlRegisterType<Penalty>("core.NSPenalty", 1, 0, "NSPenalty");
+    qRegisterMetaType<Page::Type>("Penalty::Type");
     qmlRegisterType<Skillpack>("core", 1, 0, "NSSkillpack");
     qmlRegisterType<Skill>("core", 1, 0, "NSSkill");
-    qmlRegisterType<Symptom>("core", 1, 0, "NSSymptom");
+    qmlRegisterType<Symptom>("core.NSSymptom", 1, 0, "NSSymptom");
     qmlRegisterType<Trick>("core", 1, 0, "NSTrick");
 
     QGuiApplication app(argc, argv);
