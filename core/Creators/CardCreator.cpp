@@ -26,6 +26,11 @@ void CardCreator::createDataSource(const DataSource::Type &type,
     m_dataSources.insert(type, dsCreator.create(type, dataFiles));
 }
 
+int CardCreator::diceRoll() const
+{
+    return m_d20.roll();
+}
+
 PageCreator *CardCreator::createPageCreator(const PageCreator::Type &type)
 {
     switch (type) {

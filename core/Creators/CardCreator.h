@@ -8,6 +8,7 @@
 
 #include "PageCreator.h"
 #include "DataSources/DataSource.h"
+#include "Utils/Dice.h"
 
 class CORE_EXPORT CardCreator : public QObject
 {
@@ -20,12 +21,14 @@ public:
     Q_INVOKABLE void createDataSource(const DataSource::Type &type,
                                       const QVariantMap &dataFiles);
 
+    Q_INVOKABLE int diceRoll() const;
 private:
     PageCreator* createPageCreator(const PageCreator::Type &type);
 
 private:
     QMap<PageCreator::Type, PageCreator*> m_pageCreators;
     QMap<DataSource::Type, DataSource*> m_dataSources;
+    Dice m_d20{20};
 };
 
 #endif // CARDCREATOR_H
