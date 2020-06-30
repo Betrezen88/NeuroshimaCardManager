@@ -157,7 +157,7 @@ void DataSourceCreator::addDiseases(StatsSource *source, const QString &dataFile
             const QJsonObject &tSymptom = symptom.toObject();
 
             QVector<Penalty*> penalties;
-            for ( const QJsonValue &penalty: tSymptom.value("panalties").toArray() ) {
+            for ( const QJsonValue &penalty: tSymptom.value("penalties").toArray() ) {
                 const QJsonObject &tPenalty = penalty.toObject();
                 const QString &type = tPenalty.value("type").toString();
 
