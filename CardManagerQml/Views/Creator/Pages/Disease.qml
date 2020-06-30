@@ -3,7 +3,13 @@ import QtQuick.Controls 2.12
 
 import "./../Elements"
 
+import core 1.0
+import core.NSStatsSource 1.0
+
 Page {
+    property NSStatsSource dataSource
+    property NSDisease disease
+
     id: main
 
     ScrollView {
@@ -62,33 +68,47 @@ Page {
 
             Text {
                 id: description
-                width: column.width
+                width: main.width - column.anchors.margins * 2
                 text: qsTr("Opis")
                 wrapMode: Text.WordWrap
                 font.pointSize: 10
             }
 
+            Text {
+                id: cure
+                width: main.width - column.anchors.margins * 2
+                text: qsTr("Lekrstwo")
+                wrapMode: Text.WordWrap
+                font.pointSize: 10
+            }
+
             Flow {
-                width: column.width
+                property var objects: []
+
+                id: symptoms
+                width: main.width - column.anchors.margins * 2
                 height: implicitHeight
                 spacing: 5
-
-                Symptom {
-                    id: symptom
-                }
-
-                Symptom {
-                    id: symptom1
-                }
-
-                Symptom {
-                    id: symptom2
-                }
-
-                Symptom {
-                    id: symptom3
-                }
             }
+        }
+    }
+
+    onDiseaseChanged: {
+        diseaseName.text = disease.name
+        description.text = "Opis: " + disease.description
+        cure.text = "Lekarstwo: " + disease.cure
+
+        for ( var o in symptoms.objects ) {
+            symptoms.objects[o].destroy()
+        }
+        symptoms.objects = []
+
+        for ( var i in disease.symptoms ) {
+            var component = Qt.createComponent("../Elements/Symptom.qml")
+            var object = component.createObject(symptoms, {
+                                                    symptom: disease.symptoms[i]
+                                                })
+            symptoms.objects.push(object)
         }
     }
 }
