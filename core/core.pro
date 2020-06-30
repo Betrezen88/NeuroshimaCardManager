@@ -77,6 +77,7 @@ HEADERS += \
     Managers/MainManager.h \
     Utils/CardBuilder.h \
     Utils/DataReader.h \
+    Utils/Dice.h \
     core_global.h
 
 # Default rules for deployment.
