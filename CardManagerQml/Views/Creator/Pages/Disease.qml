@@ -31,6 +31,10 @@ Page {
                 Button {
                     id: randomBtn
                     text: qsTr("Losuj")
+                    onClicked: {
+                        var val = manager.cardCreator.diceRoll() - 1
+                        main.disease = dataSource.diseases[val]
+                    }
                 }
 
                 CheckBox {
