@@ -2,7 +2,6 @@
 import QtQuick.Controls 2.12
 
 import core.NSStatsSource 1.0
-import core 1.0
 
 Page {
     property NSStatsSource dataSource

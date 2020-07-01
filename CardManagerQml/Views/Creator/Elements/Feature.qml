@@ -2,7 +2,7 @@
 import QtQuick.Controls 2.12
 
 import core.NSFeature 1.0
-import core 1.0
+import core.NSBonus 1.0
 
 Column {
     property var feature

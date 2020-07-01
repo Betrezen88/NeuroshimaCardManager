@@ -1,6 +1,7 @@
-import QtQuick 2.0
+﻿import QtQuick 2.0
 import QtQuick.Controls 2.12
 
+import core.NSAttribute 1.0
 Column {
     id: attributeCol
     width: 300

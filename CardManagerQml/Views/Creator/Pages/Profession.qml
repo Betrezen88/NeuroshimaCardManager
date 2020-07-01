@@ -1,13 +1,12 @@
 ﻿import QtQuick 2.0
 import QtQuick.Controls 2.12
 
-import "./../Elements"
-
 import core.NSStatsSource 1.0
 import core.NSProfession 1.0
 import core.NSHeroData 1.0
 import core.NSFeature 1.0
-import core 1.0
+
+import "./../Elements"
 
 Page {
     property NSStatsSource dataSource

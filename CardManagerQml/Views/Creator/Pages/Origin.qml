@@ -8,7 +8,6 @@ import core.NSOrigin 1.0
 import core.NSOriginBonus 1.0
 import core.NSHeroData 1.0
 import core.NSFeature 1.0
-import core 1.0
 
 Page {
     property NSStatsSource dataSource

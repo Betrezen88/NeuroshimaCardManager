@@ -38,12 +38,12 @@ int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
-    qmlRegisterType<MainManager>("core", 1, 0, "NSMainManager");
-    qmlRegisterType<CardManager>("core", 1, 0, "NSCardManager");
-    qmlRegisterType<CardCreator>("core", 1, 0, "NSCardCreator");
-    qmlRegisterType<PageCreator>("core", 1, 0, "NSPageCreator");
+    qmlRegisterType<MainManager>("core.NSMainManager", 1, 0, "NSMainManager");
+    qmlRegisterType<CardManager>("core.NSCardManager", 1, 0, "NSCardManager");
+    qmlRegisterType<CardCreator>("core.NSCardCreator", 1, 0, "NSCardCreator");
+    qmlRegisterType<PageCreator>("core.NSPageCreator", 1, 0, "NSPageCreator");
     qRegisterMetaType<PageCreator::Type>("NSPageCreator::Type");
-    qmlRegisterType<DataSource>("core", 1, 0, "NSDataSource");
+    qmlRegisterType<DataSource>("core.NSDataSource", 1, 0, "NSDataSource");
     qmlRegisterType<StatsSource>("core.NSStatsSource", 1, 0, "NSStatsSource");
     qRegisterMetaType<DataSource::Type>("NSDataSource::Type");
     qmlRegisterType<HeroData>("core.NSHeroData", 1, 0, "NSHeroData");
@@ -53,20 +53,20 @@ int main(int argc, char *argv[])
     qmlRegisterType<Feature>("core.NSFeature", 1, 0, "NSFeature");
     qmlRegisterType<Bonus>("core.NSBonus", 1, 0, "NSBonus");
     qRegisterMetaType<Bonus::Type>("NSBonus::Type");
-    qmlRegisterType<Data>("core", 1, 0, "NSData");
-    qmlRegisterType<Card>("core", 1, 0, "NSCard");
+    qmlRegisterType<Data>("core.NSData", 1, 0, "NSData");
+    qmlRegisterType<Card>("core.NSCard", 1, 0, "NSCard");
     qRegisterMetaType<Page::Type>("Page::Type");
-    qmlRegisterType<Page>("core", 1, 0, "NSPage");
-    qmlRegisterType<Stats>("core", 1, 0, "NSStats");
-    qmlRegisterType<Attribute>("core", 1, 0, "NSAttribute");
-    qmlRegisterType<Disease>("core", 1, 0, "NSDisease");
-    qmlRegisterType<OtherSkill>("core", 1, 0, "NSOtherSkill");
+    qmlRegisterType<Page>("core.NSPage", 1, 0, "NSPage");
+    qmlRegisterType<Stats>("core.NSStats", 1, 0, "NSStats");
+    qmlRegisterType<Attribute>("core.NSAttribute", 1, 0, "NSAttribute");
+    qmlRegisterType<Disease>("core.NSDisease", 1, 0, "NSDisease");
+    qmlRegisterType<OtherSkill>("core.NSOtherSkill", 1, 0, "NSOtherSkill");
     qmlRegisterType<Penalty>("core.NSPenalty", 1, 0, "NSPenalty");
     qRegisterMetaType<Page::Type>("Penalty::Type");
-    qmlRegisterType<Skillpack>("core", 1, 0, "NSSkillpack");
-    qmlRegisterType<Skill>("core", 1, 0, "NSSkill");
+    qmlRegisterType<Skillpack>("core.NSSkillpack", 1, 0, "NSSkillpack");
+    qmlRegisterType<Skill>("core.NSSkill", 1, 0, "NSSkill");
     qmlRegisterType<Symptom>("core.NSSymptom", 1, 0, "NSSymptom");
-    qmlRegisterType<Trick>("core", 1, 0, "NSTrick");
+    qmlRegisterType<Trick>("core.NSTrick", 1, 0, "NSTrick");
 
     QGuiApplication app(argc, argv);
 

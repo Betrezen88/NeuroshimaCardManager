@@ -3,8 +3,8 @@ import QtQuick.Controls 2.12
 
 import "./../Elements"
 
-import core 1.0
 import core.NSStatsSource 1.0
+import core.NSDisease 1.0
 
 Page {
     property NSStatsSource dataSource
