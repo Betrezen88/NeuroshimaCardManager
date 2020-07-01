@@ -188,7 +188,7 @@ void DataSourceCreator::addAttributes(StatsSource *source, const QString &dataFi
             const QJsonObject &tSkillpack = skillpack.toObject();
 
             QStringList specs;
-            for ( const QJsonValue &specialization: tSkillpack.value("specialization").toArray() ) {
+            for ( const QJsonValue &specialization: tSkillpack.value("specializations").toArray() ) {
                 specs << specialization.toString();
             }
 
