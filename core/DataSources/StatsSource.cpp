@@ -4,6 +4,7 @@
 #include "Elements/Stats/Profession.h"
 #include "../Card/Data.h"
 #include "../Card/Elements/Stats/Disease.h"
+#include "../Card/Elements/Stats/Attribute.h"
 
 StatsSource::StatsSource(QObject *parent)
     : DataSource(DataSource::Type::STATS, parent)
@@ -164,6 +165,16 @@ void StatsSource::clearAttributes()
 {
     m_attributes.clear();
     emit attributesChanged();
+}
+
+Attribute *StatsSource::attribute(const QString &name) const
+{
+    for ( Attribute* pAttribute: m_attributes ) {
+        if ( name == pAttribute->name() )
+            return pAttribute;
+    }
+
+    return nullptr;
 }
 
 QQmlListProperty<NSTrick> StatsSource::tricks()

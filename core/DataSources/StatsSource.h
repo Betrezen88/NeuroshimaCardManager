@@ -57,6 +57,8 @@ public:
     Attribute* attribute(const int &index) const;
     void clearAttributes();
 
+    Q_INVOKABLE Attribute* attribute(const QString &name) const;
+
     QQmlListProperty<NSTrick> tricks();
     void addTrick(NSTrick* trick);
     int tricksCount() const;
