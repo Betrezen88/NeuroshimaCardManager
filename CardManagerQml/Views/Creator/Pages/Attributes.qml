@@ -3,7 +3,11 @@ import QtQuick.Controls 2.12
 
 import "./../Elements"
 
+import core.NSStatsSource 1.0
+
 Page {
+    property NSStatsSource dataSource
+
     id: main
 
     ScrollView {
@@ -12,40 +16,23 @@ Page {
         clip: true
 
         Column {
-            id: column
+            property var objects: []
+
+            id: attributesCol
             spacing: 5
             anchors.margins: 5
             anchors.fill: parent
+        }
+    }
 
-            AttributeRow {
-                id: attribute1
-                name: "Budowa"
-                width: column.width
-            }
-
-            AttributeRow {
-                id: attribute2
-                name: "Zręczność"
-                width: column.width
-            }
-
-            AttributeRow {
-                id: attribute3
-                name: "Charakter"
-                width: column.width
-            }
-
-            AttributeRow {
-                id: attribute4
-                name: "Percepcja"
-                width: column.width
-            }
-
-            AttributeRow {
-                id: attribute5
-                name: "Spryt"
-                width: column.width
-            }
+    onDataSourceChanged: {
+        for ( var i in dataSource.attributes ) {
+            var component = Qt.createComponent("../Elements/AttributeRow.qml")
+            var object = component.createObject(attributesCol, {
+                                                    name: dataSource.attributes[i].name,
+                                                    value: 6
+                                                })
+            attributesCol.objects.push(object)
         }
     }
 }
