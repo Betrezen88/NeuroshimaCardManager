@@ -27,6 +27,19 @@ QStringList Skillpack::specializations() const
     return m_specializations;
 }
 
+QString Skillpack::fullname() const
+{
+    QString tName = m_name;
+    tName += " (";
+    for ( const QString& spec: m_specializations ) {
+        tName += spec.at(0);
+        if ( spec != m_specializations.last() )
+            tName += ", ";
+    }
+    tName += ")";
+    return tName;
+}
+
 QQmlListProperty<Skill> Skillpack::skills()
 {
     return QQmlListProperty<Skill>(this, this,
