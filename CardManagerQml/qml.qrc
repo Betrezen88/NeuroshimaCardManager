@@ -40,6 +40,7 @@
         <file>Views/Creator/Elements/AttributeRow.qml</file>
         <file>Views/Creator/Elements/Symptom.qml</file>
         <file>Views/Creator/Elements/Attribute.qml</file>
+        <file>Views/Creator/Elements/Skillpack.qml</file>
         <file>Views/Creator/Elements/Skill.qml</file>
         <file>Views/Creator/Elements/GeneralSkill.qml</file>
     </qresource>
