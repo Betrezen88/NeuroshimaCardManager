@@ -13,6 +13,7 @@ class Data;
 class Disease;
 class Attribute;
 class NSTrick;
+class Difficulty;
 
 class CORE_EXPORT StatsSource : public DataSource
 {
@@ -23,6 +24,7 @@ class CORE_EXPORT StatsSource : public DataSource
     Q_PROPERTY(QQmlListProperty<Disease> diseases READ diseases NOTIFY diseasesChanged)
     Q_PROPERTY(QQmlListProperty<Attribute> attributes READ attributes NOTIFY attributesChanged)
     Q_PROPERTY(QQmlListProperty<NSTrick> tricks READ tricks NOTIFY tricksChanged)
+    Q_PROPERTY(QQmlListProperty<Difficulty> difficulties READ difficulties NOTIFY difficultiesChanged)
 
 public:
     explicit StatsSource(QObject *parent = nullptr);
@@ -65,6 +67,12 @@ public:
     NSTrick* trick(const int &index) const;
     void clearTricks();
 
+    QQmlListProperty<Difficulty> difficulties();
+    void addDifficulty(Difficulty* difficulty);
+    int diffcultiesCount() const;
+    Difficulty* difficulty(const int &index) const;
+    void clearDifficulties();
+
 signals:
     void originsChanged();
     void professionsChanged();
@@ -72,6 +80,7 @@ signals:
     void diseasesChanged();
     void attributesChanged();
     void tricksChanged();
+    void difficultiesChanged();
 
 private:
     static void addOrigin(QQmlListProperty<Origin> *list, Origin *origin);
@@ -104,6 +113,11 @@ private:
     static NSTrick* trick(QQmlListProperty<NSTrick> *list, int index);
     static void clearTricks(QQmlListProperty<NSTrick> *list);
 
+    static void addDifficulty(QQmlListProperty<Difficulty> *list, Difficulty* difficulty);
+    static int difficultiesCount(QQmlListProperty<Difficulty> *list);
+    static Difficulty* difficulty(QQmlListProperty<Difficulty> *list, int index);
+    static void clearDifficulties(QQmlListProperty<Difficulty> *list);
+
 private:
     QVector<Origin*> m_origins;
     QVector<Profession*> m_professions;
@@ -111,6 +125,7 @@ private:
     QVector<Disease*> m_diseases;
     QVector<Attribute*> m_attributes;
     QVector<NSTrick*> m_tricks;
+    QVector<Difficulty*> m_difficulties;
 };
 
 #endif // STATSSOURCE_H

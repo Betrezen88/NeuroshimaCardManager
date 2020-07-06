@@ -5,6 +5,7 @@
 #include "../Card/Data.h"
 #include "../Card/Elements/Stats/Disease.h"
 #include "../Card/Elements/Stats/Attribute.h"
+#include "../Card/Elements/Stats/Difficulty.h"
 
 StatsSource::StatsSource(QObject *parent)
     : DataSource(DataSource::Type::STATS, parent)
@@ -208,6 +209,37 @@ void StatsSource::clearTricks()
     emit tricksChanged();
 }
 
+QQmlListProperty<Difficulty> StatsSource::difficulties()
+{
+    return QQmlListProperty<Difficulty>(this, this,
+                                        &StatsSource::addDifficulty,
+                                        &StatsSource::difficultiesCount,
+                                        &StatsSource::difficulty,
+                                        &StatsSource::clearDifficulties);
+}
+
+void StatsSource::addDifficulty(Difficulty *difficulty)
+{
+    m_difficulties.push_back(difficulty);
+    emit difficultiesChanged();
+}
+
+int StatsSource::diffcultiesCount() const
+{
+    return m_difficulties.count();
+}
+
+Difficulty *StatsSource::difficulty(const int &index) const
+{
+    return m_difficulties.at(index);
+}
+
+void StatsSource::clearDifficulties()
+{
+    m_difficulties.clear();
+    emit difficultiesChanged();
+}
+
 void StatsSource::addOrigin(QQmlListProperty<Origin> *list, Origin *origin)
 {
     reinterpret_cast<StatsSource*>(list->data)->addOrigin(origin);
@@ -326,4 +358,24 @@ NSTrick *StatsSource::trick(QQmlListProperty<NSTrick> *list, int index)
 void StatsSource::clearTricks(QQmlListProperty<NSTrick> *list)
 {
     reinterpret_cast<StatsSource*>(list->data)->clearTricks();
+}
+
+void StatsSource::addDifficulty(QQmlListProperty<Difficulty> *list, Difficulty *difficulty)
+{
+    reinterpret_cast<StatsSource*>(list->data)->addDifficulty(difficulty);
+}
+
+int StatsSource::difficultiesCount(QQmlListProperty<Difficulty> *list)
+{
+    return reinterpret_cast<StatsSource*>(list->data)->diffcultiesCount();
+}
+
+Difficulty *StatsSource::difficulty(QQmlListProperty<Difficulty> *list, int index)
+{
+    return reinterpret_cast<StatsSource*>(list->data)->difficulty(index);
+}
+
+void StatsSource::clearDifficulties(QQmlListProperty<Difficulty> *list)
+{
+    reinterpret_cast<StatsSource*>(list->data)->clearDifficulties();
 }
