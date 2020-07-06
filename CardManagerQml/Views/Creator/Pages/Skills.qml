@@ -3,7 +3,11 @@ import QtQuick.Controls 2.12
 
 import "./../Elements"
 
+import core.NSStatsSource 1.0
+
 Page {
+    property NSStatsSource dataSource
+
     id: main
 
     ScrollView {
@@ -17,9 +21,8 @@ Page {
             anchors.margins: 5
 
             Column {
-                id: column
-                width: column.implicitWidth
-                height: column.implicitHeight
+                width: implicitWidth
+                height: implicitHeight + 10
                 spacing: 5
 
                 Rectangle {
@@ -32,15 +35,15 @@ Page {
                     border.width: 2
 
                     Column {
-                        id: column1
-                        height: column1.implicitHeight
+                        id: pointsColumn
+                        height: implicitHeight
                         spacing: 5
                         anchors.fill: parent
                         anchors.margins: 5
 
                         Text {
                             id: label
-                            width: column1.width
+                            width: pointsColumn.width
                             text: qsTr("Wolne Punkty Umiejętności")
                             font.bold: true
                             font.pointSize: 12
@@ -61,40 +64,36 @@ Page {
                     }
                 }
 
-                Attribute {
-                    id: attribute1
-                }
+                Attribute { id: body }
 
-                Attribute {
-                    id: attribute2
-                }
+                Attribute { id: dexterity }
             }
 
             Column {
-                id: column2
-                width: column2.implicitWidth
-                height: column2.implicitHeight
+                width: implicitWidth
+                height: implicitHeight
                 spacing: 5
 
-                Attribute {
-                    id: attribute3
-                }
+                Attribute { id: character }
 
-                Attribute {
-                    id: attribute4
-                }
+                Attribute { id: perception }
             }
 
             Column {
-                id: col
-                width: col.implicitWidth
-                height: col.implicitHeight
+                width: implicitWidth
+                height: implicitHeight
                 spacing: 5
 
-                Attribute {
-                    id: attribute5
-                }
+                Attribute { id: cleaverness }
             }
         }
+    }
+
+    onDataSourceChanged: {
+        body.attribute = dataSource.attribute("Budowa")
+        dexterity.attribute = dataSource.attribute("Zręczność")
+        character.attribute = dataSource.attribute("Charakter")
+        perception.attribute = dataSource.attribute("Percepcja")
+        cleaverness.attribute = dataSource.attribute("Spryt")
     }
 }
