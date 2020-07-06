@@ -21,6 +21,7 @@ SOURCES += \
     Card/Card.cpp \
     Card/Data.cpp \
     Card/Elements/Stats/Attribute.cpp \
+    Card/Elements/Stats/Difficulty.cpp \
     Card/Elements/Stats/Disease.cpp \
     Card/Elements/Stats/OtherSkill.cpp \
     Card/Elements/Stats/Penalty.cpp \
@@ -50,6 +51,7 @@ HEADERS += \
     Card/Card.h \
     Card/Data.h \
     Card/Elements/Stats/Attribute.h \
+    Card/Elements/Stats/Difficulty.h \
     Card/Elements/Stats/Disease.h \
     Card/Elements/Stats/OtherSkill.h \
     Card/Elements/Stats/Penalty.h \
