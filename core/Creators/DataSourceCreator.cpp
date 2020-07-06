@@ -194,9 +194,7 @@ void DataSourceCreator::addAttributes(StatsSource *source, const QString &dataFi
 
             QVector<Skill*> skills;
             for ( const QJsonValue &skill: tSkillpack.value("skills").toArray() ) {
-                const QJsonObject &tSkill = skill.toObject();
-
-                skills.push_back(new Skill(tSkill.value("name").toString(), 0));
+                skills.push_back(new Skill(skill.toString(), 0));
             }
 
             skillpacks.push_back( new Skillpack(tSkillpack.value("name").toString(),
