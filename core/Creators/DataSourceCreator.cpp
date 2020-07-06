@@ -8,6 +8,7 @@
 #include "../DataSources/Elements/Stats/Feature.h"
 
 #include "../Card/Elements/Stats/Attribute.h"
+#include "../Card/Elements/Stats/Difficulty.h"
 #include "../Card/Elements/Stats/Skillpack.h"
 #include "../Card/Elements/Stats/Skill.h"
 #include "../Card/Elements/Stats/Disease.h"
@@ -205,6 +206,17 @@ void DataSourceCreator::addAttributes(StatsSource *source, const QString &dataFi
         source->addAttribute( new Attribute(tAttribute.value("name").toString(),
                                             0,
                                             skillpacks) );
+    }
+}
+
+void DataSourceCreator::addDifficulty(StatsSource *source, const QString &dataFile)
+{
+    for ( const QJsonValue &difficulty: loadData(dataFile).array() ) {
+        const QJsonObject &tDifficulty = difficulty.toObject();
+
+        source->addDifficulty( new Difficulty(tDifficulty.value("name").toObject().value("full").toString(),
+                                              tDifficulty.value("name").toObject().value("short").toString(),
+                                              tDifficulty.value("value").toInt()) );
     }
 }
 
