@@ -64,9 +64,14 @@ Stats *CardBuilder::statsPage(const QJsonObject &stats)
                 skills.push_back( new Skill(tSkill.value("name").toString(),
                                             tSkill.value("value").toInt()) );
             }
+            const Skillpack::Type &type = (skills.count() != 3)
+                    ? Skillpack::Type::CHOOSABLE
+                    : Skillpack::Type::CONSTANT;
+
             skillpacks.push_back( new Skillpack(tSkillpack.value("name").toString(),
                                                 specializations,
-                                                skills) );
+                                                skills,
+                                                type) );
         }
         attributes.push_back( new Attribute(tAttribute.value("name").toString(),
                                             tAttribute.value("value").toInt(),
