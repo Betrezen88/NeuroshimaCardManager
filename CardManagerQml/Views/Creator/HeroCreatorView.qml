@@ -88,7 +88,8 @@ Page {
                                                  "professions": ":/json/resources/json/Professions.json",
                                                  "specializations": ":/json/resources/json/Specializations.json",
                                                  "diseases": ":/json/resources/json/Diseases.json",
-                                                 "attributes": ":/json/resources/json/Attributes.json"
+                                                 "attributes": ":/json/resources/json/Attributes.json",
+                                                 "difficulty": ":/json/resources/json/Difficulties.json"
                                              })
         origin.dataSource = manager.cardCreator.dataSource(NSDataSource.STATS)
         profession.dataSource = manager.cardCreator.dataSource(NSDataSource.STATS)
