@@ -37,6 +37,7 @@ DataSource *DataSourceCreator::create(const DataSource::Type &type, const QVaria
         addAttributes(pStatsSource, dataFiles.value("attributes").toString());
         addSpecializations(pStatsSource, dataFiles.value("specializations").toString());
         addDiseases(pStatsSource, dataFiles.value("diseases").toString());
+        addDifficulty(pStatsSource, dataFiles.value("difficulty").toString());
 
         return pStatsSource;
         break;
