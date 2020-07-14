@@ -1,6 +1,8 @@
 ﻿#include "Skillpack.h"
 
-Skillpack::Skillpack(QObject *parent) : QObject(parent)
+Skillpack::Skillpack(QObject *parent)
+    : QObject(parent),
+      m_type(Type::CONSTANT)
 {
 
 }
@@ -8,11 +10,13 @@ Skillpack::Skillpack(QObject *parent) : QObject(parent)
 Skillpack::Skillpack(const QString &name,
                      const QStringList &specializations,
                      const QVector<Skill *> &skills,
+                     const Type &type,
                      QObject *parent)
     : QObject(parent),
       m_name(name),
       m_specializations(specializations),
-      m_skills(skills)
+      m_skills(skills),
+      m_type(type)
 {
 
 }
@@ -55,6 +59,11 @@ int Skillpack::skillsCount() const
 Skill *Skillpack::skill(int index) const
 {
     return m_skills.at(index);
+}
+
+Skillpack::Type Skillpack::type() const
+{
+    return m_type;
 }
 
 int Skillpack::skillsCount(QQmlListProperty<Skill> *list)
