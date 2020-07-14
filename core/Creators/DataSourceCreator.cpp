@@ -198,9 +198,14 @@ void DataSourceCreator::addAttributes(StatsSource *source, const QString &dataFi
                 skills.push_back(new Skill(skill.toString(), 0));
             }
 
+            const Skillpack::Type &type = (skills.count() != 3)
+                    ? Skillpack::Type::CHOOSABLE
+                    : Skillpack::Type::CONSTANT;
+
             skillpacks.push_back( new Skillpack(tSkillpack.value("name").toString(),
                                                 specs,
-                                                skills) );
+                                                skills,
+                                                type) );
         }
 
         source->addAttribute( new Attribute(tAttribute.value("name").toString(),
