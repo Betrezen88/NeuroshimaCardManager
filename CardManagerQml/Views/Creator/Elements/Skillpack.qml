@@ -59,7 +59,7 @@ Rectangle {
         }
         skills.objects = []
 
-        if ( skillpack.name !== "Wiedza Ogólna" ) {
+        if ( NSSkillpack.CONSTANT === skillpack.type ) {
             for ( var i in skillpack.skills ) {
                 var component = Qt.createComponent("Skill.qml")
                 var object = component.createObject(skills, {
