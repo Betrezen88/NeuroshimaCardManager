@@ -25,6 +25,7 @@
 #include "Card/Pages/Stats.h"
 #include "Card/Elements/Stats/Attribute.h"
 #include "Card/Elements/Stats/Disease.h"
+#include "Card/Elements/Stats/Difficulty.h"
 #include "Card/Elements/Stats/OtherSkill.h"
 #include "Card/Elements/Stats/Penalty.h"
 #include "Card/Elements/Stats/Skillpack.h"
@@ -63,6 +64,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<Stats>("core.NSStats", 1, 0, "NSStats");
     qmlRegisterType<Attribute>("core.NSAttribute", 1, 0, "NSAttribute");
     qmlRegisterType<Disease>("core.NSDisease", 1, 0, "NSDisease");
+    qmlRegisterType<Difficulty>("core.NSDifficulty", 1, 0, "NSDifficulty");
     qmlRegisterType<OtherSkill>("core.NSOtherSkill", 1, 0, "NSOtherSkill");
     qmlRegisterType<Penalty>("core.NSPenalty", 1, 0, "NSPenalty");
     qmlRegisterType<Skillpack>("core.NSSkillpack", 1, 0, "NSSkillpack");
