@@ -1,17 +1,22 @@
-﻿import QtQuick 2.0
+﻿import QtQuick 2.9
 import QtQuick.Controls 2.12
 
 import core.NSAttribute 1.0
 
-import "./../../Card/Elements" as CardElements
-
 Column {
     property NSAttribute attribute
+    property var difficulties: []
 
     id: main
-    width: 300
+    width: (300 > valueRow.implicitWidth) ? 300 : valueRow.implicitWidth
     height: implicitHeight
     spacing: 5
+
+    onWidthChanged: {
+        for (var s in skillpacks.objects) {
+            skillpacks.objects[s].width = width
+        }
+    }
     
     Text {
         id: attributeName
@@ -20,11 +25,14 @@ Column {
         font.bold: true
         font.pointSize: 14
     }
-    
-    CardElements.ValueBoxRow {
+
+    Row {
+        property var objects: []
+
         id: valueRow
+        spacing: 5
     }
-    
+
     Column {
         property var objects: []
 
@@ -36,7 +44,6 @@ Column {
 
     onAttributeChanged: {
         attributeName.text = attribute.name
-        valueRow.value = attribute.value
 
         for ( var o in skillpacks.objecs ) {
             skillpacks.objecs[o].destroy()
@@ -50,6 +57,17 @@ Column {
                                                     skillpack: attribute.skillpacks[i]
                                                 })
             skillpacks.objects.push(object)
+        }
+    }
+
+    onDifficultiesChanged: {
+        for ( var d in difficulties ) {
+            var com = Qt.createComponent("../../Common/Elements/AtrValueBox.qml")
+            var obj = com.createObject(valueRow, {
+                                        mod: difficulties[d],
+                                        atrValue: main.attribute.value
+                                       })
+            valueRow.objects.push(obj)
         }
     }
 }
