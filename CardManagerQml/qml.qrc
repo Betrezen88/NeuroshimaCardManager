@@ -34,8 +34,6 @@
         <file>Views/Card/Elements/Skill.qml</file>
         <file>Views/Card/Elements/Skillpack.qml</file>
         <file>Views/Card/Elements/Trick.qml</file>
-        <file>Views/Card/Elements/ValueBox.qml</file>
-        <file>Views/Card/Elements/ValueBoxRow.qml</file>
         <file>Views/Card/Elements/WoundRow.qml</file>
         <file>Views/Creator/Elements/AttributeRow.qml</file>
         <file>Views/Creator/Elements/Symptom.qml</file>
@@ -43,6 +41,8 @@
         <file>Views/Creator/Elements/Skillpack.qml</file>
         <file>Views/Creator/Elements/Skill.qml</file>
         <file>Views/Creator/Elements/GeneralSkill.qml</file>
+        <file>Views/Common/Elements/ValueBox.qml</file>
+        <file>Views/Common/Elements/ValueBoxRow.qml</file>
     </qresource>
     <qresource prefix="/icon">
         <file>resources/icons/add.svg</file>
