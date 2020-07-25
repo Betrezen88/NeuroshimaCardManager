@@ -44,6 +44,8 @@
         <file>Views/Common/Elements/ValueBox.qml</file>
         <file>Views/Common/Elements/ValueBoxRow.qml</file>
         <file>Views/Common/Elements/AtrValueBox.qml</file>
+        <file>Views/Creator/Elements/OtherSkills.qml</file>
+        <file>Views/Creator/Elements/OtherSkill.qml</file>
     </qresource>
     <qresource prefix="/icon">
         <file>resources/icons/add.svg</file>
