@@ -85,6 +85,11 @@ Page {
                 spacing: 5
 
                 Attribute { id: cleaverness }
+
+                OtherSkills {
+                    id: column
+                    width: cleaverness.width
+                }
             }
         }
     }
