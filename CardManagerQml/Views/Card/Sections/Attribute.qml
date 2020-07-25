@@ -2,6 +2,8 @@
 
 import "./../Elements"
 
+import "../../Common/Elements" as CommonElements
+
 Item {
     property variant attribute
 
@@ -28,7 +30,7 @@ Item {
                 width: main.width
             }
 
-            ValueBoxRow {
+            CommonElements.ValueBoxRow {
                 id: valueRow
                 width: main.width
             }
