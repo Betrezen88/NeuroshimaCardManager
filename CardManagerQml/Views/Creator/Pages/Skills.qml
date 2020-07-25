@@ -96,9 +96,14 @@ Page {
 
     onDataSourceChanged: {
         body.attribute = dataSource.attribute("Budowa")
+        body.difficulties = dataSource.difficulties
         dexterity.attribute = dataSource.attribute("Zręczność")
+        dexterity.difficulties = dataSource.difficulties
         character.attribute = dataSource.attribute("Charakter")
+        character.difficulties = dataSource.difficulties
         perception.attribute = dataSource.attribute("Percepcja")
+        perception.difficulties = dataSource.difficulties
         cleaverness.attribute = dataSource.attribute("Spryt")
+        cleaverness.difficulties = dataSource.difficulties
     }
 }
