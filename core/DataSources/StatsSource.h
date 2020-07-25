@@ -14,6 +14,7 @@ class Disease;
 class Attribute;
 class NSTrick;
 class Difficulty;
+class Feature;
 
 class CORE_EXPORT StatsSource : public DataSource
 {
