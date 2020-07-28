@@ -9,7 +9,6 @@
 
 #include "core_global.h"
 
-class Origin;
 class Profession;
 class Feature;
 class Disease;
@@ -41,9 +40,9 @@ public slots:
     void setName(const QString &name);
     void setSurname(const QString &surname);
     void setNickname(const QString &nickname);
-    void setOrigin(Origin* origin);
-    void setProfession(Profession* profession);
-    void setSpecialization(Data* specialization);
+    void setOrigin(const QString &name, const QString &description);
+    void setProfession(const QString &name, const QString &description);
+    void setSpecialization(const QString &name, const QString &description);
     void setOriginFeature(Feature* feature);
     void setProfessionFeature(Feature* feature);
     void setDisease(Disease* disease);
@@ -57,12 +56,12 @@ private:
     QString m_name;
     QString m_surname;
     QString m_nickname;
-    Data* m_pOrigin;
-    Data* m_pProfession;
-    Data* m_pOriginFeature;
-    Data* m_pProfessionFeature;
-    Data* m_pSpecialization;
-    Disease* m_pDisease;
+    Data* m_pOrigin{nullptr};
+    Data* m_pProfession{nullptr};
+    Data* m_pOriginFeature{nullptr};
+    Data* m_pProfessionFeature{nullptr};
+    Data* m_pSpecialization{nullptr};
+    Disease* m_pDisease{nullptr};
     QMap<QString, int> m_reputation;
     QVector<OtherSkill*> m_otherSkills;
 };

@@ -58,19 +58,28 @@ void StatsCreator::setNickname(const QString &nickname)
     m_nickname = nickname;
 }
 
-void StatsCreator::setOrigin(Origin *origin)
+void StatsCreator::setOrigin(const QString &name, const QString &description)
 {
+    if ( m_pOrigin != nullptr )
+        delete m_pOrigin;
 
+    m_pOrigin = new Data(name, description);
 }
 
-void StatsCreator::setProfession(Profession *profession)
+void StatsCreator::setProfession(const QString &name, const QString &description)
 {
+    if ( m_pProfession != nullptr )
+        delete m_pProfession;
 
+    m_pProfession = new Data(name, description);
 }
 
-void StatsCreator::setSpecialization(Data *specialization)
+void StatsCreator::setSpecialization(const QString &name, const QString &description)
 {
-    m_pSpecialization = specialization;
+    if ( m_pSpecialization != nullptr )
+        delete m_pSpecialization;
+
+    m_pSpecialization = new Data(name, description);
 }
 
 void StatsCreator::setOriginFeature(Feature *feature)
