@@ -4,6 +4,7 @@ import QtQuick.Controls 2.12
 import "./../Elements"
 
 import core.NSStatsSource 1.0
+import core.NSPageCreator 1.0
 
 Page {
     property NSStatsSource dataSource
@@ -89,6 +90,7 @@ Page {
                 OtherSkills {
                     id: column
                     width: cleaverness.width
+                    statsCreator: manager.cardCreator.pageCreator(NSPageCreator.STATS)
                 }
             }
         }
