@@ -1,5 +1,6 @@
 ﻿#include "CardCreator.h"
 #include "DataSourceCreator.h"
+#include "../Creators/StatsCreator.h"
 
 CardCreator::CardCreator(QObject *parent) : QObject(parent)
 {
@@ -35,7 +36,7 @@ PageCreator *CardCreator::createPageCreator(const PageCreator::Type &type)
 {
     switch (type) {
         case PageCreator::Type::STATS:
-            return nullptr;
+            return new StatsCreator(this);
             break;
         case PageCreator::Type::NOTES:
             return nullptr;
