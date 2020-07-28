@@ -5,6 +5,8 @@ SwipeDelegate {
     property string name
     property string attribute
 
+    signal remove(string name)
+
     id: main
     padding: 0
 
@@ -71,7 +73,7 @@ SwipeDelegate {
         height: parent.height
         anchors.left: parent.left
 
-        SwipeDelegate.onClicked: listView.model.remove(index)
+        SwipeDelegate.onClicked: main.remove(skillName.text)
 
         background: Rectangle {
             color: deleteLabel.SwipeDelegate.pressed ? Qt.darker("tomato", 1.1) : "tomato"
