@@ -2,9 +2,12 @@
 import QtQuick.Controls 2.12
 import QtQuick.Dialogs 1.2
 
+import core.NSStatsCreator 1.0
+
 import "./../Elements"
 
 Page {
+    property NSStatsCreator statsCreator
 
     id: main
 
@@ -61,16 +64,19 @@ Page {
                     TextField {
                         id: name
                         placeholderText: "Imię"
+                        onEditingFinished: statsCreator.setName(name.text)
                     }
 
                     TextField {
                         id: surname
                         placeholderText: "Nazwisko"
+                        onEditingFinished: statsCreator.setSurname(surname.text)
                     }
 
                     TextField {
                         id: nickname
                         placeholderText: "Ksywa"
+                        onEditingFinished: statsCreator.setNickname(nickname.text)
                     }
                 }
 

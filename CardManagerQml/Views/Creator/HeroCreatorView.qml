@@ -1,6 +1,7 @@
 ﻿import QtQuick 2.9
 import QtQuick.Controls 2.12
 
+import core.NSPageCreator 1.0
 import core.NSCardCreator 1.0
 import core.NSDataSource 1.0
 
@@ -83,8 +84,11 @@ Page {
                                                  "attributes": ":/json/resources/json/Attributes.json",
                                                  "difficulty": ":/json/resources/json/Difficulties.json"
                                              })
+        origin.statsCreator = manager.cardCreator.pageCreator(NSPageCreator.STATS)
         origin.dataSource = manager.cardCreator.dataSource(NSDataSource.STATS)
+        profession.statsCreator = manager.cardCreator.pageCreator(NSPageCreator.STATS)
         profession.dataSource = manager.cardCreator.dataSource(NSDataSource.STATS)
+        specialization.statsCreator = manager.cardCreator.pageCreator(NSPageCreator.STATS)
         specialization.dataSource = manager.cardCreator.dataSource(NSDataSource.STATS)
         disease.dataSource = manager.cardCreator.dataSource(NSDataSource.STATS)
         attributes.dataSource = manager.cardCreator.dataSource(NSDataSource.STATS)

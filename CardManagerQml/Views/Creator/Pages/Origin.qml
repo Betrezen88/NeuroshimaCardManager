@@ -8,9 +8,11 @@ import core.NSOrigin 1.0
 import core.NSOriginBonus 1.0
 import core.NSHeroData 1.0
 import core.NSFeature 1.0
+import core.NSStatsCreator 1.0
 
 Page {
     property NSStatsSource dataSource
+    property NSStatsCreator statsCreator
 
     id: main
 
@@ -46,6 +48,8 @@ Page {
                         var item = main.dataSource.origins[currentIndex]
                         description.text = item.description
                         picture.source = "qrc:/pictures/resources/pictures/origins/"+item.image
+
+                        statsCreator.setOrigin(item.name, item.description)
 
                         bonusValue.text = "+"+item.bonus.value
                         bonusList.model = item.bonus.attributes

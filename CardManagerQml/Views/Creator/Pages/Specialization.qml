@@ -2,9 +2,11 @@
 import QtQuick.Controls 2.12
 
 import core.NSStatsSource 1.0
+import core.NSStatsCreator 1.0
 
 Page {
     property NSStatsSource dataSource
+    property NSStatsCreator statsCreator
 
     id: main
 
@@ -41,6 +43,8 @@ Page {
                     onCurrentIndexChanged: {
                         var item = main.dataSource.specializations[currentIndex]
                         description.text = item.description
+
+                        statsCreator.setSpecialization(item.name, item.description)
                     }
                 }
             }

@@ -5,11 +5,13 @@ import core.NSStatsSource 1.0
 import core.NSProfession 1.0
 import core.NSHeroData 1.0
 import core.NSFeature 1.0
+import core.NSStatsCreator 1.0
 
 import "./../Elements"
 
 Page {
     property NSStatsSource dataSource
+    property NSStatsCreator statsCreator
 
     id: main
 
@@ -49,6 +51,8 @@ Page {
                         description.text = item.description
                         quote.text = item.quote
                         image.source = "qrc:/pictures/resources/pictures/professions/"+item.image
+
+                        statsCreator.setProfession(item.name, item.description)
 
                         if ( 0 < featuresColumn.objects.length ) {
                             for ( var i in featuresColumn.objects )
