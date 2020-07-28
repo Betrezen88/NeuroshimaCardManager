@@ -9,6 +9,7 @@
 
 #include "Creators/CardCreator.h"
 #include "Creators/PageCreator.h"
+#include "Creators/StatsCreator.h"
 
 #include "DataSources/DataSource.h"
 #include "DataSources/StatsSource.h"
@@ -50,6 +51,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<CardManager>("core.NSCardManager", 1, 0, "NSCardManager");
     qmlRegisterType<CardCreator>("core.NSCardCreator", 1, 0, "NSCardCreator");
     qmlRegisterType<PageCreator>("core.NSPageCreator", 1, 0, "NSPageCreator");
+    qmlRegisterType<StatsCreator>("core.NSStatsCreator", 1, 0, "NSStatsCreator");
     qmlRegisterType<DataSource>("core.NSDataSource", 1, 0, "NSDataSource");
     qmlRegisterType<StatsSource>("core.NSStatsSource", 1, 0, "NSStatsSource");
     qmlRegisterType<HeroData>("core.NSHeroData", 1, 0, "NSHeroData");
