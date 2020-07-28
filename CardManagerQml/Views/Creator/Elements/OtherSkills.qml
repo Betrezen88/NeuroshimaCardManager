@@ -100,14 +100,17 @@ Rectangle {
                         text: "Anuluj"
                         width: (parent.width / 2) - 2
                         onClicked: {
-                            skillName.clear()
-                            attribute.currentIndex = 0
                             skillCreationDialog.close()
                         }
                     }
                 }
             }
 
+            onClosed: {
+                skillName.clear()
+                attribute.currentIndex = 0
+            }
         }
+
     }
 }
