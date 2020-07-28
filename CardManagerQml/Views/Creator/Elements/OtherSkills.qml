@@ -1,7 +1,11 @@
 ﻿import QtQuick 2.0
 import QtQuick.Controls 2.12
 
+import core.NSStatsCreator 1.0
+
 Rectangle {
+    property NSStatsCreator statsCreator
+
     id: main
     height: column.implicitHeight
 
@@ -45,22 +49,11 @@ Rectangle {
                 width: listView.width
                 name: model.name
                 attribute: model.attribute
+
+                onRemove: statsCreator.removeOtherSkill(name)
             }
 
-            model: ListModel {
-                ListElement {
-                    name: "Pilotowanie"
-                    attribute: "(Sp)"
-                }
-                ListElement {
-                    name: "Żeglowanie"
-                    attribute: "(Sp)"
-                }
-                ListElement {
-                    name: "Gra na instrumencie"
-                    attribute: "(Sp)"
-                }
-            }
+            model: statsCreator.otherSkills
         }
 
         Dialog {
@@ -92,7 +85,9 @@ Rectangle {
                         width: (parent.width / 2) - 2
                         enabled: skillName.length > 0
                         onClicked: {
-                            console.log("Dodawanie:", skillName.text, attribute.currentText);
+                            statsCreator.addOtherSkill(skillName.text,
+                                                       attribute.currentText,
+                                                       0)
                             skillCreationDialog.close()
                         }
                     }
