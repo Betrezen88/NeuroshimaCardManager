@@ -7,9 +7,6 @@ import core.NSDataSource 1.0
 import "./Pages"
 
 Page {
-    property var heroCreator
-    property var dataSource
-
     id: main
 
     SwipeView {
@@ -18,14 +15,9 @@ Page {
 
         currentIndex: buttons.currentIndex
 
-        Form {
-            id: form
-            heroCreator: main.heroCreator
-        }
+        Form { id: form }
 
-        Origin {
-            id: origin
-        }
+        Origin { id: origin }
 
         Profession { id: profession }
 

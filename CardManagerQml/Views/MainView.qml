@@ -204,7 +204,6 @@ Page {
         onTriggered: {
             title.text = "Views.HeroCreatorView"
             stackView.push("qrc:/Views/Creator/HeroCreatorView.qml")
-            stackView.currentItem.heroCreator = manager.heroCreator
             sidePanel.close()
             viewBtn.action = backAct
             viewBtn.contentItem.source = "qrc:/icon/resources/icons/close.svg"
