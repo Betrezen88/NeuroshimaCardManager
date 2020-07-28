@@ -28,8 +28,26 @@ Column {
         wrapMode: Text.WordWrap
     }
 
+    ComboBox {
+        id: list
+        visible: false
+        width: (main.width > 250) ? 250 : main.width
+    }
+
     onFeatureChanged: {
         button.text = feature.name
         description.text = feature.description
+        list.visible = false;
+
+        if ( feature.hasBonus ) {
+            var bonusType = feature.bonus.type
+            if ( NSBonus.SKILLPACK === bonusType
+                || NSBonus.SKILLPACKPT === bonusType
+                || NSBonus.FEATURE === bonusType
+                || NSBonus.TOTEM === bonusType) {
+                list.visible = feature.bonus.list.length > 1;
+                list.model = feature.bonus.list
+            }
+        }
     }
 }
