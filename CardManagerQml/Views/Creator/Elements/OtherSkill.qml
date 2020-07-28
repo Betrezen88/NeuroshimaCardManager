@@ -64,10 +64,10 @@ SwipeDelegate {
 
     swipe.left: Label {
         id: deleteLabel
-        text: qsTr("Delete")
+        text: qsTr("Usuń")
         color: "white"
         verticalAlignment: Label.AlignVCenter
-        padding: 6
+        padding: 12
         height: parent.height
         anchors.left: parent.left
 
