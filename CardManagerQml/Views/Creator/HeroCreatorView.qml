@@ -30,6 +30,8 @@ Page {
 
         Skills { id: skills }
 
+        Tricks { id: tricks }
+
         Equipment { id: equipment }
 
         Friends { id: friends }
@@ -69,6 +71,7 @@ Page {
             ListElement { text: "Specjalizacja" }
             ListElement { text: "Choroba" }
             ListElement { text: "Umiejętności" }
+            ListElement { text: "Sztuczki" }
             ListElement { text: "Ekwipunek" }
             ListElement { text: "Znajomości" }
         }

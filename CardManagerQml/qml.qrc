@@ -46,6 +46,7 @@
         <file>Views/Common/Elements/AtrValueBox.qml</file>
         <file>Views/Creator/Elements/OtherSkills.qml</file>
         <file>Views/Creator/Elements/OtherSkill.qml</file>
+        <file>Views/Creator/Pages/Tricks.qml</file>
     </qresource>
     <qresource prefix="/icon">
         <file>resources/icons/add.svg</file>
