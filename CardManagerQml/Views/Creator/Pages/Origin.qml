@@ -88,6 +88,9 @@ Page {
                     width: 150
                     font.bold: true
                     font.pointSize: 14
+                    onCurrentTextChanged: {
+                        statsCreator.setOriginBonus(currentText, 1)
+                    }
                 }
             }
 
