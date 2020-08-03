@@ -65,7 +65,7 @@ Column {
             var com = Qt.createComponent("../../Common/Elements/AtrValueBox.qml")
             var obj = com.createObject(valueRow, {
                                         mod: difficulties[d],
-                                        atrValue: main.attribute.value
+                                        atrValue: 0
                                        })
             valueRow.objects.push(obj)
         }
