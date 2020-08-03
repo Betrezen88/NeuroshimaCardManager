@@ -95,6 +95,7 @@ Page {
         specialization.dataSource = manager.cardCreator.dataSource(NSDataSource.STATS)
         disease.dataSource = manager.cardCreator.dataSource(NSDataSource.STATS)
         attributes.dataSource = manager.cardCreator.dataSource(NSDataSource.STATS)
+        skills.statsCreator = manager.cardCreator.pageCreator(NSPageCreator.STATS)
         skills.dataSource = manager.cardCreator.dataSource(NSDataSource.STATS)
     }
 }
