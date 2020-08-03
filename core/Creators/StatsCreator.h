@@ -34,6 +34,9 @@ public:
     Q_INVOKABLE void removeOtherSkill(const QString &name);
 
 signals:
+    void nameChanged(const QString &name);
+    void surnameChanged(const QString &surname);
+    void nicknameChanged(const QString &nickname);
     void originBonusChanged(const QString &attribute, const int &value);
     void otherSkillsChanged();
 

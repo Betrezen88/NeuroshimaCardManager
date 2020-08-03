@@ -46,16 +46,19 @@ void StatsCreator::removeOtherSkill(const QString &name)
 void StatsCreator::setName(const QString &name)
 {
     m_name = name;
+    emit nameChanged(m_name);
 }
 
 void StatsCreator::setSurname(const QString &surname)
 {
     m_surname = surname;
+    emit surnameChanged(m_surname);
 }
 
 void StatsCreator::setNickname(const QString &nickname)
 {
     m_nickname = nickname;
+    emit nicknameChanged(m_nickname);
 }
 
 void StatsCreator::setOrigin(const QString &name, const QString &description)
