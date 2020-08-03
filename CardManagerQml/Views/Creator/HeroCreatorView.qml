@@ -87,6 +87,7 @@ Page {
                                                  "attributes": ":/json/resources/json/Attributes.json",
                                                  "difficulty": ":/json/resources/json/Difficulties.json"
                                              })
+        form.statsCreator = manager.cardCreator.pageCreator(NSPageCreator.STATS)
         origin.statsCreator = manager.cardCreator.pageCreator(NSPageCreator.STATS)
         origin.dataSource = manager.cardCreator.dataSource(NSDataSource.STATS)
         profession.statsCreator = manager.cardCreator.pageCreator(NSPageCreator.STATS)
