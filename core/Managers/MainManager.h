@@ -20,9 +20,7 @@ public:
     explicit MainManager(QObject *parent = nullptr);
 
     CardManager* cardManager() const;
-
     CardCreator* cardCreator();
-
     DataSourceCreator* dataSourceCreator();
 
 private:
