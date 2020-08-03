@@ -34,6 +34,7 @@ public:
     Q_INVOKABLE void removeOtherSkill(const QString &name);
 
 signals:
+    void originBonusChanged(const QString &attribute, const int &value);
     void otherSkillsChanged();
 
 public slots:
@@ -41,6 +42,7 @@ public slots:
     void setSurname(const QString &surname);
     void setNickname(const QString &nickname);
     void setOrigin(const QString &name, const QString &description);
+    void setOriginBonus(const QString &attribute, const int &value);
     void setProfession(const QString &name, const QString &description);
     void setSpecialization(const QString &name, const QString &description);
     void setOriginFeature(Feature* feature);
@@ -57,6 +59,7 @@ private:
     QString m_surname;
     QString m_nickname;
     Data* m_pOrigin{nullptr};
+    QPair<QString, int> m_originBonus{"", 0};
     Data* m_pProfession{nullptr};
     Data* m_pOriginFeature{nullptr};
     Data* m_pProfessionFeature{nullptr};

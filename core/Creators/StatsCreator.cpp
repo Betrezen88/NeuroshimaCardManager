@@ -66,6 +66,12 @@ void StatsCreator::setOrigin(const QString &name, const QString &description)
     m_pOrigin = new Data(name, description);
 }
 
+void StatsCreator::setOriginBonus(const QString &attribute, const int &value)
+{
+    m_originBonus = QPair<QString, int>(attribute, value);
+    emit originBonusChanged(m_originBonus.first, m_originBonus.second);
+}
+
 void StatsCreator::setProfession(const QString &name, const QString &description)
 {
     if ( m_pProfession != nullptr )
