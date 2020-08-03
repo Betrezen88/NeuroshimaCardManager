@@ -5,9 +5,11 @@ import "./../Elements"
 
 import core.NSStatsSource 1.0
 import core.NSPageCreator 1.0
+import core.NSStatsCreator 1.0
 
 Page {
     property NSStatsSource dataSource
+    property NSStatsCreator statsCreator
 
     id: main
 
@@ -97,15 +99,18 @@ Page {
     }
 
     onDataSourceChanged: {
-        body.attribute = dataSource.attribute("Budowa")
         body.difficulties = dataSource.difficulties
-        dexterity.attribute = dataSource.attribute("Zręczność")
         dexterity.difficulties = dataSource.difficulties
-        character.attribute = dataSource.attribute("Charakter")
         character.difficulties = dataSource.difficulties
-        perception.attribute = dataSource.attribute("Percepcja")
         perception.difficulties = dataSource.difficulties
-        cleaverness.attribute = dataSource.attribute("Spryt")
         cleaverness.difficulties = dataSource.difficulties
+    }
+
+    onStatsCreatorChanged: {
+        body.attribute = statsCreator.attribute("Budowa")
+        dexterity.attribute = statsCreator.attribute("Zręczność")
+        character.attribute = statsCreator.attribute("Charakter")
+        perception.attribute = statsCreator.attribute("Percepcja")
+        cleaverness.attribute = statsCreator.attribute("Spryt")
     }
 }
