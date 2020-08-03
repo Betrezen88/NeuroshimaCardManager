@@ -2,6 +2,7 @@
 #define STATSCREATOR_H
 
 #include <QMap>
+#include <QPair>
 #include <QQmlListProperty>
 
 #include "PageCreator.h"
@@ -9,7 +10,7 @@
 
 #include "core_global.h"
 
-class Profession;
+class Attribute;
 class Feature;
 class Disease;
 class OtherSkill;
@@ -17,6 +18,9 @@ class OtherSkill;
 class CORE_EXPORT StatsCreator : public PageCreator
 {
     Q_OBJECT
+    Q_PROPERTY(QQmlListProperty<Attribute> attributes
+               READ attributes
+               NOTIFY attributesChanged)
     Q_PROPERTY(QQmlListProperty<OtherSkill> otherSkills
                READ otherSkills
                NOTIFY otherSkillsChanged)
@@ -33,12 +37,19 @@ public:
                                    const int &value);
     Q_INVOKABLE void removeOtherSkill(const QString &name);
 
+    QQmlListProperty<Attribute> attributes();
+    int attributesCount() const;
+    Attribute* attribute(const int &index) const;
+
+    Q_INVOKABLE Attribute* attribute(const QString &name);
+
 signals:
     void nameChanged(const QString &name);
     void surnameChanged(const QString &surname);
     void nicknameChanged(const QString &nickname);
     void originBonusChanged(const QString &attribute, const int &value);
     void otherSkillsChanged();
+    void attributesChanged();
 
 public slots:
     void setName(const QString &name);
@@ -57,6 +68,9 @@ private:
     static OtherSkill* otherSkill(QQmlListProperty<OtherSkill> *list, int index);
     static int otherSkillsCount(QQmlListProperty<OtherSkill> *list);
 
+    static Attribute* attribute(QQmlListProperty<Attribute> *list, int index);
+    static int attributesCount(QQmlListProperty<Attribute> *list);
+
 private:
     QString m_name;
     QString m_surname;
@@ -70,6 +84,7 @@ private:
     Disease* m_pDisease{nullptr};
     QMap<QString, int> m_reputation;
     QVector<OtherSkill*> m_otherSkills;
+    QVector<Attribute*> m_attributes;
 };
 
 #endif // STATSCREATOR_H

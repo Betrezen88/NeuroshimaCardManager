@@ -1,10 +1,53 @@
 ﻿#include "StatsCreator.h"
+#include "../Card/Elements/Stats/Attribute.h"
+#include "../Card/Elements/Stats/Skillpack.h"
 #include "../Card/Elements/Stats/OtherSkill.h"
+
+#include "../Utils/DataReader.h"
+
+#include <QJsonDocument>
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QJsonValue>
 
 StatsCreator::StatsCreator(QObject *parent)
     : PageCreator(PageCreator::Type::STATS, parent)
 {
+    DataReader reader;
+    std::tuple<bool, QJsonDocument, QString> data =
+            reader.load(":/json/resources/json/Attributes.json");
+    for ( const QJsonValue &attribute: std::get<1>(data).array() ) {
+        const QJsonObject &tAttribute = attribute.toObject();
 
+        QVector<Skillpack*> skillpacks;
+        for ( const QJsonValue &skillpack: tAttribute.value("skillpacks").toArray() ) {
+            const QJsonObject &tSkillpack = skillpack.toObject();
+
+            QStringList specs;
+            for ( const QJsonValue &specialization: tSkillpack.value("specializations").toArray() ) {
+                specs << specialization.toString();
+            }
+
+            QVector<Skill*> skills;
+            for ( const QJsonValue &skill: tSkillpack.value("skills").toArray() ) {
+                skills.push_back(new Skill(skill.toString(), 0));
+            }
+
+            const Skillpack::Type &type = (skills.count() != 3)
+                    ? Skillpack::Type::CHOOSABLE
+                    : Skillpack::Type::CONSTANT;
+
+            skillpacks.push_back( new Skillpack(tSkillpack.value("name").toString(),
+                                                specs,
+                                                skills,
+                                                type) );
+        }
+
+        m_attributes.append(new Attribute(tAttribute.value("name").toString(),
+                                          0,
+                                          skillpacks) );
+        emit attributesChanged();
+    }
 }
 
 QQmlListProperty<OtherSkill> StatsCreator::otherSkills()
@@ -41,6 +84,32 @@ void StatsCreator::removeOtherSkill(const QString &name)
             emit otherSkillsChanged();
             break;
         }
+}
+
+QQmlListProperty<Attribute> StatsCreator::attributes()
+{
+    return QQmlListProperty<Attribute>(reinterpret_cast<PageCreator*>(this), this,
+                                       &StatsCreator::attributesCount,
+                                       &StatsCreator::attribute);
+}
+
+int StatsCreator::attributesCount() const
+{
+    return m_attributes.count();
+}
+
+Attribute *StatsCreator::attribute(const int &index) const
+{
+    return m_attributes.at(index);
+}
+
+Attribute *StatsCreator::attribute(const QString &name)
+{
+    for ( Attribute* pAttribute: m_attributes )
+        if ( name == pAttribute->name() )
+            return pAttribute;
+
+    return nullptr;
 }
 
 void StatsCreator::setName(const QString &name)
@@ -103,7 +172,7 @@ void StatsCreator::setProfessionFeature(Feature *feature)
 
 void StatsCreator::setDisease(Disease *disease)
 {
-
+    m_pDisease = disease;
 }
 
 void StatsCreator::setReputation(const QString &place, const int &value)
@@ -119,4 +188,14 @@ OtherSkill *StatsCreator::otherSkill(QQmlListProperty<OtherSkill> *list, int ind
 int StatsCreator::otherSkillsCount(QQmlListProperty<OtherSkill> *list)
 {
     return reinterpret_cast<StatsCreator*>(list->data)->otherSkillsCount();
+}
+
+Attribute *StatsCreator::attribute(QQmlListProperty<Attribute> *list, int index)
+{
+    return reinterpret_cast<StatsCreator*>(list->data)->attribute(index);
+}
+
+int StatsCreator::attributesCount(QQmlListProperty<Attribute> *list)
+{
+    return reinterpret_cast<StatsCreator*>(list->data)->attributesCount();
 }
