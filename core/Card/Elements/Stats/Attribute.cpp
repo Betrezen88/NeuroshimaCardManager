@@ -27,6 +27,12 @@ int Attribute::value() const
     return m_value;
 }
 
+void Attribute::setValue(const int &value)
+{
+    m_value = value;
+    emit valueChanged();
+}
+
 QQmlListProperty<Skillpack> Attribute::skillpacks()
 {
     return QQmlListProperty<Skillpack>(this, this,
