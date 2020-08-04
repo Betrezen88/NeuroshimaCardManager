@@ -45,6 +45,12 @@ Column {
     onAttributeChanged: {
         attributeName.text = attribute.name
 
+        attribute.valueChanged.connect(function(){
+            for ( var ob in valueRow.objects ) {
+                valueRow.objects[ob].atrValue = attribute.value
+            }
+        })
+
         for ( var o in skillpacks.objecs ) {
             skillpacks.objecs[o].destroy()
         }

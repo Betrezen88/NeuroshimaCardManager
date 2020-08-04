@@ -87,6 +87,8 @@ Page {
                                                  "attributes": ":/json/resources/json/Attributes.json",
                                                  "difficulty": ":/json/resources/json/Difficulties.json"
                                              })
+        skills.statsCreator = manager.cardCreator.pageCreator(NSPageCreator.STATS)
+        skills.dataSource = manager.cardCreator.dataSource(NSDataSource.STATS)
         form.statsCreator = manager.cardCreator.pageCreator(NSPageCreator.STATS)
         origin.statsCreator = manager.cardCreator.pageCreator(NSPageCreator.STATS)
         origin.dataSource = manager.cardCreator.dataSource(NSDataSource.STATS)
@@ -97,7 +99,5 @@ Page {
         disease.dataSource = manager.cardCreator.dataSource(NSDataSource.STATS)
         attributes.statsCreator = manager.cardCreator.pageCreator(NSPageCreator.STATS)
         attributes.dataSource = manager.cardCreator.dataSource(NSDataSource.STATS)
-        skills.statsCreator = manager.cardCreator.pageCreator(NSPageCreator.STATS)
-        skills.dataSource = manager.cardCreator.dataSource(NSDataSource.STATS)
     }
 }
