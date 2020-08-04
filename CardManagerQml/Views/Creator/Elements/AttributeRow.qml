@@ -1,18 +1,19 @@
 ﻿import QtQuick 2.0
 import QtQuick.Controls 2.12
 
+import core.NSAttribute 1.0
+
 Row {
-    property alias name: label.text
-    property alias value: valueBox.value
+    property NSAttribute attribute
 
     id: row
     height: implicitHeight
     spacing: 5
     
     Text {
-        id: label
+        id: attributeName
         width: 120
-        height: value.height
+        height: valueBox.height
         text: qsTr("Etykieta")
         font.bold: true
         font.pointSize: 14
@@ -21,5 +22,10 @@ Row {
     
     SpinBox {
         id: valueBox
+        from: 6
+
+        onValueChanged: attribute.value = value
     }
+
+    onAttributeChanged: attributeName.text = attribute.name
 }
