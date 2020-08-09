@@ -1,8 +1,11 @@
 ﻿#include "CardCreator.h"
 #include "DataSourceCreator.h"
 #include "../Creators/StatsCreator.h"
+#include "Managers/CreationPointsManager.h"
 
-CardCreator::CardCreator(QObject *parent) : QObject(parent)
+CardCreator::CardCreator(QObject *parent)
+    : QObject(parent),
+      m_pPointsManager(new CreationPointsManager(this))
 {
 
 }
@@ -25,6 +28,11 @@ void CardCreator::createDataSource(const DataSource::Type &type,
 {
     DataSourceCreator dsCreator;
     m_dataSources.insert(type, dsCreator.create(type, dataFiles));
+}
+
+CreationPointsManager* CardCreator::creationPointsManager()
+{
+    return m_pPointsManager;
 }
 
 int CardCreator::diceRoll() const

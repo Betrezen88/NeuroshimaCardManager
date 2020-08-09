@@ -10,6 +10,8 @@
 #include "DataSources/DataSource.h"
 #include "Utils/Dice.h"
 
+class CreationPointsManager;
+
 class CORE_EXPORT CardCreator : public QObject
 {
     Q_OBJECT
@@ -20,6 +22,7 @@ public:
     Q_INVOKABLE DataSource* dataSource(const DataSource::Type &type);
     Q_INVOKABLE void createDataSource(const DataSource::Type &type,
                                       const QVariantMap &dataFiles);
+    Q_INVOKABLE CreationPointsManager* creationPointsManager();
 
     Q_INVOKABLE int diceRoll() const;
 private:
@@ -28,6 +31,7 @@ private:
 private:
     QMap<PageCreator::Type, PageCreator*> m_pageCreators;
     QMap<DataSource::Type, DataSource*> m_dataSources;
+    CreationPointsManager* m_pPointsManager{nullptr};
     Dice m_d20{20};
 };
 
