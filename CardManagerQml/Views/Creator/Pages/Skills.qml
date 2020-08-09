@@ -6,10 +6,12 @@ import "./../Elements"
 import core.NSStatsSource 1.0
 import core.NSPageCreator 1.0
 import core.NSStatsCreator 1.0
+import core.NSCreationPointsManager 1.0
 
 Page {
     property NSStatsSource dataSource
     property NSStatsCreator statsCreator
+    property NSCreationPointsManager pointsManager
 
     id: main
 
@@ -112,5 +114,18 @@ Page {
         character.attribute = statsCreator.attribute("Charakter")
         perception.attribute = statsCreator.attribute("Percepcja")
         cleaverness.attribute = statsCreator.attribute("Spryt")
+    }
+
+    onPointsManagerChanged: {
+        generalPoints.text = "Ogólne: " + pointsManager.freeSkillpoints
+        specializationPoints.text = "Specjalizacja: " + pointsManager.specializationSkillpoints
+    }
+
+    Connections {
+        target: pointsManager
+        onFreeSkillpointsChanged: generalPoints.text = "Ogólne: " + value
+        onSpecializationSkillpointsChanged: {
+            specializationPoints.text = "Specjalizacja: " + value
+        }
     }
 }

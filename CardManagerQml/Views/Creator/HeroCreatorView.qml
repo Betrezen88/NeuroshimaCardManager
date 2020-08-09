@@ -89,6 +89,7 @@ Page {
                                              })
         skills.statsCreator = manager.cardCreator.pageCreator(NSPageCreator.STATS)
         skills.dataSource = manager.cardCreator.dataSource(NSDataSource.STATS)
+        skills.pointsManager = manager.cardCreator.creationPointsManager()
         form.statsCreator = manager.cardCreator.pageCreator(NSPageCreator.STATS)
         origin.statsCreator = manager.cardCreator.pageCreator(NSPageCreator.STATS)
         origin.dataSource = manager.cardCreator.dataSource(NSDataSource.STATS)
@@ -97,7 +98,7 @@ Page {
         specialization.statsCreator = manager.cardCreator.pageCreator(NSPageCreator.STATS)
         specialization.dataSource = manager.cardCreator.dataSource(NSDataSource.STATS)
         disease.dataSource = manager.cardCreator.dataSource(NSDataSource.STATS)
+        attributes.pointsManager = manager.cardCreator.creationPointsManager()
         attributes.statsCreator = manager.cardCreator.pageCreator(NSPageCreator.STATS)
-        attributes.dataSource = manager.cardCreator.dataSource(NSDataSource.STATS)
     }
 }
