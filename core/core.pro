@@ -43,6 +43,7 @@ SOURCES += \
     DataSources/Elements/Stats/Requirement.cpp \
     DataSources/StatsSource.cpp \
     Managers/CardManager.cpp \
+    Managers/CreationPointsManager.cpp \
     Managers/MainManager.cpp \
     Utils/CardBuilder.cpp \
     Utils/DataReader.cpp
@@ -76,6 +77,7 @@ HEADERS += \
     DataSources/Elements/Stats/Requirement.h \
     DataSources/StatsSource.h \
     Managers/CardManager.h \
+    Managers/CreationPointsManager.h \
     Managers/MainManager.h \
     Utils/CardBuilder.h \
     Utils/DataReader.h \
