@@ -5,10 +5,11 @@ import "./../Elements"
 
 import core.NSStatsSource 1.0
 import core.NSStatsCreator 1.0
+import core.NSCreationPointsManager 1.0
 
 Page {
-    property NSStatsSource dataSource
     property NSStatsCreator statsCreator
+    property NSCreationPointsManager pointsManager: manager.cardCreator.creationPointsManager()
 
     id: main
 
@@ -24,6 +25,11 @@ Page {
             spacing: 5
             anchors.margins: 5
             anchors.fill: parent
+
+            Text {
+                id: points
+                text: "Wolne punkty: 0"
+            }
         }
     }
 
@@ -35,5 +41,14 @@ Page {
                                                 })
             attributesCol.objects.push(object)
         }
+    }
+
+    onPointsManagerChanged: {
+        points.text = "Wolne punkty: " + pointsManager.attributes
+    }
+
+    Connections {
+        target: pointsManager
+        onAttributesChanged: points.text = "Wolne punkty: " + value
     }
 }
