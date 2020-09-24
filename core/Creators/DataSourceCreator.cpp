@@ -6,6 +6,7 @@
 #include "../DataSources/Elements/Stats/OriginBonus.h"
 #include "../DataSources/Elements/Stats/Profession.h"
 #include "../DataSources/Elements/Stats/Feature.h"
+#include "../DataSources/Elements/Stats/Requirement.h"
 
 #include "../Card/Elements/Stats/Attribute.h"
 #include "../Card/Elements/Stats/Difficulty.h"
@@ -13,6 +14,7 @@
 #include "../Card/Elements/Stats/Skill.h"
 #include "../Card/Elements/Stats/Disease.h"
 #include "../Card/Elements/Stats/Symptom.h"
+#include "../Card/Elements/Stats/Trick.h"
 
 #include "../Utils/DataReader.h"
 
@@ -38,6 +40,7 @@ DataSource *DataSourceCreator::create(const DataSource::Type &type, const QVaria
         addSpecializations(pStatsSource, dataFiles.value("specializations").toString());
         addDiseases(pStatsSource, dataFiles.value("diseases").toString());
         addDifficulty(pStatsSource, dataFiles.value("difficulty").toString());
+        addTricks(pStatsSource, dataFiles.value("tricks").toString());
 
         return pStatsSource;
         break;
@@ -223,6 +226,53 @@ void DataSourceCreator::addDifficulty(StatsSource *source, const QString &dataFi
         source->addDifficulty( new Difficulty(tDifficulty.value("name").toObject().value("full").toString(),
                                               tDifficulty.value("name").toObject().value("short").toString(),
                                               tDifficulty.value("value").toInt()) );
+    }
+}
+
+void DataSourceCreator::addTricks(StatsSource *source, const QString &dataFile)
+{
+    for ( const QJsonValue &trick: loadData(dataFile).array() ) {
+        const QJsonObject &tTrick = trick.toObject();
+
+        QVector<Requirement*> requirements;
+        for ( const QJsonValue &requirement: tTrick.value("requirements").toArray() ) {
+            const QJsonObject &tRequirement = requirement.toObject();
+
+            if ( tRequirement.contains("skills") ) {
+                for ( const QJsonValue &skill: tRequirement.value("skills").toArray() ) {
+                    const QJsonObject &tSkill = skill.toObject();
+                    requirements.push_back( new Requirement(tSkill.value("name").toString(),
+                                                            tSkill.value("value").toInt(),
+                                                            false,
+                                                            Requirement::Type::SKILL) );
+                }
+            }
+            if ( tRequirement.contains("attributes") ) {
+                for ( const QJsonValue &attribute: tRequirement.value("attributes").toArray() ) {
+                    const QJsonObject &tAttribute = attribute.toObject();
+                    requirements.push_back( new Requirement(tAttribute.value("name").toString(),
+                                                            tAttribute.value("value").toInt(),
+                                                            false,
+                                                            Requirement::Type::ATTRIBUTE) );
+                }
+            }
+            if ( tRequirement.contains("orSkill") ) {
+                for ( const QJsonValue &skill: tRequirement.value("skills").toArray() ) {
+                    const QJsonObject &tSkill = skill.toObject();
+                    requirements.push_back( new Requirement(tSkill.value("name").toString(),
+                                                            tSkill.value("value").toInt(),
+                                                            true,
+                                                            Requirement::Type::SKILL) );
+                }
+            }
+        }
+
+        qDebug() << "Requirements.count(): " << requirements.count();
+
+        source->addTrick( new Trick(tTrick.value("name").toString(),
+                                      tTrick.value("description").toString(),
+                                      tTrick.value("action").toString(),
+                                      requirements) );
     }
 }
 

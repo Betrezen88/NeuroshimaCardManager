@@ -30,6 +30,7 @@ public:
     void addDiseases(StatsSource* source, const QString &dataFile);
     void addAttributes(StatsSource* source, const QString &dataFile);
     void addDifficulty(StatsSource* source, const QString &dataFile);
+    void addTricks(StatsSource* source, const QString &dataFile);
 
 private:
     QJsonDocument loadData(const QString &dataFile);
