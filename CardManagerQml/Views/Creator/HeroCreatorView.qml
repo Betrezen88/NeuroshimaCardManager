@@ -85,7 +85,8 @@ Page {
                                                  "specializations": ":/json/resources/json/Specializations.json",
                                                  "diseases": ":/json/resources/json/Diseases.json",
                                                  "attributes": ":/json/resources/json/Attributes.json",
-                                                 "difficulty": ":/json/resources/json/Difficulties.json"
+                                                 "difficulty": ":/json/resources/json/Difficulties.json",
+                                                 "tricks": ":/json/resources/json/Tricks.json"
                                              })
         skills.statsCreator = manager.cardCreator.pageCreator(NSPageCreator.STATS)
         skills.dataSource = manager.cardCreator.dataSource(NSDataSource.STATS)
@@ -100,5 +101,6 @@ Page {
         disease.dataSource = manager.cardCreator.dataSource(NSDataSource.STATS)
         attributes.pointsManager = manager.cardCreator.creationPointsManager()
         attributes.statsCreator = manager.cardCreator.pageCreator(NSPageCreator.STATS)
+        tricks.dataSource = manager.cardCreator.dataSource(NSDataSource.STATS)
     }
 }
