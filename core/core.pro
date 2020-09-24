@@ -37,7 +37,6 @@ SOURCES += \
     DataSources/Elements/Stats/Bonus.cpp \
     DataSources/Elements/Stats/Feature.cpp \
     DataSources/Elements/Stats/HeroData.cpp \
-    DataSources/Elements/Stats/NSTrick.cpp \
     DataSources/Elements/Stats/Origin.cpp \
     DataSources/Elements/Stats/Profession.cpp \
     DataSources/Elements/Stats/Requirement.cpp \
@@ -70,7 +69,6 @@ HEADERS += \
     DataSources/Elements/Stats/Bonus.h \
     DataSources/Elements/Stats/Feature.h \
     DataSources/Elements/Stats/HeroData.h \
-    DataSources/Elements/Stats/NSTrick.h \
     DataSources/Elements/Stats/Origin.h \
     DataSources/Elements/Stats/OriginBonus.h \
     DataSources/Elements/Stats/Profession.h \
