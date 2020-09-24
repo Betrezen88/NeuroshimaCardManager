@@ -1,0 +1,1567 @@
+﻿[
+    {
+        "name": "3 2 1 Bum",
+        "description": "Wszystkie urządzenia na świecie można podzielić na takie, które czasem wybuchają i takie, które nigdy nie wybuchają. Szczególnie interesują Cię te pierwsze. Wystarczy tu przeciąć wężyk, tam skręcić kabel, tu znów poluzować śrubkę. I gotowe. Teraz wystarczy poczekać na fajerwerki.",
+        "action": "Możesz uzbroić - jak bombę - dowolny pojazd, urządzenie czy maszynę napędzaną łatwopalnym paliwem. Kwadrans spokojnej pracy i możesz zacząć odliczanie. Czas wybuchu określa z pięćdziesięcio procentową dokładnością na sekundę, minutę, , kwadrans lub godzinę(np. gdy wybierzesz minutę, spodziewaj się między pół a półtorej minuty). Czasem, jeśli MG pozwoli nawet na tydzień . Siła wybuchu zależy od rodzaju urządzenia.",
+        "requirements": {
+            "skills": [
+                { "name": "Mechanika", "value": 3 },
+                { "name": "Materiały Wybuchowe", "value": 3 }
+            ]
+        }
+    },
+    {
+        "name": "Aramis",
+        "description": "Gdy spotkasz kiedyś wędrującego samotnie dziadka, który podpiera się kijkiem, za nic w świecie go nie zaczepiaj. To może być Dziadek z Alabamy.",
+        "action": "Akcja za 2 sukcesy, PT testu o poziom wyższy, do ataku dowolną bronią dłuższą od noża. Szast, prast i broń przciwnika (każda dłuższa od noża) leci na bok.",
+        "requirements": {
+            "attributes": [
+                { "name": "Zręczność", "value": 14 }
+            ],
+            "skills": [
+                { "name": "Broń Ręczna", "value": 5 }
+            ]
+        }
+    },
+    {
+        "name": "Asekuracja",
+        "description": "No nieźle Ci idzie, teraz spróbuj sam. No dalej, nie pękaj...",
+        "action": "Bohater Pomaga innej osobie (zapiętej w uprząż) wspinać się po linie. Dzięki temu osoba ta traktowana jest, jak gdyby miała Umijętność wspinaczka na poziomie 1. Pozwala jej to uniknąć kłopotów z Suwakiem.",
+        "requirements": {
+            "skills": [
+                { "name": "Wspinaczka", "value": 2 }
+            ]
+        }
+    },
+    {
+        "name": "Aspiryna i Tik-Taki",
+        "description": "Raz byłem poważnie chory i leczył mnie wtedy Pasto Ludwik. Przez dwa tygodnie łukałem lekarstwo na Gorączke sobotniej nocy, aż wyzdrowiałem. Potem dowiedziałem się, że klecha karmił mnie aspiryną i Tik-takami.",
+        "action": "Za pomocą najprostrzych lekarst, Bohater potrafi utrzymywać chorego w stanie stabilnym, tak jkaby podpopieczny łukał potrzebne  mu lekarstwo. \"Aspirynę i Tik-Taki\" można podawać przez licznę dni równą wartości Umiejętności Blef. Potem trzeba przerzucić się na zalecane leki. Po dwóch tygodniach znów można wrócić do kuracji \"Aspiryną i Tik-Takami\".",
+        "requirements": {
+            "skills": [
+                { "name": "Leczenie Chorób", "value": 4 },
+                { "name": "Blef", "value": 3 }
+            ]
+        }
+    },
+    {
+        "name": "Barbarka",
+        "description": "Jak dla mnie, jednym z najbardziej deprymujących zagrań w walce, jest pieprznąć gościa w ryj, własnym ryjem. To zawsze szokuje...",
+        "action": "Jeśli segment wcześniej zadałeś celny cios (nawet obroniony przez przeciwnika), w kolejnym segmencie możesz użyć dodatkowej akcji (zużywając jednak w normalny sposób 1 segment tury). Akcja za 1 sukces: uderzenie głową. Zadaje Ciężkiego Siniaka. Można użyć tylko raz przeciwko temu samemu przeciwnikowi.",
+        "requirements": {
+            "attributes": [
+                { "name": "Budowa", "value": 14 }
+            ],
+            "skills": [
+                { "name": "Bijatyka", "value": 5 }
+            ]
+        }
+    },
+    {
+        "name": "Berserker",
+        "description": "Kumpel chawił się kiedyś, że jest twardy jak Statua Wolności i nic go nie powali na ziemię. No i doczekał się - napadła go grupa gangerów i zaczeła go lać rurkami i łańcuchami. Nie chciał się poddać, to go powalili na ziemię. Wstał i dalej sie na nich rzucał. No i w końcu brakło mu posoki, bo cała wyciekła tak go pochlastali. Zbyt twardy był, można powiedzieć.",
+        "action": "Jeśli Bohater walczy wręcz i odniósł przynajmniej jedną ciężką ranę, do końca walki automatycznie może wejść w tryb berserkera (walczący nie musi się bronić).",
+        "requirements": {
+            "attributes": [
+                { "name": "Budowa", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Odporność na Ból", "value": 6 }
+            ]
+        }
+    },
+    {
+        "name": "Bez oddechu",
+        "description": "Więc ja mu głowę pod wodę i czekam. Zacznie się dusić, to będzie bardziej rozmowny. No nie przesadzą, jak powiem, że trzymałem go tam dwie minuty. A on uśmiechnięty. No to trzy. A on morda w banan. No to ja go na cztery minuty. A on... W końcu złamałem mu kolano gazrurką i zaczął śpiewać.",
+        "action": "Bohater potrafi wytrzymać bez oddechu dwa razy dłużej niż zwykły człowiek (czyli każde 4 punkty Budowy dają 1 minutę).",
+        "requirements": {
+            "skills": [
+                { "name": "Pływanie", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Bez sprzętu, bez zabezpieczenia",
+        "description": "Kocie ruchy, tak? Jak dla mnie to facet porusza się jak glonojad po ścianie akwarium. Przylgnął do skały i prędzej ta skała walnie na ziemię, niż on. Tak to już jest, jak od dziecka mieszkasz w jaskiniach, nie?",
+        "action": "Podczas wspinaczki Bohater podwaja poziom swojej Umiejętności Wspinaczka nawet jeśli nie używa sprzętu i liny. Jednak użycie specjalistycznego sprzętu bardziej już nie pomnoży poziomu Umiejętności.",
+        "requirements": {
+            "attributes": [
+                { "name": "Zręczność", "value": 10 }
+            ],
+            "skills": [
+                { "name": "Wspinaczka", "value": 6 }
+            ]
+        }
+    },
+    {
+        "name": "Bez sznurków",
+        "description": "Nauczyłem się tego z filmu. Tak z filmu. Tyle, że u tamtych facetów było widać sznurki, na których latali jak czarodzieje. A ja nie potrzebuję żadnych sznurków. Chcesz zobaczyć?",
+        "action": "Skaczesz i jednocześnie strzelasz w locie - trwa to dwa segmenty, więc możesz oddać dwa strzały. Otrzymujesz za to karę +20% do testu strzelania, za to Ciebie trudniej trafić aż o +40%. W trzecim segmencie padasz na ziemię. Możesz tak zostać i walić dalej leżąc, albo poświęcić segmenty na pozbieranie się i spieprzać. Sztuczka dotyczy tylko pistoletów.",
+        "requirements": {
+            "attributes": [
+                { "name": "Zręczność", "value": 13 },
+                { "name": "Percepcja", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Pistolety", "value": 3 }
+            ]
+        }
+    },
+    {
+        "name": "Bieg w ciszy",
+        "description": "Powiedział do mnie \"Ścigamy się\" i uśmiechnął się głupio. Myślę sobie niezły żart. A potem zaczął biec. Spokojnie dopiłem piwo, zrobiłem zakupy, zatankowałem do pełna i ruszyłem. Po drodze mijałem go czterokrotnie, dokładnie tyle razy, ile stawała moja Christine, która tej nocy wyraźnie nie była w formie. Skończylo się tym, że dotarł do Vegas pierwszy - przebiegł 80 kilosów szybciej niż mój Caddilac.",
+        "action": "Bogater może biec bez przerwy przez kilkanaście godzin, pokonując nawet 50 km.",
+        "requirements": {
+            "attributes": [
+                { "name": "Budowa", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Kondycja", "value": 3 }
+            ]
+        }
+    },
+    {
+        "name": "Bierz go!",
+        "description": "Jeśli lubisz zwierzęta, a one w dodatku to wyczują, możesz skorzystać na wzajemnej sympatii. A to kogoś poszczujesz kretem, a to jaszczurka aportuje Ci bumerang...",
+        "action": "Bohater może wydać prosty rozkaz oswojonemu i wytresowanemu zwierzęciu.",
+        "requirements": {
+            "attributes": [
+                { "name": "Charakter", "value": 8 }
+            ],
+            "skills": [
+                { "name": "Opieka nad Zwierzętami", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Boa",
+        "description": "Łańcuch uchodzi za broń dla idiotów. Może nie jest specjalnie zabójczy, ale nieźle wyrównuje szanse, nawet jeśli nic nie potrafisz. A jednak widziałem kidyś prawdziwego mistrza łańcucha. Potrafił nim nawet obierać ziemniaki.",
+        "action": "Jeśli walczący używa łańcucha, nie otrzymuje kary za walkę w zwarciu, tłoku i ciasnych pomieszczeniach. Ponadto otrzymuje dodatkowe akcje za 2 lub 3 sukcesy. <b>Akcja za 2 sukcesy: pochwycenie</b> Używane przez walczących bronie otrzymują modyfikator jak w tłoku, a pochwycony dodatkowo otrzymuje karę -2 do Zręczności (dopóki nie przejmie Inicjatywy lub nie otrzyma rany). <b>Akcja za 3 sukcesy: wykończenie</b> Walczący dusi przeciwnika łańcuchem i unieruchamia go. Może przydusić przeciwnika, aż ten straci przytomność, obaj walczący wykonują Przeciwstawny test Budowy, przciwnik z dodatkowym PT +60%. Jeśli przeciwnik przegra test, traci przytomność. Jeśli przeciwnik został pochwycony wcześniej, wtedy akcja kosztuje tylko 2 sukcesy.",
+        "requirements": {
+            "attributes": [
+                { "name": "Zręczność", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Broń Ręczna", "value": 5 }
+            ]
+        }
+    },
+    {
+        "name": "Cassanowa/Mata Hari",
+        "description": "[ocenzurowano]",
+        "action": "Możesz przerzucić każdy test Charakteru związany z uwodzeniem.",
+        "requirements": {
+            "attributes": [
+                { "name": "Spryt", "value": 10 }
+            ],
+            "skills": [
+                { "name": "Blef", "value": 2 },
+                { "name": "Perswazja", "value": 2 },
+                { "name": "Zwinne Dłonie", "value": 2 }
+            ]
+        }
+    },
+    {
+        "name": "Chłodnym okiem",
+        "description": "Wsadza na głowę słuchawki, włączał walkmana z melodią szumiących liści, robił sobie goroącej kawy i zamykał oczy. Po połowie godziny otwierał oczy i rzucał jakimś spostrzeżeniem. Cholera, zawsze potrafił mnie zaszkoczyć.",
+        "action": "Wykonujesz test Sprytu. Jeśli zdasz MG musi spokojnie, powoli i jasno przedstawić Ci wszystkie fakty i zdarzenia, które pojawiły się w przygodzie. Jeszcze raz, po kolei i od początku.",
+        "requirements": {
+            "attributes": [
+                { "name": "Spryt", "value": 14 }
+            ]
+        }
+    },
+    {
+        "name": "Ciszej niż cień",
+        "description": "Słyszałeś kiedyś poruszający się cień? Z tą Sztuczką możesz być jeszcze bardziej cichy. A widziałeś kiedyś skradający się cień w środku bezksiężycowej nocy? Możesz być jeszcze bardziej niewidzialny. Dwa w jednym. Nie ma się co zastanawiać - bierz!",
+        "action": "Przeciwnik zdaje o poziom trudniejszy test Czujności/Wypatrywania/Nasłuchiwania.",
+        "requirements": {
+            "skills": [
+                { "name": "Skradanie się", "value": 6 }
+            ]
+        }
+    },
+    {
+        "name": "Człowiek, który kulom się nie kłaniał",
+        "description": "Opowiadali mi, że na północy, na froncie, pracował pewien sanitariusz. Chodził między okopami spokojnie, jakby zbierał stokrotki. Tu zawiązał bandarz, tam założył łupki na nogę, a w powietrzu kule gwizdały i gwizdały.",
+        "action": "Bohater jest uodporniony na efekty psychologiczne ostrzału (ale nie obrażeń).",
+        "requirements": {
+            "attributes": [
+                { "name": "Percepcja", "value": 8 }
+            ],
+            "skills": [
+                { "name": "Morale", "value": 3 }
+            ]
+        }
+    },
+    {
+        "name": "Czterej pancerni",
+        "description": "Słyszałeś kiedyś o gangu czołgistów? To nie mit. Istnieją tacy narwańcy, którzy wędrują po kontynencie w czołgu. Po czterech w każdej maszynie. Magiczna liczba czy co? Piąty zawsze jest pies.",
+        "action": "Jeśli Bohater kierujący maszyną ma w kokpicie trzech pomocników, z których każdy posiada Umiejętność Wozy bojowe lub Maszyny Ciężkie przynajmniej na 1, wszystkie jego testy związan z pojazdem są łatwiejsze o -20%. Jeżeli w załodze znajdzie się pies, testy są łatwiejsze o -30%.",
+        "requirements": {
+            "skills": [
+                { "name": "Opieka nad Zwierzętami", "value": 2 }
+            ],
+            "orSkill": [
+                { "name": "Wozy Bojowe", "value": 3 },
+                { "name": "Maszyny Ciężkie", "value": 3 }
+            ]
+        }
+    },
+    {
+        "name": "Czuły spust",
+        "description": "Pewien sierżant z Posterunku zrobił kiedyś niezły pokaz. Zasiadł do CKMu, uśmiechnął się i powiedział: 12. Po czym tratatatatata. Potem powiedział 21. I tratatatata. Poszliśmy policzyć dziurko w ścianie. Dwanaście i dwadzieścia jeden.",
+        "action": "Bohater może przerwać zadeklarowaną długą serią po 1 segmencie, oddając zamiast niej krótką. Może też przerwać ogień ciągły po 1 segmencie, oddająć zamiast niego krótką serię, lub po 2 segmentach - oddając długa serią. Dzięki temu oszczędza kule.",
+        "requirements": {
+            "attributes": [
+                { "name": "Percepcja", "value": 14 }
+            ],
+            "skills": [
+                { "name": "Broń Maszynowa", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Dalszy zasięg",
+        "description": "Znasz Chucka? Chuck mówi do mnie \"Widzisz tego ptaka?\" A ja mu na to \"No nie widzę.\" A on mówi \"To posłuchaj.\" I sru, strzelił z tej swojej kuszy. I po chwili \"Kraa, kra\". Zabił ptaszynę... Ja wiem, ile to mogło być metrów, pięćset...?",
+        "action": "Otrzymując te same utrudnienia bohater potrafi strzelić na dwa razy większą odległość, pod warunkiem, że kusza ma wystarczający zasięg.",
+        "requirements": {
+            "attributes": [
+                { "name": "Budowa", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Kusza", "value": 9 }
+            ]
+        }
+    },
+    {
+        "name": "Dawid",
+        "description": "A gość kręci tym paskiem i kręci, w końcu pytam go:\"Koleś, zaciąłeś się?! Wypuścisz ten kamień w końcu?\" No i wypuścił. Aż żal mi było tego palanta z Vegas, gdy dostał kamieniem prosto w czoło. Niby zwykła proca, a jednak wiele potrafi.",
+        "action": "Bohater przeznacza trzy segmenty na strzał, dzięki czemu jest mu łatwiej o -30% trafić przeciwnika z procy.",
+        "requirements": {
+            "skills": [
+                { "name": "Proca", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Dłuższy strzał",
+        "description": "Znasz Chucka? Chuck mówi do mnie widzisz tego ptaka? A ja mu na to no nie widzę. A on... Co? Już to mówiłem? O kuszy? E, nie możliwe, Chuck strzela z łuku...",
+        "action": "Otrzymując te same utrudnienia Bohater potrafi strzelić na dwa razy większą odległość, pod warunkiem, że łuk ma wystarczający zasięg.",
+        "requirements": {
+            "attributes": [
+                { "name": "Budowa", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Łuk", "value": 9 }
+            ]
+        }
+    },
+    {
+        "name": "Dobry i zły glina",
+        "description": "Widzisz tamten cmentarz? Zauważyłeś, że wszystkie daty na nim są wczorajsze? Wczoraj chciałem się po prostu dowiedzieć od miejscowych, który z nich jest mechanikiem. I wiesz, w końcu poskutkowało. Jakiś facio w ciągu trzech godzin nauczył się fachu i teraz reperuje mi samochód.",
+        "action": "Podczas przesłuchiwania sam na sam z więźniem, możesz w teście dodać do Zastraszania lub Perswazji swój Blef lub Postrzeganie emocji.",
+        "requirements": {
+            "attributes": [
+                { "name": "Spryt", "value": 12 }
+            ]
+        }
+    },
+    {
+        "name": "Dobywanie",
+        "description": "Widziałem kiedyś taki film, w starym kinie w Vegas. \"Bez przebaczenia\" czy \"Tombstone\", nie pamiętam dokładnie. Rzecz była o kowbojach. Ci goście strzelali się bez osłony, bez pancerzy i innych takich. Jedyne co się liczyło - to kto pierwszy dobędzie broni i wystrzeli. I wiesz od kilku miesięcy też ćwiczę dobywanie. W końcu kogoś zaskoczę.",
+        "action": "Dobycie pistoletu zajmuje jeden segment.",
+        "requirements": {
+            "attributes": [
+                { "name": "Zręczność", "value": 12 }
+            ],
+            "orSkills": [
+                { "name": "Pistolety", "value": 5 },
+                { "name": "Broń Ręczna", "value": 5 }
+            ]
+        }
+    },
+    {
+        "name": "Dom na plecach",
+        "description": "Kiedy wyciągnął z plecaka namiot, materaz, śpiwór, dwie butle gazowe, zestaw garnków, książkę kucharską i maść na moskity, nie zdziwiłem się. Zaskoczył mnie, gdy wyciągnął słoik ogórków, miseczkę na deszczówkę i żółwia w słoiku. Potem jeszcze jakiś wykrywacz ruchu i poduszkę. Przeiął, gdy z dna wyjął pidżamę i papucie...",
+        "action": "Możesz udźwignąć dwa razy więcej niż normalny człowiek.",
+        "requirements": {
+            "attributes": [
+                { "name": "Budowa", "value": 13 }
+            ],
+            "skills": [
+                { "name": "Kondycja", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Doświadczony",
+        "description": "Dawniej była taka fucha, bodaj brygadzista się to nazywało. Facet stał i nic nie robił, a inni dzięki temu pracowali lepiej. Dasz wiarę?",
+        "action": "Bohater pomaga innym osobom pracującym wraz z nim, ich wydajność jest większa o 50%, bo BG motywuje i pomaga innym w pracy.",
+        "requirements": {
+            "attributes": [
+                { "name": "Budowa", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Kondycja", "value": 5 }
+            ]
+        }
+    },
+    {
+        "name": "Dystans",
+        "description": "Znasz Chucka? Chuck mówie do mnie \"Widzisz tego ptaka?\" Co znowu? Jak to już było? Co było?! Opowiadałem już o tym? No to sory...",
+        "action": "Bohater otrzymuje tylko połowę kary wynikającej z dystansu podczas rzucania nożem.",
+        "requirements": {
+            "attributes": [
+                { "name": "Budowa", "value": 10 }
+            ],
+            "skills": [
+                { "name": "Rzucanie", "value": 6 }
+            ]
+        }
+    },
+    {
+        "name": "Dziś wszystko, jutro nic",
+        "description": "No i gość zawziął się i rozładował ten tabor. Inna sprawa, że na drugi dzień, jak zszedł z wyra, to padł na pysk i tak został. Kawę to mu słomką podawałem. Nie potrafił się ruszyć i już. Popsuł się, innymi słowy.",
+        "action": "Bohater może pracować o tyle procent wydajniej, ile wynosi  jego Budowa pomnożoną przez 20. Musi też zdać Bardzo Trudny test Budowy. Następnego dnia Bohater nie jest zdolny do wykonywania pracy fizycznej.",
+        "requirements": {
+            "skills": [
+                { "name": "Kondycja", "value": 3 }
+            ]
+        }
+    },
+    {
+        "name": "Flash",
+        "description": "Uwziąłem się kiedyć na pewnego Chinola. Rozwaliłem pół knajpy, ale nie udało mi się go trafić. Padał, skakał, fikał koziołki. W końcu znalazłem go pod jednym ze stolików. Facet w końcu padł z wyczerpania.",
+        "action": "Decyzje należy podjąć na początku tury, przed 3k20. Walczący może dodać +3 do Zręczności w obronie na czas 1 segmentu. Za to na koniec tury karę +20% ze zmęczenia.",
+        "requirements": {
+            "skills": [
+                { "name": "Bijatyka", "value": 4 },
+                { "name": "Kondycja", "value": 4}
+            ]
+        }
+    },
+    {
+        "name": "Garda",
+        "description": "Gość mnie w nerę, a ja blok. On mnie w brzuch, a ja się zastawiam. On mnie w bok, a ja garda. I jeszcze raz uderzył w nerkę, a ja jeszcze jeden blok. Niestety, potem się wściekł i złapał toporek...",
+        "action": "Decyzję należy podjąć na początku tury, przed rzutem 3k20. Walczący otrzymuje bonus +6 do Zręczności w obronie, ale w razie obronionego ciosu i tak otrzymuje obrażenia, tylko o poziom niższe. Sztuczka działa tylko przeciwko nieuzbrojonemu przeciwnikowi (oczywiście w miarę humanoidalnemu).",
+        "requirements": {
+            "attributes": [
+                { "name": "Budowa", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Bijatyka", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Głaz",
+        "description": "Nie wiesz jak straszliwie trudno jest zachować bezruch przez dłuższy czas. Musisz się podrapać. Przesunąć nogę. Wysikać. Dostajesz skurczu. A oczy wariują - niedługo całe Twoje ciało wrzeszczy o jakiś ruch. Dobry snajper potrafi się wyciszyć. Potrafi przeleżeć półtorej dnia jak głaz, wtopiony  w otoczenie, będąc w jakimś dziwnym transie. Nie poruszysz się do chwili, gdy pojawi się cel. A wtedy poruszy tylko palcem.",
+        "action": "Bohater potrafi trwać nieruchomo przez ilość minut równą Charakterowi pomnożonemu przez 20.",
+        "requirements": {
+            "attributes": [
+                { "name": "Charakter", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Przygotowanie Pułapki", "value": 3 }
+            ]
+        }
+    },
+    {
+        "name": "Goła ręka",
+        "description": "Karty kartami, ale zwinne rączki przydają się nie tylko przy zielonym stoliku. Czasem na hasło \"Pokaż ręce\" trzeba pokazać, że nie ma się broni. A jednak zawsze tę broń warto by mieć, prawda? Mój kumpel właśnie tak umiał - niby pokazywał, że nie ma, a wasze coś miał, skupany...",
+        "action": "Bohater potrafi podejść do kogoś z ukrytym pistoletem lub nożem w rękawie, tak że broń jest niedostrzegalna. Jeśli przeciwnicy spodziewają się ukrytej broni, muszą wykonać Bardzo Trudny test Czujności.",
+        "requirements": {
+            "skills": [
+                { "name": "Zwinne Dłonie", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Granie na nerwach",
+        "description": "Miałem takiego kumpla, Eliasa. Facet był wkurzający, ale miał dobre źródło Tornado, więc włóczyłem się za nim przez długi czas. Raz napotkaliśmy takiego wielkiego gangera. Elias zaczął się nabijać z twardziela. Tak mu grał na nerwach, że wielkolud zrobił się czerwony. Już myślałem, że przypieprzy Eliasowi... i dostałem w pysk.",
+        "action": "Wykonując Bardzo Trudny test Perswazji, Bohater potrafi rozzłościć dowolną osobę tak, że wali ona w pysk najbliższej stojącą ofiarę losu, ale nie Bohatera. Kobiety wykonują zaledwie Trudny test Perswazji.",
+        "requirements": {
+            "attributes": [
+                { "name": "Spryt", "value": 10 }
+            ],
+            "skills": [
+                { "name": "Perswazja", "value": 9 }
+            ]
+        }
+    },
+    {
+        "name": "Gunfight",
+        "description": "Bobby Kid nie był żadnym tam karateką, ale sukinsyn dbał o to, żeby nikt mu spluwy nie wziął. Potrafiłby odstrzelić Ci kapelusz trzymając spluwę za swoimi plecami. Nawet byś nie wiedział ską padł strzał.",
+        "action": "Decyzję należy podjąć na początku tury, przed rzutem 3k20. Jeśli walczący wykonuje strzał z przyłożenia, może używać Umiejętności Strzelania zamiast Umiejętności Bijatyka w walce wręcz. Używając Gunfight, nie można za pomocą Umiejętności strzelania podwyższać przeciwnikowi wyników na kostkach (reguła Podówjne działanie Umiejętności).",
+        "requirements": {
+            "attributes": [
+                { "name": "Zręczność", "value": 14 }
+            ],
+            "skills": [
+                { "name": "Pistolety", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Hej przystojniaku",
+        "description": "Czasem zupełnie przeciętna dziewczyna potrafi przyciągać spojrzenia bardziej, niż niesamowita szprycha. Dzięki tej sztuczce stada samców będąna usługi Bohaterki. Przynieś buty. Leż. Zmywaj.",
+        "action": "Aby oprzeć się Perswazji Bohaterki, członkowie drużyny muszą wykonać Cholernie Trudny test Niezłomności. W przypadku porażki, spełnią \"każde\" jej życzenie (chodzi o drobne przysługi).",
+        "requirements": {
+            "attributes": [
+                { "name": "Charakter", "value": 14 }
+            ],
+            "skills": [
+                { "name": "Perswazja", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Hokus pokus",
+        "description": "Fajna Szuczka, przynajmniej do czasu jak nie bawisz się granatem. Bo wiesz jak się zbytnio zagalopujesz, i sobie wsadzisz w spodnie, ja jeszcze bez zawleczki...",
+        "action": "Bohater potrafi schować do kieszeni lub wyciągnąć z niej niewielki przedmiot w sposób zupełnie niedostrzegalny.",
+        "requirements": {
+            "skills": [
+                { "name": "Zwinne Dłonie", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Immunitet",
+        "description": "Była kiedyś taka kobieta. Nazywała się Matka Teresa z Kalkuty. Chociaż w Kalkuci pod Denver nikt o niej nie słyszał, uczeni powiadają, że mimo iż leczyła zakaźnie chorych, umarła ze starości.",
+        "action": "Bohater nigdy nie zarazi się chorobą podczas leczenia pacjenta.",
+        "requirements": {
+            "attributes": [
+                { "name": "Budowa", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Leczenie Chorób", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Inspiracja",
+        "description": "Spoko chłopcy, może i jest ich więcej, ale i tak przerobimy ich na pasztet! Damy radę?! Pewnie! No to łapać za niezbędniki i naprzód!",
+        "action": "Dowódca zdaje Trudny test Zręczności Przywódczych. Jeśli go zda, obniża o jeden Poziom Trudności najbliższego testu Morale wszystkich swoich podkomendnych lub towarzyszy.",
+        "requirements": {
+            "skills": [
+                { "name": "Zdolności Przywódcze", "value": 3 }
+            ]
+        }
+    },
+    {
+        "name": "Jest zajebiście",
+        "description": "Miałem takiego kumpla. Nipoprawny optymista - parł naprzód mimo wszelkich przeszkód. Nie widział nigdy złych stron, żadnego planu. Wszystko było dla niego \"zajebiste\". Najlepsze, że potrafił tym entuzjazmem zarażać innych. To zajebista Sztuczka. Weź ją.",
+        "action": "Bohater wykonuje test Blefu o dowolnie wybranym PT. Jeśli test się powiedzie na każdy PT powyżej Łatwego wszyscy w drużynie dostają -5% do najbliższego testu. Jeśli test Blefu nie powiedzie się, wszyscy dostają utrudnienia tej samej wysokości.",
+        "requirements": {
+            "attributes": [
+                { "name": "Charakter", "value": 16 }
+            ],
+            "skills": [
+                { "name": "Blef", "value": 6 }
+            ]
+        }
+    },
+    {
+        "name": "Kanały",
+        "description": "Wędrowaliśmy po podziemiach dobre sześć, może nawet więcej godzin. Ciemno, mokro i piździ. A gość mówi, jesteśmy na miejscu. Myślę sobie - zaprowadził na do domu, witamy w szambie. A on nie, wychodzi na powierzchnię i nagle się okazuje, że jesteśmy w Vegas. A wiesz, rano byliśmy w Detroit. Poważnie!",
+        "action": "Wędrując po podziemiach, Bohater oritnuje się w kierunkach niczym żywy kompas i pamięta drogę, jaką przebył tak, jakby miał przed oczami mapę.",
+        "requirements": {
+            "attributes": [
+                { "name": "Spryt", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Wyczucie Kierunku", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Komandos",
+        "description": "Pewien facet nauczył mnie doceniać znaczenie tych małych podskakujących kopczyków ziemi, które powstają, gdy jakiś wariat wygarnie serią z CKMu. Nie żeby od razu bawił się w arytmetykę i geometrię, ale skubany tak się toczył na prawo i na lewo, że prawie nie szło go trafić.",
+        "action": "Nie można Cię trafić korygowanym ani przenoszonym ogniem z broni maszynowej.",
+        "requirements": {
+            "attributes": [
+                { "name": "Zręczność", "value": 14 }
+            ],
+            "skills": [
+                { "name": "Czujność", "value": 3 }
+            ]
+        }
+    },
+    {
+        "name": "Kop z obrotu",
+        "description": "Steven miał taki styl, mówił do kolesia Martens i niby się do niego odwracał, by po chwili zakręcić się i pieprznąć z półobrotu w twarz. WIesz, Martensy to nazwa jego butów, zawsze potem przez tydzień miałeś ich znak firmowy na ryju. Całkiem niezłe logo, swoją drogą...",
+        "action": "<b>Akcja za 3 sukcesy.</b> Budowa do 16 - Lekki Siniak. Budowa powyżej 16 - Ciężki Siniak. Mozna stosować nawet gdy walczysz bronią.",
+        "requirements": {
+            "attributes": [
+                { "name": "Budowa", "value": 8 },
+                { "name": "Zręczność", "value": 14 }
+            ],
+            "skills": [
+                { "name": "Bijatyka", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Kot",
+        "description": "I mówi do mnie, spieprzamy. Ja patrze, a gość skacze przez okno. Obłęd.",
+        "action": "Bohater może spadać z dwa razy wyższej wysokości, niż normalni ludzie, nie odnosząc obrażeń.",
+        "requirements": {
+            "attributes": [
+                { "name": "Zręczność", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Wspinaczka", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Kradzież w tłumie",
+        "description": "Johny się potknął i wpadł na Devila, Devil na mnie, ja na jakiegoś frajera, a do mojej ręki przlepiła się jakaś spluwa i dwa zaposowe magazynki. Dziwne to wszytsko, co nie?",
+        "action": "Jeśli okradasz kogoś w tłumie czy ścisku, test Kradzieży Kieszonkowej jest dla Ciebie łatwiejszy o -30%.",
+        "requirements": {
+            "skills": [
+                { "name": "Kradzież Kieszonkowa", "value": 2 },
+                { "name": "Ukrywanie się", "value": 2 }
+            ]
+        }
+    },
+    {
+        "name": "Leśny diabeł",
+        "description": "Kiedy myślę o takich ludziach, przechodzą mnie dreszcze. Nie dostrzeżesz żadnego z nich, chyba że zechce być zauważony. Leśny diabeł zaszyje się gdzieś w gąszczu i tkwi w ukryciu, wyczekując na zdobycz. Ma świadomość bezpieczeństwa, więc może skupić się tylko na wyszukiwaniu celu. Pomyśl czego ktoś taki mógłby dokonać ze snajperką.",
+        "action": "Ukrywając się w lesie, wśród zarośli i drzew, Bohater może dodać do Umiejętności Ukrywania się Łowiectwo.",
+        "requirements": {
+            "skills": [
+                { "name": "Ukrywanie się", "value": 5 },
+                { "name": "Łowiectwo", "value": 2 }
+            ]
+        }
+    },
+    {
+        "name": "Ładowanie kuszy",
+        "description": "Kuszy nie ładuje się łatwo. Można nawet powiedzieć, że w warunkach bojowych naciąganie cięciwy to prawdziwy horror. No cóż, są tacy, którzy potrafią w miarę szynko załadować kuszą. Ja tam wolę strzelać z peekmi.",
+        "action": "Załadowanie kuszy zajmuje Bohaterowi jedną turę.",
+        "requirements": {
+            "skills": [
+                { "name": "Kusza", "value": 6 }
+            ]
+        }
+    },
+    {
+        "name": "Ławnik",
+        "description": "Ławnik to taki koleś, który jak nikt inny potrafi nawalać wszystkich ławką. Albo beczką. Albo stolikiem. Cokolwiek, byle było duże i ciężkie.",
+        "action": "Otrzymujesz bonus +2 do Broni ręcznej, jeśli w walce zamiast broni używasz cięzkich elementów otoczenia, jak stoły, beczki, itp.",
+        "requirements": {
+            "attributes": [
+                { "name": "Budowa", "value": 14 }
+            ]
+        }
+    },
+    {
+        "name": "Magazynek",
+        "description": "A widziałeś może \"Desperado\"? Ten gość potrafił wymieniać magazynki, jak nikt inny.",
+        "action": "Wymiana magazynka w pistolecie zajmuje jeden segment. W przypadku rewolwerów ładujesz 1 nabój na segment.",
+        "requirements": {
+            "attributes": [
+                { "name": "Zręczność", "value": 12 }
+            ],
+            "orSkills": [
+                { "name": "Pistolety", "value": 3 },
+                { "name": "Karabiny", "value": 3 }
+            ]
+        }
+    },
+    {
+        "name": "Mech bojowy",
+        "description": "Wstyd się przyznać, ale w miasteczku, które pojechaliśmy łupić, załatwił nas samotny facet. Serio. Był sam, a nas sześciu - każdy na Harleyu. Jak nas załatwił? Miał wóz strażacki. Nie doceniliśmy potęgi sikawki. I nie ma się z czego śmiać.",
+        "action": "Bohater potrafi wykorzystywać elementy maszyn jako broń (wysięgarki, dźwigi, widły wózków) PT testów posługiwania się taką bronią ustala MG.",
+        "requirements": {
+            "attributes": [
+                { "name": "Spryt", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Maszyny Ciężkie", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Miotacz kul",
+        "description": "Potrafisz cholernie celnie rzucać przedmiotami. Nie znaczy to, że od razu zostaniesz nożownikiem. Co prawda, trafisz w cel nawet noże, ale nie znaczy że od razu tą właściwą, ostrą stroną. Za to do granatów jest to wprost idealne!",
+        "action": "Otrzymujesz bonus -30% do rzucania, jednak nie dotyczy to rzucania nożami itp.",
+        "requirements": {
+            "attributes": [
+                { "name": "Zręczność", "value": 12 },
+                { "name": "Percepcja", "value": 10 }
+            ],
+            "skills": [
+                { "name": "Wyczucie Kierunku", "value": 1 },
+                { "name": "Rzucanie", "value": 2 }
+            ]
+        }
+    },
+    {
+        "name": "Mistrz opaski uciskowej",
+        "description": "Postrzeliłem tamtego gangera, ale to był mój ostatni nabój. Myślałem, że gówniarz nas rostrzela, ale kumpel mówi - \"Jestem mistrzem opaski uciskowej, opatrzę Ci ranę, ale puścisz nas\". Ganger w śmiech i odpowiada - \"Zobaczymy\". Kumpel dopadł zbira i dawaj go bandażować. Nawet się nie połapałem, kiedy związał Gangera \"w baleron\".",
+        "action": "Bohater potrafi tak \"opatrzyć\" swojego pacjenta, że podopieczny jest skrępowany i nie może się ruszyć. Sztuczka działa jeżeli powiedzie się Trudny test Pierwszej Pomocy oraz Trudny test Blefu.",
+        "requirements": {
+            "attributes": [
+                { "name": "Zręczność", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Pierwsza Pomoc", "value": 3 },
+                { "name": "Blef", "value": 3 }
+            ]
+        }
+    },
+    {
+        "name": "Mistrz włóczni",
+        "description": "Gdy biegł na mnie, wyglądało to tak, jakby chciał skoczyć o tyczce. Niestety o to mu chodziło.",
+        "action": "Gdy zaczyna się walka, a Twój przeciwnik jest w takiej odległości, że musicie do siebie podbiec lub podejść, masz przed testem Inicjatywy jedną dodatkową turę walki, w której automatycznie posiadasz Inicjatywę. Dopiero po tej turze w normalny sposób testuje Inicjatywę. Działa tylko, gdy walczysz włócznią.",
+        "requirements": {
+            "attributes": [
+                { "name": "Zręczność", "value": 14 }
+            ],
+            "skills": [
+                { "name": "Broń Ręczna", "value": 6 }
+            ]
+        }
+    },
+    {
+        "name": "Myśleć jak maszyna",
+        "description": "Nestugow jest cholernym cyborgiem. To półbóg, mówię Ci. Patrzy przez lornetkę na biegnącego Łowce i mówi: \"zawróci\". Po kilku sekundach Łowca zawraca.",
+        "action": "Po wykonaniu Bardzo Trudnego testu Postrzegania Emocji i Bardzo Trudnego testu Elektroniki. Bohater jest w stanie przewidzieć następne posunięcie maszyny Molocha. Sztuczki można użyć tylko raz przeciwko tej samej maszynie.",
+        "requirements": {
+            "skills": [
+                { "name": "Postrzeganie Emocji", "value": 11 }
+            ],
+            "orSkills": [
+                { "name": "Elektronika", "value": 11 },
+                { "name": "Mechanika", "value": 11 }
+            ]
+        }
+    },
+    {
+        "name": "Na pewno działa!",
+        "description": "Usłyszeliśmy \"klik\" i już wiedziałem, że mamy przesrane. Spluwa Cichego, którą celował prosto w łeb szefa tej grupy mutantów, właśnie się zacieła. Nie było na to lepszego momentu... Chichy splunął, wycedził pod nose: \"No strzelaj zdziro\" i jeszcze raz nacisnął spust. Łeb mutanta pękł jak dynia.",
+        "action": "Przy wyniku na zablokowanie broni w zakresie 11-18, broń zacina się aż do czasu jej naprawienia już po walce. Dzięki tej sztuczce Bohater potrafi zmusić broń do oddania jeszcze jednego strzału.",
+        "requirements": {
+            "skills": [
+                { "name": "Rusznikarstwo", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Naprawdę, to nie moja wina",
+        "description": "Ten sukinsyn oparł się o barierkę i wtedy nagle spadł mu kapelusz. Mówię Ci, to niewiarygodne. Pieprzony kapelusz dostał się między łopatki turbiny. Najpierw coś zgrzytneło, potem zapiszczało, zadymiło. I w końcu wybuchło. Ledwie uszliśmy z życiem. A teraz Chicago nie ma elektrowni.",
+        "action": "Potrafisz uszkodzić urządzenie w taki sposób, że do jego naprawy wymagany będzie Bardzo trudny test Mechaniki. Musisz poświęcić na to około kwadransu. Urządzenie nie może mieć zabezpieczeń np. w postaci zwartego pancerza - musisz mieć dostęp do wnętrza. Sztuczka nie dotyczy bardzo prostych urządzeń.",
+        "requirements": {
+            "attributes": [
+                { "name": "Spryt", "value": 13 }
+            ],
+            "skills": [
+                { "name": "Mechanika", "value": 3 }
+            ]
+        }
+    },
+    {
+        "name": "Nauczyciel",
+        "description": "Jeśli coś potrafisz i jeszcze tego nauczasz - masz parasol ochronny. Żaden wieśniak, na przykład ten, któremu powiedziałeś, jak nastawić żonie wywichnięty bark, albo ten, któremu pomogłeś podłączyć radio bezpośrednio od kabla z prądem, nie pozwoli Ci zrobić krzywdy.",
+        "action": "Bohater potrafi przekazywać wiedzę szynko i efektywnie. Możesz uczyć inne postaci swoich Umiejętności (kosztują wówaczas 10% mniej w Punkat Doświadczenia). Poza tym Bohater jest jednym z najmilej widzianych gości w każdej osadzie.",
+        "requirements": {
+            "skills": [
+                { "name": "Wiedza ogólna", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Niewrażliwość na lekkie rany",
+        "description": "A ja tylko czekałem, aż Jonhemu wbiją ten bagnet w nogę - to jego ulubiona sztuczka. I stało się, wbili mu to żelazo, głęboko, tak na dziesięć centymetrów.\"I co, boli?\" - zapytali. A on na to tak jak zwykle:\"Bardziej zaboli was\" i połamał im ręce i nogi, aż trzeszczało. Cały Jonhy. Lubi, jak mu ktoś coś gdzieć wbije... Czeka na to i dopiero potem robi chłopakom krzywdę.",
+        "action": "Po otrzymaniu Lekkiej rany lub Draśnięcia, Bohater nie musi wykonywać testu Odporności na ból, tak jakby automatycznie zdał test.",
+        "requirements": {
+            "attributes": [
+                { "name": "Charakter", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Odporność na Ból", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "No strzelaj złomie",
+        "description": "Dotychczas uważałem, że walenie spluwą o leżący na ziemi kawał betonu nie służy broni najlepiej. No cóż, kilka tygodni w towarzystwie Brudnego Harrego potrafi wywrócić człowiekowi światopogląd. On własnie tak naprawiał gnata, jak mu się zaciął...",
+        "action": "Przy wyniku rzutu na zablokowanie broni w zakresie 1-10 zacina się na jedną turę. Bohater potrafi \"przywrócić ją do życia\" w ciągu jednego segmentu.",
+        "requirements": {
+            "skills": [
+                { "name": "Rusznikarstwo", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Nożownik",
+        "description": "Facet zamachnął się na mnie nabitą gwoździami pałką, zrzedła mi mina, ale jakoś uskoczyłem, a maczuga wbiła się w ścianę i tam została. Już się miałem uśmiechnąć, ale naglę widzę, że sukinsyn ma szczęście - w postaci cięzkiego topora opartego obok. O mało nie zlałem się w gacie. Na szczęście go nie uniósł. W końcu zobaczył nóż. Już się miałem uśmiechnąć, gdy nagle zobaczyłem uśmiech na jego twarzy. Znalazł to, czego szukał.",
+        "action": "Otrzymujesz bonus +1 do Broni Ręcznej, jeśli walczysz nożem. Ponadto otrzymujesz dodatkową akcję za 3 sukcesy: <b>Akcja za 3 sukcesy. Wykończenie</b> PT testu wyższe o poziom. Walczący wbija nóż w serce przeciwnika albo jednym szybkim cięciem rozcina jego gardło, zadając ranę Krytyczną. Ponadto, nie musisz wykonywać losowego rzutu, by sprawdzić, czy nóż trafił w cel ostrzem.",
+        "requirements": {
+            "attributes": [
+                { "name": "Zręczność", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Broń Ręczna", "value": 5 }
+            ]
+        }
+    },
+    {
+        "name": "Obezwładnienie",
+        "description": "Powalasz gościa na ziemię, wykręcasz rękę, żeby się nie rzucał i pytasz, czy boli. Jeśli jęczy, znaczy się że boli.",
+        "action": "<b>Akcja za 2 sukcesy.</b> Powalasz przeciwnikai próbujesz unieruchowić. Jeśli wygrasz przeciwstawny test Budowy, przeciwnik nie może się ruszyć (może próbować się uwolnić w każdej następnej turze - za każdym razem ma trudniej o +30%). Jeśli przegrasz - uwolnił się i walczycie dalej. Możesz spróbować zadać ranę unieruchomionemu przeciwnikowi - po zadeklarowaniu tego, musisz wygrać przeciwstawny test Budowy.",
+        "requirements": {
+            "skills": [
+                { "name": "Bijatyka", "value": 2 }
+            ]
+        }
+    },
+    {
+        "name": "Odnajdywanie właściwej osoby",
+        "description": "Mój kumpel, Sonny - on to potrafił. Wchodził do miasta, kierował się do knajpy i siadał przy stoliku. Po pół godzinie mieliśmy sprzedany cały towar, bak pełen benzyny i pół bagażnika amunicji do AK. Sonny wiedział z kim załatwiać takie rzeczy.",
+        "action": "Bohater zdaje Trudny test Sprytu, kręci się trochę po osadzie i wie, kto pełni tutah ważne funkcje.",
+        "requirements": {
+            "attributes": [
+                { "name": "Spryt", "value": 12 },
+                { "name": "Charakter", "value": 12 }
+            ]
+        }
+    },
+    {
+        "name": "Odporność na pogodę",
+        "description": "Ci goście nie mają kataru, grypy, ani sraczki. Mogą przez tydzień wędrować w ulewie, żreć owady i popijać stęchłą wodą... Śnieg, wichura, pioruny. A Ci wędrują i wędrują. I mają się dobrze. I nic, do jasnej cholery, nic im nie jest! To mutanci, mówię Ci!",
+        "action": "W swoich testach Bohater nie uwzględnia utrudnień za niesprzyjające warunki pogodowe.",
+        "requirements": {
+            "skills": [
+                { "name": "Znajomość Terenu", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Odtrucie żarcia",
+        "description": "Na moich oczach podniósł z ziemi zdechłą jaszczurkę i uśmiechnął się. Potem opalił ja na ogniu, wyciął kilka części, wrzucił ją do garnka i dosypał jakiegoś proszku, tak że woda aż zabulgotała. A potem zjadł tę gadzinę. I wiesz, ja to mam w dupie, ja się padliny nie chwycę, kto wie, na co zdechła, może świerzb miała, albo co innego...",
+        "action": "Bohater wykonuje Przeciętny lub Trudny (decyzja MG) test Zdobywania Wody. Jeśli go zda, może odkazić również zatrute pożywienie.",
+        "requirements": {
+            "skills": [
+                { "name": "Zdobywanie Wody", "value": 6 }
+            ]
+        }
+    },
+    {
+        "name": "Odwrócenie uwagi",
+        "description": "W zasadzie nie jest to trudna sprawa, wystarczy trochę wprawy i pomysłów. Ot, udasz, że zostałeś popchnięty, czy zaczepisz kogoś i o coś spytasz, możesz zrobić wiele fajnych numerów - byle facet patrzył Ci w oczy, albo gdzieś w horyzont, a nie tam, gdzie trzymasz łapy.",
+        "action": "Dodaje +30% utrudnienia do testu Czujność ofiary kradzieży.",
+        "requirements": {
+            "attributes": [
+                { "name": "Spryt", "value": 10 }
+            ],
+            "skills": [
+                { "name": "Kradzież Kieszonkowa", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Origami",
+        "description": "Facet się wkurzył i odszedł. Na dwa lata. Znalazł podobno jakiegoś starego mistrza judo. Dziadek go uczył, uczył i oto skutki. Teraz chodzi z opaską na czole.",
+        "action": "Można stosować w walce bezpośredniej.<b>Akcja za 1 sukces: pochwycenie</b> Używane przez walczących bronie otrzymują modyfikator jak w zwarciu, a pochwycony dodatkowo otrzymuje karę -2 do Zręczności (dopóki nie przejmie Inicjatywy lub nie otrzyma rany). Ponadto umożliwia przeprowadzenie specjalnych akcji w kolejnych segmentach. <b>Akcja za 2 sukcesy: rzut</b> Przeciwnik wylatuje w górę i uderza o ziemię. Otrzymuje Lekką ranę i nie może przejąć Inicjatywy w kolejnym segmencie. Jeśli przeciwnik został pochwycony wcześniej, wtedy akcja kosztuje tylko 1 sukces. <b>Akcja za 3 sukcesy: Wykończenie.</b> Walczący zakłada dźwignie i unieruchamia przeciwnika, jesli zechce może zadać ranę Ciężką. Może także przydusić przeciwnika, aż ten straci przytomność. Jeśli przeciwnik został pochwycony wcześniej, wtedy akcja kosztuje tylko 2 sukcesy.",
+        "requirements": {
+            "attributes": [
+                { "name": "Zręczność", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Bijatyka", "value": 5 }
+            ]
+        }
+    },
+    {
+        "name": "Ośmiornica",
+        "description": "Nie było na niego bata, machał bronią jakby miał osiem rąk, a nie dwie. I wtedy zdałem sobie sprawę, że ręka mi słabnie i długo tak, nie wytrzymam. Musiałem go skosić serią. Cholera, było szkoda tych kul...",
+        "action": "Decyzję należy podjąć na początku tury, przed rzutem 3k20. Walczący otrzymuje w danej turze karę -2 do Zręczności w obronie, ale za to nawet mimo braku Inicjatywy może zastosować w walce manewr Zwiększone tempo.",
+        "requirements": {
+            "attributes": [
+                { "name": "Spryt", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Kondycja", "value": 2 }
+            ],
+            "orSkills": [
+                { "name": "Bijatyka", "value": 4 },
+                { "name": "Broń Ręczna", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Otwieranie zamków elektronicznych",
+        "description": "Jak myślisz, kto się lepiej zna na sztuce, artysta czy historyk sztuki? Dobra, a kto szybciej otworzy elektryczny zamek: elektronik czy złodziej? Ty nie musisz się tym przejmować, na szczęście jesteś i jednym, i drugim.",
+        "action": "Podczas otwierania zamków elektronicznych możesz w teście dodać do swojej Elektroniki Otwieranie zamków.",
+        "requirements": {
+            "skills": [
+                { "name": "Elektronika", "value": 2 },
+                { "name": "Otwieranie Zamków", "value": 2 }
+            ]
+        }
+    },
+    {
+        "name": "Padnij/powstań",
+        "description": "Jeśli jesteś z Hegemoni i nie potrafisz tego od urodzenia, to wstyd. Goście ćwiczą i ćwiczą, a jak dojdzie co do czego, to masz wrażenie, jakby skubany leżał na trampolinie. Więc jeżeli wybrałeś Pochodzenie \"Hegemonia\" - lepiej wykup tę Sztuczkę, inaczej  ludzie będą się z Ciebie śmiali.",
+        "action": "Pad na ziemię nie zajmuje segmentu, a zerwanie na się na równe nogi zajmuje tylko jeden segment.",
+        "requirements": {
+            "attributes": [
+                { "name": "Zręczność", "value": 12 },
+                { "name": "Budowa", "value": 12 }
+            ]
+        }
+    },
+    {
+        "name": "Pająk",
+        "description": "Uczył się wspinać od dziecka. Był coraz lepszy, potem jeszcze lepszy. Uczył się tego i uczył, aż w końcu się nauczył.",
+        "action": "Bohater nie musi już wykonywać testów Wspinaczki. Jeśli tylko MG uzna, że możliwe jest wspięcie się na daną ścianą. Pająk wspina się tam bez problemu.",
+        "requirements": {
+            "attributes": [
+                { "name": "Zręczność", "value": 14 }
+            ],
+            "skills": [
+                { "name": "Wspinaczka", "value": 8 }
+            ]
+        }
+    },
+    {
+        "name": "Pakowanie",
+        "description": "Co mówiesz kochanie? Co? \"Cukier jest w łazience, w apteczce, w małym pudełku z napisem kakao?! A gdzie jest bandaż? Co? Włożyłaś bandaże do bidonu?!\"",
+        "action": "Bohaterka posiadający tę Sztuczkę potafi pakować plecak tak, że może z niego wyjąć dowolną rzecz w trzy tury. Dla samca ten rekord jest nie do pobicia.",
+        "requirements": {
+            "attributes": [
+                { "name": "Spryt", "value": 10 }
+            ]
+        }
+    },
+    {
+        "name": "Pan plaster",
+        "description": "Ten sanitariusz, co to kulom się nie kłaniał, miał jeszcze jedną ciekawą umiejętność. Za pomocą najprostrzych środków potrafił leczyć najpoważniejsze obrażenia. Tu plaster, tam plaster i po trepanacji czaski.",
+        "action": "Bohater może używać połowy wartości Umiejętności Pierwsza Pomoc, jakby własnie tyle punktów miał w Umiejętności Leczenie Ran.",
+        "requirements": {
+            "attributes": [
+                { "name": "Spryt", "value": 14 }
+            ],
+            "skills": [
+                { "name": "Pierwsza Pomoc", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Pewna ręka",
+        "description": "Amator bierze do ręki spluwę i wali gdzie popadnie. Gdyby się sobie przyjrzał, odkryłby, że ręka mu lata jak szmata na wietrze. Zawodowiec ma pewną ręką i strzały częściej sięgają celu. Ale prawdziwi mistrzowie stają się jednością z pistoletem. Wiesz, pistolet jest przedłużeniem oczu. Znaczy się ręki. Jakoś tak.",
+        "action": "Gdy poświęcasz segment na celowania, oprócz dodatkowej kostki to testu strzału, zyskujesz ułatwienie do testu. Test staje się łatwiejszy o -30%.",
+        "requirements": {
+            "attributes": [
+                { "name": "Charakter", "value": 12 },
+                { "name": "Zręczność", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Pistolety", "value": 3 },
+                { "name": "Karabiny", "value": 3 }
+            ]
+        }
+    },
+    {
+        "name": "Pierwotny instynkt",
+        "description": "Pewnego razu zaczailiśmy się w ruinach na paru gangerów. Rozdzieliliśmy się i zachodziliśmy ich od różnych stron. Nagle widzę, a tu Jonhy z jednej strony murku, a Devil z drugiej. Murek się kończy i ta dwójka naszych wpada na siebie. W tej samej chwili Devil leży i trzyma się za krwawiący nos. Bo Jonhy ma swoją świętą zasadę, najpierw bije, a potem sprawdza, kogo.",
+        "action": "Bez względu na sytuację, w teście Inicjatywy zawsze testujesz Zręcznoś, nawet, gdy inni muszą testować Percepcję.",
+        "requirements": {
+            "attributes": [
+                { "name": "Zręczność", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Czujność", "value": 2 },
+                { "name": "Bijatyke", "value": 3 }
+            ]
+        }
+    },
+    {
+        "name": "Pitbull",
+        "description": "Wracaliśmy kiedyś w czwórkę z wielkiego festynu przyjaźni z mutantami w Saint Louis. Nieźle się ubawiliśmy. Pech chciał, że w krzakach przyczaiła się banda Teksańczyków, którym festyn nie przypadł do gustu. Wyskoczyli nagle z krzaków i jednym z nas, który nie oberwał, był Jojo. Potem wyrzucaliśmy mu: Jojo, czemu nas nie ostrzegłeś, czemu nie ostrzegłeś?",
+        "action": "Nie można Cię zaskoczyć żadną zasadzką. Nie znaczy to, ze wypatrujesz zagrożenia wcześniej, po prostu jesteś zawsze gotowy do walki i reagujesz natychmiast. Nie tracisz segmentów z powodu zasadzki i w normalny sposón testujesz Inicjatywę.",
+        "requirements": {
+            "attributes": [
+                { "name": "Percepcja", "value": 13 },
+                { "name": "Zręczność", "value": 13 }
+            ],
+            "skills": [
+                { "name": "Czujność", "value": 3 }
+            ]
+        }
+    },
+    {
+        "name": "Plug&Play",
+        "description": "Tylko raz widziałem takie cudo. Spec podłączył swój komputer do panelu fabryki, nacisnął czerwony guzik i wszystkie syreny zaczęły wygrywać Happy Birthday. To były moje urodziny. Wzruszyłem się.",
+        "action": "Bohater potrafi podłączyć komputer do ciężkiej maszynerii. Umiejętność Komputery staje się Umiejętnością wspomagającą Wozów Bojowych.",
+        "requirements": {
+            "skills": [
+                { "name": "Komputery", "value": 2 }
+            ],
+            "orSkills": [
+                { "name": "Wozy Bojowe", "value": 2 },
+                { "name": "Maszyny Ciężkie", "value": 2 }
+            ]
+        }
+    },
+    {
+        "name": "Po schodach",
+        "description": "Puszczasz sprzęgło i w drogę. Ja tak często jeżdżę, a bo to mało razy winda się spieprzyła? Miałem na nogach wchodzić?! Na piąte piętro?!",
+        "action": "Bohater nie otrzymuje utrudnień do prowadzenia motocykla podczas jazdy wewnątrz budynków (po korytarzach czy schodach).",
+        "requirements": {
+            "attributes": [
+                { "name": "Zręczność", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Motocykl", "value": 3 }
+            ]
+        }
+    },
+    {
+        "name": "Podrasowanie",
+        "description": "I wziął go brazie, podkręcił tak, że wyciągaliśmy setkę w 6 sekund. Inna sprawa, że po tygodniu chłodnica spłoneła...",
+        "action": "Bohater może zwiększyć wydajność dowolnego urządzenia od 50% do 200% zależnie od sytuacji. Urządzenie ma dużą szansę na poważną awarię w trakcie pracy - decyduje MG.",
+        "requirements": {
+            "attributes": [
+                { "name": "Spryt", "value": 12 }
+            ],
+            "orSkills": [
+                { "name": "Mechanika", "value": 6 },
+                { "name": "Elektronika", "value": 6 }
+            ]
+        }
+    },
+    {
+        "name": "Położenie motocykla",
+        "description": "Pierwszy raz w życiu widziałem coś takiego. Facet wjechał na motorze pod pędzącą ciężarówkę, wyjechał z drugiej strony i po trzech minutach ciężarówka wybuchła...",
+        "action": "Bohater w pełnej szybkości kładzie motor, przejeżdża nisko pod przeszkodą, a po jej minięciu stawia motor i jedzie dalej.",
+        "requirements": {
+            "attributes": [
+                { "name": "Zręczność", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Motocykl", "value": 6 }
+            ]
+        }
+    },
+    {
+        "name": "Prowizorka",
+        "description": "Facet wziął śrubokręt, kawałek drutu i zapalniczkę. Chwilę potem odlecieliśmy w siną dal. Zrobił z tego helikopter. No poważnie!",
+        "action": "Mają do dyspozycji kilka narzęci i kawałek drutu, jesteś w stanie uruchomić urządzenie w czasie dziesięciokrotnie krótrzym, niż to normalnie wymagane, nawet jeśli nie masz \"niezbędnych\" do tego elementów i narzędzi. Urządzenie działa przez kilka minut, czasem kilka godzin, zaleznie od stopnia uszkodzeń (decyzja MG).",
+        "requirements": {
+            "orSkills": [
+                { "name": "Mechanika", "value": 3 },
+                { "name": "Elektronika", "value": 3 }
+            ]
+        }
+    },
+    {
+        "name": "Rappeling",
+        "description": "Kumpel wyrzucił linę za okno i krzyczy: \"spierdalamy\", zjeżdża po niej. No i skoczyłem za nim. Jak byłem w połowie drogi, to już wiedziałem, że nie jest to takie porste, jak myślałem. Przytomność straciłem przy lądowaniu. Od tej pory do lin podchodzę raczej ostrożnie.",
+        "action": "Bohater potrafi zjeżdżać po linie - jest to prędkość niewiele wolniejsza, niż gdyby zeskoczył.",
+        "requirements": {
+            "skills": [
+                { "name": "Wspinaczka", "value": 3 }
+            ]
+        }
+    },
+    {
+        "name": "Rodeo",
+        "description": "Ha ha! Wypakowałeś tę idiotyczną Umiejętność na 5+? No to odbierz prezent! Sztuczka do wykupienia, a mikser gratis. Niech Ci MG kupi.",
+        "action": "Jeśli MG stwierdzi, że dane stworzenie da się ujeździć za pomocą testu najwyżej Bardzo Trudnego (po zastosowaniu Suwaka!), to znaczy, że Ty nie musisz testować w ogóle! Wsiadasz i jedziesz stary, jak samochodem.",
+        "requirements": {
+            "skills": [
+                { "name": "Ujeżdżanie", "value": 5 },
+                { "name": "Jazda Konna", "value": 3 }
+            ]
+        }
+    },
+    {
+        "name": "Rozróba",
+        "description": "Facet miał ksywę Niedźwiedź i wiesz, dopiero jak go chcieliśmy związać to załapałem, w czym rzecz...",
+        "action": "Walcząc z wieloma przeciwnikami, Bohater może wykonać darmowy atak przeciwko każdemu ze swoich pozostały przeciwników, względem których posiada Inicjatywę. Każdy dodatkowy atak wykonuje 1k20 i może zadać co najwyżej cios za 1 sukces. Przeciwnicy bronią sie normalnie za pomocą swoich 3k20.",
+        "requirements": {
+            "attributes": [
+                { "name": "Budowa", "value": 12 },
+                { "name": "Zręczność", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Bijatyka", "value": 6 }
+            ]
+        }
+    },
+    {
+        "name": "Rrrroooaaarrr",
+        "description": "Kiedyś słyszałem o czymś taki jak okrzyk bojowy, ale dopiero gdy spotkałem Jackiego, załapałem w czym rzecz. Gdy na mnie wrzasnął, po prostu się przewróciłem. Podobno sekretem jest czosnek.",
+        "action": "Jeśli walczący przeprowadza manewr Furia lub Szarża, wykonuje okrzyk bojowy i przeciwnik jest zmuszony do testu Morale, tak jak w przypadku zasady Najpierw spójrz mi w oczy. Sztuczki można użyć tylko raz przeciwko temu samemu przeciwnikowi. W walce z wieloma przeciwnikami działa na maksimum 5-ciu przeciwników.",
+        "requirements": {
+            "attributes": [
+                { "name": "Charakter", "value": 16 }
+            ],
+            "skills": [
+                { "name": "Bijatyka", "value": 3 }
+            ]
+        }
+    },
+    {
+        "name": "Ruchome gniazdo CKM",
+        "description": "Mówili na niego Pan Bunkier, czasem Pan Imadło. Jak się zaparł nogami, to nic go nie mogło ruszyć, a jak chwycił CKM, wycelował i nacisnął spust, to broń prawie nie podskakiwała. Wszystkie kulki leciały równiutko jak po sznurku, prosto w cel. Potem dopiero okazało się, że facet był pieprzonym mutantem...",
+        "action": "Jeśli Bohater trafia serią w cel, może wpakować w niego dwa razy więcej kul niż wynika z normalnych reguł broni maszynowej. Inaczej mówiąc, wynik testu pogarsza się o 1 nie co 1 kulę, tylko co 2.",
+        "requirements": {
+            "attributes": [
+                { "name": "Budowa", "value": 16 }
+            ],
+            "skills": [
+                { "name": "Broń Maszynowa", "value": 6 }
+            ]
+        }
+    },
+    {
+        "name": "Ruchomy cel",
+        "description": "Widziałem kiedyś w akcji Stalową Policję, jak wykańczali akurat jakichś łachmytów niedaleko Jackson. Goście spieprzali ile sił w nogach klucząc i skacząc na boki. Oficer SP mruknął: \"Chłopcy, ruchomy cel\". Każdy z tych psycholi oddał tylko jeden strzał. I żaden bandzior już nie uciekał.",
+        "action": "Nie otrzymujesz kary do testu strzelania wynikającej z poruszania się celu.",
+        "requirements": {
+            "attributes": [
+                { "name": "Spryt", "value": 12 },
+                { "name": "Percepcja", "value": 10 }
+            ],
+            "orSkills": [
+                { "name": "Pistolet", "value": 4 },
+                { "name": "Karabiny", "value": 4 },
+                { "name": "Broń Maszynowa", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Rzut oka",
+        "description": "A gość spogląda na mnie i śmiertelnie poważny głosem mówi \"Zesrało się\". A ja, wiesz jak gdyby nigdy nic, mówię do niego \"Widzisz kolego. Widzę, że się zesrało. Ale proszę poiedz mi, co dokładnie się zesrało.\" A facet spogląda na mnie i tym samym, śmiertelnie poważnym głosem mówi: \"Hydrostabilizator\".",
+        "action": "W ciągu kilku sekund jesteś w stanie (w sposób przybliżony) okreslić przeznaczenie i sposób działania dowolnego urządzenia technicznego.",
+        "requirements": {
+            "attributes": [
+                { "name": "Spryt", "value": 10 }
+            ],
+            "orSkills": [
+                { "name": "Mechanika", "value": 4 },
+                { "name": "Elektronika", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Sama se skocz po piwo",
+        "description": "Znasz legendę o Jeźdźcu bez głowy? A słyszałeś bajkę o Teksańczyku, który miał alergię na konie? Jestem w stanie uwierzyć we wszystko, ale nie w to, że istnieje posiadający tę Sztuczkę.",
+        "action": "Bohater jest odporny na Sztuczkę \"Hej przystojniaku\".",
+        "requirements": {
+            "attributes": [
+                { "name": "Charakter", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Niezłomność", "value": 8 }
+            ]
+        }
+    },
+    {
+        "name": "Samuraj",
+        "description": "Na pojedynek z tym sukinsynem wybrałem starą elektrownię, czyli że tak powiem \"moje miejsce\". Zebrało się sporo gapiów. Wiedziałem, że nie mam szans. Gnojek przytaszył tę swoją katanę, ja wziąłem drewniany młot. Rozbrzmiał gong. Wtedy Pabio, mój kumpel elektronik, włączył elektromagnes, pod którym staliśmy. Na szczęście zadziałał.",
+        "action": "Otrzymujesz bonus +1 do Broni Ręcznej, jesli walczysz mieczem lub pałką. Ponadto, jeśli nosisz katanę, rapier lub inną lekką broń chowanę w pochwie, dobycie jej zajmuje Ci tylko 1 segment.",
+        "requirements": {
+            "attributes": [
+                { "name": "Zręczność", "value": 10 }
+            ],
+            "skills": [
+                { "name": "Broń Ręczna", "value": 3 }
+            ]
+        }
+    },
+    {
+        "name": "Sherlock Holmes",
+        "description": "Ledwo widoczny ślad w piasku? \"Elementarne, Wattsonie - to był biał mężczyzna, wzrost około 184 cm, waga 80kg, lekko utykający na prawą nogę. niósł coś w ręce - teczkę, albo torbę...\"",
+        "action": "Z tą Sztuczką tropiciel analizujący nawet bardzo niewyraźne ślady może uzyskać informacje o tym, co stało się w danym miejcu - musi zdać Trudny (po zastosowaniu Suwaka!) test Tropienia.",
+        "requirements": {
+            "skills": [
+                { "name": "Tropienie", "value": 6 }
+            ]
+        }
+    },
+    {
+        "name": "Siekierezada",
+        "description": "Każdy potrafi rzucać siekierą. Bierzesz, rzucasz - no i leci. A ja Cię teraz nauczę, jak nią rzucić, żeby ta cholera się wbiła. I to nie byle jak. Ma rozpołowić pieniek. No popatrz...",
+        "action": "Potrafisz rzucać siekierą tak, że trafienie zadaje Ciężkią ranę.",
+        "requirements": {
+            "attributes": [
+                { "name": "Budowa", "value": 13 }
+            ],
+            "skills": [
+                { "name": "Rzucanie", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Siup dup",
+        "description": "Siup, dup i nagle czujesz ból, a potem widzisz, że Twoją spluwę trzyma ten, co właśnie zrobił siup, dup. Nie wiem co dokładnie oznacza \"siup, dup\". Goście od sztuk walki robią to tak, szybko że nic nie widać. Tylko \"siup, dup\" i gotowe.",
+        "action": "<b>Akcja za 3 sukcesy</b> PT testu o poziom wyższy, tylko do walki gołymi rękami. Rozbrajasz przeciwnika i przejmujesz jego broń.",
+        "requirements": {
+            "attributes": [
+                { "name": "Zręczność", "value": 14 }
+            ],
+            "skills": [
+                { "name": "Bijatyka", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Skład amunicji",
+        "description": "Siedzieliśmy w okopie. Tamci też mieli jakąś osłone. Można było sądzić, ze będziemy tak siedzieli miesiąc i straszyli się nawzajem. Każdy oszczędzał amunicję, bo nie było sensu strzelać na oślep. Tylko Ślepy Bizon walił z tej swojej procy raz za razem. \"Dużo masz tych pocisków?\" - pytam, aon rozejrzał się wzdłóż okopu i powiedział: \"Ze 30 tysięcy, a co?\"",
+        "action": "Bohater potrafi natychmiast znaleźć pocisk do procy - jeśli jest na otwartym terenie i o ile MG uzna to za możliwe.",
+        "requirements": {
+            "attributes": [
+                { "name": "Percepcja", "value": 10 }
+            ],
+            "skills": [
+                { "name": "Proca", "value": 2 }
+            ]
+        }
+    },
+    {
+        "name": "Skok",
+        "description": "Oczywiście, że trzeba mieć spore umiejętności, by skakać na motorze z dachu na dach, ale powiem Ci, jak dla mnie to przede wszystkim trzeba mieć stalowe jaja. Rozpędzić motocykl i zamknąć oczy potrafi każdy. Niestety, to zdecydowanie za mało...",
+        "action": "Jadąć na motorze, Bohater może bez testu przeskorzyć przez dziurę, rozpadlinę, przepaść lub z jednego budynku na drugi, na odległość do 8 metrów. Musi jednak mieć miejsce na rozbieg - dwukrotnie więcej niż ma wynieść długość skoku.",
+        "requirements": {
+            "attributes": [
+                { "name": "Charakter", "value": 14 }
+            ],
+            "skills": [
+                { "name": "Motocykl", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Słuch absolutny",
+        "skills": [
+            { "name": "Nasłuchiwanie", "value": 4 }
+        ],
+        "description": "Granie ze słuchu, bezłędne rozpoznawanie ludzkich głosów, taki był nasz Ron. Myślałem, że w dupę sobie można wcisnąć takie Sztuczki, aż tu raz siedzieliśmy za rogiem i słyszeliśmy, jak gość otwiera zamek kodowy i wchodzi do środka. Ron podszedł do zamka i kurwa zagwizdał ten sam kod. I weszliśmy.",
+        "action": "Można zakupić tę Sztuczkę tylko podczas tworzenia postaci. Bohater musi zdać Bardzo Trudny test Nasłuchiwania i jest w stanie powtórzyć dowolną melodię, rozmowę lub dźwięk usłyszany, nie dłuższy niż trzy minuty.",
+        "requirements": {}
+    },
+    {
+        "name": "Snajper",
+        "description": "Dwadzieścia minut mierzenia, jedna sekunda na strzał, i cała wieczność w trumnie dla tego gościa, którego miałeś na celowniku.",
+        "action": "Celownik optyczny zmniejsza trudność trafienia celu o -80% zamiast standardowego -40%, ale tylko w przypadku snajperki.",
+        "requirements": {
+            "attributes": [
+                { "name": "Percepcja", "value": 14 }
+            ],
+            "skills": [
+                { "name": "Karabiny", "value": 6 }
+            ]
+        }
+    },
+    {
+        "name": "Spać na wodzie",
+        "description": "Kiedyś miałem zakład z kumplem. Twierdził, że nie potrafi utonąć. No to ja mu mówię - masz tę butlę i leż na wodzie. Położył się. Przywiązałem mu kamol do nogi, trochę go ściągneło, ale wciąż był na powierzchni. Związałem mu ręce, zeby nie machał, a on pływa jak cholerny pniak. W końcu się wściekłem i polazłem po coś cięższego. Jak wróciłem to spał. Normalnie zasnął na wodzie, dasz wiarę?!",
+        "action": "Na spokojnej wodzie Bohater utrzymuje się bez wysiłku przez wiele godzin.",
+        "requirements": {
+            "skills": [
+                { "name": "Pływanie", "value": 5 }
+            ]
+        }
+    },
+    {
+        "name": "Strzelec kieszonkowy",
+        "description": "Marcus jest pacyfistą, to znaczy, że nigdy nie wyciąga na nikogo broni. Naprawdę nigdy. A jak już musi kogoś wykończyć, to ostateczność. Bardzo nie lubi używać tej swojej Sztuczki, bo za każdym razem musi potem cerować kieszeń w płaszczu. Ale dzięki temu nadal jest jest pacyfistą.",
+        "action": "Nie otrzymujesz dodatkowych utrudnień za strzał z kieszeni (broń schowana w kieszeni) lub z biodra. Sztuczka odnosi się tylko do pistoletów i rewolwerów.",
+        "requirements": {
+            "attributes": [
+                { "name": "Spryt", "value": 10 },
+                { "name": "Percepcja", "value": 10 }
+            ],
+            "skills": [
+                { "name": "Pistolety", "value": 2 }
+            ]
+        }
+    },
+    {
+        "name": "Szachista",
+        "description": "Słyszałeś o Szachiście? No to Ci powiem, że to taki facet, którego się nie da trafić, chyba, że z pistoletu. Będzie biegał i unikał tak długo, aż Ci się odechce walki. A wtedy on zaproponuje partyjkę szachów na roztrzygnięcie sporu.",
+        "action": "Decyzję należy podjąć na początku tury, przed rzutem 3k20 lub przed testem Inicjatywy. Walczący oddaje Inicjatywę, ale za to otrzymuje bonus +3 do Zręczności w obronie, do czasu, aż sam nie przejmie Inicjatywy. Sztuczka może niejednemu uratować tyłek, gdy stwierdzi, że w tej walce nie ma szans i lepiej poczekać na kolegów.",
+        "requirements": {
+            "orSkills": [
+                { "name": "Bijatyka", "value": 4 },
+                { "name": "Broń Ręczna", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Szósty zmysł",
+        "description": "Oto sztuka medytacji według starej indiańskiej szkoły Sun Tsu, czy jakoś tak. Ja to robię od lat. Na początku zauważysz, że jesteś czujniejszy. Ten etap Indianie nazywali etapem pumy. Potem zwiększy się Twoja szybkość. To etap kobry. Na końcu wczesnego ostrzegania, czy jakoś tak.",
+        "action": "Raz na dzień możesz uskoczyć przed zagrożeniem, zanim to się pojawi (cios z zaskoczenia, kula snajpera, spadający głaz, mina itd). Działa to tak, jabyś na ten moment uzyskał kosmiczny refleks z odrobiną jasnowidztwa. Przesuwasz się o metr - inaczej mówiąc, nie uciekniesz przed lawiną, jeśli musiałbyś w tym celu 100 metrów w sekundę. O użyciu Sztuczki musisz zdecydować przezd ewentualnym testu uniku. W walce Sztuczka zadziała jak automatyczny unik przeciwko jednej akcji przeciwnika (lecz musisz poświęcić na to tyle samo segmentów, co przeciwnik).",
+        "requirements": {
+            "attributes": [
+                { "name": "Percepcja", "value": 14 }
+            ],
+            "skills": [
+                { "name": "Czujność", "value": 7 }
+            ]
+        }
+    },
+    {
+        "name": "Sztuczki karciane",
+        "description": "W większości gier karcianych chodzi o to by mieć dobre karty na ręce. Więc jak masz sprawne łapki i wiesz choć w przybliżeniu, które karty to \"dobre karty\", to zwycięsto masz w kieszeni. Mam rację, prawda? No więc... Sam zobacz - co napisane jest w opisie działania tej Sztuczki.",
+        "action": "Bohater wygrywa każdą grę karcianką, pod warunkiem, że nie gra z osobą, która posiada tę Sztuczkę.",
+        "requirements": {
+            "attributes": [
+                { "name": "Spryt", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Zwinne Dłonie", "value": 8 }
+            ]
+        }
+    },
+    {
+        "name": "Sztuka jest sztuka",
+        "description": "Jak mawia stare przysłowie, jeśli ma lufę i cyngiel, to znaczy się, że strzela. Ot, cokolwiek znajdziesz, bez względu na to, czy to strzelba z czasów napoleońskich, czy z okresu wojny w Wietnamie, bez względu na to czy jest zapiaszczona, czy zapaćkana jakimś szambem - doprowadzisz ją do użyteczności.",
+        "action": "Bohater poświęca kilka godzin, by oczyścić i doprowadzić do stanu używalności dowolną zabrudzoną, pordzewiałą czy zaciętą broń palną. Sztuczka pozwala na naprawienie broni uszkodzonej w skutek fatalnego zacięcia się.",
+        "requirements": {
+            "skills": [
+                { "name": "Rusznikarstwo", "value": 2 }
+            ]
+        }
+    },
+    {
+        "name": "Szybki bill",
+        "description": "Mam kumpla w Detroit mówimy na niego suseł, wiesz czemu? Bo jak przychodzi do strzelaniny to gość sadził takie susy...",
+        "action": "W jednym segmencie możesz pokonać dwa razy większy dystans niż normalnie.",
+        "requirements": {
+            "attributes": [
+                { "name": "Zręczność", "value": 14 }
+            ]
+        }
+    },
+    {
+        "name": "Szybki rzut",
+        "description": "Jest taka scena w filmie Desperado, jak będziesz kiedyś w Vegas, wpadnij tam sobie do kina, często puszczają ten film. Tam gość nożami wykończył coś z ośmiu chłopa, mimo że mieli broń maszynową. Dasz wiarę? Był szybszy od nich...",
+        "action": "Rzut zajmuje tylko jeden segment.",
+        "requirements": {
+            "attributes": [
+                { "name": "Zręczność", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Rzucanie", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Szybkie strzelanie",
+        "description": "\"Łuk maszynowy\" - taką karteczkę raz przywiązaliśmy jednemu czerwonoskóremu na południu Teksasu. Facet uśmiechnął się i nawet jej nie zerwał, widać połechtaliśmy jego próżność. No ale trzeba przyznać, nie wzieliśmy tej karteczki z księżyca. Gość strzelał z tego łuku jakby miał podajnik strzał na taśmie... Wieczorem zrobił nam pokaz, niewiarygodny widok.",
+        "action": "Dobycie strzały zajmuje Bohaterowi 1 segment, strzał kolejny 1 segment, dobycie 1 segment itd.",
+        "requirements": {
+            "attributes": [
+                { "name": "Budowa", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Łuk", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Śrutobranie",
+        "description": "Mutki siedziały ukryte w bunkrze. Chiałem wrzucić im granat, ale Franz ściągnął z ramienia śrutówkę i wycedził: \"No to mutasy, czas na śrutobranie. Bierzcie koszyk\". I jak zaczął do nich walić, to aż się duszno zrobiło. No nie powiem, śrutobranie się udało, każdy z mutków zebrał coś po pół kilo, choć nie do koszyczka, lecz w korpus. Ale to detal.",
+        "action": "Przeładowanie śrutówki i strzał zajmują razem tylko 1 segment, lecz Bohater otrzymuje +30% utrudnienia do testów trafienia.",
+        "requirements": {
+            "skills": [
+                { "name": "Karabiny", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Taran",
+        "description": "Każdy głupi wie, że jak ktoś się na Ciebie porządnie zamachnie, to lepiej się zawczasu odsunąć. Gorzej, gdy cwaniak robi to tak, że nawet nie zauważysz. Spokojnie się zasłaniasz, a tu nagle\"dup\" - i ręka Ci drętwieje od ciosu.",
+        "action": "Decyzję należy podjąć na początku tury przed rzutem 3k20. Dotyczy cięższych i dłuższych broni, jak pałki, młoty, miecze, łańcuchy itp. Walczący otrzymuje karę -4 do Zręczności, lecz zadane obrażenia są o poziom większe.",
+        "requirements": {
+            "attributes": [
+                { "name": "Budowa", "value": 14 }
+            ],
+            "skills": [
+                { "name": "Broń Ręczna", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Taranowanie",
+        "description": "Jak mi moja bryka odmówiła posłuszeństwa, to załapałem się autostop - podwozi mnie gość w całkiem niemałej ciężarówce. Wóz mi się bradzo podobał, nawet mu mówiłem: \"No kurcze, super bryka, radio, ogrzewanie, wszystko widać z góry, tu lodóweczka, tam miejsce na nocleg. Szefie, masz pan tu jak w raju! Lubisz ten komfort, co?!\" Wiesz co mi odpowiedział? \"Ja to jednak najbardziej sobie cenię taranowanie gangerów\"",
+        "action": "Kierowca nie otrzymuje utrudnień do testów Prowadzenia Pojazdu podczas taranowania innej maszyny.",
+        "requirements": {
+            "orSkills": [
+                { "name": "Ciężarówka", "value": 3 },
+                { "name": "Samochód", "value": 3 }
+            ]
+        }
+    },
+    {
+        "name": "Targowanie się",
+        "description": "Moja nawiększa wtopa? Poszedłem na bazar w Salt Lake i nieopatrznie wdałem się w rozmowę z jakimś handlarzem. Po godzinie wymieniłem nowiutki kevlar na medalik ze świętym Antonim.",
+        "action": "Podczas testów handlu przeciwnik zdaje o poziom wyższe testy Niezłomności.",
+        "requirements": {
+            "skills": [
+                { "name": "Niezłomność", "value": 7 },
+                { "name": "Perswazja", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "To się robi tak",
+        "description": "Gadał, gadał, nawet ciekawie i jakoś tak przysłuchiwałem się.. Minutkę potem zaczął murować z chłopakami jakąś scenę. A jak już ściana staneła, facet mówi, że taki samotny ten mur. No to dorobiliśmy jeszcze trzy ściany. Bez dachu słupio wyglądało, więc gość powiedział nam jak dorobić dach.",
+        "action": "Po udanym teście Zdolności Przywódczych Bohater może pokierować niewykwalifikowanymi pracownikami. Na czas jednego zadania uzyskują oni na poziomie 1 znaną Bohaterowi Umiejętność, opartą o Spryt, którą posiada na poziomie 3+. Niby niewiele, ale likwiduje negatywny efekt Suwaka.",
+        "requirements": {
+            "skills": [
+                { "name": "Zdolności Przywódcze", "value": 3 }
+            ]
+        }
+    },
+    {
+        "name": "W mgnieniu oka",
+        "description": "Kiedy wychylasz się zza osłony to nie zgrywaj turysty i nie rozglądaj się za przeciwnikiem, tylko rzuć okiem, a potem strzelaj. Taką radę usłyszałem wiele lat temu. I od tej pory tak właśnie załatwiam \"turystów\", którzy wychylają łeb i rozglądają się...",
+        "action": "Nie tracisz segmentu, by po wychyleniu się zza osłony dostrzec wroga.",
+        "requirements": {
+            "attributes": [
+                { "name": "Percepcja", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Wypatrywanie", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Walka dwiema broniami",
+        "description": "W zasadzie tylko raz w życiu widziałem kolesia, który machał dwiemia broniami i sobie tym wcale nie przeszkadzał.",
+        "action": "Normalne zasady nie dają żadnych bonusów za walkę dwiema broniami (może po za wyborem, czym w danym segmencie przywalić). Z Tobą jest inaczej. Gdy walczysz dwiema broniami, możesz użyć dodatkowo połowę punktów Umiejętności walki tą drugą bronią.",
+        "requirements": {
+            "attributes": [
+                { "name": "Zręczność", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Broń Ręczna", "value": 5 }
+            ]
+        }
+    },
+    {
+        "name": "Wiatrak",
+        "description": "Jeśli nie potrafisz walczyć, to zdradzę Ci dobrą metodę; schowaj głowę i zasyp frajera pięsiami od góry, coś z tego wyłapie, czeggoś nie wyłapie, ale na mur się cofnie. Jeśli umiesz walczyć to nadal jest to dobra metoda.",
+        "action": "Decyzję należy podjąć na początku tury, przed rzutem 3k20. Jeśli walczący przeprowadzi manewr Furia, bez względu na wynik walki nie może stracić w danej turze Inicjatywy (jeśli przeciwnik uzyska Inicjatywę, kara wynikająca z Furii działa - czyli walczący otrzymuje celny cios, jednak w następnym segmencie walczący automatycznie odzyskuje Inicjatywę). Na koniec tury walczący otrzymuje karę +20% ze zmęczenia. Sztuczka odnosi się tylko do Bijatyki.)",
+        "requirements": {
+            "attributes": [
+                { "name": "Charakter", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Bijatyka", "value": 2 }
+            ]
+        }
+    },
+    {
+        "name": "Wilk morski",
+        "description": "Wujek Domowa Robótka tak mnie związał, że posiniałem. Myślę sobie -\"albo mnie rozwiąże, albo wezwę pomoc\". A on mówi \"Patrz ćwoku\". Pociągnął za sznur i byłem wolny. Magik, psiakrew.",
+        "action": "Bohater potrafi wiżać całą masę dziwnych węzłów, które rozwiązać może tylko osoba z tą samą Sztuczką.",
+        "requirements": {}
+    },
+    {
+        "name": "Właściwa twarz",
+        "description": "Czasem trzeba się uśmiechnąć, innym razem pokazać zdecydowanie i determinację. Skąd wiadomo, jak się zachować w danej sytuacji? Nie wiem, czy można się tego nauczyć. To chyba dar.",
+        "action": "Otrzymujesz jedno oczko na dowolnej z kości podczas wszystkich testów Charakteru.",
+        "requirements": {
+            "attributes": [
+                { "name": "Percepcja", "value": 10 },
+                { "name": "Charakter", "value": 10 }
+            ],
+            "skills": [
+                { "name": "Blef", "value": 3 }
+            ]
+        }
+    },
+    {
+        "name": "Wracający bumerang",
+        "description": "Kupiłem kiedyś bumerang. To było oszustwo stulecia. Od trzech lat szukam tego gościa, który mi to wcisnął i w końcu gdzieś go spotkam. Najpierw handlarz rzucał bumerangiem, pokazywał jakie to sprytne jak wraca gdy się rzuci... Kupiłem urzędzenie za furę jajek, facet się szybko zwinął, a ja zostałem z tym cholerstwem. Głupi kij. Nigdy do mnie nie wrócił. Rzucałem nim ze sto razy - leciał w krzaki i nic. W końcu wywaliłem ten bumerang w jakiś kanion. Mam nadzieję, że sie chociaż połamał.",
+        "action": "Bohater potrafi tak rzucać bumerangiem, ze ten wraca po trafieniu w cel i można go złapać.",
+        "requirements": {
+            "attributes": [
+                { "name": "Zręczność", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Rzucanie", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Wyczucie emocji zwierząt",
+        "description": "Ci goście z pustyni to są mutanty bracie. Spojrzy taki na zwierzaka i mówi Ci na przykład, że wilczór jest głodny i wystarczy rzucić mu puszkę, uspokoi się. W jaki sposób facet odróżnia wściekłość od głodu? Pewnie sam jest w jakiejś części zwierzęciem, nie sądzisz?",
+        "action": "Bohater ma prawo do Przeciętnego testu Opieki nad Zwierzętami. Jesli go zda, może właściwie odczytać nastawienie napotkanego zwierzęcia i przewidzieć jego następne działanie (nie w walce). Sztuczka nie dotyczy zmutowanych zwierząt.",
+        "requirements": {
+            "skills": [
+                { "name": "Postrzeganie Emocji", "value": 2 },
+                { "name": "Opieka nad Zwierzętami", "value": 2 }
+            ]
+        }
+    },
+    {
+        "name": "Wyczucie promieniowania",
+        "description": "To tak, jakby Ci ktoś wsadził w dupsko Geigera. Jak tylko poziom promieniowania niebezpiecznie się podniesie - wyczujesz to.",
+        "action": "Bohater zawsze wyczuwa niebezpieczny wzrost promieniowania.",
+        "requirements": {
+            "attributes": [
+                { "name": "Spryt", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Czujność", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Wyczucie zmiany pogody",
+        "description": "Wędrówka z cholernym Tropicielem to mordęga... Ale kilka rzeczy mi się u nich podoba. Przepowiadanie pogody, na ten przykład. Są lepsi od radia.",
+        "action": "Po zdaniu Przeciętnego testu Percepcji Bohater praktycznie bezbłędnie określi pogodę na najbliższy dzień.",
+        "requirements": {
+            "attributes": [
+                { "name": "Percepcja", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Znajomość Terenu", "value": 2 }
+            ]
+        }
+    },
+    {
+        "name": "Wyrabianie strzał lub bełtów",
+        "description": "Jak dla mnie to jedyny i wcale niezbyt przekonywujący powód dla którego warto strzelać z łuku, a nie ze spluwy. Do łuku łatwiej dorobić amunicję.",
+        "action": "Bohater bez większych problemów potrafi wykonać strzały do łuku lub bełty do kuszy.",
+        "requirements": {
+            "attributes": [
+                { "name": "Spryt", "value": 10 }
+            ],
+            "orSkills": [
+                { "name": "Łuk", "value": 2 },
+                { "name": "Kusza", "value": 2 }
+            ]
+        }
+    },
+    {
+        "name": "Wytrych",
+        "description": "Zrobienie wytrycha to akurat nie jest żadna sztuka. Zrobisz go ze wszystkiego, kawałka drutu, czy co tam masz pod ręką. Inna sprawa, że aby przekonać o tym Mistrza Gry, lepiej jednak mieć tę Sztuczkę. No cóż, kup, zaoszczędzisz sobie nieprzyjemności...",
+        "action": "Bohater robi wytrych z\"byle czego\" - nie otrzymuje kary za brak profesjonalnego sprzętu podczas otwierania zamków mechanicznych.",
+        "requirements": {
+            "attributes": [
+                { "name": "Zręczność", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Otwieranie Zamków", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Wyczekanie",
+        "description": "Pieprzony samuraj. Spokojnie czekał, aż do niego podbiegnę i przywalę mu łomem. W ostatniej chwili odsunął się, uniknął i jeszcze dwa razy i nagle załadował mi na spamiętanie z kastetu prosto w nos. Dziś jesteśmy z kumplami.",
+        "action": "Decyzję należy podjąć na początku tury (gdy walczący nie posiada Inicjatywy), przed rzutem 3k20. Walczący otrzymuje w danej turze karę -2 do Zręczności w obronie, ale jeśli uda mu się przejąć Inicjatywę, to do końca tej tury otrzymuje bonus +4 do Zręczności w ataku.",
+        "requirements": {
+            "attributes": [
+                { "name": "Percepcja", "value": 12 }
+            ],
+            "orSkills": [
+                { "name": "Bijatyka", "value": 6 },
+                { "name": "Broń Ręczna", "value": 6 }
+            ]
+        }
+    },
+    {
+        "name": "Zagadanie",
+        "description": "Ok, poddaje się, rozumiem. Widzę, że masz większego. To Magnum? Niezły, ja mam tylko... tego Glocka.",
+        "action": "Zagadujesz gościa i nawet jak nie miałeś dobytej broni, to już masz. Jeśli gość miał w ręce spluwe, a Ty nie, to już obaj macie. Sztuczka nie działa w walce.",
+        "requirements": {
+            "attributes": [
+                { "name": "Spryt", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Blef", "value": 2 },
+                { "name": "Zwinne Dłonie", "value": 2 }
+            ]
+        }
+    },
+    {
+        "name": "Zasłona",
+        "description": "Ten Chinol, o którym już wspominałem, roztoczył wokół rąk pole siłowe. Tak nimi machał, ze gdzie nie chciałeś go huknąć, napotykałeś opór! Ja szybko, on jeszcze szybciej. Ja mocno, on niewzruszony. Ja toporem, a on mi dup, kopniak w jaja. O rzesz, głupi Chinolu...",
+        "action": "Decyzję należy podjąć na początku tury przed rzutem 3k20. Walczący otrzymuje bonus +2 do Zręczności w obronie, ale za to w kolejnej turze otrzymuje karę -2 do Zręczności, zarówno w obronie, jak i w ataku.",
+        "requirements": {
+            "attributes": [
+                { "name": "Budowa", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Bijatyka", "value": 2 }
+            ]
+        }
+    },
+    {
+        "name": "Zgranie",
+        "description": "Cholerni koszykarze, przyjechali prosto z Nowego Jorku na Fron. Jenemu brakowało amunicji? Żaden problem, ciach-mach i już ma od kolego. Tamten drugi potrzebuje z wamian granat? Ciach-mach, gotowe.",
+        "action": "Dwóch gości z tą Sztuczką, może rzucać do siebie dowolne lekkie przedmioty tak, ze za równo rzut jak i złapanie są automatycznie udane. Rzut na odległość do 5m trwa 1 segment, do 10m - 2 segmenty, do 15m - 3 segmenty. Rzucane przedmioty muszą być w miarę lekkie i bezpieczne w łapaniu - np. zabezpieczony granat, pistolet, magazynek itd, a nie np. nóż czy karabin. Rzucać i łapać można nawet lewą ręką.",
+        "requirements": {
+            "attributes": [
+                { "name": "Zręczność", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Rzucanie", "value": 2 }
+            ]
+        }
+    },
+    {
+        "name": "Zielony balonik",
+        "description": "Potrzebuję dosłownie chwili spokoju, by w miejsce łba dowolnego fagasa wyobrazić sobie zielony balonik. A powiem Ci trafiania w dyndające zielone baloniki uczyłem się dwanaście lat.",
+        "action": "Gdy podejdziesz do kogoś na odległość 1-5 metrów i wycelujesz w głowę, to dopóki ta odległość się nie zmieni, masz zapewniony automatyczny sukces trafienia jeńca w głowę. Możesz z nim wędrować, prowadzić go itd., a i tak nie stracisz go z \"celownika\". Nie można jednak z jeńcem biegać, wspinać się itp. W dowolnej chwili, np gdy tylko jeniec zechce się wyrwać, wystarczy wygrać test Inicjatywy, a trafinie bedzie automatyczne. Branie jeńca na cel nie może się odbyć w trakcie walki. W sytuacjach spornych należy przeprowadzić test na trafienie w głowę (czasem też wcześniejszy test Inicjatywy) - w przypadku sukcesu Sztuczka zadziałała. Sztuczka dotyczy tylko pistoletów i rewolwerów.",
+        "requirements": {
+            "attributes": [
+                { "name": "Percepcja", "value": 14 },
+                { "name": "Spryt", "value": 10 },
+                { "name": "Zręczność", "value": 10 }
+            ],
+            "skills": [
+                { "name": "Pistolety", "value": 3 }
+            ]
+        }
+    },
+    {
+        "name": "Zły",
+        "description": "Eastwood mówi przyciszonym głosem, który słychać nawet na końcu stadionu. Spojrzenie ma takie, ze człowiek myśli o obdzieraniu żywcem ze skóry i rozcinaniu piłą. Ten facet to chodzący Laxigen, spojrzysz i już masz srakę.",
+        "action": "Przebywający w pobliżu mówiącego Bohatera ludzie muszą przejść Bardzo Trudny test Morale lub otrzymują utrudnienia +10% do wszystkich akcji. Zwyczajnie trzęsą im się ręce.",
+        "requirements": {
+            "attributes": [
+                { "name": "Charakter", "value": 12 }
+            ],
+            "skills": [
+                { "name": "Zastraszanie", "value": 4 }
+            ]
+        }
+    },
+    {
+        "name": "Zmyłka",
+        "description": "Zamachnąłem się w stronę gladiatora tak, że ledwo uskoczył i w dodatku stracił równowagę. Tak mi się przynajmniej wydawało do momentu, gdy chciałem wykorzystać przewagę. Nawet nie wiem co się wtedy stało. Grunt, że w ogóle to przeżyłem.",
+        "action": "Podczas walki wręcz, na czas 1 tury możesz do Umiejętności walki dodać swój Blef. Sztuczkę możena użyć tylko 1 raz przeciwko temu samemu przeciwnikowi.",
+        "requirements": {
+            "attributes": [
+                { "name": "Spryt", "value": 12 }
+            ],
+            "orSkills": [
+                { "name": "Bijatyka", "value": 5 },
+                { "name": "Broń Ręczna", "value": 5 }
+            ]
+        }
+    },
+    {
+        "name": "Żelazne racje",
+        "description": "Nie lubię suszonego mięsa - smakuje jak podeszwa buta. Z drugiej strony nie narzekam. Jadłem już koty i komary widliszki. Bywały miesiące, ze jedynie indiański susz utrzymywał mnie przy życiu. Bez dwóch zdań, konserwacja żywności to przydatna Sztuczka.",
+        "action": "Bohater potrafi zakonserwować żywność, którą zdobył (mięso, wypieki, itp.). Jedzenie nie zepsuje się przez kilka miesiący.",
+        "requirements": {
+            "skills": [
+                { "name": "Łowiectwo", "value": 2 }
+            ]
+        }
+    }
+]
