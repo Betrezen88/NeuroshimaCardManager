@@ -12,7 +12,7 @@ class Profession;
 class Data;
 class Disease;
 class Attribute;
-class NSTrick;
+class Trick;
 class Difficulty;
 class Feature;
 
@@ -24,7 +24,7 @@ class CORE_EXPORT StatsSource : public DataSource
     Q_PROPERTY(QQmlListProperty<Data> specializations READ specializations NOTIFY specializationsChanged)
     Q_PROPERTY(QQmlListProperty<Disease> diseases READ diseases NOTIFY diseasesChanged)
     Q_PROPERTY(QQmlListProperty<Attribute> attributes READ attributes NOTIFY attributesChanged)
-    Q_PROPERTY(QQmlListProperty<NSTrick> tricks READ tricks NOTIFY tricksChanged)
+    Q_PROPERTY(QQmlListProperty<Trick> tricks READ tricks NOTIFY tricksChanged)
     Q_PROPERTY(QQmlListProperty<Difficulty> difficulties READ difficulties NOTIFY difficultiesChanged)
 
 public:
@@ -62,10 +62,10 @@ public:
 
     Q_INVOKABLE Attribute* attribute(const QString &name) const;
 
-    QQmlListProperty<NSTrick> tricks();
-    void addTrick(NSTrick* trick);
+    QQmlListProperty<Trick> tricks();
+    void addTrick(Trick* trick);
     int tricksCount() const;
-    NSTrick* trick(const int &index) const;
+    Trick* trick(const int &index) const;
     void clearTricks();
 
     QQmlListProperty<Difficulty> difficulties();
@@ -109,10 +109,10 @@ private:
     static Attribute* attribute(QQmlListProperty<Attribute> *list, int index);
     static void clearAttributes(QQmlListProperty<Attribute> *list);
 
-    static void addTrick(QQmlListProperty<NSTrick> *list, NSTrick* trick);
-    static int tricksCount(QQmlListProperty<NSTrick> *list);
-    static NSTrick* trick(QQmlListProperty<NSTrick> *list, int index);
-    static void clearTricks(QQmlListProperty<NSTrick> *list);
+    static void addTrick(QQmlListProperty<Trick> *list, Trick* trick);
+    static int tricksCount(QQmlListProperty<Trick> *list);
+    static Trick* trick(QQmlListProperty<Trick> *list, int index);
+    static void clearTricks(QQmlListProperty<Trick> *list);
 
     static void addDifficulty(QQmlListProperty<Difficulty> *list, Difficulty* difficulty);
     static int difficultiesCount(QQmlListProperty<Difficulty> *list);
@@ -125,7 +125,7 @@ private:
     QVector<Data*> m_specializations;
     QVector<Disease*> m_diseases;
     QVector<Attribute*> m_attributes;
-    QVector<NSTrick*> m_tricks;
+    QVector<Trick*> m_tricks;
     QVector<Difficulty*> m_difficulties;
 };
 

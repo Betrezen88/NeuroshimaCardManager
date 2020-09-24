@@ -178,16 +178,16 @@ Attribute *StatsSource::attribute(const QString &name) const
     return nullptr;
 }
 
-QQmlListProperty<NSTrick> StatsSource::tricks()
+QQmlListProperty<Trick> StatsSource::tricks()
 {
-    return QQmlListProperty<NSTrick>(reinterpret_cast<DataSource*>(this), this,
+    return QQmlListProperty<Trick>(reinterpret_cast<DataSource*>(this), this,
                                    &StatsSource::addTrick,
                                    &StatsSource::tricksCount,
                                    &StatsSource::trick,
                                    &StatsSource::clearTricks);
 }
 
-void StatsSource::addTrick(NSTrick *trick)
+void StatsSource::addTrick(Trick *trick)
 {
     m_tricks.push_back(trick);
     emit tricksChanged();
@@ -198,7 +198,7 @@ int StatsSource::tricksCount() const
     return m_tricks.count();
 }
 
-NSTrick *StatsSource::trick(const int &index) const
+Trick *StatsSource::trick(const int &index) const
 {
     return m_tricks.at(index);
 }
@@ -340,22 +340,22 @@ void StatsSource::clearAttributes(QQmlListProperty<Attribute> *list)
     reinterpret_cast<StatsSource*>(list->data)->clearAttributes();
 }
 
-void StatsSource::addTrick(QQmlListProperty<NSTrick> *list, NSTrick *trick)
+void StatsSource::addTrick(QQmlListProperty<Trick> *list, Trick *trick)
 {
     reinterpret_cast<StatsSource*>(list->data)->addTrick(trick);
 }
 
-int StatsSource::tricksCount(QQmlListProperty<NSTrick> *list)
+int StatsSource::tricksCount(QQmlListProperty<Trick> *list)
 {
     return reinterpret_cast<StatsSource*>(list->data)->tricksCount();
 }
 
-NSTrick *StatsSource::trick(QQmlListProperty<NSTrick> *list, int index)
+Trick *StatsSource::trick(QQmlListProperty<Trick> *list, int index)
 {
     return reinterpret_cast<StatsSource*>(list->data)->trick(index);
 }
 
-void StatsSource::clearTricks(QQmlListProperty<NSTrick> *list)
+void StatsSource::clearTricks(QQmlListProperty<Trick> *list)
 {
     reinterpret_cast<StatsSource*>(list->data)->clearTricks();
 }
