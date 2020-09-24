@@ -3,7 +3,9 @@
 
 #include <QObject>
 
-class Requirement : public QObject
+#include "core_global.h"
+
+class CORE_EXPORT Requirement : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString name READ name CONSTANT)
@@ -18,7 +20,7 @@ public:
     explicit Requirement(const QString &name,
                          const int &value,
                          const bool &optional,
-                         Type &type,
+                         Type type,
                          QObject *parent = nullptr);
 
     QString name() const;

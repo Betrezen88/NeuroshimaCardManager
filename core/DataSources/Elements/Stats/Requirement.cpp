@@ -3,7 +3,7 @@
 Requirement::Requirement(const QString &name,
                          const int &value,
                          const bool &optional,
-                         Type &type,
+                         Type type,
                          QObject *parent)
     : QObject(parent),
       m_name(name),
