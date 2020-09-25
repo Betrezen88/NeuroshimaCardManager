@@ -14,6 +14,7 @@ class Attribute;
 class Feature;
 class Disease;
 class OtherSkill;
+class Trick;
 
 class CORE_EXPORT StatsCreator : public PageCreator
 {
@@ -85,6 +86,7 @@ private:
     QMap<QString, int> m_reputation;
     QVector<OtherSkill*> m_otherSkills;
     QVector<Attribute*> m_attributes;
+    QVector<Trick*> m_tricks;
 };
 
 #endif // STATSCREATOR_H
