@@ -1,5 +1,10 @@
 ﻿#include "Requirement.h"
 
+Requirement::Requirement(QObject *parent): QObject(parent)
+{
+
+}
+
 Requirement::Requirement(const QString &name,
                          const int &value,
                          const bool &optional,

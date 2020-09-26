@@ -17,6 +17,7 @@ public:
     enum class Type { ATTRIBUTE, SKILL, PROFESSION };
     Q_ENUM(Type)
 
+    explicit Requirement(QObject *parent = nullptr);
     explicit Requirement(const QString &name,
                          const int &value,
                          const bool &optional,
