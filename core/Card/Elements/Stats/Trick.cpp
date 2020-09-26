@@ -1,5 +1,7 @@
 ﻿#include "Trick.h"
 
+#include "../../../DataSources/Elements/Stats/Requirement.h"
+
 Trick::Trick(QObject *parent)
     : Data(parent)
 {
