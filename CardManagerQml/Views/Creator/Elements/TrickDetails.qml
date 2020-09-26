@@ -32,7 +32,7 @@ Popup {
                 anchors.fill: parent
                 
                 Text {
-                    id: trickName
+                    id: name
                     text: "Nazwa Sztuczki"
                     horizontalAlignment: Text.AlignHCenter
                     wrapMode: Text.WordWrap
@@ -46,14 +46,14 @@ Popup {
                     width: scrollView.width
 
                     Text {
-                        id: reqLabel
+                        id: requirementsL
                         text: "Wymagania:"
                         font.bold: true
                         font.pointSize: 11
                     }
                     Text {
-                        id: trickRequirements
-                        width: parent.width - reqLabel.width
+                        id: requirements
+                        width: scrollView.width - requirementsL.width - 5
                         text: qsTr("Atrybut +14, Umiejętność +1, Profesja")
                         font.pointSize: 11
                         wrapMode: Text.WordWrap
@@ -65,14 +65,14 @@ Popup {
                     width: scrollView.width
 
                     Text {
-                        id: descLabel
                         text: "Opis:"
                         font.bold: true
                         font.pointSize: 11
+                        width: requirementsL.width
                     }
                     Text {
-                        id: trickDecription
-                        width: parent.width - reqLabel.width
+                        id: description
+                        width: scrollView.width - requirementsL.width - 5
                         text: qsTr("Historia opowiadająca o działaniu sztuczki, opowiastka na luzie, z humorem.")
                         font.pointSize: 11
                         font.italic: true
@@ -82,17 +82,16 @@ Popup {
 
                 Row {
                     spacing: 3
-                    width: scrollView.width
 
                     Text {
-                        id: actLabel
                         text: "Działanie:"
                         font.bold: true
                         font.pointSize: 11
+                        width: requirementsL.width
                     }
                     Text {
-                        id: trickAction
-                        width: parent.width - actLabel.width
+                        id: action
+                        width: scrollView.width - requirementsL.width - 5
                         text: qsTr("Opis działania sztuczki w mechanice, podaje przykłady zastosowania, bonusy wynikające z użycia oraz warunki jakie muszą zostać spełnione aby móc wykorzystać sztuczkę.")
                         font.pointSize: 11
                         wrapMode: Text.WordWrap
@@ -113,10 +112,10 @@ Popup {
     } // Item
 
     onTrickDataChanged: {
-        trickName.text = trickData.name
-        trickDecription.text = trickData.description
-        trickAction.text = trickData.action
-        trickRequirements.text = ""
+        name.text = trickData.name
+        description.text = trickData.description
+        action.text = trickData.action
+        requirements.text = ""
 
         console.log(trickData.hasRequirements())
 
