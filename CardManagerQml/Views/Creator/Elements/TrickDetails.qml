@@ -117,14 +117,12 @@ Popup {
         action.text = trickData.action
         requirements.text = ""
 
-        console.log(trickData.hasRequirements())
-
         if ( trickData.hasRequirements() ) {
             for ( var i in trickData.requirements ) {
                 var req = trickData.requirements[i]
-                trickRequirements.text += req.name + " +" + req.value
+                requirements.text += req.name + " +" + req.value
                 if ( i < trickData.requirements.length )
-                    trickRequirements.text += ", "
+                    requirements.text += ", "
             }
         }
     }
