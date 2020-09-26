@@ -235,8 +235,8 @@ void DataSourceCreator::addTricks(StatsSource *source, const QString &dataFile)
         const QJsonObject &tTrick = trick.toObject();
 
         QVector<Requirement*> requirements;
-        for ( const QJsonValue &requirement: tTrick.value("requirements").toArray() ) {
-            const QJsonObject &tRequirement = requirement.toObject();
+        if ( tTrick.contains("requirements") ) {
+            const QJsonObject &tRequirement = tTrick.value("requirements").toObject();
 
             if ( tRequirement.contains("skills") ) {
                 for ( const QJsonValue &skill: tRequirement.value("skills").toArray() ) {
@@ -267,12 +267,10 @@ void DataSourceCreator::addTricks(StatsSource *source, const QString &dataFile)
             }
         }
 
-        qDebug() << "Requirements.count(): " << requirements.count();
-
         source->addTrick( new Trick(tTrick.value("name").toString(),
-                                      tTrick.value("description").toString(),
-                                      tTrick.value("action").toString(),
-                                      requirements) );
+                                    tTrick.value("description").toString(),
+                                    tTrick.value("action").toString(),
+                                    requirements) );
     }
 }
 
