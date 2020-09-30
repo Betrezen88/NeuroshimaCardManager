@@ -90,13 +90,10 @@ Page {
                         delegate: Trick {
                             width: parent.width
                             added: model.added
-                            onDetails: popup.open()
-                        }
-
-                        model: ListModel {
-                            ListElement { added: true }
-                            ListElement { added: true }
-                            ListElement { added: true }
+                            onDetails: {
+                                popup.trickData = trickData
+                                popup.open()
+                            }
                         }
                     }
                 }
