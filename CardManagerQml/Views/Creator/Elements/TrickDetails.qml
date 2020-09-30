@@ -121,9 +121,11 @@ Popup {
             for ( var i in trickData.requirements ) {
                 var req = trickData.requirements[i]
                 requirements.text += req.name + " +" + req.value
-                if ( i < trickData.requirements.length )
-                    requirements.text += ", "
+                if ( i < trickData.requirements.length - 1 )
+                    requirements.text += req.optional ? " lub " : ", "
             }
         }
+        else
+            requirements.text = "Brak"
     }
 }
