@@ -666,9 +666,9 @@
     {
         "name": "Nauczyciel",
         "description": "Jeśli coś potrafisz i jeszcze tego nauczasz - masz parasol ochronny. Żaden wieśniak, na przykład ten, któremu powiedziałeś, jak nastawić żonie wywichnięty bark, albo ten, któremu pomogłeś podłączyć radio bezpośrednio od kabla z prądem, nie pozwoli Ci zrobić krzywdy.",
-        "action": "Bohater potrafi przekazywać wiedzę szynko i efektywnie. Możesz uczyć inne postaci swoich Umiejętności (kosztują wówaczas 10% mniej w Punkat Doświadczenia). Poza tym Bohater jest jednym z najmilej widzianych gości w każdej osadzie.",
+        "action": "Bohater potrafi przekazywać wiedzę szybko i efektywnie. Możesz uczyć inne postaci swoich Umiejętności (kosztują wówaczas 10% mniej w Punkat Doświadczenia). Poza tym Bohater jest jednym z najmilej widzianych gości w każdej osadzie.",
         "requirements": {
-            "skills": [
+            "skillpack": [
                 { "name": "Wiedza ogólna", "value": 4 }
             ]
         }
@@ -1140,12 +1140,13 @@
     },
     {
         "name": "Słuch absolutny",
-        "skills": [
-            { "name": "Nasłuchiwanie", "value": 4 }
-        ],
         "description": "Granie ze słuchu, bezłędne rozpoznawanie ludzkich głosów, taki był nasz Ron. Myślałem, że w dupę sobie można wcisnąć takie Sztuczki, aż tu raz siedzieliśmy za rogiem i słyszeliśmy, jak gość otwiera zamek kodowy i wchodzi do środka. Ron podszedł do zamka i kurwa zagwizdał ten sam kod. I weszliśmy.",
         "action": "Można zakupić tę Sztuczkę tylko podczas tworzenia postaci. Bohater musi zdać Bardzo Trudny test Nasłuchiwania i jest w stanie powtórzyć dowolną melodię, rozmowę lub dźwięk usłyszany, nie dłuższy niż trzy minuty.",
-        "requirements": {}
+        "requirements": {
+            "skills": [
+                { "name": "Nasłuchiwanie", "value": 4 }
+            ]
+        }
     },
     {
         "name": "Snajper",
