@@ -61,6 +61,11 @@ Skill *Skillpack::skill(int index) const
     return m_skills.at(index);
 }
 
+QVector<Skill *> Skillpack::skills() const
+{
+    return m_skills;
+}
+
 Skillpack::Type Skillpack::type() const
 {
     return m_type;

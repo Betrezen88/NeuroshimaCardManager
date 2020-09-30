@@ -35,6 +35,8 @@ public:
     int skillsCount() const;
     Skill* skill(int index) const;
 
+    QVector<Skill*> skills() const;
+
     Type type() const;
 
 private:
