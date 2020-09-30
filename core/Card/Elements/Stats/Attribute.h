@@ -30,6 +30,8 @@ public:
     int skillpacksCount() const;
     Skillpack* skillpack(const int &index) const;
 
+    QVector<Skillpack*> skillpacks() const;
+
 signals:
     void valueChanged();
 

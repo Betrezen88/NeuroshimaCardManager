@@ -50,6 +50,11 @@ Skillpack *Attribute::skillpack(const int &index) const
     return m_skillpacks.at(index);
 }
 
+QVector<Skillpack *> Attribute::skillpacks() const
+{
+    return m_skillpacks;
+}
+
 int Attribute::skillpacksCount(QQmlListProperty<Skillpack> *list)
 {
     return reinterpret_cast<Attribute*>(list->data)->skillpacksCount();
