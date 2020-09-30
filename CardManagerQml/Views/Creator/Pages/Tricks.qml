@@ -2,7 +2,9 @@
 import QtQuick.Controls 2.12
 
 import core.NSStatsSource 1.0
+import core.NSPageCreator 1.0
 import core.NSTrick 1.0
+import core.NSTrickValidator 1.0
 
 import "./../Elements"
 
@@ -38,6 +40,8 @@ Page {
                     border.width: 1
 
                     ListView {
+                        property NSTrickValidator validator: manager.cardCreator.trickValidator()
+
                         id: availableTricks
                         anchors.fill: parent
                         anchors.margins: 5
@@ -46,6 +50,9 @@ Page {
 
                         delegate: Trick {
                             width: parent.width
+                            valid: availableTricks.validator.fulfillsRequirements(
+                                       manager.cardCreator.pageCreator(NSPageCreator.STATS),
+                                       dataSource.tricks[model.index] )
                             added: false
                             trickData: dataSource.tricks[model.index]
                             onDetails: {
