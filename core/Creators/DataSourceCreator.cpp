@@ -238,15 +238,6 @@ void DataSourceCreator::addTricks(StatsSource *source, const QString &dataFile)
         if ( tTrick.contains("requirements") ) {
             const QJsonObject &tRequirement = tTrick.value("requirements").toObject();
 
-            if ( tRequirement.contains("skills") ) {
-                for ( const QJsonValue &skill: tRequirement.value("skills").toArray() ) {
-                    const QJsonObject &tSkill = skill.toObject();
-                    requirements.push_back( new Requirement(tSkill.value("name").toString(),
-                                                            tSkill.value("value").toInt(),
-                                                            false,
-                                                            Requirement::Type::SKILL) );
-                }
-            }
             if ( tRequirement.contains("attributes") ) {
                 for ( const QJsonValue &attribute: tRequirement.value("attributes").toArray() ) {
                     const QJsonObject &tAttribute = attribute.toObject();
@@ -256,13 +247,31 @@ void DataSourceCreator::addTricks(StatsSource *source, const QString &dataFile)
                                                             Requirement::Type::ATTRIBUTE) );
                 }
             }
-            if ( tRequirement.contains("orSkill") ) {
+            if ( tRequirement.contains("skills") ) {
                 for ( const QJsonValue &skill: tRequirement.value("skills").toArray() ) {
+                    const QJsonObject &tSkill = skill.toObject();
+                    requirements.push_back( new Requirement(tSkill.value("name").toString(),
+                                                            tSkill.value("value").toInt(),
+                                                            false,
+                                                            Requirement::Type::SKILL) );
+                }
+            }
+            if ( tRequirement.contains("orSkills") ) {
+                for ( const QJsonValue &skill: tRequirement.value("orSkills").toArray() ) {
                     const QJsonObject &tSkill = skill.toObject();
                     requirements.push_back( new Requirement(tSkill.value("name").toString(),
                                                             tSkill.value("value").toInt(),
                                                             true,
                                                             Requirement::Type::SKILL) );
+                }
+            }
+            if ( tRequirement.contains("skillpack") ) {
+                for ( const QJsonValue &skill: tRequirement.value("skillpack").toArray() ) {
+                    const QJsonObject &tSkill = skill.toObject();
+                    requirements.push_back( new Requirement(tSkill.value("name").toString(),
+                                                            tSkill.value("value").toInt(),
+                                                            false,
+                                                            Requirement::Type::SKILLPACK) );
                 }
             }
         }
