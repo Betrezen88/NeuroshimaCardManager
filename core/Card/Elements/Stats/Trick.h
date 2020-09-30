@@ -32,6 +32,8 @@ public:
     int requirementsCount() const;
     Requirement* requirement(const int &index) const;
 
+    QVector<Requirement *> requirements() const;
+
     Q_INVOKABLE bool hasRequirements() const;
 
 private:

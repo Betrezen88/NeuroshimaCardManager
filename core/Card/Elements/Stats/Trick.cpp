@@ -52,6 +52,11 @@ Requirement *Trick::requirement(const int &index) const
     return m_requirements.at(index);
 }
 
+QVector<Requirement *> Trick::requirements() const
+{
+    return m_requirements;
+}
+
 bool Trick::hasRequirements() const
 {
     return m_requirements.count() > 0;
