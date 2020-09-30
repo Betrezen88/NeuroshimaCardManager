@@ -50,6 +50,8 @@ public:
 
     Skill *getSkill(const QString &name) const;
 
+    QString profession() const;
+
 signals:
     void nameChanged(const QString &name);
     void surnameChanged(const QString &surname);

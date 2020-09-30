@@ -136,6 +136,12 @@ Skill *StatsCreator::getSkill(const QString &name) const
 
     return nullptr;
 }
+
+QString StatsCreator::profession() const
+{
+    return m_pProfession->name();
+}
+
 void StatsCreator::setName(const QString &name)
 {
     m_name = name;
