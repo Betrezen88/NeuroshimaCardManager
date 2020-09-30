@@ -14,7 +14,7 @@ class CORE_EXPORT Requirement : public QObject
     Q_PROPERTY(Type type READ type CONSTANT)
 
 public:
-    enum class Type { ATTRIBUTE, SKILL, PROFESSION };
+    enum class Type { ATTRIBUTE, SKILL, SKILLPACK, PROFESSION };
     Q_ENUM(Type)
 
     explicit Requirement(QObject *parent = nullptr);
