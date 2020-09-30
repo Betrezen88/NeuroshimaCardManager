@@ -114,6 +114,20 @@ Attribute *StatsCreator::attribute(const QString &name)
     return nullptr;
 }
 
+Attribute *StatsCreator::getAttribute(const QString &name) const
+{
+    for ( Attribute* pAttribute: m_attributes )
+        if ( name == pAttribute->name() )
+            return pAttribute;
+
+    return nullptr;
+}
+
+QVector<Attribute *> StatsCreator::attributes() const
+{
+    return m_attributes;
+}
+
 Skill *StatsCreator::getSkill(const QString &name) const
 {
     for ( Skill* skill: m_skills )

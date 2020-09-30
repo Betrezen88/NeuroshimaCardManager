@@ -44,6 +44,10 @@ public:
     Attribute* attribute(const int &index) const;
 
     Q_INVOKABLE Attribute* attribute(const QString &name);
+    Attribute* getAttribute(const QString &name) const;
+
+    QVector<Attribute*> attributes() const;
+
     Skill *getSkill(const QString &name) const;
 
 signals:
