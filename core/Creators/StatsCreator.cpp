@@ -2,6 +2,7 @@
 #include "../Card/Elements/Stats/Attribute.h"
 #include "../Card/Elements/Stats/Skillpack.h"
 #include "../Card/Elements/Stats/OtherSkill.h"
+#include "../Card/Elements/Stats/Skill.h"
 
 #include "../Utils/DataReader.h"
 
@@ -31,6 +32,7 @@ StatsCreator::StatsCreator(QObject *parent)
             QVector<Skill*> skills;
             for ( const QJsonValue &skill: tSkillpack.value("skills").toArray() ) {
                 skills.push_back(new Skill(skill.toString(), 0));
+                m_skills.push_back(skills.last());
             }
 
             const Skillpack::Type &type = (skills.count() != 3)
@@ -112,6 +114,14 @@ Attribute *StatsCreator::attribute(const QString &name)
     return nullptr;
 }
 
+Skill *StatsCreator::getSkill(const QString &name) const
+{
+    for ( Skill* skill: m_skills )
+        if ( name == skill->name() )
+            return skill;
+
+    return nullptr;
+}
 void StatsCreator::setName(const QString &name)
 {
     m_name = name;

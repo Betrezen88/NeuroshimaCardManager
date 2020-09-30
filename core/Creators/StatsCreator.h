@@ -15,6 +15,7 @@ class Feature;
 class Disease;
 class OtherSkill;
 class Trick;
+class Skill;
 
 class CORE_EXPORT StatsCreator : public PageCreator
 {
@@ -43,6 +44,7 @@ public:
     Attribute* attribute(const int &index) const;
 
     Q_INVOKABLE Attribute* attribute(const QString &name);
+    Skill *getSkill(const QString &name) const;
 
 signals:
     void nameChanged(const QString &name);
@@ -87,6 +89,7 @@ private:
     QVector<OtherSkill*> m_otherSkills;
     QVector<Attribute*> m_attributes;
     QVector<Trick*> m_tricks;
+    QVector<Skill*> m_skills;
 };
 
 #endif // STATSCREATOR_H
