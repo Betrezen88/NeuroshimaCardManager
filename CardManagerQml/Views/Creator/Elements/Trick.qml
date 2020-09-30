@@ -4,15 +4,16 @@ import QtQuick.Controls 2.12
 import core.NSTrick 1.0
 
 SwipeDelegate {
+    property bool valid
     property bool added
     property NSTrick trickData
 
     id: main
+    height: 40
 
     signal details(NSTrick trickData)
 
     contentItem: Item {
-        height: 30
         width: main.width
 
         Text {
@@ -36,6 +37,10 @@ SwipeDelegate {
                 onClicked: main.details(trickData)
             }
         }
+    }
+
+    background: Rectangle {
+        color: added ? "light gray" : valid ? "green" : "red"
     }
 
     onClicked: {
