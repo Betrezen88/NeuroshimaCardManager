@@ -36,6 +36,8 @@
 #include "Card/Elements/Stats/Symptom.h"
 #include "Card/Elements/Stats/Trick.h"
 
+#include "Validators/TrickValidator.h"
+
 #include <QDebug>
 
 int main(int argc, char *argv[])
@@ -78,6 +80,8 @@ int main(int argc, char *argv[])
     qmlRegisterType<Skill>("core.NSSkill", 1, 0, "NSSkill");
     qmlRegisterType<Symptom>("core.NSSymptom", 1, 0, "NSSymptom");
     qmlRegisterType<Trick>("core.NSTrick", 1, 0, "NSTrick");
+    qmlRegisterType<TrickValidator>("core.NSTrickValidator",
+                                    1, 0, "NSTrickValidator");
 
     QGuiApplication app(argc, argv);
 

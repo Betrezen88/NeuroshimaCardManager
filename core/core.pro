@@ -45,7 +45,8 @@ SOURCES += \
     Managers/CreationPointsManager.cpp \
     Managers/MainManager.cpp \
     Utils/CardBuilder.cpp \
-    Utils/DataReader.cpp
+    Utils/DataReader.cpp \
+    Validators/TrickValidator.cpp
 
 HEADERS += \
     Card/Card.h \
@@ -80,6 +81,7 @@ HEADERS += \
     Utils/CardBuilder.h \
     Utils/DataReader.h \
     Utils/Dice.h \
+    Validators/TrickValidator.h \
     core_global.h
 
 # Default rules for deployment.
