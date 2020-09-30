@@ -11,6 +11,7 @@
 #include "Utils/Dice.h"
 
 class CreationPointsManager;
+class TrickValidator;
 
 class CORE_EXPORT CardCreator : public QObject
 {
@@ -24,6 +25,8 @@ public:
                                       const QVariantMap &dataFiles);
     Q_INVOKABLE CreationPointsManager* creationPointsManager();
 
+    Q_INVOKABLE TrickValidator *trickValidator() const;
+
     Q_INVOKABLE int diceRoll() const;
 private:
     PageCreator* createPageCreator(const PageCreator::Type &type);
@@ -32,6 +35,7 @@ private:
     QMap<PageCreator::Type, PageCreator*> m_pageCreators;
     QMap<DataSource::Type, DataSource*> m_dataSources;
     CreationPointsManager* m_pPointsManager{nullptr};
+    TrickValidator *m_pTrickValidator{nullptr};
     Dice m_d20{20};
 };
 

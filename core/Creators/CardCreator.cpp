@@ -2,10 +2,12 @@
 #include "DataSourceCreator.h"
 #include "../Creators/StatsCreator.h"
 #include "Managers/CreationPointsManager.h"
+#include "Validators/TrickValidator.h"
 
 CardCreator::CardCreator(QObject *parent)
     : QObject(parent),
-      m_pPointsManager(new CreationPointsManager(this))
+      m_pPointsManager(new CreationPointsManager(this)),
+      m_pTrickValidator( new TrickValidator(this))
 {
 
 }
@@ -33,6 +35,11 @@ void CardCreator::createDataSource(const DataSource::Type &type,
 CreationPointsManager* CardCreator::creationPointsManager()
 {
     return m_pPointsManager;
+}
+
+TrickValidator *CardCreator::trickValidator() const
+{
+    return m_pTrickValidator;
 }
 
 int CardCreator::diceRoll() const
