@@ -1,6 +1,7 @@
 ﻿import QtQuick 2.12
 import QtQuick.Controls 2.12
 
+import core.NSStatsCreator 1.0
 import core.NSStatsSource 1.0
 import core.NSPageCreator 1.0
 import core.NSTrick 1.0
@@ -10,6 +11,7 @@ import "./../Elements"
 
 Page {
     property NSStatsSource dataSource
+    property NSStatsCreator statsCreator
 
     id: main
 
@@ -59,6 +61,7 @@ Page {
                                 popup.trickData = trickData
                                 popup.open()
                             }
+                            onAction: statsCreator.addTrick(trickData)
                         }
                     }
                 }
@@ -82,6 +85,7 @@ Page {
                     border.width: 1
 
                     ListView {
+                        id: ownedTricks
                         anchors.fill: parent
                         anchors.margins: 5
                         spacing: 3
@@ -89,12 +93,19 @@ Page {
 
                         delegate: Trick {
                             width: parent.width
-                            added: model.added
+                            valid: availableTricks.validator.fulfillsRequirements(
+                                       manager.cardCreator.pageCreator(NSPageCreator.STATS),
+                                       statsCreator.tricks[model.index] )
+                            added: true
+                            trickData: statsCreator.tricks[model.index]
                             onDetails: {
                                 popup.trickData = trickData
                                 popup.open()
                             }
+                            onAction: statsCreator.removeTrick(trickData)
                         }
+
+                        model: statsCreator.tricks
                     }
                 }
 
