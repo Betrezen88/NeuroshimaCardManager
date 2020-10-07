@@ -12,6 +12,7 @@ SwipeDelegate {
     height: 40
 
     signal details(NSTrick trickData)
+    signal action(NSTrick trickData)
 
     contentItem: Item {
         width: main.width
@@ -56,6 +57,22 @@ SwipeDelegate {
                       : "qrc:/icon/resources/icons/plus_circle.svg"
         height: main.height
         width: main.height
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                if ( valid ) {
+                    swipe.close()
+                    main.action(trickData)
+                }
+                else {
+                    swipe.close()
+                    tooltip.show("Nie spełniasz wymagań tej sztuczki.")
+                }
+            }
+        }
+
+        ToolTip { id: tooltip }
     }
 
     onTrickDataChanged: trickName.text = trickData.name
