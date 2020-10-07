@@ -102,5 +102,6 @@ Page {
         attributes.pointsManager = manager.cardCreator.creationPointsManager()
         attributes.statsCreator = manager.cardCreator.pageCreator(NSPageCreator.STATS)
         tricks.dataSource = manager.cardCreator.dataSource(NSDataSource.STATS)
+        tricks.statsCreator = manager.cardCreator.pageCreator(NSPageCreator.STATS)
     }
 }
