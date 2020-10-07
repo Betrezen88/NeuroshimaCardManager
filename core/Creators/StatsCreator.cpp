@@ -3,6 +3,7 @@
 #include "../Card/Elements/Stats/Skillpack.h"
 #include "../Card/Elements/Stats/OtherSkill.h"
 #include "../Card/Elements/Stats/Skill.h"
+#include "../Card/Elements/Stats/Trick.h"
 
 #include "../Utils/DataReader.h"
 
@@ -128,6 +129,35 @@ QVector<Attribute *> StatsCreator::attributes() const
     return m_attributes;
 }
 
+QQmlListProperty<Trick> StatsCreator::tricks()
+{
+    return QQmlListProperty<Trick>(reinterpret_cast<PageCreator*>(this), this,
+                                       &StatsCreator::tricksCount,
+                                       &StatsCreator::trick);
+}
+
+int StatsCreator::trickCount() const
+{
+    return m_tricks.count();
+}
+
+Trick *StatsCreator::trick(const int &index) const
+{
+    return m_tricks.at(index);
+}
+
+void StatsCreator::addTrick(Trick *trick)
+{
+    m_tricks.push_back(trick);
+    emit tricksChanged();
+}
+
+void StatsCreator::removeTrick(Trick *trick)
+{
+    m_tricks.removeOne(trick);
+    emit tricksChanged();
+}
+
 Skill *StatsCreator::getSkill(const QString &name) const
 {
     for ( Skill* skill: m_skills )
@@ -228,4 +258,14 @@ Attribute *StatsCreator::attribute(QQmlListProperty<Attribute> *list, int index)
 int StatsCreator::attributesCount(QQmlListProperty<Attribute> *list)
 {
     return reinterpret_cast<StatsCreator*>(list->data)->attributesCount();
+}
+
+Trick *StatsCreator::trick(QQmlListProperty<Trick> *list, int index)
+{
+    return reinterpret_cast<StatsCreator*>(list->data)->trick(index);
+}
+
+int StatsCreator::tricksCount(QQmlListProperty<Trick> *list)
+{
+    return reinterpret_cast<StatsCreator*>(list->data)->trickCount();
 }

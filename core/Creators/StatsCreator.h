@@ -26,6 +26,9 @@ class CORE_EXPORT StatsCreator : public PageCreator
     Q_PROPERTY(QQmlListProperty<OtherSkill> otherSkills
                READ otherSkills
                NOTIFY otherSkillsChanged)
+    Q_PROPERTY(QQmlListProperty<Trick> tricks
+               READ tricks
+               NOTIFY tricksChanged)
 
 public:
     explicit StatsCreator(QObject *parent = nullptr);
@@ -48,6 +51,13 @@ public:
 
     QVector<Attribute*> attributes() const;
 
+    QQmlListProperty<Trick> tricks();
+    int trickCount() const;
+    Trick* trick(const int &index) const;
+
+    Q_INVOKABLE void addTrick(Trick *trick);
+    Q_INVOKABLE void removeTrick(Trick *trick);
+
     Skill *getSkill(const QString &name) const;
 
     QString profession() const;
@@ -59,6 +69,8 @@ signals:
     void originBonusChanged(const QString &attribute, const int &value);
     void otherSkillsChanged();
     void attributesChanged();
+    void tricksChanged();
+    void statsChanged();
 
 public slots:
     void setName(const QString &name);
@@ -79,6 +91,9 @@ private:
 
     static Attribute* attribute(QQmlListProperty<Attribute> *list, int index);
     static int attributesCount(QQmlListProperty<Attribute> *list);
+
+    static Trick* trick(QQmlListProperty<Trick> *list, int index);
+    static int tricksCount(QQmlListProperty<Trick> *list);
 
 private:
     QString m_name;
