@@ -2,9 +2,11 @@
 import QtQuick.Controls 2.12
 
 import core.NSSkillpack 1.0
+import core.NSCreationPointsManager 1.0
 
 Rectangle {
     property NSSkillpack skillpack
+    property NSCreationPointsManager pointsManager: manager.cardCreator.creationPointsManager()
 
     id: main
     height: col.height
@@ -38,6 +40,15 @@ Rectangle {
             CheckBox {
                 id: checkBox
                 text: qsTr("Kup")
+
+                onCheckedChanged: {
+                    if ( checked ) {
+                       pointsManager.spendFreeSkillpoints(5)
+                    }
+                    else {
+                        pointsManager.refundFreeSkillpoints(5)
+                    }
+                }
             }
         }
 
