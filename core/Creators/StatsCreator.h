@@ -29,6 +29,9 @@ class CORE_EXPORT StatsCreator : public PageCreator
     Q_PROPERTY(QQmlListProperty<Trick> tricks
                READ tricks
                NOTIFY tricksChanged)
+    Q_PROPERTY(QString specialization
+               READ specialization
+               NOTIFY specializationChanged)
 
 public:
     explicit StatsCreator(QObject *parent = nullptr);
@@ -61,12 +64,14 @@ public:
     Skill *getSkill(const QString &name) const;
 
     QString profession() const;
+    QString specialization() const;
 
 signals:
     void nameChanged(const QString &name);
     void surnameChanged(const QString &surname);
     void nicknameChanged(const QString &nickname);
     void originBonusChanged(const QString &attribute, const int &value);
+    void specializationChanged(const QString &specialization);
     void otherSkillsChanged();
     void attributesChanged();
     void tricksChanged();

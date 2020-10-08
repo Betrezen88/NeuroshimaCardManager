@@ -177,6 +177,11 @@ QString StatsCreator::profession() const
     return m_pProfession->name();
 }
 
+QString StatsCreator::specialization() const
+{
+    return m_pSpecialization->name();
+}
+
 void StatsCreator::setName(const QString &name)
 {
     m_name = name;
@@ -215,6 +220,7 @@ void StatsCreator::setProfession(const QString &name, const QString &description
         delete m_pProfession;
 
     m_pProfession = new Data(name, description);
+    emit statsChanged();
 }
 
 void StatsCreator::setSpecialization(const QString &name, const QString &description)
