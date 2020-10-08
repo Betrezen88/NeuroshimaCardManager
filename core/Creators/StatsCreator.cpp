@@ -32,7 +32,10 @@ StatsCreator::StatsCreator(QObject *parent)
 
             QVector<Skill*> skills;
             for ( const QJsonValue &skill: tSkillpack.value("skills").toArray() ) {
-                skills.push_back(new Skill(skill.toString(), 0));
+                Skill *pSkill = new Skill(skill.toString(), 0);
+                connect(pSkill, &Skill::valueChanged,
+                        this, &StatsCreator::statsChanged);
+                skills.push_back(pSkill);
                 m_skills.push_back(skills.last());
             }
 
@@ -46,9 +49,11 @@ StatsCreator::StatsCreator(QObject *parent)
                                                 type) );
         }
 
-        m_attributes.append(new Attribute(tAttribute.value("name").toString(),
-                                          0,
-                                          skillpacks) );
+        Attribute *pAttribute = new Attribute(tAttribute.value("name").toString(),
+                                              0, skillpacks);
+        connect(pAttribute, &Attribute::valueChanged,
+                this, &StatsCreator::statsChanged);
+        m_attributes.append( pAttribute );
         emit attributesChanged();
     }
 }
