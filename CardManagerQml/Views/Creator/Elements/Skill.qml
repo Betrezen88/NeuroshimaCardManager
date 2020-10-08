@@ -6,7 +6,9 @@ import core.NSCreationPointsManager 1.0
 
 Row {
     property NSSkill skill
-    property NSCreationPointsManager pointsManager: manager.cardCreator.creationPointsManager()
+
+    signal refund(int value)
+    signal spend(int value)
 
     id: main
     height: skillValue.height
@@ -27,31 +29,23 @@ Row {
         to: 5
         editable: false
 
-        onValueChanged: {
-            console.log("TO DO: add method to modify skill value")
-        }
+        onValueChanged: main.skill.setValue(value)
 
         down.onPressedChanged: {
-            console.log("Down clicked", skillValue.value, down.pressed)
-
             if ( down.pressed ) {
                 down.pressed = false
-                //refund
+                main.refund(skillValue.value)
                 decrease()
             }
         }
         up.onPressedChanged: {
-            console.log("Up clicked", skillValue.value, up.pressed)
-
             if ( up.pressed ) {
                 up.pressed = false
                 increase()
-                //spend
+                main.spend(skillValue.value)
             }
         }
     }
 
-    onSkillChanged: {
-        skillName.text = skill.name
-    }
+    onSkillChanged: skillName.text = skill.name
 }
