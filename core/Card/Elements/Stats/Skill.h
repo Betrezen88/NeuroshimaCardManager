@@ -9,7 +9,7 @@ class CORE_EXPORT Skill : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString name READ name CONSTANT)
-    Q_PROPERTY(int value READ value CONSTANT)
+    Q_PROPERTY(int value READ value NOTIFY valueChanged)
 
 public:
     explicit Skill(QObject *parent = nullptr);
@@ -19,6 +19,12 @@ public:
 
     QString name() const;
     int value() const;
+
+signals:
+    void valueChanged();
+
+public slots:
+    Q_INVOKABLE void setValue(const int &value);
 
 private:
     QString m_name;
