@@ -1030,7 +1030,7 @@
                 { "name": "Percepcja", "value": 10 }
             ],
             "orSkills": [
-                { "name": "Pistolet", "value": 4 },
+                { "name": "Pistolety", "value": 4 },
                 { "name": "Karabiny", "value": 4 },
                 { "name": "Broń Maszynowa", "value": 4 }
             ]
