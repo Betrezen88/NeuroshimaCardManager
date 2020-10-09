@@ -16,6 +16,9 @@ Page {
     id: main
 
     ScrollView {
+        property NSTrickValidator validator: manager.cardCreator.trickValidator()
+
+        id: scrollView
         width: parent.width
         height: parent.height
         clip: true
@@ -42,8 +45,6 @@ Page {
                     border.width: 1
 
                     ListView {
-                        property NSTrickValidator validator: manager.cardCreator.trickValidator()
-
                         id: availableTricks
                         anchors.fill: parent
                         anchors.margins: 5
@@ -52,9 +53,7 @@ Page {
 
                         delegate: Trick {
                             width: parent.width
-                            valid: availableTricks.validator.fulfillsRequirements(
-                                       manager.cardCreator.pageCreator(NSPageCreator.STATS),
-                                       dataSource.tricks[model.index] )
+                            valid: scrollView.isValid(trickData)
                             added: false
                             trickData: dataSource.tricks[model.index]
                             onDetails: {
@@ -62,6 +61,11 @@ Page {
                                 popup.open()
                             }
                             onAction: statsCreator.addTrick(trickData)
+
+                            Connections {
+                                target: manager.cardCreator.pageCreator(NSPageCreator.STATS)
+                                onStatsChanged: valid = scrollView.isValid(trickData)
+                            }
                         }
                     }
                 }
@@ -93,9 +97,7 @@ Page {
 
                         delegate: Trick {
                             width: parent.width
-                            valid: availableTricks.validator.fulfillsRequirements(
-                                       manager.cardCreator.pageCreator(NSPageCreator.STATS),
-                                       statsCreator.tricks[model.index] )
+                            valid: scrollView.isValid(trickData)
                             added: true
                             trickData: statsCreator.tricks[model.index]
                             onDetails: {
@@ -103,6 +105,11 @@ Page {
                                 popup.open()
                             }
                             onAction: statsCreator.removeTrick(trickData)
+
+                            Connections {
+                                target: manager.cardCreator.pageCreator(NSPageCreator.STATS)
+                                onStatsChanged: valid = scrollView.isValid(trickData)
+                            }
                         }
 
                         model: statsCreator.tricks
@@ -111,6 +118,12 @@ Page {
 
             } // Column
         } //Row
+
+        function isValid(trickData) {
+            return scrollView.validator.fulfillsRequirements(
+                        manager.cardCreator.pageCreator(NSPageCreator.STATS),
+                        trickData )
+        }
 
     } //ScrollView
 
