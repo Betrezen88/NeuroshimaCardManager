@@ -61,14 +61,15 @@ SwipeDelegate {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                if ( valid ) {
-                    swipe.close()
+                var points = manager.cardCreator.creationPointsManager().tricks
+                if ( valid && points > 0 )
                     main.action(trickData)
-                }
                 else {
-                    swipe.close()
-                    tooltip.show("Nie spełniasz wymagań tej sztuczki.")
+                    var text = (!valid) ? "Nie spełniasz wymagań tej sztuczki."
+                                        : "Nie masz już wolnych punktów sztuczek."
+                    tooltip.show(text)
                 }
+                swipe.close()
             }
         }
 
