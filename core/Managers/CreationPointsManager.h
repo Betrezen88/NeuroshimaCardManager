@@ -20,6 +20,9 @@ class CORE_EXPORT CreationPointsManager : public QObject
     Q_PROPERTY(int money
                READ money
                NOTIFY moneyChanged)
+    Q_PROPERTY(int tricks
+               READ tricks
+               NOTIFY tricksChanged)
 
 public:
     explicit CreationPointsManager(QObject *parent = nullptr);
@@ -28,12 +31,14 @@ public:
     int freeSkillpoints() const;
     int specializationSkillpoints() const;
     int money() const;
+    int tricks() const;
 
 signals:
     void attributesChanged(const int &value);
     void freeSkillpointsChanged(const int &value);
     void specializationSkillpointsChanged(const int &value);
     void moneyChanged(const int &value);
+    void tricksChanged(const int &value);
 
 public slots:
     Q_INVOKABLE void spendAttributes(const int &value);
@@ -44,12 +49,15 @@ public slots:
     Q_INVOKABLE void refundSpecializationSkillpoints(const int &value);
     Q_INVOKABLE void spendMoney(const int &value);
     Q_INVOKABLE void refundMoney(const int &value);
+    Q_INVOKABLE void spendTrick(const int &value);
+    Q_INVOKABLE void refundTrick(const int &value);
 
 private:
     int m_attributes{50};
     int m_freeSkillpoints{35};
     int m_specializationSkillpoints{30};
     int m_money{100};
+    int m_tricks{1};
 };
 
 #endif // CREATIONPOINTSMANAGER_H

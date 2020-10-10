@@ -25,6 +25,11 @@ int CreationPointsManager::money() const
     return m_money;
 }
 
+int CreationPointsManager::tricks() const
+{
+    return m_tricks;
+}
+
 void CreationPointsManager::spendAttributes(const int &value)
 {
     m_attributes -= value;
@@ -71,4 +76,16 @@ void CreationPointsManager::refundMoney(const int &value)
 {
     m_money += value;
     emit moneyChanged(m_money);
+}
+
+void CreationPointsManager::spendTrick(const int &value)
+{
+    m_tricks -= value;
+    emit tricksChanged(m_tricks);
+}
+
+void CreationPointsManager::refundTrick(const int &value)
+{
+    m_tricks += value;
+    emit tricksChanged(m_tricks);
 }
