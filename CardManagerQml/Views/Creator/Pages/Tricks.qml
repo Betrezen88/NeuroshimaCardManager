@@ -60,7 +60,10 @@ Page {
                                 popup.trickData = trickData
                                 popup.open()
                             }
-                            onAction: statsCreator.addTrick(trickData)
+                            onAction: {
+                                statsCreator.addTrick(trickData)
+                                manager.cardCreator.creationPointsManager().spendTrick(1)
+                            }
 
                             Connections {
                                 target: manager.cardCreator.pageCreator(NSPageCreator.STATS)
@@ -104,7 +107,10 @@ Page {
                                 popup.trickData = trickData
                                 popup.open()
                             }
-                            onAction: statsCreator.removeTrick(trickData)
+                            onAction: {
+                                statsCreator.removeTrick(trickData)
+                                manager.cardCreator.creationPointsManager().refundTrick(1)
+                            }
 
                             Connections {
                                 target: manager.cardCreator.pageCreator(NSPageCreator.STATS)
