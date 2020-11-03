@@ -67,6 +67,9 @@
         <file>resources/icons/arrow_forward.svg</file>
         <file>resources/icons/question.svg</file>
         <file>resources/icons/plus_circle.svg</file>
+        <file>resources/icons/filters.svg</file>
+        <file>resources/icons/sort_asc.svg</file>
+        <file>resources/icons/sort_desc.svg</file>
     </qresource>
     <qresource prefix="/json">
         <file>resources/json/Origins.json</file>
