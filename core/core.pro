@@ -40,6 +40,7 @@ SOURCES += \
     DataSources/Elements/Stats/Origin.cpp \
     DataSources/Elements/Stats/Profession.cpp \
     DataSources/Elements/Stats/Requirement.cpp \
+    DataSources/Elements/Stats/TricksSortFilterModel.cpp \
     DataSources/StatsSource.cpp \
     Managers/CardManager.cpp \
     Managers/CreationPointsManager.cpp \
@@ -74,6 +75,7 @@ HEADERS += \
     DataSources/Elements/Stats/OriginBonus.h \
     DataSources/Elements/Stats/Profession.h \
     DataSources/Elements/Stats/Requirement.h \
+    DataSources/Elements/Stats/TricksSortFilterModel.h \
     DataSources/StatsSource.h \
     Managers/CardManager.h \
     Managers/CreationPointsManager.h \
