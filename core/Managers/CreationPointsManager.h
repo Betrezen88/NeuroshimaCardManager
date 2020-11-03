@@ -41,16 +41,16 @@ signals:
     void tricksChanged(const int &value);
 
 public slots:
-    Q_INVOKABLE void spendAttributes(const int &value);
-    Q_INVOKABLE void refundAttributes(const int &value);
-    Q_INVOKABLE void spendFreeSkillpoints(const int &value);
-    Q_INVOKABLE void refundFreeSkillpoints(const int &value);
-    Q_INVOKABLE void spendSpecializationSkillpoints(const int &value);
-    Q_INVOKABLE void refundSpecializationSkillpoints(const int &value);
-    Q_INVOKABLE void spendMoney(const int &value);
-    Q_INVOKABLE void refundMoney(const int &value);
-    Q_INVOKABLE void spendTrick(const int &value);
-    Q_INVOKABLE void refundTrick(const int &value);
+    void spendAttributes(const int &value);
+    void refundAttributes(const int &value);
+    void spendFreeSkillpoints(const int &value);
+    void refundFreeSkillpoints(const int &value);
+    void spendSpecializationSkillpoints(const int &value);
+    void refundSpecializationSkillpoints(const int &value);
+    void spendMoney(const int &value);
+    void refundMoney(const int &value);
+    void spendTrick(const int &value);
+    void refundTrick(const int &value);
 
 private:
     int m_attributes{50};
