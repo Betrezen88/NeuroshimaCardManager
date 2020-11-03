@@ -2,13 +2,15 @@
 
 #include "Elements/Stats/Origin.h"
 #include "Elements/Stats/Profession.h"
+#include "Elements/Stats/TricksSortFilterModel.h"
 #include "../Card/Data.h"
 #include "../Card/Elements/Stats/Disease.h"
 #include "../Card/Elements/Stats/Attribute.h"
 #include "../Card/Elements/Stats/Difficulty.h"
 
 StatsSource::StatsSource(QObject *parent)
-    : DataSource(DataSource::Type::STATS, parent)
+    : DataSource(DataSource::Type::STATS, parent),
+    m_pTricksSort(new TricksSortFilterModel(this))
 {
 
 }
@@ -178,35 +180,9 @@ Attribute *StatsSource::attribute(const QString &name) const
     return nullptr;
 }
 
-QQmlListProperty<Trick> StatsSource::tricks()
+TricksSortFilterModel* StatsSource::tricksSort() const
 {
-    return QQmlListProperty<Trick>(reinterpret_cast<DataSource*>(this), this,
-                                   &StatsSource::addTrick,
-                                   &StatsSource::tricksCount,
-                                   &StatsSource::trick,
-                                   &StatsSource::clearTricks);
-}
-
-void StatsSource::addTrick(Trick *trick)
-{
-    m_tricks.push_back(trick);
-    emit tricksChanged();
-}
-
-int StatsSource::tricksCount() const
-{
-    return m_tricks.count();
-}
-
-Trick *StatsSource::trick(const int &index) const
-{
-    return m_tricks.at(index);
-}
-
-void StatsSource::clearTricks()
-{
-    m_tricks.clear();
-    emit tricksChanged();
+    return m_pTricksSort;
 }
 
 QQmlListProperty<Difficulty> StatsSource::difficulties()
@@ -338,26 +314,6 @@ Attribute *StatsSource::attribute(QQmlListProperty<Attribute> *list, int index)
 void StatsSource::clearAttributes(QQmlListProperty<Attribute> *list)
 {
     reinterpret_cast<StatsSource*>(list->data)->clearAttributes();
-}
-
-void StatsSource::addTrick(QQmlListProperty<Trick> *list, Trick *trick)
-{
-    reinterpret_cast<StatsSource*>(list->data)->addTrick(trick);
-}
-
-int StatsSource::tricksCount(QQmlListProperty<Trick> *list)
-{
-    return reinterpret_cast<StatsSource*>(list->data)->tricksCount();
-}
-
-Trick *StatsSource::trick(QQmlListProperty<Trick> *list, int index)
-{
-    return reinterpret_cast<StatsSource*>(list->data)->trick(index);
-}
-
-void StatsSource::clearTricks(QQmlListProperty<Trick> *list)
-{
-    reinterpret_cast<StatsSource*>(list->data)->clearTricks();
 }
 
 void StatsSource::addDifficulty(QQmlListProperty<Difficulty> *list, Difficulty *difficulty)
