@@ -6,6 +6,7 @@ import core.NSStatsSource 1.0
 import core.NSPageCreator 1.0
 import core.NSTrick 1.0
 import core.NSTrickValidator 1.0
+import core.NSTricksSortFilterModel 1.0
 
 import "./../Elements"
 
@@ -23,107 +24,174 @@ Page {
         height: parent.height
         clip: true
 
-        Row {
+        Column {
             spacing: 5
             padding: 5
 
-            Column {
+            Row {
                 spacing: 5
 
-                Label {
-                    id: label1
-                    text: "Dostępne"
-                    width: (main.width / 2) - 12 < 250 ? 250 : (main.width / 2) - 12
-                    horizontalAlignment: Text.AlignHCenter
-                    font.weight: Font.Bold
-                    font.pointSize: 14
+                TextField {
+                    id: pattern
+                    width: main.width - height - 15
+                    height: 40
+                    placeholderText: "Wpisz szukaną frazę..."
+                    onTextChanged: dataSource.tricksSort.pattern = text
                 }
 
-                Rectangle {
-                    width: (main.width / 2) - 12 < 250 ? 250 : (main.width / 2) - 12
-                    height: main.height - label1.height - 15
-                    border.width: 1
+                ToolButton {
+                    width: pattern.height
+                    height: pattern.height
+                    icon.source: "qrc:/icon/resources/icons/filters.svg"
+                    onClicked: filterMenu.open()
 
-                    ListView {
-                        id: availableTricks
-                        anchors.fill: parent
-                        anchors.margins: 5
-                        spacing: 3
-                        clip: true
+                    ToolTip {
+                        id: filterTooltip;
+                        x: -width-2
+                    }
 
-                        delegate: Trick {
-                            width: parent.width
-                            valid: scrollView.isValid(trickData)
-                            added: false
-                            trickData: dataSource.tricks[model.index]
-                            onDetails: {
-                                popup.trickData = trickData
-                                popup.open()
+                    Menu {
+                        id: filterMenu
+                        width: parent.width
+                        y: parent.height
+                        onClosed: filterTooltip.close()
+
+                        MenuItem {
+                            icon.source: "qrc:/icon/resources/icons/sort_asc.svg"
+                            onClicked: {
+                                dataSource.tricksSort.order =
+                                    (Qt.AscendingOrder === dataSource.tricksSort.order)
+                                    ? Qt.DescendingOrder : Qt.AscendingOrder
+                                icon.source = (Qt.AscendingOrder === dataSource.tricksSort.order)
+                                        ? "qrc:/icon/resources/icons/sort_asc.svg"
+                                        : "qrc:/icon/resources/icons/sort_desc.svg"
                             }
-                            onAction: {
-                                statsCreator.addTrick(trickData)
-                                manager.cardCreator.creationPointsManager().spendTrick(1)
+                            onHoveredChanged: {
+                                filterTooltip.y = y + height
+                                filterTooltip.show("Sortuj")
                             }
+                        }
 
-                            Connections {
-                                target: manager.cardCreator.pageCreator(NSPageCreator.STATS)
-                                onStatsChanged: valid = scrollView.isValid(trickData)
+                        MenuItem {
+                            text: "Abc"
+                            onClicked: {
+                                var caseSensitive = dataSource.tricksSort.caseSensitive
+                                dataSource.tricksSort.caseSensitive = !caseSensitive
+                                text = (caseSensitive) ? "Abc" : "ABC"
+                            }
+                            onHoveredChanged: {
+                                filterTooltip.y = y + height
+                                filterTooltip.show("Uwzględnij wielkość liter")
                             }
                         }
                     }
                 }
-            } // Column
+            } // Row
 
-            Column {
+            Row {
                 spacing: 5
 
-                Label {
-                    id: label2
-                    width: (main.width / 2) - 12 < 250 ? 250 : (main.width / 2) - 12
-                    text: "Posiadane"
-                    horizontalAlignment: Text.AlignHCenter
-                    font.weight: Font.Bold
-                    font.pointSize: 14
-                }
+                Column {
+                    spacing: 5
 
-                Rectangle {
-                    width: (main.width / 2) - 12 < 250 ? 250 : (main.width / 2) - 12
-                    height: main.height - label2.height - 15
-                    border.width: 1
+                    Label {
+                        id: label1
+                        text: "Dostępne"
+                        width: (main.width / 2) - 12 < 250 ? 250 : (main.width / 2) - 12
+                        horizontalAlignment: Text.AlignHCenter
+                        font.weight: Font.Bold
+                        font.pointSize: 14
+                    }
 
-                    ListView {
-                        id: ownedTricks
-                        anchors.fill: parent
-                        anchors.margins: 5
-                        spacing: 3
-                        clip: true
+                    Rectangle {
+                        width: (main.width / 2) - 12 < 250 ? 250 : (main.width / 2) - 12
+                        height: main.height - label1.height - 15 - 40
+                        border.width: 1
 
-                        delegate: Trick {
-                            width: parent.width
-                            valid: scrollView.isValid(trickData)
-                            added: true
-                            trickData: statsCreator.tricks[model.index]
-                            onDetails: {
-                                popup.trickData = trickData
-                                popup.open()
-                            }
-                            onAction: {
-                                statsCreator.removeTrick(trickData)
-                                manager.cardCreator.creationPointsManager().refundTrick(1)
-                            }
+                        ListView {
+                            property NSTricksSortFilterModel tricksModel: dataSource.tricksSort
 
-                            Connections {
-                                target: manager.cardCreator.pageCreator(NSPageCreator.STATS)
-                                onStatsChanged: valid = scrollView.isValid(trickData)
+                            id: availableTricks
+                            anchors.fill: parent
+                            anchors.margins: 5
+                            spacing: 3
+                            clip: true
+                            model: tricksModel.tricks
+
+                            delegate: Trick {
+                                width: parent.width
+                                name: model.name
+                                index: model.index
+                                added: false
+                                valid:  scrollView.isValid(availableTricks.tricksModel.tricks[index])
+                                onDetails: {
+                                    popup.trickData = availableTricks.tricksModel.tricks[index]
+                                    popup.open()
+                                }
+                                onAction: {
+                                    statsCreator.addTrick(availableTricks.tricksModel.tricks[index])
+                                    manager.cardCreator.creationPointsManager().spendTrick(1)
+                                }
+
+                                Connections {
+                                    target: manager.cardCreator.pageCreator(NSPageCreator.STATS)
+                                    onStatsChanged: valid = scrollView.isValid(availableTricks.tricksModel.tricks[index])
+                                }
                             }
                         }
-
-                        model: statsCreator.tricks
                     }
-                }
+                } // Column
 
-            } // Column
-        } //Row
+                Column {
+                    spacing: 5
+
+                    Label {
+                        id: label2
+                        width: (main.width / 2) - 12 < 250 ? 250 : (main.width / 2) - 12
+                        text: "Posiadane"
+                        horizontalAlignment: Text.AlignHCenter
+                        font.weight: Font.Bold
+                        font.pointSize: 14
+                    }
+
+                    Rectangle {
+                        width: (main.width / 2) - 12 < 250 ? 250 : (main.width / 2) - 12
+                        height: main.height - label2.height - 15 - 40
+                        border.width: 1
+
+                        ListView {
+                            id: ownedTricks
+                            anchors.fill: parent
+                            anchors.margins: 5
+                            spacing: 3
+                            clip: true
+                            model: statsCreator.tricks
+
+                            delegate: Trick {
+                                width: parent.width
+                                valid: scrollView.isValid(statsCreator.tricks[index])
+                                added: true
+                                name: model.name
+                                onDetails: {
+                                    popup.trickData = statsCreator.tricks[index]
+                                    popup.open()
+                                }
+                                onAction: {
+                                    manager.cardCreator.creationPointsManager().refundTrick(1)
+                                    statsCreator.removeTrick(statsCreator.tricks[index])
+                                }
+
+                                Connections {
+                                    target: manager.cardCreator.pageCreator(NSPageCreator.STATS)
+                                    onStatsChanged: valid = scrollView.isValid(trickData)
+                                }
+                            }
+                        }
+                    }
+
+                } // Column
+            } // Row
+        } // Column
 
         function isValid(trickData) {
             return scrollView.validator.fulfillsRequirements(
@@ -131,13 +199,11 @@ Page {
                         trickData )
         }
 
-    } //ScrollView
+    } // ScrollView
 
     TrickDetails {
         id: popup
         width: (main.width - (main.width * 0.3))
         height: (main.height - (main.height * 0.3))
     }
-
-    onDataSourceChanged: availableTricks.model = dataSource.tricks
 }
