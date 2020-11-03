@@ -6,13 +6,14 @@ import core.NSTrick 1.0
 SwipeDelegate {
     property bool valid
     property bool added
-    property NSTrick trickData
+    property alias name: trickName.text
+    property int index
 
     id: main
     height: 40
 
-    signal details(NSTrick trickData)
-    signal action(NSTrick trickData)
+    signal details(int index)
+    signal action(int index)
 
     contentItem: Item {
         width: main.width
@@ -35,7 +36,7 @@ SwipeDelegate {
 
             MouseArea {
                 anchors.fill: parent
-                onClicked: main.details(trickData)
+                onClicked: main.details(index)
             }
         }
     }
@@ -61,20 +62,20 @@ SwipeDelegate {
         MouseArea {
             anchors.fill: parent
             onClicked: {
+                swipe.close()
                 var points = manager.cardCreator.creationPointsManager().tricks
-                if ( valid && points > 0 )
-                    main.action(trickData)
+                if ( valid && points > 0 || added )
+                    main.action(main.index)
                 else {
                     var text = (!valid) ? "Nie spełniasz wymagań tej sztuczki."
                                         : "Nie masz już wolnych punktów sztuczek."
                     tooltip.show(text)
                 }
-                swipe.close()
             }
         }
 
         ToolTip { id: tooltip }
     }
 
-    onTrickDataChanged: trickName.text = trickData.name
+    onNameChanged: trickName.text = name
 }
