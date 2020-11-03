@@ -7,6 +7,7 @@
 #include "../DataSources/Elements/Stats/Profession.h"
 #include "../DataSources/Elements/Stats/Feature.h"
 #include "../DataSources/Elements/Stats/Requirement.h"
+#include "../DataSources/Elements/Stats/TricksSortFilterModel.h"
 
 #include "../Card/Elements/Stats/Attribute.h"
 #include "../Card/Elements/Stats/Difficulty.h"
@@ -276,10 +277,10 @@ void DataSourceCreator::addTricks(StatsSource *source, const QString &dataFile)
             }
         }
 
-        source->addTrick( new Trick(tTrick.value("name").toString(),
-                                    tTrick.value("description").toString(),
-                                    tTrick.value("action").toString(),
-                                    requirements) );
+        source->tricksSort()->addTrick( new Trick(tTrick.value("name").toString(),
+                                        tTrick.value("description").toString(),
+                                        tTrick.value("action").toString(),
+                                        requirements) );
     }
 }
 
