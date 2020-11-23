@@ -7,6 +7,8 @@
 #include "../DataSources/Elements/Stats/Profession.h"
 #include "../DataSources/Elements/Stats/Feature.h"
 #include "../DataSources/Elements/Stats/Requirement.h"
+#include "../DataSources/Elements/Stats/SkillMod.h"
+#include "../DataSources/Elements/Stats/SkillpackMod.h"
 #include "../DataSources/Elements/Stats/TricksSortFilterModel.h"
 
 #include "../Card/Elements/Stats/Attribute.h"

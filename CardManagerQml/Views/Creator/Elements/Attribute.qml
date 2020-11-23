@@ -1,10 +1,13 @@
 ﻿import QtQuick 2.9
 import QtQuick.Controls 2.12
 
-import core.NSAttribute 1.0
+import core.NSAttributeMod 1.0
+import core.NSPageCreator 1.0
+import core.NSStatsCreator 1.0
 
 Column {
-    property NSAttribute attribute
+    property NSAttributeMod attributeMod
+    property NSStatsCreator statsCreator: manager.cardCreator.pageCreator(NSPageCreator.STATS)
     property var difficulties: []
 
     id: main
@@ -42,12 +45,12 @@ Column {
         spacing: 5
     }
 
-    onAttributeChanged: {
-        attributeName.text = attribute.name
+    onAttributeModChanged: {
+        attributeName.text = attributeMod.attribute.name
 
-        attribute.valueChanged.connect(function(){
+        attributeMod.attribute.valueChanged.connect(function(){
             for ( var ob in valueRow.objects ) {
-                valueRow.objects[ob].atrValue = attribute.value
+                valueRow.objects[ob].atrValue = attributeMod.attribute.value
             }
         })
 
@@ -56,13 +59,26 @@ Column {
         }
         skillpacks.objects = []
 
-        for ( var i in attribute.skillpacks ) {
+        for ( var i in attributeMod.skillpacks ) {
             var component = Qt.createComponent("Skillpack.qml")
             var object = component.createObject(skillpacks, {
                                                     width: skillpacks.width,
-                                                    skillpack: attribute.skillpacks[i]
+                                                    skillpackMod: attributeMod.skillpacks[i]
                                                 })
             skillpacks.objects.push(object)
+
+            object.skillUp.connect(function(skillpackMod, skillMod){
+                statsCreator.skillUp(skillpackMod, skillMod)
+            })
+            object.skillDown.connect(function(skillpackMod, skillMod){
+                statsCreator.skillDown(skillpackMod, skillMod)
+            })
+            object.buy.connect(function(skillpackMod){
+                statsCreator.buySkillpack(skillpackMod)
+            })
+            object.sell.connect(function(skillpackMod){
+                statsCreator.sellSkillpack(skillpackMod)
+            })
         }
     }
 

@@ -5,6 +5,8 @@
 #include "../Card/Elements/Stats/Skillpack.h"
 #include "../Card/Elements/Stats/Skill.h"
 #include "../Card/Elements/Stats/Trick.h"
+
+#include "../DataSources/Elements/Stats/AttributeMod.h"
 #include "../DataSources/Elements/Stats/Requirement.h"
 
 #include <QDebug>
@@ -28,7 +30,7 @@ bool TrickValidator::fulfillsRequirements(StatsCreator *stats,
         }
         if ( Requirement::Type::ATTRIBUTE == pRequirement->type() ) {
             if ( pRequirement->value()
-                 > stats->getAttribute(pRequirement->name())->value() )
+                 > stats->getAttribute(pRequirement->name())->attribute()->value() )
                 return false;
         }
         if ( Requirement::Type::PROFESSION == pRequirement->type() ) {
@@ -38,8 +40,8 @@ bool TrickValidator::fulfillsRequirements(StatsCreator *stats,
         if ( Requirement::Type::SKILLPACK == pRequirement->type() ) {
             int sum{0};
             for ( int i=0; i<stats->attributesCount(); ++i ) {
-                for ( int j=0; j<stats->attribute(i)->skillpacksCount(); ++j ) {
-                    Skillpack *pSkillpack = stats->attribute(i)->skillpack(j);
+                for ( int j=0; j<stats->attribute(i)->attribute()->skillpacksCount(); ++j ) {
+                    Skillpack *pSkillpack = stats->attribute(i)->attribute()->skillpack(j);
                     if ( pSkillpack->name() == pRequirement->name() )
                        for ( int k=0; k<pSkillpack->skillsCount(); ++k )
                            sum += pSkillpack->skill(k)->value();

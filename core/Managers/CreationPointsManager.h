@@ -33,6 +33,13 @@ public:
     int money() const;
     int tricks() const;
 
+    bool spendAttribute(const int& value);
+    bool spendSpecializationPoints(const int& value);
+    bool spendFreeSkillpoints(const int& value);
+    void refundAttribute(const int& value);
+    void refundSpecializationPoints(const int& value);
+    void refundFreeSkillpoints(const int& value);
+
 signals:
     void attributesChanged(const int &value);
     void freeSkillpointsChanged(const int &value);
@@ -41,23 +48,17 @@ signals:
     void tricksChanged(const int &value);
 
 public slots:
-    void spendAttributes(const int &value);
-    void refundAttributes(const int &value);
-    void spendFreeSkillpoints(const int &value);
-    void refundFreeSkillpoints(const int &value);
-    void spendSpecializationSkillpoints(const int &value);
-    void refundSpecializationSkillpoints(const int &value);
     void spendMoney(const int &value);
     void refundMoney(const int &value);
     void spendTrick(const int &value);
     void refundTrick(const int &value);
 
 private:
-    int m_attributes{50};
-    int m_freeSkillpoints{35};
-    int m_specializationSkillpoints{30};
-    int m_money{100};
-    int m_tricks{1};
+    QPair<int, int> m_attributes{40, 40};
+    QPair<int, int> m_specPoints{30, 30};
+    QPair<int, int> m_freePoints{35, 35};
+    QPair<int, int> m_money{100, 100};
+    QPair<int, int> m_tricks{1, 1};
 };
 
 #endif // CREATIONPOINTSMANAGER_H

@@ -1,9 +1,16 @@
 ﻿#include "StatsCreator.h"
+
 #include "../Card/Elements/Stats/Attribute.h"
 #include "../Card/Elements/Stats/Skillpack.h"
 #include "../Card/Elements/Stats/OtherSkill.h"
 #include "../Card/Elements/Stats/Skill.h"
 #include "../Card/Elements/Stats/Trick.h"
+
+#include "../Managers/CreationPointsManager.h"
+
+#include "../DataSources/Elements/Stats/AttributeMod.h"
+#include "../DataSources/Elements/Stats/SkillpackMod.h"
+#include "../DataSources/Elements/Stats/SkillMod.h"
 
 #include "../Utils/DataReader.h"
 
@@ -14,6 +21,7 @@
 
 StatsCreator::StatsCreator(QObject *parent)
     : PageCreator(PageCreator::Type::STATS, parent)
+    , m_pPointsManager(new CreationPointsManager(this))
 {
     DataReader reader;
     std::tuple<bool, QJsonDocument, QString> data =
@@ -50,10 +58,10 @@ StatsCreator::StatsCreator(QObject *parent)
         }
 
         Attribute *pAttribute = new Attribute(tAttribute.value("name").toString(),
-                                              0, skillpacks);
+                                              6, skillpacks);
         connect(pAttribute, &Attribute::valueChanged,
                 this, &StatsCreator::statsChanged);
-        m_attributes.append( pAttribute );
+        m_attributes.append( new AttributeMod(pAttribute, 6, 18, this) );
         emit attributesChanged();
     }
 }
@@ -94,9 +102,9 @@ void StatsCreator::removeOtherSkill(const QString &name)
         }
 }
 
-QQmlListProperty<Attribute> StatsCreator::attributes()
+QQmlListProperty<AttributeMod> StatsCreator::attributes()
 {
-    return QQmlListProperty<Attribute>(reinterpret_cast<PageCreator*>(this), this,
+    return QQmlListProperty<AttributeMod>(reinterpret_cast<PageCreator*>(this), this,
                                        &StatsCreator::attributesCount,
                                        &StatsCreator::attribute);
 }
@@ -106,30 +114,30 @@ int StatsCreator::attributesCount() const
     return m_attributes.count();
 }
 
-Attribute *StatsCreator::attribute(const int &index) const
+AttributeMod *StatsCreator::attribute(const int &index) const
 {
     return m_attributes.at(index);
 }
 
-Attribute *StatsCreator::attribute(const QString &name)
+AttributeMod *StatsCreator::attribute(const QString &name)
 {
-    for ( Attribute* pAttribute: m_attributes )
-        if ( name == pAttribute->name() )
+    for ( AttributeMod* pAttribute: m_attributes )
+        if ( name == pAttribute->attribute()->name() )
             return pAttribute;
 
     return nullptr;
 }
 
-Attribute *StatsCreator::getAttribute(const QString &name) const
+AttributeMod *StatsCreator::getAttribute(const QString &name) const
 {
-    for ( Attribute* pAttribute: m_attributes )
-        if ( name == pAttribute->name() )
+    for ( AttributeMod* pAttribute: m_attributes )
+        if ( name == pAttribute->attribute()->name() )
             return pAttribute;
 
     return nullptr;
 }
 
-QVector<Attribute *> StatsCreator::attributes() const
+QVector<AttributeMod*> StatsCreator::attributes() const
 {
     return m_attributes;
 }
@@ -251,6 +259,54 @@ void StatsCreator::setReputation(const QString &place, const int &value)
     m_reputation.insert(place, value);
 }
 
+void StatsCreator::attributeUp(AttributeMod *attributeMod)
+{
+    if ( m_pPointsManager->spendAttribute(1) )
+        attributeMod->setValue(attributeMod->attribute()->value()+1);
+}
+
+void StatsCreator::attributeDown(AttributeMod *attributeMod)
+{
+    m_pPointsManager->refundAttribute(1);
+    attributeMod->setValue(attributeMod->attribute()->value()-1);
+}
+
+void StatsCreator::buySkillpack(SkillpackMod *skillpackMod)
+{
+    bool spend = (skillpackMod->skillpack()->specializations().contains(m_pSpecialization->name()))
+            ? m_pPointsManager->spendSpecializationPoints(5)
+            : m_pPointsManager->spendFreeSkillpoints(5);
+    if ( spend )
+        skillpackMod->buy();
+}
+
+void StatsCreator::sellSkillpack(SkillpackMod *skillpackMod)
+{
+    if ( skillpackMod->skillpack()->specializations().contains(m_pSpecialization->name()) )
+        m_pPointsManager->refundSpecializationPoints(5);
+    else
+        m_pPointsManager->refundFreeSkillpoints(5);
+    skillpackMod->sell();
+}
+
+void StatsCreator::skillUp(SkillpackMod *skillpackMod, SkillMod *skillMod)
+{
+    bool spend = ( skillpackMod->skillpack()->specializations().contains(m_pSpecialization->name()))
+            ? m_pPointsManager->spendSpecializationPoints(skillMod->skill()->value()+1)
+            : m_pPointsManager->spendFreeSkillpoints(skillMod->skill()->value()+1);
+    if ( spend )
+        skillMod->setValue(skillMod->skill()->value()+1);
+}
+
+void StatsCreator::skillDown(SkillpackMod *skillpackMod, SkillMod *skillMod)
+{
+    if ( skillpackMod->skillpack()->specializations().contains(m_pSpecialization->name()) )
+        m_pPointsManager->refundSpecializationPoints(skillMod->skill()->value());
+    else
+        m_pPointsManager->refundFreeSkillpoints(skillMod->skill()->value());
+    skillMod->setValue(skillMod->skill()->value()-1);
+}
+
 OtherSkill *StatsCreator::otherSkill(QQmlListProperty<OtherSkill> *list, int index)
 {
     return reinterpret_cast<StatsCreator*>(list->data)->otherSkill(index);
@@ -261,12 +317,12 @@ int StatsCreator::otherSkillsCount(QQmlListProperty<OtherSkill> *list)
     return reinterpret_cast<StatsCreator*>(list->data)->otherSkillsCount();
 }
 
-Attribute *StatsCreator::attribute(QQmlListProperty<Attribute> *list, int index)
+AttributeMod *StatsCreator::attribute(QQmlListProperty<AttributeMod> *list, int index)
 {
     return reinterpret_cast<StatsCreator*>(list->data)->attribute(index);
 }
 
-int StatsCreator::attributesCount(QQmlListProperty<Attribute> *list)
+int StatsCreator::attributesCount(QQmlListProperty<AttributeMod> *list)
 {
     return reinterpret_cast<StatsCreator*>(list->data)->attributesCount();
 }

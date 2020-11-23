@@ -1,91 +1,124 @@
 ﻿#include "CreationPointsManager.h"
 
-CreationPointsManager::CreationPointsManager(QObject *parent) : QObject(parent)
+CreationPointsManager::CreationPointsManager(QObject *parent)
+    : QObject(parent)
 {
 
 }
 
 int CreationPointsManager::attributes() const
 {
-    return m_attributes;
+    return m_attributes.first;
 }
 
 int CreationPointsManager::freeSkillpoints() const
 {
-    return m_freeSkillpoints;
+    return m_freePoints.first;
 }
 
 int CreationPointsManager::specializationSkillpoints() const
 {
-    return m_specializationSkillpoints;
+    return m_specPoints.first;
 }
 
 int CreationPointsManager::money() const
 {
-    return m_money;
+    return m_money.first;
 }
 
 int CreationPointsManager::tricks() const
 {
-    return m_tricks;
+    return m_tricks.first;
 }
 
-void CreationPointsManager::spendAttributes(const int &value)
+bool CreationPointsManager::spendAttribute(const int &value)
 {
-    m_attributes -= value;
-    emit attributesChanged(m_attributes);
+    if ( m_attributes.first >= value ) {
+        m_attributes.first -= value;
+        emit attributesChanged(m_attributes.first);
+        return true;
+    }
+    return false;
 }
 
-void CreationPointsManager::refundAttributes(const int &value)
+bool CreationPointsManager::spendSpecializationPoints(const int &value)
 {
-    m_attributes += value;
-    emit attributesChanged(m_attributes);
+    if ( m_specPoints.first >= value ) {
+        m_specPoints.first -= value;
+        emit specializationSkillpointsChanged(m_specPoints.first);
+        return true;
+    }
+    else if ( m_specPoints.first + m_freePoints.first >= value ) {
+        int val = value - m_specPoints.first;
+        m_specPoints.first = 0;
+        m_freePoints.first -= val;
+        emit specializationSkillpointsChanged(m_specPoints.first);
+        emit freeSkillpointsChanged(m_freePoints.first);
+        return true;
+    }
+    return false;
 }
 
-void CreationPointsManager::spendFreeSkillpoints(const int &value)
+bool CreationPointsManager::spendFreeSkillpoints(const int &value)
 {
-    m_freeSkillpoints -= value;
-    emit freeSkillpointsChanged(m_freeSkillpoints);
+    if ( m_freePoints.first >= value ) {
+        m_freePoints.first -= value;
+        emit freeSkillpointsChanged(m_freePoints.first);
+        return true;
+    }
+    return false;
+}
+
+void CreationPointsManager::refundAttribute(const int &value)
+{
+    m_attributes.first += value;
+    emit attributesChanged(m_attributes.first);
+}
+
+void CreationPointsManager::refundSpecializationPoints(const int &value)
+{
+    if ( m_specPoints.first + value > m_specPoints.second ) {
+        int val = m_specPoints.first + value;
+        m_specPoints.first = m_specPoints.second;
+        m_freePoints.first = val - m_specPoints.first;
+        emit freeSkillpointsChanged(m_freePoints.first);
+    } else
+        m_specPoints.first += value;
+    emit specializationSkillpointsChanged(m_specPoints.first);
 }
 
 void CreationPointsManager::refundFreeSkillpoints(const int &value)
 {
-    m_freeSkillpoints += value;
-    emit freeSkillpointsChanged(m_freeSkillpoints);
-}
-
-void CreationPointsManager::spendSpecializationSkillpoints(const int &value)
-{
-    m_specializationSkillpoints -= value;
-    emit specializationSkillpointsChanged(m_specializationSkillpoints);
-}
-
-void CreationPointsManager::refundSpecializationSkillpoints(const int &value)
-{
-    m_specializationSkillpoints += value;
-    emit specializationSkillpointsChanged(m_specializationSkillpoints);
+    if ( m_freePoints.first + value > m_freePoints.second ) {
+        int val = m_freePoints.first + value;
+        m_freePoints.first = m_freePoints.second;
+        m_specPoints.first = val - m_freePoints.first;
+        emit specializationSkillpointsChanged(m_specPoints.first);
+    } else
+        m_freePoints.first += value;
+    emit freeSkillpointsChanged(m_freePoints.first);
 }
 
 void CreationPointsManager::spendMoney(const int &value)
 {
-    m_money -= value;
-    emit moneyChanged(m_money);
+    m_money.first -= value;
+    emit moneyChanged(m_money.first);
 }
 
 void CreationPointsManager::refundMoney(const int &value)
 {
-    m_money += value;
-    emit moneyChanged(m_money);
+    m_money.first += value;
+    emit moneyChanged(m_money.first);
 }
 
 void CreationPointsManager::spendTrick(const int &value)
 {
-    m_tricks -= value;
-    emit tricksChanged(m_tricks);
+    m_tricks.first -= value;
+    emit tricksChanged(m_tricks.first);
 }
 
 void CreationPointsManager::refundTrick(const int &value)
 {
-    m_tricks += value;
-    emit tricksChanged(m_tricks);
+    m_tricks.first += value;
+    emit tricksChanged(m_tricks.first);
 }

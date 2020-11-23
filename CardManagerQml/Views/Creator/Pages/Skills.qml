@@ -109,11 +109,11 @@ Page {
     }
 
     onStatsCreatorChanged: {
-        body.attribute = statsCreator.attribute("Budowa")
-        dexterity.attribute = statsCreator.attribute("Zręczność")
-        character.attribute = statsCreator.attribute("Charakter")
-        perception.attribute = statsCreator.attribute("Percepcja")
-        cleaverness.attribute = statsCreator.attribute("Spryt")
+        body.attributeMod = statsCreator.attribute("Budowa")
+        dexterity.attributeMod = statsCreator.attribute("Zręczność")
+        character.attributeMod = statsCreator.attribute("Charakter")
+        perception.attributeMod = statsCreator.attribute("Percepcja")
+        cleaverness.attributeMod = statsCreator.attribute("Spryt")
     }
 
     onPointsManagerChanged: {

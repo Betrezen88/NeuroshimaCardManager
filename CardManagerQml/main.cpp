@@ -22,6 +22,9 @@
 #include "DataSources/Elements/Stats/Feature.h"
 #include "DataSources/Elements/Stats/Bonus.h"
 #include "DataSources/Elements/Stats/Requirement.h"
+#include "DataSources/Elements/Stats/AttributeMod.h"
+#include "DataSources/Elements/Stats/SkillMod.h"
+#include "DataSources/Elements/Stats/SkillpackMod.h"
 #include "DataSources/Elements/Stats/TricksSortFilterModel.h"
 
 #include "Card/Data.h"
@@ -68,6 +71,9 @@ int main(int argc, char *argv[])
     qmlRegisterType<Feature>("core.NSFeature", 1, 0, "NSFeature");
     qmlRegisterType<Bonus>("core.NSBonus", 1, 0, "NSBonus");
     qmlRegisterType<Requirement>("core.NSRequirement", 1, 0, "NSRequirement");
+    qmlRegisterType<AttributeMod>("core.NSAttributeMod", 1, 0, "NSAttributeMod");
+    qmlRegisterType<SkillpackMod>("core.NSSkillpackMod", 1, 0, "NSSkillpackMod");
+    qmlRegisterType<SkillMod>("core.NSSkillMod", 1, 0, "NSSkillMod");
     qmlRegisterType<TricksSortFilterModel>("core.NSTricksSortFilterModel",
                                            1, 0, "NSTricksSortFilterModel");
     qmlRegisterType<Data>("core.NSData", 1, 0, "NSData");

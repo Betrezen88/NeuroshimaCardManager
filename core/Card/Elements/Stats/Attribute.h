@@ -12,10 +12,12 @@ class CORE_EXPORT Attribute : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString name READ name CONSTANT)
-    Q_PROPERTY(int value READ value WRITE setValue NOTIFY valueChanged)
+    Q_PROPERTY(int value READ value NOTIFY valueChanged)
     Q_PROPERTY(QQmlListProperty<Skillpack> skillpacks READ skillpacks CONSTANT)
 
 public:
+    friend class AttributeMod;
+
     explicit Attribute(QObject *parent = nullptr);
     explicit Attribute(const QString &name,
                        const int &value,
@@ -24,7 +26,6 @@ public:
 
     QString name() const;
     int value() const;
-    void setValue(const int &value);
 
     QQmlListProperty<Skillpack> skillpacks();
     int skillpacksCount() const;
@@ -33,7 +34,7 @@ public:
     QVector<Skillpack*> skillpacks() const;
 
 signals:
-    void valueChanged();
+    void valueChanged(const int& value);
 
 private:
     static int skillpacksCount(QQmlListProperty<Skillpack> *list);

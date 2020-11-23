@@ -37,7 +37,7 @@ Page {
         for ( var i in statsCreator.attributes ) {
             var component = Qt.createComponent("../Elements/AttributeRow.qml")
             var object = component.createObject(attributesCol, {
-                                                    attribute: statsCreator.attributes[i]
+                                                    attributeMod: statsCreator.attributes[i]
                                                 })
             attributesCol.objects.push(object)
         }

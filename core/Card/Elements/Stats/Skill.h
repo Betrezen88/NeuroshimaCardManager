@@ -12,6 +12,8 @@ class CORE_EXPORT Skill : public QObject
     Q_PROPERTY(int value READ value NOTIFY valueChanged)
 
 public:
+    friend class SkillMod;
+
     explicit Skill(QObject *parent = nullptr);
     explicit Skill(const QString &name,
                    const int &value,
@@ -21,10 +23,7 @@ public:
     int value() const;
 
 signals:
-    void valueChanged();
-
-public slots:
-    Q_INVOKABLE void setValue(const int &value);
+    void valueChanged(const int& value);
 
 private:
     QString m_name;

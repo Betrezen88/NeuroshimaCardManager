@@ -2,14 +2,15 @@
 import QtQuick.Controls 2.12
 
 import core.NSSkillpack 1.0
-import core.NSPageCreator 1.0
-import core.NSStatsCreator 1.0
-import core.NSCreationPointsManager 1.0
+import core.NSSkillpackMod 1.0
 
 Rectangle {
-    property NSSkillpack skillpack
-    property NSCreationPointsManager pointsManager: manager.cardCreator.creationPointsManager()
-    property NSStatsCreator statsCreator: manager.cardCreator.pageCreator(NSPageCreator.STATS)
+    property NSSkillpackMod skillpackMod
+
+    signal buy(var skillpackMod)
+    signal sell(var skillpackMod)
+    signal skillUp(var skillpackMod, var skillMod)
+    signal skillDown(var skillpackMod, var skillMod)
 
     id: main
     height: col.height
@@ -32,8 +33,8 @@ Rectangle {
 
             Text {
                 id: skillpackName
-                width: titleRow.width - titleRow.spacing - checkBox.width - col.padding * 2
-                height: checkBox.height
+                width: titleRow.width - titleRow.spacing - bougth.width - col.padding * 2
+                height: bougth.height
                 text: qsTr("Skillpack Name (W,T)")
                 verticalAlignment: Text.AlignVCenter
                 font.bold: true
@@ -41,22 +42,16 @@ Rectangle {
             }
 
             CheckBox {
-                id: checkBox
+                id: bougth
                 text: qsTr("Kup")
+                enabled: skillpackMod.enabled
+                checked: skillpackMod.bougth
 
                 onCheckedChanged: {
-                    if ( checked ) {
-                        if ( skillpack.specializations.indexOf(statsCreator.specialization) > -1 )
-                            pointsManager.spendSpecializationSkillpoints(5);
-                        else
-                            pointsManager.spendFreeSkillpoints(5)
-                    }
-                    else {
-                        if ( skillpack.specializations.indexOf(statsCreator.specialization) > -1 )
-                            pointsManager.refundSpecializationSkillpoints(5);
-                        else
-                            pointsManager.refundFreeSkillpoints(5)
-                    }
+                    if ( skillpackMod.bougth )
+                        main.sell(skillpackMod)
+                    else
+                        main.buy(skillpackMod)
                 }
             }
         }
@@ -71,33 +66,27 @@ Rectangle {
         }
     }
 
-    onSkillpackChanged: {
-        skillpackName.text = skillpack.fullname()
+    onSkillpackModChanged: {
+        skillpackName.text = skillpackMod.skillpack.fullname()
 
         for ( var o in skills.objects ) {
             skills.objects[o].destroy()
         }
         skills.objects = []
 
-        if ( NSSkillpack.CONSTANT === skillpack.type ) {
-            for ( var i in skillpack.skills ) {
+        if ( NSSkillpack.CONSTANT === skillpackMod.skillpack.type ) {
+            for ( var i in skillpackMod.skills ) {
                 var component = Qt.createComponent("Skill.qml")
                 var object = component.createObject(skills, {
                                                         width: skillpackName.width,
-                                                        skill: skillpack.skills[i]
+                                                        skillMod: skillpackMod.skills[i]
                                                     })
                 skills.objects.push(object)
-                object.spend.connect(function(value){
-                    if ( skillpack.specializations.indexOf(statsCreator.specialization) > -1 )
-                        pointsManager.spendSpecializationSkillpoints(value)
-                    else
-                        pointsManager.spendFreeSkillpoints(value)
+                object.skillUp.connect(function(skillMod){
+                    main.skillUp(main.skillpackMod, skillMod)
                 })
-                object.refund.connect(function(value){
-                    if ( skillpack.specializations.indexOf(statsCreator.specialization) > -1 )
-                        pointsManager.refundSpecializationSkillpoints(value)
-                    else
-                        pointsManager.refundFreeSkillpoints(value)
+                object.skillDown.connect(function(skillMod){
+                    main.skillDown(main.skillpackMod, skillMod)
                 })
             }
         }
@@ -106,22 +95,10 @@ Rectangle {
                 var com = Qt.createComponent("GeneralSkill.qml")
                 var obj = com.createObject(skills, {
                                                 width: skillpackName.width,
-                                                skills: skillpack.skills,
+                                                skills: skillpackMod.skills,
                                                 current: j
                                            })
                 skills.objects.push(obj)
-                obj.spend.connect(function(value){
-                    if ( skillpack.specializations.indexOf(statsCreator.specialization) > -1 )
-                        pointsManager.spendSpecializationSkillpoints(value)
-                    else
-                        pointsManager.spendFreeSkillpoints(value)
-                })
-                obj.refund.connect(function(value){
-                    if ( skillpack.specializations.indexOf(statsCreator.specialization) > -1 )
-                        pointsManager.refundSpecializationSkillpoints(value)
-                    else
-                        pointsManager.refundFreeSkillpoints(value)
-                })
                 obj.currentSkillChanged.connect(function(skill, index){
                     for ( var s in skills.objects )
                         if ( skill !== skills.objects[s]

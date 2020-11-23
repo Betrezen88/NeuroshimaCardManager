@@ -25,11 +25,3 @@ int Skill::value() const
 {
     return m_value;
 }
-
-void Skill::setValue(const int &value)
-{
-    if ( m_value != value ) {
-        m_value = value;
-        emit valueChanged();
-    }
-}

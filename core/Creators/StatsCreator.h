@@ -10,17 +10,21 @@
 
 #include "core_global.h"
 
+class AttributeMod;
 class Attribute;
+class SkillpackMod;
+class SkillMod;
 class Feature;
 class Disease;
 class OtherSkill;
 class Trick;
 class Skill;
+class CreationPointsManager;
 
 class CORE_EXPORT StatsCreator : public PageCreator
 {
     Q_OBJECT
-    Q_PROPERTY(QQmlListProperty<Attribute> attributes
+    Q_PROPERTY(QQmlListProperty<AttributeMod> attributes
                READ attributes
                NOTIFY attributesChanged)
     Q_PROPERTY(QQmlListProperty<OtherSkill> otherSkills
@@ -45,14 +49,14 @@ public:
                                    const int &value);
     Q_INVOKABLE void removeOtherSkill(const QString &name);
 
-    QQmlListProperty<Attribute> attributes();
+    QQmlListProperty<AttributeMod> attributes();
     int attributesCount() const;
-    Attribute* attribute(const int &index) const;
+    AttributeMod *attribute(const int &index) const;
 
-    Q_INVOKABLE Attribute* attribute(const QString &name);
-    Attribute* getAttribute(const QString &name) const;
+    Q_INVOKABLE AttributeMod* attribute(const QString &name);
+    AttributeMod* getAttribute(const QString &name) const;
 
-    QVector<Attribute*> attributes() const;
+    QVector<AttributeMod *> attributes() const;
 
     QQmlListProperty<Trick> tricks();
     int trickCount() const;
@@ -90,17 +94,25 @@ public slots:
     void setDisease(Disease* disease);
     void setReputation(const QString &place, const int &value);
 
+    void attributeUp(AttributeMod* attributeMod);
+    void attributeDown(AttributeMod* attributeMod);
+    void buySkillpack(SkillpackMod* skillpackMod);
+    void sellSkillpack(SkillpackMod* skillpackMod);
+    void skillUp(SkillpackMod* skillpackMod, SkillMod* skillMod);
+    void skillDown(SkillpackMod* skillpackMod, SkillMod* skillMod);
+
 private:
     static OtherSkill* otherSkill(QQmlListProperty<OtherSkill> *list, int index);
     static int otherSkillsCount(QQmlListProperty<OtherSkill> *list);
 
-    static Attribute* attribute(QQmlListProperty<Attribute> *list, int index);
-    static int attributesCount(QQmlListProperty<Attribute> *list);
+    static AttributeMod* attribute(QQmlListProperty<AttributeMod> *list, int index);
+    static int attributesCount(QQmlListProperty<AttributeMod> *list);
 
     static Trick* trick(QQmlListProperty<Trick> *list, int index);
     static int tricksCount(QQmlListProperty<Trick> *list);
 
 private:
+    CreationPointsManager* m_pPointsManager{nullptr};
     QString m_name;
     QString m_surname;
     QString m_nickname;
@@ -113,7 +125,7 @@ private:
     Disease* m_pDisease{nullptr};
     QMap<QString, int> m_reputation;
     QVector<OtherSkill*> m_otherSkills;
-    QVector<Attribute*> m_attributes;
+    QVector<AttributeMod*> m_attributes;
     QVector<Trick*> m_tricks;
     QVector<Skill*> m_skills;
 };

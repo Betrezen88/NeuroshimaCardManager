@@ -17,6 +17,8 @@ class CORE_EXPORT Skillpack : public QObject
     Q_PROPERTY(Type type READ type CONSTANT)
 
 public:
+    friend class SkillpackMod;
+
     enum class Type { CONSTANT, CHOOSABLE };
     Q_ENUM(Type)
 

@@ -2,13 +2,13 @@
 import QtQuick.Controls 2.12
 
 import core.NSSkill 1.0
-import core.NSCreationPointsManager 1.0
+import core.NSSkillMod 1.0
 
 Row {
-    property NSSkill skill
+    property NSSkillMod skillMod
 
-    signal refund(int value)
-    signal spend(int value)
+    signal skillUp(NSSkillMod skillMod)
+    signal skillDown(NSSkillMod skillMod)
 
     id: main
     height: skillValue.height
@@ -25,27 +25,23 @@ Row {
     SpinBox {
         id: skillValue
         height: 40
-        from: 0
-        to: 5
-        editable: false
-
-        onValueChanged: main.skill.setValue(value)
+        from: skillMod.min
+        to: skillMod.max
+        value: skillMod.skill.value
 
         down.onPressedChanged: {
             if ( down.pressed ) {
                 down.pressed = false
-                main.refund(skillValue.value)
-                decrease()
+                main.skillDown(skillMod)
             }
         }
         up.onPressedChanged: {
             if ( up.pressed ) {
                 up.pressed = false
-                increase()
-                main.spend(skillValue.value)
+                main.skillUp(skillMod)
             }
         }
     }
 
-    onSkillChanged: skillName.text = skill.name
+    onSkillModChanged: skillName.text = skillMod.skill.name
 }

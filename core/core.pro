@@ -34,12 +34,15 @@ SOURCES += \
     Creators/CardCreator.cpp \
     Creators/DataSourceCreator.cpp \
     Creators/StatsCreator.cpp \
+    DataSources/Elements/Stats/AttributeMod.cpp \
     DataSources/Elements/Stats/Bonus.cpp \
     DataSources/Elements/Stats/Feature.cpp \
     DataSources/Elements/Stats/HeroData.cpp \
     DataSources/Elements/Stats/Origin.cpp \
     DataSources/Elements/Stats/Profession.cpp \
     DataSources/Elements/Stats/Requirement.cpp \
+    DataSources/Elements/Stats/SkillMod.cpp \
+    DataSources/Elements/Stats/SkillpackMod.cpp \
     DataSources/Elements/Stats/TricksSortFilterModel.cpp \
     DataSources/StatsSource.cpp \
     Managers/CardManager.cpp \
@@ -68,6 +71,7 @@ HEADERS += \
     Creators/PageCreator.h \
     Creators/StatsCreator.h \
     DataSources/DataSource.h \
+    DataSources/Elements/Stats/AttributeMod.h \
     DataSources/Elements/Stats/Bonus.h \
     DataSources/Elements/Stats/Feature.h \
     DataSources/Elements/Stats/HeroData.h \
@@ -75,6 +79,8 @@ HEADERS += \
     DataSources/Elements/Stats/OriginBonus.h \
     DataSources/Elements/Stats/Profession.h \
     DataSources/Elements/Stats/Requirement.h \
+    DataSources/Elements/Stats/SkillMod.h \
+    DataSources/Elements/Stats/SkillpackMod.h \
     DataSources/Elements/Stats/TricksSortFilterModel.h \
     DataSources/StatsSource.h \
     Managers/CardManager.h \

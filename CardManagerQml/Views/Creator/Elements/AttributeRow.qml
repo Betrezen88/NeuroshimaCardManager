@@ -2,11 +2,13 @@
 import QtQuick.Controls 2.12
 
 import core.NSAttribute 1.0
-import core.NSCreationPointsManager 1.0
+import core.NSAttributeMod 1.0
+import core.NSPageCreator 1.0
+import core.NSStatsCreator 1.0
 
 Row {
-    property NSAttribute attribute
-    property NSCreationPointsManager pointsManager: manager.cardCreator.creationPointsManager()
+    property NSAttributeMod attributeMod
+    property NSStatsCreator statsCreator: manager.cardCreator.pageCreator(NSPageCreator.STATS)
 
     id: row
     height: implicitHeight
@@ -24,27 +26,25 @@ Row {
     
     SpinBox {
         id: valueBox
-        from: 6
-        to: 18
+        from: attributeMod.min
+        to: attributeMod.max
+        value: attributeMod.attribute.value
 
-        onValueChanged: attribute.value = value
         up.onPressedChanged: {
             if ( up.pressed ) {
-                if ( pointsManager.attributes > 0 ) {
-                    pointsManager.spendAttributes(1)
-                    increase()
-                }
                 up.pressed = false
+                statsCreator.attributeUp(attributeMod)
             }
         }
         down.onPressedChanged: {
             if ( down.pressed ) {
                 down.pressed = false
-                pointsManager.refundAttributes(1)
-                decrease()
+                statsCreator.attributeDown(attributeMod)
             }
         }
     }
 
-    onAttributeChanged: attributeName.text = attribute.name
+    onAttributeModChanged: {
+        attributeName.text = attributeMod.attribute.name
+    }
 }
