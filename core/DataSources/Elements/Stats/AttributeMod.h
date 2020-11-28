@@ -33,6 +33,8 @@ public:
 
     QQmlListProperty<SkillpackMod> skillpacks();
 
+    QList<SkillpackMod*> skillpacksMod();
+
 public slots:
     void setMin(int min);
     void setMax(int max);

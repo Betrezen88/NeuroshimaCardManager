@@ -14,6 +14,7 @@ class AttributeMod;
 class Attribute;
 class SkillpackMod;
 class SkillMod;
+class Bonus;
 class Feature;
 class Disease;
 class OtherSkill;
@@ -102,6 +103,18 @@ public slots:
     void skillDown(SkillpackMod* skillpackMod, SkillMod* skillMod);
 
 private:
+    SkillpackMod* findSkillpack(const QString& name);
+    void setOriginFeatureBonus(Bonus* bonus);
+    void setProfessionFeatureBonus(Bonus* bonus);
+    void addBonus(Bonus* bonus);
+    void removeBonus(Bonus* bonus);
+
+    void addSkillpackBonus(const QString& name, const int& value);
+    void removeSkillpackBonus(const QString& name, const int& value);
+    void replaceSkillpackBonus(Bonus* bonus,
+                               const QString& oldName,
+                               const QString& newName);
+
     static OtherSkill* otherSkill(QQmlListProperty<OtherSkill> *list, int index);
     static int otherSkillsCount(QQmlListProperty<OtherSkill> *list);
 
@@ -119,8 +132,10 @@ private:
     Data* m_pOrigin{nullptr};
     QPair<QString, int> m_originBonus{"", 0};
     Data* m_pProfession{nullptr};
-    Data* m_pOriginFeature{nullptr};
-    Data* m_pProfessionFeature{nullptr};
+    Feature* m_pOriginFeature{nullptr};
+    Bonus* m_pOriginFeatureBonus{nullptr};
+    Feature* m_pProfessionFeature{nullptr};
+    Bonus* m_pProfessionFeatureBonus{nullptr};
     Data* m_pSpecialization{nullptr};
     Disease* m_pDisease{nullptr};
     QMap<QString, int> m_reputation;

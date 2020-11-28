@@ -66,8 +66,11 @@ Page {
                                                                     feature: item.features[j],
                                                                     width: featuresColumn.width,
                                                                     group: originGroup,
-                                                                    checked: parseInt(j) === 0
                                                                 })
+                            object.featureSelected.connect(function(feature){
+                                statsCreator.setOriginFeature(feature)
+                            })
+                            object.checked = parseInt(j) === 0
                             featuresColumn.objects.push(object)
                         }
                     }

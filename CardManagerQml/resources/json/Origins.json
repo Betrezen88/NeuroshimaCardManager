@@ -17,7 +17,7 @@
                 "bonus": {
                     "type": "Skillpack",
                     "value": 2,
-                    "list": [ "Walka wręcz", "Broń strzelecka", "Broń dystansowa", "Siła woli", "Pirotechnika" ]
+                    "list": [ "Walka Wręcz", "Broń Strzelecka", "Broń Dystansowa", "Siła Woli", "Pirotechnika" ]
                 }
             },
             {
@@ -178,7 +178,7 @@
                 "bonus": {
                     "type": "Skillpack",
                     "value": 2,
-                    "list": [ "Negocjacje", "Empatia", "Siła woli" ]
+                    "list": [ "Negocjacje", "Empatia", "Siła Woli" ]
                 }
             },
             {

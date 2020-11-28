@@ -21,7 +21,6 @@ class CORE_EXPORT SkillpackMod : public QObject
 public:
     explicit SkillpackMod(QObject *parent = nullptr);
     explicit SkillpackMod(Skillpack *skillpack, QObject *parent = nullptr);
-//    ~SkillpackMod() = default;
 
     QQmlListProperty<SkillMod> skills();
     bool bougth() const;
@@ -36,6 +35,8 @@ signals:
 public slots:
     void buy();
     void sell();
+    void addBonus(const int& value);
+    void removeBonus(const int& value);
 
 private:
     Skillpack* m_pSkillpack{nullptr};

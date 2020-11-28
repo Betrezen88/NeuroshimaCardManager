@@ -68,3 +68,19 @@ void SkillpackMod::sell()
     m_bougth = false;
     emit bougthChanged(m_bougth);
 }
+
+void SkillpackMod::addBonus(const int &value)
+{
+    for ( SkillMod* skill: m_skills ) {
+        skill->setMin(skill->min()+value);
+        skill->setValue(skill->skill()->value()+value);
+    }
+}
+
+void SkillpackMod::removeBonus(const int &value)
+{
+    for ( SkillMod* skill: m_skills ) {
+        skill->setMin(skill->min()-value);
+        skill->setValue(skill->skill()->value()-value);
+    }
+}

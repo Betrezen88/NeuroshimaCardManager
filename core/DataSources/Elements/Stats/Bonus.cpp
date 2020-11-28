@@ -45,3 +45,12 @@ QStringList Bonus::list() const
 {
     return m_list;
 }
+
+void Bonus::setName(const QString &name)
+{
+    if ( m_name == name )
+        return;
+
+    emit nameChanged(this, m_name, name);
+    m_name = name;
+}

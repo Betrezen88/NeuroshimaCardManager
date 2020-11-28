@@ -9,9 +9,6 @@ class CORE_EXPORT Bonus : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(Type type READ type CONSTANT)
-    Q_PROPERTY(QString name READ name CONSTANT)
-    Q_PROPERTY(int value READ value CONSTANT)
-    Q_PROPERTY(int price READ price CONSTANT)
     Q_PROPERTY(QStringList list READ list CONSTANT)
 
 public:
@@ -44,6 +41,14 @@ public:
     int value() const;
     int price() const;
     QStringList list() const;
+
+signals:
+    void nameChanged(Bonus* bonus,
+                     const QString& oldName,
+                     const QString& newName);
+
+public slots:
+    void setName(const QString& name);
 
 private:
     Type m_type;

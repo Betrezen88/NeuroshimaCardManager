@@ -11,6 +11,8 @@
 #include "../DataSources/Elements/Stats/AttributeMod.h"
 #include "../DataSources/Elements/Stats/SkillpackMod.h"
 #include "../DataSources/Elements/Stats/SkillMod.h"
+#include "../DataSources/Elements/Stats/Feature.h"
+#include "../DataSources/Elements/Stats/Bonus.h"
 
 #include "../Utils/DataReader.h"
 
@@ -18,6 +20,8 @@
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QJsonValue>
+
+#include <QDebug>
 
 StatsCreator::StatsCreator(QObject *parent)
     : PageCreator(PageCreator::Type::STATS, parent)
@@ -241,12 +245,24 @@ void StatsCreator::setSpecialization(const QString &name, const QString &descrip
 
 void StatsCreator::setOriginFeature(Feature *feature)
 {
+    if ( feature == nullptr )
+        return;
 
+    m_pOriginFeature = feature;
+    setOriginFeatureBonus(m_pOriginFeature->hasBonus()
+                          ? m_pOriginFeature->bonus()
+                          : nullptr);
 }
 
 void StatsCreator::setProfessionFeature(Feature *feature)
 {
+    if ( feature == nullptr )
+        return;
 
+    m_pProfessionFeature = feature;
+    setProfessionFeatureBonus(m_pProfessionFeature->hasBonus()
+                              ? m_pProfessionFeature->bonus()
+                              : nullptr);
 }
 
 void StatsCreator::setDisease(Disease *disease)
@@ -305,6 +321,77 @@ void StatsCreator::skillDown(SkillpackMod *skillpackMod, SkillMod *skillMod)
     else
         m_pPointsManager->refundFreeSkillpoints(skillMod->skill()->value());
     skillMod->setValue(skillMod->skill()->value()-1);
+}
+
+SkillpackMod *StatsCreator::findSkillpack(const QString &name)
+{
+    for ( AttributeMod* attribute: m_attributes ) {
+        for ( SkillpackMod* skillpack: attribute->skillpacksMod() )
+            if ( skillpack->skillpack()->name() == name )
+                return skillpack;
+    }
+
+    return nullptr;
+}
+
+void StatsCreator::setOriginFeatureBonus(Bonus *bonus)
+{
+    if ( m_pOriginFeatureBonus )
+        removeBonus(m_pOriginFeatureBonus);
+
+    m_pOriginFeatureBonus = bonus;
+
+    if ( m_pOriginFeatureBonus )
+        addBonus(m_pOriginFeatureBonus);
+}
+
+void StatsCreator::setProfessionFeatureBonus(Bonus *bonus)
+{
+    if ( m_pProfessionFeatureBonus )
+        removeBonus(m_pProfessionFeatureBonus);
+
+    m_pProfessionFeatureBonus = bonus;
+
+    if ( m_pProfessionFeatureBonus )
+        addBonus(m_pProfessionFeatureBonus);
+}
+
+void StatsCreator::addBonus(Bonus *bonus)
+{
+    if ( Bonus::Type::SKILLPACK == bonus->type() ) {
+        addSkillpackBonus(bonus->name(), bonus->value());
+        connect(bonus, &Bonus::nameChanged,
+                this, &StatsCreator::replaceSkillpackBonus);
+    }
+}
+
+void StatsCreator::removeBonus(Bonus *bonus)
+{
+    if ( Bonus::Type::SKILLPACK == bonus->type() ) {
+        removeSkillpackBonus(bonus->name(), bonus->value());
+        disconnect(bonus, &Bonus::nameChanged,
+                   this, &StatsCreator::replaceSkillpackBonus);
+    }
+}
+
+void StatsCreator::addSkillpackBonus(const QString &name, const int &value)
+{
+    SkillpackMod* skillpack = findSkillpack(name);
+    if ( skillpack )
+        skillpack->addBonus(value);
+}
+
+void StatsCreator::removeSkillpackBonus(const QString &name, const int &value)
+{
+    SkillpackMod* skillpack = findSkillpack(name);
+    if ( skillpack )
+        skillpack->removeBonus(value);
+}
+
+void StatsCreator::replaceSkillpackBonus(Bonus *bonus, const QString &oldName, const QString &newName)
+{
+    removeSkillpackBonus(oldName, bonus->value());
+    addSkillpackBonus(newName, bonus->value());
 }
 
 OtherSkill *StatsCreator::otherSkill(QQmlListProperty<OtherSkill> *list, int index)

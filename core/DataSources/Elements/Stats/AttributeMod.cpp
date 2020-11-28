@@ -48,6 +48,11 @@ QQmlListProperty<SkillpackMod> AttributeMod::skillpacks()
     return QQmlListProperty<SkillpackMod>(this, m_skillpacks);
 }
 
+QList<SkillpackMod *> AttributeMod::skillpacksMod()
+{
+    return m_skillpacks;
+}
+
 void AttributeMod::setMin(int min)
 {
     if (m_range.first == min)
