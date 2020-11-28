@@ -360,7 +360,7 @@ void StatsCreator::addBonus(Bonus *bonus)
 {
     if ( Bonus::Type::SKILLPACK == bonus->type() ) {
         addSkillpackBonus(bonus->name(), bonus->value());
-        connect(bonus, &Bonus::nameChanged,
+        connect(bonus, &Bonus::skillpackChanged,
                 this, &StatsCreator::replaceSkillpackBonus);
     }
 }
@@ -369,7 +369,7 @@ void StatsCreator::removeBonus(Bonus *bonus)
 {
     if ( Bonus::Type::SKILLPACK == bonus->type() ) {
         removeSkillpackBonus(bonus->name(), bonus->value());
-        disconnect(bonus, &Bonus::nameChanged,
+        disconnect(bonus, &Bonus::skillpackChanged,
                    this, &StatsCreator::replaceSkillpackBonus);
     }
 }
@@ -388,10 +388,12 @@ void StatsCreator::removeSkillpackBonus(const QString &name, const int &value)
         skillpack->removeBonus(value);
 }
 
-void StatsCreator::replaceSkillpackBonus(Bonus *bonus, const QString &oldName, const QString &newName)
+void StatsCreator::replaceSkillpackBonus(const QString &oldName,
+                                         const QString &newName,
+                                         const int& value)
 {
-    removeSkillpackBonus(oldName, bonus->value());
-    addSkillpackBonus(newName, bonus->value());
+    removeSkillpackBonus(oldName, value);
+    addSkillpackBonus(newName, value);
 }
 
 OtherSkill *StatsCreator::otherSkill(QQmlListProperty<OtherSkill> *list, int index)

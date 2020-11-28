@@ -111,9 +111,9 @@ private:
 
     void addSkillpackBonus(const QString& name, const int& value);
     void removeSkillpackBonus(const QString& name, const int& value);
-    void replaceSkillpackBonus(Bonus* bonus,
-                               const QString& oldName,
-                               const QString& newName);
+    void replaceSkillpackBonus(const QString& oldName,
+                               const QString& newName,
+                               const int &value);
 
     static OtherSkill* otherSkill(QQmlListProperty<OtherSkill> *list, int index);
     static int otherSkillsCount(QQmlListProperty<OtherSkill> *list);

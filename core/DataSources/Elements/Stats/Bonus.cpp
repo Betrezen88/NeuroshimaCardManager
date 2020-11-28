@@ -51,6 +51,13 @@ void Bonus::setName(const QString &name)
     if ( m_name == name )
         return;
 
-    emit nameChanged(this, m_name, name);
+    switch (m_type) {
+    case Type::SKILLPACK:
+        emit skillpackChanged(m_name, name, m_value);
+        break;
+    default:
+        break;
+    }
+
     m_name = name;
 }

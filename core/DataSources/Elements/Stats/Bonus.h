@@ -43,9 +43,11 @@ public:
     QStringList list() const;
 
 signals:
-    void nameChanged(Bonus* bonus,
-                     const QString& oldName,
-                     const QString& newName);
+    void skillpackChanged(const QString& oldName,
+                          const QString& newName,
+                          const int & value);
+    void skillpackPTChanged(const QString& oldName,
+                            const QString& newName);
 
 public slots:
     void setName(const QString& name);
