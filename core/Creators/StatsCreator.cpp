@@ -323,6 +323,20 @@ void StatsCreator::skillDown(SkillpackMod *skillpackMod, SkillMod *skillMod)
     skillMod->setValue(skillMod->skill()->value()-1);
 }
 
+void StatsCreator::addBonusTrick(Trick *bonusTrick)
+{
+    addTrick(bonusTrick);
+}
+
+void StatsCreator::removeBonusTrick(const QString &trickName)
+{
+    for ( Trick* trick: m_tricks )
+        if ( trick->name() == trickName ) {
+            removeTrick(trick);
+            break;
+        }
+}
+
 SkillpackMod *StatsCreator::findSkillpack(const QString &name)
 {
     for ( AttributeMod* attribute: m_attributes ) {
@@ -362,6 +376,8 @@ void StatsCreator::addBonus(Bonus *bonus)
         addSkillpackBonus(bonus->name(), bonus->value());
         connect(bonus, &Bonus::skillpackChanged,
                 this, &StatsCreator::replaceSkillpackBonus);
+    } else if ( Bonus::Type::TRICK == bonus->type() ) {
+        emit requestBonusTrick(bonus->name());
     }
 }
 
@@ -371,6 +387,8 @@ void StatsCreator::removeBonus(Bonus *bonus)
         removeSkillpackBonus(bonus->name(), bonus->value());
         disconnect(bonus, &Bonus::skillpackChanged,
                    this, &StatsCreator::replaceSkillpackBonus);
+    } else if ( Bonus::Type::TRICK == bonus->type() ) {
+        removeBonusTrick(bonus->name());
     }
 }
 

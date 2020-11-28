@@ -68,6 +68,15 @@ void TricksSortFilterModel::removeTrick(const int &index)
     delete pTrick;
 }
 
+Trick* TricksSortFilterModel::findTrickSource(const QString &trickName)
+{
+    for ( Trick* trick: m_sourceModel ) {
+        if ( trick->name() == trickName )
+            return trick;
+    }
+    return nullptr;
+}
+
 void TricksSortFilterModel::setPattern(const QString &pattern)
 {
     if (m_pattern == pattern)

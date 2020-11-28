@@ -4,6 +4,9 @@ import QtQuick.Controls 2.12
 import core.NSFeature 1.0
 import core.NSBonus 1.0
 
+import core.NSDataSource 1.0
+import core.NSPageCreator 1.0
+
 Column {
     property NSFeature feature
     property ButtonGroup group
@@ -55,6 +58,18 @@ Column {
             if ( feature.bonus.list.length > 1 ) {
                 list.visible = true
                 list.model = feature.bonus.list
+            }
+            if ( NSBonus.TRICK === feature.bonus.type ) {
+                var statsSource = manager.cardCreator.dataSource(NSDataSource.STATS)
+                var statsCreator = manager.cardCreator.pageCreator(NSPageCreator.STATS)
+
+                statsSource.sendBonusTrick.connect(function(trick){
+                    statsCreator.addBonusTrick(trick)
+                })
+
+                statsCreator.requestBonusTrick.connect(function(trickName){
+                    statsSource.findBonusTrick(trickName)
+                })
             }
         }
     }

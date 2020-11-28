@@ -37,6 +37,8 @@ public:
 
     void removeTrick(const int &index);
 
+    Trick* findTrickSource(const QString& trickName);
+
     QString pattern() const;
     Qt::SortOrder order() const;
     bool caseSensitive() const;

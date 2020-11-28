@@ -78,6 +78,10 @@ signals:
     void diseasesChanged();
     void attributesChanged();
     void difficultiesChanged();
+    void sendBonusTrick(Trick* trick);
+
+public slots:
+    void findBonusTrick(const QString& trickName);
 
 private:
     static void addOrigin(QQmlListProperty<Origin> *list, Origin *origin);

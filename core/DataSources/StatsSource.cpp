@@ -216,6 +216,14 @@ void StatsSource::clearDifficulties()
     emit difficultiesChanged();
 }
 
+void StatsSource::findBonusTrick(const QString &trickName)
+{
+    Trick* trick = m_pTricksSort->findTrickSource(trickName);
+
+    if ( trick )
+        emit sendBonusTrick(trick);
+}
+
 void StatsSource::addOrigin(QQmlListProperty<Origin> *list, Origin *origin)
 {
     reinterpret_cast<StatsSource*>(list->data)->addOrigin(origin);

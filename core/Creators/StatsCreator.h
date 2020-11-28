@@ -82,6 +82,8 @@ signals:
     void tricksChanged();
     void statsChanged();
 
+    void requestBonusTrick(const QString& trickName);
+
 public slots:
     void setName(const QString &name);
     void setSurname(const QString &surname);
@@ -101,6 +103,8 @@ public slots:
     void sellSkillpack(SkillpackMod* skillpackMod);
     void skillUp(SkillpackMod* skillpackMod, SkillMod* skillMod);
     void skillDown(SkillpackMod* skillpackMod, SkillMod* skillMod);
+    void addBonusTrick(Trick* bonusTrick);
+    void removeBonusTrick(const QString& trickName);
 
 private:
     SkillpackMod* findSkillpack(const QString& name);
