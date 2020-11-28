@@ -183,7 +183,7 @@ Page {
 
                                 Connections {
                                     target: manager.cardCreator.pageCreator(NSPageCreator.STATS)
-                                    onStatsChanged: valid = scrollView.isValid(trickData)
+                                    onStatsChanged: valid = scrollView.isValid(statsCreator.tricks[index])
                                 }
                             }
                         }
