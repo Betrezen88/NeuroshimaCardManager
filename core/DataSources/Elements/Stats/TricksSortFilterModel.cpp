@@ -18,7 +18,7 @@ TricksSortFilterModel::TricksSortFilterModel(QObject *parent)
 
 QQmlListProperty<Trick> TricksSortFilterModel::tricks()
 {
-    return QQmlListProperty<Trick>(this, m_tricks);
+    return QQmlListProperty<Trick>(this, &m_tricks);
 }
 
 void TricksSortFilterModel::addTrick(Trick *trick)

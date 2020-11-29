@@ -45,7 +45,7 @@ int AttributeMod::max() const
 
 QQmlListProperty<SkillpackMod> AttributeMod::skillpacks()
 {
-    return QQmlListProperty<SkillpackMod>(this, m_skillpacks);
+    return QQmlListProperty<SkillpackMod>(this, &m_skillpacks);
 }
 
 QList<SkillpackMod *> AttributeMod::skillpacksMod()

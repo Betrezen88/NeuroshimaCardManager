@@ -23,7 +23,7 @@ SkillpackMod::SkillpackMod(Skillpack *skillpack, QObject *parent)
 
 QQmlListProperty<SkillMod> SkillpackMod::skills()
 {
-    return QQmlListProperty<SkillMod>(this, m_skills);
+    return QQmlListProperty<SkillMod>(this, &m_skills);
 }
 
 bool SkillpackMod::bougth() const
