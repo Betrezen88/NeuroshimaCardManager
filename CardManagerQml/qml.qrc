@@ -70,6 +70,8 @@
         <file>resources/icons/filters.svg</file>
         <file>resources/icons/sort_asc.svg</file>
         <file>resources/icons/sort_desc.svg</file>
+        <file>resources/icons/side_page.svg</file>
+        <file>resources/icons/rules.svg</file>
     </qresource>
     <qresource prefix="/json">
         <file>resources/json/Origins.json</file>
