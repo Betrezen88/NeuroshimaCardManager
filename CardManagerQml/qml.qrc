@@ -49,6 +49,7 @@
         <file>Views/Creator/Pages/Tricks.qml</file>
         <file>Views/Creator/Elements/Trick.qml</file>
         <file>Views/Creator/Elements/TrickDetails.qml</file>
+        <file>Views/Card/Sections/RuleSection.qml</file>
         <file>Views/Card/Elements/RulesRow.qml</file>
         <file>Views/Card/Elements/RulesCell.qml</file>
     </qresource>
