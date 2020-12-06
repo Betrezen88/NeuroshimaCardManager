@@ -11,7 +11,14 @@ class CORE_EXPORT Page : public QObject
     Q_PROPERTY(Page::Type type READ type CONSTANT)
 
 public:
-    enum class Type { UNKNOWN, STATS, EQUIPMENT, NOTES, FRIENDS, BEAST, VEHICLE };
+    enum class Type { UNKNOWN
+                      , STATS
+                      , EQUIPMENT
+                      , NOTES
+                      , FRIENDS
+                      , BEAST
+                      , VEHICLE
+                      , RULES };
     Q_ENUM(Type)
 
     explicit Page(QObject *parent = nullptr);
