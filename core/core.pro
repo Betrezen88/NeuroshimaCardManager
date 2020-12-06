@@ -31,6 +31,7 @@ SOURCES += \
     Card/Elements/Stats/Symptom.cpp \
     Card/Elements/Stats/Trick.cpp \
     Card/Pages/Page.cpp \
+    Card/Pages/Rules.cpp \
     Card/Pages/Stats.cpp \
     Creators/CardCreator.cpp \
     Creators/DataSourceCreator.cpp \
@@ -67,6 +68,7 @@ HEADERS += \
     Card/Elements/Stats/Symptom.h \
     Card/Elements/Stats/Trick.h \
     Card/Pages/Page.h \
+    Card/Pages/Rules.h \
     Card/Pages/Stats.h \
     Creators/CardCreator.h \
     Creators/DataSourceCreator.h \
