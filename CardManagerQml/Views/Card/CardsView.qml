@@ -182,8 +182,9 @@ Page {
                 property QtObject sidePageObj
 
                 id: pageView
-                SplitView.preferredHeight: splitView.height
-                SplitView.preferredWidth: splitView.width/2
+                width: splitView.width
+                height: splitView.height
+                SplitView.minimumWidth: 300
 
                 onCurrentPageChanged: {
                     if ( pageView.depth > 1 )
@@ -196,13 +197,16 @@ Page {
                             case "qrc:/Views/Card/Pages/Stats.qml":
                                 currentItem.statsData = cardData.stats
                                 break
+                            case "qrc:/Views/Card/Pages/Rules.qml":
+                                currentItem.rulesData = cardData.rules
+                                break;
                             default:
                                 console.log("Unknown page to load data")
                         }
                     }
                 }
-            }
-        }
+            } // StackView
+        } // SplitView
     }
 
     onCardDataChanged: {
@@ -227,8 +231,11 @@ Page {
         var component = Qt.createComponent(page)
         var object = component.createObject(splitView, {
                                                 width: splitView.preferredWidth/2,
-                                                height: splitView.preferredHeight
+                                                height: splitView.height
                                             })
+        if ( page === "qrc:/Views/Card/Pages/Rules.qml" )
+            object.rulesData = cardData.rules
+
         pageView.sidePageObj = object
         pageView.sidePage = page
         splitView.addItem(pageView.sidePageObj)
