@@ -37,6 +37,9 @@ std::tuple<bool, QJsonDocument, QString> DataReader::load(const QString &filePat
 
 std::tuple<bool, QString> DataReader::readFile(const QString &filePath)
 {
+    if ( filePath.isEmpty() )
+        return std::make_tuple(false, "Błąd pliku: "+filePath);
+
     QFile file(filePath);
 
     if ( !file.exists() ) {
