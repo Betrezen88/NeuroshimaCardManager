@@ -10,6 +10,7 @@
 
 class Card;
 class Stats;
+class Rules;
 
 class CORE_EXPORT CardBuilder : public QObject
 {
@@ -17,7 +18,7 @@ class CORE_EXPORT CardBuilder : public QObject
 public:
     explicit CardBuilder(QObject *parent = nullptr);
 
-signals:
+    Rules* rulesPage(const QJsonArray &rules);
 
 public slots:
     Card *build(const QString &filePath, const QJsonObject &json);

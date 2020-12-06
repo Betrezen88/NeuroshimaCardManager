@@ -10,6 +10,9 @@
 #include "Card/Elements/Stats/Trick.h"
 #include "Card/Elements/Stats/OtherSkill.h"
 
+#include "Card/Pages/Rules.h"
+#include "Card/Elements/Rules/RulesSection.h"
+
 #include <QJsonValue>
 
 #include <QDebug>
@@ -116,4 +119,28 @@ Stats *CardBuilder::statsPage(const QJsonObject &stats)
                      attributes,
                      tricks,
                      otherSkills );
+}
+
+Rules *CardBuilder::rulesPage(const QJsonArray &rules)
+{
+    Rules* pRules = new Rules();
+
+    for (const QJsonValue &section: rules) {
+        const QJsonObject &tSection = section.toObject();
+
+        QList<QStringList> rows;
+
+        for ( const QJsonValue &row: tSection.value("rows").toArray() ) {
+            const QJsonArray& tRow = row.toArray();
+            QStringList cells;
+            for ( const QJsonValue& cell: tRow )
+                cells << cell.toString();
+            rows.append(cells);
+        }
+
+        pRules->addSection(tSection.value("section").toString(),
+                           rows);
+    }
+
+    return pRules;
 }
