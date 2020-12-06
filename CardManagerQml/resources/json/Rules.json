@@ -1,0 +1,116 @@
+﻿[
+    {
+        "section": "Testy",
+        "rows": [
+            [ "Zwykły", "Wykonywany 3k20, zdany oznacza osiągnięcie 2-óch sukcesów" ],
+            [ "Otwarty", "Wykonywany w sytuacjach, kiedy nie wystarczy test o wyniku \"zdany\" lub \"nie zdany\". Gracz wykonuje test bez PT, następnie sprawdza, z jakim najwyższym PT poradziłby sobie z otrzymanymi na kościach wynikami. Najgorsza kość jest odrzucana, dwie pozostałe obniżamy umiejętnością. Różnica między gorszym wynikiem a współczynnikiem na wybranym PT to Punkty Sukcesu."],
+            [ "Przeciwstawny", "Przeciwnicy wykonują testy Otwarte, a następnie porównują osiągnięte Punkty Sukcesu. Otrzymana różnica to punkty Przewagi testu Przeciwstawnego."]
+        ]
+    },
+    {
+        "section": "Inicjatywa",
+        "rows": [
+            [ "Ustalanie inicjatywy", "Walka zaczyna się od ustalenia inicjatywy. Walczący wykonują Otwarty test Zręczności. Wyniki określają kolejność Inicjatywy, im więcej punktów sukcesu, tym wyższa inicjatywa"],
+            [ "Remis i oddawanie inicjatywy", "Jeśli walczącyc przeciwko sobie osiągneli identyczne wyniki, muszą powtórzyć test, by ustalić kto z nich ma wyższą inicjatywę. Jeśli walczący wygrał lub osiągnął remis, może - jeśli zechce - oddać inicjatywę swojemu przeciwnikowi."],
+            [ "Najpierw spójrz mi w oczy", "W sytuacjach gdy walczący stają naprzeciw siebie i przygotowują się do rozpoczęcia walki, muszą sprawdzić swoją odporność psychiczną. Wszyscy wykonują przeciętny test Morale. Przegrany otrzymuje karę +30% do wszystkich testów podczas walki, aż zada przeciwnikowi obrażenia."],
+            [ "Test inicjatywy na Percepcji", "Gdy nie spodziewający się przeciwnicy wychodzą na siebie, w takich chwilach zamiast Zręczności, obaj testują Percepcję. Wiesz, chodzi o to kto pierwszy zajarzył, co się w ogóle dzieje."],
+            [ "Zasadzka", "Gdy jeden koleś zaczaił się na drugiego, nie zostanie odkryty w porę i nagle wyskoczy, ten drugi jest zaskoczony. Zaskoczony wykonuje Trudny test Czujności. Jeśli go zda, zasadzka nie poskutkowała i normalnie sprawdzamy inicjatywę. Jeśli nie zda, traci inicjatywę, a dodatkowo za każdy punkt porażki traci względem przeciwnika 1 segment (maksymalnie 1 turę). Jeśli potencjalna ofiara szła ostrożnie i rozglądała się uważnie, wykonuje Przeciętny test Czujności. Jeśli nie zważa na nic, wykonuje Cholernie trudny test Czujności."]
+        ]
+    },
+    {
+        "section": "Walka wręcz - przebieg",
+        "rows": [
+            [ "Inicjatywa", "Walczący na początku walki wykonują test inicjatywy."],
+            [ "Rzut 3k20", "Na początku każdej tury, walczący wykonują rzut 3k20. Walczący widzą swoje wyniki nawzajem."],
+            [ "Akcje", "Postać z wyższą inicjatywą jako pierwszy deklaruje akcje, np. cios. Broniący się nie może odpowiedzieć ciosem, musi wykonać akcje obronną."],
+            [ "Wyjście z walki", "Walczący musi posiadać inicjatywę, a następnie wygrać 1 segmentową akcję ucieczki. Odsuwa się na 2m."],
+            [ "Ucieczka z walki", "Zwykła ucieczka bez zważania na atak przeciwnika. na samym początku tury, przed rzutem kośćmi, walczący (bez względu czy ma inicjatywę czy nie) deklatuje, że ucieka. Otrzymuje automatycznie jednosegmentowy cios w plecy, bez możliwości obrony, należy jedynie rzucić za lokalizację trafienia. Uciekający odsuwa się na 2m."]
+        ]
+    },
+    {
+        "section": "Suwak",
+        "rows": [
+            [ "Z umiejętności", "Umiejętność na poziomie 0 - podnosi PT o 1
+Umiejętność na poziomie +4 - obniża PT o 1
+Umiejętność na poziomie +8 - obniża PT o 2
+Umiejętność na poziomie +12 - ... sam wiesz"],
+            [ "Suwak w walce", "Nie działa podczas walki w testach strzelania, rzucania, ciosów itd. Działa podczas walki tylko w testach zwyczajnych Umiejętności (Morale, Odporność na ból, itd.). Działa także przed walką, w testach strzałów snajperskich czy uderzeń z zaskoczenia, gdy walka turowa się jeszcze nie zaczęła."],
+            [ "Szczęśliwa 1-ka", "Jeśli podczas testu na którejkolwiek z kości wypadnie liczba 1 to obniża PT testu o 1."],
+            [ "Pechowa 20-ka", "Jeśli podczas testu na którejkolwiek z kości wypadnie liczba 20 to podnosi PT o 1."]
+        ]
+    },
+    {
+        "section": "Poziomy Trudności",
+        "rows": [
+            [ "Łatwy", "<0%", "+2" ],
+            [ "Przeciętny", "0% do 10%", "0" ],
+            [ "Problematyczny", "do 30%", "-2" ],
+            [ "Trudny", "do 60%", "-5" ],
+            [ "Bardzo Trudny", "do 90%", "-8" ],
+            [ "Cholernie Trudny", "do 120%", "-11" ],
+            [ "Fuks", "do 160%", "-15" ]
+        ]
+    },
+    {
+        "section": "Akcje",
+        "rows": [
+            ["Za 1 segment","Strzał (test), Krótka seria (test), Odbezpieczenie broni, Wyrwaniezawleczki granatu, Przeładowanie pompki, Przyklęknięcie, Pad na ziemię, Wychylenie się zza zasłony, Schowanie się za zasłonę z wychylenia, Bieg/Skok (2m), Czołganie się (0,5m), Wypatrzenie ukrytego przeciwnikia (test)"],
+            [ "Za 2 segmenty","Długa seria (test), Strzał z łuku (test), Rzut granatem/nożem (test), Dobycie broni, Przeryglowanie broni, Powstanie z przyklęku"],
+            [ "Za 3 segmenty", "Ogień ciągły (test), Rzyt włócznią (test), Zmiana magazynka, Poderwanie się z pozycji leżącej, Załadowanie procy, Dobycie i założenie strzały, Załadowanie jednej kuli do bębna rewolweru"]
+        ]
+    },
+    {
+        "section": "Rodzaje Ran",
+        "rows": [
+            [ "Rana", "PT testu", "Kara" ],
+            [ "Draśnięcie", "Przeciętny", "5%/10%" ],
+            [ "Lekka", "Problematyczny", "15%/30%" ],
+            [ "Ciężka", "Trudny", "30%/60%" ],
+            [ "Krytyczna", "-", "160%" ]
+        ]
+    },
+    {
+        "section": "Lokacje Ran",
+        "rows": [
+            [ "Wynik na kości", "Miejsce"],
+            [ "1-2", "Głowa lub inne miejsce witalne (obrażenia o poziom wyższe)" ],
+            [ "3-4", "Prawa ręka" ],
+            [ "5-6", "Lewa ręka" ],
+            [ "7-15", "Tułów" ],
+            [ "16-17", "Prawa noga" ],
+            [ "18-19", "Lewa noga" ]
+        ]
+    },
+    {
+        "section": "Gojenie się ran",
+        "rows": [
+            [ "Każdą otrzymaną ranę należy zapisać osobno na karcie postaci z odpowiadającą jej karą. Każda rana leczy się równolegle z innymi." ],
+            [ "- Codziennie postać zmniejsza karę każdej otrzymanej rany o 5%" ],
+            [ "- Jeśli postać nie dba o odpoczynek, rany leczą się dwa razy wolniej - co dwa dni o 5%" ],
+            [ "- Jeśli postać nie zajmuje się ranami, nie ma postępu w leczeniu ran" ],
+            [ "- Sinaki goją się w tępie 30% na dzień" ]
+        ]
+    },
+    {
+        "section": "Pierwsza pomoc i Leczenie ran",
+        "rows": [
+            [ "Pierwsza pomoc", "Zdany test anuluje 5% kazy z opatrywanej rany. Zastosowanie trwa 1 turę. Nieudany zwiększa karę rany o 5%. Każdy kolejny nieudany test większa PT następnego o 1 poziom." ],
+            [ "Leczenie ran", "Zdany test anuluje 15% kary z opatrywanej rany, chyba że wcześniej opatrzono Pierwszą pomocą, wtedy 10%. Zastosowanie trwa około 15 min. Nieudany test zwiększa karę rany o 5%. Każdy kolejny nieudany test zwiększa PT następnego o 1 poziom." ],
+            [ "Rana", "Test Pierwszej pomocy/Leczenia Ran" ],
+            [ "Draśnięcie/Lekka", "Przeciętny" ],
+            [ "Ciężka/Krytyczna", "Problematyczny" ]
+        ]
+    }
+]
+
+
+
+
+
+
+
+
+
+
+
+
