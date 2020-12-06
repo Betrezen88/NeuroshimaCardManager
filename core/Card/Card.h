@@ -7,12 +7,15 @@
 #include "core_global.h"
 
 #include "Pages/Page.h"
-#include "Pages/Stats.h"
+
+class Stats;
+class Rules;
 
 class CORE_EXPORT Card : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(Stats *stats READ stats CONSTANT)
+    Q_PROPERTY(Rules *rules READ rules CONSTANT)
     Q_PROPERTY(QString filePath READ filePath CONSTANT)
 
 public:
@@ -24,6 +27,7 @@ public:
     Q_INVOKABLE bool hasPage(const Page::Type &type) const;
 
     Stats *stats() const;
+    Rules* rules() const;
 
     QString filePath() const;
 
