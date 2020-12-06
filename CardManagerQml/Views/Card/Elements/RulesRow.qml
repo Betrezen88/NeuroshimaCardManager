@@ -43,10 +43,10 @@ Row {
         if ( item === null ) return
 
         if ( item.isFirst )
-            item.width = main.firstColWidth
+            item.width = (children.length > 1) ? main.firstColWidth : main.width
         else if ( children.length === 2 )
             item.width = main.width - main.firstColWidth
         else
-            item.width = (main.width - main.firstColWidth) / (children.lenght - 1)
+            item.width = (main.width - main.firstColWidth) / (children.length - 1)
     }
 }
