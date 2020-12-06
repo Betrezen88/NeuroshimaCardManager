@@ -3,7 +3,7 @@ QT += quick quickcontrols2
 TARGET = NsCardManagerQml
 TEMPLATE = app
 
-CONFIG += c++11
+CONFIG += c++11 qtquickcompiler
 CONFIG += resources_big
 
 # The following define makes your compiler emit warnings if you use
@@ -37,7 +37,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../core -lcore
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../core -lcore
-else:unix: LIBS += -L$$OUT_PWD/../core/ -lcore
+else:unix: LIBS += -L$$OUT_PWD/../core -lcore
 
 INCLUDEPATH += $$PWD/../core
 DEPENDPATH += $$PWD/../core

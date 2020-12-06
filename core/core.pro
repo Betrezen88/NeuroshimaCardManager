@@ -102,4 +102,4 @@ unix {
 }
 !isEmpty(target.path): INSTALLS += target
 
-DESTDIR += $$OUT_PWD/../core/ -lcore
+DESTDIR += $$OUT_PWD/../core/
