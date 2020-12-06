@@ -7,6 +7,7 @@
 #include "core_global.h"
 
 class Card;
+class Page;
 
 class CORE_EXPORT CardManager : public QObject
 {
@@ -36,6 +37,8 @@ public slots:
     Q_INVOKABLE void closeCard(const QString &filePath);
 
 private:
+    void createRulesPage(const QString& filePath);
+
     static void appendCard(QQmlListProperty<Card> *list, Card *card);
     static int cardsCount(QQmlListProperty<Card> *list);
     static Card *card(QQmlListProperty<Card> *list, int index);
@@ -45,6 +48,7 @@ private:
     QVector<Card*> m_cards;
     QStringList m_cardsFilePaths;
     QString m_selectedCard;
+    Page* m_pRulesPage{nullptr};
 };
 
 #endif // CARDMANAGER_H

@@ -1,5 +1,7 @@
 ﻿#include "CardManager.h"
 #include "Card/Card.h"
+#include "Card/Pages/Page.h"
+#include "Card/Pages/Rules.h"
 
 #include "Utils/DataReader.h"
 #include "Utils/CardBuilder.h"
@@ -9,7 +11,8 @@
 
 CardManager::CardManager(QObject *parent) : QObject(parent)
 {
-
+    // TODO: think and rework Rules page location and loading
+    createRulesPage( ":/json/resources/json/Rules.json" );
 }
 
 QQmlListProperty<Card> CardManager::cards()
@@ -23,7 +26,10 @@ QQmlListProperty<Card> CardManager::cards()
 
 void CardManager::appendCard(Card *card)
 {
+    if ( card == nullptr ) return;
+
     card->setParent(this);
+    card->addPage(m_pRulesPage);
     m_cards.append(card);
     m_cardsFilePaths.append(card->filePath());
     emit cardsChanged();
@@ -120,4 +126,19 @@ void CardManager::closeCard(const QString &filePath)
         setSelectedCard( m_cardsFilePaths.first() );
 
     emit cardsChanged();
+}
+
+void CardManager::createRulesPage(const QString &filePath)
+{
+    DataReader reader;
+
+    std::tuple<bool, QJsonDocument, QString> data = reader.load( filePath );
+
+    if ( !std::get<0>(data) ) {
+        emit errorMessage( std::get<2>(data) );
+        return;
+    }
+
+    CardBuilder builder;
+    m_pRulesPage = builder.rulesPage(std::get<1>(data).array());
 }
