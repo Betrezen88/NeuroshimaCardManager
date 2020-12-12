@@ -9,7 +9,7 @@ class CORE_EXPORT Equipment : public Page
 {
     Q_OBJECT
 public:
-    Equipment(QObject *parent = nullptr);
+    explicit Equipment(QObject *parent = nullptr);
 };
 
 #endif // EQUIPMENT_H
