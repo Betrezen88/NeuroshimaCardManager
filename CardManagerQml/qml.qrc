@@ -53,6 +53,7 @@
         <file>Views/Card/Sections/RuleSection.qml</file>
         <file>Views/Card/Elements/RulesRow.qml</file>
         <file>Views/Card/Elements/RulesCell.qml</file>
+        <file>Views/Card/Elements/ValueRow.qml</file>
     </qresource>
     <qresource prefix="/icon">
         <file>resources/icons/add.svg</file>
