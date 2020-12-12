@@ -20,6 +20,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     Card/Card.cpp \
     Card/Data.cpp \
+    Card/Elements/Equipment/Item.cpp \
     Card/Elements/Rules/RulesSection.cpp \
     Card/Elements/Stats/Attribute.cpp \
     Card/Elements/Stats/Difficulty.cpp \
@@ -58,6 +59,7 @@ SOURCES += \
 HEADERS += \
     Card/Card.h \
     Card/Data.h \
+    Card/Elements/Equipment/Item.h \
     Card/Elements/Rules/RulesSection.h \
     Card/Elements/Stats/Attribute.h \
     Card/Elements/Stats/Difficulty.h \
