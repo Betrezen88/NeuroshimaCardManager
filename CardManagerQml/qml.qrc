@@ -55,6 +55,7 @@
         <file>Views/Card/Elements/RulesCell.qml</file>
         <file>Views/Card/Sections/Armor.qml</file>
         <file>Views/Card/Elements/ArmorPiece.qml</file>
+        <file>Views/Card/Sections/Backpack.qml</file>
         <file>Views/Card/Elements/BackpackItem.qml</file>
         <file>Views/Card/Elements/ValueRow.qml</file>
     </qresource>
