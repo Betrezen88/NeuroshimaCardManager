@@ -57,6 +57,7 @@
         <file>Views/Card/Elements/ArmorPiece.qml</file>
         <file>Views/Card/Sections/Backpack.qml</file>
         <file>Views/Card/Elements/BackpackItem.qml</file>
+        <file>Views/Card/Sections/Weapons.qml</file>
         <file>Views/Card/Elements/WeaponItem.qml</file>
         <file>Views/Card/Elements/HandWeaponStats.qml</file>
         <file>Views/Card/Elements/RangedWeaponStats.qml</file>
