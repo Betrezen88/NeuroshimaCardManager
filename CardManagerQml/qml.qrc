@@ -58,6 +58,7 @@
         <file>Views/Card/Sections/Backpack.qml</file>
         <file>Views/Card/Elements/BackpackItem.qml</file>
         <file>Views/Card/Elements/HandWeaponStats.qml</file>
+        <file>Views/Card/Elements/RangedWeaponStats.qml</file>
         <file>Views/Card/Elements/ValueRow.qml</file>
     </qresource>
     <qresource prefix="/icon">
