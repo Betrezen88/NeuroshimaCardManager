@@ -2,7 +2,6 @@
 
 #include "Card/Data.h"
 #include "Card/Card.h"
-#include "Card/Pages/Stats.h"
 #include "Card/Elements/Stats/Attribute.h"
 #include "Card/Elements/Stats/Skillpack.h"
 #include "Card/Elements/Stats/Skill.h"
@@ -11,7 +10,13 @@
 #include "Card/Elements/Stats/OtherSkill.h"
 
 #include "Card/Pages/Rules.h"
+#include "Card/Pages/Stats.h"
+#include "Card/Pages/Equipment.h"
+
+#include "Card/Elements/Equipment/Item.h"
 #include "Card/Elements/Rules/RulesSection.h"
+
+#include "../Creators/ItemCreator.h"
 
 #include <QJsonValue>
 
@@ -28,6 +33,8 @@ Card *CardBuilder::build(const QString &filePath, const QJsonObject &json)
 
     if ( json.contains("stats") )
         pCard->addPage( statsPage(json.value("stats").toObject()) );
+    if ( json.contains("equipment") )
+        pCard->addPage( equipmentPage(json.value("equipment").toObject()) );
 
     return pCard;
 }
@@ -119,6 +126,19 @@ Stats *CardBuilder::statsPage(const QJsonObject &stats)
                      attributes,
                      tricks,
                      otherSkills );
+}
+
+Equipment *CardBuilder::equipmentPage(const QJsonObject &equipment)
+{
+    QList<Item*> backpack;
+    ItemCreator creator;
+    for ( const QJsonValue& backpackItem: equipment.value("backpack").toArray() ) {
+        const QJsonObject& tBackpackItem = backpackItem.toObject();
+
+        backpack.append( creator.create(tBackpackItem) );
+    }
+
+    return new Equipment(backpack);
 }
 
 Rules *CardBuilder::rulesPage(const QJsonArray &rules)

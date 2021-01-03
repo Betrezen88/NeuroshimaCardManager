@@ -254,4 +254,18 @@ Page {
             close()
         }
     }
+
+    MessageDialog {
+        id: messageDialog
+        title: "Błąd aplikacji"
+        onAccepted: messageDialog.close()
+    }
+
+    Connections {
+        target: manager.cardManager
+        function onErrorMessage(message) {
+            messageDialog.text = message
+            messageDialog.open()
+        }
+    }
 }

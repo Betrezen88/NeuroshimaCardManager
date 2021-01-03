@@ -3,7 +3,7 @@ import QtQuick.Controls 2.12
 
 Row {
     property alias name: _name.text
-    property alias value: _value.text
+    property string value: _value.text
     property int fontSize: 14
 
     id: main
@@ -16,24 +16,10 @@ Row {
         font.bold: true
     }
 
-    Button {
-        id: _down
-        text: "-"
-        font.pointSize: fontSize
+    SpinBox {
+        id: _value2
         height: _name.height
-        width: _name.height
-    }
-
-    Text {
-        id: _value
-        font.pointSize: fontSize
-    }
-
-    Button {
-        id: _up
-        text: "+"
-        font.pointSize: fontSize
-        height: _name.height
-        width: _name.height
+        from: 0
+        to: 4
     }
 }

@@ -1,5 +1,6 @@
 ﻿#include "Card.h"
 #include "Pages/Stats.h"
+#include "Pages/Equipment.h"
 #include "Pages/Rules.h"
 
 Card::Card(QObject *parent) : QObject(parent)
@@ -31,6 +32,13 @@ Stats *Card::stats() const
 {
     if (hasPage(Page::Type::STATS))
         return dynamic_cast<Stats*>(m_pages.value(Page::Type::STATS));
+    return nullptr;
+}
+
+Equipment *Card::equipment() const
+{
+    if (hasPage(Page::Type::EQUIPMENT))
+        return dynamic_cast<Equipment*>(m_pages.value(Page::Type::EQUIPMENT));
     return nullptr;
 }
 

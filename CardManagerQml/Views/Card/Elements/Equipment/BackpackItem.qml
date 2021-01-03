@@ -3,8 +3,11 @@ import QtQuick.Controls 2.12
 import QtQml.Models 2.15
 
 Rectangle {
+    property int index
     property alias name: _name.text
     property alias quantity: _quantity.text
+
+    signal itemDetails(int index)
 
     id: main
     height: 40
@@ -53,7 +56,10 @@ Rectangle {
         Menu {
             id: itemMenu
             
-            MenuItem { text: "Opis" }
+            MenuItem {
+                text: "Opis"
+                onClicked: main.itemDetails(main.index)
+            }
             MenuItem { text: "Użyj" }
             MenuItem { text: "Usuń" }
         }

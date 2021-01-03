@@ -30,6 +30,7 @@
 #include "Card/Data.h"
 #include "Card/Card.h"
 #include "Card/Pages/Stats.h"
+#include "Card/Pages/Equipment.h"
 #include "Card/Pages/Rules.h"
 #include "Card/Elements/Stats/Attribute.h"
 #include "Card/Elements/Stats/Disease.h"
@@ -40,6 +41,7 @@
 #include "Card/Elements/Stats/Skill.h"
 #include "Card/Elements/Stats/Symptom.h"
 #include "Card/Elements/Stats/Trick.h"
+#include "Card/Elements/Equipment/Item.h"
 #include "Card/Elements/Rules/RulesSection.h"
 
 #include "Validators/TrickValidator.h"
@@ -56,6 +58,8 @@ int main(int argc, char *argv[])
     qRegisterMetaType<Page::Type>("Page::Type");
     qRegisterMetaType<Page::Type>("Penalty::Type");
     qRegisterMetaType<Skillpack::Type>("NSSkillpack::Type");
+    qRegisterMetaType<Item::Type>("NSItem::Type");
+    qRegisterMetaType<Item::Stat>("NSItem::Stat");
 
     qmlRegisterType<MainManager>("core.NSMainManager", 1, 0, "NSMainManager");
     qmlRegisterType<CardManager>("core.NSCardManager", 1, 0, "NSCardManager");
@@ -82,6 +86,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<Card>("core.NSCard", 1, 0, "NSCard");
     qmlRegisterType<Page>("core.NSPage", 1, 0, "NSPage");
     qmlRegisterType<Stats>("core.NSStats", 1, 0, "NSStats");
+    qmlRegisterType<Equipment>("core.NSEquipment", 1, 0, "NSEquipment");
     qmlRegisterType<Rules>("core.NSRules", 1, 0, "NSRules");
     qmlRegisterType<Attribute>("core.NSAttribute", 1, 0, "NSAttribute");
     qmlRegisterType<Disease>("core.NSDisease", 1, 0, "NSDisease");
@@ -94,6 +99,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<Trick>("core.NSTrick", 1, 0, "NSTrick");
     qmlRegisterType<TrickValidator>("core.NSTrickValidator",
                                     1, 0, "NSTrickValidator");
+    qmlRegisterType<Item>("core.NSItem", 1, 0, "NSItem");
     qmlRegisterType<RulesSection>("core.NSRulesSection", 1, 0, "NSRulesSection");
 
     QGuiApplication app(argc, argv);

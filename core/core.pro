@@ -21,6 +21,7 @@ SOURCES += \
     Card/Card.cpp \
     Card/Data.cpp \
     Card/Elements/Equipment/Item.cpp \
+    Card/Elements/Equipment/Location.cpp \
     Card/Elements/Rules/RulesSection.cpp \
     Card/Elements/Stats/Attribute.cpp \
     Card/Elements/Stats/Difficulty.cpp \
@@ -37,6 +38,7 @@ SOURCES += \
     Card/Pages/Stats.cpp \
     Creators/CardCreator.cpp \
     Creators/DataSourceCreator.cpp \
+    Creators/ItemCreator.cpp \
     Creators/StatsCreator.cpp \
     DataSources/Elements/Stats/AttributeMod.cpp \
     DataSources/Elements/Stats/Bonus.cpp \
@@ -60,6 +62,7 @@ HEADERS += \
     Card/Card.h \
     Card/Data.h \
     Card/Elements/Equipment/Item.h \
+    Card/Elements/Equipment/Location.h \
     Card/Elements/Rules/RulesSection.h \
     Card/Elements/Stats/Attribute.h \
     Card/Elements/Stats/Difficulty.h \
@@ -76,6 +79,7 @@ HEADERS += \
     Card/Pages/Stats.h \
     Creators/CardCreator.h \
     Creators/DataSourceCreator.h \
+    Creators/ItemCreator.h \
     Creators/PageCreator.h \
     Creators/StatsCreator.h \
     DataSources/DataSource.h \

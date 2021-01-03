@@ -1,7 +1,7 @@
 ﻿import QtQuick 2.0
 import QtQuick.Controls 2.12
 
-import "../Elements"
+import "../Elements/Equipment"
 
 Column {
     id: main
@@ -44,7 +44,7 @@ Column {
 
             ArmorPiece {
                 id: rLeg
-                title: "Lewa Ręka"
+                title: "Prawa Noga"
                 width: parent.width
             }
         }

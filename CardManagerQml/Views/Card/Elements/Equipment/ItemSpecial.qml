@@ -1,0 +1,50 @@
+﻿import QtQuick 2.9
+import QtQuick.Controls 2.12
+
+Row {
+    property alias name: _name.text
+    property alias description: _description.text
+
+    id: main
+    spacing: 5
+
+    Text {
+        id: _name
+        font.pointSize: 12
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: { _tooltip.open() }
+        }
+
+        Popup {
+            id: _tooltip
+            padding: 5
+            width: (_description.implicitWidth > 300)
+                   ? 300 : _description.implicitWidth
+            height: _description.implicitHeight + 10
+
+            y: parent.y - height
+
+            Text {
+                id: _description
+                width: _tooltip.width - (_tooltip.padding*5)
+                wrapMode: Text.WordWrap
+            }
+        }
+    }
+
+    Button {
+        height: _name.height
+        width: _name.height
+        text: "X"
+        onClicked: main.destroy()
+    }
+
+    function special() {
+        return {
+            name: _name.text,
+            description: _description.text
+        }
+    }
+}

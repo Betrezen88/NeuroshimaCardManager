@@ -1,12 +1,19 @@
 ﻿import QtQuick 2.12
-import QtQuick.Controls 2.12
+import QtQuick.Controls 2.15
+import QtQuick.Window 2.15
 import QtQml.Models 2.15
 
 import "../Elements"
+import "../Elements/Equipment"
 
 Column {
+    property alias backpackItems: itemsList.model
+
     id: main
     spacing: 5
+
+    signal openForm()
+    signal showItemDetails(int index)
 
     property int fontSize: 14
 
@@ -23,11 +30,12 @@ Column {
             anchors.centerIn: parent
         }
 
-        Button {
+        RoundButton {
             text: "+"
             width: parent.height
             height: parent.height
             anchors.right: parent.right
+            onClicked: main.openForm()
         }
     }
 
@@ -41,17 +49,9 @@ Column {
         delegate: BackpackItem {
             name: model.name
             quantity: model.quantity
-        }
+            index: model.index
 
-        model: ListModel {
-            ListElement { name: "Papieros"; quantity: 5 }
-            ListElement { name: "Zapalniczka"; quantity: 1 }
-            ListElement { name: "Krótkofalówka"; quantity: 1 }
-        }
-
-        Component.onCompleted: {
-            while ( model.count < 18 )
-                model.append( {name: "", quantity: 0} )
+            onItemDetails: main.showItemDetails(index)
         }
     }
 
@@ -73,5 +73,10 @@ Column {
             name: "Woda:"
             value: "11"
         }
+    }
+
+    onBackpackItemsChanged: {
+        console.log("Backpack.onBackpackItemsChanged()")
+//        itemsList.model = backpackItems
     }
 }

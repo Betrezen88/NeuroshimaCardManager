@@ -2,7 +2,7 @@
 import QtQuick.Controls 2.12
 import QtQml.Models 2.15
 
-import "../Elements"
+import "../Elements/Equipment"
 
 Column {
     id: main

@@ -197,6 +197,9 @@ Page {
                             case "qrc:/Views/Card/Pages/Stats.qml":
                                 currentItem.statsData = cardData.stats
                                 break
+                            case "qrc:/Views/Card/Pages/Equipment.qml":
+                                currentItem.equipmentData = cardData.equipment
+                                break
                             case "qrc:/Views/Card/Pages/Rules.qml":
                                 currentItem.rulesData = cardData.rules
                                 break;

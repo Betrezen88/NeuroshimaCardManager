@@ -54,14 +54,21 @@
         <file>Views/Card/Elements/RulesRow.qml</file>
         <file>Views/Card/Elements/RulesCell.qml</file>
         <file>Views/Card/Sections/Armor.qml</file>
-        <file>Views/Card/Elements/ArmorPiece.qml</file>
         <file>Views/Card/Sections/Backpack.qml</file>
-        <file>Views/Card/Elements/BackpackItem.qml</file>
         <file>Views/Card/Sections/Weapons.qml</file>
-        <file>Views/Card/Elements/WeaponItem.qml</file>
-        <file>Views/Card/Elements/HandWeaponStats.qml</file>
-        <file>Views/Card/Elements/RangedWeaponStats.qml</file>
         <file>Views/Card/Elements/ValueRow.qml</file>
+        <file>Views/Card/Elements/Equipment/ArmorPiece.qml</file>
+        <file>Views/Card/Elements/Equipment/BackpackItem.qml</file>
+        <file>Views/Card/Elements/Equipment/HandWeaponStats.qml</file>
+        <file>Views/Card/Elements/Equipment/ItemAddForm.qml</file>
+        <file>Views/Card/Elements/Equipment/RangedWeaponStats.qml</file>
+        <file>Views/Card/Elements/Equipment/WeaponItem.qml</file>
+        <file>Views/Card/Elements/Equipment/HandWeaponForm.qml</file>
+        <file>Views/Card/Elements/Equipment/SpecialForm.qml</file>
+        <file>Views/Card/Elements/Equipment/ItemSpecial.qml</file>
+        <file>Views/Card/Elements/Equipment/RangedWeaponForm.qml</file>
+        <file>Views/Card/Elements/Equipment/ArmorForm.qml</file>
+        <file>Views/Card/Elements/Equipment/ItemDescription.qml</file>
     </qresource>
     <qresource prefix="/icon">
         <file>resources/icons/add.svg</file>

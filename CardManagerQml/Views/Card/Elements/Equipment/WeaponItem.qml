@@ -62,8 +62,8 @@ Rectangle {
 
     onTypeChanged: {
         var file = (type === "handWeapon")
-                ? "qrc:/Views/Card/Elements/HandWeaponStats.qml"
-                : "qrc:/Views/Card/Elements/RangedWeaponStats.qml"
+                ? "qrc:/Views/Card/Elements/Equipment/HandWeaponStats.qml"
+                : "qrc:/Views/Card/Elements/Equipment/RangedWeaponStats.qml"
         var component = Qt.createComponent(file)
         var object = component.createObject(test, {
                                                 width: main.width
