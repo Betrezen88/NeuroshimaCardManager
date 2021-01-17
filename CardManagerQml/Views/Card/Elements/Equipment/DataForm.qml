@@ -5,20 +5,22 @@ import QtQuick.Layouts 1.12
 import "../"
 
 Popup {
+    property alias title: _title.text
+
     id: main
     height: implicitHeight
     width: 300
     padding: 5
 
-    signal sendSpecial(string name, string description)
+    signal sendData(string name, string description)
 
     ColumnLayout {
         spacing: 5
         anchors.fill: parent
 
         Label {
+            id: _title
             Layout.fillWidth: true
-            text: "Reguła specjalna"
             font.pointSize: 12
             font.bold: true
             horizontalAlignment: Text.AlignHCenter
@@ -57,10 +59,7 @@ Popup {
             Button {
                 Layout.alignment: Qt.AlignRight
                 text: "Anuluj"
-                onClicked: {
-                    main.close()
-                    main.clear()
-                }
+                onClicked: main.close()
             }
             Button {
                 Layout.alignment: Qt.AlignRight
@@ -70,16 +69,15 @@ Popup {
                         || _description.text.length === 0 )
                         return
 
-                    main.sendSpecial(_name.text, _description.text)
-                    main.clear()
+                    main.sendData(_name.text, _description.text)
                     main.close()
                 }
             }
         }
     } // Column
 
-    function clear() {
-        _name.text = ""
-        _description.text = ""
+    onClosed: {
+        _name.clear()
+        _description.clear()
     }
 }

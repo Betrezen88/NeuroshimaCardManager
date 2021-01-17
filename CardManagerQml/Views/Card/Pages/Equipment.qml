@@ -66,7 +66,12 @@ Pane {
         x: (main.width > width) ? (main.width - width) / 2 : 0
         y: 100
 
-        onSendItem: equipmentData.addItemToBackpack(itemData)
+        onSendItem: {
+            console.log("ItemAddForm.onSendItem()")
+            console.log("itemData keys:", Object.keys(itemData))
+            console.log("stats keys:", Object.keys(itemData["STATS"]))
+            equipmentData.addItemToBackpack(itemData)
+        }
     }
 
     ItemDescription {

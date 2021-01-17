@@ -46,8 +46,6 @@
 
 #include "Validators/TrickValidator.h"
 
-#include <QDebug>
-
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -59,7 +57,6 @@ int main(int argc, char *argv[])
     qRegisterMetaType<Page::Type>("Penalty::Type");
     qRegisterMetaType<Skillpack::Type>("NSSkillpack::Type");
     qRegisterMetaType<Item::Type>("NSItem::Type");
-    qRegisterMetaType<Item::Stat>("NSItem::Stat");
 
     qmlRegisterType<MainManager>("core.NSMainManager", 1, 0, "NSMainManager");
     qmlRegisterType<CardManager>("core.NSCardManager", 1, 0, "NSCardManager");

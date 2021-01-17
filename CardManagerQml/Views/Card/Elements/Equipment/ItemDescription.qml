@@ -11,14 +11,14 @@ Popup {
     padding: 5
 
     ScrollView {
+        id: scrollView
         height: main.height - 10
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.horizontalCenter: parent.horizontalCenter
         width: main.width - 10
         clip: true
 
         Column {
             spacing: 5
+            width: main.width - 10
 
             Label {
                 id: _name
@@ -43,9 +43,28 @@ Popup {
                                ? _description.implicitHeight : _button.height
                 }
 
-                Text {
-                    id: _description
-                }
+                Text { id: _description }
+            }
+
+            Flow {
+                spacing: 10
+                width: main.width - (main.padding*2)
+                Text { id: _price }
+                Text { id: _quantity }
+                Text { id: _reputation }
+            }
+
+            Text { id: _requiredBody }
+
+            Text { id: _damage }
+
+            Text { id: _penetration }
+
+            Text { id: _durability }
+
+            Flow {
+                id: _specials
+                width: main.width - 10
             }
         } // Column
     }
@@ -53,6 +72,27 @@ Popup {
     onItemDataChanged: {
         _name.text = itemData.name
         _description.text = itemData.description
+
+        _price.text = "Cena: " + itemData.price
+        _quantity.text = "Ilość: " + itemData.quantity
+
+        console.log( "REPUTATION:", itemData.hasStat("REPUTATION") )
+        _reputation.visible = itemData.hasStat("REPUTATION")
+        _reputation.text = "Reputacja: " + itemData.reputation
+
+        _requiredBody.visible = itemData.hasStat("REQUIREMENT")
+        _requiredBody.text = "Wymagana Budowa: " + itemData.requiredBody
+
+        _damage.visible = itemData.hasStat("DAMAGE")
+        _damage.text = "Obrażenia: " + itemData.damage
+
+        console.log( "PENETRATION:", itemData.hasStat("PENETRATION") )
+        _penetration.visible = itemData.hasStat("PENETRATION")
+        _penetration.text = "Przebicie: " + itemData.penetration
+
+        console.log( "DURABILITY:", itemData.hasStat("DURABILITY") )
+        _durability.visible = itemData.hasStat("DURABILITY")
+        _durability.text = "Wytrzymałość: " + itemData.durability
     }
 }
 

@@ -18,7 +18,7 @@ Equipment::Equipment(const QList<Item *> &backpack,
     while ( m_backpack.count() < 18 ) {
         m_backpack.append(new Item(Item::Type::EMPTY,
                                    "", "", 0, 0,
-                                   QMap<Item::Stat, QVariant>(), this));
+                                   QMap<QString, QVariant>(), this));
     }
 }
 
@@ -42,6 +42,8 @@ void Equipment::addItemToBackpack(Item *item)
 
 void Equipment::addItemToBackpack(const QVariantMap &itemData)
 {
+    qDebug() << "Equipment::addItemToBackpack()" << itemData;
+
     int empty = findEmptyInBackpack();
     ItemCreator creator;
     if ( empty > -1 ) {

@@ -63,12 +63,11 @@
         <file>Views/Card/Elements/Equipment/ItemAddForm.qml</file>
         <file>Views/Card/Elements/Equipment/RangedWeaponStats.qml</file>
         <file>Views/Card/Elements/Equipment/WeaponItem.qml</file>
-        <file>Views/Card/Elements/Equipment/HandWeaponForm.qml</file>
-        <file>Views/Card/Elements/Equipment/SpecialForm.qml</file>
+        <file>Views/Card/Elements/Equipment/DataForm.qml</file>
         <file>Views/Card/Elements/Equipment/ItemSpecial.qml</file>
-        <file>Views/Card/Elements/Equipment/RangedWeaponForm.qml</file>
-        <file>Views/Card/Elements/Equipment/ArmorForm.qml</file>
         <file>Views/Card/Elements/Equipment/ItemDescription.qml</file>
+        <file>Views/Card/Elements/Equipment/PenaltyForm.qml</file>
+        <file>Views/Card/Elements/Equipment/Penalty.qml</file>
     </qresource>
     <qresource prefix="/icon">
         <file>resources/icons/add.svg</file>
