@@ -460,8 +460,9 @@ Popup {
                         }
 
                         function clear() {
-                            for ( var s in objects )
+                            for ( var s in objects ) {
                                 objects[s].destroy()
+                            }
                             objects = []
                         }
                     }
@@ -863,7 +864,8 @@ Popup {
             var component = Qt.createComponent("ItemSpecial.qml")
             var object = component.createObject(_specials, {
                                                     name: name,
-                                                    description: description
+                                                    description: description,
+                                                    visibleBtn: true
                                                 })
             _specials.objects.push(object)
         }

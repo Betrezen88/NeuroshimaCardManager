@@ -17,10 +17,19 @@ class CORE_EXPORT Item : public Data
                WRITE setQuantity
                NOTIFY quantityChanged)
     Q_PROPERTY(int requiredBody READ requiredBody CONSTANT)
-    Q_PROPERTY(QString damage READ damage CONSTANT)
+    Q_PROPERTY(QStringList damage READ damage CONSTANT)
     Q_PROPERTY(int penetration READ penetration CONSTANT)
     Q_PROPERTY(int durability READ durability CONSTANT)
     Q_PROPERTY(int reputation READ reputation CONSTANT)
+    Q_PROPERTY(QMap<QString, QVariant> dexBonus READ dexBonus CONSTANT)
+    Q_PROPERTY(QString magazine READ magazine CONSTANT)
+    Q_PROPERTY(QString bullet READ bullet CONSTANT)
+    Q_PROPERTY(int rateOfFire READ rateOfFire CONSTANT)
+    Q_PROPERTY(int ammunition READ ammunition CONSTANT)
+    Q_PROPERTY(QList<QVariant> special READ special CONSTANT)
+    Q_PROPERTY(QMap<QString, QVariant> locations READ locations CONSTANT)
+    Q_PROPERTY(QList<QVariant> penalties READ penalties CONSTANT)
+    Q_PROPERTY(QList<QVariant> features READ features CONSTANT)
 
 public:
     enum class Type {
@@ -33,23 +42,6 @@ public:
         EMPTY
     };
     Q_ENUM(Type)
-
-    enum class Stat {
-        AMMO,
-        MAGAZINE,
-        RATEOFFIRE,
-        DEXBONUS,
-//        ARMOR,
-        DURABILITY,
-        REPUTATION,
-        LOCATIONS,
-        DAMAGE,
-        PENALTY,
-        SPECIALS,
-        REQUIREMENT,
-        PENETRATION
-    };
-    Q_ENUM(Stat)
 
     explicit Item(QObject* parent = nullptr);
     explicit Item(const Type& type,
@@ -64,17 +56,22 @@ public:
     int quantity() const;
     Type type() const;
     int requiredBody() const;
-    QString damage() const;
+    QStringList damage() const;
     int penetration() const;
     int durability() const;
     int reputation() const;
     QString magazine() const;
+    QString bullet() const;
     int rateOfFire() const;
+    int ammunition() const;
     QMap<QString, QVariant> dexBonus() const;
+    QList<QVariant> special() const;
+    QMap<QString, QVariant> locations() const;
+    QList<QVariant> penalties() const;
+    QList<QVariant> features() const;
 
     static Type stringToType(const QString& type);
 
-//    Q_INVOKABLE QVariant stat(const Stat& stat) const;
     Q_INVOKABLE bool hasStat(const QString& stat) const;
 
     void setStat(const QString& stat, const QVariant& value);

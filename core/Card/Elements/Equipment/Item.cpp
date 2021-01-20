@@ -35,22 +35,11 @@ int Item::requiredBody() const
     return 0;
 }
 
-QString Item::damage() const
+QStringList Item::damage() const
 {
-    if ( m_stats.contains("DAMAGE") ) {
-        QStringList tmp = m_stats.value("DAMAGE").toStringList();
-
-        if ( tmp.count() > 1 ) {
-            QString dmg;
-            for ( int i=0; i<tmp.count(); ++i ) {
-                dmg += QString::number(i+1) + "s: " + tmp.at(i)
-                        + ( (i<tmp.count()-1) ? " / " : "" );
-            }
-            return dmg;
-        }
-        return tmp.first();
-    }
-    return QString();
+    if ( m_stats.contains("DAMAGE") )
+        return m_stats.value("DAMAGE").toStringList();
+    return QStringList();
 }
 
 int Item::penetration() const
@@ -88,10 +77,17 @@ int Item::rateOfFire() const
     return 0;
 }
 
+int Item::ammunition() const
+{
+    if ( m_stats.contains("AMMUNITION") )
+        return m_stats.value("AMMUNITION").toInt();
+    return 0;
+}
+
 QMap<QString, QVariant> Item::dexBonus() const
 {
-    if ( m_stats.contains("DEXBONUS") )
-        return m_stats.value("DEXBONUS").toMap();
+    if ( m_stats.contains("BONUS") )
+        return m_stats.value("BONUS").toMap();
     return QMap<QString, QVariant>();
 }
 
@@ -118,6 +114,41 @@ Item::Type Item::stringToType(const QString &type)
 bool Item::hasStat(const QString &stat) const
 {
     return m_stats.contains(stat);
+}
+
+QString Item::bullet() const
+{
+    if ( m_stats.contains("BULLET") )
+        return m_stats.value("BULLET").toString();
+    return QString();
+}
+
+QList<QVariant> Item::special() const
+{
+    if ( m_stats.contains("SPECIAL") )
+        return m_stats.value("SPECIAL").toList();
+    return QList<QVariant>();
+}
+
+QMap<QString, QVariant> Item::locations() const
+{
+    if ( m_stats.contains("LOCATIONS") )
+        return m_stats.value("LOCATIONS").toMap();
+    return QMap<QString, QVariant>();
+}
+
+QList<QVariant> Item::penalties() const
+{
+    if ( m_stats.contains("PENALTIES") )
+        return m_stats.value("PENALTIES").toList();
+    return QList<QVariant>();
+}
+
+QList<QVariant> Item::features() const
+{
+    if ( m_stats.contains("FEATURES") )
+        return m_stats.value("FEATURES").toList();
+    return QList<QVariant>();
 }
 
 void Item::setQuantity(int quantity)

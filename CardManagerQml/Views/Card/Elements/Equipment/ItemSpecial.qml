@@ -4,6 +4,7 @@ import QtQuick.Controls 2.12
 Row {
     property alias name: _name.text
     property alias description: _description.text
+    property alias visibleBtn: _removeBtn.visible
 
     id: main
     spacing: 5
@@ -35,9 +36,11 @@ Row {
     }
 
     Button {
+        id: _removeBtn
         height: _name.height
         width: _name.height
         text: "X"
+        visible: !main.removable
         onClicked: main.destroy()
     }
 
