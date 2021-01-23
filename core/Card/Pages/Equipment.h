@@ -7,8 +7,6 @@
 #include "../Elements/Equipment/Item.h"
 #include "core_global.h"
 
-class Armor;
-
 class CORE_EXPORT Equipment : public Page
 {
     Q_OBJECT
@@ -24,6 +22,7 @@ public:
     Q_INVOKABLE void addItemToBackpack(const QVariantMap& itemData);
     QQmlListProperty<Item> backpack();
     Q_INVOKABLE Item* getItemFromBackpack(const int &index);
+    QList<Item*> backpack() const;
 
 signals:
     void backpackChanged();

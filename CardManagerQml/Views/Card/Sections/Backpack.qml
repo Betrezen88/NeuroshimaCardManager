@@ -74,9 +74,4 @@ Column {
             value: "11"
         }
     }
-
-    onBackpackItemsChanged: {
-        console.log("Backpack.onBackpackItemsChanged()")
-//        itemsList.model = backpackItems
-    }
 }

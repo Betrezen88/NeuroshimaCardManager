@@ -42,8 +42,6 @@ void Equipment::addItemToBackpack(Item *item)
 
 void Equipment::addItemToBackpack(const QVariantMap &itemData)
 {
-    qDebug() << "Equipment::addItemToBackpack()" << itemData;
-
     int empty = findEmptyInBackpack();
     ItemCreator creator;
     if ( empty > -1 ) {
@@ -52,6 +50,7 @@ void Equipment::addItemToBackpack(const QVariantMap &itemData)
     }
     else
         m_backpack.append( creator.create(itemData) );
+
     emit backpackChanged();
 }
 
@@ -66,6 +65,11 @@ Item *Equipment::getItemFromBackpack(const int& index)
         return nullptr;
 
     return m_backpack.at(index);
+}
+
+QList<Item *> Equipment::backpack() const
+{
+    return m_backpack;
 }
 
 Item *Equipment::findItemInBackpack(const QString &name)

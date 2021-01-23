@@ -7,8 +7,8 @@ Text {
     property string type
 
     id: main
-    text: value + " " + name
-    font.pixelSize: 12
+    text: value + " " + name + " (" + type + ")"
+    font.pointSize: 12
 
     function penalty() {
         return {

@@ -640,11 +640,26 @@ Popup {
                 height: implicitHeight
                 spacing: 5
                 visible: itemData !== null
-                         && ( itemData.hasStat("PENALTIES")
-                             || itemData.hasStat("FEATURES") )
+                         && itemData.hasStat("PENALTIES")
 
                 Text {
-                    text: qsTr("Kary/Bonusy/Cechy:")
+                    text: qsTr("Kary/Bonusy:")
+                    font.bold: true
+                    font.pointSize: 12
+                }
+            }
+
+            Flow {
+                property var objects: []
+                id: _features
+                width: _scrollView.width
+                height: implicitHeight
+                spacing: 5
+                visible: itemData !== null
+                         && itemData.hasStat("FEATURES")
+
+                Text {
+                    text: qsTr("Cechy:")
                     font.bold: true
                     font.pointSize: 12
                 }
@@ -738,9 +753,40 @@ Popup {
         }
 
         if ( itemData.hasStat("PENALTIES") ) {
-            for ( var p in itemData.features ) {
-                var penalty = itemData.features[p]
-//                _scrollView.createElement("")
+            for ( var pen in _penalties.objects )
+                _penalties.objects[pen].destroy()
+            _penalties.objects = []
+            for ( var p in itemData.penalties ) {
+                var penalty = itemData.penalties[p]
+                var penObject = _scrollView.createElement(
+                            "Penalty.qml",
+                            _penalties,
+                            {
+                                value: penalty.VALUE,
+                                name: penalty.NAME,
+                                type: penalty.TYPE
+                            }
+                        )
+                _penalties.objects.push(penObject)
+            }
+        }
+
+        if ( itemData.hasStat("FEATURES") ) {
+            for ( var fea in _features.objects )
+                _features.objects[fea].destroy()
+            _features.objects = []
+            for ( var f in itemData.features ) {
+                var feature = itemData.features[f]
+                var featObject = _scrollView.createElement(
+                            "ItemSpecial.qml",
+                            _features,
+                            {
+                                name: feature.NAME,
+                                description: feature.DESCRIPTION,
+                                visibleBtn: false
+                            }
+                        )
+                _features.objects.push(featObject)
             }
         }
     }

@@ -3,6 +3,7 @@ import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 
 import core.NSItem 1.0
+import core.NSPenalty 1.0
 
 Popup {
     id: main
@@ -757,7 +758,7 @@ Popup {
                             "DESCRIPTION": _description.text,
                             "PRICE": _price.value,
                             "QUANTITY": _quantity.value,
-                            "TYPE": _type.currentText
+                            "TYPE": typeToString(_type.currentIndex)
                         }
                         var stats = {}
 
@@ -823,10 +824,10 @@ Popup {
                                 stats["PENALTIES"] = []
                                 for ( var p=0; p<_penalties.model.count; ++p ) {
                                     stats["PENALTIES"].push({
-                                        "VALUE": _penalties.model.get(p).value,
-                                        "NAME": _penalties.model.get(p).name,
-                                        "TYPE": _penalties.model.get(p).type
-                                    })
+                                            "VALUE": _penalties.model.get(p).value,
+                                            "NAME": _penalties.model.get(p).name,
+                                            "TYPE": _penalties.model.get(p).type
+                                        });
                                 }
                             }
 
@@ -844,6 +845,16 @@ Popup {
 
                         main.sendItem(itemData)
                         main.close()
+                    }
+
+                    function typeToString(index) {
+                        if ( index === 0 ) return "OTHER"
+                        else if ( index === 1 ) return "CONSUMABLE"
+                        else if ( index === 2 ) return "ARMOR"
+                        else if ( index === 3 ) return "SHIELD"
+                        else if ( index === 4 ) return "HANDWEAPON"
+                        else if ( index === 5 ) return "RANGEDWEAPON"
+                        else return "EMPTY"
                     }
                 }
 
