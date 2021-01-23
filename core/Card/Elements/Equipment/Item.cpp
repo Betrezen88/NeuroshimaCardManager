@@ -103,12 +103,33 @@ int Item::quantity() const
 
 Item::Type Item::stringToType(const QString &type)
 {
-    if ( "armor" == type ) return Type::ARMOR;
-    else if ( "handweapon" == type ) return Type::HANDWEAPON;
-    else if ( "rangedweapon" == type ) return Type::RANGEDWEAPON;
-    else if ( "shield" == type ) return Type::SHIELD;
-    else if ( "consumable" == type ) return Type::CONSUMABLE;
-    else return Type::OTHER;
+    if ( "ARMOR" == type.toUpper() ) return Type::ARMOR;
+    else if ( "HANDWEAPON" == type.toUpper() ) return Type::HANDWEAPON;
+    else if ( "RANGEDWEAPON" == type.toUpper() ) return Type::RANGEDWEAPON;
+    else if ( "SHIELD" == type.toUpper() ) return Type::SHIELD;
+    else if ( "CONSUMABLE" == type.toUpper() ) return Type::CONSUMABLE;
+    else if ( "OTHER" == type.toUpper() ) return Type::OTHER;
+    else return Type::EMPTY;
+}
+
+QString Item::typeToString(const Item::Type &type)
+{
+    switch (type) {
+        case Type::ARMOR:
+            return "ARMOR";
+        case Type::HANDWEAPON:
+            return "HANDWEAPON";
+        case Type::RANGEDWEAPON:
+            return "RANGEDWEAPON";
+        case Type::SHIELD:
+            return "SHIELD";
+        case Type::CONSUMABLE:
+            return "CONSUMABLE";
+        case Type::OTHER:
+            return "OTHER";
+        default:
+            return "EMPTY";
+    }
 }
 
 bool Item::hasStat(const QString &stat) const

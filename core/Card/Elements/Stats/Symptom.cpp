@@ -34,6 +34,11 @@ int Symptom::penaltyCount() const
     return m_penalties.count();
 }
 
+QVector<Penalty *> Symptom::penalties() const
+{
+    return m_penalties;
+}
+
 Penalty *Symptom::penalty(QQmlListProperty<Penalty> *list, int index)
 {
     return reinterpret_cast<Symptom*>(list->data)->penalty(index);

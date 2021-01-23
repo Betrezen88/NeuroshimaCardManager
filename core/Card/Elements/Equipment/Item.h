@@ -71,6 +71,7 @@ public:
     QList<QVariant> features() const;
 
     static Type stringToType(const QString& type);
+    static QString typeToString(const Type& type);
 
     Q_INVOKABLE bool hasStat(const QString& stat) const;
 

@@ -29,6 +29,8 @@ public:
     Symptom *symptom(int) const;
     int symptomsCount() const;
 
+    QVector<Symptom*> symptoms() const;
+
 private:
     static Symptom *symptom(QQmlListProperty<Symptom>*, int);
     static int symptomsCount(QQmlListProperty<Symptom>*);

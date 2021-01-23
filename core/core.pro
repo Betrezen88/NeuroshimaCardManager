@@ -55,7 +55,9 @@ SOURCES += \
     Managers/CreationPointsManager.cpp \
     Managers/MainManager.cpp \
     Utils/CardBuilder.cpp \
+    Utils/Converter.cpp \
     Utils/DataReader.cpp \
+    Utils/DataWriter.cpp \
     Validators/TrickValidator.cpp
 
 HEADERS += \
@@ -99,7 +101,9 @@ HEADERS += \
     Managers/CreationPointsManager.h \
     Managers/MainManager.h \
     Utils/CardBuilder.h \
+    Utils/Converter.h \
     Utils/DataReader.h \
+    Utils/DataWriter.h \
     Utils/Dice.h \
     Validators/TrickValidator.h \
     core_global.h

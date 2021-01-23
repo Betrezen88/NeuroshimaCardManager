@@ -127,6 +127,11 @@ Attribute *Stats::attribute(const QString &name)
     return nullptr;
 }
 
+QVector<Attribute *> Stats::attributes() const
+{
+    return m_attributes;
+}
+
 QQmlListProperty<Trick> Stats::tricks()
 {
     return QQmlListProperty<Trick>(this, this,
@@ -144,6 +149,11 @@ Trick *Stats::trick(const int &index) const
     return m_tricks.at(index);
 }
 
+QVector<Trick *> Stats::tricks() const
+{
+    return m_tricks;
+}
+
 QQmlListProperty<OtherSkill> Stats::otherSkills()
 {
     return QQmlListProperty<OtherSkill>(this, this,
@@ -159,6 +169,11 @@ int Stats::otherSkillsCount() const
 OtherSkill *Stats::otherSkill(const int &index) const
 {
     return m_otherSkills.at(index);
+}
+
+QVector<OtherSkill*> Stats::otherSkills() const
+{
+    return m_otherSkills;
 }
 
 int Stats::attributesCount(QQmlListProperty<Attribute> *list)

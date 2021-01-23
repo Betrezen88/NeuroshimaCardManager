@@ -40,6 +40,11 @@ int Disease::symptomsCount() const
     return m_symptoms.count();
 }
 
+QVector<Symptom *> Disease::symptoms() const
+{
+    return m_symptoms;
+}
+
 Symptom *Disease::symptom(QQmlListProperty<Symptom> *list, int index)
 {
     return reinterpret_cast<Disease*>(list->data)->symptom(index);

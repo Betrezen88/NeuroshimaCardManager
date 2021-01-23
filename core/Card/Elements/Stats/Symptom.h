@@ -26,6 +26,8 @@ public:
     Penalty *penalty(int) const;
     int penaltyCount() const;
 
+    QVector<Penalty*> penalties() const;
+
 private:
     static Penalty *penalty(QQmlListProperty<Penalty>*, int);
     static int penaltyCount(QQmlListProperty<Penalty>*);

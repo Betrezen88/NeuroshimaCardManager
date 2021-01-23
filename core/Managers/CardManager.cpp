@@ -4,7 +4,9 @@
 #include "Card/Pages/Rules.h"
 
 #include "Utils/DataReader.h"
+#include "Utils/DataWriter.h"
 #include "Utils/CardBuilder.h"
+#include "Utils/Converter.h"
 
 #include <QJsonDocument>
 #include <QUrl>
@@ -101,7 +103,7 @@ void CardManager::loadCard(const QString &filePath)
     std::tuple<bool, QJsonDocument, QString> data = reader.load( file.toLocalFile() );
 
     if ( !std::get<0>(data) ) {
-        emit errorMessage( std::get<2>(data) );
+        emit errorMessage("Błąd wczytywania", std::get<2>(data) );
         return;
     }
 
@@ -113,7 +115,7 @@ void CardManager::loadCard(const QString &filePath)
 void CardManager::closeCard(const QString &filePath)
 {
     if ( !m_cardsFilePaths.contains(filePath) ) {
-        emit errorMessage("Brak karty, którą chcesz zamknąć.");
+        emit errorMessage("Błąd aplikacji", "Brak karty, którą chcesz zamknąć.");
         return;
     }
 
@@ -128,6 +130,25 @@ void CardManager::closeCard(const QString &filePath)
     emit cardsChanged();
 }
 
+void CardManager::saveSelectedCard()
+{
+    Converter converter;
+    DataWriter writer;
+
+    const int& index = m_cardsFilePaths.indexOf(m_selectedCard);
+
+    QUrl file(m_selectedCard);
+
+    std::tuple<bool, QString> msg = writer.save(
+                file.toLocalFile(),
+                QJsonDocument(converter.toJson(m_cards.at(index))) );
+
+    if ( !std::get<0>(msg) )
+        emit errorMessage( "Błąd zapisu", std::get<1>(msg) );
+    else
+        emit infoMessage( "Potwierdzenie zapisu", std::get<1>(msg) );
+}
+
 void CardManager::createRulesPage(const QString &filePath)
 {
     DataReader reader;
@@ -135,7 +156,7 @@ void CardManager::createRulesPage(const QString &filePath)
     std::tuple<bool, QJsonDocument, QString> data = reader.load( filePath );
 
     if ( !std::get<0>(data) ) {
-        emit errorMessage( std::get<2>(data) );
+        emit errorMessage("Błąd wczytywania reguł", std::get<2>(data) );
         return;
     }
 

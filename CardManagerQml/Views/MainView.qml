@@ -108,6 +108,7 @@ Page {
 
                     MenuItem {
                         text: "Zapisz.."
+                        action: saveAct
                     }
                     MenuItem {
                         text: "Zapisz wszystko"
@@ -181,6 +182,7 @@ Page {
                                 if ( cardsList.currentIndex !== index ) {
                                     cardsList.currentIndex = index
                                     cardsView.cardData = manager.cardManager.card(cardItem.filePath)
+                                    manager.cardManager.selectedCard = cardItem.filePath
                                 }
                             }
                         }
@@ -192,7 +194,9 @@ Page {
 
             onCurrentIndexChanged: {
                 if ((currentIndex !== -1) && (currentIndex !== secCurrentIndex)) {
+                    console.log("MainView.qml onCurrentIndexChanged")
                     cardsView.cardData = manager.cardManager.card(cardsList.currentItem.filePath)
+                    manager.cardManager.selectedCard = cardsList.currentItem.filePath
                     secCurrentIndex = currentIndex
                 }
             }
@@ -235,6 +239,22 @@ Page {
         }
     }
 
+    Action {
+        id: saveAct
+        onTriggered: {
+            sidePanel.close()
+            if ( cardsView.cardData !== undefined ) {
+                manager.cardManager.saveSelectedCard()
+            }
+            else {
+                manager.cardManager.errorMessage(
+                            "Błąd zapisu",
+                            "Brak karty do zapisania"
+                        )
+            }
+        }
+    }
+
     StackView {
         id: stackView
         anchors.fill: parent
@@ -257,13 +277,18 @@ Page {
 
     MessageDialog {
         id: messageDialog
-        title: "Błąd aplikacji"
         onAccepted: messageDialog.close()
     }
 
     Connections {
         target: manager.cardManager
-        function onErrorMessage(message) {
+        function onErrorMessage(title, message) {
+            messageDialog.title = title
+            messageDialog.text = message
+            messageDialog.open()
+        }
+        function onInfoMessage(title, message) {
+            messageDialog.title = title
             messageDialog.text = message
             messageDialog.open()
         }

@@ -64,14 +64,17 @@ public:
     int attributesCount() const;
     Attribute* attribute(const int &index) const;
     Q_INVOKABLE Attribute* attribute(const QString &name);
+    QVector<Attribute*> attributes() const;
 
     QQmlListProperty<Trick> tricks();
     int tricksCount() const;
     Trick* trick(const int &index) const;
+    QVector<Trick*> tricks() const;
 
     QQmlListProperty<OtherSkill> otherSkills();
     int otherSkillsCount() const;
     OtherSkill* otherSkill(const int &index) const;
+    QVector<OtherSkill *> otherSkills() const;
 
 private:
     static int attributesCount(QQmlListProperty<Attribute> *list);
