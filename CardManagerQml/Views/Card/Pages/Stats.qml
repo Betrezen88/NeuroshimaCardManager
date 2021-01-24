@@ -90,6 +90,11 @@ Pane {
                     height: (character.height + perception.height)
                             - cleaverness.height
                 }
+
+                Experience {
+                    id: experience
+                    width: row.columnWidth
+                }
             }
         }
     }
