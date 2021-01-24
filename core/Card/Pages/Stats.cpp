@@ -21,6 +21,7 @@ Stats::Stats(const QString &name,
              const QVector<Attribute *> &attributes,
              const QVector<Trick *> &tricks,
              const QVector<OtherSkill*> &otherSkills,
+             const QPair<int, int> &experience,
              QObject *parent)
     : Page(Page::Type::STATS, parent),
       m_name(name),
@@ -34,7 +35,8 @@ Stats::Stats(const QString &name,
       m_pDisease(disease),
       m_attributes(attributes),
       m_tricks(tricks),
-      m_otherSkills(otherSkills)
+      m_otherSkills(otherSkills),
+      m_experience(experience)
 {
 
 }
@@ -174,6 +176,22 @@ OtherSkill *Stats::otherSkill(const int &index) const
 QVector<OtherSkill*> Stats::otherSkills() const
 {
     return m_otherSkills;
+}
+
+void Stats::addExperience(const int &points)
+{
+    m_experience.first += points;
+    emit gatheredChanged(m_experience.first);
+}
+
+int Stats::gathered() const
+{
+    return m_experience.first;
+}
+
+int Stats::spended() const
+{
+    return m_experience.second;
 }
 
 int Stats::attributesCount(QQmlListProperty<Attribute> *list)

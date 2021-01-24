@@ -31,6 +31,8 @@ class CORE_EXPORT Stats : public Page
     Q_PROPERTY(QQmlListProperty<Attribute> attributes READ attributes CONSTANT)
     Q_PROPERTY(QQmlListProperty<Trick> tricks READ tricks CONSTANT)
     Q_PROPERTY(QQmlListProperty<OtherSkill> otherSkills READ otherSkills CONSTANT)
+    Q_PROPERTY(int gathered READ gathered NOTIFY gatheredChanged)
+    Q_PROPERTY(int spended READ spended NOTIFY spendedChanged)
 
 public:
     explicit Stats(QObject *parent = nullptr);
@@ -46,6 +48,7 @@ public:
                    const QVector<Attribute*> &attributes,
                    const QVector<Trick*> &tricks,
                    const QVector<OtherSkill*> &otherSkills,
+                   const QPair<int, int> &experience = QPair<int, int>(0, 0),
                    QObject *parent = nullptr);
 
     QString name() const;
@@ -76,6 +79,14 @@ public:
     OtherSkill* otherSkill(const int &index) const;
     QVector<OtherSkill *> otherSkills() const;
 
+    Q_INVOKABLE void addExperience(const int &points);
+    int gathered() const;
+    int spended() const;
+
+signals:
+    void gatheredChanged(const int& value);
+    void spendedChanged(const int& value);
+
 private:
     static int attributesCount(QQmlListProperty<Attribute> *list);
     static Attribute* attribute(QQmlListProperty<Attribute> *list, int index);
@@ -101,6 +112,8 @@ private:
     QVector<Attribute*> m_attributes;
     QVector<Trick*> m_tricks;
     QVector<OtherSkill*> m_otherSkills;
+
+    QPair<int, int> m_experience;
 };
 
 #endif // STATS_H

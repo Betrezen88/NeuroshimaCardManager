@@ -107,6 +107,7 @@ Stats *CardBuilder::statsPage(const QJsonObject &stats)
                                               tOtherSkill.value("used").toBool(),
                                               tOtherSkill.value("attribute").toString()) );
     }
+    const QJsonObject &experience = stats.value("experience").toObject();
 
     return new Stats(name.value("name").toString(),
                      name.value("surname").toString(),
@@ -127,7 +128,9 @@ Stats *CardBuilder::statsPage(const QJsonObject &stats)
                                  QVector<Symptom*>()),
                      attributes,
                      tricks,
-                     otherSkills );
+                     otherSkills,
+                     QPair<int, int>(experience.value("gathered").toInt(),
+                                     experience.value("spended").toInt()) );
 }
 
 Equipment *CardBuilder::equipmentPage(const QJsonObject &equipment)

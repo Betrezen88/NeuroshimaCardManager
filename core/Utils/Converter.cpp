@@ -74,6 +74,11 @@ QJsonObject Converter::fromStats(const Stats *stats)
         otherSkills.append( fromOtherSkill(otherSkill) );
     object.insert( "otherSkills", otherSkills );
 
+    QJsonObject experience;
+    experience.insert( "gathered", stats->gathered() );
+    experience.insert( "spended", stats->spended() );
+    object.insert( "experience", experience );
+
     return object;
 }
 

@@ -1,10 +1,12 @@
 ﻿import QtQuick 2.0
 import QtQuick.Controls 2.12
 
+import core.NSStats 1.0
+
 import "./../Sections"
 
 Pane {
-    property var statsData
+    property NSStats statsData
 
     id: main
 
@@ -94,20 +96,80 @@ Pane {
                 Experience {
                     id: experience
                     width: row.columnWidth
+                    onShowExperienceForm: _experienceForm.open()
                 }
             }
         }
     }
 
+    Popup {
+        id: _experienceForm
+        modal: true
+        height: implicitHeight
+        padding: 5
+
+        Column {
+            spacing: 5
+
+            Text {
+                text: "Dodaj doświadczenie"
+                height: 30
+                width: main.width
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+            }
+
+            TextField {
+                id: _expiriencePoints
+                placeholderText: "Przyznane doświadczenie"
+                validator: IntValidator { bottom: 0; top: 1000 }
+            }
+
+            Row {
+                spacing: 5
+
+                Button {
+                    text: "Anuluj"
+                    onClicked: _experienceForm.close()
+                }
+
+                Button {
+                    text: "Dodaj"
+                    onClicked: {
+                        if ( _expiriencePoints.length === 0 )
+                            return
+
+                        statsData.addExperience( _expiriencePoints.text )
+                        _experienceForm.close()
+                    }
+                }
+            }
+        } // Column
+
+        onClosed: _expiriencePoints.clear()
+
+    } // Popup
+
     onStatsDataChanged: {
-        personal.personalData = statsData;
-        tricks.tricks = statsData.tricks;
-        budowa.attribute = statsData.attributes[0];
-        dexterity.attribute = statsData.attributes[1];
-        character.attribute = statsData.attributes[2];
-        perception.attribute = statsData.attributes[3];
-        cleaverness.attribute = statsData.attributes[4];
-        otherSkills.skills = statsData.otherSkills;
+        personal.personalData = statsData
+        tricks.tricks = statsData.tricks
+        budowa.attribute = statsData.attributes[0]
+        dexterity.attribute = statsData.attributes[1]
+        character.attribute = statsData.attributes[2]
+        perception.attribute = statsData.attributes[3]
+        cleaverness.attribute = statsData.attributes[4]
+        otherSkills.skills = statsData.otherSkills
+        experience.gathered = statsData.gathered
+        experience.spended = statsData.spended
+        statsConnections.target = statsData
+    }
+
+    Connections {
+        id: statsConnections
+        ignoreUnknownSignals: true
+        function onGatheredChanged(value) {
+            experience.gathered = value
+        }
     }
 
     Component.onCompleted: console.log("Stats.size(h/w):", height, width)

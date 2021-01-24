@@ -2,20 +2,46 @@
 import QtQuick.Controls 2.12
 
 Column {
-    id: main
-    spacing: 5
+    property int gathered
+    property int spended
 
-    Label {
-        height: 30
+    signal showExperienceForm()
+
+    id: main
+    spacing: 2
+
+    Rectangle {
+        id: _title
         width: main.width
-        text: "Doświadczenie"
-        color: "#fff"
-        font.pointSize: 12
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
-        background: Rectangle {
-            color: "#000"
-            radius: 10
+        height: 30
+        color: "#000"
+        radius: 10
+
+        Text {
+            color: "#fbfbfb"
+            text: qsTr("Dowiadczenie")
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            font.pointSize: 12
+            anchors {
+                top: parent.top
+                bottom: parent.bottom
+                left: parent.left
+                right: _addBtn.left
+            }
+        }
+
+        RoundButton {
+            id: _addBtn
+            text: "+"
+            height: parent.height
+            width: parent.height
+            anchors {
+                top: parent.top
+                bottom: parent.bottom
+                right: parent.right
+            }
+            onClicked: main.showExperienceForm()
         }
     }
 
@@ -48,7 +74,7 @@ Column {
                 }
 
                 Text {
-                    text: qsTr("Dostępne:")
+                    text: qsTr("Do wydania:")
                     font.pointSize: 12
                     onImplicitWidthChanged: parent.width = implicitWidth
                 }
@@ -77,5 +103,15 @@ Column {
                 }
             }
         }
+    }
+
+    onGatheredChanged: {
+        _gathered.text = gathered
+        _available.text = gathered - main.spended
+    }
+
+    onSpendedChanged: {
+        _spended.text = spended
+        _available.text = main.gathered - spended
     }
 }
