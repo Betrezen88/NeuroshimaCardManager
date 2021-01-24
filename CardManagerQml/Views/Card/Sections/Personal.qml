@@ -8,7 +8,6 @@ Item {
 
     id: main
 
-    width: portrait.width
     height: mainHeight()
 
     Column {
@@ -17,8 +16,8 @@ Item {
 
         Portrait {
             id: portrait
-            width: 200
-            height: 200
+            width: main.width
+            height: main.width
         }
 
         Label {

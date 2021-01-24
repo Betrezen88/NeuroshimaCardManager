@@ -7,7 +7,6 @@ Item {
     property var skills
 
     id: main
-    height: title.height + skillsList.height + 2
 
     Column {
         anchors.fill: parent
@@ -30,7 +29,7 @@ Item {
 
         Rectangle {
             width: main.width
-            height: 195
+            height: main.height - title.height - parent.spacing
             border.color: "#000"
             border.width: 2
             radius: 10

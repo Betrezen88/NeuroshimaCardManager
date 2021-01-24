@@ -26,11 +26,12 @@ Pane {
 
                 Personal {
                     id: personal
+                    width: row.columnWidth
                 }
 
                 Tricks {
                     id: tricks
-                    width: personal.width
+                    width: row.columnWidth
                 }
             }
 
@@ -86,6 +87,8 @@ Pane {
                 OtherSkills {
                     id: otherSkills
                     width: row.columnWidth
+                    height: (character.height + perception.height)
+                            - cleaverness.height
                 }
             }
         }
