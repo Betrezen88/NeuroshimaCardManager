@@ -106,21 +106,26 @@ Pane {
         id: _experienceForm
         modal: true
         height: implicitHeight
+        width: 300
         padding: 5
+        anchors.centerIn: parent
 
         Column {
             spacing: 5
 
             Text {
                 text: "Dodaj doświadczenie"
+                color: "#000"
+                font.pointSize: 12
                 height: 30
-                width: main.width
+                width: _experienceForm.width
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
             }
 
             TextField {
-                id: _expiriencePoints
+                id: _experiencePoints
+                width: _experienceForm.width - (_experienceForm.padding * 2)
                 placeholderText: "Przyznane doświadczenie"
                 validator: IntValidator { bottom: 0; top: 1000 }
             }
@@ -136,17 +141,17 @@ Pane {
                 Button {
                     text: "Dodaj"
                     onClicked: {
-                        if ( _expiriencePoints.length === 0 )
+                        if ( _experiencePoints.length === 0 )
                             return
 
-                        statsData.addExperience( _expiriencePoints.text )
+                        statsData.addExperience( _experiencePoints.text )
                         _experienceForm.close()
                     }
                 }
             }
         } // Column
 
-        onClosed: _expiriencePoints.clear()
+        onClosed: _experiencePoints.clear()
 
     } // Popup
 
