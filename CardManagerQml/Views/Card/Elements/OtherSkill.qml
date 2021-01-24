@@ -1,54 +1,69 @@
-﻿import QtQuick 2.0
+﻿import QtQuick 2.9
+import QtQuick.Controls 2.12
 
-Item {
+Row {
     property var skill
 
     id: main
+    spacing: 5
+    leftPadding: 5
+    rightPadding: 5
+    height: _used.height
 
-    height: title.height
+    CheckBox {
+        id: _used
+        width: 30
+        height: 30
+    }
 
-    Row {
-        anchors.fill: main
-        anchors.leftMargin: 10
-        spacing: 5
+    Text {
+        id: _title
+        text: main.skill.name
+        width: main.width - _used.width - _attribute.width
+               - _rect.width - (main.spacing * 4) - 10
+        height: _used.height
+        textFormat: Text.PlainText
+        wrapMode: Text.WordWrap
+        font.pointSize: 10
+        horizontalAlignment: Text.AlignLeft
+        verticalAlignment: Text.AlignVCenter
+    }
+
+    Text {
+        id: _attribute
+        width: implicitWidth
+        height: _used.height
+        textFormat: Text.PlainText
+        wrapMode: Text.WordWrap
+        font.pointSize: 10
+        horizontalAlignment: Text.AlignLeft
+        verticalAlignment: Text.AlignVCenter
+    }
+
+    Rectangle {
+        id: _rect
+        width: 60
+        height: _used.height
+        color: "#fff"
+        border.color: "#000"
+        border.width: 1
+        radius: 5
 
         Text {
-            id: title
-            text: main.skill.name
+            id: _value
+            text: main.skill.value
             textFormat: Text.PlainText
-            wrapMode: Text.WordWrap
-            font.pointSize: 10
-            horizontalAlignment: Text.AlignLeft
-            width: (main.width / 3)*1.4
+            font.pointSize: 9
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            anchors.fill: parent
         }
+    }
 
-        Text {
-            id: attribute
-            text: shortAttribute(main.skill.attribute)
-            textFormat: Text.PlainText
-            wrapMode: Text.WordWrap
-            font.pointSize: 10
-            horizontalAlignment: Text.AlignLeft
-            width: (main.width / 3)*0.3
-        }
-
-        Rectangle {
-            width: main.width / 3
-            height: title.height
-            color: "#fff"
-            border.color: "#000"
-            border.width: 1
-            radius: 5
-
-            Text {
-                id: number
-                text: main.skill.value
-                textFormat: Text.PlainText
-                font.pointSize: 9
-                horizontalAlignment: Text.AlignHCenter
-                anchors.fill: parent
-            }
-        }
+    onSkillChanged: {
+        _title.text = skill.name
+        _attribute.text = shortAttribute(skill.attribute)
+        _value.text = skill.value
     }
 
     function shortAttribute(attributeName) {

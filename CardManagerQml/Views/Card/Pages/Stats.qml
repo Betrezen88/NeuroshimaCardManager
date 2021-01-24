@@ -13,8 +13,9 @@ Pane {
         height: parent.height
         clip: true
 
-
         Row {
+            property double columnWidth: 270
+
             id: row
             anchors.fill: parent
             spacing: 4
@@ -39,17 +40,17 @@ Pane {
 
                 Attribute {
                     id: budowa
-                    width: 250
+                    width: row.columnWidth
                 }
 
                 Attribute {
                     id: dexterity
-                    width: 250
+                    width: row.columnWidth
                 }
 
                 Wounds {
                     id: wounds
-                    width: 250
+                    width: row.columnWidth
                 }
             }
 
@@ -59,17 +60,17 @@ Pane {
 
                 Attribute {
                     id: character
-                    width: 250
+                    width: row.columnWidth
                 }
 
                 Attribute {
                     id: perception
-                    width: 250
+                    width: row.columnWidth
                 }
 
                 Modifiers {
                     id: modifiers
-                    width: 250
+                    width: row.columnWidth
                 }
             }
 
@@ -79,12 +80,12 @@ Pane {
 
                 Attribute {
                     id: cleaverness
-                    width: 250
+                    width: row.columnWidth
                 }
 
                 OtherSkills {
                     id: otherSkills
-                    width: 250
+                    width: row.columnWidth
                 }
             }
         }
