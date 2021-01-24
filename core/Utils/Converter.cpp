@@ -130,6 +130,7 @@ QJsonObject Converter::fromSkill(const Skill *skill)
     QJsonObject object;
     object.insert( "name", skill->name() );
     object.insert( "value", skill->value() );
+    object.insert( "used", skill->used() );
     return object;
 }
 
@@ -182,6 +183,7 @@ QJsonObject Converter::fromOtherSkill(const OtherSkill *otherSkill)
     object.insert( "name", otherSkill->name() );
     object.insert( "value", otherSkill->value() );
     object.insert( "attribute", otherSkill->attribute() );
+    object.insert( "used", otherSkill->used() );
     return object;
 }
 

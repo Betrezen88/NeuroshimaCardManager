@@ -14,6 +14,7 @@ public:
     OtherSkill(QObject *parent = nullptr);
     OtherSkill(const QString &name,
                const int &value,
+               const bool &used,
                const QString &attribute,
                QObject *parent = nullptr);
 

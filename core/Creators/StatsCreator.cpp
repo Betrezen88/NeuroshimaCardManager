@@ -91,7 +91,7 @@ void StatsCreator::addOtherSkill(const QString &name,
                                  const QString &attribute,
                                  const int &value)
 {
-    m_otherSkills.push_back(new OtherSkill(name, value, attribute));
+    m_otherSkills.push_back(new OtherSkill(name, value, false, attribute));
     emit otherSkillsChanged();
 }
 

@@ -12,6 +12,7 @@ Row {
         id: _used
         width: 30
         height: 30
+        onCheckedChanged: main.skill.used = checked
     }
 
     Text {
@@ -46,7 +47,8 @@ Row {
     }
 
     onSkillChanged: {
-        _title.text = main.skill.name;
-        _number.text = main.skill.value;
+        _title.text = skill.name
+        _number.text = skill.value
+        _used.checked = skill.used
     }
 }

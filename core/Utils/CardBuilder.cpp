@@ -72,7 +72,8 @@ Stats *CardBuilder::statsPage(const QJsonObject &stats)
             for ( const QJsonValue &skill: tSkillpack.value("skills").toArray() ) {
                 const QJsonObject &tSkill = skill.toObject();
                 skills.push_back( new Skill(tSkill.value("name").toString(),
-                                            tSkill.value("value").toInt()) );
+                                            tSkill.value("value").toInt(),
+                                            tSkill.value("used").toBool()) );
             }
             const Skillpack::Type &type = (skills.count() != 3)
                     ? Skillpack::Type::CHOOSABLE
@@ -103,6 +104,7 @@ Stats *CardBuilder::statsPage(const QJsonObject &stats)
 
         otherSkills.push_back( new OtherSkill(tOtherSkill.value("name").toString(),
                                               tOtherSkill.value("value").toInt(),
+                                              tOtherSkill.value("used").toBool(),
                                               tOtherSkill.value("attribute").toString()) );
     }
 

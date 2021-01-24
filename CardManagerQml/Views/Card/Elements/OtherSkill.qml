@@ -14,6 +14,7 @@ Row {
         id: _used
         width: 30
         height: 30
+        onCheckedChanged: main.skill.used = checked
     }
 
     Text {
@@ -64,6 +65,7 @@ Row {
         _title.text = skill.name
         _attribute.text = shortAttribute(skill.attribute)
         _value.text = skill.value
+        _used.checked = skill.used
     }
 
     function shortAttribute(attributeName) {
