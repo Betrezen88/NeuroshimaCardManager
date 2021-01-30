@@ -5,7 +5,6 @@ import QtQml.Models 2.15
 
 import core.NSEquipment 1.0
 
-import "../Elements"
 import "../Elements/Equipment"
 
 Column {
@@ -58,26 +57,65 @@ Column {
 
     Row {
         width: main.width
-        spacing: 5
+        spacing: 20
 
-        ValueRow {
-            name: "Leki:"
-            value: "11"
+        Column {
+            spacing: 5
+
+            Text {
+                text: "Leki"
+                width: _drugs.width
+                font.pointSize: 14
+                horizontalAlignment: Text.AlignHCenter
+            }
+            SpinBox {
+                id: _drugs
+                from: 0
+                to: 30
+                onValueChanged: main.equipment.drugs = value
+            }
         }
-        Text{ text:"/"; font.pointSize: 14 }
-        ValueRow {
-            name: "Żywność:"
-            value: "11"
+
+        Column {
+            spacing: 5
+
+            Text {
+                text: "Żywność"
+                width: _food.width
+                font.pointSize: 14
+                horizontalAlignment: Text.AlignHCenter
+            }
+            SpinBox {
+                id: _food
+                from: 0
+                to: 30
+                onValueChanged: main.equipment.food = value
+            }
         }
-        Text{ text:"/"; font.pointSize: 14 }
-        ValueRow {
-            name: "Woda:"
-            value: "11"
+
+        Column {
+            spacing: 5
+
+            Text {
+                text: "Woda"
+                width: _water.width
+                font.pointSize: 14
+                horizontalAlignment: Text.AlignHCenter
+            }
+            SpinBox {
+                id: _water
+                from: 0
+                to: 30
+                onValueChanged: main.equipment.water = value
+            }
         }
     }
 
     onEquipmentChanged: {
         itemsList.model = equipment.backpack
+        _drugs.value = equipment.drugs
+        _food.value = equipment.food
+        _water.value = equipment.water
 
         equipment.backpackChanged.connect(function(){
             itemsList.model = main.equipment.backpack

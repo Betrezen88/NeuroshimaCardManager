@@ -12,10 +12,16 @@ Equipment::Equipment(QObject *parent) : Page(Page::Type::EQUIPMENT, parent)
 
 Equipment::Equipment(const QList<Item *> &backpack,
                      const QList<Item *> &weapons,
+                     const int &drugs,
+                     const int &food,
+                     const int &water,
                      QObject *parent)
     : Page(Page::Type::EQUIPMENT, parent)
     , m_backpack(backpack)
     , m_weapons(weapons)
+    , m_drugs(drugs)
+    , m_food(food)
+    , m_water(water)
 {
     while ( m_backpack.count() < 18 ) {
         m_backpack.append(new Item(Item::Type::EMPTY,
@@ -148,6 +154,48 @@ void Equipment::throwWeapon(const int &index)
 
     delete m_weapons.takeAt(index);
     emit weaponsChanged();
+}
+
+int Equipment::drugs() const
+{
+    return m_drugs;
+}
+
+int Equipment::food() const
+{
+    return m_food;
+}
+
+int Equipment::water() const
+{
+    return m_water;
+}
+
+void Equipment::setDrugs(int drugs)
+{
+    if (m_drugs == drugs)
+        return;
+
+    m_drugs = drugs;
+    emit drugsChanged(m_drugs);
+}
+
+void Equipment::setFood(int food)
+{
+    if (m_food == food)
+        return;
+
+    m_food = food;
+    emit foodChanged(m_food);
+}
+
+void Equipment::setWater(int water)
+{
+    if (m_water == water)
+        return;
+
+    m_water = water;
+    emit waterChanged(m_water);
 }
 
 Item *Equipment::findItemInBackpack(const QString &name)

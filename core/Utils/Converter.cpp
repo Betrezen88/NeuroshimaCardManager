@@ -209,6 +209,13 @@ QJsonObject Converter::fromEquipment(const Equipment *equipment)
     }
     object.insert( "weapons", weapons );
 
+    QJsonObject supplies;
+    supplies.insert( "drugs", equipment->drugs() );
+    supplies.insert( "food", equipment->food() );
+    supplies.insert( "water", equipment->water() );
+
+    object.insert( "supplies", supplies );
+
     return object;
 }
 

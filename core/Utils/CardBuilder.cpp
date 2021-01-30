@@ -150,7 +150,13 @@ Equipment *CardBuilder::equipmentPage(const QJsonObject &equipment)
         weapons.append( creator.create(tWeapon) );
     }
 
-    return new Equipment(backpack, weapons);
+    const QJsonObject& supplies = equipment.value("supplies").toObject();
+
+    return new Equipment(backpack,
+                         weapons,
+                         supplies.value("drugs").toInt(),
+                         supplies.value("food").toInt(),
+                         supplies.value("water").toInt() );
 }
 
 Rules *CardBuilder::rulesPage(const QJsonArray &rules)
