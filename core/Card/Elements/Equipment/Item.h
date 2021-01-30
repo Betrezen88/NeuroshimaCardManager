@@ -30,6 +30,7 @@ class CORE_EXPORT Item : public Data
     Q_PROPERTY(QMap<QString, QVariant> locations READ locations CONSTANT)
     Q_PROPERTY(QList<QVariant> penalties READ penalties CONSTANT)
     Q_PROPERTY(QList<QVariant> features READ features CONSTANT)
+    Q_PROPERTY(int armor READ armor CONSTANT)
 
 public:
     enum class Type {
@@ -51,6 +52,7 @@ public:
                   const int& quantity,
                   const QMap<QString, QVariant>& stats = QMap<QString, QVariant>(),
                   QObject* parent = nullptr);
+    explicit Item(const Item& other);
 
     int price() const;
     int quantity() const;
@@ -69,6 +71,7 @@ public:
     QMap<QString, QVariant> locations() const;
     QList<QVariant> penalties() const;
     QList<QVariant> features() const;
+    int armor() const;
 
     static Type stringToType(const QString& type);
     static QString typeToString(const Type& type);

@@ -23,6 +23,16 @@ Item::Item(const Type &type
 
 }
 
+Item::Item(const Item &other)
+    : Data(other.name(), other.description())
+    , m_type(other.m_type)
+    , m_price(other.m_price)
+    , m_quantity(1)
+    , m_stats(other.m_stats)
+{
+
+}
+
 Item::Type Item::type() const
 {
     return m_type;
@@ -135,6 +145,13 @@ QString Item::typeToString(const Item::Type &type)
 bool Item::hasStat(const QString &stat) const
 {
     return m_stats.contains(stat);
+}
+
+int Item::armor() const
+{
+    if ( m_stats.contains("ARMOR") )
+        return m_stats.value("ARMOR").toInt();
+    return 0;
 }
 
 QString Item::bullet() const
