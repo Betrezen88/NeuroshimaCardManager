@@ -203,6 +203,12 @@ QJsonObject Converter::fromEquipment(const Equipment *equipment)
     }
     object.insert( "backpack", backpack );
 
+    QJsonArray weapons;
+    for ( const Item* item: equipment->weapons() ) {
+        weapons.append( fromItem(item) );
+    }
+    object.insert( "weapons", weapons );
+
     return object;
 }
 

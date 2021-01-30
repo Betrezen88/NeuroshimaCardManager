@@ -11,9 +11,11 @@ Equipment::Equipment(QObject *parent) : Page(Page::Type::EQUIPMENT, parent)
 }
 
 Equipment::Equipment(const QList<Item *> &backpack,
+                     const QList<Item *> &weapons,
                      QObject *parent)
     : Page(Page::Type::EQUIPMENT, parent)
     , m_backpack(backpack)
+    , m_weapons(weapons)
 {
     while ( m_backpack.count() < 18 ) {
         m_backpack.append(new Item(Item::Type::EMPTY,

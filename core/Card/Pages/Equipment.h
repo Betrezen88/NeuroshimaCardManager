@@ -19,7 +19,9 @@ class CORE_EXPORT Equipment : public Page
 
 public:
     explicit Equipment(QObject *parent = nullptr);
-    explicit Equipment(const QList<Item*>& backpack, QObject* parent = nullptr);
+    explicit Equipment(const QList<Item*>& backpack,
+                       const QList<Item*>& weapons,
+                       QObject* parent = nullptr);
 
     void addItemToBackpack(Item *item);
     Q_INVOKABLE void addItemToBackpack(const QVariantMap& itemData);
