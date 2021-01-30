@@ -38,6 +38,9 @@ void Equipment::addItemToBackpack(Item *item)
     }
     else
         pItem->setQuantity(pItem->quantity()+item->quantity());
+
+    if ( !m_backpack.contains(item) )
+        delete item;
 }
 
 void Equipment::addItemToBackpack(const QVariantMap &itemData)
@@ -59,7 +62,7 @@ QQmlListProperty<Item> Equipment::backpack()
     return QQmlListProperty<Item>(this, &m_backpack);
 }
 
-Item *Equipment::getItemFromBackpack(const int& index)
+Item *Equipment::backpackItem(const int &index) const
 {
     if ( index < 0 || index > m_backpack.count() )
         return nullptr;
@@ -70,6 +73,70 @@ Item *Equipment::getItemFromBackpack(const int& index)
 QList<Item *> Equipment::backpack() const
 {
     return m_backpack;
+}
+
+QQmlListProperty<Item> Equipment::weapons()
+{
+    return QQmlListProperty<Item>(this, &m_weapons);
+}
+
+QList<Item *> Equipment::weapons() const
+{
+    return m_weapons;
+}
+
+Item *Equipment::weaponAt(const int &index) const
+{
+    if ( index < 0 || index > m_weapons.size() )
+        return nullptr;
+
+    return m_weapons.at(index);
+}
+
+void Equipment::addWeaponItem(Item *item)
+{
+    if ( item == nullptr )
+        return;
+
+    m_weapons.append(item);
+    emit weaponsChanged();
+}
+
+void Equipment::equipWeapon(const int &index)
+{
+    if ( index < 0 || index > m_backpack.size() )
+        return;
+
+    const int& quantity = m_backpack.at(index)->quantity();
+
+    if ( 1 == quantity ) {
+        m_weapons.append( m_backpack.takeAt(index) );
+        emit backpackChanged();
+    }
+    else {
+        m_weapons.append( new Item(m_backpack.at(index)) );
+        m_backpack.at(index)->setQuantity(quantity-1);
+    }
+
+    emit weaponsChanged();
+}
+
+void Equipment::unequipWeapon(const int &index)
+{
+    if ( index < 0 || index > m_weapons.size() )
+        return;
+
+    addItemToBackpack( m_weapons.takeAt(index) );
+    emit weaponsChanged();
+}
+
+void Equipment::throwWeapon(const int &index)
+{
+    if ( index < 0 || index > m_weapons.size() )
+        return;
+
+    delete m_weapons.takeAt(index);
+    emit weaponsChanged();
 }
 
 Item *Equipment::findItemInBackpack(const QString &name)

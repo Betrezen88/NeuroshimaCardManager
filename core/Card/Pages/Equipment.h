@@ -13,6 +13,9 @@ class CORE_EXPORT Equipment : public Page
     Q_PROPERTY(QQmlListProperty<Item> backpack
                READ backpack
                NOTIFY backpackChanged)
+    Q_PROPERTY(QQmlListProperty<Item> weapons
+               READ weapons
+               NOTIFY weaponsChanged)
 
 public:
     explicit Equipment(QObject *parent = nullptr);
@@ -21,11 +24,21 @@ public:
     void addItemToBackpack(Item *item);
     Q_INVOKABLE void addItemToBackpack(const QVariantMap& itemData);
     QQmlListProperty<Item> backpack();
-    Q_INVOKABLE Item* getItemFromBackpack(const int &index);
+    Q_INVOKABLE Item* backpackItem(const int& index) const;
     QList<Item*> backpack() const;
+
+    QQmlListProperty<Item> weapons();
+    QList<Item*> weapons() const;
+    Q_INVOKABLE Item* weaponAt(const int& index) const;
+    void addWeaponItem(Item* item);
+
+    Q_INVOKABLE void equipWeapon(const int& index);
+    Q_INVOKABLE void unequipWeapon(const int& index);
+    Q_INVOKABLE void throwWeapon(const int& index);
 
 signals:
     void backpackChanged();
+    void weaponsChanged();
 
 private:
     Item* findItemInBackpack(const QString& name);
@@ -33,6 +46,7 @@ private:
 
 private:
     QList<Item*> m_backpack;
+    QList<Item*> m_weapons;
 };
 
 #endif // EQUIPMENT_H
