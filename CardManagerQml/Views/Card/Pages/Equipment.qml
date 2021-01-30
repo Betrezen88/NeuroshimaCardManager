@@ -78,17 +78,9 @@ Pane {
     }
 
     onEquipmentDataChanged: {
-        backpack.backpackItems = equipmentData.backpack
-        connector.target = equipmentData
+        backpack.equipment = equipmentData
+        weapons.equipment = equipmentData
     }
 
     Component.onCompleted: console.log("Equipment.size(h/w):", height, width)
-
-    Connections {
-        id: connector
-        ignoreUnknownSignals: true
-        function onBackpackChanged() {
-            backpack.backpackItems = equipmentData.backpack
-        }
-    }
 }

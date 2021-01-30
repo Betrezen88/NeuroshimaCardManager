@@ -2,9 +2,13 @@
 import QtQuick.Controls 2.12
 import QtQml.Models 2.15
 
+import core.NSEquipment 1.0
+
 import "../Elements/Equipment"
 
 Column {
+    property NSEquipment equipment
+
     id: main
     spacing: 5
 
@@ -32,13 +36,19 @@ Column {
 
         delegate:  WeaponItem {
             width: weaponsList.width
-            name: model.name
-            type: model.type
-        }
+            index: model.index
+            item: equipment.weaponAt(model.index)
 
-        model: ListModel {
-            ListElement { name: "Nóż"; type: "handWeapon" }
-            ListElement { name: "Beretta"; type: "rangedWeapon" }
+            onUnequipWeapon: equipment.unequipWeapon(index)
+            onThrowWeapon: equipment.throwWeapon(index)
         }
+    }
+
+    onEquipmentChanged: {
+        weaponsList.model = equipment.weapons
+
+        equipment.weaponsChanged.connect(function(){
+            weaponsList.model = equipment.weapons
+        })
     }
 }

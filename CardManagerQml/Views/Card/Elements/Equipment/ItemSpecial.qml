@@ -12,6 +12,7 @@ Row {
     Text {
         id: _name
         font.pointSize: 12
+        verticalAlignment: Text.AlignVCenter
 
         MouseArea {
             anchors.fill: parent

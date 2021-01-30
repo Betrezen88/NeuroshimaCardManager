@@ -3,19 +3,20 @@ import QtQuick.Controls 2.15
 import QtQuick.Window 2.15
 import QtQml.Models 2.15
 
+import core.NSEquipment 1.0
+import core.NSItem 1.0
+
 import "../Elements"
 import "../Elements/Equipment"
 
 Column {
-    property alias backpackItems: itemsList.model
+    property NSEquipment equipment
 
     id: main
     spacing: 5
 
     signal openForm()
     signal showItemDetails(int index)
-
-    property int fontSize: 14
 
     Rectangle {
         color: "#000"
@@ -47,11 +48,11 @@ Column {
         spacing: 2
 
         delegate: BackpackItem {
-            name: model.name
-            quantity: model.quantity
             index: model.index
+            item: equipment.backpackItem(model.index)
 
             onItemDetails: main.showItemDetails(index)
+            onEquip: equipment.equipWeapon(index)
         }
     }
 
@@ -63,15 +64,23 @@ Column {
             name: "Leki:"
             value: "11"
         }
-        Text{ text:"/"; font.pointSize: fontSize }
+        Text{ text:"/"; font.pointSize: 14 }
         ValueRow {
             name: "Żywność:"
             value: "11"
         }
-        Text{ text:"/"; font.pointSize: fontSize }
+        Text{ text:"/"; font.pointSize: 14 }
         ValueRow {
             name: "Woda:"
             value: "11"
         }
+    }
+
+    onEquipmentChanged: {
+        itemsList.model = equipment.backpack
+
+        equipment.backpackChanged.connect(function(){
+            itemsList.model = equipment.backpack
+        })
     }
 }

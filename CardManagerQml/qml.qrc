@@ -59,9 +59,7 @@
         <file>Views/Card/Elements/ValueRow.qml</file>
         <file>Views/Card/Elements/Equipment/ArmorPiece.qml</file>
         <file>Views/Card/Elements/Equipment/BackpackItem.qml</file>
-        <file>Views/Card/Elements/Equipment/HandWeaponStats.qml</file>
         <file>Views/Card/Elements/Equipment/ItemAddForm.qml</file>
-        <file>Views/Card/Elements/Equipment/RangedWeaponStats.qml</file>
         <file>Views/Card/Elements/Equipment/WeaponItem.qml</file>
         <file>Views/Card/Elements/Equipment/DataForm.qml</file>
         <file>Views/Card/Elements/Equipment/ItemSpecial.qml</file>
@@ -69,6 +67,7 @@
         <file>Views/Card/Elements/Equipment/PenaltyForm.qml</file>
         <file>Views/Card/Elements/Equipment/Penalty.qml</file>
         <file>Views/Card/Sections/Experience.qml</file>
+        <file>Views/Card/Elements/Equipment/ThrowForm.qml</file>
     </qresource>
     <qresource prefix="/icon">
         <file>resources/icons/add.svg</file>

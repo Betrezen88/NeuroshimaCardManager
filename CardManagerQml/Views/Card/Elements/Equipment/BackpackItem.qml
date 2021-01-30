@@ -2,12 +2,14 @@
 import QtQuick.Controls 2.12
 import QtQml.Models 2.15
 
+import core.NSItem 1.0
+
 Rectangle {
     property int index
-    property alias name: _name.text
-    property alias quantity: _quantity.text
+    property NSItem item
 
     signal itemDetails(int index)
+    signal equip(int index)
 
     id: main
     height: 40
@@ -51,17 +53,44 @@ Rectangle {
         anchors.rightMargin: 5
         anchors.verticalCenter: parent.verticalCenter
         
-        onClicked: itemMenu.open()
+        onClicked: _itemMenu.open()
         
         Menu {
-            id: itemMenu
+            id: _itemMenu
             
             MenuItem {
                 text: "Opis"
                 onClicked: main.itemDetails(main.index)
             }
-            MenuItem { text: "Użyj" }
-            MenuItem { text: "Usuń" }
+
+            MenuItem {
+                id: _equipMenu
+                text: "Wyekwipuj"
+                height: visible ? implicitHeight : 0
+                onClicked: main.equip(main.index)
+            }
+
+            MenuItem {
+                id: _consumeMenu
+                text: "Użyj"
+                height: visible ? implicitHeight : 0
+            }
+
+            MenuItem {
+                text: "Usuń"
+            }
         }
+    }
+
+    onItemChanged: {
+        if ( null === item )
+            return
+
+        _name.text = item.name
+        _quantity.text = item.quantity
+
+        _consumeMenu.visible = item.type == NSItem.CONSUMABLE
+        _equipMenu.visible = (item.type == NSItem.RANGEDWEAPON
+                            || item.type == NSItem.HANDWEAPON)
     }
 }
