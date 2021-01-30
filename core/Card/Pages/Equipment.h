@@ -27,6 +27,7 @@ public:
     Q_INVOKABLE void addItemToBackpack(const QVariantMap& itemData);
     QQmlListProperty<Item> backpack();
     Q_INVOKABLE Item* backpackItem(const int& index) const;
+    Q_INVOKABLE void throwBackpackItem(const int& index);
     QList<Item*> backpack() const;
 
     QQmlListProperty<Item> weapons();

@@ -46,7 +46,7 @@ Pane {
                     width: mainRow.getWidth()
                     onOpenForm: addForm.open()
                     onShowItemDetails: {
-                        itemDescription.itemData = equipmentData.getItemFromBackpack(index)
+                        itemDescription.itemData = equipmentData.backpackItem(index)
                         itemDescription.open()
                     }
                 }

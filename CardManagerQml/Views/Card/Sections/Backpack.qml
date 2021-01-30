@@ -4,7 +4,6 @@ import QtQuick.Window 2.15
 import QtQml.Models 2.15
 
 import core.NSEquipment 1.0
-import core.NSItem 1.0
 
 import "../Elements"
 import "../Elements/Equipment"
@@ -53,6 +52,7 @@ Column {
 
             onItemDetails: main.showItemDetails(index)
             onEquip: equipment.equipWeapon(index)
+            onThrowBackpackItem: equipment.throwBackpackItem(index)
         }
     }
 
@@ -80,7 +80,7 @@ Column {
         itemsList.model = equipment.backpack
 
         equipment.backpackChanged.connect(function(){
-            itemsList.model = equipment.backpack
+            itemsList.model = main.equipment.backpack
         })
     }
 }

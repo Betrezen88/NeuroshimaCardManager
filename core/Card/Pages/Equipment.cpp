@@ -72,6 +72,15 @@ Item *Equipment::backpackItem(const int &index) const
     return m_backpack.at(index);
 }
 
+void Equipment::throwBackpackItem(const int &index)
+{
+    if ( index < 0 || index > m_backpack.count() )
+        return;
+
+    delete m_backpack.takeAt(index);
+    emit backpackChanged();
+}
+
 QList<Item *> Equipment::backpack() const
 {
     return m_backpack;

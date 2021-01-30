@@ -10,6 +10,7 @@ Rectangle {
 
     signal itemDetails(int index)
     signal equip(int index)
+    signal throwBackpackItem(int index)
 
     id: main
     height: 40
@@ -78,6 +79,7 @@ Rectangle {
 
             MenuItem {
                 text: "Usuń"
+                onClicked: main.throwBackpackItem(main.index)
             }
         }
     }
