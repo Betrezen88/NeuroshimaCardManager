@@ -147,6 +147,13 @@ bool Item::hasStat(const QString &stat) const
     return m_stats.contains(stat);
 }
 
+QString Item::jam() const
+{
+    if ( m_stats.contains("JAM") )
+        return m_stats["JAM"].toString();
+    return QString();
+}
+
 int Item::armor() const
 {
     if ( m_stats.contains("ARMOR") )

@@ -362,7 +362,8 @@ Popup {
                          && ( itemData.hasStat("BULLET")
                              || itemData.hasStat("MAGAZINE")
                              || itemData.hasStat("AMMUNITION")
-                             || itemData.hasStat("RATEOFFIRE") )
+                             || itemData.hasStat("RATEOFFIRE")
+                             || itemData.hasStat("JAM") )
 
                 Column {
                     width: implicitWidth
@@ -456,6 +457,30 @@ Popup {
                         id: _rateOfFire
                         width: parent.width
                         text: qsTr("0")
+                        horizontalAlignment: Text.AlignHCenter
+                        font.pointSize: 15
+                    }
+                }
+
+                Column {
+                    width: implicitWidth
+                    height: 50
+                    spacing: 5
+                    visible: itemData !== null
+                             && itemData.hasStat("JAM")
+
+                    Text {
+                        width: implicitWidth
+                        text: qsTr("Zacięcie")
+                        horizontalAlignment: Text.AlignHCenter
+                        font.bold: true
+                        font.pointSize: 12
+                    }
+
+                    Text {
+                        id: _jam
+                        width: parent.width
+                        text: qsTr("16 - 20")
                         horizontalAlignment: Text.AlignHCenter
                         font.pointSize: 15
                     }
@@ -714,6 +739,7 @@ Popup {
         _bullet.text = itemData.bullet
         _magazine.text = itemData.magazine
         _ammunition.text = itemData.ammunition
+        _jam.text = itemData.jam
 
         if ( itemData.hasStat("SPECIAL") ) {
             for ( var s in itemData.special ) {

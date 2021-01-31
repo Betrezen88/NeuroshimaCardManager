@@ -246,6 +246,23 @@ Rectangle {
                 font.pointSize: 15
             }
         }
+        // Zacięcia
+        Row {
+            id: _jamC
+            spacing: 5
+
+            Text {
+                text: "Zacięcie:"
+                font.pointSize: 15
+                font.bold: true
+            }
+
+            Text {
+                id: _jam
+                font.pointSize: 15
+            }
+        }
+
         // Wytrzymałość, Pancerz
         Row {
             width: main.width - (_stats.padding*2)
@@ -377,6 +394,10 @@ Rectangle {
         _rateOfFire.visible = item.hasStat("RATEOFFIRE")
         if ( item.hasStat("RATEOFFIRE") )
             _rateOfFire.text = item.magazine
+
+        _jamC.visible = item.hasStat("JAM")
+        if ( item.hasStat("JAM") )
+            _jam.text = item.jam
 
         _durabilityL.visible = item.hasStat("DURABILITY")
         _durability.visible = item.hasStat("DURABILITY")

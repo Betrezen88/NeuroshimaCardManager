@@ -31,6 +31,7 @@ class CORE_EXPORT Item : public Data
     Q_PROPERTY(QList<QVariant> penalties READ penalties CONSTANT)
     Q_PROPERTY(QList<QVariant> features READ features CONSTANT)
     Q_PROPERTY(int armor READ armor CONSTANT)
+    Q_PROPERTY(QString jam READ jam CONSTANT)
 
 public:
     enum class Type {
@@ -72,6 +73,7 @@ public:
     QList<QVariant> penalties() const;
     QList<QVariant> features() const;
     int armor() const;
+    QString jam() const;
 
     static Type stringToType(const QString& type);
     static QString typeToString(const Type& type);

@@ -246,6 +246,8 @@ QJsonObject Converter::fromItem(const Item *item)
         stats.insert( "MAGAZINE", item->magazine() );
     if ( item->hasStat("BULLET") )
         stats.insert( "BULLET", item->bullet() );
+    if ( item->hasStat("JAM") )
+        stats.insert( "JAM", item->jam() );
     if ( item->hasStat("DAMAGE") ) {
         QJsonArray damage;
         for ( const QString& dmg: item->damage() )

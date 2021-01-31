@@ -405,7 +405,7 @@ Popup {
                             id: _magazine
                             width: 130
                             font.pointSize: 10
-                            placeholderText: "Kompatybilne wielkości"
+                            placeholderText: "10 / 15 / 30"
                         }
                         spacing: 5
                     }
@@ -423,9 +423,28 @@ Popup {
                         SpinBox {
                             id: _rateOfFire
                             font.pointSize: 10
+                            from: 0
                             to: 3
                         }
                         spacing: 5
+                    }
+
+                    Column {
+                        width: _jam.width
+                        spacing: 5
+
+                        Text {
+                            text: "Zacięcie"
+                            width: parent.width
+                            font.pointSize: 12
+                            horizontalAlignment: Text.AlignHCenter
+                        }
+                        TextField {
+                            id: _jam
+                            width: 70
+                            placeholderText: "16 - 20"
+                            font.pointSize: 10
+                        }
                     }
 
                     spacing: 5
@@ -801,6 +820,9 @@ Popup {
                             stats["MAGAZINE"] = _magazine.text
                             if ( _rateOfFire.value > 0 )
                                 stats["RATEOFFIRE"] = _rateOfFire.value
+                            if ( _jam.text.length > 0 )
+                                stats["JAM"] = _jam.text
+                            stats["AMMUNITION"] = 0
                         }
 
                         if ( _type.currentIndex === 2 ) {
@@ -924,6 +946,7 @@ Popup {
         _bullet.clear()
         _magazine.clear()
         _rateOfFire.value = 0
+        _jam.clear()
         _specials.clear()
         _penalties.model.clear()
         _features.model.clear()
