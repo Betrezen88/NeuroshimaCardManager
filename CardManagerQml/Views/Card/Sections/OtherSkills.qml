@@ -46,8 +46,10 @@ Item {
                     skill: model
                 }
 
-                model: main.skills
+                model: []
             }
         }
     }
+
+    onSkillsChanged: skillsList.model = skills
 }

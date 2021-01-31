@@ -328,7 +328,7 @@ Rectangle {
     }
 
     onItemChanged: {
-        if ( item === null )
+        if ( null === item )
             return
 
         _title.text = item.name

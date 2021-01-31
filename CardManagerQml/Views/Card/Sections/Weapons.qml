@@ -34,21 +34,26 @@ Column {
         clip: true
         spacing: 2
 
+        model: []
+
         delegate:  WeaponItem {
             width: weaponsList.width
             index: model.index
-            item: equipment.weaponAt(model.index)
+            item: main.equipment.weaponAt(model.index)
 
-            onUnequipWeapon: equipment.unequipWeapon(index)
-            onThrowWeapon: equipment.throwWeapon(index)
+            onUnequipWeapon: main.equipment.unequipWeapon(index)
+            onThrowWeapon: main.equipment.throwWeapon(index)
         }
     }
 
     onEquipmentChanged: {
+        if ( null === equipment )
+            return
+
         weaponsList.model = equipment.weapons
 
         equipment.weaponsChanged.connect(function(){
-            weaponsList.model = equipment.weapons
+            weaponsList.model = main.equipment.weapons
         })
     }
 }

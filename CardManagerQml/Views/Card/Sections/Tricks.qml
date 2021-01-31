@@ -35,7 +35,7 @@ Item {
             spacing: 2
             clip: true
 
-            model: main.tricks
+            model: []
 
             delegate: Trick {
                 trick: model
@@ -43,4 +43,6 @@ Item {
             }
         }
     }
+
+    onTricksChanged: tricksList.model = tricks
 }

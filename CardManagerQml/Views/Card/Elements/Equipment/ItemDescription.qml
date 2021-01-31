@@ -700,6 +700,9 @@ Popup {
     }
 
     onItemDataChanged: {
+        if ( null === itemData )
+            return
+
         _name.text = itemData.name
         _description.text = itemData.description
         _price.text = itemData.price

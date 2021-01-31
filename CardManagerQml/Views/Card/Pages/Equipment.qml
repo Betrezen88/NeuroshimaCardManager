@@ -78,6 +78,9 @@ Pane {
     }
 
     onEquipmentDataChanged: {
+        if ( equipmentData === null )
+            return
+
         backpack.equipment = equipmentData
         weapons.equipment = equipmentData
     }

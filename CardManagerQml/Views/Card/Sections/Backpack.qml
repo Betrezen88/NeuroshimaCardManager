@@ -1,7 +1,6 @@
 ﻿import QtQuick 2.12
 import QtQuick.Controls 2.15
 import QtQuick.Window 2.15
-import QtQml.Models 2.15
 
 import core.NSEquipment 1.0
 
@@ -45,9 +44,11 @@ Column {
         clip: true
         spacing: 2
 
+        model: []
+
         delegate: BackpackItem {
             index: model.index
-            item: equipment.backpackItem(model.index)
+            item: main.equipment.backpackItem(model.index)
 
             onItemDetails: main.showItemDetails(index)
             onEquip: equipment.equipWeapon(index)
@@ -112,6 +113,9 @@ Column {
     }
 
     onEquipmentChanged: {
+        if ( null === equipment )
+            return
+
         itemsList.model = equipment.backpack
         _drugs.value = equipment.drugs
         _food.value = equipment.food

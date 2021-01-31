@@ -236,7 +236,11 @@ Page {
                                                 width: splitView.preferredWidth/2,
                                                 height: splitView.height
                                             })
-        if ( page === "qrc:/Views/Card/Pages/Rules.qml" )
+        if ( page === "qrc:/Views/Card/Pages/Stats.qml" )
+            object.statsData = cardData.stats
+        else if ( page === "qrc:/Views/Card/Pages/Equipment.qml" )
+            object.equipmentData = cardData.equipment
+        else if ( page === "qrc:/Views/Card/Pages/Rules.qml" )
             object.rulesData = cardData.rules
 
         pageView.sidePageObj = object
