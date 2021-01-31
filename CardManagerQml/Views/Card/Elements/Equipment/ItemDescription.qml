@@ -39,6 +39,7 @@ Popup {
                     height: implicitHeight
                     text: qsTr("Text")
                     font.pixelSize: 12
+                    wrapMode: Text.WordWrap
                 }
 
                 Button {

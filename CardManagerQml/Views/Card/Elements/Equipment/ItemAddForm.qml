@@ -67,6 +67,7 @@ Popup {
 
                         TextArea {
                             id: _description
+                            wrapMode: Text.WordWrap
                             font.pointSize: 10
                             placeholderText: qsTr("Opis przedmiotu")
                         }
