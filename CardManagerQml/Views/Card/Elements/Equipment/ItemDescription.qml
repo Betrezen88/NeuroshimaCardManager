@@ -131,10 +131,10 @@ Popup {
                 horizontalAlignment: Text.AlignHCenter
                 font.pointSize: 15
                 visible: itemData !== null
-                          && ( itemData.type === NSItem.HANDWEAPON
-                          || itemData.type === NSItem.RANGEDWEAPON
-                          || itemData.type === NSItem.ARMOR
-                          || itemData.type === NSItem.SHIELD )
+                          && ( itemData.type === "HANDWEAPON"
+                          || itemData.type === "RANGEDWEAPON"
+                          || itemData.type === "ARMOR"
+                          || itemData.type === "SHIELD" )
             }
 
             Row {

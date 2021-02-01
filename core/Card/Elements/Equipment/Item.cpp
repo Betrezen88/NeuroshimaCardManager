@@ -7,7 +7,7 @@ Item::Item(QObject* parent) : Data(parent)
 
 }
 
-Item::Item(const Type &type
+Item::Item(const QString &type
            , const QString &name
            , const QString &description
            , const int& price
@@ -33,7 +33,7 @@ Item::Item(const Item &other)
 
 }
 
-Item::Type Item::type() const
+QString Item::type() const
 {
     return m_type;
 }
@@ -109,37 +109,6 @@ int Item::price() const
 int Item::quantity() const
 {
     return m_quantity;
-}
-
-Item::Type Item::stringToType(const QString &type)
-{
-    if ( "ARMOR" == type.toUpper() ) return Type::ARMOR;
-    else if ( "HANDWEAPON" == type.toUpper() ) return Type::HANDWEAPON;
-    else if ( "RANGEDWEAPON" == type.toUpper() ) return Type::RANGEDWEAPON;
-    else if ( "SHIELD" == type.toUpper() ) return Type::SHIELD;
-    else if ( "CONSUMABLE" == type.toUpper() ) return Type::CONSUMABLE;
-    else if ( "OTHER" == type.toUpper() ) return Type::OTHER;
-    else return Type::EMPTY;
-}
-
-QString Item::typeToString(const Item::Type &type)
-{
-    switch (type) {
-        case Type::ARMOR:
-            return "ARMOR";
-        case Type::HANDWEAPON:
-            return "HANDWEAPON";
-        case Type::RANGEDWEAPON:
-            return "RANGEDWEAPON";
-        case Type::SHIELD:
-            return "SHIELD";
-        case Type::CONSUMABLE:
-            return "CONSUMABLE";
-        case Type::OTHER:
-            return "OTHER";
-        default:
-            return "EMPTY";
-    }
 }
 
 bool Item::hasStat(const QString &stat) const

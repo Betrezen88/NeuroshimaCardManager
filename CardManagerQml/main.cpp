@@ -56,7 +56,6 @@ int main(int argc, char *argv[])
     qRegisterMetaType<Page::Type>("Page::Type");
     qRegisterMetaType<Page::Type>("Penalty::Type");
     qRegisterMetaType<Skillpack::Type>("NSSkillpack::Type");
-    qRegisterMetaType<Item::Type>("NSItem::Type");
 
     qmlRegisterType<MainManager>("core.NSMainManager", 1, 0, "NSMainManager");
     qmlRegisterType<CardManager>("core.NSCardManager", 1, 0, "NSCardManager");

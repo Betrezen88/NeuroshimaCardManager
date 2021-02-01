@@ -15,6 +15,17 @@ public:
 
     Item* create(const QJsonObject& data);
     Item* create(const QVariantMap& data);
+
+private:
+    const QStringList m_types{
+        "ARMOR",
+        "HANDWEAPON",
+        "RANGEDWEAPON",
+        "SHIELD",
+        "CONSUMABLE",
+        "OTHER",
+        "EMPTY"
+    };
 };
 
 #endif // ITEMCREATOR_H

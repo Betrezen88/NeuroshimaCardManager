@@ -27,15 +27,18 @@ public:
 
     void addItemToBackpack(Item *item);
     Q_INVOKABLE void addItemToBackpack(const QVariantMap& itemData);
-    QQmlListProperty<Item> backpack();
-    Q_INVOKABLE Item* backpackItem(const int& index) const;
     Q_INVOKABLE void throwBackpackItem(const int& index);
     QList<Item*> backpack() const;
 
+    QQmlListProperty<Item> backpack();
+    int backpackCount() const;
+    Item* backpackItem(const int& index) const;
+
     QQmlListProperty<Item> weapons();
     QList<Item*> weapons() const;
-    Q_INVOKABLE Item* weaponAt(const int& index) const;
-    void addWeaponItem(Item* item);
+
+    int weaponsCount() const;
+    Item* weapon(const int& index) const;
 
     Q_INVOKABLE void equipWeapon(const int& index);
     Q_INVOKABLE void unequipWeapon(const int& index);
@@ -60,6 +63,12 @@ signals:
 private:
     Item* findItemInBackpack(const QString& name);
     int findEmptyInBackpack();
+
+    static int backpackCount(QQmlListProperty<Item> *list);
+    static Item* backpackItem(QQmlListProperty<Item> *list, int index);
+
+    static int weaponsCount(QQmlListProperty<Item> *list);
+    static Item* weapon(QQmlListProperty<Item> *list, int index);
 
 private:
     QList<Item*> m_backpack;

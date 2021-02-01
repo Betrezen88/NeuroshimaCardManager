@@ -23,11 +23,8 @@ Equipment::Equipment(const QList<Item *> &backpack,
     , m_food(food)
     , m_water(water)
 {
-    while ( m_backpack.count() < 18 ) {
-        m_backpack.append(new Item(Item::Type::EMPTY,
-                                   "", "", 0, 0,
-                                   QMap<QString, QVariant>(), this));
-    }
+    while ( m_backpack.count() < 18 )
+        m_backpack.append(new Item("EMPTY", "", "", 0, 0, QMap<QString, QVariant>(), this));
 }
 
 void Equipment::addItemToBackpack(Item *item)
@@ -67,7 +64,14 @@ void Equipment::addItemToBackpack(const QVariantMap &itemData)
 
 QQmlListProperty<Item> Equipment::backpack()
 {
-    return QQmlListProperty<Item>(this, &m_backpack);
+    return QQmlListProperty<Item>(this, this,
+                                  &Equipment::backpackCount,
+                                  &Equipment::backpackItem);
+}
+
+int Equipment::backpackCount() const
+{
+    return m_backpack.count();
 }
 
 Item *Equipment::backpackItem(const int &index) const
@@ -94,7 +98,9 @@ QList<Item *> Equipment::backpack() const
 
 QQmlListProperty<Item> Equipment::weapons()
 {
-    return QQmlListProperty<Item>(this, &m_weapons);
+    return QQmlListProperty<Item>(this, this,
+                                  &Equipment::weaponsCount,
+                                  &Equipment::weapon);
 }
 
 QList<Item *> Equipment::weapons() const
@@ -102,21 +108,14 @@ QList<Item *> Equipment::weapons() const
     return m_weapons;
 }
 
-Item *Equipment::weaponAt(const int &index) const
+int Equipment::weaponsCount() const
 {
-    if ( index < 0 || index > m_weapons.size() )
-        return nullptr;
-
-    return m_weapons.at(index);
+    return m_weapons.count();
 }
 
-void Equipment::addWeaponItem(Item *item)
+Item *Equipment::weapon(const int &index) const
 {
-    if ( item == nullptr )
-        return;
-
-    m_weapons.append(item);
-    emit weaponsChanged();
+    return m_weapons.at(index);
 }
 
 void Equipment::equipWeapon(const int &index)
@@ -211,7 +210,27 @@ Item *Equipment::findItemInBackpack(const QString &name)
 int Equipment::findEmptyInBackpack()
 {
     for (Item* pItem: m_backpack)
-        if ( pItem->type() == Item::Type::EMPTY )
+        if ( pItem->type() == "EMPTY" )
             return m_backpack.indexOf(pItem);
     return -1;
+}
+
+int Equipment::backpackCount(QQmlListProperty<Item> *list)
+{
+    return reinterpret_cast<Equipment*>(list->data)->backpackCount();
+}
+
+Item *Equipment::backpackItem(QQmlListProperty<Item> *list, int index)
+{
+    return reinterpret_cast<Equipment*>(list->data)->backpackItem(index);
+}
+
+int Equipment::weaponsCount(QQmlListProperty<Item> *list)
+{
+    return reinterpret_cast<Equipment*>(list->data)->weaponsCount();
+}
+
+Item *Equipment::weapon(QQmlListProperty<Item> *list, int index)
+{
+    return reinterpret_cast<Equipment*>(list->data)->weapon(index);
 }

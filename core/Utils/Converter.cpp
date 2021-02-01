@@ -198,7 +198,7 @@ QJsonObject Converter::fromEquipment(const Equipment *equipment)
 
     QJsonArray backpack;
     for ( const Item* item: equipment->backpack() ) {
-        if ( Item::Type::EMPTY != item->type() )
+        if ( "EMPTY" != item->type() )
             backpack.append( fromItem(item) );
     }
     object.insert( "backpack", backpack );
@@ -226,7 +226,7 @@ QJsonObject Converter::fromItem(const Item *item)
     object.insert( "DESCRIPTION", item->description() );
     object.insert( "PRICE", item->price() );
     object.insert( "QUANTITY", item->quantity() );
-    object.insert( "TYPE", Item::typeToString(item->type()) );
+    object.insert( "TYPE", item->type() );
 
     QJsonObject stats;
 

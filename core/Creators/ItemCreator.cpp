@@ -16,7 +16,8 @@ Item *ItemCreator::create(const QJsonObject &data)
 
 Item *ItemCreator::create(const QVariantMap &data)
 {
-    Item::Type type = Item::stringToType(data.value("TYPE").toString());
+    const int& index = m_types.indexOf(data.value("TYPE").toString().toUpper());
+    const QString& type = (index>-1) ? m_types.at(index) : m_types.at(6);
 
     return new Item(type
                     , data.value("NAME").toString()

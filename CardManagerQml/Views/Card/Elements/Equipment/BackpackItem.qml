@@ -5,7 +5,7 @@ import core.NSItem 1.0
 
 Rectangle {
     property int index
-    property NSItem item
+    property variant item
 
     signal itemDetails(int index)
     signal equip(int index)
@@ -90,8 +90,8 @@ Rectangle {
         _name.text = item.name
         _quantity.text = item.quantity
 
-        _consumeMenu.visible = item.type == NSItem.CONSUMABLE
-        _equipMenu.visible = (item.type == NSItem.RANGEDWEAPON
-                            || item.type == NSItem.HANDWEAPON)
+        _consumeMenu.visible = item.type === "CONSUMABLE"
+        _equipMenu.visible = (item.type === "RANGEDWEAPON"
+                            || item.type === "HANDWEAPON")
     }
 }
