@@ -5,7 +5,7 @@ import core.NSItem 1.0
 
 Rectangle {
     property int index
-    property variant item
+    property NSItem item
 
     signal itemDetails(int index)
     signal equip(int index)
@@ -77,8 +77,55 @@ Rectangle {
             }
 
             MenuItem {
+                id: _quantityMenu
+                text: "Ilość"
+                onClicked: _quantityForm.open()
+            }
+
+            MenuItem {
                 text: "Usuń"
                 onClicked: main.throwBackpackItem(main.index)
+            }
+        }
+    }
+
+    Popup {
+        id: _quantityForm
+
+        Column {
+            spacing: 5
+
+            Row {
+                spacing: 5
+
+                Text {
+                    text: "Ilość"
+                    font.pointSize: 15
+                }
+
+                SpinBox {
+                    id: _value
+                    value: (main.item !== null) ? main.item.quantity : 0
+                    from: 1
+                    to: 999
+                }
+            }
+
+            Row {
+                spacing: 5
+
+                Button {
+                    text: "Zatwierdź"
+                    onClicked: {
+                        main.item.quantity = _value.value
+                        _quantityForm.close()
+                    }
+                }
+
+                Button {
+                    text: "Anuluj"
+                    onClicked: _quantityForm.close()
+                }
             }
         }
     }
@@ -89,6 +136,11 @@ Rectangle {
 
         _name.text = item.name
         _quantity.text = item.quantity
+
+        item.quantityChanged.connect(function(value){
+            console.log("item.quantityChanged", value)
+            _quantity.text = value
+        })
 
         _consumeMenu.visible = item.type === "CONSUMABLE"
         _equipMenu.visible = (item.type === "RANGEDWEAPON"

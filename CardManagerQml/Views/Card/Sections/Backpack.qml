@@ -48,7 +48,9 @@ Column {
 
         delegate: BackpackItem {
             index: model.index
-            item: model
+            item: (main.equipment.backpack[model.index] !== undefined)
+                  ? main.equipment.backpack[model.index]
+                  : null
 
             onItemDetails: main.showItemDetails(index)
             onEquip: equipment.equipWeapon(index)

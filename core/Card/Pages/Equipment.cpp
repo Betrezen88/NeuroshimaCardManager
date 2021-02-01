@@ -130,7 +130,8 @@ void Equipment::equipWeapon(const int &index)
         emit backpackChanged();
     }
     else {
-        m_weapons.append( new Item(m_backpack.at(index)) );
+        ItemCreator creator;
+        m_weapons.append( creator.create(m_backpack.at(index)) );
         m_backpack.at(index)->setQuantity(quantity-1);
     }
 

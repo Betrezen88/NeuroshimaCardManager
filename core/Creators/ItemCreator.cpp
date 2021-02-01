@@ -26,3 +26,13 @@ Item *ItemCreator::create(const QVariantMap &data)
                     , data.value("QUANTITY").toInt()
                     , data.value("STATS").toMap() );
 }
+
+Item *ItemCreator::create(const Item *item)
+{
+    return new Item( item->m_type,
+                     item->name(),
+                     item->description(),
+                     item->m_price,
+                     item->m_quantity,
+                     item->m_stats );
+}

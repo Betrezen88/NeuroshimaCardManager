@@ -15,6 +15,7 @@ public:
 
     Item* create(const QJsonObject& data);
     Item* create(const QVariantMap& data);
+    Item* create(const Item* item);
 
 private:
     const QStringList m_types{

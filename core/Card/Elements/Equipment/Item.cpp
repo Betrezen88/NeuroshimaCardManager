@@ -23,16 +23,6 @@ Item::Item(const QString &type
 
 }
 
-Item::Item(const Item &other)
-    : Data(other.name(), other.description())
-    , m_type(other.m_type)
-    , m_price(other.m_price)
-    , m_quantity(1)
-    , m_stats(other.m_stats)
-{
-
-}
-
 QString Item::type() const
 {
     return m_type;

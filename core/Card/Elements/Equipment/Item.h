@@ -34,6 +34,8 @@ class CORE_EXPORT Item : public Data
     Q_PROPERTY(QString jam READ jam CONSTANT)
 
 public:
+    friend class ItemCreator;
+
     explicit Item(QObject* parent = nullptr);
     explicit Item(const QString& type,
                   const QString& name,
@@ -42,7 +44,6 @@ public:
                   const int& quantity,
                   const QMap<QString, QVariant>& stats = QMap<QString, QVariant>(),
                   QObject* parent = nullptr);
-    explicit Item(const Item& other);
 
     int price() const;
     int quantity() const;
