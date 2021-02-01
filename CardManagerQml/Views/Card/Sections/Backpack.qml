@@ -48,7 +48,7 @@ Column {
 
         delegate: BackpackItem {
             index: model.index
-            item: main.equipment.backpackItem(model.index)
+            item: model
 
             onItemDetails: main.showItemDetails(index)
             onEquip: equipment.equipWeapon(index)

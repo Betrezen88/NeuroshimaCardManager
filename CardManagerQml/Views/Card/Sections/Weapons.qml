@@ -39,7 +39,9 @@ Column {
         delegate:  WeaponItem {
             width: weaponsList.width
             index: model.index
-            item: main.equipment.weaponAt(model.index)
+            item: (main.equipment.weapons[model.index] !== undefined)
+                  ? main.equipment.weapons[model.index]
+                  : null
 
             onUnequipWeapon: main.equipment.unequipWeapon(index)
             onThrowWeapon: main.equipment.throwWeapon(index)

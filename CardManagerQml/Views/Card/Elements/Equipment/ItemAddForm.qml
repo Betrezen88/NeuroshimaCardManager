@@ -376,6 +376,8 @@ Popup {
                     Column {
                         width: implicitWidth
                         height: implicitHeight
+                        spacing: 5
+
                         Text {
                             width: _bullet.width
                             text: qsTr("Nabój")
@@ -389,7 +391,6 @@ Popup {
                             placeholderText: "np.: 9mm"
                             font.pointSize: 10
                         }
-                        spacing: 5
                     }
 
                     Column {
@@ -864,6 +865,13 @@ Popup {
                                 }
                             }
                         }
+                        if ( _specials.objects.length > 0 ) {
+                            var specials  = []
+                            for ( var s in _specials.objects )
+                                specials.push( _specials.objects[s].special() )
+                            stats["SPECIAL"] = specials
+                        }
+
                         itemData["STATS"] = stats
 
                         main.sendItem(itemData)
