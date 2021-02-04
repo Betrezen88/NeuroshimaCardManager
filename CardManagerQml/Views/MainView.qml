@@ -109,6 +109,11 @@ Page {
                     MenuItem {
                         text: "Zapisz.."
                         action: saveAct
+                        Shortcut {
+                            sequence: "Ctrl+S"
+                            context: Qt.ApplicationShortcut
+                            onActivated: saveAct.triggered()
+                        }
                     }
                     MenuItem {
                         text: "Zapisz wszystko"
