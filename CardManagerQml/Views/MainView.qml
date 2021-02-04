@@ -82,11 +82,21 @@ Page {
                     MenuItem {
                         text: "Nowa karta"
                         action: addAct
+                        Shortcut {
+                            sequence: "Ctrl+N"
+                            context: Qt.ApplicationShortcut
+                            onActivated: addAct.triggered()
+                        }
                     }
 
                     MenuItem {
                         text: "Wczytaj kartę"
                         action: loadAct
+                        Shortcut {
+                            sequence: "Ctrl+L"
+                            context: Qt.ApplicationShortcut
+                            onActivated: loadAct.triggered()
+                        }
                     }
                 }
             }
