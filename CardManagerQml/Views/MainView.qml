@@ -3,6 +3,7 @@ import QtQuick.Controls 2.12
 import QtQuick.Dialogs 1.2
 
 import "./Card"
+import "./Common"
 
 Page {
     id: main
@@ -79,24 +80,16 @@ Page {
                     y: parent.height
                     width: sidePanel.width
 
-                    MenuItem {
-                        text: "Nowa karta"
+                    NSMenuItem {
                         action: addAct
-                        Shortcut {
-                            sequence: "Ctrl+N"
-                            context: Qt.ApplicationShortcut
-                            onActivated: addAct.triggered()
-                        }
+                        text: "Nowa karta"
+                        shortcut: StandardKey.New
                     }
 
-                    MenuItem {
+                    NSMenuItem {
                         text: "Wczytaj kartę"
                         action: loadAct
-                        Shortcut {
-                            sequence: "Ctrl+L"
-                            context: Qt.ApplicationShortcut
-                            onActivated: loadAct.triggered()
-                        }
+                        shortcut: StandardKey.Open
                     }
                 }
             }
@@ -116,14 +109,10 @@ Page {
                     y: parent.height
                     width: sidePanel.width
 
-                    MenuItem {
+                    NSMenuItem {
                         text: "Zapisz.."
                         action: saveAct
-                        Shortcut {
-                            sequence: "Ctrl+S"
-                            context: Qt.ApplicationShortcut
-                            onActivated: saveAct.triggered()
-                        }
+                        shortcut: StandardKey.Save
                     }
                     MenuItem {
                         text: "Zapisz wszystko"
@@ -220,6 +209,7 @@ Page {
 
     Action {
         id: addAct
+        shortcut: StandardKey.New
         onTriggered: {
             title.text = "Views.HeroCreatorView"
             stackView.push("qrc:/Views/Creator/HeroCreatorView.qml")
@@ -248,6 +238,7 @@ Page {
 
     Action {
         id: loadAct
+        shortcut: StandardKey.Open
         onTriggered: {
             sidePanel.close()
             loadDialog.open()
@@ -256,6 +247,7 @@ Page {
 
     Action {
         id: saveAct
+        shortcut: StandardKey.Save
         onTriggered: {
             sidePanel.close()
             if ( cardsView.cardData !== undefined ) {

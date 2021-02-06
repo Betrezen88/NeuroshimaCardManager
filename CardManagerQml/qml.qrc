@@ -68,6 +68,7 @@
         <file>Views/Card/Elements/Equipment/Penalty.qml</file>
         <file>Views/Card/Sections/Experience.qml</file>
         <file>Views/Card/Elements/Equipment/ThrowForm.qml</file>
+        <file>Views/Common/NSMenuItem.qml</file>
     </qresource>
     <qresource prefix="/icon">
         <file>resources/icons/add.svg</file>
