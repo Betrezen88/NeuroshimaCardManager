@@ -1,48 +1,34 @@
 ﻿import QtQuick 2.9
 
-Item {
-    property string name
-    property string value
+Row {
+    property alias label: _label.text
+    property alias wounds: _wounds.text
 
     id: main
+    height: implicitHeight
+    spacing: 5
 
-    height: label.height + 6 + 4
+    Text {
+        id: _label
+        height: _wounds.height
+        text: qsTr("Głowa:")
+        verticalAlignment: Text.AlignVCenter
+        font.pointSize: 12
+    }
 
-    Row {
-        anchors.fill: main
-        anchors.margins: 2
-        spacing: 2
-
+    Rectangle {
+        width: main.width - _label.width - main.spacing
+        height: _wounds.implicitHeight
+        color: "#ffffff"
+        radius: 5
+        border.width: 2
         Text {
-            id: label
-            textFormat: Text.PlainText
+            id: _wounds
+            text: qsTr("D, D, L, L, C, C, K, K")
+            anchors.fill: parent
             verticalAlignment: Text.AlignVCenter
-            font.pointSize: 10
-            width: 70
+            padding: 5
+            font.pointSize: 12
         }
-
-        Rectangle {
-            border.color: "#000"
-            border.width: 2
-            radius: 5
-            width: main.width - label.width - 10
-            height: main.height
-
-            Text {
-                id: value
-                textFormat: Text.PlainText
-                padding: 3
-                verticalAlignment: Text.AlignVCenter
-                font.pointSize: 8
-                anchors.fill: parent
-            }
-        }
-    }
-
-    onNameChanged: {
-        label.text = main.name;
-    }
-    onValueChanged: {
-        value.text = main.value;
     }
 }

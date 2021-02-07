@@ -1,79 +1,95 @@
-﻿import QtQuick 2.0
+﻿import QtQuick 2.9
 import QtQuick.Controls 2.5
 
 import "./../Elements"
 
-Item {
+Column {
     id: main
 
-    height: background.height
-            + title.height
+    Rectangle {
+        width: main.width
+        height: 30
+        color: "#000000"
+        radius: 10
 
-    Column {
-        anchors.fill: parent
-        spacing: 2
+        Row {
+            width: parent.width
+            height: parent.height
 
-        Label {
-            id: title
-            height: 30
-            width: main.width
-            text: "Rany"
-            color: "#fff"
-            font.pointSize: 12
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            background: Rectangle {
-                color: "#000"
-                radius: 10
+            Text {
+                width: parent.width - _addWoundBtn.width
+                height: parent.height
+                color: "#ffffff"
+                text: qsTr("Rany")
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                font.bold: true
+                font.pointSize: 15
+            }
+
+            RoundButton {
+                id: _addWoundBtn
+                width: parent.height
+                height: parent.height
+                text: "+"
             }
         }
+    }
 
-        Rectangle {
-            id: background
-            width: main.width
-            height: scratch.height
-                    + light.height
-                    + heavy.height
-                    + critical.height
-                    + (woundsList.anchors.margins * 2)
-                    + (woundsList.spacing * 5)
-            border.color: "#000"
-            border.width: 2
-            radius: 10
+    Rectangle {
+        width: main.width
+        height: _column.height
+        color: "#ffffff"
+        radius: 10
+        border.width: 2
 
-            Column {
-                id: woundsList
-                anchors.fill: parent
-                anchors.margins: 2
-                spacing: 2
+        Column {
+            id: _column
+            width: parent.width
+            height: implicitHeight
+            spacing: 5
+            padding: 5
 
-                WoundRow {
-                    id: scratch
-                    name: "Draśnięcia"
-                    value: ""
-                    width: main.width
-                }
+            WoundRow {
+                id: _head
+                label: "Głowa:"
+                wounds: "D, D, L, L, C, C, K, K"
+                width: _column.width - (_column.padding*2)
+            }
 
-                WoundRow {
-                    id: light
-                    name: "Lekkie"
-                    value: ""
-                    width: main.width
-                }
+            WoundRow {
+                id: _leftHand
+                label: "L. ręka:"
+                wounds: "D, D, L, L, C, C, K, K"
+                width: _column.width - (_column.padding*2)
+            }
 
-                WoundRow {
-                    id: heavy
-                    name: "Ciężkie"
-                    value: ""
-                    width: main.width
-                }
+            WoundRow {
+                id: _rightHand
+                label: "P. ręka:"
+                wounds: "D, D, L, L, C, C, K, K"
+                width: _column.width - (_column.padding*2)
+            }
 
-                WoundRow {
-                    id: critical
-                    name: "Krytyczne"
-                    value: ""
-                    width: main.width
-                }
+            WoundRow {
+                id: _torso
+                label: "Tułów:"
+                wounds: "D, D, L, L, C, C, K, K"
+                width: _column.width - (_column.padding*2)
+            }
+
+            WoundRow {
+                id: _leftLeg
+                label: "L. noga:"
+                wounds: "D, D, L, L, C, C, K, K"
+                width: _column.width - (_column.padding*2)
+            }
+
+            WoundRow {
+                id: _rightLeg
+                label: "P. noga:"
+                wounds: "D, D, L, L, C, C, K, K"
+                width: _column.width - (_column.padding*2)
             }
         }
     }
