@@ -4,6 +4,7 @@ import QtQuick.Controls 2.12
 import core.NSStats 1.0
 
 import "./../Sections"
+import "./../Forms"
 
 Pane {
     property NSStats statsData
@@ -54,6 +55,7 @@ Pane {
                 Wounds {
                     id: wounds
                     width: row.columnWidth
+                    onShowWoundForm: _woundForm.open()
                 }
             }
 
@@ -153,7 +155,19 @@ Pane {
 
         onClosed: _experiencePoints.clear()
 
-    } // Popup
+    } // Popup experience
+
+    WoundForm {
+        id: _woundForm
+        stats: statsData
+        modal: true
+        height: implicitHeight
+        width: implicitWidth
+        padding: 5
+        anchors.centerIn: parent
+
+        onSendWound: statsData.addWound(location, type, passed)
+    }
 
     onStatsDataChanged: {
         personal.personalData = statsData
@@ -166,7 +180,12 @@ Pane {
         otherSkills.skills = statsData.otherSkills
         experience.gathered = statsData.gathered
         experience.spended = statsData.spended
+        wounds.wounds = statsData.wounds
         statsConnections.target = statsData
+
+        statsData.woundsChanged.connect(function(){
+            wounds.wounds = statsData.wounds
+        })
     }
 
     Connections {
