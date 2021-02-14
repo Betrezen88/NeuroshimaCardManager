@@ -1,10 +1,16 @@
 ﻿import QtQuick 2.9
 import QtQuick.Controls 2.5
 
+import core.NSWound 1.0
+
 import "./../Elements"
 
 Column {
+    property var wounds: []
+
     id: main
+
+    signal showWoundForm()
 
     Rectangle {
         width: main.width
@@ -32,6 +38,7 @@ Column {
                 width: parent.height
                 height: parent.height
                 text: "+"
+                onClicked: main.showWoundForm()
             }
         }
     }
@@ -53,44 +60,56 @@ Column {
             WoundRow {
                 id: _head
                 label: "Głowa:"
-                wounds: "D, D, L, L, C, C, K, K"
                 width: _column.width - (_column.padding*2)
             }
 
             WoundRow {
                 id: _leftHand
                 label: "L. ręka:"
-                wounds: "D, D, L, L, C, C, K, K"
                 width: _column.width - (_column.padding*2)
             }
 
             WoundRow {
                 id: _rightHand
                 label: "P. ręka:"
-                wounds: "D, D, L, L, C, C, K, K"
                 width: _column.width - (_column.padding*2)
             }
 
             WoundRow {
                 id: _torso
                 label: "Tułów:"
-                wounds: "D, D, L, L, C, C, K, K"
                 width: _column.width - (_column.padding*2)
             }
 
             WoundRow {
                 id: _leftLeg
                 label: "L. noga:"
-                wounds: "D, D, L, L, C, C, K, K"
                 width: _column.width - (_column.padding*2)
             }
 
             WoundRow {
                 id: _rightLeg
                 label: "P. noga:"
-                wounds: "D, D, L, L, C, C, K, K"
                 width: _column.width - (_column.padding*2)
             }
         }
+    }
+
+    onWoundsChanged: {
+        var tWounds = {}
+
+        for (var w in wounds) {
+            if ( !tWounds.hasOwnProperty(wounds[w].location) )
+                tWounds[wounds[w].location] = []
+
+            tWounds[wounds[w].location].push(wounds[w].type.charAt(0))
+        }
+
+        _head.wounds = tWounds["Głowa"]
+        _torso.wounds = tWounds["Tułów"]
+        _leftHand.wounds = tWounds["Lewa ręka"]
+        _rightHand.wounds = tWounds["Prawa ręka"]
+        _leftLeg.wounds = tWounds["Lewa noga"]
+        _rightLeg.wounds = tWounds["Prawa noga"]
     }
 }
