@@ -3,6 +3,9 @@
 #include "Card/Elements/Stats/Attribute.h"
 #include "Card/Elements/Stats/Trick.h"
 #include "Card/Elements/Stats/OtherSkill.h"
+#include "Card/Elements/Stats/Wound.h"
+
+#include <QDebug>
 
 Stats::Stats(QObject *parent) : Page(Page::Type::STATS, parent)
 {
@@ -22,6 +25,7 @@ Stats::Stats(const QString &name,
              const QVector<Trick *> &tricks,
              const QVector<OtherSkill*> &otherSkills,
              const QPair<int, int> &experience,
+             const QVector<Wound *> &wounds,
              QObject *parent)
     : Page(Page::Type::STATS, parent),
       m_name(name),
@@ -36,7 +40,8 @@ Stats::Stats(const QString &name,
       m_attributes(attributes),
       m_tricks(tricks),
       m_otherSkills(otherSkills),
-      m_experience(experience)
+      m_experience(experience),
+      m_wounds(wounds)
 {
 
 }
@@ -194,6 +199,64 @@ int Stats::spended() const
     return m_experience.second;
 }
 
+QQmlListProperty<Wound> Stats::wounds()
+{
+    return QQmlListProperty<Wound>(this, this,
+                                   &Stats::woundsCount,
+                                   &Stats::wound);
+}
+
+int Stats::woundsCount() const
+{
+    return m_wounds.count();
+}
+
+Wound *Stats::wound(const int &index) const
+{
+    return m_wounds.at(index);
+}
+
+void Stats::addWound(const QString &location, const QString &type, const bool& passed)
+{
+    qDebug() << "Stats::addWound()" << location << type << passed;
+    const QPair<int, int> &mod = m_woundMods.at(m_woundType.indexOf(type));
+    const int& modifier = passed ? mod.first : mod.second;
+
+    m_wounds.append( new Wound(location, type, modifier) );
+    mergeWounds(location, type);
+    emit woundsChanged();
+}
+
+QStringList Stats::woundLocations() const
+{
+    return m_woundLocation;
+}
+
+QStringList Stats::woundType() const
+{
+    return m_woundType;
+}
+
+void Stats::mergeWounds(const QString &location, const QString &type)
+{
+    QVector<Wound*> wounds;
+    for ( Wound* wound: m_wounds ) {
+        if ( location == wound->location() && type == wound->type() )
+            wounds.append(wound);
+    }
+
+    if ( 3 == wounds.count() ) {
+        int modifier = 0;
+        const QString& tType = m_woundType.at(m_woundType.indexOf(type)+1);
+        for ( Wound* wound: wounds ) {
+            modifier += wound->modifier();
+            m_wounds.removeOne(wound);
+        }
+        m_wounds.append( new Wound(location, tType, modifier) );
+        mergeWounds(location, tType);
+    }
+}
+
 int Stats::attributesCount(QQmlListProperty<Attribute> *list)
 {
     return reinterpret_cast<Stats*>(list->data)->attributesCount();
@@ -222,4 +285,14 @@ int Stats::otherSkillsCount(QQmlListProperty<OtherSkill> *list)
 OtherSkill *Stats::otherSkill(QQmlListProperty<OtherSkill> *list, int index)
 {
     return reinterpret_cast<Stats*>(list->data)->otherSkill(index);
+}
+
+int Stats::woundsCount(QQmlListProperty<Wound> *list)
+{
+    return reinterpret_cast<Stats*>(list->data)->woundsCount();
+}
+
+Wound *Stats::wound(QQmlListProperty<Wound> *list, int index)
+{
+    return reinterpret_cast<Stats*>(list->data)->wound(index);
 }

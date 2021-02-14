@@ -13,6 +13,7 @@ class Disease;
 class Attribute;
 class Trick;
 class OtherSkill;
+class Wound;
 
 class CORE_EXPORT Stats : public Page
 {
@@ -33,6 +34,9 @@ class CORE_EXPORT Stats : public Page
     Q_PROPERTY(QQmlListProperty<OtherSkill> otherSkills READ otherSkills CONSTANT)
     Q_PROPERTY(int gathered READ gathered NOTIFY gatheredChanged)
     Q_PROPERTY(int spended READ spended NOTIFY spendedChanged)
+    Q_PROPERTY(QQmlListProperty<Wound> wounds READ wounds NOTIFY woundsChanged)
+    Q_PROPERTY(QStringList woundLocations READ woundLocations CONSTANT)
+    Q_PROPERTY(QStringList woundType READ woundType CONSTANT)
 
 public:
     explicit Stats(QObject *parent = nullptr);
@@ -49,6 +53,7 @@ public:
                    const QVector<Trick*> &tricks,
                    const QVector<OtherSkill*> &otherSkills,
                    const QPair<int, int> &experience = QPair<int, int>(0, 0),
+                   const QVector<Wound*> &wounds = QVector<Wound*>(),
                    QObject *parent = nullptr);
 
     QString name() const;
@@ -83,11 +88,24 @@ public:
     int gathered() const;
     int spended() const;
 
+    QQmlListProperty<Wound> wounds();
+    int woundsCount() const;
+    Wound* wound(const int& index) const;
+    Q_INVOKABLE void addWound(const QString& location,
+                              const QString& type,
+                              const bool &passed);
+
+    QStringList woundLocations() const;
+    QStringList woundType() const;
+
 signals:
     void gatheredChanged(const int& value);
     void spendedChanged(const int& value);
+    void woundsChanged();
 
 private:
+    void mergeWounds(const QString &location, const QString &type);
+
     static int attributesCount(QQmlListProperty<Attribute> *list);
     static Attribute* attribute(QQmlListProperty<Attribute> *list, int index);
 
@@ -96,6 +114,9 @@ private:
 
     static int otherSkillsCount(QQmlListProperty<OtherSkill> *list);
     static OtherSkill* otherSkill(QQmlListProperty<OtherSkill> *list, int index);
+
+    static int woundsCount(QQmlListProperty<Wound> *list);
+    static Wound* wound(QQmlListProperty<Wound> *list, int index);
 
 private:
     QString m_name;
@@ -114,6 +135,30 @@ private:
     QVector<OtherSkill*> m_otherSkills;
 
     QPair<int, int> m_experience;
+
+    QVector<Wound*> m_wounds;
+
+    const QStringList m_woundLocation{
+        "Głowa",
+        "Lewa ręka",
+        "Prawa ręka",
+        "Tułów",
+        "Lewa noga",
+        "Prawa noga"
+    };
+    const QStringList m_woundType {
+        "Draśnięcie",
+        "Lekka",
+        "Ciężka",
+        "Krytyczna"
+    };
+    const QList<QPair<int, int>> m_woundMods {
+        QPair<int, int>(5, 10),
+        QPair<int, int>(15, 30),
+        QPair<int, int>(30, 60),
+        QPair<int, int>(160, 160)
+    };
+
 };
 
 #endif // STATS_H
