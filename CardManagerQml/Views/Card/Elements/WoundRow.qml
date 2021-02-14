@@ -2,7 +2,7 @@
 
 Row {
     property alias label: _label.text
-    property alias wounds: _wounds.text
+    property var wounds
 
     id: main
     height: implicitHeight
@@ -24,11 +24,20 @@ Row {
         border.width: 2
         Text {
             id: _wounds
-            text: qsTr("D, D, L, L, C, C, K, K")
+            text: qsTr("")
             anchors.fill: parent
             verticalAlignment: Text.AlignVCenter
             padding: 5
             font.pointSize: 12
+        }
+    }
+
+    onWoundsChanged: {
+        _wounds.text = ""
+        for ( var w in wounds ) {
+            _wounds.text += wounds[w]
+            if (parseInt(w) < wounds.length-1)
+                _wounds.text += ","
         }
     }
 }
