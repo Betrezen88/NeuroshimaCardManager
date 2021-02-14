@@ -32,6 +32,7 @@ SOURCES += \
     Card/Elements/Stats/Skillpack.cpp \
     Card/Elements/Stats/Symptom.cpp \
     Card/Elements/Stats/Trick.cpp \
+    Card/Elements/Stats/Wound.cpp \
     Card/Pages/Equipment.cpp \
     Card/Pages/Page.cpp \
     Card/Pages/Rules.cpp \
@@ -75,6 +76,7 @@ HEADERS += \
     Card/Elements/Stats/Skillpack.h \
     Card/Elements/Stats/Symptom.h \
     Card/Elements/Stats/Trick.h \
+    Card/Elements/Stats/Wound.h \
     Card/Pages/Equipment.h \
     Card/Pages/Page.h \
     Card/Pages/Rules.h \
