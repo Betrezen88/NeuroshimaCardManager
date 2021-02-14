@@ -41,6 +41,7 @@
 #include "Card/Elements/Stats/Skill.h"
 #include "Card/Elements/Stats/Symptom.h"
 #include "Card/Elements/Stats/Trick.h"
+#include "Card/Elements/Stats/Wound.h"
 #include "Card/Elements/Equipment/Item.h"
 #include "Card/Elements/Rules/RulesSection.h"
 
@@ -93,6 +94,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<Skill>("core.NSSkill", 1, 0, "NSSkill");
     qmlRegisterType<Symptom>("core.NSSymptom", 1, 0, "NSSymptom");
     qmlRegisterType<Trick>("core.NSTrick", 1, 0, "NSTrick");
+    qmlRegisterType<Wound>("core.NSWound", 1, 0, "NSWound");
     qmlRegisterType<TrickValidator>("core.NSTrickValidator",
                                     1, 0, "NSTrickValidator");
     qmlRegisterType<Item>("core.NSItem", 1, 0, "NSItem");
