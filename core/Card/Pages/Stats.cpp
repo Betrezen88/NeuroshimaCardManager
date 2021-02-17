@@ -5,8 +5,6 @@
 #include "Card/Elements/Stats/OtherSkill.h"
 #include "Card/Elements/Stats/Wound.h"
 
-#include <QDebug>
-
 Stats::Stats(QObject *parent) : Page(Page::Type::STATS, parent)
 {
 
@@ -218,13 +216,17 @@ Wound *Stats::wound(const int &index) const
 
 void Stats::addWound(const QString &location, const QString &type, const bool& passed)
 {
-    qDebug() << "Stats::addWound()" << location << type << passed;
     const QPair<int, int> &mod = m_woundMods.at(m_woundType.indexOf(type));
     const int& modifier = passed ? mod.first : mod.second;
 
     m_wounds.append( new Wound(location, type, modifier) );
     mergeWounds(location, type);
     emit woundsChanged();
+}
+
+QVector<Wound *> Stats::wounds() const
+{
+    return m_wounds;
 }
 
 QStringList Stats::woundLocations() const

@@ -8,6 +8,7 @@
 #include "Card/Elements/Stats/Disease.h"
 #include "Card/Elements/Stats/Trick.h"
 #include "Card/Elements/Stats/OtherSkill.h"
+#include "Card/Elements/Stats/Wound.h"
 
 #include "Card/Pages/Rules.h"
 #include "Card/Pages/Stats.h"
@@ -109,6 +110,14 @@ Stats *CardBuilder::statsPage(const QJsonObject &stats)
     }
     const QJsonObject &experience = stats.value("experience").toObject();
 
+    QVector<Wound*> wounds;
+    for ( const QJsonValue& wound: stats.value("wounds").toArray() ) {
+        const QJsonObject& tWound = wound.toObject();
+        wounds.append( new Wound(tWound.value("location").toString(),
+                                 tWound.value("type").toString(),
+                                 tWound.value("modifier").toInt()) );
+    }
+
     return new Stats(name.value("name").toString(),
                      name.value("surname").toString(),
                      name.value("nickname").toString(),
@@ -130,7 +139,8 @@ Stats *CardBuilder::statsPage(const QJsonObject &stats)
                      tricks,
                      otherSkills,
                      QPair<int, int>(experience.value("gathered").toInt(),
-                                     experience.value("spended").toInt()) );
+                                     experience.value("spended").toInt()),
+                     wounds );
 }
 
 Equipment *CardBuilder::equipmentPage(const QJsonObject &equipment)

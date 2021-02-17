@@ -94,6 +94,7 @@ public:
     Q_INVOKABLE void addWound(const QString& location,
                               const QString& type,
                               const bool &passed);
+    QVector<Wound*> wounds() const;
 
     QStringList woundLocations() const;
     QStringList woundType() const;

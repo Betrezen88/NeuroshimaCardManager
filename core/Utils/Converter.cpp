@@ -14,6 +14,7 @@
 #include "../Card/Elements/Stats/Attribute.h"
 #include "../Card/Elements/Stats/Trick.h"
 #include "../Card/Elements/Stats/OtherSkill.h"
+#include "../Card/Elements/Stats/Wound.h"
 
 #include "../Card/Elements/Equipment/Item.h"
 
@@ -78,6 +79,11 @@ QJsonObject Converter::fromStats(const Stats *stats)
     experience.insert( "gathered", stats->gathered() );
     experience.insert( "spended", stats->spended() );
     object.insert( "experience", experience );
+
+    QJsonArray wounds;
+    for ( const Wound* wound: stats->wounds() )
+        wounds.append( fromWound(wound) );
+    object.insert( "wounds", wounds );
 
     return object;
 }
@@ -189,6 +195,17 @@ QJsonObject Converter::fromOtherSkill(const OtherSkill *otherSkill)
     object.insert( "value", otherSkill->value() );
     object.insert( "attribute", otherSkill->attribute() );
     object.insert( "used", otherSkill->used() );
+    return object;
+}
+
+QJsonObject Converter::fromWound(const Wound *wound)
+{
+    QJsonObject object;
+
+    object.insert( "location", wound->location() );
+    object.insert( "type", wound->type() );
+    object.insert( "modifier", wound->modifier() );
+
     return object;
 }
 

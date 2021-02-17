@@ -16,6 +16,7 @@ class Skillpack;
 class Attribute;
 class Trick;
 class OtherSkill;
+class Wound;
 
 class Item;
 
@@ -38,6 +39,7 @@ private:
     QJsonObject fromAttribute(const Attribute* attribute);
     QJsonObject fromTrick(const Trick* trick);
     QJsonObject fromOtherSkill(const OtherSkill* otherSkill);
+    QJsonObject fromWound(const Wound* wound);
 
     QJsonObject fromEquipment(const Equipment* equipment);
     QJsonObject fromItem(const Item* item);
