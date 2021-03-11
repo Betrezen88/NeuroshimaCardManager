@@ -1,9 +1,13 @@
 ﻿import QtQuick 2.0
 import QtQuick.Controls 2.12
 
+import core.NSEquipment 1.0
+
 import "../Elements/Equipment"
 
 Column {
+    property NSEquipment equipment
+
     id: main
     spacing: 5
     
@@ -31,19 +35,19 @@ Column {
             spacing: 5
 
             ArmorPiece {
-                id: head
+                id: _head
                 title: "Głowa"
                 width: parent.width
             }
 
             ArmorPiece {
-                id: rHand
+                id: _rHand
                 title: "Prawa Ręka"
                 width: parent.width
             }
 
             ArmorPiece {
-                id: rLeg
+                id: _rLeg
                 title: "Prawa Noga"
                 width: parent.width
             }
@@ -54,22 +58,33 @@ Column {
             spacing: 5
 
             ArmorPiece {
-                id: torso
+                id: _torso
                 title: "Tułów"
                 width: parent.width
             }
 
             ArmorPiece {
-                id: lHand
+                id: _lHand
                 title: "Lewa Ręka"
                 width: parent.width
             }
 
             ArmorPiece {
-                id: lLeg
+                id: _lLeg
                 title: "Lewa Noga"
                 width: parent.width
             }
         }
+    }
+
+    onEquipmentChanged: {
+        equipment.armorChanged.connect(function() {
+            _head.item = equipment.getArmor("HEAD")
+            _torso.item = equipment.getArmor("TORSO")
+            _lHand.item = equipment.getArmor("LEFTHAND")
+            _rHand.item = equipment.getArmor("RIGHTHAND")
+            _lLeg.item = equipment.getArmor("LEFTLEG")
+            _rLeg.item = equipment.getArmor("RIGHTLEG")
+        })
     }
 }

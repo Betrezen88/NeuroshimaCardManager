@@ -156,6 +156,35 @@ void Equipment::throwWeapon(const int &index)
     emit weaponsChanged();
 }
 
+void Equipment::equipArmor(const int &index)
+{
+    if ( index < 0 || index > m_backpack.size() )
+        return;
+
+    const int& quantity = m_backpack.at(index)->quantity();
+
+    if ( 1 == quantity ) {
+        m_armor.append( m_backpack.takeAt(index) );
+        emit backpackChanged();
+    }
+    else {
+        ItemCreator creator;
+        m_armor.append( creator.create(m_backpack.at(index)) );
+        m_backpack.at(index)->setQuantity(quantity-1);
+    }
+
+    emit armorChanged();
+}
+
+Item *Equipment::getArmor(const QString &location)
+{
+    for ( Item* pItem: m_armor ) {
+        if ( pItem->locations().contains(location) )
+            return pItem;
+    }
+    return nullptr;
+}
+
 int Equipment::drugs() const
 {
     return m_drugs;

@@ -44,6 +44,9 @@ public:
     Q_INVOKABLE void unequipWeapon(const int& index);
     Q_INVOKABLE void throwWeapon(const int& index);
 
+    Q_INVOKABLE void equipArmor(const int& index);
+    Q_INVOKABLE Item* getArmor(const QString& location);
+
     int drugs() const;
     int food() const;
     int water() const;
@@ -56,6 +59,7 @@ public slots:
 signals:
     void backpackChanged();
     void weaponsChanged();
+    void armorChanged();
     void drugsChanged(int drugs);
     void foodChanged(int food);
     void waterChanged(int water);
@@ -73,6 +77,7 @@ private:
 private:
     QList<Item*> m_backpack;
     QList<Item*> m_weapons;
+    QList<Item*> m_armor;
     int m_drugs;
     int m_food;
     int m_water;

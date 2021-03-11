@@ -1,8 +1,12 @@
 ﻿import QtQuick 2.12
 import QtQuick.Controls 2.12
 
+import core.NSItem 1.0
+
 Row {
     property alias title: _title.text
+    property NSItem item: null
+    property string location
 
     id: main
     height: implicitHeight
@@ -31,7 +35,11 @@ Row {
                     text: "..."
                     font.bold: true
                     font.pointSize: 12
-                    onClicked: _menu.open()
+                    onClicked: {
+                        if ( null === main.item )
+                            return
+                        _menu.open()
+                    }
 
                     Menu {
                         id: _menu
@@ -71,7 +79,7 @@ Row {
 
                     Text {
                         id: _value
-                        text: qsTr("0/0")
+                        text: qsTr("0")
                         anchors.fill: parent
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
@@ -88,7 +96,7 @@ Row {
 
                 Text {
                     id: _name
-                    text: qsTr("Hełm kewlarowy")
+                    text: qsTr("")
                     padding: 5
                     font.pointSize: 12
                 }
@@ -125,7 +133,7 @@ Row {
 
                         Text {
                             id: _maxDurability
-                            text: qsTr("3")
+                            text: qsTr("-")
                             padding: 5
                             font.pointSize: 12
                         }
@@ -138,7 +146,7 @@ Row {
 
                         Text {
                             id: _durability
-                            text: qsTr("3")
+                            text: qsTr("-")
                             padding: 5
                             font.pointSize: 12
                         }
@@ -147,5 +155,36 @@ Row {
             }
 
         }
+    }
+
+    onItemChanged: {
+        _name.text = ( null !== item ) ? item.name : ""
+        _maxDurability.text = ( null !== item ) ? item.durability : "-"
+        _durability.text = ( null !== item ) ? item.durability : "-"
+
+        var locations = ( null !== item ) ? item.locations : []
+        if ( locations.hasOwnProperty(main.getLocation(_title.text)) ) {
+            _value.text = locations[main.getLocation(_title.text)]
+        }
+        else {
+            _value.text = "0"
+        }
+    }
+
+    function getLocation(title) {
+        if ( "Głowa" === title )
+            return "HEAD"
+        else if ( "Tułów" === title )
+            return "TORSO"
+        else if ( "Prawa Ręka" === title )
+            return "RIGHTHAND"
+        else if ( "Lewa Ręka" === title )
+            return "LEFTHAND"
+        else if ( "Prawa Noga" === title )
+            return "RIGHTLEG"
+        else if ( "Lewa Noga" === title )
+            return "LEFTLEG"
+        else
+            return ""
     }
 }

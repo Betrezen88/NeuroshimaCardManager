@@ -81,6 +81,7 @@ Pane {
         if ( equipmentData === null )
             return
 
+        armor.equipment = equipmentData
         backpack.equipment = equipmentData
         weapons.equipment = equipmentData
     }

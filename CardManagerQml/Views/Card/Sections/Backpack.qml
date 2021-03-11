@@ -53,7 +53,8 @@ Column {
                   : null
 
             onItemDetails: main.showItemDetails(index)
-            onEquip: equipment.equipWeapon(index)
+            onEquipWeapon: equipment.equipWeapon(index)
+            onEquipArmor: equipment.equipArmor(index)
             onThrowBackpackItem: equipment.throwBackpackItem(index)
         }
     }

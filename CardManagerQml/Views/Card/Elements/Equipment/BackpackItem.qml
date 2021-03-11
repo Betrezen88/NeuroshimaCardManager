@@ -8,8 +8,9 @@ Rectangle {
     property NSItem item
 
     signal itemDetails(int index)
-    signal equip(int index)
     signal throwBackpackItem(int index)
+    signal equipWeapon(int index)
+    signal equipArmor(int index)
 
     id: main
     height: 40
@@ -67,7 +68,15 @@ Rectangle {
                 id: _equipMenu
                 text: "Wyekwipuj"
                 height: visible ? implicitHeight : 0
-                onClicked: main.equip(main.index)
+                onClicked: {
+                    if ( null === item )
+                        return
+
+                    if ( item.type === "ARMOR" )
+                        main.equipArmor(main.index)
+                    else
+                        main.equipWeapon(main.index)
+                }
             }
 
             MenuItem {
@@ -138,12 +147,12 @@ Rectangle {
         _quantity.text = item.quantity
 
         item.quantityChanged.connect(function(value){
-            console.log("item.quantityChanged", value)
             _quantity.text = value
         })
 
         _consumeMenu.visible = item.type === "CONSUMABLE"
         _equipMenu.visible = (item.type === "RANGEDWEAPON"
-                            || item.type === "HANDWEAPON")
+                            || item.type === "HANDWEAPON"
+                            || item.type === "ARMOR")
     }
 }
