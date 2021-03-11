@@ -158,6 +158,7 @@ void Equipment::throwWeapon(const int &index)
 
 void Equipment::equipArmor(const int &index)
 {
+    qDebug() << "Equipment::equipArmor()" << index;
     if ( index < 0 || index > m_backpack.size() )
         return;
 
@@ -173,6 +174,26 @@ void Equipment::equipArmor(const int &index)
         m_backpack.at(index)->setQuantity(quantity-1);
     }
 
+    emit armorChanged();
+}
+
+void Equipment::unequipArmor(Item *item)
+{
+    const int& index = m_armor.indexOf(item);
+
+    if ( -1 == index ) return;
+
+    addItemToBackpack( m_armor.takeAt(index) );
+    emit armorChanged();
+}
+
+void Equipment::throwArmor(Item *item)
+{
+    const int& index = m_armor.indexOf(item);
+
+    if ( -1 == index ) return;
+
+    delete m_armor.takeAt(index);
     emit armorChanged();
 }
 

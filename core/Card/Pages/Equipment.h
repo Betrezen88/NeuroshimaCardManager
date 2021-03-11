@@ -45,6 +45,8 @@ public:
     Q_INVOKABLE void throwWeapon(const int& index);
 
     Q_INVOKABLE void equipArmor(const int& index);
+    Q_INVOKABLE void unequipArmor(Item *item);
+    Q_INVOKABLE void throwArmor(Item *item);
     Q_INVOKABLE Item* getArmor(const QString& location);
 
     int drugs() const;

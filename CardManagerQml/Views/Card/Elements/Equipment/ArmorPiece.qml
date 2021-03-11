@@ -11,6 +11,8 @@ Row {
     id: main
     height: implicitHeight
 
+    signal unequip(NSItem item)
+
     Rectangle {
         width: main.width
         height: _column.height
@@ -49,6 +51,10 @@ Row {
                         }
                         MenuItem {
                             text: "Do plecaka"
+                            onClicked: {
+                                main.unequip(main.item)
+                                main.item = null
+                            }
                         }
                         MenuItem {
                             text: "Napraw"

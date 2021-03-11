@@ -38,18 +38,21 @@ Column {
                 id: _head
                 title: "Głowa"
                 width: parent.width
+                onUnequip: equipment.unequipArmor(item)
             }
 
             ArmorPiece {
                 id: _rHand
                 title: "Prawa Ręka"
                 width: parent.width
+                onUnequip: equipment.unequipArmor(item)
             }
 
             ArmorPiece {
                 id: _rLeg
                 title: "Prawa Noga"
                 width: parent.width
+                onUnequip: equipment.unequipArmor(item)
             }
         }
         
@@ -61,18 +64,21 @@ Column {
                 id: _torso
                 title: "Tułów"
                 width: parent.width
+                onUnequip: equipment.unequipArmor(item)
             }
 
             ArmorPiece {
                 id: _lHand
                 title: "Lewa Ręka"
                 width: parent.width
+                onUnequip: equipment.unequipArmor(item)
             }
 
             ArmorPiece {
                 id: _lLeg
                 title: "Lewa Noga"
                 width: parent.width
+                onUnequip: equipment.unequipArmor(item)
             }
         }
     }
