@@ -253,8 +253,6 @@ QJsonObject Converter::fromItem(const Item *item)
         stats.insert( "REQUIREMENT", item->requiredBody() );
     if ( item->hasStat("PENETRATION") )
         stats.insert( "PENETRATION", item->penetration() );
-    if ( item->hasStat("DURABILITY") )
-        stats.insert( "DURABILITY", item->durability() );
     if ( item->hasStat("RATEOFFIRE") )
         stats.insert( "RATEOFFIRE", item->rateOfFire() );
     if ( item->hasStat("AMMUNITION") )
@@ -283,6 +281,12 @@ QJsonObject Converter::fromItem(const Item *item)
         for ( const QVariant& special: item->special() )
             specials.append( special.toJsonObject() );
         stats.insert( "SPECIAL", specials );
+    }
+    if ( item->hasStat("DURABILITY") ) {
+        QJsonObject durability;
+        durability.insert("max", item->maxDurability());
+        durability.insert("current", item->currentDurability());
+        stats.insert("DURABILITY", durability);
     }
     if ( item->hasStat("LOCATIONS") ) {
         QJsonObject locations;

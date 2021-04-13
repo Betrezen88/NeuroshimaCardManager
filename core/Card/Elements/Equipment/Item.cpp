@@ -49,10 +49,17 @@ int Item::penetration() const
     return 0;
 }
 
-int Item::durability() const
+int Item::currentDurability() const
 {
     if ( m_stats.contains("DURABILITY") )
-        return m_stats.value("DURABILITY").toInt();
+        return m_stats.value("DURABILITY").toMap().value("current").toInt();
+    return 0;
+}
+
+int Item::maxDurability() const
+{
+    if ( m_stats.contains("DURABILITY") )
+        return m_stats.value("DURABILITY").toMap().value("max").toInt();
     return 0;
 }
 
@@ -162,4 +169,17 @@ void Item::setQuantity(int quantity)
 
     m_quantity = quantity;
     emit quantityChanged(m_quantity);
+}
+
+void Item::setCurrentDurability(const int value)
+{
+    if ( !m_stats.contains("DURABILITY") )
+        return;
+
+    QVariantMap durability = m_stats.value("DURABILITY").toMap();
+    durability["current"] = value;
+    m_stats["DURABILITY"] = durability;
+
+    emit currentDurabilityChanged(m_stats.value("DURABILITY")
+                                  .toMap().value("current").toInt());
 }

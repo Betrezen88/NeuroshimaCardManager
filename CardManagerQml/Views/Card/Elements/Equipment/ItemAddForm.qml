@@ -616,6 +616,31 @@ Popup {
                     }
                 }
 
+                // Wytrzymałość
+                Row {
+                    height: implicitHeight
+                    visible: _type.currentIndex === 2
+                                || _type.currentIndex === 3
+
+                    Column {
+                        width: implicitWidth
+                        height: implicitHeight
+
+                        Text {
+                            text: "Wytrzymałość"
+                            width: _durability.width
+                            font.pointSize: 12
+                            horizontalAlignment: Text.AlignHCenter
+                        }
+
+                        SpinBox {
+                            id: _durability
+                            from: 1
+                            to: 30
+                        }
+                    }
+                }
+
                 // Kary / Bonusy, Cechy
                 Row {
                     height: implicitHeight
@@ -757,7 +782,7 @@ Popup {
                             model: ListModel{}
                         }
                     }
-                } // Flow
+                } // Row
             } // Column Stats
 
             // Przyciski
@@ -825,6 +850,14 @@ Popup {
                             if ( _jam.text.length > 0 )
                                 stats["JAM"] = _jam.text
                             stats["AMMUNITION"] = 0
+                        }
+
+                        if ( _type.currentIndex === 2
+                                || _type.currentIndex === 3 ) {
+                            stats["DURABILITY"] = {
+                                "max": _durability.value,
+                                "current": _durability.value
+                            }
                         }
 
                         if ( _type.currentIndex === 2 ) {

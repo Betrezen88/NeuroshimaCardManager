@@ -57,7 +57,11 @@ Row {
                             }
                         }
                         MenuItem {
-                            text: "Napraw"
+                            text: "Zmień wytrzymałość"
+                            onClicked: {
+                                if ( null !== item )
+                                    _durabilityPopup.open()
+                            }
                         }
                         MenuItem {
                             text: "Wyrzuć"
@@ -138,7 +142,7 @@ Row {
                         spacing: 0
 
                         Text {
-                            id: _maxDurability
+                            id: _durability
                             text: qsTr("-")
                             padding: 5
                             font.pointSize: 12
@@ -151,7 +155,7 @@ Row {
                         }
 
                         Text {
-                            id: _durability
+                            id: _maxDurability
                             text: qsTr("-")
                             padding: 5
                             font.pointSize: 12
@@ -159,22 +163,67 @@ Row {
                     }
                 }
             }
+        }
+    }
 
+    Popup {
+        id: _durabilityPopup
+        anchors.centerIn: parent
+        modal: true
+        width: 300
+
+        Column {
+            spacing: 5
+            anchors.fill: parent
+
+            Text {
+                text: "Zmień wytrzymałość"
+                width: _durabilityPopup.width
+                horizontalAlignment: Text.AlignHCenter
+            }
+            Text {
+                text: (null !== item) ? item.name : ""
+                width: _durabilityPopup.width
+            }
+            SpinBox {
+                id: _newDurability
+                from: 0
+                to: (null !== item) ? item.maxDurability : 0
+                value: (null !== item) ? item.currentDurability : 0
+            }
+            Row {
+                spacing: 5
+                width: _durabilityPopup.width
+                Button {
+                    text: "Zmień"
+                    onClicked: {
+                        item.setCurrentDurability(_newDurability.value)
+                        _durabilityPopup.close()
+                    }
+                }
+                Button {
+                    text: "Anuluj"
+                    onClicked: _durabilityPopup.close()
+                }
+            }
         }
     }
 
     onItemChanged: {
         _name.text = ( null !== item ) ? item.name : ""
-        _maxDurability.text = ( null !== item ) ? item.durability : "-"
-        _durability.text = ( null !== item ) ? item.durability : "-"
+        _maxDurability.text = ( null !== item ) ? item.maxDurability : "-"
+        _durability.text = ( null !== item ) ? item.currentDurability : "-"
+
+        if ( null !== item ) {
+            item.currentDurabilityChanged.connect(function(){
+                _durability.text = item.currentDurability
+            })
+        }
 
         var locations = ( null !== item ) ? item.locations : []
-        if ( locations.hasOwnProperty(main.getLocation(_title.text)) ) {
-            _value.text = locations[main.getLocation(_title.text)]
-        }
-        else {
-            _value.text = "0"
-        }
+        _value.text = locations.hasOwnProperty(main.getLocation(_title.text))
+                            ? locations[main.getLocation(_title.text)]
+                            : 0
     }
 
     function getLocation(title) {

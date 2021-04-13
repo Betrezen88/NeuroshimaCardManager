@@ -19,7 +19,8 @@ class CORE_EXPORT Item : public Data
     Q_PROPERTY(int requiredBody READ requiredBody CONSTANT)
     Q_PROPERTY(QStringList damage READ damage CONSTANT)
     Q_PROPERTY(int penetration READ penetration CONSTANT)
-    Q_PROPERTY(int durability READ durability CONSTANT)
+    Q_PROPERTY(int currentDurability READ currentDurability WRITE setCurrentDurability NOTIFY currentDurabilityChanged)
+    Q_PROPERTY(int maxDurability READ maxDurability CONSTANT)
     Q_PROPERTY(int reputation READ reputation CONSTANT)
     Q_PROPERTY(QMap<QString, QVariant> dexBonus READ dexBonus CONSTANT)
     Q_PROPERTY(QString magazine READ magazine CONSTANT)
@@ -51,7 +52,8 @@ public:
     int requiredBody() const;
     QStringList damage() const;
     int penetration() const;
-    int durability() const;
+    int currentDurability() const;
+    int maxDurability() const;
     int reputation() const;
     QString magazine() const;
     QString bullet() const;
@@ -71,9 +73,11 @@ public:
 
 signals:
     void quantityChanged(int quantity);
+    void currentDurabilityChanged(int currentDurability);
 
 public slots:
     void setQuantity(int quantity);
+    void setCurrentDurability(const int value);
 
 private:
     QString m_type;
