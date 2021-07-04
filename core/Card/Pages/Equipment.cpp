@@ -199,7 +199,7 @@ void Equipment::throwArmor(Item *item)
 
 Item *Equipment::getArmor(const QString &location)
 {
-    for ( Item* pItem: m_armor ) {
+    for ( Item* pItem: qAsConst(m_armor) ) {
         if ( pItem->locations().contains(location) )
             return pItem;
     }
@@ -250,7 +250,7 @@ void Equipment::setWater(int water)
 
 Item *Equipment::findItemInBackpack(const QString &name)
 {
-    for ( Item* item: m_backpack ) {
+    for ( Item* item: qAsConst(m_backpack) ) {
         if ( item->name() == name) {
             return item;
         }
@@ -260,7 +260,7 @@ Item *Equipment::findItemInBackpack(const QString &name)
 
 int Equipment::findEmptyInBackpack()
 {
-    for (Item* pItem: m_backpack)
+    for (Item* pItem: qAsConst(m_backpack))
         if ( pItem->type() == "EMPTY" )
             return m_backpack.indexOf(pItem);
     return -1;

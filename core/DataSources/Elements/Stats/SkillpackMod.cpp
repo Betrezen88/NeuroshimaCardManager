@@ -13,9 +13,9 @@ SkillpackMod::SkillpackMod(Skillpack *skillpack, QObject *parent)
     : QObject(parent)
     , m_pSkillpack(skillpack)
 {
-    for ( Skill* skill: m_pSkillpack->m_skills ) {
+    for ( Skill* skill: qAsConst(m_pSkillpack->m_skills) ) {
         m_skills.append(new SkillMod(skill, QPair<int, int>(0, 5), this));
-        connect(skill, &Skill::valueChanged, [this](){
+        connect(skill, &Skill::valueChanged, this, [this](){
             emit enabledChanged(enabled());
         });
     }
@@ -51,7 +51,7 @@ bool SkillpackMod::enabled() const
 
 void SkillpackMod::buy()
 {
-    for ( SkillMod *skill: m_skills ) {
+    for ( SkillMod *skill: qAsConst(m_skills) ) {
         skill->setMin(1);
         skill->setValue(1);
     }
@@ -61,7 +61,7 @@ void SkillpackMod::buy()
 
 void SkillpackMod::sell()
 {
-    for ( SkillMod *skill: m_skills ) {
+    for ( SkillMod *skill: qAsConst(m_skills) ) {
         skill->setMin(0);
         skill->setValue(0);
     }
@@ -71,7 +71,7 @@ void SkillpackMod::sell()
 
 void SkillpackMod::addBonus(const int &value)
 {
-    for ( SkillMod* skill: m_skills ) {
+    for ( SkillMod* skill: qAsConst(m_skills) ) {
         skill->setMin(skill->min()+value);
         skill->setValue(skill->skill()->value()+value);
     }
@@ -79,7 +79,7 @@ void SkillpackMod::addBonus(const int &value)
 
 void SkillpackMod::removeBonus(const int &value)
 {
-    for ( SkillMod* skill: m_skills ) {
+    for ( SkillMod* skill: qAsConst(m_skills) ) {
         skill->setMin(skill->min()-value);
         skill->setValue(skill->skill()->value()-value);
     }

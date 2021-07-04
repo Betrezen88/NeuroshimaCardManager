@@ -60,7 +60,7 @@ Stats *CardBuilder::statsPage(const QJsonObject &stats)
 
         QVector<Skillpack*> skillpacks;
 
-        for ( const QJsonValue skillpack: tAttribute.value("skillpacks").toArray() ) {
+        for ( const QJsonValue &skillpack: tAttribute.value("skillpacks").toArray() ) {
             const QJsonObject &tSkillpack = skillpack.toObject();
 
             QStringList specializations;
