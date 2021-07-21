@@ -125,7 +125,7 @@ AttributeMod *StatsCreator::attribute(const int &index) const
 
 AttributeMod *StatsCreator::attribute(const QString &name)
 {
-    for ( AttributeMod* pAttribute: m_attributes )
+    for ( AttributeMod* pAttribute: qAsConst(m_attributes) )
         if ( name == pAttribute->attribute()->name() )
             return pAttribute;
 
@@ -330,7 +330,7 @@ void StatsCreator::addBonusTrick(Trick *bonusTrick)
 
 void StatsCreator::removeBonusTrick(const QString &trickName)
 {
-    for ( Trick* trick: m_tricks )
+    for ( Trick* trick: qAsConst(m_tricks) )
         if ( trick->name() == trickName ) {
             removeTrick(trick);
             break;
@@ -339,7 +339,7 @@ void StatsCreator::removeBonusTrick(const QString &trickName)
 
 SkillpackMod *StatsCreator::findSkillpack(const QString &name)
 {
-    for ( AttributeMod* attribute: m_attributes ) {
+    for ( AttributeMod* attribute: qAsConst(m_attributes) ) {
         for ( SkillpackMod* skillpack: attribute->skillpacksMod() )
             if ( skillpack->skillpack()->name() == name )
                 return skillpack;

@@ -70,7 +70,7 @@ void TricksSortFilterModel::removeTrick(const int &index)
 
 Trick* TricksSortFilterModel::findTrickSource(const QString &trickName)
 {
-    for ( Trick* trick: m_sourceModel ) {
+    for ( Trick* trick: qAsConst(m_sourceModel) ) {
         if ( trick->name() == trickName )
             return trick;
     }
@@ -118,7 +118,7 @@ void TricksSortFilterModel::sort(const Qt::SortOrder &order)
 void TricksSortFilterModel::filter(const QString &pattern)
 {
     m_tricks.clear();
-    for ( Trick* pTrick: m_sourceModel ) {
+    for ( Trick* pTrick: qAsConst(m_sourceModel) ) {
         if ( containsPattern(pTrick, pattern, m_caseSensitive) )
             m_tricks.append(pTrick);
     }

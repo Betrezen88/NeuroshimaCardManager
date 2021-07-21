@@ -101,8 +101,13 @@ int Stats::fame() const
 {
     int tFame = 0;
 
-    for ( const int &value: m_reputation.values() )
-        if ( 20 == value )
+//    for ( const int &value: m_reputation.values() )
+//        if ( 20 == value )
+//            ++tFame;
+//    return tFame;
+
+    for ( auto it = m_reputation.constBegin(); it != m_reputation.end(); ++it )
+        if ( 20 == it.value() )
             ++tFame;
     return tFame;
 }
@@ -126,7 +131,7 @@ Attribute *Stats::attribute(const int &index) const
 
 Attribute *Stats::attribute(const QString &name)
 {
-    for ( Attribute* pAttribute: m_attributes )
+    for ( Attribute* pAttribute: qAsConst(m_attributes) )
         if ( name == pAttribute->name() )
             return pAttribute;
     return nullptr;
@@ -242,7 +247,7 @@ QStringList Stats::woundType() const
 void Stats::mergeWounds(const QString &location, const QString &type)
 {
     QVector<Wound*> wounds;
-    for ( Wound* wound: m_wounds ) {
+    for ( Wound* wound: qAsConst(m_wounds) ) {
         if ( location == wound->location() && type == wound->type() )
             wounds.append(wound);
     }

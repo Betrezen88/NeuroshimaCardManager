@@ -82,6 +82,6 @@ void AttributeMod::setValue(const int &value)
 
 void AttributeMod::init()
 {
-    for ( Skillpack* skillpack: m_pAttribute->m_skillpacks )
+    for ( Skillpack* skillpack: qAsConst(m_pAttribute->m_skillpacks) )
         m_skillpacks.append(new SkillpackMod(skillpack));
 }
