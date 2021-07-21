@@ -817,17 +817,17 @@ Popup {
 
                         if ( _type.currentIndex === 3
                                 || _type.currentIndex === 4 ) {
-                            var bonus = {}
+                            var bonus = []
                             if ( _attack.value > 0 )
-                                bonus["ATTACK"] = _attack.value
+                                bonus.push({ "NAME": "Atak", "VALUE": _attack.value })
                             if ( _defence.value > 0 )
-                                bonus["DEFENCE"] = _defence.value
+                                bonus.push({ "NAME": "Obrona", "VALUE": _defence.value })
                             if ( _iniciative.value > 0 )
-                                bonus["INICIATIVE"] = _iniciative.value
+                                bonus.push({ "NAME": "Inicjatywa", "VALUE": _iniciative.value })
                             if ( _group.value > 0 )
-                                bonus["GROUP"] = _group.value
-                            if ( Object.keys(bonus).length > 0 )
-                                stats["BONUS"] = bonus
+                                bonus.push({ "NAME": "Grupa", "VALUE": _group.value })
+                            if ( bonus.length > 0 )
+                                stats["DEXBONUS"] = bonus
                         }
 
                         if ( _type.currentIndex > 2 ) {
@@ -861,20 +861,44 @@ Popup {
                         }
 
                         if ( _type.currentIndex === 2 ) {
-                            var locations = {}
+                            var locations = []
 
                             if ( _head.value > 0 )
-                                locations["HEAD"] = _head.value
+                                locations.push({
+                                    "LOCATION": "Głowa",
+                                    "ARMOR": _head.value,
+                                    "CUTTING": 0
+                                })
                             if ( _torso.value > 0 )
-                                locations["TORSO"] = _torso.value
+                                locations.push({
+                                    "LOCATION": "Tułów",
+                                    "ARMOR": _torso.value,
+                                    "CUTTING": 0
+                                })
                             if ( _leftHand.value > 0 )
-                                locations["LEFTHAND"] = _leftHand.value
+                                locations.push({
+                                    "LOCATION": "Lewa Ręka",
+                                    "ARMOR": _leftHand.value,
+                                    "CUTTING": 0
+                                })
                             if ( _rightHand.value > 0 )
-                                locations["RIGHTHAND"] = _rightHand.value
+                                locations.push({
+                                    "LOCATION": "Prawa Ręka",
+                                    "ARMOR": _rightHand.value,
+                                    "CUTTING": 0
+                                })
                             if ( _leftLeg.value > 0 )
-                                locations["LEFTLEG"] = _leftLeg.value
+                                locations.push({
+                                    "LOCATION": "Lewa Noga",
+                                    "ARMOR": _leftLeg.value,
+                                    "CUTTING": 0
+                                })
                             if ( _rightLeg.value > 0 )
-                                locations["RIGHTLEG"] = _rightLeg.value
+                                locations.push({
+                                    "LOCATION": "Prawa Noga",
+                                    "ARMOR": _rightLeg.value,
+                                    "CUTTING": 0
+                                })
                             stats["LOCATIONS"] = locations
 
                             if ( _penalties.model.count > 0 ) {

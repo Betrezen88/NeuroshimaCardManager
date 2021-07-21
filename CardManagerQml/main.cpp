@@ -43,6 +43,9 @@
 #include "Card/Elements/Stats/Trick.h"
 #include "Card/Elements/Stats/Wound.h"
 #include "Card/Elements/Equipment/Item.h"
+#include "Card/Elements/Equipment/DexterityBonus.h"
+#include "Card/Elements/Equipment/Durability.h"
+#include "Card/Elements/Equipment/Location.h"
 #include "Card/Elements/Rules/RulesSection.h"
 
 #include "Validators/TrickValidator.h"
@@ -55,7 +58,6 @@ int main(int argc, char *argv[])
     qRegisterMetaType<DataSource::Type>("NSDataSource::Type");
     qRegisterMetaType<Bonus::Type>("NSBonus::Type");
     qRegisterMetaType<Page::Type>("Page::Type");
-    qRegisterMetaType<Page::Type>("Penalty::Type");
     qRegisterMetaType<Skillpack::Type>("NSSkillpack::Type");
 
     qmlRegisterType<MainManager>("core.NSMainManager", 1, 0, "NSMainManager");
@@ -98,6 +100,9 @@ int main(int argc, char *argv[])
     qmlRegisterType<TrickValidator>("core.NSTrickValidator",
                                     1, 0, "NSTrickValidator");
     qmlRegisterType<Item>("core.NSItem", 1, 0, "NSItem");
+    qmlRegisterType<DexterityBonus>("core.NSDexterityBonus", 1, 0, "NSDexterityBonus");
+    qmlRegisterType<Durability>("core.NSDurability", 1, 0, "NSDurability");
+    qmlRegisterType<Location>("core.NSLocation", 1, 0, "NSLocation");
     qmlRegisterType<RulesSection>("core.NSRulesSection", 1, 0, "NSRulesSection");
 
     QGuiApplication app(argc, argv);

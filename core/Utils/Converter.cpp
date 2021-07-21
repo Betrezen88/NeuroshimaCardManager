@@ -17,6 +17,11 @@
 #include "../Card/Elements/Stats/Wound.h"
 
 #include "../Card/Elements/Equipment/Item.h"
+#include "../Card/Elements/Equipment/DexterityBonus.h"
+#include "../Card/Elements/Equipment/Durability.h"
+#include "../Card/Elements/Equipment/Location.h"
+
+#include "../DataSources/Elements/Stats/Requirement.h"
 
 #include <QJsonArray>
 
@@ -247,64 +252,90 @@ QJsonObject Converter::fromItem(const Item *item)
 
     QJsonObject stats;
 
-    if ( item->hasStat("REPUTATION") )
+    if ( item->reputation() > 0 )
         stats.insert( "REPUTATION", item->reputation() );
-    if ( item->hasStat("REQUIREMENT") )
-        stats.insert( "REQUIREMENT", item->requiredBody() );
-    if ( item->hasStat("PENETRATION") )
+    if ( item->requirement() ) {
+        QJsonObject requirement;
+        requirement.insert( "NAME", item->requirement()->name() );
+        requirement.insert( "VALUE", item->requirement()->value() );
+        requirement.insert( "TYPE", Requirement::stringToType(item->requirement()->type()) );
+        stats.insert( "REQUIREMENT", requirement );
+    }
+    if ( item->penetration() > 0 )
         stats.insert( "PENETRATION", item->penetration() );
-    if ( item->hasStat("RATEOFFIRE") )
+    if ( item->rateOfFire() > 0 )
         stats.insert( "RATEOFFIRE", item->rateOfFire() );
-    if ( item->hasStat("AMMUNITION") )
+    if ( item->ammunition() > 0 )
         stats.insert( "AMMUNITION", item->ammunition() );
-    if ( item->hasStat("MAGAZINE") )
+    if ( !item->magazine().isEmpty() )
         stats.insert( "MAGAZINE", item->magazine() );
-    if ( item->hasStat("BULLET") )
+    if ( !item->bullet().isEmpty() )
         stats.insert( "BULLET", item->bullet() );
-    if ( item->hasStat("JAM") )
+    if ( !item->jam().isEmpty() )
         stats.insert( "JAM", item->jam() );
-    if ( item->hasStat("DAMAGE") ) {
+    if ( item->damage().count() > 0 ) {
         QJsonArray damage;
         for ( const QString& dmg: item->damage() )
             damage.append(dmg);
         stats.insert( "DAMAGE", damage);
     }
-    if ( item->hasStat("DEXBONUS") ) {
-        QJsonObject dexbonus;
-        const QMap<QString, QVariant> tDexBonus = item->dexBonus();
-        for ( const QString& key: tDexBonus.keys() )
-            dexbonus.insert( key, tDexBonus.value(key).toInt() );
-        stats.insert( "DEXBONUS", dexbonus );
+    if ( item->dexterityBonusesCount() > 0 ) {
+        QJsonArray bonusList;
+        for ( const DexterityBonus* bonus: item->dexterityBonuses() ) {
+            QJsonObject tBonus;
+            tBonus.insert( "NAME", bonus->name() );
+            tBonus.insert( "VALUE", bonus->value() );
+            bonusList.append( tBonus );
+        }
+
+        stats.insert( "DEXBONUS", bonusList );
     }
-    if ( item->hasStat("SPECIAL") ) {
+    if ( item->specialsCount() > 0 ) {
         QJsonArray specials;
-        for ( const QVariant& special: item->special() )
-            specials.append( special.toJsonObject() );
+        for ( const Data* special: item->specials() ) {
+            QJsonObject tSpecial;
+            tSpecial.insert( "NAME", special->name() );
+            tSpecial.insert( "DESCRIPTION", special->description() );
+        }
         stats.insert( "SPECIAL", specials );
     }
-    if ( item->hasStat("DURABILITY") ) {
+    if ( item->durability() ) {
         QJsonObject durability;
-        durability.insert("max", item->maxDurability());
-        durability.insert("current", item->currentDurability());
+        durability.insert( "max", item->durability()->max() );
+        durability.insert( "current", item->durability()->current() );
         stats.insert("DURABILITY", durability);
     }
-    if ( item->hasStat("LOCATIONS") ) {
-        QJsonObject locations;
-        const QMap<QString, QVariant> tLocations = item->locations();
-        for ( const QString& key: tLocations.keys() )
-            locations.insert( key, tLocations.value(key).toInt() );
+    if ( item->locationsCount() > 0 ) {
+        QJsonArray locations;
+        for ( const Location* location: item->locations() ) {
+            QJsonObject tLocation;
+            tLocation.insert( "LOCATION", location->location() );
+            tLocation.insert( "ARMOR", location->armor() );
+            if ( 0 < location->cutting() )
+                tLocation.insert( "CUTTING", location->cutting() );
+            locations.append( tLocation );
+        }
         stats.insert( "LOCATIONS", locations );
     }
-    if ( item->hasStat("PENALTIES") ) {
+    if ( item->penaltiesCount() > 0 ) {
         QJsonArray penalties;
-        for ( const QVariant& penalty: item->penalties() )
-            penalties.append(penalty.toJsonObject());
+        for ( const Penalty* penalty: item->penalties() ) {
+            QJsonObject tPenalty;
+            tPenalty.insert( "NAME", penalty->name() );
+            tPenalty.insert( "VALUE", penalty->value() );
+            tPenalty.insert( "TYPE", penalty->type() );
+            penalties.append( tPenalty );
+        }
         stats.insert( "PENALTIES", penalties );
     }
-    if ( item->hasStat("FEATURES") ) {
+    if ( item->featuresCount() > 0 ) {
         QJsonArray features;
-        for ( const QVariant& feature: item->features() )
-            features.append(feature.toJsonObject());
+        for ( const Data* feature: item->features() ) {
+            QJsonObject tFeature;
+            tFeature.insert( "NAME", feature->name() );
+            tFeature.insert( "DESCRIPTION", feature->description() );
+            features.append( tFeature );
+        }
         stats.insert( "FEATURES", features );
     }
 

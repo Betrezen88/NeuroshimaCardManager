@@ -24,7 +24,7 @@ Equipment::Equipment(const QList<Item *> &backpack,
     , m_water(water)
 {
     while ( m_backpack.count() < 18 )
-        m_backpack.append(new Item("EMPTY", "", "", 0, 0, QMap<QString, QVariant>(), this));
+        m_backpack.append(new Item("EMPTY", "", "", 0, 0, this));
 }
 
 void Equipment::addItemToBackpack(Item *item)
@@ -130,9 +130,7 @@ void Equipment::equipWeapon(const int &index)
         emit backpackChanged();
     }
     else {
-        ItemCreator creator;
-        m_weapons.append( creator.create(m_backpack.at(index)) );
-        m_backpack.at(index)->setQuantity(quantity-1);
+        m_weapons.append( createItemFrom(m_backpack.at(index)) );
     }
 
     emit weaponsChanged();
@@ -158,28 +156,26 @@ void Equipment::throwWeapon(const int &index)
 
 void Equipment::equipArmor(const int &index)
 {
-    qDebug() << "Equipment::equipArmor()" << index;
     if ( index < 0 || index > m_backpack.size() )
         return;
 
     const int& quantity = m_backpack.at(index)->quantity();
+    unequipArmorIfCoversSameLocation(m_backpack.at(index));
 
-    if ( 1 == quantity ) {
+    if ( 1 == quantity )
         m_armor.append( m_backpack.takeAt(index) );
-        emit backpackChanged();
-    }
-    else {
-        ItemCreator creator;
-        m_armor.append( creator.create(m_backpack.at(index)) );
-        m_backpack.at(index)->setQuantity(quantity-1);
-    }
+    else
+        m_armor.append( createItemFrom(m_backpack.at(index)) );
 
+    emit backpackChanged();
     emit armorChanged();
 }
 
 void Equipment::unequipArmor(Item *item)
 {
     const int& index = m_armor.indexOf(item);
+
+    qDebug() << "Equipment::unequip() " << index << " | " << item->name();
 
     if ( -1 == index ) return;
 
@@ -200,8 +196,8 @@ void Equipment::throwArmor(Item *item)
 Item *Equipment::getArmor(const QString &location)
 {
     for ( Item* pItem: m_armor ) {
-        if ( pItem->locations().contains(location) )
-            return pItem;
+        if ( pItem->coversLocation(location) )
+            return m_armor.at(m_armor.indexOf(pItem));
     }
     return nullptr;
 }
@@ -264,6 +260,29 @@ int Equipment::findEmptyInBackpack()
         if ( pItem->type() == "EMPTY" )
             return m_backpack.indexOf(pItem);
     return -1;
+}
+
+Item *Equipment::createItemFrom(Item *item)
+{
+    ItemCreator creator;
+    item->setQuantity(item->quantity()-1);
+    return creator.create(item);
+}
+
+void Equipment::unequipArmorIfCoversSameLocation(const Item *armor)
+{
+    QStringList locations;
+    for ( const Location* location: armor->locations() )
+        locations.append( location->location() );
+
+    for ( const Item* pArmor: m_armor ) {
+        for ( const Location* location: pArmor->locations() )
+            if ( locations.contains(location->location()) ) {
+                unequipArmor( const_cast<Item*>(pArmor) );
+                break;
+            }
+    }
+    emit armorChanged();
 }
 
 int Equipment::backpackCount(QQmlListProperty<Item> *list)

@@ -103,8 +103,8 @@ Popup {
                     width: implicitWidth
                     height: implicitHeight
                     spacing: 5
-                    visible: itemData !== null
-                             && itemData.hasStat("REPUTATION")
+                    visible: itemData != null
+                             && itemData.reputation > 0
 
                     Text {
                         width: implicitWidth
@@ -130,7 +130,7 @@ Popup {
                 text: qsTr("Statystyki")
                 horizontalAlignment: Text.AlignHCenter
                 font.pointSize: 15
-                visible: itemData !== null
+                visible: itemData != null
                           && ( itemData.type === "HANDWEAPON"
                           || itemData.type === "RANGEDWEAPON"
                           || itemData.type === "ARMOR"
@@ -140,17 +140,17 @@ Popup {
             Row {
                 height: implicitHeight
                 spacing: 5
-                visible: itemData !== null
-                         && ( itemData.hasStat("REQUIEREMENT")
-                         || itemData.hasStat("PENETRATION")
-                         || itemData.hasStat("DURABILITY"))
+                visible: itemData != null
+                         && ( itemData.requirement != null
+                         || itemData.penetration > 0
+                         || itemData.durability != null )
 
                 Column {
                     width: implicitWidth
                     height: implicitHeight
                     spacing: 5
-                    visible: itemData !== null
-                             && itemData.hasStat("REQUIREMENT")
+                    visible: itemData != null
+                             && itemData.requirement != null
 
                     Text {
                         width: 100
@@ -174,8 +174,8 @@ Popup {
                     width: implicitWidth
                     height: implicitHeight
                     spacing: 5
-                    visible: itemData !== null
-                             && itemData.hasStat("DURABILITY")
+                    visible: itemData != null
+                             && itemData.durability != null
 
                     Text {
                         width: implicitWidth
@@ -206,8 +206,8 @@ Popup {
                     width: implicitWidth
                     height: implicitHeight
                     spacing: 5
-                    visible: itemData !== null
-                             && itemData.hasStat("PENETRATION")
+                    visible: itemData != null
+                             && itemData.penetration > 0
 
                     Text {
                         width: implicitWidth
@@ -233,104 +233,36 @@ Popup {
                 text: qsTr("Bonusy do zręczności")
                 horizontalAlignment: Text.AlignHCenter
                 font.pointSize: 15
-                visible: itemData !== null && itemData.hasStat("BONUS")
+                visible: itemData != null && itemData.dexterityBonuses.length > 0
             }
 
             Row {
                 height: implicitHeight
                 spacing: 10
-                visible: itemData !== null
-                         && itemData.hasStat("BONUS")
+                visible: itemData != null && itemData.dexterityBonuses.length > 0
 
-                Column {
-                    id: _attackC
-                    width: implicitWidth
-                    height: implicitHeight
-                    spacing: 5
+                Repeater {
+                    id: _dexterityBonuses
 
-                    Text {
+                    delegate: Column {
                         width: implicitWidth
-                        text: qsTr("Atak")
-                        horizontalAlignment: Text.AlignHCenter
-                        font.bold: true
-                        font.pointSize: 12
-                    }
+                        height: implicitHeight
+                        spacing: 5
 
-                    Text {
-                        id: _attack
-                        width: parent.width
-                        text: qsTr("0")
-                        horizontalAlignment: Text.AlignHCenter
-                        font.pointSize: 15
-                    }
-                }
+                        Text {
+                            width: implicitWidth
+                            text: qsTr(modelData.name)
+                            horizontalAlignment: Text.AlignHCenter
+                            font.bold: true
+                            font.pointSize: 12
+                        }
 
-                Column {
-                    id: _defenceC
-                    width: implicitWidth
-                    height: implicitHeight
-                    spacing: 5
-
-                    Text {
-                        width: implicitWidth
-                        text: qsTr("Obrona")
-                        horizontalAlignment: Text.AlignHCenter
-                        font.bold: true
-                        font.pointSize: 12
-                    }
-
-                    Text {
-                        id: _defence
-                        width: parent.width
-                        text: qsTr("0")
-                        horizontalAlignment: Text.AlignHCenter
-                        font.pointSize: 15
-                    }
-                }
-
-                Column {
-                    id: _iniciativeC
-                    width: implicitWidth
-                    height: implicitHeight
-                    spacing: 5
-
-                    Text {
-                        width: implicitWidth
-                        text: qsTr("Inicjatywa")
-                        horizontalAlignment: Text.AlignHCenter
-                        font.bold: true
-                        font.pointSize: 12
-                    }
-
-                    Text {
-                        id: _iniciative
-                        width: parent.width
-                        text: qsTr("0")
-                        horizontalAlignment: Text.AlignHCenter
-                        font.pointSize: 15
-                    }
-                }
-
-                Column {
-                    id: _groupC
-                    width: implicitWidth
-                    height: implicitHeight
-                    spacing: 5
-
-                    Text {
-                        width: implicitWidth
-                        text: qsTr("Grupa")
-                        horizontalAlignment: Text.AlignHCenter
-                        font.bold: true
-                        font.pointSize: 12
-                    }
-
-                    Text {
-                        id: _group
-                        width: parent.width
-                        text: qsTr("0")
-                        horizontalAlignment: Text.AlignHCenter
-                        font.pointSize: 15
+                        Text {
+                            width: parent.width
+                            text: modelData.value
+                            horizontalAlignment: Text.AlignHCenter
+                            font.pointSize: 15
+                        }
                     }
                 }
             }
@@ -339,8 +271,7 @@ Popup {
                 width: _scrollView.width
                 height: implicitHeight
                 spacing: 5
-                visible: itemData !== null &&
-                         itemData.hasStat("DAMAGE")
+                visible: itemData != null && itemData.damage.length > 0
 
                 Text {
                     text: qsTr("Obrażenia:")
@@ -359,18 +290,17 @@ Popup {
                 width: implicitWidth
                 height: implicitHeight
                 spacing: 15
-                visible: itemData !== null
-                         && ( itemData.hasStat("BULLET")
-                             || itemData.hasStat("MAGAZINE")
-                             || itemData.hasStat("AMMUNITION")
-                             || itemData.hasStat("RATEOFFIRE")
-                             || itemData.hasStat("JAM") )
+                visible: itemData != null
+                         && ( itemData.bullet.length > 0
+                             || itemData.magazine.length > 0
+                             || itemData.ammunition > 0
+                             || itemData.rateOfFire > 0
+                             || itemData.jam.length > 0 )
 
                 Column {
                     width: implicitWidth
                     height: 50
-                    visible: itemData !== null
-                             && itemData.hasStat("BULLET")
+                    visible: itemData != null && itemData.bullet.length > 0
 
                     Text {
                         width: implicitWidth
@@ -394,8 +324,7 @@ Popup {
                     width: implicitWidth
                     height: 50
                     spacing: 5
-                    visible: itemData !== null
-                             && itemData.hasStat("MAGAZINE")
+                    visible: itemData != null && itemData.magazine.length > 0
 
                     Text {
                         width: implicitWidth
@@ -418,8 +347,7 @@ Popup {
                     width: implicitWidth
                     height: 50
                     spacing: 5
-                    visible: itemData !== null
-                             && itemData.hasStat("AMMUNITION")
+                    visible: itemData != null && itemData.ammunition > 0
 
                     Text {
                         width: implicitWidth
@@ -442,8 +370,7 @@ Popup {
                     width: implicitWidth
                     height: 50
                     spacing: 5
-                    visible: itemData !== null
-                             && itemData.hasStat("RATEOFFIRE")
+                    visible: itemData != null && itemData.rateOfFire > 0
 
                     Text {
                         id: text1
@@ -467,8 +394,7 @@ Popup {
                     width: implicitWidth
                     height: 50
                     spacing: 5
-                    visible: itemData !== null
-                             && itemData.hasStat("JAM")
+                    visible: itemData != null && itemData.jam.length > 0
 
                     Text {
                         width: implicitWidth
@@ -489,17 +415,24 @@ Popup {
             }
 
             Flow {
-                id: _specials
                 width: _scrollView.width
                 height: implicitHeight
                 spacing: 5
-                visible: itemData !== null
-                         && itemData.hasStat("SPECIAL")
+                visible: itemData != null && itemData.specials.length > 0
 
                 Text {
                     text: qsTr("Reguły specjalne:")
                     font.bold: true
                     font.pointSize: 12
+                }
+
+                Repeater {
+                    id: _specials
+                    delegate: ItemSpecial {
+                        name: modelData.name
+                        description: modelData.description
+                        visibleBtn: false
+                    }
                 }
             }
 
@@ -509,185 +442,85 @@ Popup {
                 text: qsTr("Lokacje")
                 horizontalAlignment: Text.AlignHCenter
                 font.pointSize: 15
-                visible: itemData !== null
-                         && itemData.hasStat("LOCATIONS")
+                visible: itemData != null && itemData.locations.length > 0
             }
 
             Flow {
                 width: _scrollView.width
                 height: implicitHeight
                 spacing: 10
-                visible: itemData !== null
-                         && itemData.hasStat("LOCATIONS")
+                visible: itemData != null && itemData.locations.length > 0
 
-                Column {
-                    id: _headC
-                    width: implicitWidth
-                    height: implicitHeight
-                    spacing: 5
+                Repeater {
+                    id: _locations
 
-                    Text {
+                    delegate: Column {
                         width: implicitWidth
-                        text: qsTr("Głowa")
-                        horizontalAlignment: Text.AlignHCenter
-                        font.bold: true
-                        font.pointSize: 12
-                    }
+                        height: implicitHeight
+                        spacing: 5
 
-                    Text {
-                        id: _head
-                        width: parent.width
-                        text: qsTr("0")
-                        horizontalAlignment: Text.AlignHCenter
-                        font.pointSize: 15
-                    }
-                }
+                        Text {
+                            width: implicitWidth
+                            text: qsTr(modelData.location)
+                            horizontalAlignment: Text.AlignHCenter
+                            font.bold: true
+                            font.pointSize: 12
+                        }
 
-                Column {
-                    id: _leftHandC
-                    width: implicitWidth
-                    height: implicitHeight
-                    spacing: 5
-
-                    Text {
-                        width: implicitWidth
-                        text: qsTr("Lewa ręka")
-                        horizontalAlignment: Text.AlignHCenter
-                        font.bold: true
-                        font.pointSize: 12
-                    }
-
-                    Text {
-                        id: _leftHand
-                        width: parent.width
-                        text: qsTr("0")
-                        horizontalAlignment: Text.AlignHCenter
-                        font.pointSize: 15
-                    }
-                }
-
-                Column {
-                    id: _rightHandC
-                    width: implicitWidth
-                    height: implicitHeight
-                    spacing: 5
-
-                    Text {
-                        width: implicitWidth
-                        text: qsTr("Prawa ręka")
-                        horizontalAlignment: Text.AlignHCenter
-                        font.bold: true
-                        font.pointSize: 12
-                    }
-
-                    Text {
-                        id: _rightHand
-                        width: parent.width
-                        text: qsTr("0")
-                        horizontalAlignment: Text.AlignHCenter
-                        font.pointSize: 15
-                    }
-                }
-
-                Column {
-                    id: _torsoC
-                    width: implicitWidth
-                    height: implicitHeight
-                    spacing: 5
-
-                    Text {
-                        width: implicitWidth
-                        text: qsTr("Tułów")
-                        horizontalAlignment: Text.AlignHCenter
-                        font.bold: true
-                        font.pointSize: 12
-                    }
-
-                    Text {
-                        id: _torso
-                        width: parent.width
-                        text: qsTr("0")
-                        horizontalAlignment: Text.AlignHCenter
-                        font.pointSize: 15
-                    }
-                }
-
-                Column {
-                    id: _leftLegC
-                    width: implicitWidth
-                    height: implicitHeight
-                    spacing: 5
-
-                    Text {
-                        width: implicitWidth
-                        text: qsTr("Lewa noga")
-                        horizontalAlignment: Text.AlignHCenter
-                        font.bold: true
-                        font.pointSize: 12
-                    }
-
-                    Text {
-                        id: _leftLeg
-                        width: parent.width
-                        text: qsTr("0")
-                        horizontalAlignment: Text.AlignHCenter
-                        font.pointSize: 15
-                    }
-                }
-
-                Column {
-                    id: _rightLegC
-                    width: implicitWidth
-                    height: implicitHeight
-                    spacing: 5
-
-                    Text {
-                        width: implicitWidth
-                        text: qsTr("Prawa noga")
-                        horizontalAlignment: Text.AlignHCenter
-                        font.bold: true
-                        font.pointSize: 12
-                    }
-
-                    Text {
-                        id: _rightLeg
-                        width: parent.width
-                        text: qsTr("0")
-                        horizontalAlignment: Text.AlignHCenter
-                        font.pointSize: 15
+                        Text {
+                            width: parent.width
+                            text: qsTr(modelData.armor + (modelData.cutting > 0 ? "/" + modelData.cutting : ""))
+                            horizontalAlignment: Text.AlignHCenter
+                            font.pointSize: 15
+                        }
                     }
                 }
             }
 
             Flow {
-                property var objects: []
-                id: _penalties
                 width: _scrollView.width
                 height: implicitHeight
                 spacing: 5
-                visible: itemData !== null
-                         && itemData.hasStat("PENALTIES")
+                visible: itemData != null && itemData.penalties.length > 0
 
                 Text {
                     text: qsTr("Kary/Bonusy:")
                     font.bold: true
                     font.pointSize: 12
                 }
+
+                Repeater {
+                    id: _penalties
+
+                    delegate: Penalty {
+                        name: modelData.name
+                        value: modelData.value
+                        type: modelData.type
+                    }
+                }
             }
 
             Flow {
                 property var objects: []
-                id: _features
                 width: _scrollView.width
                 height: implicitHeight
                 spacing: 5
-                visible: itemData !== null
-                         && itemData.hasStat("FEATURES")
+                visible: itemData != null && itemData.features.length > 0
 
                 Text {
                     text: qsTr("Cechy:")
                     font.bold: true
                     font.pointSize: 12
+                }
+
+                Repeater {
+                    id: _features
+
+                    delegate:  ItemSpecial {
+                        name: modelData.name
+                        description: modelData.description
+                        visibleBtn: false
+                    }
                 }
             }
         }
@@ -700,33 +533,26 @@ Popup {
     }
 
     onItemDataChanged: {
-        if ( null === itemData )
+        if ( null == itemData )
             return
 
         _name.text = itemData.name
         _description.text = itemData.description
         _price.text = itemData.price
         _quantity.text = itemData.quantity
-        _reputation.visible = itemData.hasStat("REPUTATION")
+        _reputation.visible = itemData.reputation > 0
         _reputation.text = itemData.reputation
 
-        _requirement.text = itemData.requiredBody
-        _durability.text = itemData.durability
+        if ( itemData.requirement != null )
+            _requirement.text = itemData.requirement.value
+        if ( itemData.durability != null )
+            _durability.text = itemData.durability.current + "/" + itemData.durability.max
         _penetration.text = itemData.penetration
 
-        if ( itemData.hasStat("BONUS") ) {
-            var bonus = itemData.dexBonus
-            _attackC.visible = bonus.hasOwnProperty("ATTACK")
-            _attack.text = bonus["ATTACK"]
-            _defenceC.visible = bonus.hasOwnProperty("DEFENCE")
-            _defence.text = bonus["DEFENCE"]
-            _iniciativeC.visible = bonus.hasOwnProperty("INICIATIVE")
-            _iniciative.text = bonus["INICIATIVE"]
-            _groupC.visible = bonus.hasOwnProperty("GROUP")
-            _group.text = bonus["GROUP"]
-        }
+        if ( itemData.dexterityBonuses.length > 0 )
+            _dexterityBonuses.model = itemData.dexterityBonuses
 
-        if ( itemData.hasStat("DAMAGE") ) {
+        if ( itemData.damage.length > 0 ) {
             var damage = itemData.damage
             if ( damage.length === 1 )
                 _damage.text = damage[0]
@@ -745,79 +571,16 @@ Popup {
         _ammunition.text = itemData.ammunition
         _jam.text = itemData.jam
 
-        if ( itemData.hasStat("SPECIAL") ) {
-            for ( var s in itemData.special ) {
-                var spec = itemData.special[s]
-                _scrollView.createElement( "ItemSpecial.qml",
-                                          _specials,
-                                          {
-                                              name: spec.name,
-                                              description: spec.description,
-                                              visibleBtn: false
-                                          }
-                                        )
-            }
-        }
+        if ( itemData.specials.length > 0 )
+            _specials.model = itemData.specials
 
-        if ( itemData.hasStat("LOCATIONS") ) {
-            var locations = itemData.locations
+        if ( itemData.locations.length > 0 )
+            _locations.model = itemData.locations
 
-            _headC.visible = locations.hasOwnProperty("HEAD")
-            _head.text = locations.hasOwnProperty("HEAD")
-                    ? locations["HEAD"] : "0"
-            _leftHandC.visible = locations.hasOwnProperty("LEFTHAND")
-            _leftHand.text = locations.hasOwnProperty("LEFTHAND")
-                    ? locations["LEFTHAND"] : "0"
-            _rightHandC.visible = locations.hasOwnProperty("RIGHTHAND")
-            _rightHand.text = locations.hasOwnProperty("RIGHTHAND")
-                    ? locations["RIGHTHAND"] : "0"
-            _torsoC.visible = locations.hasOwnProperty("TORSO")
-            _torso.text = locations.hasOwnProperty("TORSO")
-                    ? locations["TORSO"] : "0"
-            _leftLegC.visible = locations.hasOwnProperty("LEFTLEG")
-            _leftLeg.text = locations.hasOwnProperty("LEFTLEG")
-                    ? locations["LEFTLEG"] : "0"
-            _rightLegC.visible = locations.hasOwnProperty("RIGHTLEG")
-            _rightLeg.text = locations.hasOwnProperty("RIGHTLEG")
-                    ? locations["RIGHTLEG"] : "0"
-        }
+        if ( itemData.penalties.length > 0 )
+            _penalties.model = itemData.penalties
 
-        if ( itemData.hasStat("PENALTIES") ) {
-            for ( var pen in _penalties.objects )
-                _penalties.objects[pen].destroy()
-            _penalties.objects = []
-            for ( var p in itemData.penalties ) {
-                var penalty = itemData.penalties[p]
-                var penObject = _scrollView.createElement(
-                            "Penalty.qml",
-                            _penalties,
-                            {
-                                value: penalty.VALUE,
-                                name: penalty.NAME,
-                                type: penalty.TYPE
-                            }
-                        )
-                _penalties.objects.push(penObject)
-            }
-        }
-
-        if ( itemData.hasStat("FEATURES") ) {
-            for ( var fea in _features.objects )
-                _features.objects[fea].destroy()
-            _features.objects = []
-            for ( var f in itemData.features ) {
-                var feature = itemData.features[f]
-                var featObject = _scrollView.createElement(
-                            "ItemSpecial.qml",
-                            _features,
-                            {
-                                name: feature.NAME,
-                                description: feature.DESCRIPTION,
-                                visibleBtn: false
-                            }
-                        )
-                _features.objects.push(featObject)
-            }
-        }
+        if ( itemData.features.length > 0 )
+            _features.model = itemData.features
     }
 }

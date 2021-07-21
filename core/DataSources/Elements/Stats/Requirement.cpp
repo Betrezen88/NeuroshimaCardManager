@@ -38,3 +38,14 @@ Requirement::Type Requirement::type() const
 {
     return m_type;
 }
+
+QString Requirement::stringToType(const Type &type)
+{
+    switch (type) {
+    case Type::ATTRIBUTE: return "ATTRIBUTE";
+    case Type::SKILLPACK: return "SKILLPACK";
+    case Type::SKILL: return "SKILL";
+    case Type::PROFESSION: return "PROFESSION";
+    default: return "";
+    }
+}

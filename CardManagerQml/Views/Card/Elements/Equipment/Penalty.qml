@@ -7,7 +7,7 @@ Text {
     property string type
 
     id: main
-    text: value + " " + name + " (" + type + ")"
+    text: (value > 0 ? "+" : "") + value + " " + name + " (" + type + ")"
     font.pointSize: 12
 
     function penalty() {

@@ -85,12 +85,12 @@ Column {
 
     onEquipmentChanged: {
         equipment.armorChanged.connect(function() {
-            _head.item = equipment.getArmor("HEAD")
-            _torso.item = equipment.getArmor("TORSO")
-            _lHand.item = equipment.getArmor("LEFTHAND")
-            _rHand.item = equipment.getArmor("RIGHTHAND")
-            _lLeg.item = equipment.getArmor("LEFTLEG")
-            _rLeg.item = equipment.getArmor("RIGHTLEG")
+            _head.item = equipment.getArmor(_head.title)
+            _torso.item = equipment.getArmor(_torso.title)
+            _lHand.item = equipment.getArmor(_lHand.title)
+            _rHand.item = equipment.getArmor(_rHand.title)
+            _lLeg.item = equipment.getArmor(_lLeg.title)
+            _rLeg.item = equipment.getArmor(_rLeg.title)
         })
     }
 }

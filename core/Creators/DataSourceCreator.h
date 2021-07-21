@@ -35,7 +35,6 @@ public:
 private:
     QJsonDocument loadData(const QString &dataFile);
     Bonus::Type bonusType(const QString &type);
-    Penalty::Type penaltyType(const QString &type);
 };
 
 #endif // DATASOURCECREATOR_H

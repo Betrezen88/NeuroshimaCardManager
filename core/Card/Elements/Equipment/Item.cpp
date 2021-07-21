@@ -1,5 +1,9 @@
 ﻿#include "Item.h"
 
+#include "DataSources/Elements/Stats/Requirement.h"
+#include "Card/Elements/Equipment/DexterityBonus.h"
+#include "Card/Elements/Equipment/Location.h"
+
 #include <QDebug>
 
 Item::Item(QObject* parent) : Data(parent)
@@ -12,13 +16,11 @@ Item::Item(const QString &type
            , const QString &description
            , const int& price
            , const int &quantity
-           , const QMap<QString, QVariant> &stats
            , QObject *parent)
     : Data(name, description, parent)
     , m_type(type)
     , m_price(price)
     , m_quantity(quantity)
-    , m_stats(stats)
 {
 
 }
@@ -26,76 +28,6 @@ Item::Item(const QString &type
 QString Item::type() const
 {
     return m_type;
-}
-
-int Item::requiredBody() const
-{
-    if ( m_stats.contains("REQUIREMENT") )
-        return m_stats.value("REQUIREMENT").toInt();
-    return 0;
-}
-
-QStringList Item::damage() const
-{
-    if ( m_stats.contains("DAMAGE") )
-        return m_stats.value("DAMAGE").toStringList();
-    return QStringList();
-}
-
-int Item::penetration() const
-{
-    if ( m_stats.contains("PENETRATION") )
-        return m_stats.value("PENETRATION").toInt();
-    return 0;
-}
-
-int Item::currentDurability() const
-{
-    if ( m_stats.contains("DURABILITY") )
-        return m_stats.value("DURABILITY").toMap().value("current").toInt();
-    return 0;
-}
-
-int Item::maxDurability() const
-{
-    if ( m_stats.contains("DURABILITY") )
-        return m_stats.value("DURABILITY").toMap().value("max").toInt();
-    return 0;
-}
-
-int Item::reputation() const
-{
-    if ( m_stats.contains("REPUTATION") )
-        return m_stats.value("REPUTATION").toInt();
-    return 0;
-}
-
-QString Item::magazine() const
-{
-    if ( m_stats.contains("MAGAZINE") )
-        return m_stats.value("MAGAZINE").toString();
-    return QString();
-}
-
-int Item::rateOfFire() const
-{
-    if ( m_stats.contains("RATEOFFIRE") )
-        return m_stats.value("RATEOFFIRE").toInt();
-    return 0;
-}
-
-int Item::ammunition() const
-{
-    if ( m_stats.contains("AMMUNITION") )
-        return m_stats.value("AMMUNITION").toInt();
-    return 0;
-}
-
-QMap<QString, QVariant> Item::dexBonus() const
-{
-    if ( m_stats.contains("BONUS") )
-        return m_stats.value("BONUS").toMap();
-    return QMap<QString, QVariant>();
 }
 
 int Item::price() const
@@ -108,78 +40,246 @@ int Item::quantity() const
     return m_quantity;
 }
 
-bool Item::hasStat(const QString &stat) const
+int Item::reputation() const
 {
-    return m_stats.contains(stat);
+    return m_reputation;
 }
 
-QString Item::jam() const
+QStringList Item::damage() const
 {
-    if ( m_stats.contains("JAM") )
-        return m_stats["JAM"].toString();
-    return QString();
+    return m_damage;
 }
 
-int Item::armor() const
+int Item::penetration() const
 {
-    if ( m_stats.contains("ARMOR") )
-        return m_stats.value("ARMOR").toInt();
-    return 0;
+    return m_penetration;
+}
+
+QQmlListProperty<Data> Item::specials()
+{
+    return QQmlListProperty<Data>(this, this,
+                                  &Item::specialsCount,
+                                  &Item::special);
+}
+
+QList<Data *> Item::specials() const
+{
+    return m_specials;
+}
+
+int Item::specialsCount() const
+{
+    return m_specials.count();
+}
+
+Data *Item::special(const int index) const
+{
+    return m_specials.at(index);
+}
+
+QQmlListProperty<DexterityBonus> Item::dexterityBonuses()
+{
+    return QQmlListProperty<DexterityBonus>(this, this,
+                                            &Item::dexterityBonusesCount,
+                                            &Item::dexterityBonus);
+}
+
+QList<DexterityBonus *> Item::dexterityBonuses() const
+{
+    return m_dexterityBonus;
+}
+
+int Item::dexterityBonusesCount() const
+{
+    return m_dexterityBonus.count();
+}
+
+DexterityBonus *Item::dexterityBonus(const int index) const
+{
+    return m_dexterityBonus.at(index);
+}
+
+int Item::ammunition() const
+{
+    return m_amunition;
+}
+
+int Item::rateOfFire() const
+{
+    return m_rateOfFire;
 }
 
 QString Item::bullet() const
 {
-    if ( m_stats.contains("BULLET") )
-        return m_stats.value("BULLET").toString();
-    return QString();
+    return m_bullet;
 }
 
-QList<QVariant> Item::special() const
+QString Item::magazine() const
 {
-    if ( m_stats.contains("SPECIAL") )
-        return m_stats.value("SPECIAL").toList();
-    return QList<QVariant>();
+    return m_magazine;
 }
 
-QMap<QString, QVariant> Item::locations() const
+QString Item::jam() const
 {
-    if ( m_stats.contains("LOCATIONS") )
-        return m_stats.value("LOCATIONS").toMap();
-    return QMap<QString, QVariant>();
+    return m_jam;
 }
 
-QList<QVariant> Item::penalties() const
+Requirement *Item::requirement() const
 {
-    if ( m_stats.contains("PENALTIES") )
-        return m_stats.value("PENALTIES").toList();
-    return QList<QVariant>();
+    return m_pRequirement;
 }
 
-QList<QVariant> Item::features() const
+Durability *Item::durability() const
 {
-    if ( m_stats.contains("FEATURES") )
-        return m_stats.value("FEATURES").toList();
-    return QList<QVariant>();
+    return m_pDurability;
 }
 
-void Item::setQuantity(int quantity)
+QQmlListProperty<Location> Item::locations()
 {
-    if (m_quantity == quantity)
+    return QQmlListProperty<Location>(this, this,
+                                      &Item::locationsCount,
+                                      &Item::location);
+}
+
+QList<Location *> Item::locations() const
+{
+    return m_locations;
+}
+
+int Item::locationsCount() const
+{
+    return m_locations.count();
+}
+
+Location *Item::location(const int index) const
+{
+    return m_locations.at(index);
+}
+
+bool Item::coversLocation(const QString &location) const
+{
+    for ( const Location* tLocation: m_locations ) {
+        if ( tLocation->location() == location )
+            return true;
+    }
+    return false;
+}
+
+Location *Item::location(const QString &name) const
+{
+//    qDebug() << "Item::location()" << name;
+    for ( int i{0}; i<m_locations.count(); ++i )
+        if ( m_locations.at(i)->location() == name ) {
+//            qDebug() << "Found location for " << name;
+            return m_locations.at(i);
+        }
+    return nullptr;
+}
+
+QQmlListProperty<Penalty> Item::penalties()
+{
+    return QQmlListProperty<Penalty>(this, this,
+                                     &Item::penaltiesCount,
+                                     &Item::penalty);
+}
+
+QList<Penalty *> Item::penalties() const
+{
+    return m_penalties;
+}
+
+int Item::penaltiesCount() const
+{
+    return m_penalties.count();
+}
+
+Penalty *Item::penalty(const int index) const
+{
+    return m_penalties.at(index);
+}
+
+QQmlListProperty<Data> Item::features()
+{
+    return QQmlListProperty<Data>(this, this,
+                                  &Item::featuresCount,
+                                  &Item::feature);
+}
+
+QList<Data *> Item::features() const
+{
+    return m_features;
+}
+
+int Item::featuresCount() const
+{
+    return m_features.count();
+}
+
+Data *Item::feature(int index) const
+{
+    return m_features.at(index);
+}
+
+int Item::armor() const
+{
+    return m_armor;
+}
+
+void Item::setQuantity(const int quantity)
+{
+    if ( m_quantity == quantity )
         return;
 
     m_quantity = quantity;
-    emit quantityChanged(m_quantity);
+    emit quantityChanged( m_quantity );
 }
 
-void Item::setCurrentDurability(const int value)
+int Item::specialsCount(QQmlListProperty<Data> *list)
 {
-    if ( !m_stats.contains("DURABILITY") )
-        return;
+    return reinterpret_cast<Item*>(list->data)->specialsCount();
+}
 
-    QVariantMap durability = m_stats.value("DURABILITY").toMap();
-    durability["current"] = value;
-    m_stats["DURABILITY"] = durability;
+Data *Item::special(QQmlListProperty<Data> *list, int index)
+{
+    return reinterpret_cast<Item*>(list->data)->special(index);
+}
 
-    emit currentDurabilityChanged(m_stats.value("DURABILITY")
-                                  .toMap().value("current").toInt());
+int Item::dexterityBonusesCount(QQmlListProperty<DexterityBonus> *list)
+{
+    return reinterpret_cast<Item*>(list->data)->dexterityBonusesCount();
+}
+
+DexterityBonus *Item::dexterityBonus(QQmlListProperty<DexterityBonus> *list, int index)
+{
+    return reinterpret_cast<Item*>(list->data)->dexterityBonus(index);
+}
+
+int Item::locationsCount(QQmlListProperty<Location> *list)
+{
+    return reinterpret_cast<Item*>(list->data)->locationsCount();
+}
+
+Location *Item::location(QQmlListProperty<Location> *list, int index)
+{
+    return reinterpret_cast<Item*>(list->data)->location(index);
+}
+
+int Item::penaltiesCount(QQmlListProperty<Penalty> *list)
+{
+    return reinterpret_cast<Item*>(list->data)->penaltiesCount();
+}
+
+Penalty *Item::penalty(QQmlListProperty<Penalty> *list, int index)
+{
+    return reinterpret_cast<Item*>(list->data)->penalty(index);
+}
+
+int Item::featuresCount(QQmlListProperty<Data> *list)
+{
+    return reinterpret_cast<Item*>(list->data)->featuresCount();
+}
+
+Data *Item::feature(QQmlListProperty<Data> *list, int index)
+{
+    return reinterpret_cast<Item*>(list->data)->feature(index);
 }

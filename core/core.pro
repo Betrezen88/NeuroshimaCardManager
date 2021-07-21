@@ -64,6 +64,8 @@ SOURCES += \
 HEADERS += \
     Card/Card.h \
     Card/Data.h \
+    Card/Elements/Equipment/DexterityBonus.h \
+    Card/Elements/Equipment/Durability.h \
     Card/Elements/Equipment/Item.h \
     Card/Elements/Equipment/Location.h \
     Card/Elements/Rules/RulesSection.h \

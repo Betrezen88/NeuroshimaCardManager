@@ -47,8 +47,8 @@ Row {
 
     function special() {
         return {
-            name: _name.text,
-            description: _description.text
+            NAME: _name.text,
+            DESCRIPTION: _description.text
         }
     }
 }

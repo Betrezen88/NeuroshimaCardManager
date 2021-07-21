@@ -321,46 +321,35 @@ Rectangle {
 
     ThrowForm {
         id: _throwPopup
-        name: (main.item !== null) ? main.item.name : "przedmiot"
+        name: (main.item != null) ? main.item.name : "przedmiot"
         anchors.centerIn: main
         width: _titleBar.width
         onAccept: main.throwWeapon(main.index)
     }
 
     onItemChanged: {
-        if ( null === item )
+        if ( null == item )
             return
 
         _title.text = item.name
 
-        _requirementL.visible = item.hasStat("REQUIREMENT")
-        _requirement.visible = item.hasStat("REQUIREMENT")
-        if ( item.hasStat("REQUIREMENT") )
-            _requirement.text = item.requiredBody
+        _requirementL.visible = item.requirement != null
+        _requirement.visible = item.requirement != null
+        if ( item.requirement != null )
+            _requirement.text = item.requirement.value
 
-        _penetrationL.visible = item.hasStat("PENETRATION")
-        _penetration.visible = item.hasStat("PENETRATION")
-        if ( item.hasStat("PENETRATION") )
+        _penetrationL.visible = item.penetration > 0
+        _penetration.visible = item.penetration > 0
+        if ( item.penetration > 0 )
             _penetration.text = item.penetration
 
-        _dexBonusC.visible = item.hasStat("BONUS")
-        if ( item.hasStat("BONUS") ) {
-            var bonus = item.dexBonus
-            var keys = Object.keys(bonus)
-
-            for ( var k in keys ) {
+        _dexBonusC.visible = item.dexterityBonuses.length > 0
+        if ( item.dexterityBonuses.length > 0 ) {
+            for ( var b in item.dexterityBonuses ) {
                 var obj = Qt.createQmlObject('import QtQuick 2.0; Text { font.pointSize: 15 }',
                                              _dexBonus)
-                if ( "ATTACK" === keys[k] )
-                    obj.text = "+" + bonus[keys[k]] + " Atak"
-                else if ( "DEFENCE" === keys[k] )
-                    obj.text = "+" + bonus[keys[k]] + " Obrona"
-                else if ( "INICIATIVE" === keys[k] )
-                    obj.text = "+" + bonus[keys[k]] + " Inicjatywa"
-                else
-                    obj.text = "+" + bonus[keys[k]] + " Grupa"
-                if ( k < keys.length-1 )
-                    obj.text += ","
+                obj.text = "+" + item.dexterityBonuses[b].value + " "
+                        + item.dexterityBonuses[b].name
                 _dexBonus.bonuses.push(obj)
             }
         }
@@ -375,41 +364,41 @@ Rectangle {
             _damage.damage.push(dObj)
         }
 
-        _bulletL.visible = item.hasStat("BULLET")
-        _bullet.visible = item.hasStat("BULLET")
-        if ( item.hasStat("BULLET") )
+        _bulletL.visible = item.bullet.length > 0
+        _bullet.visible = item.bullet.length > 0
+        if ( item.bullet.length > 0 )
             _bullet.text = item.bullet
 
-        _magazineL.visible = item.hasStat("MAGAZINE")
-        _magazine.visible = item.hasStat("MAGAZINE")
-        if ( item.hasStat("MAGAZINE") )
+        _magazineL.visible = item.magazine.length > 0
+        _magazine.visible = item.magazine .length > 0
+        if ( item.magazine.length > 0 )
             _magazine.text = item.magazine
 
-        _ammunitionL.visible = item.hasStat("AMMUNITION")
-        _ammunition.visible = item.hasStat("AMMUNITION")
-        if ( item.hasStat("AMMUNITION") )
+        _ammunitionL.visible = item.ammunition > 0
+        _ammunition.visible = item.ammunition > 0
+        if ( item.magazine.length > 0 )
             _ammunition.value = item.magazine
 
-        _rateOfFireL.visible = item.hasStat("RATEOFFIRE")
-        _rateOfFire.visible = item.hasStat("RATEOFFIRE")
-        if ( item.hasStat("RATEOFFIRE") )
-            _rateOfFire.text = item.magazine
+        _rateOfFireL.visible = item.rateOfFire > 0
+        _rateOfFire.visible = item.rateOfFire > 0
+        if ( item.rateOfFire > 0 )
+            _rateOfFire.text = item.rateOfFire
 
-        _jamC.visible = item.hasStat("JAM")
-        if ( item.hasStat("JAM") )
+        _jamC.visible = item.jam.length > 0
+        if ( item.jam.length > 0 )
             _jam.text = item.jam
 
-        _durabilityL.visible = item.hasStat("DURABILITY")
-        _durability.visible = item.hasStat("DURABILITY")
-        if ( item.hasStat("DURABILITY") )
+        _durabilityL.visible = item.durability != null
+        _durability.visible = item.durability != null
+        if ( item.durability != null )
             _durability.value = item.durability
 
-        _armorL.visible = item.hasStat("ARMOR")
-        _armor.visible = item.hasStat("ARMOR")
-        if ( item.hasStat("ARMOR") )
+        _armorL.visible = item.armor > 0
+        _armor.visible = item.armor > 0
+        if ( item.armor > 0 )
             _armor.value = item.armor
 
-        _specials.visible = item.hasStat("SPECIAL")
+        _specials.visible = item.specials.length > 0
         for ( var s in item.special ) {
             var component = Qt.createComponent("ItemSpecial.qml")
             _specials.specials.push( component.createObject(_specials,

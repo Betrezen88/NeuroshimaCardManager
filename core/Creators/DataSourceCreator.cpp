@@ -167,11 +167,10 @@ void DataSourceCreator::addDiseases(StatsSource *source, const QString &dataFile
             QVector<Penalty*> penalties;
             for ( const QJsonValue &penalty: tSymptom.value("penalties").toArray() ) {
                 const QJsonObject &tPenalty = penalty.toObject();
-                const QString &type = tPenalty.value("type").toString();
 
                 penalties.push_back( new Penalty(tPenalty.value("name").toString(),
                                                 tPenalty.value("value").toInt(),
-                                                penaltyType(type)) );
+                                                tPenalty.value("type").toString()) );
             }
 
             symptoms.push_back( new Symptom(tSymptom.value("name").toString(),
@@ -338,14 +337,4 @@ Bonus::Type DataSourceCreator::bonusType(const QString &type)
         return Bonus::Type::SKILLPACKPT;
     }
     return Bonus::Type::SKILLPACK;
-}
-
-Penalty::Type DataSourceCreator::penaltyType(const QString &type)
-{
-    if ( "Attribute" == type ) {
-        return Penalty::Type::ATTRIBUTE;
-    }
-    else {
-        return Penalty::Type::TEST;
-    }
 }

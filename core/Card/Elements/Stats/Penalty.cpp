@@ -8,7 +8,7 @@ Penalty::Penalty(QObject *parent)
 
 Penalty::Penalty(const QString &name,
                  const int &value,
-                 const Type &type,
+                 const QString &type,
                  QObject *parent)
     : QObject(parent),
       m_type(type),
@@ -18,7 +18,7 @@ Penalty::Penalty(const QString &name,
 
 }
 
-Penalty::Type Penalty::type() const
+QString Penalty::type() const
 {
     return m_type;
 }

@@ -29,6 +29,8 @@ public:
     bool optional() const;
     Type type() const;
 
+    static QString stringToType(const Type& type);
+
 private:
     QString m_name;
     int m_value;

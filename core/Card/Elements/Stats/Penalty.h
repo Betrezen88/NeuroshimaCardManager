@@ -10,24 +10,21 @@ class CORE_EXPORT Penalty : public QObject
     Q_OBJECT
     Q_PROPERTY(QString name READ name CONSTANT)
     Q_PROPERTY(int value READ value CONSTANT)
-    Q_PROPERTY(Type type READ type CONSTANT)
+    Q_PROPERTY(QString type READ type CONSTANT)
 
 public:
-    enum class Type { ATTRIBUTE, TEST };
-    Q_ENUM(Type)
-
     Penalty(QObject *parent = nullptr);
     Penalty(const QString &name,
             const int &value,
-            const Type &type,
+            const QString &type,
             QObject *parent = nullptr);
 
-    Type type() const;
+    QString type() const;
     QString name() const;
     int value() const;
 
 private:
-    Type m_type;
+    QString m_type;
     QString m_name;
     int m_value{0};
 };

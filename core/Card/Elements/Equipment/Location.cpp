@@ -5,56 +5,41 @@ Location::Location(QObject *parent) : QObject(parent)
 
 }
 
-Location::Location(const Location::Type &type,
-                   const int &value,
-                   const QPair<int, QString> &special,
+Location::Location(const QString &location,
+                   const int &armor,
+                   const int &cutting,
                    QObject *parent)
     : QObject(parent)
-    , m_type(type)
-    , m_value(value)
-    , m_special(special)
+    , m_location(location)
+    , m_armor(armor)
+    , m_cutting(cutting)
 {
 
 }
 
-Location::Type Location::stringToType(const QString& type)
+QString Location::location() const
 {
-    if ( type.toUpper() == "HEAD" ) {
-        return Type::HEAD;
-    }
-    else if ( type.toUpper() == "TORSO" ) {
-        return Type::TORSO;
-    }
-    else if ( type.toUpper() == "LEFTHAND" ) {
-        return Type::LEFT_HAND;
-    }
-    else if ( type.toUpper() == "RIGHTHAND" ) {
-        return Type::RIGHT_HAND;
-    }
-    else if ( type.toUpper() == "LEFTLEG" ) {
-        return Type::LEFT_LEG;
-    }
-    else /*if ( type.toUpper() == "RIGHTLEG" )*/ {
-        return Type::RIGHT_LEG;
-    }
+    return m_location;
 }
 
-Location::Type Location::type() const
+int Location::armor() const
 {
-    return m_type;
+    return m_armor;
 }
 
-int Location::value() const
+int Location::cutting() const
 {
-    return m_value;
+    return m_cutting;
 }
 
-int Location::specialValue() const
+QStringList Location::locations()
 {
-    return m_specialValue;
-}
-
-QString Location::specialDescription() const
-{
-    return m_specialDescription;
+    return QStringList{
+        "Głowa",
+        "Tułów",
+        "Prawa Ręka",
+        "Lewa Ręka",
+        "Prawa Noga",
+        "Lewa Noga"
+    };
 }

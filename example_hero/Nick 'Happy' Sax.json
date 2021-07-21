@@ -1,0 +1,717 @@
+{
+    "equipment": {
+        "backpack": [
+            {
+                "DESCRIPTION": "Zwitek bibułki z tytoniem. Niewielki gambel",
+                "NAME": "Papieros",
+                "PRICE": 1,
+                "QUANTITY": 1,
+                "STATS": {
+                },
+                "TYPE": "OTHER"
+            },
+            {
+                "DESCRIPTION": "Wojskowy hełm kewlarowy w kolorach pustynnego moro.",
+                "NAME": "Hełm Kewlarowy",
+                "PRICE": 20,
+                "QUANTITY": 1,
+                "STATS": {
+                    "DURABILITY": {
+                        "current": 1,
+                        "max": 3
+                    },
+                    "LOCATIONS": {
+                        "HEAD": 1
+                    }
+                },
+                "TYPE": "ARMOR"
+            },
+            {
+                "DESCRIPTION": "Zbroja wykonana z kawałków blachy, połączona drutem i skórzanymi pasami.",
+                "NAME": "Zbroja śmieciowa",
+                "PRICE": 20,
+                "QUANTITY": 1,
+                "STATS": {
+                    "DURABILITY": {
+                        "current": 2,
+                        "max": 3
+                    },
+                    "LOCATIONS": {
+                        "LEFTHAND": 1,
+                        "LEFTLEG": 1,
+                        "RIGHTHAND": 1,
+                        "RIGHTLEG": 1,
+                        "TORSO": 1
+                    }
+                },
+                "TYPE": "ARMOR"
+            },
+            {
+                "DESCRIPTION": "Przedwojenny egzoszkielet po lekkich modyfikacjach.",
+                "NAME": "Egzoszkielet",
+                "PRICE": 400,
+                "QUANTITY": 1,
+                "STATS": {
+                    "DURABILITY": {
+                        "current": 9,
+                        "max": 10
+                    },
+                    "FEATURES": [
+                        {
+                            "DESCRIPTION": "Pancerz posiada zamontowany noktowizor, umożlwiający widzenie w podczerwieni.",
+                            "NAME": "Noktowizor"
+                        }
+                    ],
+                    "LOCATIONS": {
+                        "HEAD": 2,
+                        "LEFTHAND": 2,
+                        "LEFTLEG": 2,
+                        "RIGHTHAND": 2,
+                        "RIGHTLEG": 2,
+                        "TORSO": 3
+                    },
+                    "PENALTIES": [
+                        {
+                            "NAME": "Zręczność",
+                            "TYPE": "Atrybut",
+                            "VALUE": -1
+                        }
+                    ],
+                    "REPUTATION": 1
+                },
+                "TYPE": "ARMOR"
+            },
+            {
+                "DESCRIPTION": "Kaseta VHS z filmem Krwawy Sport.",
+                "NAME": "Kaseta VHS",
+                "PRICE": 2,
+                "QUANTITY": 1,
+                "STATS": {
+                },
+                "TYPE": "OTHER"
+            },
+            {
+                "DESCRIPTION": "Pistolet",
+                "NAME": "Pistolet",
+                "PRICE": 5,
+                "QUANTITY": 1,
+                "STATS": {
+                    "AMMUNITION": 0,
+                    "BULLET": ".22\"",
+                    "DAMAGE": [
+                        "Ciężka"
+                    ],
+                    "JAM": "19-20",
+                    "MAGAZINE": "8",
+                    "REQUIREMENT": 12
+                },
+                "TYPE": "RANGEDWEAPON"
+            }
+        ],
+        "supplies": {
+            "drugs": 7,
+            "food": 7,
+            "water": 7
+        },
+        "weapons": [
+            {
+                "DESCRIPTION": "Pitolet.",
+                "NAME": "Beretta",
+                "PRICE": 30,
+                "QUANTITY": 1,
+                "STATS": {
+                    "AMMUNITION": 11,
+                    "BULLET": "9mm",
+                    "DAMAGE": [
+                        "Lekka"
+                    ],
+                    "MAGAZINE": "11",
+                    "PENETRATION": 1,
+                    "REPUTATION": 1,
+                    "REQUIREMENT": 10
+                },
+                "TYPE": "RANGEDWEAPON"
+            },
+            {
+                "DESCRIPTION": "Stary rewolwer.",
+                "NAME": "Colt Peacemaker",
+                "PRICE": 20,
+                "QUANTITY": 1,
+                "STATS": {
+                    "AMMUNITION": 6,
+                    "BULLET": ".35\"",
+                    "DAMAGE": [
+                        "Lekka"
+                    ],
+                    "JAM": "20",
+                    "MAGAZINE": "6"
+                },
+                "TYPE": "RANGEDWEAPON"
+            }
+        ]
+    },
+    "stats": {
+        "attributes": [
+            {
+                "name": "Budowa",
+                "skillpacks": [
+                    {
+                        "name": "Sprawność",
+                        "skills": [
+                            {
+                                "name": "Kondycja",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Pływanie",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Wspinaczka",
+                                "used": false,
+                                "value": 1
+                            }
+                        ],
+                        "specializations": [
+                            "Ranger"
+                        ]
+                    },
+                    {
+                        "name": "Jeździectwo",
+                        "skills": [
+                            {
+                                "name": "Jazda Konna",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Powożenie",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Ujeżdżanie",
+                                "used": false,
+                                "value": 1
+                            }
+                        ],
+                        "specializations": [
+                            "Ranger"
+                        ]
+                    }
+                ],
+                "value": 14
+            },
+            {
+                "name": "Zręczność",
+                "skillpacks": [
+                    {
+                        "name": "Walka wręcz",
+                        "skills": [
+                            {
+                                "name": "Bijatyka",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Rzucanie",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Broń biała",
+                                "used": false,
+                                "value": 1
+                            }
+                        ],
+                        "specializations": [
+                            "Wojownik"
+                        ]
+                    },
+                    {
+                        "name": "Prowadzenie pojazdów",
+                        "skills": [
+                            {
+                                "name": "Samochód",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Motocykl",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Ciężarówka",
+                                "used": false,
+                                "value": 1
+                            }
+                        ],
+                        "specializations": [
+                            "Technik"
+                        ]
+                    },
+                    {
+                        "name": "Zdolności manualne",
+                        "skills": [
+                            {
+                                "name": "Kradzież kieszonkowa",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Otwieranie zamków",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Zwinne dłonie",
+                                "used": false,
+                                "value": 1
+                            }
+                        ],
+                        "specializations": [
+                            "Cwaniak"
+                        ]
+                    },
+                    {
+                        "name": "Broń strzelecka",
+                        "skills": [
+                            {
+                                "name": "Pistolety",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Karabiny",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Broń maszynowa",
+                                "used": false,
+                                "value": 1
+                            }
+                        ],
+                        "specializations": [
+                            "Wojownik"
+                        ]
+                    },
+                    {
+                        "name": "Broń dystansowa",
+                        "skills": [
+                            {
+                                "name": "Łuk",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Kusza",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Proca",
+                                "used": false,
+                                "value": 1
+                            }
+                        ],
+                        "specializations": [
+                            "Ranger",
+                            "Wojownik"
+                        ]
+                    }
+                ],
+                "value": 15
+            },
+            {
+                "name": "Charakter",
+                "skillpacks": [
+                    {
+                        "name": "Negocjacje",
+                        "skills": [
+                            {
+                                "name": "Zastraszanie",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Perswazja",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Zdolności przywódcze",
+                                "used": false,
+                                "value": 1
+                            }
+                        ],
+                        "specializations": [
+                            "Cwaniak"
+                        ]
+                    },
+                    {
+                        "name": "Empatia",
+                        "skills": [
+                            {
+                                "name": "Postrzeganie emocji",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Blef",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Opieka nad zwierzętami",
+                                "used": false,
+                                "value": 1
+                            }
+                        ],
+                        "specializations": [
+                            "Cwaniak"
+                        ]
+                    },
+                    {
+                        "name": "Siła woli",
+                        "skills": [
+                            {
+                                "name": "Odporność na ból",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Niezłomność",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Morale",
+                                "used": false,
+                                "value": 1
+                            }
+                        ],
+                        "specializations": [
+                            "Wojownik"
+                        ]
+                    }
+                ],
+                "value": 14
+            },
+            {
+                "name": "Percepcja",
+                "skillpacks": [
+                    {
+                        "name": "Orientacja w terenie",
+                        "skills": [
+                            {
+                                "name": "Wyczucie kierunku",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Przygotowanie pułapki",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Tropienie",
+                                "used": false,
+                                "value": 1
+                            }
+                        ],
+                        "specializations": [
+                            "Ranger"
+                        ]
+                    },
+                    {
+                        "name": "Spostrzegawczość",
+                        "skills": [
+                            {
+                                "name": "Nasłuchiwanie",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Wypatrywanie",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Czujność",
+                                "used": false,
+                                "value": 1
+                            }
+                        ],
+                        "specializations": [
+                            "Ranger"
+                        ]
+                    },
+                    {
+                        "name": "Kamuflaż",
+                        "skills": [
+                            {
+                                "name": "Skradanie się",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Ukrywanie się",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Maskowanie",
+                                "used": false,
+                                "value": 1
+                            }
+                        ],
+                        "specializations": [
+                            "Ranger",
+                            "Cwaniak"
+                        ]
+                    },
+                    {
+                        "name": "Przetrwanie",
+                        "skills": [
+                            {
+                                "name": "Łowiectwo",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Znajomość terenu",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Zdobywanie wody",
+                                "used": false,
+                                "value": 1
+                            }
+                        ],
+                        "specializations": [
+                            "Ranger"
+                        ]
+                    }
+                ],
+                "value": 15
+            },
+            {
+                "name": "Spryt",
+                "skillpacks": [
+                    {
+                        "name": "Medycyna",
+                        "skills": [
+                            {
+                                "name": "Leczenie chorób",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Leczenie ran",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Pierwsza pomoc",
+                                "used": false,
+                                "value": 1
+                            }
+                        ],
+                        "specializations": [
+                            "Ranger",
+                            "Technik"
+                        ]
+                    },
+                    {
+                        "name": "Technika",
+                        "skills": [
+                            {
+                                "name": "Mechanika",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Elektronika",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Komputery",
+                                "used": false,
+                                "value": 1
+                            }
+                        ],
+                        "specializations": [
+                            "Technik"
+                        ]
+                    },
+                    {
+                        "name": "Wiedza ogólna",
+                        "skills": [
+                            {
+                                "name": "Historia",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Biologia",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Chemia",
+                                "used": false,
+                                "value": 1
+                            }
+                        ],
+                        "specializations": [
+                            "Technik"
+                        ]
+                    },
+                    {
+                        "name": "Sprzęt",
+                        "skills": [
+                            {
+                                "name": "Maszyny ciężkie",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Wozy bojowe",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Kutry",
+                                "used": false,
+                                "value": 1
+                            }
+                        ],
+                        "specializations": [
+                            "Technik"
+                        ]
+                    },
+                    {
+                        "name": "Pirotechnika",
+                        "skills": [
+                            {
+                                "name": "Rusznikarstwo",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Wyrzutnie",
+                                "used": false,
+                                "value": 1
+                            },
+                            {
+                                "name": "Mat. Wybuchowe",
+                                "used": false,
+                                "value": 1
+                            }
+                        ],
+                        "specializations": [
+                            "Wojownik",
+                            "Technik"
+                        ]
+                    }
+                ],
+                "value": 15
+            }
+        ],
+        "experience": {
+            "gathered": 1500,
+            "spended": 300
+        },
+        "otherSkills": [
+            {
+                "attribute": "Spryt",
+                "name": "Pilotowanie",
+                "used": false,
+                "value": 1
+            },
+            {
+                "attribute": "Spryt",
+                "name": "Żeglowanie",
+                "used": false,
+                "value": 1
+            },
+            {
+                "attribute": "Percepcja",
+                "name": "Gra na gitarze",
+                "used": false,
+                "value": 1
+            }
+        ],
+        "personal": {
+            "disease": {
+                "cure": "Każde, które nie pozwala na odkładanie się wapnia w organizmie. Nazwy tych leków mają w sobie coś z calcium np. Decalct (dostępność 80%, 24 tabletki wopakowaniu) czy Calcids (dostępność 60%, 50 tabletek w słoiczku). Jest powszechnie dostępny, możesz kupić go nawet w zwykłej przydrożnej knajpie.",
+                "description": "",
+                "name": "Zwapnienie płóc",
+                "symptoms": [
+                ]
+            },
+            "features": {
+                "origin": {
+                    "description": "Mówią o Tobie, że pociągniesz do grobu swojego zabójcę. To prawda. Jesteś uparty, twardy i nie popuszczasz. Raz w ciągu sesji, podczas wykonywania testu Umiejętności, zamiast wymaganego Współczynnika możesz użyć Charakteru.",
+                    "name": "Zawzięty sukinkot"
+                },
+                "profession": {
+                    "description": "Mówisz sobie \"teraz albo nigdy\" i wchodzisz w tryb maszyny do zabijania. Najemnik może tymczasowo zwiększyć o 2 punkty wartość dowolnego Współczynnika, ale bonus ten wykorzystać może tylko w walce. Ma to swoją cenę: po upływie godziny lub po wykonaniu 10-ciu testów tego Współczynnika, bonus znika zaś Najemnik otrzymuje karę +50% ze zmęczenia (zmniejszaną o 10% co godzinę). Cechy tej można użyć dopiero, gdy postać wypocznie (czyli całkowicie zniknie kara ze zmęczenia).",
+                    "name": "Maszyna do zabijania"
+                }
+            },
+            "name": {
+                "name": "Nick",
+                "nickname": "Happy",
+                "surname": "Sax"
+            },
+            "origin": {
+                "description": "W świecie rządzonym prze mordercę, reguły są jasne i proste. Trzeba umieć walczyć, by przeżyć. Jeśli ktoś coś Ci ukradł, to znaczy, że źle tego strzegłeś. Jeśli ktoś obił Ci mordę, to znaczy, że Ci sie należało. Nie ma sądów. Nie ma dziesięciu przykazań. Nie ma gadki o nie pożądaniu żony bliźniego swego. Co się tak gapisz?! Tak, pochodzę z Hegemoni i jakoś nie narzekam. To twarda szkoła życia, ale wierz mi, nie chciałbym urodzić się gdzie indziej. Nasz świat jest prosty, albo ktoś mówi Ci prawdę, albo strzelasz mu w łeb. Albo potrafisz udowodnić, że jesteś mężczyzną, albo kopiesz w kalendarz nim dożyjesz dwudziestki. Dlatego Hegemonia się rozrasta, a Ty szczasz na mój widok i kulisz za każdym razem, kiedy podnoszę głos. Pochodzę z Hegemonii i we mnie jest siła. Jeśli spotkasz kogoś, kto wychował się u nas, nie zadzieraj z nim. Nie próbuj go oszukać, ani okłamać. Nie próbuj być cwany. Nie warto.",
+                "name": "Południowa Hegemonia"
+            },
+            "profession": {
+                "description": "Co i za ile? - motto najemników, chleb powszedni ich życia i filozofia działania. Przez półtora miesiąca siedzisz w knajpie czekają na frajera w potrzebie. Gościa, który potrzebuje pomocy, bo wdepnął w gówno przerastające dawny stan Alabama. Facet zjawia się. Zwierza z problemów. Ty podajesz kwotę. I od tej pory siedzicie w tym gównie razem. Cokolwiek by to nie było, zrobisz wszystko, by osiągnąć cel. Dlaczego? Bo Ci za to płacą. Bo taki masz zawód. Robić to, co każe pracodawca.",
+                "name": "Najemnik"
+            },
+            "specialization": {
+                "description": "Różne są umiejętności, jedni wspaniale gotują, inni potrafią grać na gitarze. Ty potrafisz walczyć. Jesteś w tym dobry. Jeden z najlepszych. Rozwalić ośmiu palantów bez zmiany magazynka? To proste. Odstrzelić łeb facetowi ochranianemu przez zgraję ochroniarzy, mając w Glocku jeden pocisk? To da radę zrobić. Wylatując z piątego piętra obrócić się w powietrzu i odstrzelić łby dwójce kretynów, nim zrzucą za Tobą granat? Tak...",
+                "name": "Wojownik"
+            }
+        },
+        "tricks": [
+            {
+                "action": "Możesz uzbroić - jak bombę - dowolny pojazd, urządzenie czy maszynę napędzaną łatwopalnym paliwem. Kwadrans spokojnej pracy i możesz zacząć odliczanie. Czas wybuchu określa z pięćdziesięcio procentową dokładnością na sekundę, minutę, , kwadrans lub godzinę(np. gdy wybierzesz minutę, spodziewaj się między pół a półtorej minuty). Czasem, jeśli MG pozwoli nawet na tydzień . Siła wybuchu zależy od rodzaju urządzenia.",
+                "description": "Wszystkie urządzenia na świecie można podzielić na takie, które czasem wybuchają i takie, które nigdy nie wybuchają. Szczególnie interesują Cię te pierwsze. Wystarczy tu przeciąć wężyk, tam skręcić kabel, tu znów poluzować śrubkę. I gotowe. Teraz wystarczy poczekać na fajerwerki.",
+                "name": "3 2 1 Bum"
+            },
+            {
+                "action": "Akcja za 2 sukcesy, PT testu o poziom wyższy, do ataku dowolną bronią dłuższą od noża. Szast, prast i broń przciwnika (każda dłuższa od noża) leci na bok.",
+                "description": "Gdy spotkasz kiedyś wędrującego samotnie dziadka, który podpiera się kijkiem, za nic w świecie go nie zaczepiaj. To może być Dziadek z Alabamy.",
+                "name": "Aramis"
+            },
+            {
+                "action": "Bohater Pomaga innej osobie (zapiętej w uprząż) wspinać się po linie. Dzięki temu osoba ta traktowana jest, jak gdyby miała Umijętność wspinaczka na poziomie 1. Pozwala jej to uniknąć kłopotów z Suwakiem.",
+                "description": "No nieźle Ci idzie, teraz spróbuj sam. No dalej, nie pękaj...",
+                "name": "Asekuracja"
+            }
+        ],
+        "wounds": [
+            {
+                "location": "Głowa",
+                "modifier": 10,
+                "type": "Draśnięcie"
+            },
+            {
+                "location": "Głowa",
+                "modifier": 10,
+                "type": "Draśnięcie"
+            }
+        ]
+    }
+}

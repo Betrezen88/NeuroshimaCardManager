@@ -70,6 +70,10 @@ private:
     Item* findItemInBackpack(const QString& name);
     int findEmptyInBackpack();
 
+    Item* createItemFrom(Item* item);
+
+    void unequipArmorIfCoversSameLocation(const Item *armor);
+
     static int backpackCount(QQmlListProperty<Item> *list);
     static Item* backpackItem(QQmlListProperty<Item> *list, int index);
 
@@ -80,9 +84,9 @@ private:
     QList<Item*> m_backpack;
     QList<Item*> m_weapons;
     QList<Item*> m_armor;
-    int m_drugs;
-    int m_food;
-    int m_water;
+    int m_drugs{0};
+    int m_food{0};
+    int m_water{0};
 };
 
 #endif // EQUIPMENT_H

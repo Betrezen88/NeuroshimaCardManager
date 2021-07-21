@@ -6,7 +6,6 @@ import core.NSItem 1.0
 Row {
     property alias title: _title.text
     property NSItem item: null
-    property string location
 
     id: main
     height: implicitHeight
@@ -38,7 +37,7 @@ Row {
                     font.bold: true
                     font.pointSize: 12
                     onClicked: {
-                        if ( null === main.item )
+                        if ( null == main.item )
                             return
                         _menu.open()
                     }
@@ -59,7 +58,7 @@ Row {
                         MenuItem {
                             text: "Zmień wytrzymałość"
                             onClicked: {
-                                if ( null !== item )
+                                if ( null != item )
                                     _durabilityPopup.open()
                             }
                         }
@@ -182,14 +181,14 @@ Row {
                 horizontalAlignment: Text.AlignHCenter
             }
             Text {
-                text: (null !== item) ? item.name : ""
+                text: (null != item) ? item.name : ""
                 width: _durabilityPopup.width
             }
             SpinBox {
                 id: _newDurability
                 from: 0
-                to: (null !== item) ? item.maxDurability : 0
-                value: (null !== item) ? item.currentDurability : 0
+                to: (null != item && null != item.durability) ? item.durability.max : 0
+                value: (null != item && null != item.durability) ? item.durability.current : 0
             }
             Row {
                 spacing: 5
@@ -210,36 +209,33 @@ Row {
     }
 
     onItemChanged: {
-        _name.text = ( null !== item ) ? item.name : ""
-        _maxDurability.text = ( null !== item ) ? item.maxDurability : "-"
-        _durability.text = ( null !== item ) ? item.currentDurability : "-"
+        if ( null != item ) {
+            console.log( "ArmorPiece.onItemChanged on ", _title.text, item.name )
+            console.log( "Locations count: ", item.locations.length )
+//            console.log( "calling item.location() for ", _title.text )
+//            console.log( "Locations count: ", item.locations.length )
+//            console.log( "returned Location: ", item.location(_title.text) )
+//            if ( null !== tLoc )
+//                console.log( "A/C: ", tLoc.armor, "/", tLoc.cutting )
 
-        if ( null !== item ) {
-            item.currentDurabilityChanged.connect(function(){
-                _durability.text = item.currentDurability
+//            console.log( "Durability: ", item.durability )
+        }
+
+        _name.text = ( null != item ) ? item.name : ""
+        _maxDurability.text = ( null != item && null != item.durability ) ? item.durability.max : "-"
+        _durability.text = ( null != item && null != item.durability ) ? item.durability.current : "-"
+
+        if ( null != item ) {
+            item.durability.currentChanged.connect(function(){
+                _durability.text = item.durability.current
             })
         }
 
-        var locations = ( null !== item ) ? item.locations : []
-        _value.text = locations.hasOwnProperty(main.getLocation(_title.text))
-                            ? locations[main.getLocation(_title.text)]
-                            : 0
-    }
-
-    function getLocation(title) {
-        if ( "Głowa" === title )
-            return "HEAD"
-        else if ( "Tułów" === title )
-            return "TORSO"
-        else if ( "Prawa Ręka" === title )
-            return "RIGHTHAND"
-        else if ( "Lewa Ręka" === title )
-            return "LEFTHAND"
-        else if ( "Prawa Noga" === title )
-            return "RIGHTLEG"
-        else if ( "Lewa Noga" === title )
-            return "LEFTLEG"
-        else
-            return ""
+        var location = ( null != item ) ? item.location(_title.text) : null
+        console.log( "location", location )
+        _value.text = (location !== null)
+                ? location.armor + (location.cutting > 0
+                                     ? "/" + location.cutting : "")
+                : 0
     }
 }

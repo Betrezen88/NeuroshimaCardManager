@@ -49,7 +49,7 @@ Column {
     }
 
     onEquipmentChanged: {
-        if ( null === equipment )
+        if ( null == equipment )
             return
 
         weaponsList.model = equipment.weapons
