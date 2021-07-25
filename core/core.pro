@@ -56,6 +56,7 @@ SOURCES += \
     Managers/CardManager.cpp \
     Managers/CreationPointsManager.cpp \
     Managers/MainManager.cpp \
+    Managers/SettingsManager.cpp \
     Utils/CardBuilder.cpp \
     Utils/Converter.cpp \
     Utils/DataReader.cpp \
@@ -105,6 +106,7 @@ HEADERS += \
     Managers/CardManager.h \
     Managers/CreationPointsManager.h \
     Managers/MainManager.h \
+    Managers/SettingsManager.h \
     Utils/CardBuilder.h \
     Utils/Converter.h \
     Utils/DataReader.h \

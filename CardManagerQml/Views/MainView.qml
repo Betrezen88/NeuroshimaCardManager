@@ -47,6 +47,13 @@ Page {
                 source: "qrc:/icon/resources/icons/gear.svg"
             }
             anchors.right: parent.right
+
+            onPressed: {
+                if ( settingsView.visible )
+                    settingsView.close()
+                else
+                    settingsView.open()
+            }
         }
     }
 
@@ -275,11 +282,17 @@ Page {
     FileDialog {
         id: loadDialog
         title: "Wczytaj kartę"
-        folder: shortcuts.home
+        folder: "file:///" + appSettings.defaultCardFolder
         onAccepted: {
             manager.cardManager.loadCard(loadDialog.fileUrl)
             close()
         }
+    }
+
+    SettingsView {
+        id: settingsView
+        width: main.width
+        height: main.height
     }
 
     MessageDialog {

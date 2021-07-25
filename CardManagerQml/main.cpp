@@ -7,6 +7,7 @@
 #include "Managers/MainManager.h"
 #include "Managers/CardManager.h"
 #include "Managers/CreationPointsManager.h"
+#include "Managers/SettingsManager.h"
 
 #include "Creators/CardCreator.h"
 #include "Creators/PageCreator.h"
@@ -63,6 +64,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<MainManager>("core.NSMainManager", 1, 0, "NSMainManager");
     qmlRegisterType<CardManager>("core.NSCardManager", 1, 0, "NSCardManager");
     qmlRegisterType<CardCreator>("core.NSCardCreator", 1, 0, "NSCardCreator");
+    qmlRegisterType<CardCreator>("core.NSSettingsManager", 1, 0, "NSSettingsManager");
     qmlRegisterType<CreationPointsManager>("core.NSCreationPointsManager",
                                            1, 0, "NSCreationPointsManager");
     qmlRegisterType<PageCreator>("core.NSPageCreator", 1, 0, "NSPageCreator");
@@ -107,14 +109,19 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
 
-    QCoreApplication::setApplicationName("NeuroshimaCardManager");
-    QCoreApplication::setOrganizationName("BetrezenSoftware");
+    app.setApplicationDisplayName("Neuroshima Card Manager");
+    app.setApplicationName("NeuroshimaCardManager");
+    app.setApplicationVersion("1.0");
+    app.setOrganizationName("BetrezenSoftware");
+    app.setOrganizationDomain("NeuroshimaCardManager.com");
 
+    SettingsManager settingsMng{&app};
     MainManager manager;
 
     QQmlApplicationEngine engine;
 
     engine.rootContext()->setContextProperty("manager", &manager);
+    engine.rootContext()->setContextProperty("appSettings", &settingsMng);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

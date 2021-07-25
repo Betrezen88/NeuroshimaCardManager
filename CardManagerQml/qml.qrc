@@ -70,6 +70,7 @@
         <file>Views/Card/Elements/Equipment/ThrowForm.qml</file>
         <file>Views/Common/NSMenuItem.qml</file>
         <file>Views/Card/Forms/WoundForm.qml</file>
+        <file>Views/SettingsView.qml</file>
     </qresource>
     <qresource prefix="/icon">
         <file>resources/icons/add.svg</file>
@@ -93,6 +94,7 @@
         <file>resources/icons/sort_desc.svg</file>
         <file>resources/icons/side_page.svg</file>
         <file>resources/icons/rules.svg</file>
+        <file>resources/icons/folder.svg</file>
     </qresource>
     <qresource prefix="/json">
         <file>resources/json/Origins.json</file>
