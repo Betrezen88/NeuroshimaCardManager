@@ -71,6 +71,7 @@
         <file>Views/Common/NSMenuItem.qml</file>
         <file>Views/Card/Forms/WoundForm.qml</file>
         <file>Views/SettingsView.qml</file>
+        <file>Views/Card/Elements/Question.qml</file>
     </qresource>
     <qresource prefix="/icon">
         <file>resources/icons/add.svg</file>
