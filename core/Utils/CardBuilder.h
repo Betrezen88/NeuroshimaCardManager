@@ -11,6 +11,7 @@
 class Card;
 class Stats;
 class Equipment;
+class Notes;
 class Rules;
 
 class CORE_EXPORT CardBuilder : public QObject
@@ -27,6 +28,7 @@ public slots:
 private:
     Stats *statsPage(const QJsonObject &stats);
     Equipment *equipmentPage(const QJsonObject &equipment);
+    Notes *notesPage(const QJsonObject &notes);
 };
 
 #endif // CARDBUILDER_H

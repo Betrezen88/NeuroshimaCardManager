@@ -23,6 +23,7 @@ SOURCES += \
     Card/Data.cpp \
     Card/Elements/Equipment/Item.cpp \
     Card/Elements/Equipment/Location.cpp \
+    Card/Elements/Notes/Question.cpp \
     Card/Elements/Rules/RulesSection.cpp \
     Card/Elements/Stats/Attribute.cpp \
     Card/Elements/Stats/Difficulty.cpp \
@@ -35,6 +36,7 @@ SOURCES += \
     Card/Elements/Stats/Trick.cpp \
     Card/Elements/Stats/Wound.cpp \
     Card/Pages/Equipment.cpp \
+    Card/Pages/Notes.cpp \
     Card/Pages/Page.cpp \
     Card/Pages/Rules.cpp \
     Card/Pages/Stats.cpp \
@@ -70,6 +72,7 @@ HEADERS += \
     Card/Elements/Equipment/Durability.h \
     Card/Elements/Equipment/Item.h \
     Card/Elements/Equipment/Location.h \
+    Card/Elements/Notes/Question.h \
     Card/Elements/Rules/RulesSection.h \
     Card/Elements/Stats/Attribute.h \
     Card/Elements/Stats/Difficulty.h \
@@ -82,6 +85,7 @@ HEADERS += \
     Card/Elements/Stats/Trick.h \
     Card/Elements/Stats/Wound.h \
     Card/Pages/Equipment.h \
+    Card/Pages/Notes.h \
     Card/Pages/Page.h \
     Card/Pages/Rules.h \
     Card/Pages/Stats.h \

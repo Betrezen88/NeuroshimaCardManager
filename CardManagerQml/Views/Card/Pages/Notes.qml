@@ -1,9 +1,16 @@
 ﻿import QtQuick 2.9
 import QtQuick.Controls 2.12
 
+import core.NSNotes 1.0
+
 import "../Elements"
 
 Pane {
+    property alias fullname: _fullname.text
+    property alias profession: _profession.text
+    property alias origin: _origin.text
+    property NSNotes notesData
+
     id: main
 //    width: 640
 //    height: 480
@@ -31,6 +38,12 @@ Pane {
                 }
 
                 Text {
+                    text: "/"
+                    padding: 5
+                    font.pointSize: 12
+                }
+
+                Text {
                     id: _profession
                     text: qsTr("Profesja")
                     padding: 5
@@ -38,15 +51,14 @@ Pane {
                 }
 
                 Text {
-                    id: _origin
-                    text: qsTr("Miasto")
+                    text: "/"
                     padding: 5
                     font.pointSize: 12
                 }
 
                 Text {
-                    id: _age
-                    text: qsTr("18 lat")
+                    id: _origin
+                    text: qsTr("Miasto")
                     padding: 5
                     font.pointSize: 12
                 }
@@ -152,12 +164,20 @@ Pane {
 
                 Repeater {
                     id: _questions
-                    model: 3
                     delegate: Question {
                         width: main.width - 20
+                        question: modelData.question
+                        subquestion: modelData.subquestion
+                        answer: modelData.answer
                     }
                 }
             }
-        }
+        } // Column
+    } // ScrollView
+
+    onNotesDataChanged: {
+        _biography.text = notesData.biography
+        _notes.text = notesData.notes
+        _questions.model = notesData.questions
     }
 }

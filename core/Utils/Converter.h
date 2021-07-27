@@ -7,6 +7,7 @@ class Card;
 class Data;
 class Stats;
 class Equipment;
+class Notes;
 
 class Disease;
 class Symptom;
@@ -43,6 +44,8 @@ private:
 
     QJsonObject fromEquipment(const Equipment* equipment);
     QJsonObject fromItem(const Item* item);
+
+    QJsonObject fromNotes(const Notes* notes);
 };
 
 #endif // CONVERTER_H

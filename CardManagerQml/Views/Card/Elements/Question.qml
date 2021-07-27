@@ -2,6 +2,11 @@
 import QtQuick.Controls 2.12
 
 Column {
+    property alias question: _question.text
+    property alias subquestion: _subquestion.text
+    property alias answer: _answer.text
+
+    id: main
     spacing: 2
     bottomPadding: 5
 
@@ -11,6 +16,8 @@ Column {
         text: qsTr("Pytanie")
         wrapMode: Text.WordWrap
         font.pointSize: 10
+        font.bold: true
+        rightPadding: 5
     }
 
     Text {
@@ -20,13 +27,20 @@ Column {
         wrapMode: Text.WordWrap
         font.italic: true
         font.pointSize: 10
+        rightPadding: 5
     }
 
-    Text {
-        id: _answer
-        width: main.width
-        text: qsTr("Odpowiedź")
-        wrapMode: Text.WordWrap
-        font.pointSize: 10
-    }
+//    ScrollView {
+//        width: main.width
+//        height: 50
+
+        TextArea {
+            id: _answer
+            width: main.width
+            height: implicitHeight
+            placeholderText: qsTr("Odpowiedź")
+            wrapMode: Text.WordWrap
+            font.pointSize: 10
+        }
+//    }
 }

@@ -32,6 +32,7 @@
 #include "Card/Card.h"
 #include "Card/Pages/Stats.h"
 #include "Card/Pages/Equipment.h"
+#include "Card/Pages/Notes.h"
 #include "Card/Pages/Rules.h"
 #include "Card/Elements/Stats/Attribute.h"
 #include "Card/Elements/Stats/Disease.h"
@@ -48,6 +49,7 @@
 #include "Card/Elements/Equipment/Durability.h"
 #include "Card/Elements/Equipment/Location.h"
 #include "Card/Elements/Rules/RulesSection.h"
+#include "Card/Elements/Notes/Question.h"
 
 #include "Validators/TrickValidator.h"
 
@@ -88,7 +90,9 @@ int main(int argc, char *argv[])
     qmlRegisterType<Page>("core.NSPage", 1, 0, "NSPage");
     qmlRegisterType<Stats>("core.NSStats", 1, 0, "NSStats");
     qmlRegisterType<Equipment>("core.NSEquipment", 1, 0, "NSEquipment");
+    qmlRegisterType<Notes>("core.NSNotes", 1, 0, "NSNotes");
     qmlRegisterType<Rules>("core.NSRules", 1, 0, "NSRules");
+    qmlRegisterType<Question>("core.NSQuestion", 1, 0, "NSQuestion");
     qmlRegisterType<Attribute>("core.NSAttribute", 1, 0, "NSAttribute");
     qmlRegisterType<Disease>("core.NSDisease", 1, 0, "NSDisease");
     qmlRegisterType<Difficulty>("core.NSDifficulty", 1, 0, "NSDifficulty");

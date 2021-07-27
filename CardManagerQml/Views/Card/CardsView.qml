@@ -200,6 +200,12 @@ Page {
                             case "qrc:/Views/Card/Pages/Equipment.qml":
                                 currentItem.equipmentData = cardData.equipment
                                 break
+                            case "qrc:/Views/Card/Pages/Notes.qml":
+                                currentItem.fullname = cardData.stats.fullname
+                                currentItem.profession = cardData.stats.profession.name
+                                currentItem.origin = cardData.stats.origin.name
+                                currentItem.notesData = cardData.notes
+                                break
                             case "qrc:/Views/Card/Pages/Rules.qml":
                                 currentItem.rulesData = cardData.rules
                                 break;

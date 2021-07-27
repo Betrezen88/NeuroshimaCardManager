@@ -5,6 +5,7 @@
 
 #include "../Card/Pages/Stats.h"
 #include "../Card/Pages/Equipment.h"
+#include "../Card/Pages/Notes.h"
 
 #include "../Card/Elements/Stats/Disease.h"
 #include "../Card/Elements/Stats/Symptom.h"
@@ -20,6 +21,8 @@
 #include "../Card/Elements/Equipment/DexterityBonus.h"
 #include "../Card/Elements/Equipment/Durability.h"
 #include "../Card/Elements/Equipment/Location.h"
+
+#include "../Card/Elements/Notes/Question.h"
 
 #include "../DataSources/Elements/Stats/Requirement.h"
 
@@ -38,6 +41,8 @@ QJsonObject Converter::toJson(const Card *card)
         object.insert( "stats", fromStats(card->stats()) );
     if ( card->hasPage(Page::Type::EQUIPMENT) )
         object.insert( "equipment", fromEquipment(card->equipment()) );
+    if ( card->hasPage(Page::Type::NOTES) )
+        object.insert( "notes", fromNotes(card->notes()) );
 
     return object;
 }
@@ -340,6 +345,26 @@ QJsonObject Converter::fromItem(const Item *item)
     }
 
     object.insert( "STATS", stats );
+
+    return object;
+}
+
+QJsonObject Converter::fromNotes(const Notes *notes)
+{
+    QJsonObject object;
+
+    object.insert("biography", notes->biography());
+    object.insert("notes", notes->notes());
+
+    QJsonArray questions;
+    for ( const Question* pQuestion: notes->questions() ) {
+        QJsonObject question;
+        question.insert( "question", pQuestion->question() );
+        question.insert( "subquestion", pQuestion->subquestion() );
+        question.insert( "answer", pQuestion->answer() );
+        questions.push_back( question );
+    }
+    object.insert( "questions", questions );
 
     return object;
 }

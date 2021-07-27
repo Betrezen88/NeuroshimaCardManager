@@ -62,7 +62,7 @@ QString Stats::nickname() const
 QString Stats::fullname() const
 {
     QString tFullname = m_name;
-    if ( !m_nickname.isEmpty() ) tFullname.append(" "+m_nickname);
+    if ( !m_nickname.isEmpty() ) tFullname.append(" '"+m_nickname+"'");
     if ( !m_surname.isEmpty() ) tFullname.append(" "+m_surname);
     return tFullname;
 }

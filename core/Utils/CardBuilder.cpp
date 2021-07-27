@@ -13,9 +13,11 @@
 #include "Card/Pages/Rules.h"
 #include "Card/Pages/Stats.h"
 #include "Card/Pages/Equipment.h"
+#include "Card/Pages/Notes.h"
 
 #include "Card/Elements/Equipment/Item.h"
 #include "Card/Elements/Rules/RulesSection.h"
+#include "Card/Elements/Notes/Question.h"
 
 #include "../Creators/ItemCreator.h"
 
@@ -36,6 +38,8 @@ Card *CardBuilder::build(const QString &filePath, const QJsonObject &json)
         pCard->addPage( statsPage(json.value("stats").toObject()) );
     if ( json.contains("equipment") )
         pCard->addPage( equipmentPage(json.value("equipment").toObject()) );
+    if ( json.contains("notes") )
+        pCard->addPage( notesPage(json.value("notes").toObject()) );
 
     return pCard;
 }
@@ -167,6 +171,21 @@ Equipment *CardBuilder::equipmentPage(const QJsonObject &equipment)
                          supplies.value("drugs").toInt(),
                          supplies.value("food").toInt(),
                          supplies.value("water").toInt() );
+}
+
+Notes *CardBuilder::notesPage(const QJsonObject &notes)
+{
+    QVector<Question*> questions;
+    for ( const QJsonValue& question: notes.value("questions").toArray() ) {
+        const QJsonObject tQuestion = question.toObject();
+        questions.push_back( new Question( tQuestion.value("question").toString(),
+                                           tQuestion.value("subquestion").toString(),
+                                           tQuestion.value("answer").toString() ) );
+    }
+
+    return new Notes(notes.value("biography").toString(),
+                     notes.value("notes").toString(),
+                     questions );
 }
 
 Rules *CardBuilder::rulesPage(const QJsonArray &rules)

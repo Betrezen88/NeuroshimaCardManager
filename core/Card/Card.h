@@ -10,6 +10,7 @@
 
 class Stats;
 class Equipment;
+class Notes;
 class Rules;
 
 class CORE_EXPORT Card : public QObject
@@ -17,6 +18,7 @@ class CORE_EXPORT Card : public QObject
     Q_OBJECT
     Q_PROPERTY(Stats *stats READ stats CONSTANT)
     Q_PROPERTY(Equipment *equipment READ equipment CONSTANT)
+    Q_PROPERTY(Notes *notes READ notes CONSTANT)
     Q_PROPERTY(Rules *rules READ rules CONSTANT)
     Q_PROPERTY(QString filePath READ filePath CONSTANT)
 
@@ -30,6 +32,7 @@ public:
 
     Stats *stats() const;
     Equipment *equipment() const;
+    Notes* notes() const;
     Rules* rules() const;
 
     QString filePath() const;
