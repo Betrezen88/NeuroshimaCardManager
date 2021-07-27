@@ -2,6 +2,8 @@
 import QtQuick.Controls 2.12
 import QtQuick.Dialogs 1.2
 
+import core.NSPage 1.0
+
 import "./Card"
 import "./Common"
 
@@ -303,7 +305,16 @@ Page {
         id: _spendExperienceAct
         shortcut: "Ctrl+E"
         onTriggered: {
-            console.log( "Otwórz okno rozwoju postaci." )
+            sidePanel.close()
+            if ( cardsView.cardData !== undefined && cardsView.cardData.hasPage(NSPage.STATS) ) {
+                console.log( "Otwórz okno rozwoju postaci." )
+            }
+            else {
+                manager.cardManager.errorMessage(
+                            "Nie można rozwinąć postaci.",
+                            "Brak karty lub strony statystyk."
+                        )
+            }
         }
     }
 
