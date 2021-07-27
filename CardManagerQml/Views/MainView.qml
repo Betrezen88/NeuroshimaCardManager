@@ -73,6 +73,7 @@ Page {
             }
 
             ToolButton {
+                id: _addToolBtn
                 contentItem: Image {
                     fillMode: Image.Pad
                     horizontalAlignment: Image.AlignHCenter
@@ -90,13 +91,13 @@ Page {
                     NSMenuItem {
                         action: addAct
                         text: "Nowa karta"
-                        shortcut: StandardKey.New
+                        shortcut: addAct.shortcut
                     }
 
                     NSMenuItem {
                         text: "Wczytaj kartę"
                         action: loadAct
-                        shortcut: StandardKey.Open
+                        shortcut: loadAct.shortcut
                     }
                 }
             }
@@ -119,10 +120,39 @@ Page {
                     NSMenuItem {
                         text: "Zapisz.."
                         action: saveAct
-                        shortcut: StandardKey.Save
+                        shortcut: saveAct.shortcut
                     }
                     MenuItem {
                         text: "Zapisz wszystko"
+                    }
+                }
+            }
+
+            ToolButton {
+                width: _addToolBtn.width
+                height: _addToolBtn.height
+                contentItem: Image {
+                    fillMode: Image.PreserveAspectFit
+                    horizontalAlignment: Image.AlignHCenter
+                    verticalAlignment: Image.AlignVCenter
+                    source: "qrc:/icon/resources/icons/page_edit.svg"
+                }
+                onClicked: _pageOptions.open()
+
+                Menu {
+                    id: _pageOptions
+                    x: parent.width - width
+                    y: parent.height
+                    width: sidePanel.width
+
+                    NSMenuItem {
+                        text: "Dodaj stronę"
+                        shortcut: "Ctrl+P"
+                    }
+                    NSMenuItem {
+                        text: "Rozwiń postać"
+                        action: _spendExperienceAct
+                        shortcut: _spendExperienceAct.shortcut
                     }
                 }
             }
@@ -266,6 +296,14 @@ Page {
                             "Brak karty do zapisania"
                         )
             }
+        }
+    }
+
+    Action {
+        id: _spendExperienceAct
+        shortcut: "Ctrl+E"
+        onTriggered: {
+            console.log( "Otwórz okno rozwoju postaci." )
         }
     }
 
