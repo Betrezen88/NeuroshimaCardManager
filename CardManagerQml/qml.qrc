@@ -72,6 +72,13 @@
         <file>Views/Card/Forms/WoundForm.qml</file>
         <file>Views/SettingsView.qml</file>
         <file>Views/Card/Elements/Question.qml</file>
+        <file>Views/Edit/StatsEditor.qml</file>
+        <file>Views/Edit/Elements/AttributeEdit.qml</file>
+        <file>Views/Edit/Elements/SkillEdit.qml</file>
+        <file>Views/Edit/Elements/SkillpackEdit.qml</file>
+        <file>Views/Edit/Pages/TricksEditor.qml</file>
+        <file>Views/Edit/Pages/ReputationEditor.qml</file>
+        <file>Views/Edit/Pages/SkillsEditor.qml</file>
     </qresource>
     <qresource prefix="/icon">
         <file>resources/icons/add.svg</file>
@@ -97,6 +104,7 @@
         <file>resources/icons/rules.svg</file>
         <file>resources/icons/folder.svg</file>
         <file>resources/icons/page_edit.svg</file>
+        <file>resources/icons/accept.svg</file>
     </qresource>
     <qresource prefix="/json">
         <file>resources/json/Origins.json</file>

@@ -6,6 +6,7 @@ import core.NSPage 1.0
 
 import "./Card"
 import "./Common"
+import "./Edit"
 
 Page {
     id: main
@@ -307,7 +308,11 @@ Page {
         onTriggered: {
             sidePanel.close()
             if ( cardsView.cardData !== undefined && cardsView.cardData.hasPage(NSPage.STATS) ) {
-                console.log( "Otwórz okno rozwoju postaci." )
+                stackView.push( "qrc:/Views/Edit/StatsEditor.qml" )
+                stackView.currentItem.stats = cardsView.cardData.stats
+                stackView.currentItem.onClose.connect(function(){
+                    stackView.pop()
+                })
             }
             else {
                 manager.cardManager.errorMessage(
