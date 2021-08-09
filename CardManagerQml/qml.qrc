@@ -118,6 +118,7 @@
         <file>resources/json/Specializations.json</file>
         <file>resources/json/Tricks.json</file>
         <file>resources/json/Rules.json</file>
+        <file>resources/json/Experience.json</file>
     </qresource>
     <qresource prefix="/pictures">
         <file>resources/pictures/origins/appalachy.PNG</file>

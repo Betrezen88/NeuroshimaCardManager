@@ -1,0 +1,127 @@
+﻿{
+    "skill": [
+        {
+            "level": 1,
+            "cost": 200
+        },
+        {
+            "level": 2,
+            "cost": 60
+        },
+        {
+            "level": 3,
+            "cost": 90
+        },
+        {
+            "level": 4,
+            "cost": 200
+        },
+        {
+            "level": 5,
+            "cost": 250
+        },
+        {
+            "level": 6,
+            "cost": 300
+        },
+        {
+            "level": 7,
+            "cost": 350
+        },
+        {
+            "level": 8,
+            "cost": 800
+        },
+        {
+            "level": 9,
+            "cost": 900
+        },
+        {
+            "level": 10,
+            "cost": 1000
+        },
+        {
+            "level": 11,
+            "cost": 1100
+        }
+        ,
+        {
+            "level": 12,
+            "cost": 2400
+        },
+        {
+            "level": 13,
+            "cost": 200
+        }
+    ],
+    "attribute": [
+        {
+            "level": 6,
+            "cost": 600
+        },
+        {
+            "level": 7,
+            "cost": 700
+        },
+        {
+            "level": 8,
+            "cost": 800
+        },
+        {
+            "level": 9,
+            "cost": 900
+        },
+        {
+            "level": 10,
+            "cost": 1000
+        },
+        {
+            "level": 11,
+            "cost": 1100
+        },
+        {
+            "level": 12,
+            "cost": 1200
+        },
+        {
+            "level": 13,
+            "cost": 1300
+        },
+        {
+            "level": 14,
+            "cost": 1400
+        },
+        {
+            "level": 15,
+            "cost": 1500
+        },
+        {
+            "level": 16,
+            "cost": 3200
+        },
+        {
+            "level": 17,
+            "cost": 3400
+        },
+        {
+            "level": 18,
+            "cost": 3600
+        },
+        {
+            "level": 19,
+            "cost": 3800
+        },
+        {
+            "level": 20,
+            "cost": 300
+        }
+    ],
+    "reputation": {
+        "max": 5,
+        "cost": 25
+    },
+    "trick": {
+        "max": 1,
+        "cost": 200
+    }
+}
