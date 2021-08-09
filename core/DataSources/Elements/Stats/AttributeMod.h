@@ -51,6 +51,7 @@ private:
     Attribute* m_pAttribute{nullptr};
     QPair<int, int> m_range;
     QList<SkillpackMod*> m_skillpacks;
+    bool m_edit{false};
 };
 
 #endif // ATTRIBUTEMOD_H

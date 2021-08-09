@@ -9,12 +9,17 @@ SkillpackMod::SkillpackMod(QObject *parent) : QObject(parent)
 
 }
 
-SkillpackMod::SkillpackMod(Skillpack *skillpack, QObject *parent)
+SkillpackMod::SkillpackMod(Skillpack *skillpack,
+                           const bool& edit = false,
+                           QObject *parent)
     : QObject(parent)
     , m_pSkillpack(skillpack)
+    , m_edit(edit)
 {
     for ( Skill* skill: qAsConst(m_pSkillpack->m_skills) ) {
-        m_skills.append(new SkillMod(skill, QPair<int, int>(0, 5), this));
+        QPair<int, int> range = m_edit ? QPair<int, int>(skill->value(), skill->value()+1)
+                                       : QPair<int, int>(0, 5);
+        m_skills.append(new SkillMod(skill, range, this));
         connect(skill, &Skill::valueChanged, this, [this](){
             emit enabledChanged(enabled());
         });

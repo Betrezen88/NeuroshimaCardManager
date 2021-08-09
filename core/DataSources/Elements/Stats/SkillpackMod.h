@@ -20,7 +20,9 @@ class CORE_EXPORT SkillpackMod : public QObject
 
 public:
     explicit SkillpackMod(QObject *parent = nullptr);
-    explicit SkillpackMod(Skillpack *skillpack, QObject *parent = nullptr);
+    explicit SkillpackMod(Skillpack *skillpack,
+                          const bool &edit,
+                          QObject *parent = nullptr);
 
     QQmlListProperty<SkillMod> skills();
     bool bougth() const;
@@ -42,7 +44,7 @@ private:
     Skillpack* m_pSkillpack{nullptr};
     bool m_bougth{false};
     QList<SkillMod*> m_skills;
-
+    bool m_edit{false};
 };
 
 #endif // SKILLPACKMOD_H

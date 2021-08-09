@@ -13,6 +13,7 @@ AttributeMod::AttributeMod(Attribute *attribute,
     : QObject(parent)
     , m_pAttribute(attribute)
     , m_range(attribute->value(), attribute->value()+1)
+    , m_edit(true)
 {
     init();
 }
@@ -24,6 +25,7 @@ AttributeMod::AttributeMod(Attribute *attribute,
     : QObject(parent)
     , m_pAttribute(attribute)
     , m_range(QPair<int, int>(min, max))
+    , m_edit(false)
 {
     init();
 }
@@ -83,5 +85,5 @@ void AttributeMod::setValue(const int &value)
 void AttributeMod::init()
 {
     for ( Skillpack* skillpack: qAsConst(m_pAttribute->m_skillpacks) )
-        m_skillpacks.append(new SkillpackMod(skillpack));
+        m_skillpacks.append(new SkillpackMod(skillpack, m_edit));
 }
