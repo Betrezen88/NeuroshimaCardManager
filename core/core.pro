@@ -49,6 +49,7 @@ SOURCES += \
     DataSources/Elements/Stats/Feature.cpp \
     DataSources/Elements/Stats/HeroData.cpp \
     DataSources/Elements/Stats/Origin.cpp \
+    DataSources/Elements/Stats/OtherSkillMod.cpp \
     DataSources/Elements/Stats/Profession.cpp \
     DataSources/Elements/Stats/Requirement.cpp \
     DataSources/Elements/Stats/SkillMod.cpp \
@@ -101,6 +102,7 @@ HEADERS += \
     DataSources/Elements/Stats/HeroData.h \
     DataSources/Elements/Stats/Origin.h \
     DataSources/Elements/Stats/OriginBonus.h \
+    DataSources/Elements/Stats/OtherSkillMod.h \
     DataSources/Elements/Stats/Profession.h \
     DataSources/Elements/Stats/Requirement.h \
     DataSources/Elements/Stats/SkillMod.h \

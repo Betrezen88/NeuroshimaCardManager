@@ -14,6 +14,7 @@ class CORE_EXPORT Skill : public QObject
 
 public:
     friend class SkillMod;
+    friend class OtherSkillMod;
 
     explicit Skill(QObject *parent = nullptr);
     explicit Skill(const QString &name,

@@ -24,6 +24,7 @@
 #include "DataSources/Elements/Stats/Bonus.h"
 #include "DataSources/Elements/Stats/Requirement.h"
 #include "DataSources/Elements/Stats/AttributeMod.h"
+#include "DataSources/Elements/Stats/OtherSkillMod.h"
 #include "DataSources/Elements/Stats/SkillMod.h"
 #include "DataSources/Elements/Stats/SkillpackMod.h"
 #include "DataSources/Elements/Stats/TricksSortFilterModel.h"
@@ -81,6 +82,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<Bonus>("core.NSBonus", 1, 0, "NSBonus");
     qmlRegisterType<Requirement>("core.NSRequirement", 1, 0, "NSRequirement");
     qmlRegisterType<AttributeMod>("core.NSAttributeMod", 1, 0, "NSAttributeMod");
+    qmlRegisterType<OtherSkillMod>("core.NSOtherSkillMod", 1, 0, "NSOtherSkillMod");
     qmlRegisterType<SkillpackMod>("core.NSSkillpackMod", 1, 0, "NSSkillpackMod");
     qmlRegisterType<SkillMod>("core.NSSkillMod", 1, 0, "NSSkillMod");
     qmlRegisterType<TricksSortFilterModel>("core.NSTricksSortFilterModel",
