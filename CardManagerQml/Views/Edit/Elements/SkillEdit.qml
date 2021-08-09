@@ -8,6 +8,7 @@ Row {
 
     id: main
     spacing: 5
+    padding: 3
 
     Text {
         id: _name
@@ -18,6 +19,7 @@ Row {
 
     SpinBox {
         id: _value
+        width: 140
     }
 
     onSkillModChanged: {
@@ -25,8 +27,10 @@ Row {
             return
 
         _name.text = skillMod.skill.name
+        _name.width = main.width - _value.width - main.spacing - main.padding*2
         _value.from = skillMod.min
         _value.to = skillMod.max
+        _value.value = skillMod.skill.value
         _value.enabled = skillMod.skill.used
     }
 }

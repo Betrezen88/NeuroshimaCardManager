@@ -308,8 +308,13 @@ Page {
         onTriggered: {
             sidePanel.close()
             if ( cardsView.cardData !== undefined && cardsView.cardData.hasPage(NSPage.STATS) ) {
-                stackView.push( "qrc:/Views/Edit/StatsEditor.qml" )
-                stackView.currentItem.stats = cardsView.cardData.stats
+                stackView.push( "qrc:/Views/Edit/StatsEditor.qml",
+                               {
+                                   "stats": cardsView.cardData.stats,
+                                   "width": stackView.width,
+                                   "height": stackView.height
+                               }
+                        )
                 stackView.currentItem.onClose.connect(function(){
                     stackView.pop()
                 })
@@ -326,6 +331,7 @@ Page {
     StackView {
         id: stackView
         anchors.fill: parent
+        padding: 5
         visible: cardsList.count > 0 || depth > 1
 
         initialItem: CardsView {

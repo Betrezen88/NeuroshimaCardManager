@@ -1,21 +1,29 @@
-﻿import QtQuick 2.9
+﻿import QtQuick 2.12
 
 import core.NSSkillpackMod 1.0
 
-Column {
+Rectangle {
     property NSSkillpackMod skillpackMod
 
     id: main
+    height: _column.implicitHeight
 
-    Text {
-        id: _name
-        width: main.width
-        text: "Skillpack name"
-    }
+    border.width: 2
+    border.color: "#000"
+    radius: 5
 
     Column {
-        width: main.width
+        id: _column
         spacing: 5
+
+        Text {
+            id: _name
+            width: main.width
+            topPadding: 5
+            text: "Skillpack name"
+            font.pointSize: 10
+            horizontalAlignment: Text.AlignHCenter
+        }
 
         Repeater {
             id: _skills

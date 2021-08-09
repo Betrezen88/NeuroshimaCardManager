@@ -79,6 +79,9 @@
         <file>Views/Edit/Pages/TricksEditor.qml</file>
         <file>Views/Edit/Pages/ReputationEditor.qml</file>
         <file>Views/Edit/Pages/SkillsEditor.qml</file>
+        <file>Views/Edit/Elements/OtherSkillsEdit.qml</file>
+        <file>Views/Edit/Elements/OtherSkillEdit.qml</file>
+        <file>Views/Edit/Forms/OtherSkillForm.qml</file>
     </qresource>
     <qresource prefix="/icon">
         <file>resources/icons/add.svg</file>

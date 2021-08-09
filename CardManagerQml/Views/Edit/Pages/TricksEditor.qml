@@ -4,30 +4,36 @@ import QtQuick.Controls 2.12
 Page {
     id: main
 
-    Row {
-        spacing: 5
+    ScrollView {
+        width: main.width
+        height: main.height
+        clip: true
 
-        Column {
+        Row {
             spacing: 5
 
-            Button {
-                text: "Usuń"
+            Column {
+                spacing: 5
+
+                Button {
+                    text: "Usuń"
+                }
+
+                ListView {
+                    id: _tricks
+                }
             }
 
-            ListView {
-                id: _tricks
-            }
-        }
+            Column {
+                spacing: 5
 
-        Column {
-            spacing: 5
+                Button {
+                    text: "Kup"
+                }
 
-            Button {
-                text: "Kup"
-            }
-
-            ListView {
-                id: _availableTricks
+                ListView {
+                    id: _availableTricks
+                }
             }
         }
     }
