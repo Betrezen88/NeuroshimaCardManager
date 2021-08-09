@@ -29,6 +29,8 @@
 #include "DataSources/Elements/Stats/SkillpackMod.h"
 #include "DataSources/Elements/Stats/TricksSortFilterModel.h"
 
+#include "Editors/StatsEditor.h"
+
 #include "Card/Data.h"
 #include "Card/Card.h"
 #include "Card/Pages/Stats.h"
@@ -107,6 +109,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<Wound>("core.NSWound", 1, 0, "NSWound");
     qmlRegisterType<TrickValidator>("core.NSTrickValidator",
                                     1, 0, "NSTrickValidator");
+    qmlRegisterType<StatsEditor>("core.NSStatsEditor", 1, 0, "NSStatsEditor");
     qmlRegisterType<Item>("core.NSItem", 1, 0, "NSItem");
     qmlRegisterType<DexterityBonus>("core.NSDexterityBonus", 1, 0, "NSDexterityBonus");
     qmlRegisterType<Durability>("core.NSDurability", 1, 0, "NSDurability");

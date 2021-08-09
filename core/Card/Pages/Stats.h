@@ -39,6 +39,8 @@ class CORE_EXPORT Stats : public Page
     Q_PROPERTY(QStringList woundType READ woundType CONSTANT)
 
 public:
+    friend class StatsEditor;
+
     explicit Stats(QObject *parent = nullptr);
     explicit Stats(const QString &name,
                    const QString &surname,

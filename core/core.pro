@@ -56,6 +56,7 @@ SOURCES += \
     DataSources/Elements/Stats/SkillpackMod.cpp \
     DataSources/Elements/Stats/TricksSortFilterModel.cpp \
     DataSources/StatsSource.cpp \
+    Editors/StatsEditor.cpp \
     Managers/CardManager.cpp \
     Managers/CreationPointsManager.cpp \
     Managers/MainManager.cpp \
@@ -109,6 +110,7 @@ HEADERS += \
     DataSources/Elements/Stats/SkillpackMod.h \
     DataSources/Elements/Stats/TricksSortFilterModel.h \
     DataSources/StatsSource.h \
+    Editors/StatsEditor.h \
     Managers/CardManager.h \
     Managers/CreationPointsManager.h \
     Managers/MainManager.h \
