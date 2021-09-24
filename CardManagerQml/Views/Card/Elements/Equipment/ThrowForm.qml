@@ -2,7 +2,7 @@
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 
-import core.NSItem 1.0
+import core.view.NSItem 1.0
 
 Popup {
     property string name

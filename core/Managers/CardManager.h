@@ -4,9 +4,10 @@
 #include <QObject>
 #include <QQmlListProperty>
 
+#include "View/Card.h"
+
 #include "core_global.h"
 
-class Card;
 class Page;
 
 class CORE_EXPORT CardManager : public QObject
@@ -37,10 +38,10 @@ signals:
     void infoMessage(const QString& title, const QString& message);
 
 public slots:
-    Q_INVOKABLE Card *card(const QString &fileName) const;
-    Q_INVOKABLE void loadCard(const QString &filePath);
-    Q_INVOKABLE void closeCard(const QString &filePath);
-    Q_INVOKABLE void saveSelectedCard();
+    Card *card(const QString &fileName) const;
+    void loadCard(const QString &filePath);
+    void closeCard(const QString &filePath);
+    void saveSelectedCard();
 
 private:
     void createRulesPage(const QString& filePath);

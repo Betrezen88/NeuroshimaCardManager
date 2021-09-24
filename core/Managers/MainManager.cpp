@@ -1,8 +1,8 @@
 ﻿#include "MainManager.h"
 #include "CardManager.h"
 
-#include "Creators/CardCreator.h"
-#include "Creators/DataSourceCreator.h"
+//#include "Creators/CardCreator.h"
+//#include "Creators/DataSourceCreator.h"
 
 MainManager::MainManager(QObject *parent)
     : QObject(parent),
@@ -16,18 +16,18 @@ CardManager *MainManager::cardManager() const
     return m_pCardManager;
 }
 
-CardCreator *MainManager::cardCreator()
-{
-    if ( nullptr == m_pCardCreator )
-        m_pCardCreator = new CardCreator(this);
+//CardCreator *MainManager::cardCreator()
+//{
+//    if ( nullptr == m_pCardCreator )
+//        m_pCardCreator = new CardCreator(this);
 
-    return m_pCardCreator;
-}
+//    return m_pCardCreator;
+//}
 
-DataSourceCreator *MainManager::dataSourceCreator()
-{
-    if ( nullptr == m_pDataSourceCreator )
-        m_pDataSourceCreator = new DataSourceCreator(this);
+//DataSourceCreator *MainManager::dataSourceCreator()
+//{
+//    if ( nullptr == m_pDataSourceCreator )
+//        m_pDataSourceCreator = new DataSourceCreator(this);
 
-    return m_pDataSourceCreator;
-}
+//    return m_pDataSourceCreator;
+//}

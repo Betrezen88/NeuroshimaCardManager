@@ -1,9 +1,10 @@
 ﻿import QtQuick 2.9
 import QtQuick.Controls 2.12
 
+import core.view.NSExperience 1.0
+
 Column {
-    property int gathered
-    property int spended
+    property NSExperience experience
 
     signal showExperienceForm()
 
@@ -105,13 +106,14 @@ Column {
         }
     }
 
-    onGatheredChanged: {
-        _gathered.text = gathered
-        _available.text = gathered - main.spended
-    }
+    onExperienceChanged: {
+        _gathered.text = experience.gathered
+        _spended.text = experience.spended
+        _available.text = experience.availble
 
-    onSpendedChanged: {
-        _spended.text = spended
-        _available.text = main.gathered - spended
+        experience.gatheredChanged.connect(function(){
+            _gathered.text = experience.gathered
+            _available.text = experience.availble
+        })
     }
 }

@@ -1,7 +1,7 @@
 ﻿import QtQuick 2.0
 import QtQuick.Controls 2.12
 
-import core.NSStats 1.0
+import core.view.NSStats 1.0
 
 import "./../Sections"
 import "./../Forms"
@@ -66,11 +66,15 @@ Pane {
                 Attribute {
                     id: character
                     width: row.columnWidth
+                    onHeightChanged: _otherSkills.height = (height + perception.height)
+                                            - cleaverness.height
                 }
 
                 Attribute {
                     id: perception
                     width: row.columnWidth
+                    onHeightChanged: _otherSkills.height = (character.height + height)
+                                     - cleaverness.height
                 }
 
                 Modifiers {
@@ -86,10 +90,12 @@ Pane {
                 Attribute {
                     id: cleaverness
                     width: row.columnWidth
+                    onHeightChanged: _otherSkills.height = (character.height
+                                            + perception.height) - height
                 }
 
                 OtherSkills {
-                    id: otherSkills
+                    id: _otherSkills
                     width: row.columnWidth
                     height: (character.height + perception.height)
                             - cleaverness.height
@@ -146,7 +152,7 @@ Pane {
                         if ( _experiencePoints.length === 0 )
                             return
 
-                        statsData.addExperience( _experiencePoints.text )
+                        statsData.experience.addExperience( _experiencePoints.text )
                         _experienceForm.close()
                     }
                 }
@@ -172,20 +178,15 @@ Pane {
     onStatsDataChanged: {
         personal.personalData = statsData
         tricks.tricks = statsData.tricks
-        budowa.attribute = statsData.attributes[0]
-        dexterity.attribute = statsData.attributes[1]
-        character.attribute = statsData.attributes[2]
-        perception.attribute = statsData.attributes[3]
-        cleaverness.attribute = statsData.attributes[4]
-        otherSkills.skills = statsData.otherSkills
-        experience.gathered = statsData.gathered
-        experience.spended = statsData.spended
-        wounds.wounds = statsData.wounds
+        budowa.attribute = statsData.attribute("Budowa")
+        dexterity.attribute = statsData.attribute("Zręczność")
+        character.attribute = statsData.attribute("Charakter")
+        perception.attribute = statsData.attribute("Percepcja")
+        cleaverness.attribute = statsData.attribute("Spryt")
+        _otherSkills.otherSkills = statsData.otherSkills
+        experience.experience = statsData.experience
+        wounds.stats = statsData
         statsConnections.target = statsData
-
-        statsData.woundsChanged.connect(function(){
-            wounds.wounds = statsData.wounds
-        })
     }
 
     Connections {

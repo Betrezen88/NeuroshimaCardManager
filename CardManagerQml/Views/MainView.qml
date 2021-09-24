@@ -2,7 +2,7 @@
 import QtQuick.Controls 2.12
 import QtQuick.Dialogs 1.2
 
-import core.NSPage 1.0
+import core.view.NSPage 1.0
 
 import "./Card"
 import "./Common"
@@ -189,7 +189,7 @@ Page {
             }
 
             delegate: ItemDelegate {
-                property string filePath: model.filePath
+                property string filePath: modelData.filePath
                 id: cardItem
                 width: parent.width
                 height: 40
@@ -213,7 +213,7 @@ Page {
                         color: cardItem.ListView.isCurrentItem ? "red" : "#fff"
 
                         Text {
-                            text: model.stats.fullname
+                            text: modelData.stats.fullname
                             height: 40
                             width: parent.width - 45
                             verticalAlignment: Text.AlignVCenter
@@ -238,13 +238,13 @@ Page {
 
             onCurrentIndexChanged: {
                 if ((currentIndex !== -1) && (currentIndex !== secCurrentIndex)) {
-                    console.log("MainView.qml onCurrentIndexChanged")
+                    console.log("MainView.qml onCurrentIndexChanged", currentIndex)
                     cardsView.cardData = manager.cardManager.card(cardsList.currentItem.filePath)
                     manager.cardManager.selectedCard = cardsList.currentItem.filePath
                     secCurrentIndex = currentIndex
                 }
             }
-        }
+        } // ListView
     }
 
     Action {
@@ -290,7 +290,7 @@ Page {
         shortcut: StandardKey.Save
         onTriggered: {
             sidePanel.close()
-            if ( cardsView.cardData !== undefined ) {
+            if ( cardsView.cardData != undefined ) {
                 manager.cardManager.saveSelectedCard()
             }
             else {
@@ -307,7 +307,7 @@ Page {
         shortcut: "Ctrl+E"
         onTriggered: {
             sidePanel.close()
-            if ( cardsView.cardData !== undefined && cardsView.cardData.hasPage(NSPage.STATS) ) {
+            if ( cardsView.cardData != undefined && cardsView.cardData.hasPage(NSPage.STATS) ) {
                 stackView.push( "qrc:/Views/Edit/StatsEditor.qml",
                                {
                                    "stats": cardsView.cardData.stats,

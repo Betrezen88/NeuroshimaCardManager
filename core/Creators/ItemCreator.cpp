@@ -1,153 +1,147 @@
 ﻿#include "ItemCreator.h"
 
-#include "../Card/Elements/Equipment/Item.h"
-#include "../Card/Elements/Equipment/Location.h"
-#include "../Card/Elements/Equipment/DexterityBonus.h"
-#include "../Card/Elements/Equipment/Durability.h"
-#include "../DataSources/Elements/Stats/Requirement.h"
-#include "../Card/Elements/Stats/Penalty.h"
-
-#include <QJsonObject>
+#include <QDebug>
 
 ItemCreator::ItemCreator(QObject *parent) : QObject(parent)
 {
 
 }
 
-Item *ItemCreator::create(const QJsonObject &data)
+ItemData ItemCreator::create(const QVariantMap &data)
 {
-    return create(data.toVariantMap());
-}
+    ItemData item;
+    item.name = data.value("NAME").toString();
+    item.description = data.value("DESCRIPTION").toString();
+    item.type = data.value("TYPE").toString();
+    item.price = data.value("PRICE").toInt();
+    item.quantity = data.value("QUANTITY").toInt();
 
-Item *ItemCreator::create(const QVariantMap &data)
-{
-    const int& index = m_types.indexOf(data.value("TYPE").toString().toUpper());
-    const QString& type = (index>-1) ? m_types.at(index) : m_types.at(6);
-
-    Item* item = new Item(type
-                          , data.value("NAME").toString()
-                          , data.value("DESCRIPTION").toString()
-                          , data.value("PRICE").toInt()
-                          , data.value("QUANTITY").toInt() );
-
-    setStats(item, data.value("STATS").toMap());
+    if ( data.contains("STATS") )
+        item.itemStats = stats( data.value("STATS").toMap() );
 
     return item;
 }
 
-Item *ItemCreator::create(const Item *item)
+ItemStatsData ItemCreator::stats(const QVariantMap &data)
 {
-    return new Item( item->m_type,
-                     item->name(),
-                     item->description(),
-                     item->m_price,
-                     item->m_quantity );
+    ItemStatsData stats;
+
+    if ( data.contains("REPUTATION") )
+        stats.reputation = data.value("REPUTATION").toInt();
+
+    if ( data.contains("DURABILITY") )
+        stats.durability = durability( data.value("DURABILITY").toMap() );
+
+    if ( data.contains("LOCATIONS") ) {
+        for ( const QVariant& tLocation : data.value("LOCATIONS").toList() )
+            stats.locations.push_back( location(tLocation.toMap()) );
+    }
+
+    if ( data.contains("PENALTIES") ) {
+        for ( const QVariant& tPenalty : data.value("PENALTIES").toList() )
+            stats.penalties.push_back( penalty(tPenalty.toMap()) );
+    }
+
+    if ( data.contains("FEATURES") ) {
+        for ( const QVariant& tFeature : data.value("FEATURES").toList() )
+            stats.features.push_back( feature(tFeature.toMap()) );
+    }
+
+    if ( data.contains("DEXBONUS") ) {
+        for ( const QVariant& tBonus : data.value("DEXBONUS").toList() )
+            stats.bonuses.push_back( bonus(tBonus.toMap()) );
+    }
+
+    if ( data.contains("SPECIALS") ) {
+        for ( const QVariant& tSpecial : data.value("SPECIALS").toList() )
+            stats.specials.push_back( special(tSpecial.toMap()) );
+    }
+
+    if ( data.contains("DAMAGE") ) {
+        for ( const QVariant& tDamage : data.value("DAMAGE").toList() )
+            stats.damage.append( tDamage.toString() );
+    }
+
+    if ( data.contains("PENETRATION") )
+        stats.penetration = data.value("PENETRATION").toInt();
+
+    if ( data.contains("REQUIREMENT") )
+        stats.requirement = requirement( data.value("REQUIREMENT").toMap() );
+
+    if ( data.contains("AMMUNITION") )
+        stats.ammunition = data.value("AMMUNITION").toInt();
+
+    if ( data.contains("RATEOFFIRE") )
+        stats.rateOfFire = data.value("RATEOFFIRE").toInt();
+
+    if ( data.contains("BULLET") )
+        stats.bullet = data.value("BULLET").toString();
+
+    if ( data.contains("MAGAZINE") )
+        stats.magazine = data.value("MAGAZINE").toInt();
+
+    if ( data.contains("JAM") )
+        stats.jam = data.value("JAM").toInt();
+
+    return stats;
 }
 
-void ItemCreator::setStats(Item *item, const QVariantMap &stats)
+DurabilityData ItemCreator::durability(const QVariantMap &data)
 {
-    if ( stats.contains("REPUTATION") )
-        item->m_reputation = stats.value("REPUTATION").toInt();
-
-    if ( stats.contains("PENETRATION") )
-        item->m_penetration = stats.value("PENETRATION").toInt();
-
-    if ( stats.contains("AMMUNITION") )
-        item->m_amunition = stats.value("AMMUNITION").toInt();
-
-    if ( stats.contains("RATEOFFIRE") )
-        item->m_rateOfFire = stats.value("RATEOFFIRE").toInt();
-
-    if ( stats.contains("JAM") )
-        item->m_jam = stats.value("JAM").toString();
-
-    if ( stats.contains("BULLET") )
-        item->m_bullet = stats.value("BULLET").toString();
-
-    if ( stats.contains("MAGAZINE") )
-        item->m_magazine = stats.value("MAGAZINE").toString();
-
-    if ( stats.contains("DAMAGE") )
-        item->m_damage = stats.value("DAMAGE").toStringList();
-
-    if ( stats.contains("FEATURES") ) {
-        for ( const QVariant& feature: stats.value("FEATURES").toList() ) {
-            const QMap<QString, QVariant>& tFeature = feature.toMap();
-            item->m_features.append( createData(tFeature, item) );
-        }
-    }
-
-    if ( stats.contains("PENALTIES") ) {
-        for ( const QVariant& penalty: stats.value("PENALTIES").toList() ) {
-            const QMap<QString, QVariant>& tPenalty = penalty.toMap();
-            item->m_penalties.append( createPenalty(tPenalty, item) );
-        }
-    }
-
-    if ( stats.contains("LOCATIONS") ) {
-        for ( const QVariant& location: stats.value("LOCATIONS").toList() ) {
-            const QMap<QString, QVariant>& tLocation = location.toMap();
-            item->m_locations.append( createLocation(tLocation, item) );
-        }
-    }
-
-    if ( stats.contains("DEXBONUS") ) {
-        for ( const QVariant& bonus: stats.value("DEXBONUS").toList() ) {
-            const QMap<QString, QVariant>& tBonus = bonus.toMap();
-            item->m_dexterityBonus.append( createDexbonus(tBonus, item) );
-        }
-    }
-
-    if ( stats.contains("SPECIAL") ) {
-        for ( const QVariant& special: stats.value("SPECIAL").toList() ) {
-            const QMap<QString, QVariant>& tSpecial = special.toMap();
-            item->m_specials.append( createData(tSpecial, item) );
-        }
-    }
-
-    if ( stats.contains("DURABILITY") ) {
-        const QMap<QString, QVariant>& durability = stats.value("DURABILITY").toMap();
-        item->m_pDurability = new Durability( durability.value("max").toInt(),
-                                              durability.value("current").toInt(),
-                                              item );
-    }
-
-    if ( stats.contains("REQUIREMENT") ) {
-        const QMap<QString, QVariant>& requirement = stats.value("REQUIREMENT").toMap();
-        item->m_pRequirement = new Requirement( requirement.value("NAME").toString(),
-                                                requirement.value("VALUE").toInt(),
-                                                false,
-                                                Requirement::Type::ATTRIBUTE,
-                                                item );
-    }
+    DurabilityData durability;
+    durability.current = data.value("CURRENT").toInt();
+    durability.max = data.value("MAX").toInt();
+    return durability;
 }
 
-Data *ItemCreator::createData(const QMap<QString, QVariant> &input, Item* parent)
+LocationData ItemCreator::location(const QVariantMap &data)
 {
-    return new Data( input.value("NAME").toString(),
-                     input.value("DESCRIPTION").toString(),
-                     parent );
+    LocationData location;
+    location.name = data.value("LOCATION").toString();
+    location.armor = data.value("ARMOR").toInt();
+    location.cutting = data.value("CUTTING").toInt();
+    return location;
 }
 
-Penalty *ItemCreator::createPenalty(const QMap<QString, QVariant> &input, Item *parent)
+PenaltyData ItemCreator::penalty(const QVariantMap &data)
 {
-    return new Penalty( input.value("NAME").toString(),
-                        input.value("VALUE").toInt(),
-                        input.value("TYPE").toString(),
-                        parent );
+    PenaltyData penalty;
+    penalty.name = data.value("NAME").toString();
+    penalty.type = data.value("TYPE").toString();
+    penalty.value = data.value("VALUE").toInt();
+    return penalty;
 }
 
-Location *ItemCreator::createLocation(const QMap<QString, QVariant> &input, Item *parent)
+ArmorFeatureData ItemCreator::feature(const QVariantMap &data)
 {
-    return new Location( input.value("LOCATION").toString(),
-                         input.value("ARMOR").toInt(),
-                         input.value("CUTTING").toInt(),
-                         parent );
+    ArmorFeatureData feature;
+    feature.name = data.value("NAME").toString();
+    feature.description = data.value("DESCRIPTION").toString();
+    return feature;
 }
 
-DexterityBonus *ItemCreator::createDexbonus(const QMap<QString, QVariant> &input, Item *parent)
+DexterityBonusData ItemCreator::bonus(const QVariantMap &data)
 {
-    return new DexterityBonus( input.value("NAME").toString(),
-                               input.value("VALUE").toInt(),
-                               parent );
+    DexterityBonusData bonus;
+    bonus.name = data.value("NAME").toString();
+    bonus.value = data.value("VALUE").toInt();
+    return bonus;
+}
+
+RequirementData ItemCreator::requirement(const QVariantMap &data)
+{
+    RequirementData requirement;
+    requirement.name = data.value("NAME").toString();
+    requirement.type = data.value("TYPE").toString();
+    requirement.value = data.value("VALUE").toInt();
+    requirement.optional = data.value("OPTIONAL").toBool();
+    return requirement;
+}
+
+SpecialData ItemCreator::special(const QVariantMap &data)
+{
+    SpecialData special;
+    special.name = data.value("NAME").toString();
+    special.description = data.value("DESCRIPTION").toString();
+    return special;
 }

@@ -1,7 +1,7 @@
 ﻿import QtQuick 2.0
 import QtQuick.Controls 2.12
 
-import core.NSStats 1.0
+import core.view.NSStats 1.0
 
 import "./../Sections"
 
@@ -68,8 +68,8 @@ Popup {
     }
 
     onStatsChanged: {
-        _localization.model = stats.woundLocations
-        _wound.model = stats.woundType
+        _localization.model = stats.locations
+        _wound.model = stats.woundTypes
     }
 
     onClosed: {

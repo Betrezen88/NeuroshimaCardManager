@@ -2,8 +2,8 @@
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 
-import core.NSItem 1.0
-import core.NSPenalty 1.0
+import core.view.NSItem 1.0
+import core.view.NSPenalty 1.0
 
 Popup {
     id: main
@@ -810,8 +810,14 @@ Popup {
 
                         if ( _reputation.value > 0 )
                             stats["REPUTATION"] = _reputation.value
-                        if ( _type.currentIndex > 2 && _requirement.value > 0 )
-                            stats["REQUIREMENT"] = _requirement.value
+                        if ( _type.currentIndex > 2 && _requirement.value > 0 ) {
+                            stats["REQUIREMENT"] = {
+                                "NAME": "Budowa",
+                                "VALUE": _requirement.value,
+                                "TYPE": "ATTRIBUTE",
+                                "OPTIONAL": false
+                            }
+                        }
                         if ( _type.currentIndex > 2 && _penetration.value > 0 )
                             stats["PENETRATION"] = _penetration.value
 
@@ -855,8 +861,8 @@ Popup {
                         if ( _type.currentIndex === 2
                                 || _type.currentIndex === 3 ) {
                             stats["DURABILITY"] = {
-                                "max": _durability.value,
-                                "current": _durability.value
+                                "MAX": _durability.value,
+                                "CURRENT": _durability.value
                             }
                         }
 
@@ -926,7 +932,7 @@ Popup {
                             var specials  = []
                             for ( var s in _specials.objects )
                                 specials.push( _specials.objects[s].special() )
-                            stats["SPECIAL"] = specials
+                            stats["SPECIALS"] = specials
                         }
 
                         itemData["STATS"] = stats
@@ -1016,5 +1022,11 @@ Popup {
         _specials.clear()
         _penalties.model.clear()
         _features.model.clear()
+        _head.value = 0
+        _torso.value = 0
+        _leftHand.value = 0
+        _rightHand.value = 0
+        _leftLeg.value = 0
+        _rightLeg.value = 0
     }
 }

@@ -1,7 +1,8 @@
 ﻿import QtQuick 2.12
 import QtQuick.Controls 2.12
 
-import core.NSItem 1.0
+import core.view.NSItem 1.0
+import core.view.NSItemStats 1.0
 
 Rectangle {
     property int index
@@ -69,7 +70,7 @@ Rectangle {
                 text: "Wyekwipuj"
                 height: visible ? implicitHeight : 0
                 onClicked: {
-                    if ( null === item )
+                    if ( null == item )
                         return
 
                     if ( item.type === "ARMOR" )
@@ -114,7 +115,7 @@ Rectangle {
 
                 SpinBox {
                     id: _value
-                    value: (main.item !== null) ? main.item.quantity : 0
+                    value: (main.item != null) ? main.item.quantity : 0
                     from: 1
                     to: 999
                 }
@@ -140,14 +141,14 @@ Rectangle {
     }
 
     onItemChanged: {
-        if ( null === item )
+        if ( null == item )
             return
 
         _name.text = item.name
         _quantity.text = item.quantity
 
-        item.quantityChanged.connect(function(value){
-            _quantity.text = value
+        item.quantityChanged.connect(function(){
+            _quantity.text = main.item.quantity
         })
 
         _consumeMenu.visible = item.type === "CONSUMABLE"

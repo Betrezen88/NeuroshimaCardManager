@@ -2,7 +2,7 @@
 
 Row {
     property alias label: _label.text
-    property var wounds
+    property alias wounds: _wounds.text
 
     id: main
     height: implicitHeight
@@ -29,15 +29,6 @@ Row {
             verticalAlignment: Text.AlignVCenter
             padding: 5
             font.pointSize: 12
-        }
-    }
-
-    onWoundsChanged: {
-        _wounds.text = ""
-        for ( var w in wounds ) {
-            _wounds.text += wounds[w]
-            if (parseInt(w) < wounds.length-1)
-                _wounds.text += ","
         }
     }
 }

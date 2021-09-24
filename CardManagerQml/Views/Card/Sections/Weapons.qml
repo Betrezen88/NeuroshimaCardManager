@@ -2,7 +2,7 @@
 import QtQuick.Controls 2.12
 import QtQml.Models 2.15
 
-import core.NSEquipment 1.0
+import core.view.NSEquipment 1.0
 
 import "../Elements/Equipment"
 
@@ -39,12 +39,10 @@ Column {
         delegate:  WeaponItem {
             width: weaponsList.width
             index: model.index
-            item: (main.equipment.weapons[model.index] !== undefined)
-                  ? main.equipment.weapons[model.index]
-                  : null
+            item: modelData
 
             onUnequipWeapon: main.equipment.unequipWeapon(index)
-            onThrowWeapon: main.equipment.throwWeapon(index)
+            onThrowWeapon: main.equipment.removeWeapon(index)
         }
     }
 
@@ -55,7 +53,7 @@ Column {
         weaponsList.model = equipment.weapons
 
         equipment.weaponsChanged.connect(function(){
-            weaponsList.model = main.equipment.weapons
+            weaponsList.model = equipment.weapons
         })
     }
 }

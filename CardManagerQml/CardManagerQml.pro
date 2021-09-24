@@ -21,6 +21,7 @@ SOURCES += \
         main.cpp
 
 HEADERS += \
+    RegisteredCoreTypes.h
 
 RESOURCES += qml.qrc
 

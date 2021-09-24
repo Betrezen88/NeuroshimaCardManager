@@ -1,8 +1,10 @@
 ﻿import QtQuick 2.9
 import QtQuick.Controls 2.12
 
+import core.view.NSOtherSkill 1.0
+
 Row {
-    property var skill
+    property NSOtherSkill skill
 
     id: main
     spacing: 5
@@ -19,7 +21,6 @@ Row {
 
     Text {
         id: _title
-        text: main.skill.name
         width: main.width - _used.width - _attribute.width
                - _rect.width - (main.spacing * 4) - 10
         height: _used.height
@@ -52,7 +53,6 @@ Row {
 
         Text {
             id: _value
-            text: main.skill.value
             textFormat: Text.PlainText
             font.pointSize: 9
             horizontalAlignment: Text.AlignHCenter
@@ -63,22 +63,8 @@ Row {
 
     onSkillChanged: {
         _title.text = skill.name
-        _attribute.text = shortAttribute(skill.attribute)
+        _attribute.text = skill.attributeShort
         _value.text = skill.value
         _used.checked = skill.used
-    }
-
-    function shortAttribute(attributeName) {
-        if ( "Budowa" === attributeName )
-            return "(Bd)";
-        if ( "Zręczność" === attributeName )
-            return "(Zr)";
-        if ( "Charakter" === attributeName )
-            return "(Ch)";
-        if ( "Percepcja" === attributeName )
-            return "(Pe)";
-        if ( "Spryt" === attributeName )
-            return "(Sp)";
-        return "(--)";
     }
 }

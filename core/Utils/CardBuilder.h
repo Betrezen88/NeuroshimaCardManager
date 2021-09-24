@@ -4,7 +4,6 @@
 #include <QObject>
 #include <QJsonArray>
 #include <QJsonObject>
-#include <QMap>
 
 #include "core_global.h"
 
@@ -20,15 +19,10 @@ class CORE_EXPORT CardBuilder : public QObject
 public:
     explicit CardBuilder(QObject *parent = nullptr);
 
-    Rules* rulesPage(const QJsonArray &rules);
-
 public slots:
     Card *build(const QString &filePath, const QJsonObject &json);
 
 private:
-    Stats *statsPage(const QJsonObject &stats);
-    Equipment *equipmentPage(const QJsonObject &equipment);
-    Notes *notesPage(const QJsonObject &notes);
 };
 
 #endif // CARDBUILDER_H

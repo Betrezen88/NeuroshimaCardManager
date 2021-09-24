@@ -1,8 +1,10 @@
 ﻿import QtQuick 2.9
 import QtQuick.Controls 2.12
 
+import core.view.NSSkill 1.0
+
 Row {
-    property var skill
+    property NSSkill skill
 
     id: main
     height: _used.height

@@ -1,7 +1,7 @@
 ﻿import QtQuick 2.12
 import QtQuick.Controls 2.12
 
-import core.NSItem 1.0
+import core.view.NSItem 1.0
 
 Row {
     property alias title: _title.text
@@ -11,6 +11,7 @@ Row {
     height: implicitHeight
 
     signal unequip(NSItem item)
+    signal throwArmor(NSItem item)
 
     Rectangle {
         width: main.width
@@ -64,6 +65,10 @@ Row {
                         }
                         MenuItem {
                             text: "Wyrzuć"
+                            onClicked: {
+                                main.throwArmor(main.item)
+                                main.item = null
+                            }
                         }
                     }
                 }
@@ -187,8 +192,10 @@ Row {
             SpinBox {
                 id: _newDurability
                 from: 0
-                to: (null != item && null != item.durability) ? item.durability.max : 0
-                value: (null != item && null != item.durability) ? item.durability.current : 0
+                to: (null != item && null != item.stats.durability)
+                    ? item.stats.durability.max : 0
+                value: (null != item && null != item.stats.durability)
+                       ? item.stats.durability.current : 0
             }
             Row {
                 spacing: 5
@@ -196,7 +203,7 @@ Row {
                 Button {
                     text: "Zmień"
                     onClicked: {
-                        item.setCurrentDurability(_newDurability.value)
+                        item.stats.durability.current = _newDurability.value
                         _durabilityPopup.close()
                     }
                 }
@@ -209,30 +216,18 @@ Row {
     }
 
     onItemChanged: {
-        if ( null != item ) {
-            console.log( "ArmorPiece.onItemChanged on ", _title.text, item.name )
-            console.log( "Locations count: ", item.locations.length )
-//            console.log( "calling item.location() for ", _title.text )
-//            console.log( "Locations count: ", item.locations.length )
-//            console.log( "returned Location: ", item.location(_title.text) )
-//            if ( null !== tLoc )
-//                console.log( "A/C: ", tLoc.armor, "/", tLoc.cutting )
-
-//            console.log( "Durability: ", item.durability )
-        }
-
         _name.text = ( null != item ) ? item.name : ""
-        _maxDurability.text = ( null != item && null != item.durability ) ? item.durability.max : "-"
-        _durability.text = ( null != item && null != item.durability ) ? item.durability.current : "-"
+        _maxDurability.text = ( null != item && null != item.stats.durability )
+                ? item.stats.durability.max : "-"
+        _durability.text = ( null != item && null != item.stats.durability )
+                ? item.stats.durability.current : "-"
 
-        if ( null != item ) {
-            item.durability.currentChanged.connect(function(){
-                _durability.text = item.durability.current
+        if ( item != null )
+            item.stats.durability.currentChanged.connect(function(){
+                _durability.text = main.item.stats.durability.current
             })
-        }
 
-        var location = ( null != item ) ? item.location(_title.text) : null
-        console.log( "location", location )
+        var location = ( null != item ) ? item.stats.location(_title.text) : null
         _value.text = (location !== null)
                 ? location.armor + (location.cutting > 0
                                      ? "/" + location.cutting : "")

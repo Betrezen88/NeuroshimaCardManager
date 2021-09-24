@@ -38,7 +38,7 @@ Item {
             model: []
 
             delegate: Trick {
-                trick: model
+                trick: modelData
                 width: main.width
             }
         }

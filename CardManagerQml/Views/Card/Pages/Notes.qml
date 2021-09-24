@@ -1,7 +1,7 @@
 ﻿import QtQuick 2.9
 import QtQuick.Controls 2.12
 
-import core.NSNotes 1.0
+import core.view.NSNotes 1.0
 
 import "../Elements"
 
@@ -12,8 +12,6 @@ Pane {
     property NSNotes notesData
 
     id: main
-//    width: 640
-//    height: 480
 
     ScrollView {
         width: parent.width
@@ -102,6 +100,12 @@ Pane {
                             wrapMode: Text.WordWrap
                             font.pointSize: 10
                             placeholderText: qsTr("Biografia postaci")
+                            onTextChanged: {
+                                if ( null == notesData )
+                                    return;
+
+                                notesData.biography = text
+                            }
                         }
                     }
                 }
@@ -138,6 +142,12 @@ Pane {
                             wrapMode: Text.WordWrap
                             font.pointSize: 10
                             placeholderText: qsTr("Notatki")
+                            onTextChanged: {
+                                if ( null == notesData )
+                                    return;
+
+                                notesData.notes = text
+                            }
                         }
                     }
                 }
@@ -166,9 +176,7 @@ Pane {
                     id: _questions
                     delegate: Question {
                         width: main.width - 20
-                        question: modelData.question
-                        subquestion: modelData.subquestion
-                        answer: modelData.answer
+                        question: modelData
                     }
                 }
             }

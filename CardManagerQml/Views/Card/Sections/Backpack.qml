@@ -2,7 +2,7 @@
 import QtQuick.Controls 2.15
 import QtQuick.Window 2.15
 
-import core.NSEquipment 1.0
+import core.view.NSEquipment 1.0
 
 import "../Elements/Equipment"
 
@@ -48,14 +48,12 @@ Column {
 
         delegate: BackpackItem {
             index: model.index
-            item: (main.equipment.backpack[model.index] !== undefined)
-                  ? main.equipment.backpack[model.index]
-                  : null
+            item: modelData
 
             onItemDetails: main.showItemDetails(index)
             onEquipWeapon: equipment.equipWeapon(index)
             onEquipArmor: equipment.equipArmor(index)
-            onThrowBackpackItem: equipment.throwBackpackItem(index)
+            onThrowBackpackItem: equipment.removeItemFromBackpack(index)
         }
     }
 
@@ -76,7 +74,6 @@ Column {
                 id: _drugs
                 from: 0
                 to: 30
-                onValueChanged: main.equipment.drugs = value
             }
         }
 
@@ -93,7 +90,6 @@ Column {
                 id: _food
                 from: 0
                 to: 30
-                onValueChanged: main.equipment.food = value
             }
         }
 
@@ -110,13 +106,12 @@ Column {
                 id: _water
                 from: 0
                 to: 30
-                onValueChanged: main.equipment.water = value
             }
         }
     }
 
     onEquipmentChanged: {
-        if ( null === equipment )
+        if ( null == equipment )
             return
 
         itemsList.model = equipment.backpack

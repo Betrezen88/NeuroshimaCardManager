@@ -1,8 +1,8 @@
 ﻿import QtQuick 2.0
 import QtQuick.Controls 2.12
 
-import core.NSEquipment 1.0
-import core.NSItem 1.0
+import core.view.NSEquipment 1.0
+import core.view.NSItem 1.0
 
 import "../Sections"
 import "../Elements/Equipment"
@@ -78,7 +78,7 @@ Pane {
     }
 
     onEquipmentDataChanged: {
-        if ( equipmentData === null )
+        if ( equipmentData == null )
             return
 
         armor.equipment = equipmentData

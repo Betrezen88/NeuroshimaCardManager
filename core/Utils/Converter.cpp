@@ -1,370 +1,387 @@
 ﻿#include "Converter.h"
 
-#include "../Card/Card.h"
-#include "../Card/Data.h"
-
-#include "../Card/Pages/Stats.h"
-#include "../Card/Pages/Equipment.h"
-#include "../Card/Pages/Notes.h"
-
-#include "../Card/Elements/Stats/Disease.h"
-#include "../Card/Elements/Stats/Symptom.h"
-#include "../Card/Elements/Stats/Penalty.h"
-#include "../Card/Elements/Stats/Skill.h"
-#include "../Card/Elements/Stats/Skillpack.h"
-#include "../Card/Elements/Stats/Attribute.h"
-#include "../Card/Elements/Stats/Trick.h"
-#include "../Card/Elements/Stats/OtherSkill.h"
-#include "../Card/Elements/Stats/Wound.h"
-
-#include "../Card/Elements/Equipment/Item.h"
-#include "../Card/Elements/Equipment/DexterityBonus.h"
-#include "../Card/Elements/Equipment/Durability.h"
-#include "../Card/Elements/Equipment/Location.h"
-
-#include "../Card/Elements/Notes/Question.h"
-
-#include "../DataSources/Elements/Stats/Requirement.h"
+#include "../View/Card.h"
+#include "../View/Pages/Stats.h"
+#include "../View/Pages/Equipment.h"
+#include "../View/Pages/Notes.h"
 
 #include <QJsonArray>
 
 Converter::Converter()
 {
-    qDebug() << "Converter::Converter()";
+
 }
 
 QJsonObject Converter::toJson(const Card *card)
 {
-    QJsonObject object;
+    QJsonObject json;
 
     if ( card->hasPage(Page::Type::STATS) )
-        object.insert( "stats", fromStats(card->stats()) );
+        json.insert( "stats", stats(card->stats()->data()) );
     if ( card->hasPage(Page::Type::EQUIPMENT) )
-        object.insert( "equipment", fromEquipment(card->equipment()) );
+        json.insert( "equipment", equipment(card->equipment()->data()) );
     if ( card->hasPage(Page::Type::NOTES) )
-        object.insert( "notes", fromNotes(card->notes()) );
+        json.insert( "notes", notes(card->notes()->data()) );
 
-    return object;
+    return json;
 }
 
-QJsonObject Converter::fromStats(const Stats *stats)
+QJsonObject Converter::stats(const StatsData &data)
 {
-    QJsonObject object;
-    QJsonObject personal;
+    QJsonObject json;
 
     QJsonObject name;
-    name.insert( "name", stats->name() );
-    name.insert( "surname", stats->surname() );
-    name.insert( "nickname", stats->nickname() );
+    name.insert( "name", data.name );
+    name.insert( "surname", data.surname );
+    name.insert( "nickname", data.nickname );
 
+    QJsonArray reputations;
+    for ( const ReputationData& tReputation : data.reputation )
+        reputations.append( reputation(tReputation) );
+
+    QJsonObject personal;
     personal.insert( "name", name );
-    personal.insert( "origin", fromData(stats->origin()) );
-    personal.insert( "profession", fromData(stats->profession()) );
-    personal.insert( "specialization", fromData(stats->specialization()) );
-    personal.insert( "disease", fromDisease(stats->disease()) );
-
-    QJsonObject features;
-    features.insert( "origin", fromData(stats->originFeature()) );
-    features.insert( "profession", fromData(stats->professionFeature()) );
-    personal.insert( "features", features );
-
-    object.insert( "personal", personal );
+    personal.insert( "origin", origin(data.origin) );
+    personal.insert( "profession", profession(data.profession) );
+    personal.insert( "specialization", specialization(data.specialization) );
+    personal.insert( "disease", disease(data.disease) );
+    personal.insert( "reputation", reputations );
 
     QJsonArray attributes;
-    for ( const Attribute* attribute: stats->attributes() )
-        attributes.append( fromAttribute(attribute) );
-    object.insert( "attributes", attributes );
-
-    QJsonArray tricks;
-    for ( const Trick* trick: stats->tricks() )
-        tricks.append( fromTrick(trick) );
-    object.insert( "tricks", tricks );
+    for ( const AttributeData& tAttribute : data.attributes )
+        attributes.append( attribute(tAttribute) );
 
     QJsonArray otherSkills;
-    for ( const OtherSkill* otherSkill: stats->otherSkills() )
-        otherSkills.append( fromOtherSkill(otherSkill) );
-    object.insert( "otherSkills", otherSkills );
+    for ( const OtherSkillData& tOtherSkill : data.otherSkills )
+        otherSkills.append( otherSkill(tOtherSkill) );
 
-    QJsonObject experience;
-    experience.insert( "gathered", stats->gathered() );
-    experience.insert( "spended", stats->spended() );
-    object.insert( "experience", experience );
+    QJsonArray tricks;
+    for ( const TrickData& tTrick : data.tricks )
+        tricks.append( trick(tTrick) );
 
-    QJsonArray wounds;
-    for ( const Wound* wound: stats->wounds() )
-        wounds.append( fromWound(wound) );
-    object.insert( "wounds", wounds );
+    json.insert( "personal", personal );
+    json.insert( "attributes", attributes );
+    json.insert( "otherSkills", otherSkills );
+    json.insert( "tricks", tricks );
+    json.insert( "experience", experience(data.experience) );
 
-    return object;
+    return json;
 }
 
-QJsonObject Converter::fromData(const Data *data)
+QJsonObject Converter::origin(const OriginData &data)
 {
-    QJsonObject object;
-    object.insert( "name", data->name() );
-    object.insert( "description", data->description() );
-    return object;
+    QJsonObject json;
+    json.insert( "name", data.name );
+    json.insert( "description", data.description );
+    json.insert( "feature", feature(data.feature) );
+    return json;
 }
 
-QJsonObject Converter::fromDisease(const Disease *disease)
+QJsonObject Converter::profession(const ProfessionData &data)
 {
-    QJsonObject object;
+    QJsonObject json;
+    json.insert( "name", data.name );
+    json.insert( "description", data.description );
+    json.insert( "feature", feature(data.feature) );
+    return json;
+}
 
-    object.insert( "name", disease->name() );
-    object.insert( "description", disease->description() );
-    object.insert( "cure", disease->cure() );
+QJsonObject Converter::feature(const FeatureData &data)
+{
+    QJsonObject json;
+    json.insert( "name", data.name );
+    json.insert( "description", data.description );
+    return json;
+}
 
+QJsonObject Converter::specialization(const SpecializationData &data)
+{
+    QJsonObject json;
+    json.insert( "name", data.name );
+    json.insert( "description", data.description );
+    return json;
+}
+
+QJsonObject Converter::disease(const DiseaseData &data)
+{
+    QJsonObject json;
+    json.insert( "name", data.name );
+    json.insert( "description", data.description );
+    json.insert( "cure", data.cure );
     QJsonArray symptoms;
-    for ( const Symptom* symptom: disease->symptoms() )
-        symptoms.append( fromSymptom(symptom) );
-
-    object.insert( "symptoms", symptoms );
-
-    return object;
+    for ( const SymptomData& tSymptom : data.symptoms )
+        symptoms.append( symptom(tSymptom) );
+    json.insert( "symptoms", symptoms );
+    return json;
 }
 
-QJsonObject Converter::fromSymptom(const Symptom *symptom)
+QJsonObject Converter::symptom(const SymptomData &data)
 {
-    QJsonObject object;
-    object.insert( "name", symptom->name() );
-    object.insert( "description", symptom->description() );
-
+    QJsonObject json;
+    json.insert( "name", data.name );
+    json.insert( "description", data.description );
     QJsonArray penalties;
-    for ( const Penalty* penalty: symptom->penalties() )
-        penalties.append( fromPenalty(penalty) );
-
-    return object;
+    for ( const PenaltyData& tPenalty : data.penalties )
+        penalties.append( penalty(tPenalty) );
+    json.insert( "penalties", penalties );
+    return json;
 }
 
-QJsonObject Converter::fromPenalty(const Penalty *penalty)
+QJsonObject Converter::penalty(const PenaltyData &data)
 {
-    QJsonObject object;
-    object.insert( "name", penalty->name() );
-    object.insert( "value", penalty->value() );
-//    object.insert( "type", penalty->type() );
-
-    return object;
+    QJsonObject json;
+    json.insert( "NAME", data.name );
+    json.insert( "TYPE", data.type );
+    json.insert( "VALUE", data.value );
+    return json;
 }
 
-QJsonObject Converter::fromSkill(const Skill *skill)
+QJsonObject Converter::reputation(const ReputationData &data)
 {
-    QJsonObject object;
-    object.insert( "name", skill->name() );
-    object.insert( "value", skill->value() );
-    object.insert( "used", skill->used() );
-    return object;
+    QJsonObject json;
+    json.insert( "name", data.name );
+    json.insert( "value", data.value );
+    return json;
 }
 
-QJsonObject Converter::fromSkillpack(const Skillpack *skillpack)
+QJsonObject Converter::attribute(const AttributeData &data)
 {
-    QJsonObject object;
-
-    object.insert( "name", skillpack->name() );
-
-    QJsonArray specializations;
-    for ( const QString& specialization: skillpack->specializations() )
-        specializations.append( specialization );
-    object.insert( "specializations", specializations );
-
-    QJsonArray skills;
-    for ( const Skill* skill: skillpack->skills() )
-        skills.append( fromSkill(skill) );
-    object.insert( "skills", skills );
-
-    return object;
-}
-
-QJsonObject Converter::fromAttribute(const Attribute *attribute)
-{
-    QJsonObject object;
-
-    object.insert( "name", attribute->name() );
-    object.insert( "value", attribute->value() );
-
+    QJsonObject json;
     QJsonArray skillpacks;
-    for ( const Skillpack* skillpack: attribute->skillpacks() )
-        skillpacks.append( fromSkillpack(skillpack) );
-    object.insert( "skillpacks", skillpacks );
 
-    return object;
+    for ( const SkillpackData& tSkillpack : data.skillpacks )
+        skillpacks.append( skillpack(tSkillpack) );
+
+    json.insert( "name", data.name );
+    json.insert( "value", data.value );
+    json.insert( "skillpacks", skillpacks );
+    return json;
 }
 
-QJsonObject Converter::fromTrick(const Trick *trick)
+QJsonObject Converter::skillpack(const SkillpackData &data)
 {
-    QJsonObject object;
-    object.insert( "name", trick->name() );
-    object.insert( "description", trick->description() );
-    object.insert( "action", trick->action() );
-    return object;
+    QJsonObject json;
+    QJsonArray specializations;
+    QJsonArray skills;
+    for ( const QString& spec : data.specializations )
+        specializations.append( spec );
+    for ( const SkillData& tSkill : data.skills )
+        skills.append( skill(tSkill) );
+
+    json.insert( "name", data.name );
+    json.insert( "specializations", specializations );
+    json.insert( "constant", data.constant );
+    json.insert( "skills", skills );
+    return json;
 }
 
-QJsonObject Converter::fromOtherSkill(const OtherSkill *otherSkill)
+QJsonObject Converter::skill(const SkillData &data)
 {
-    QJsonObject object;
-    object.insert( "name", otherSkill->name() );
-    object.insert( "value", otherSkill->value() );
-    object.insert( "attribute", otherSkill->attribute() );
-    object.insert( "used", otherSkill->used() );
-    return object;
+    QJsonObject json;
+    json.insert( "name", data.name );
+    json.insert( "value", data.value );
+    json.insert( "used", data.used );
+    return json;
 }
 
-QJsonObject Converter::fromWound(const Wound *wound)
+QJsonObject Converter::otherSkill(const OtherSkillData &data)
 {
-    QJsonObject object;
-
-    object.insert( "location", wound->location() );
-    object.insert( "type", wound->type() );
-    object.insert( "modifier", wound->modifier() );
-
-    return object;
+    QJsonObject json;
+    json.insert( "name", data.name );
+    json.insert( "value", data.value );
+    json.insert( "attribute", data.attribute );
+    json.insert( "used", data.used );
+    return json;
 }
 
-QJsonObject Converter::fromEquipment(const Equipment *equipment)
+QJsonObject Converter::trick(const TrickData &data)
 {
-    QJsonObject object;
+    QJsonObject json;
+    json.insert( "name", data.name );
+    json.insert( "description", data.description );
+    json.insert( "action", data.action );
+    QJsonArray requirements;
+    for ( const RequirementData& tRequirement : data.requirements )
+        requirements.append( requirement(tRequirement) );
+    json.insert( "requirements", requirements);
+    return json;
+}
 
-    QJsonArray backpack;
-    for ( const Item* item: equipment->backpack() ) {
-        if ( "EMPTY" != item->type() )
-            backpack.append( fromItem(item) );
-    }
-    object.insert( "backpack", backpack );
+QJsonObject Converter::requirement(const RequirementData &data)
+{
+    QJsonObject json;
+    json.insert( "name", data.name );
+    json.insert( "type", data.type );
+    json.insert( "value", data.value );
+    json.insert( "optional", data.optional );
+    return json;
+}
 
-    QJsonArray weapons;
-    for ( const Item* item: equipment->weapons() ) {
-        weapons.append( fromItem(item) );
-    }
-    object.insert( "weapons", weapons );
+QJsonObject Converter::experience(const ExperienceData &data)
+{
+    QJsonObject json;
+    json.insert( "gathered", data.gathered );
+    json.insert( "spended", data.spended );
+    return json;
+}
+
+QJsonObject Converter::equipment(const EquipmentData &data)
+{
+    QJsonObject json;
 
     QJsonObject supplies;
-    supplies.insert( "drugs", equipment->drugs() );
-    supplies.insert( "food", equipment->food() );
-    supplies.insert( "water", equipment->water() );
+    supplies.insert( "drugs", data.drugs );
+    supplies.insert( "food", data.food );
+    supplies.insert( "water", data.water );
 
-    object.insert( "supplies", supplies );
+    QJsonArray backpack;
+    for ( const QSharedPointer<ItemData>& tItem : data.backpack )
+        backpack.append( item(*tItem) );
+    QJsonArray armor;
+    for ( const QSharedPointer<ItemData>& tItem : data.armor )
+        armor.append( item(*tItem) );
+    QJsonArray weapons;
+    for ( const QSharedPointer<ItemData>& tItem : data.weapon )
+        weapons.append( item(*tItem) );
 
-    return object;
+    json.insert( "supplies", supplies );
+    json.insert( "backpack", backpack );
+    json.insert( "armor", armor );
+    json.insert( "weapons", weapons );
+
+    return json;
 }
 
-QJsonObject Converter::fromItem(const Item *item)
+QJsonObject Converter::item(const ItemData &data)
 {
-    QJsonObject object;
-    object.insert( "NAME", item->name() );
-    object.insert( "DESCRIPTION", item->description() );
-    object.insert( "PRICE", item->price() );
-    object.insert( "QUANTITY", item->quantity() );
-    object.insert( "TYPE", item->type() );
+    QJsonObject json;
+    json.insert( "NAME", data.name );
+    json.insert( "DESCRIPTION", data.description );
+    json.insert( "TYPE", data.type );
+    json.insert( "PRICE", data.price );
+    json.insert( "QUANTITY", data.quantity );
+    json.insert( "STATS", itemStats(data.itemStats) );
 
-    QJsonObject stats;
+    return json;
+}
 
-    if ( item->reputation() > 0 )
-        stats.insert( "REPUTATION", item->reputation() );
-    if ( item->requirement() ) {
-        QJsonObject requirement;
-        requirement.insert( "NAME", item->requirement()->name() );
-        requirement.insert( "VALUE", item->requirement()->value() );
-        requirement.insert( "TYPE", Requirement::stringToType(item->requirement()->type()) );
-        stats.insert( "REQUIREMENT", requirement );
-    }
-    if ( item->penetration() > 0 )
-        stats.insert( "PENETRATION", item->penetration() );
-    if ( item->rateOfFire() > 0 )
-        stats.insert( "RATEOFFIRE", item->rateOfFire() );
-    if ( item->ammunition() > 0 )
-        stats.insert( "AMMUNITION", item->ammunition() );
-    if ( !item->magazine().isEmpty() )
-        stats.insert( "MAGAZINE", item->magazine() );
-    if ( !item->bullet().isEmpty() )
-        stats.insert( "BULLET", item->bullet() );
-    if ( !item->jam().isEmpty() )
-        stats.insert( "JAM", item->jam() );
-    if ( item->damage().count() > 0 ) {
-        QJsonArray damage;
-        for ( const QString& dmg: item->damage() )
-            damage.append(dmg);
-        stats.insert( "DAMAGE", damage);
-    }
-    if ( item->dexterityBonusesCount() > 0 ) {
-        QJsonArray bonusList;
-        for ( const DexterityBonus* bonus: item->dexterityBonuses() ) {
-            QJsonObject tBonus;
-            tBonus.insert( "NAME", bonus->name() );
-            tBonus.insert( "VALUE", bonus->value() );
-            bonusList.append( tBonus );
-        }
+QJsonObject Converter::itemStats(const ItemStatsData &data)
+{
+    QJsonObject json;
 
-        stats.insert( "DEXBONUS", bonusList );
-    }
-    if ( item->specialsCount() > 0 ) {
-        QJsonArray specials;
-        for ( const Data* special: item->specials() ) {
-            QJsonObject tSpecial;
-            tSpecial.insert( "NAME", special->name() );
-            tSpecial.insert( "DESCRIPTION", special->description() );
-        }
-        stats.insert( "SPECIAL", specials );
-    }
-    if ( item->durability() ) {
+    if ( data.reputation > 0 )
+        json.insert( "REPUTATION", data.reputation );
+    if ( data.durability.max > 0 ) {
         QJsonObject durability;
-        durability.insert( "max", item->durability()->max() );
-        durability.insert( "current", item->durability()->current() );
-        stats.insert("DURABILITY", durability);
+        durability.insert( "MAX", data.durability.max );
+        durability.insert( "CURRENT", data.durability.current );
+        json.insert( "DURABILITY", durability );
     }
-    if ( item->locationsCount() > 0 ) {
+    if ( 0 < data.locations.count() ) {
         QJsonArray locations;
-        for ( const Location* location: item->locations() ) {
-            QJsonObject tLocation;
-            tLocation.insert( "LOCATION", location->location() );
-            tLocation.insert( "ARMOR", location->armor() );
-            if ( 0 < location->cutting() )
-                tLocation.insert( "CUTTING", location->cutting() );
-            locations.append( tLocation );
-        }
-        stats.insert( "LOCATIONS", locations );
+        for ( const LocationData& tLocation : data.locations )
+            locations.append( location(tLocation) );
+        json.insert( "LOCATIONS", locations );
     }
-    if ( item->penaltiesCount() > 0 ) {
+    if ( 0 < data.penalties.count() ) {
         QJsonArray penalties;
-        for ( const Penalty* penalty: item->penalties() ) {
-            QJsonObject tPenalty;
-            tPenalty.insert( "NAME", penalty->name() );
-            tPenalty.insert( "VALUE", penalty->value() );
-            tPenalty.insert( "TYPE", penalty->type() );
-            penalties.append( tPenalty );
-        }
-        stats.insert( "PENALTIES", penalties );
+        for ( const PenaltyData& tPenalty : data.penalties )
+            penalties.append( penalty(tPenalty) );
+        json.insert( "PENALTIES", penalties );
     }
-    if ( item->featuresCount() > 0 ) {
+    if ( 0 < data.features.count() ) {
         QJsonArray features;
-        for ( const Data* feature: item->features() ) {
-            QJsonObject tFeature;
-            tFeature.insert( "NAME", feature->name() );
-            tFeature.insert( "DESCRIPTION", feature->description() );
-            features.append( tFeature );
-        }
-        stats.insert( "FEATURES", features );
+        for ( const ArmorFeatureData& tFeature : data.features )
+            features.append( armorFeature(tFeature) );
+        json.insert( "FEATURES", features );
     }
+    if ( 0 < data.bonuses.count() ) {
+        QJsonArray bonuses;
+        for ( const DexterityBonusData& tBonus : data.bonuses )
+            bonuses.append( dexterityBonus(tBonus) );
+        json.insert( "DEXBONUS", bonuses );
+    }
+    if ( 0 < data.specials.count() ) {
+        QJsonArray specials;
+        for ( const SpecialData& tSpecial : data.specials )
+            specials.append( special(tSpecial) );
+        json.insert( "SPECIALS", specials );
+    }
+    if ( 0 < data.penetration )
+        json.insert( "PENETRATION", data.penetration );
+    if ( 0 < data.damage.count() ) {
+        QJsonArray damage;
+        for ( const QString& tDamage : data.damage )
+            damage.append( tDamage );
+        json.insert( "DAMAGE", damage );
+    }
+    if ( !data.requirement.name.isEmpty() )
+        json.insert( "REQUIREMENT", requirement(data.requirement) );
+    if ( 0 < data.magazine ) {
+        json.insert( "MAGAZINE", data.magazine );
+        json.insert( "AMMUNITION", data.ammunition );
+    }
+    if ( 0 < data.rateOfFire )
+        json.insert( "RATEOFFIRE", data.rateOfFire );
+    if ( 0 < data.jam )
+        json.insert( "JAM", data.jam );
+    if ( !data.bullet.isEmpty() )
+        json.insert( "BULLET", data.bullet );
 
-    object.insert( "STATS", stats );
-
-    return object;
+    return json;
 }
 
-QJsonObject Converter::fromNotes(const Notes *notes)
+QJsonObject Converter::location(const LocationData &data)
 {
-    QJsonObject object;
+    QJsonObject json;
+    json.insert( "NAME", data.name );
+    json.insert( "ARMOR", data.armor );
+    json.insert( "CUTTING", data.cutting );
+    return json;
+}
 
-    object.insert("biography", notes->biography());
-    object.insert("notes", notes->notes());
+QJsonObject Converter::armorFeature(const ArmorFeatureData &data)
+{
+    QJsonObject json;
+    json.insert( "NAME", data.name );
+    json.insert( "DESCRIPTION", data.description );
+    return json;
+}
 
+QJsonObject Converter::dexterityBonus(const DexterityBonusData &data)
+{
+    QJsonObject json;
+    json.insert( "NAME", data.name );
+    json.insert( "VALUE", data.value );
+    return json;
+}
+
+QJsonObject Converter::special(const SpecialData &data)
+{
+    QJsonObject json;
+    json.insert( "NAME", data.name );
+    json.insert( "DESCRIPTION", data.description );
+    return json;
+}
+
+QJsonObject Converter::notes(const NotesData &data)
+{
+    QJsonObject json;
     QJsonArray questions;
-    for ( const Question* pQuestion: notes->questions() ) {
-        QJsonObject question;
-        question.insert( "question", pQuestion->question() );
-        question.insert( "subquestion", pQuestion->subquestion() );
-        question.insert( "answer", pQuestion->answer() );
-        questions.push_back( question );
-    }
-    object.insert( "questions", questions );
+    for ( const QuestionData& tQuestion : data.questions )
+        questions.append( question(tQuestion) );
 
-    return object;
+    json.insert( "biography", data.biography );
+    json.insert( "notes", data.notes );
+    json.insert( "questions", questions );
+    return json;
+}
+
+QJsonObject Converter::question(const QuestionData &data)
+{
+    QJsonObject json;
+    json.insert( "question", data.question );
+    json.insert( "subquestion", data.subquestion );
+    json.insert( "answer", data.answer );
+    return json;
 }

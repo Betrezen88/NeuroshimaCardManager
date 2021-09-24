@@ -1,12 +1,12 @@
 ﻿import QtQuick 2.9
 import QtQuick.Controls 2.5
 
-import core.NSWound 1.0
+import core.view.NSStats 1.0
 
 import "./../Elements"
 
 Column {
-    property var wounds: []
+    property NSStats stats
 
     id: main
 
@@ -57,59 +57,23 @@ Column {
             spacing: 5
             padding: 5
 
-            WoundRow {
-                id: _head
-                label: "Głowa:"
-                width: _column.width - (_column.padding*2)
+            Repeater {
+                id: _woundRows
+                delegate: WoundRow {
+                    width: _column.width - (_column.padding*2)
+                    label: modelData
+                    wounds: stats.wound( modelData )
+                    Component.onCompleted: {
+                        stats.woundsChanged.connect(function(){
+                            wounds = statsData.wound( modelData )
+                        })
+                    }
+                }
             }
+        } // Column
+    } // Rectangle
 
-            WoundRow {
-                id: _leftHand
-                label: "L. ręka:"
-                width: _column.width - (_column.padding*2)
-            }
-
-            WoundRow {
-                id: _rightHand
-                label: "P. ręka:"
-                width: _column.width - (_column.padding*2)
-            }
-
-            WoundRow {
-                id: _torso
-                label: "Tułów:"
-                width: _column.width - (_column.padding*2)
-            }
-
-            WoundRow {
-                id: _leftLeg
-                label: "L. noga:"
-                width: _column.width - (_column.padding*2)
-            }
-
-            WoundRow {
-                id: _rightLeg
-                label: "P. noga:"
-                width: _column.width - (_column.padding*2)
-            }
-        }
+    onStatsChanged: {
+        _woundRows.model = stats.locations
     }
-
-    onWoundsChanged: {
-        var tWounds = {}
-
-        for (var w in wounds) {
-            if ( !tWounds.hasOwnProperty(wounds[w].location) )
-                tWounds[wounds[w].location] = []
-
-            tWounds[wounds[w].location].push(wounds[w].type.charAt(0))
-        }
-
-        _head.wounds = tWounds["Głowa"]
-        _torso.wounds = tWounds["Tułów"]
-        _leftHand.wounds = tWounds["Lewa ręka"]
-        _rightHand.wounds = tWounds["Prawa ręka"]
-        _leftLeg.wounds = tWounds["Lewa noga"]
-        _rightLeg.wounds = tWounds["Prawa noga"]
-    }
-}
+} // Column

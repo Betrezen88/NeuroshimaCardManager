@@ -2,14 +2,9 @@
 #define ITEMCREATOR_H
 
 #include <QObject>
-#include <QMap>
-#include <QVariant>
+#include <QVariantMap>
 
-class Item;
-class Data;
-class Penalty;
-class Location;
-class DexterityBonus;
+#include "../Data/Equipment/ItemData.h"
 
 class ItemCreator : public QObject
 {
@@ -17,27 +12,17 @@ class ItemCreator : public QObject
 public:
     explicit ItemCreator(QObject *parent = nullptr);
 
-    Item* create(const QJsonObject& data);
-    Item* create(const QVariantMap& data);
-    Item* create(const Item* item);
+    ItemData create(const QVariantMap& data);
 
 private:
-    void setStats(Item* item, const QVariantMap& stats);
-    Data* createData(const QMap<QString, QVariant>& input, Item* parent);
-    Penalty* createPenalty(const QMap<QString, QVariant>& input, Item* parent);
-    Location* createLocation(const QMap<QString, QVariant>& input, Item* parent);
-    DexterityBonus *createDexbonus(const QMap<QString, QVariant>& input, Item* parent);
-
-private:
-    const QStringList m_types{
-        "ARMOR",
-        "HANDWEAPON",
-        "RANGEDWEAPON",
-        "SHIELD",
-        "CONSUMABLE",
-        "OTHER",
-        "EMPTY"
-    };
+    ItemStatsData stats(const QVariantMap& data);
+    DurabilityData durability(const QVariantMap& data);
+    LocationData location(const QVariantMap& data);
+    PenaltyData penalty(const QVariantMap& data);
+    ArmorFeatureData feature(const QVariantMap& data);
+    DexterityBonusData bonus(const QVariantMap& data);
+    RequirementData requirement(const QVariantMap& data);
+    SpecialData special(const QVariantMap& data);
 };
 
 #endif // ITEMCREATOR_H

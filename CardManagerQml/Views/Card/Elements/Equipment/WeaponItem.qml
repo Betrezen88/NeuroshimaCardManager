@@ -1,7 +1,8 @@
 ﻿import QtQuick 2.9
 import QtQuick.Controls 2.12
 
-import core.NSItem 1.0
+import core.view.NSItem 1.0
+import core.view.NSItemStats 1.0
 
 Rectangle {
     property int index
@@ -140,11 +141,18 @@ Rectangle {
             }
 
             Flow {
-                property var bonuses: []
                 id: _dexBonus
                 width: parent.width - _dexBonusL.width - parent.spacing
                 height: implicitHeight
                 spacing: 5
+
+                Repeater {
+                    id: _bonuses
+                    delegate: Text {
+                        font.pointSize: 15
+                        text: modelData.name + " +" + modelData.value
+                    }
+                }
             }
         }
         // Obrażenia
@@ -304,7 +312,6 @@ Rectangle {
         }
         // Reguły specjalne
         Flow {
-            property var specials: []
             id: _specials
             width: _stats.width - (_stats.padding*2)
             height: implicitHeight
@@ -315,6 +322,15 @@ Rectangle {
                 text: qsTr("Reguły specjalne:")
                 font.bold: true
                 font.pointSize: 15
+            }
+
+            Repeater {
+                id: _specialsList
+                delegate: ItemSpecial {
+                    name: modelData.name
+                    description: modelData.description
+                    visibleBtn: false
+                }
             }
         }
     }
@@ -332,82 +348,66 @@ Rectangle {
             return
 
         _title.text = item.name
+        _requirementL.visible = item.stats.requirement != null
+        _requirement.visible = item.stats.requirement != null
+        if ( item.stats.requirement != null )
+            _requirement.text = item.stats.requirement.value
 
-        _requirementL.visible = item.requirement != null
-        _requirement.visible = item.requirement != null
-        if ( item.requirement != null )
-            _requirement.text = item.requirement.value
+        _penetrationL.visible = item.stats.penetration > 0
+        _penetration.visible = item.stats.penetration > 0
+        if ( item.stats.penetration > 0 )
+            _penetration.text = item.stats.penetration
 
-        _penetrationL.visible = item.penetration > 0
-        _penetration.visible = item.penetration > 0
-        if ( item.penetration > 0 )
-            _penetration.text = item.penetration
+        _dexBonusC.visible = item.stats.bonuses.length > 0
+        if ( item.stats.bonuses.length > 0 )
+            _bonuses.model = item.stats.bonuses
 
-        _dexBonusC.visible = item.dexterityBonuses.length > 0
-        if ( item.dexterityBonuses.length > 0 ) {
-            for ( var b in item.dexterityBonuses ) {
-                var obj = Qt.createQmlObject('import QtQuick 2.0; Text { font.pointSize: 15 }',
-                                             _dexBonus)
-                obj.text = "+" + item.dexterityBonuses[b].value + " "
-                        + item.dexterityBonuses[b].name
-                _dexBonus.bonuses.push(obj)
-            }
-        }
-
-        for ( var d in item.damage ) {
+        for ( var d in item.stats.damage ) {
             var dObj = Qt.createQmlObject('import QtQuick 2.0; Text { font.pointSize: 15 }',
                                           _damage)
-            dObj.text = (item.damage.length > 1)
-                    ? parseInt(d)+1 + "s " + item.damage[d]
-                        + ((d<item.damage.length-1) ? " / " : "")
-                    : item.damage[d]
+            dObj.text = (item.stats.damage.length > 1)
+                    ? parseInt(d)+1 + "s " + item.stats.damage[d]
+                        + ((d<item.stats.damage.length-1) ? " / " : "")
+                    : item.stats.damage[d]
             _damage.damage.push(dObj)
         }
 
-        _bulletL.visible = item.bullet.length > 0
-        _bullet.visible = item.bullet.length > 0
-        if ( item.bullet.length > 0 )
-            _bullet.text = item.bullet
+        _bulletL.visible = item.stats.bullet.length > 0
+        _bullet.visible = item.stats.bullet.length > 0
+        if ( item.stats.bullet.length > 0 )
+            _bullet.text = item.stats.bullet
 
-        _magazineL.visible = item.magazine.length > 0
-        _magazine.visible = item.magazine .length > 0
-        if ( item.magazine.length > 0 )
-            _magazine.text = item.magazine
+        _magazineL.visible = item.stats.magazine > 0
+        _magazine.visible = item.stats.magazine > 0
+        if ( item.stats.magazine > 0 )
+            _magazine.text = item.stats.magazine
 
-        _ammunitionL.visible = item.ammunition > 0
-        _ammunition.visible = item.ammunition > 0
-        if ( item.magazine.length > 0 )
-            _ammunition.value = item.magazine
+        _ammunitionL.visible = item.stats.ammunition > 0
+        _ammunition.visible = item.stats.ammunition > 0
+        if ( item.stats.ammunition.length > 0 )
+            _ammunition.value = item.stats.ammunition
 
-        _rateOfFireL.visible = item.rateOfFire > 0
-        _rateOfFire.visible = item.rateOfFire > 0
-        if ( item.rateOfFire > 0 )
-            _rateOfFire.text = item.rateOfFire
+        _rateOfFireL.visible = item.stats.rateOfFire > 0
+        _rateOfFire.visible = item.stats.rateOfFire > 0
+        if ( item.stats.rateOfFire > 0 )
+            _rateOfFire.text = item.stats.rateOfFire
 
-        _jamC.visible = item.jam.length > 0
-        if ( item.jam.length > 0 )
-            _jam.text = item.jam
+        _jamC.visible = item.stats.jam > 0
+        if ( item.stats.jam > 0 )
+            _jam.text = item.stats.jam
 
-        _durabilityL.visible = item.durability != null
-        _durability.visible = item.durability != null
-        if ( item.durability != null )
-            _durability.value = item.durability
+        _durabilityL.visible = item.stats.durability != null
+        _durability.visible = item.stats.durability != null
+        if ( item.stats.durability != null )
+            _durability.value = item.stats.durability
 
-        _armorL.visible = item.armor > 0
-        _armor.visible = item.armor > 0
-        if ( item.armor > 0 )
-            _armor.value = item.armor
+        _armorL.visible = item.stats.armor > 0
+        _armor.visible = item.stats.armor > 0
+        if ( item.stats.armor > 0 )
+            _armor.value = item.stats.armor
 
-        _specials.visible = item.specials.length > 0
-        for ( var s in item.special ) {
-            var component = Qt.createComponent("ItemSpecial.qml")
-            _specials.specials.push( component.createObject(_specials,
-                                              {
-                                                  name: item.special[s].name,
-                                                  description: item.special[s].description,
-                                                  visibleBtn: false
-                                              })
-                                    )
-        }
+        _specials.visible = item.stats.specials.length > 0
+        if ( item.stats.specials.length > 0 )
+            _specialsList.model = item.stats.specials
     }
 }

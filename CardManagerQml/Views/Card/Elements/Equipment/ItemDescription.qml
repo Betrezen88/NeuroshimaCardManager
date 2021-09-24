@@ -1,7 +1,8 @@
 ﻿import QtQuick 2.9
 import QtQuick.Controls 2.12
 
-import core.NSItem 1.0
+import core.view.NSItem 1.0
+import core.view.NSItemStats 1.0
 
 Popup {
     property NSItem itemData
@@ -104,7 +105,7 @@ Popup {
                     height: implicitHeight
                     spacing: 5
                     visible: itemData != null
-                             && itemData.reputation > 0
+                             && itemData.stats.reputation > 0
 
                     Text {
                         width: implicitWidth
@@ -141,16 +142,16 @@ Popup {
                 height: implicitHeight
                 spacing: 5
                 visible: itemData != null
-                         && ( itemData.requirement != null
-                         || itemData.penetration > 0
-                         || itemData.durability != null )
+                         && ( itemData.stats.requirement != null
+                         || itemData.stats.penetration > 0
+                         || itemData.stats.durability != null )
 
                 Column {
                     width: implicitWidth
                     height: implicitHeight
                     spacing: 5
                     visible: itemData != null
-                             && itemData.requirement != null
+                             && itemData.stats.requirement != null
 
                     Text {
                         width: 100
@@ -175,7 +176,7 @@ Popup {
                     height: implicitHeight
                     spacing: 5
                     visible: itemData != null
-                             && itemData.durability != null
+                             && itemData.stats.durability != null
 
                     Text {
                         width: implicitWidth
@@ -207,7 +208,7 @@ Popup {
                     height: implicitHeight
                     spacing: 5
                     visible: itemData != null
-                             && itemData.penetration > 0
+                             && itemData.stats.penetration > 0
 
                     Text {
                         width: implicitWidth
@@ -233,13 +234,13 @@ Popup {
                 text: qsTr("Bonusy do zręczności")
                 horizontalAlignment: Text.AlignHCenter
                 font.pointSize: 15
-                visible: itemData != null && itemData.dexterityBonuses.length > 0
+                visible: itemData != null && itemData.stats.bonuses.length > 0
             }
 
             Row {
                 height: implicitHeight
                 spacing: 10
-                visible: itemData != null && itemData.dexterityBonuses.length > 0
+                visible: itemData != null && itemData.stats.bonuses.length > 0
 
                 Repeater {
                     id: _dexterityBonuses
@@ -271,7 +272,7 @@ Popup {
                 width: _scrollView.width
                 height: implicitHeight
                 spacing: 5
-                visible: itemData != null && itemData.damage.length > 0
+                visible: itemData != null && itemData.stats.damage.length > 0
 
                 Text {
                     text: qsTr("Obrażenia:")
@@ -291,16 +292,16 @@ Popup {
                 height: implicitHeight
                 spacing: 15
                 visible: itemData != null
-                         && ( itemData.bullet.length > 0
-                             || itemData.magazine.length > 0
-                             || itemData.ammunition > 0
-                             || itemData.rateOfFire > 0
-                             || itemData.jam.length > 0 )
+                         && ( itemData.stats.bullet.length > 0
+                             || itemData.stats.magazine.length > 0
+                             || itemData.stats.ammunition > 0
+                             || itemData.stats.rateOfFire > 0
+                             || itemData.stats.jam.length > 0 )
 
                 Column {
                     width: implicitWidth
                     height: 50
-                    visible: itemData != null && itemData.bullet.length > 0
+                    visible: itemData != null && itemData.stats.bullet.length > 0
 
                     Text {
                         width: implicitWidth
@@ -324,7 +325,7 @@ Popup {
                     width: implicitWidth
                     height: 50
                     spacing: 5
-                    visible: itemData != null && itemData.magazine.length > 0
+                    visible: itemData != null && itemData.stats.magazine.length > 0
 
                     Text {
                         width: implicitWidth
@@ -347,7 +348,7 @@ Popup {
                     width: implicitWidth
                     height: 50
                     spacing: 5
-                    visible: itemData != null && itemData.ammunition > 0
+                    visible: itemData != null && itemData.stats.ammunition > 0
 
                     Text {
                         width: implicitWidth
@@ -370,7 +371,7 @@ Popup {
                     width: implicitWidth
                     height: 50
                     spacing: 5
-                    visible: itemData != null && itemData.rateOfFire > 0
+                    visible: itemData != null && itemData.stats.rateOfFire > 0
 
                     Text {
                         id: text1
@@ -394,7 +395,7 @@ Popup {
                     width: implicitWidth
                     height: 50
                     spacing: 5
-                    visible: itemData != null && itemData.jam.length > 0
+                    visible: itemData != null && itemData.stats.jam.length > 0
 
                     Text {
                         width: implicitWidth
@@ -418,7 +419,7 @@ Popup {
                 width: _scrollView.width
                 height: implicitHeight
                 spacing: 5
-                visible: itemData != null && itemData.specials.length > 0
+                visible: itemData != null && itemData.stats.specials.length > 0
 
                 Text {
                     text: qsTr("Reguły specjalne:")
@@ -442,14 +443,14 @@ Popup {
                 text: qsTr("Lokacje")
                 horizontalAlignment: Text.AlignHCenter
                 font.pointSize: 15
-                visible: itemData != null && itemData.locations.length > 0
+                visible: itemData != null && itemData.stats.locations.length > 0
             }
 
             Flow {
                 width: _scrollView.width
                 height: implicitHeight
                 spacing: 10
-                visible: itemData != null && itemData.locations.length > 0
+                visible: itemData != null && itemData.stats.locations.length > 0
 
                 Repeater {
                     id: _locations
@@ -461,7 +462,7 @@ Popup {
 
                         Text {
                             width: implicitWidth
-                            text: qsTr(modelData.location)
+                            text: qsTr(modelData.name)
                             horizontalAlignment: Text.AlignHCenter
                             font.bold: true
                             font.pointSize: 12
@@ -481,7 +482,7 @@ Popup {
                 width: _scrollView.width
                 height: implicitHeight
                 spacing: 5
-                visible: itemData != null && itemData.penalties.length > 0
+                visible: itemData != null && itemData.stats.penalties.length > 0
 
                 Text {
                     text: qsTr("Kary/Bonusy:")
@@ -501,11 +502,10 @@ Popup {
             }
 
             Flow {
-                property var objects: []
                 width: _scrollView.width
                 height: implicitHeight
                 spacing: 5
-                visible: itemData != null && itemData.features.length > 0
+                visible: itemData != null && itemData.stats.features.length > 0
 
                 Text {
                     text: qsTr("Cechy:")
@@ -524,12 +524,6 @@ Popup {
                 }
             }
         }
-
-        function createElement(elementName, parent, params) {
-            var component = Qt.createComponent(elementName)
-            var object = component.createObject(parent, params)
-            return object
-        }
     }
 
     onItemDataChanged: {
@@ -540,20 +534,24 @@ Popup {
         _description.text = itemData.description
         _price.text = itemData.price
         _quantity.text = itemData.quantity
-        _reputation.visible = itemData.reputation > 0
-        _reputation.text = itemData.reputation
 
-        if ( itemData.requirement != null )
-            _requirement.text = itemData.requirement.value
-        if ( itemData.durability != null )
-            _durability.text = itemData.durability.current + "/" + itemData.durability.max
-        _penetration.text = itemData.penetration
+        if ( null == itemData.stats )
+            return;
 
-        if ( itemData.dexterityBonuses.length > 0 )
-            _dexterityBonuses.model = itemData.dexterityBonuses
+        _reputation.visible = itemData.stats.reputation > 0
+        _reputation.text = itemData.stats.reputation
 
-        if ( itemData.damage.length > 0 ) {
-            var damage = itemData.damage
+        if ( itemData.stats.requirement != null )
+            _requirement.text = itemData.stats.requirement.value
+        if ( itemData.stats.durability != null )
+            _durability.text = itemData.stats.durability.current + "/" + itemData.stats.durability.max
+        _penetration.text = itemData.stats.penetration
+
+        if ( itemData.stats.bonuses.length > 0 )
+            _dexterityBonuses.model = itemData.stats.bonuses
+
+        if ( itemData.stats.damage.length > 0 ) {
+            var damage = itemData.stats.damage
             if ( damage.length === 1 )
                 _damage.text = damage[0]
             else {
@@ -566,21 +564,21 @@ Popup {
             }
         }
 
-        _bullet.text = itemData.bullet
-        _magazine.text = itemData.magazine
-        _ammunition.text = itemData.ammunition
-        _jam.text = itemData.jam
+        _bullet.text = itemData.stats.bullet
+        _magazine.text = itemData.stats.magazine
+        _ammunition.text = itemData.stats.ammunition
+        _jam.text = itemData.stats.jam
 
-        if ( itemData.specials.length > 0 )
-            _specials.model = itemData.specials
+        if ( itemData.stats.specials.length > 0 )
+            _specials.model = itemData.stats.specials
 
-        if ( itemData.locations.length > 0 )
-            _locations.model = itemData.locations
+        if ( itemData.stats.locations.length > 0 )
+            _locations.model = itemData.stats.locations
 
-        if ( itemData.penalties.length > 0 )
-            _penalties.model = itemData.penalties
+        if ( itemData.stats.penalties.length > 0 )
+            _penalties.model = itemData.stats.penalties
 
-        if ( itemData.features.length > 0 )
-            _features.model = itemData.features
+        if ( itemData.stats.features.length > 0 )
+            _features.model = itemData.stats.features
     }
 }

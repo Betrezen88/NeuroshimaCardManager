@@ -19,108 +19,111 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Card/Card.cpp \
-    Card/Data.cpp \
-    Card/Elements/Equipment/Item.cpp \
-    Card/Elements/Equipment/Location.cpp \
-    Card/Elements/Notes/Question.cpp \
-    Card/Elements/Rules/RulesSection.cpp \
-    Card/Elements/Stats/Attribute.cpp \
-    Card/Elements/Stats/Difficulty.cpp \
-    Card/Elements/Stats/Disease.cpp \
-    Card/Elements/Stats/OtherSkill.cpp \
-    Card/Elements/Stats/Penalty.cpp \
-    Card/Elements/Stats/Skill.cpp \
-    Card/Elements/Stats/Skillpack.cpp \
-    Card/Elements/Stats/Symptom.cpp \
-    Card/Elements/Stats/Trick.cpp \
-    Card/Elements/Stats/Wound.cpp \
-    Card/Pages/Equipment.cpp \
-    Card/Pages/Notes.cpp \
-    Card/Pages/Page.cpp \
-    Card/Pages/Rules.cpp \
-    Card/Pages/Stats.cpp \
-    Creators/CardCreator.cpp \
-    Creators/DataSourceCreator.cpp \
     Creators/ItemCreator.cpp \
-    Creators/StatsCreator.cpp \
-    DataSources/Elements/Stats/AttributeMod.cpp \
-    DataSources/Elements/Stats/Bonus.cpp \
-    DataSources/Elements/Stats/Feature.cpp \
-    DataSources/Elements/Stats/HeroData.cpp \
-    DataSources/Elements/Stats/Origin.cpp \
-    DataSources/Elements/Stats/OtherSkillMod.cpp \
-    DataSources/Elements/Stats/Profession.cpp \
-    DataSources/Elements/Stats/Requirement.cpp \
-    DataSources/Elements/Stats/SkillMod.cpp \
-    DataSources/Elements/Stats/SkillpackMod.cpp \
-    DataSources/Elements/Stats/TricksSortFilterModel.cpp \
-    DataSources/StatsSource.cpp \
-    Editors/StatsEditor.cpp \
     Managers/CardManager.cpp \
-    Managers/CreationPointsManager.cpp \
     Managers/MainManager.cpp \
     Managers/SettingsManager.cpp \
     Utils/CardBuilder.cpp \
     Utils/Converter.cpp \
+    Utils/DataBuilder.cpp \
     Utils/DataReader.cpp \
     Utils/DataWriter.cpp \
-    Validators/TrickValidator.cpp
+    View/Card.cpp \
+    View/Common/Penalty.cpp \
+    View/Common/Requirement.cpp \
+    View/Equipment/ArmorFeature.cpp \
+    View/Equipment/DexterityBonus.cpp \
+    View/Equipment/Durability.cpp \
+    View/Equipment/Item.cpp \
+    View/Equipment/ItemStats.cpp \
+    View/Equipment/Location.cpp \
+    View/Equipment/Special.cpp \
+    View/Notes/Question.cpp \
+    View/Pages/Equipment.cpp \
+    View/Pages/Notes.cpp \
+    View/Pages/Stats.cpp \
+    View/Stats/Attribute.cpp \
+    View/Stats/Disease.cpp \
+    View/Stats/Experience.cpp \
+    View/Stats/Feature.cpp \
+    View/Stats/Origin.cpp \
+    View/Stats/OtherSkill.cpp \
+    View/Stats/Profession.cpp \
+    View/Stats/Reputation.cpp \
+    View/Stats/Skill.cpp \
+    View/Stats/Skillpack.cpp \
+    View/Stats/Specialization.cpp \
+    View/Stats/Symptom.cpp \
+    View/Stats/Trick.cpp \
+    View/Stats/Wound.cpp
 
 HEADERS += \
-    Card/Card.h \
-    Card/Data.h \
-    Card/Elements/Equipment/DexterityBonus.h \
-    Card/Elements/Equipment/Durability.h \
-    Card/Elements/Equipment/Item.h \
-    Card/Elements/Equipment/Location.h \
-    Card/Elements/Notes/Question.h \
-    Card/Elements/Rules/RulesSection.h \
-    Card/Elements/Stats/Attribute.h \
-    Card/Elements/Stats/Difficulty.h \
-    Card/Elements/Stats/Disease.h \
-    Card/Elements/Stats/OtherSkill.h \
-    Card/Elements/Stats/Penalty.h \
-    Card/Elements/Stats/Skill.h \
-    Card/Elements/Stats/Skillpack.h \
-    Card/Elements/Stats/Symptom.h \
-    Card/Elements/Stats/Trick.h \
-    Card/Elements/Stats/Wound.h \
-    Card/Pages/Equipment.h \
-    Card/Pages/Notes.h \
-    Card/Pages/Page.h \
-    Card/Pages/Rules.h \
-    Card/Pages/Stats.h \
-    Creators/CardCreator.h \
-    Creators/DataSourceCreator.h \
     Creators/ItemCreator.h \
-    Creators/PageCreator.h \
-    Creators/StatsCreator.h \
-    DataSources/DataSource.h \
-    DataSources/Elements/Stats/AttributeMod.h \
-    DataSources/Elements/Stats/Bonus.h \
-    DataSources/Elements/Stats/Feature.h \
-    DataSources/Elements/Stats/HeroData.h \
-    DataSources/Elements/Stats/Origin.h \
-    DataSources/Elements/Stats/OriginBonus.h \
-    DataSources/Elements/Stats/OtherSkillMod.h \
-    DataSources/Elements/Stats/Profession.h \
-    DataSources/Elements/Stats/Requirement.h \
-    DataSources/Elements/Stats/SkillMod.h \
-    DataSources/Elements/Stats/SkillpackMod.h \
-    DataSources/Elements/Stats/TricksSortFilterModel.h \
-    DataSources/StatsSource.h \
-    Editors/StatsEditor.h \
+    Data/Common/PenaltyData.h \
+    Data/Common/RequirementData.h \
+    Data/Equipment/ArmorFeatureData.h \
+    Data/Equipment/DexterityBonusData.h \
+    Data/Equipment/DurabilityData.h \
+    Data/Equipment/EquipmentData.h \
+    Data/Equipment/ItemData.h \
+    Data/Equipment/ItemStatsData.h \
+    Data/Equipment/LocationData.h \
+    Data/Equipment/SpecialData.h \
+    Data/Notes/NotesData.h \
+    Data/Notes/QuestionData.h \
+    Data/Stats/AttributeData.h \
+    Data/Stats/DiseaseData.h \
+    Data/Stats/ExperienceData.h \
+    Data/Stats/FeatureData.h \
+    Data/Stats/OriginData.h \
+    Data/Stats/OtherSkillData.h \
+    Data/Stats/ProfessionData.h \
+    Data/Stats/ReputationData.h \
+    Data/Stats/SkillData.h \
+    Data/Stats/SkillpackData.h \
+    Data/Stats/SpecializationData.h \
+    Data/Stats/StatsData.h \
+    Data/Stats/SymptomData.h \
+    Data/Stats/TrickData.h \
+    Data/Stats/WoundData.h \
     Managers/CardManager.h \
-    Managers/CreationPointsManager.h \
     Managers/MainManager.h \
     Managers/SettingsManager.h \
     Utils/CardBuilder.h \
     Utils/Converter.h \
+    Utils/DataBuilder.h \
     Utils/DataReader.h \
     Utils/DataWriter.h \
     Utils/Dice.h \
-    Validators/TrickValidator.h \
+    View/Card.h \
+    View/Common/Penalty.h \
+    View/Common/Requirement.h \
+    View/Equipment/ArmorFeature.h \
+    View/Equipment/DexterityBonus.h \
+    View/Equipment/Durability.h \
+    View/Equipment/Item.h \
+    View/Equipment/ItemStats.h \
+    View/Equipment/Location.h \
+    View/Equipment/Special.h \
+    View/Notes/Question.h \
+    View/Pages/Equipment.h \
+    View/Pages/Notes.h \
+    View/Pages/Page.h \
+    View/Pages/Stats.h \
+    View/Stats/Attribute.h \
+    View/Stats/Disease.h \
+    View/Stats/Experience.h \
+    View/Stats/Feature.h \
+    View/Stats/Origin.h \
+    View/Stats/OtherSkill.h \
+    View/Stats/Profession.h \
+    View/Stats/Reputation.h \
+    View/Stats/Skill.h \
+    View/Stats/Skillpack.h \
+    View/Stats/Specialization.h \
+    View/Stats/Symptom.h \
+    View/Stats/Trick.h \
+    View/Stats/Wound.h \
     core_global.h
 
 # Default rules for deployment.

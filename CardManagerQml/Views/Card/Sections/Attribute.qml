@@ -1,85 +1,49 @@
 ﻿import QtQuick 2.9
 
-import "./../Elements"
+import core.view.NSAttribute 1.0
 
+import "./../Elements"
 import "../../Common/Elements" as CommonElements
 
-Item {
-    property variant attribute
+Rectangle {
+    property NSAttribute attribute
 
     id: main
+    height: _column.implicitHeight
 
-    height: mainHeight()
+    color: "#cac6c6"
+    border.color: "#000"
+    border.width: 1
 
-    Rectangle {
-        id: background
-        color: "#cac6c6"
-        anchors.fill: main
+    Column {
+        id: _column
+        spacing: 3
+        padding: 5
 
-        border.color: "#000"
-        border.width: 1
+        Text {
+            id: _title
+            padding: 5
+            font.pointSize: 14
+            width: main.width - _column.padding*2
+        }
 
-        Column {
-            anchors.fill: background
-            spacing: 2
+        CommonElements.ValueBoxRow {
+            id: _valueRow
+            width: main.width - _column.padding*2
+        }
 
-            Text {
-                id: title
-                padding: 5
-                font.pointSize: 14
-                width: main.width
-            }
-
-            CommonElements.ValueBoxRow {
-                id: valueRow
-                width: main.width
-            }
-
-            Column {
-                property var objects: []
-                id: column
-                spacing: 2
-                rightPadding: 5
-                leftPadding: 5
-
-                function clearSkillpacks() {
-                    for ( var i in objects )
-                        objects[i].destroy();
-                    objects = [];
-                }
+        Repeater {
+            id: _skillpacks
+            delegate: Skillpack {
+                width: main.width - _column.padding*2
+                skillpack: modelData
             }
         }
     }
 
     onAttributeChanged: {
-        valueRow.value = attribute.value;
-        title.text = attribute.name;
-        column.clearSkillpacks();
-        for ( var i in attribute.skillpacks ) {
-            var component = Qt.createComponent("./../Elements/Skillpack.qml");
-            var object = component.createObject(
-                            column,{
-                            width: main.width - column.rightPadding - column.leftPadding,
-                            skillpack: attribute.skillpacks[i]
-                        });
-
-            column.objects.push(object);
-        }
-        main.height = mainHeight();
-    }
-
-    function mainHeight() {
-        var h = 0;
-        var objCount = column.objects.length;
-
-        if ( "undefined" !== typeof(title) )
-            h += title.height
-        if ( "undefined" !== typeof(valueRow) )
-            h += valueRow.height
-        if ( 0 < objCount ) {
-            h += (objCount * column.objects[0].height)
-            + ((objCount + 1) * 2) + 2;
-        }
-        return h;
+        _valueRow.value = attribute.value
+        _title.text = attribute.name
+        _skillpacks.model = attribute.skillpacks
     }
 }

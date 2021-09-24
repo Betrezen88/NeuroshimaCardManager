@@ -1,8 +1,10 @@
 ﻿import QtQuick 2.9
 import QtQuick.Controls 2.5
 
+import core.view.NSTrick 1.0
+
 Rectangle {
-    property variant trick
+    property NSTrick trick
 
     id: main
 
@@ -34,6 +36,6 @@ Rectangle {
 
     onTrickChanged: {
         name.text = trick.name;
-        toolip.text = trick.description;
+        toolip.text = trick.action;
     }
 }

@@ -1,7 +1,6 @@
 ﻿#include "CardManager.h"
-#include "Card/Card.h"
-#include "Card/Pages/Page.h"
-#include "Card/Pages/Rules.h"
+
+#include "View/Card.h"
 
 #include "Utils/DataReader.h"
 #include "Utils/DataWriter.h"
@@ -10,6 +9,8 @@
 
 #include <QJsonDocument>
 #include <QUrl>
+
+#include <QDebug>
 
 CardManager::CardManager(QObject *parent) : QObject(parent)
 {
@@ -31,7 +32,7 @@ void CardManager::appendCard(Card *card)
     if ( card == nullptr ) return;
 
     card->setParent(this);
-    card->addPage(m_pRulesPage);
+//    card->addPage(m_pRulesPage);
     m_cards.append(card);
     m_cardsFilePaths.append(card->filePath());
     emit cardsChanged();
@@ -127,6 +128,8 @@ void CardManager::closeCard(const QString &filePath)
     if ( 0 < m_cardsFilePaths.count() && filePath == m_selectedCard )
         setSelectedCard( m_cardsFilePaths.first() );
 
+    qDebug() << "CardManager::closeCard()" << m_cards.count();
+
     emit cardsChanged();
 }
 
@@ -161,5 +164,5 @@ void CardManager::createRulesPage(const QString &filePath)
     }
 
     CardBuilder builder;
-    m_pRulesPage = builder.rulesPage(std::get<1>(data).array());
+//    m_pRulesPage = builder.rulesPage(std::get<1>(data).array());
 }

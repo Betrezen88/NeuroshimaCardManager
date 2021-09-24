@@ -1,10 +1,12 @@
 ﻿import QtQuick 2.0
 import QtQuick.Controls 2.15
 
+import core.view.NSCard 1.0
+
 import "./Pages"
 
 Page {
-    property var cardData
+    property NSCard cardData
 
     id: main
 
