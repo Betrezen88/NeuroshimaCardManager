@@ -1,9 +1,9 @@
 ﻿import QtQuick 2.12
 
-import core.NSSkillpackMod 1.0
+import core.edit.NSSkillpackEdit 1.0
 
 Rectangle {
-    property NSSkillpackMod skillpackMod
+    property NSSkillpackEdit skillpackEdit
 
     id: main
     height: _column.implicitHeight
@@ -29,16 +29,16 @@ Rectangle {
             id: _skills
             delegate: SkillEdit {
                 width: main.width
-                skillMod: modelData
+                skillEdit: modelData
             }
         }
     }
 
-    onSkillpackModChanged: {
-        if ( null == skillpackMod )
+    onSkillpackEditChanged: {
+        if ( null == skillpackEdit )
             return
 
-        _name.text = skillpackMod.skillpack.name
-        _skills.model = skillpackMod.skills
+        _name.text = skillpackEdit.name
+        _skills.model = skillpackEdit.skills
     }
 }

@@ -1,8 +1,8 @@
 ﻿import QtQuick 2.15
 import QtQuick.Controls 2.12
 
-import core.NSStats 1.0
-import core.NSStatsEditor 1.0
+import core.view.NSStats 1.0
+import core.edit.NSStatsEditor 1.0
 
 import "./Pages"
 
@@ -119,7 +119,7 @@ Page {
         if ( null == stats )
             return
 
-        _nsStatsEditor.stats = stats
+        _nsStatsEditor.setStats( stats )
         _skillsEditor.statsEditor = _nsStatsEditor
         _experienceToSpend.text = stats.gathered - stats.spended
     }

@@ -4,10 +4,11 @@
 #include <QObject>
 #include <QQmlListProperty>
 
-#include "../../Data/Stats/SkillpackData.h"
 #include "Skill.h"
 
 #include "core_global.h"
+
+class SkillpackData;
 
 class CORE_EXPORT Skillpack : public QObject
 {

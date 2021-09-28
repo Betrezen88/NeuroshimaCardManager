@@ -1,4 +1,5 @@
 ﻿#include "Skillpack.h"
+#include "../../Data/Stats/SkillpackData.h"
 
 Skillpack::Skillpack(QObject *parent) : QObject(parent)
 {

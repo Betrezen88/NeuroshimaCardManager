@@ -1,10 +1,10 @@
 ﻿import QtQuick 2.12
 import QtQuick.Controls 2.12
 
-import core.NSSkillMod 1.0
+import core.edit.NSSkillEdit 1.0
 
 Row {
-    property NSSkillMod skillMod
+    property NSSkillEdit skillEdit
 
     id: main
     spacing: 5
@@ -22,15 +22,15 @@ Row {
         width: 140
     }
 
-    onSkillModChanged: {
-        if ( null == skillMod )
+    onSkillEditChanged: {
+        if ( null == skillEdit )
             return
 
-        _name.text = skillMod.skill.name
+        _name.text = skillEdit.name
         _name.width = main.width - _value.width - main.spacing - main.padding*2
-        _value.from = skillMod.min
-        _value.to = skillMod.max
-        _value.value = skillMod.skill.value
-        _value.enabled = skillMod.skill.used
+        _value.from = skillEdit.min
+        _value.to = skillEdit.max
+        _value.value = skillEdit.value
+        _value.enabled = skillEdit.used
     }
 }

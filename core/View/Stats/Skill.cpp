@@ -1,4 +1,5 @@
 ﻿#include "Skill.h"
+#include "../../Data/Stats/SkillData.h"
 
 Skill::Skill(QObject *parent) : QObject(parent)
 {

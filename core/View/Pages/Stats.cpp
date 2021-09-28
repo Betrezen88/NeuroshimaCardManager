@@ -31,8 +31,8 @@ Stats::Stats(const StatsData &data, QObject *parent)
     for ( TrickData& trick : m_data.tricks )
         m_tricks.append( new Trick(&trick, this) );
 
-    for ( OtherSkillData& otherSkill : m_data.otherSkills )
-        m_otherSkills.append( new OtherSkill(&otherSkill, this) );
+    for ( QSharedPointer<OtherSkillData>& otherSkill : m_data.otherSkills )
+        m_otherSkills.append( new OtherSkill(otherSkill.get(), this) );
 
     for ( ReputationData& reputation : m_data.reputation )
         m_reputation.append( new Reputation(&reputation, this) );
@@ -255,7 +255,7 @@ WoundData* Stats::mergeWounds(const QString &location, const QString &type)
 
 void Stats::setWounds(QVector<QSharedPointer<WoundData>> &wounds)
 {
-    for ( QSharedPointer<WoundData> wound : wounds )
+    for ( QSharedPointer<WoundData> &wound : wounds )
         m_wounds.append( new Wound(wound.get(), this) );
 }
 

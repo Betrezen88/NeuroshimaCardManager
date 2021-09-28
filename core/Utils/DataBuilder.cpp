@@ -29,7 +29,9 @@ StatsData DataBuilder::statsData(const QJsonObject &json)
         data.attributes.append( attribute(tAttribute.toObject()) );
 
     for ( const QJsonValue& tOtherSkill: json.value("otherSkills").toArray() )
-        data.otherSkills.append( otherSkill(tOtherSkill.toObject()) );
+        data.otherSkills.append( QSharedPointer<OtherSkillData>(
+                                     new OtherSkillData(otherSkill(tOtherSkill.toObject())))
+                                 );
 
     for ( const QJsonValue& tTrick: json.value("tricks").toArray() )
         data.tricks.append( trick(tTrick.toObject()) );

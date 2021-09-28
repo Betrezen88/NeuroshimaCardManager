@@ -1,10 +1,10 @@
 ﻿import QtQuick 2.12
 import QtQuick.Controls 2.12
 
-import core.NSAttributeMod 1.0
+import core.edit.NSAttributeEdit 1.0
 
 Column {
-    property NSAttributeMod attributeMod
+    property NSAttributeEdit attributeEdit
 
     id: main
     spacing: 5
@@ -45,19 +45,19 @@ Column {
             id: _skillpacks
             delegate: SkillpackEdit {
                 width: 280 /*main.width*/
-                skillpackMod: modelData
+                skillpackEdit: modelData
             }
         }
     }
 
-    onAttributeModChanged: {
-        if ( null == attributeMod )
+    onAttributeEditChanged: {
+        if ( null == attributeEdit )
             return
 
-        _name.text = attributeMod.attribute.name
-        _value.from = attributeMod.min
-        _value.to = attributeMod.max
-        _value.value = attributeMod.attribute.value
-        _skillpacks.model = attributeMod.skillpacks
+        _name.text = attributeEdit.name
+        _value.from = attributeEdit.min
+        _value.to = attributeEdit.max
+        _value.value = attributeEdit.value
+        _skillpacks.model = attributeEdit.skillpacks
     }
 }

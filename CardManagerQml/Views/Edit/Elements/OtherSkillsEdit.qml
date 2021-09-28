@@ -1,7 +1,7 @@
 ﻿import QtQuick 2.9
 import QtQuick.Controls 2.12
 
-import core.NSStatsEditor 1.0
+import core.edit.NSStatsEditor 1.0
 
 Item {
     property NSStatsEditor statsEditor
@@ -60,8 +60,8 @@ Item {
 
                 delegate: OtherSkillEdit {
                     width: parent.width
-                    otherSkillMod: modelData
-                    newSkill: false
+                    otherSkillEdit: modelData
+                    onRemove: main.statsEditor.removeOtherSkill(otherSkillEdit)
                 }
             }
         }

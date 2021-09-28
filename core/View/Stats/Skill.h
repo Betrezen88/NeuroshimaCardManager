@@ -3,9 +3,9 @@
 
 #include <QObject>
 
-#include "../../Data/Stats/SkillData.h"
-
 #include "core_global.h"
+
+class SkillData;
 
 class CORE_EXPORT Skill : public QObject
 {
@@ -26,7 +26,7 @@ public:
 signals:
     void usedChanged(const bool used);
 
-private:
+protected:
     SkillData* m_data{nullptr};
 };
 

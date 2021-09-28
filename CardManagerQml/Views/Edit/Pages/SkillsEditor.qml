@@ -1,7 +1,7 @@
 ﻿import QtQuick 2.9
 import QtQuick.Controls 2.12
 
-import core.NSStatsEditor 1.0
+import core.edit.NSStatsEditor 1.0
 
 import "../Elements"
 import "../Forms"
@@ -51,7 +51,6 @@ Page {
 
     OtherSkillForm {
         id: _otherSkillForm
-        attributesModel: statsEditor.attributesNames
         anchors.centerIn: parent
         onBuyNewSkill: statsEditor.addOtherSkill(name, attribute)
     }
@@ -74,11 +73,12 @@ Page {
         if ( null == statsEditor )
             return
 
-        _body.attributeMod = statsEditor.attributeMod("Budowa")
-        _dexterity.attributeMod = statsEditor.attributeMod("Zręczność")
-        _charisma.attributeMod = statsEditor.attributeMod("Charakter")
-        _perception.attributeMod = statsEditor.attributeMod("Percepcja")
-        _cleaverness.attributeMod = statsEditor.attributeMod("Spryt")
+        _body.attributeEdit = statsEditor.attribute("Budowa")
+        _dexterity.attributeEdit = statsEditor.attribute("Zręczność")
+        _charisma.attributeEdit = statsEditor.attribute("Charakter")
+        _perception.attributeEdit = statsEditor.attribute("Percepcja")
+        _cleaverness.attributeEdit = statsEditor.attribute("Spryt")
         _otherSkills.statsEditor = statsEditor
+        _otherSkillForm.attributesModel = statsEditor.attributesNames()
     }
 }

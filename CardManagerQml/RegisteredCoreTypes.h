@@ -59,12 +59,20 @@
 #include "View/Pages/Notes.h"
 #include "View/Card.h"
 
+#include "Edit/Pages/StatsEditor.h"
+#include "Edit/Stats/AttributeEdit.h"
+#include "Edit/Stats/SkillpackEdit.h"
+#include "Edit/Stats/SkillEdit.h"
+#include "Edit/Stats/OtherSkillEdit.h"
+
 // Managers
 #include "Managers/MainManager.h"
 #include "Managers/CardManager.h"
 #include "Managers/SettingsManager.h"
 
 void registerQmlTypes() {
+    qRegisterMetaType<Page::Type>("NSPage::Type");
+
     qmlRegisterType<Penalty>("core.view.NSPenalty", 1, 0, "NSPenalty");
     qmlRegisterType<Requirement>("core.view.NSRequirement", 1, 0, "NSRequirement");
     qmlRegisterType<Attribute>("core.view.NSAttribute", 1, 0, "NSAttribute");
@@ -97,6 +105,12 @@ void registerQmlTypes() {
     qmlRegisterType<Equipment>("core.view.NSEquipment", 1, 0, "NSEquipment");
     qmlRegisterType<Notes>("core.view.NSNotes", 1, 0, "NSNotes");
     qmlRegisterType<Card>("core.view.NSCard", 1, 0, "NSCard");
+
+    qmlRegisterType<StatsEditor>("core.edit.NSStatsEditor", 1, 0, "NSStatsEditor");
+    qmlRegisterType<AttributeEdit>("core.edit.NSAttributeEdit", 1, 0, "NSAttributeEdit");
+    qmlRegisterType<SkillpackEdit>("core.edit.NSSkillpackEdit", 1, 0, "NSSkillpackEdit");
+    qmlRegisterType<SkillEdit>("core.edit.NSSkillEdit", 1, 0, "NSSkillEdit");
+    qmlRegisterType<OtherSkillEdit>("core.edit.NSOtherSkillEdit", 1, 0, "NSOtherSkillEdit");
 
     qmlRegisterType<MainManager>("core.managers.NSMainManager", 1, 0, "NSMainManager");
     qmlRegisterType<CardManager>("core.managers.NSCardManager", 1, 0, "NSCardManager");

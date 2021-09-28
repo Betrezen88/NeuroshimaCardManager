@@ -20,6 +20,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Creators/ItemCreator.cpp \
+    Edit/Pages/StatsEditor.cpp \
+    Edit/Stats/AttributeEdit.cpp \
+    Edit/Stats/OtherSkillEdit.cpp \
+    Edit/Stats/SkillEdit.cpp \
+    Edit/Stats/SkillpackEdit.cpp \
     Managers/CardManager.cpp \
     Managers/MainManager.cpp \
     Managers/SettingsManager.cpp \
@@ -86,6 +91,11 @@ HEADERS += \
     Data/Stats/SymptomData.h \
     Data/Stats/TrickData.h \
     Data/Stats/WoundData.h \
+    Edit/Pages/StatsEditor.h \
+    Edit/Stats/AttributeEdit.h \
+    Edit/Stats/OtherSkillEdit.h \
+    Edit/Stats/SkillEdit.h \
+    Edit/Stats/SkillpackEdit.h \
     Managers/CardManager.h \
     Managers/MainManager.h \
     Managers/SettingsManager.h \
