@@ -59,10 +59,15 @@ QJsonObject Converter::stats(const StatsData &data)
     for ( const TrickData& tTrick : data.tricks )
         tricks.append( trick(tTrick) );
 
+    QJsonArray wounds;
+    for ( const QSharedPointer<WoundData>& tWound : data.wounds )
+        wounds.append( wound(*tWound) );
+
     json.insert( "personal", personal );
     json.insert( "attributes", attributes );
     json.insert( "otherSkills", otherSkills );
     json.insert( "tricks", tricks );
+    json.insert( "wounds", wounds );
     json.insert( "experience", experience(data.experience) );
 
     return json;
@@ -214,6 +219,15 @@ QJsonObject Converter::requirement(const RequirementData &data)
     json.insert( "type", data.type );
     json.insert( "value", data.value );
     json.insert( "optional", data.optional );
+    return json;
+}
+
+QJsonObject Converter::wound(const WoundData &data)
+{
+    QJsonObject json;
+    json.insert( "location", data.location );
+    json.insert( "type", data.type );
+    json.insert( "modifier", data.modifier );
     return json;
 }
 

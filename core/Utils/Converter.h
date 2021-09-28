@@ -33,6 +33,7 @@ private:
     QJsonObject otherSkill(const OtherSkillData& data);
     QJsonObject trick(const TrickData& data);
     QJsonObject requirement(const RequirementData& data);
+    QJsonObject wound(const WoundData& data);
     QJsonObject experience(const ExperienceData& data);
 
     QJsonObject equipment(const EquipmentData& data);
