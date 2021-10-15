@@ -40,6 +40,8 @@ class CORE_EXPORT Stats : public Page
     Q_PROPERTY(QStringList locations READ locations CONSTANT)
     Q_PROPERTY(QStringList woundTypes READ woundTypes CONSTANT)
 
+    Q_PROPERTY(StatsData stats READ stats WRITE setStats NOTIFY statsChanged)
+
 public:
     explicit Stats(QObject *parent = nullptr);
     explicit Stats(const StatsData& data, QObject *parent);
@@ -75,8 +77,13 @@ public:
 
     const StatsData& data() const;
 
+    const StatsData &stats() const;
+    void setStats(const StatsData &newStats);
+
 signals:
     void woundsChanged();
+
+    void statsChanged();
 
 public slots:
     Attribute *attribute(const QString& name);

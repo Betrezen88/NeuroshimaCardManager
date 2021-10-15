@@ -312,7 +312,7 @@ Page {
                                {
                                    "stats": cardsView.cardData.stats,
                                    "width": stackView.width,
-                                   "height": stackView.height
+                                   "height": stackView.height,
                                }
                         )
                 stackView.currentItem.onClose.connect(function(){

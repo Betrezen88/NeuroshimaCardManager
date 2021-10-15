@@ -64,11 +64,17 @@
 #include "Edit/Stats/SkillpackEdit.h"
 #include "Edit/Stats/SkillEdit.h"
 #include "Edit/Stats/OtherSkillEdit.h"
+#include "Edit/Stats/ExperienceEditor.h"
 
 // Managers
 #include "Managers/MainManager.h"
 #include "Managers/CardManager.h"
 #include "Managers/SettingsManager.h"
+
+void registerMetaTypes() {
+    qRegisterMetaType<StatsData*>();
+    qRegisterMetaType<ExperienceData*>();
+}
 
 void registerQmlTypes() {
     qRegisterMetaType<Page::Type>("NSPage::Type");
@@ -111,6 +117,7 @@ void registerQmlTypes() {
     qmlRegisterType<SkillpackEdit>("core.edit.NSSkillpackEdit", 1, 0, "NSSkillpackEdit");
     qmlRegisterType<SkillEdit>("core.edit.NSSkillEdit", 1, 0, "NSSkillEdit");
     qmlRegisterType<OtherSkillEdit>("core.edit.NSOtherSkillEdit", 1, 0, "NSOtherSkillEdit");
+    qmlRegisterType<ExperienceEditor>("core.edit.NSExperienceEditor", 1, 0, "NSExperienceEditor");
 
     qmlRegisterType<MainManager>("core.managers.NSMainManager", 1, 0, "NSMainManager");
     qmlRegisterType<CardManager>("core.managers.NSCardManager", 1, 0, "NSCardManager");

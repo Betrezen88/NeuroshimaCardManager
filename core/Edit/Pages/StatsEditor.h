@@ -11,15 +11,18 @@
 
 #include "core_global.h"
 
-class CORE_EXPORT  StatsEditor : public QObject
+class ExperienceEditor;
+
+class CORE_EXPORT StatsEditor : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QQmlListProperty<AttributeEdit> attributes READ attributes CONSTANT)
     Q_PROPERTY(QQmlListProperty<OtherSkillEdit> otherSkills READ otherSkills NOTIFY otherSkillsChanged)
+    Q_PROPERTY(StatsData data READ data CONSTANT)
+    Q_PROPERTY(ExperienceEditor* experience READ experience CONSTANT)
 
 public:
     explicit StatsEditor(QObject* parent = nullptr);
-    explicit StatsEditor(const StatsData& data, QObject* parent = nullptr);
 
     QQmlListProperty<AttributeEdit> attributes();
     int attributeCount() const;
@@ -29,23 +32,25 @@ public:
     int otherSkillCount() const;
     OtherSkillEdit* otherSkill(const int index) const;
 
+    const StatsData &data() const;
+    ExperienceEditor *experience() const;
+
 public slots:
-    void setStats(Stats* stats);
     AttributeEdit* attribute(const QString& name);
     QStringList attributesNames() const;
     void addOtherSkill(const QString& name, const QString& attribute);
     void removeOtherSkill(OtherSkillEdit* otherSkill);
+    void init(const StatsData& data, const QString& costFile);
 
 signals:
-    void dataChanged();
     void otherSkillsChanged();
 
 private slots:
-    void init();
+    void setAffordableStats();
+    void setStatsConnections();
 
 private:
     void clear();
-    void setConnections();
 
     static int attributeCount(QQmlListProperty<AttributeEdit>* list);
     static AttributeEdit* attribute(QQmlListProperty<AttributeEdit>* list, int index);
@@ -55,6 +60,7 @@ private:
 
 private:
     StatsData m_data;
+    ExperienceEditor* m_pExpEditor{nullptr};
     QVector<AttributeEdit*> m_attributes;
     QVector<OtherSkillEdit*> m_otherSkills;
 };

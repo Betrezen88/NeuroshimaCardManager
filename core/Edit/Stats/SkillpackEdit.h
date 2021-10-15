@@ -28,6 +28,7 @@ public:
     QQmlListProperty<SkillEdit> skills();
     int skillCount() const;
     SkillEdit* skill(const int index) const;
+    QVector<SkillEdit*> skillList();
 
 private:
     static int skillCount(QQmlListProperty<SkillEdit>* list);

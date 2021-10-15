@@ -33,6 +33,18 @@ Column {
             SpinBox {
                 id: _value
                 padding: 1
+                up.onPressedChanged: {
+                    if ( up.pressed ) {
+                        up.pressed = false
+                        main.attributeEdit.increase()
+                    }
+                }
+                down.onPressedChanged: {
+                    if ( down.pressed ) {
+                        down.pressed = false
+                        main.attributeEdit.decrease()
+                    }
+                }
             }
         }
     }
@@ -59,5 +71,13 @@ Column {
         _value.to = attributeEdit.max
         _value.value = attributeEdit.value
         _skillpacks.model = attributeEdit.skillpacks
+        _value.enabled = attributeEdit.affordable
+
+        attributeEdit.affordableChanged.connect(function(){
+            _value.enabled = main.attributeEdit.affordable
+        })
+        attributeEdit.valueChanged.connect(function(){
+            _value.value = main.attributeEdit.value
+        })
     }
 }

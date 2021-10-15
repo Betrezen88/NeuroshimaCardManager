@@ -298,3 +298,14 @@ Wound *Stats::wound(QQmlListProperty<Wound> *list, int index)
 {
     return reinterpret_cast<Stats*>(list->data)->wound(index);
 }
+
+const StatsData &Stats::stats() const
+{
+    return m_data;
+}
+
+void Stats::setStats(const StatsData &newStats)
+{
+    m_data = newStats;
+    emit statsChanged();
+}

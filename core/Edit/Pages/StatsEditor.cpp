@@ -1,18 +1,13 @@
 ﻿#include "StatsEditor.h"
+#include "../Stats/ExperienceEditor.h"
+
+#include <QUrl>
 
 #include <QDebug>
 
 StatsEditor::StatsEditor(QObject *parent) : QObject(parent)
 {
-    setConnections();
-}
 
-StatsEditor::StatsEditor(const StatsData &data, QObject *parent)
-    : QObject(parent)
-    , m_data(data)
-{
-    setConnections();
-    init();
 }
 
 QQmlListProperty<AttributeEdit> StatsEditor::attributes()
@@ -53,13 +48,6 @@ OtherSkillEdit *StatsEditor::otherSkill(const int index) const
         return nullptr;
 
     return m_otherSkills.at(index);
-}
-
-void StatsEditor::setStats(Stats *stats)
-{
-    clear();
-    m_data = stats->data();
-    emit dataChanged();
 }
 
 AttributeEdit *StatsEditor::attribute(const QString &name)
@@ -117,23 +105,65 @@ void StatsEditor::removeOtherSkill(OtherSkillEdit *otherSkill)
     emit otherSkillsChanged();
 }
 
-void StatsEditor::init()
+void StatsEditor::init(const StatsData &data, const QString &costFile)
 {
+    qDebug() << "StatsEditor::init()" << costFile;
+    m_data = data;
+
+    m_pExpEditor = new ExperienceEditor( costFile, &m_data.experience, this );
+
+    connect(m_pExpEditor, &ExperienceEditor::availableChanged,
+            this, &StatsEditor::setAffordableStats);
+
     for ( AttributeData& attribute : m_data.attributes )
         m_attributes.push_back( new AttributeEdit(&attribute, this) );
 
     for ( QSharedPointer<OtherSkillData>& otherSkill : m_data.otherSkills )
         m_otherSkills.push_back( new OtherSkillEdit(otherSkill.get(), false, this) );
+
+    setStatsConnections();
+    setAffordableStats();
+}
+
+void StatsEditor::setAffordableStats()
+{
+    for ( AttributeEdit* pAttribute : m_attributes ) {
+        pAttribute->setAffordable(
+                    m_pExpEditor->isAttributeAfordable(pAttribute->max()) );
+        for ( SkillpackEdit* pSkillpack : pAttribute->skillpackList() ) {
+            for ( SkillEdit* pSkill : pSkillpack->skillList() ) {
+                pSkill->setAffordable(
+                            m_pExpEditor->isSkillAfordable(
+                                pSkill->max(),
+                                pSkillpack->specializations()) );
+            }
+        }
+    }
+}
+
+void StatsEditor::setStatsConnections()
+{
+    for ( AttributeEdit* pAttribute : m_attributes ) {
+        connect(pAttribute, &AttributeEdit::increased,
+                m_pExpEditor, &ExperienceEditor::attributeIncreased);
+        connect(pAttribute, &AttributeEdit::decreased,
+                m_pExpEditor, &ExperienceEditor::attributeDecreased);
+
+//        for ( SkillpackEdit* pSkillpack : pAttribute->skillpackList() ) {
+//            for ( SkillEdit* pSkill : pSkillpack->skillList() ) {
+//                pSkill->setAffordable(
+//                            m_pExpEditor->isSkillAfordable(
+//                                pSkill->max(),
+//                                pSkillpack->specializations()) );
+//            }
+//        }
+    }
 }
 
 void StatsEditor::clear()
 {
+    qDebug() << "StatsEditor::clear()";
     qDeleteAll(m_attributes);
-}
-
-void StatsEditor::setConnections()
-{
-    connect(this, &StatsEditor::dataChanged, this, &StatsEditor::init);
 }
 
 int StatsEditor::attributeCount(QQmlListProperty<AttributeEdit> *list)
@@ -154,4 +184,15 @@ int StatsEditor::otherSkillCount(QQmlListProperty<OtherSkillEdit> *list)
 OtherSkillEdit *StatsEditor::otherSkill(QQmlListProperty<OtherSkillEdit> *list, int index)
 {
     return reinterpret_cast<StatsEditor*>(list->data)->otherSkill(index);
+}
+
+const StatsData &StatsEditor::data() const
+{
+    return m_data;
+}
+
+ExperienceEditor *StatsEditor::experience() const
+{
+    qDebug() << "StatsEditor::experience()";
+    return m_pExpEditor;
 }

@@ -20,6 +20,19 @@ Row {
     SpinBox {
         id: _value
         width: 140
+
+        up.onPressedChanged: {
+            if ( up.pressed ) {
+                up.pressed = false
+                main.skillEdit.increase();
+            }
+        }
+        down.onPressedChanged: {
+            if ( down.pressed ) {
+                down.pressed = false
+                main.skillEdit.decrease();
+            }
+        }
     }
 
     onSkillEditChanged: {
@@ -31,6 +44,13 @@ Row {
         _value.from = skillEdit.min
         _value.to = skillEdit.max
         _value.value = skillEdit.value
-        _value.enabled = skillEdit.used
+        _value.enabled = skillEdit.used && skillEdit.affordable
+
+        skillEdit.affordableChanged.connect(function(){
+            _value.enabled = main.skillEdit.used && main.skillEdit.affordable
+        })
+        skillEdit.valueChanged.connect(function(){
+            _value.value = main.skillEdit.value
+        })
     }
 }

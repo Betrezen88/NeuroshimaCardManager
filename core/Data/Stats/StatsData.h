@@ -1,6 +1,7 @@
 ﻿#ifndef STATSDATA_H
 #define STATSDATA_H
 
+#include <QObject>
 #include <QPair>
 #include <QString>
 #include <QVarLengthArray>
@@ -21,6 +22,9 @@
 #include "core_global.h"
 
 struct CORE_EXPORT StatsData {
+    Q_GADGET
+
+public:
     QString name;
     QString surname;
     QString nickname;
@@ -36,5 +40,7 @@ struct CORE_EXPORT StatsData {
     QVector<ReputationData> reputation;
     ExperienceData experience;
 };
+
+Q_DECLARE_METATYPE(StatsData)
 
 #endif // STATSDATA_H

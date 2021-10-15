@@ -62,6 +62,11 @@ SkillEdit *SkillpackEdit::skill(const int index) const
     return m_skills.at( index );
 }
 
+QVector<SkillEdit *> SkillpackEdit::skillList()
+{
+    return m_skills;
+}
+
 int SkillpackEdit::skillCount(QQmlListProperty<SkillEdit> *list)
 {
     return reinterpret_cast<SkillpackEdit*>(list->data)->skillCount();

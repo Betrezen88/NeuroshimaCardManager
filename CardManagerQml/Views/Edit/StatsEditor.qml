@@ -119,14 +119,12 @@ Page {
         if ( null == stats )
             return
 
-        _nsStatsEditor.setStats( stats )
+        _nsStatsEditor.init(stats.stats, ":/json/resources/json/Experience.json")
         _skillsEditor.statsEditor = _nsStatsEditor
-        _experienceToSpend.text = stats.gathered - stats.spended
+        _experienceToSpend.text = _nsStatsEditor.experience.available
+
+        _nsStatsEditor.experience.availableChanged.connect(function(){
+            _experienceToSpend.text = _nsStatsEditor.experience.available
+        })
     }
 }
-
-/*##^##
-Designer {
-    D{i:0;autoSize:true;height:480;width:640}
-}
-##^##*/

@@ -22,6 +22,7 @@ SOURCES += \
     Creators/ItemCreator.cpp \
     Edit/Pages/StatsEditor.cpp \
     Edit/Stats/AttributeEdit.cpp \
+    Edit/Stats/ExperienceEditor.cpp \
     Edit/Stats/OtherSkillEdit.cpp \
     Edit/Stats/SkillEdit.cpp \
     Edit/Stats/SkillpackEdit.cpp \
@@ -93,6 +94,7 @@ HEADERS += \
     Data/Stats/WoundData.h \
     Edit/Pages/StatsEditor.h \
     Edit/Stats/AttributeEdit.h \
+    Edit/Stats/ExperienceEditor.h \
     Edit/Stats/OtherSkillEdit.h \
     Edit/Stats/SkillEdit.h \
     Edit/Stats/SkillpackEdit.h \

@@ -1,6 +1,8 @@
 ﻿#include "SkillEdit.h"
 #include "../../Data/Stats/SkillData.h"
 
+#include <QDebug>
+
 SkillEdit::SkillEdit(QObject *parent) : QObject(parent)
 {
 
@@ -47,4 +49,31 @@ int SkillEdit::max() const
 bool SkillEdit::used() const
 {
     return m_data ? m_data->used : false;
+}
+
+bool SkillEdit::affordable() const
+{
+    return m_affordable;
+}
+
+void SkillEdit::setAffordable(bool newAffordable)
+{
+    if (m_affordable == newAffordable)
+        return;
+    m_affordable = newAffordable;
+    emit affordableChanged();
+}
+
+void SkillEdit::increase()
+{
+    qDebug() << "SkillEdit::increase()";
+    ++m_data->value;
+    emit valueChanged();
+}
+
+void SkillEdit::decrease()
+{
+    qDebug() << "SkillEdit::decrease()";
+    --m_data->value;
+    emit valueChanged();
 }
