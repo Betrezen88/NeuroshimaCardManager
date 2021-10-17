@@ -10,8 +10,17 @@ SkillpackEdit::SkillpackEdit(SkillpackData *data, QObject *parent)
     : QObject(parent)
     , m_data(data)
 {
-    for ( SkillData& skill : m_data->skills )
-        m_skills.push_back( new SkillEdit(&skill, this) );
+    for ( SkillData& skill : m_data->skills ) {
+        SkillEdit* pSkill = new SkillEdit(&skill, this);
+        m_skills.push_back( pSkill );
+
+        connect( pSkill, &SkillEdit::increased, this, [this](const int value){
+            emit increased(value, this->m_data->specializations);
+        } );
+        connect( pSkill, &SkillEdit::decreased, this, [this](const int value){
+            emit decreased(value, this->m_data->specializations);
+        } );
+    }
 }
 
 const QString &SkillpackEdit::name() const

@@ -30,6 +30,10 @@ public:
     SkillEdit* skill(const int index) const;
     QVector<SkillEdit*> skillList();
 
+signals:
+    void increased(const int value, const QStringList specializations);
+    void decreased(const int value, const QStringList specializations);
+
 private:
     static int skillCount(QQmlListProperty<SkillEdit>* list);
     static SkillEdit* skill(QQmlListProperty<SkillEdit>* list, int index);

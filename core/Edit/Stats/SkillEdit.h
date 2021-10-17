@@ -12,7 +12,7 @@ class CORE_EXPORT SkillEdit : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString name READ name CONSTANT)
-    Q_PROPERTY(int value READ value WRITE setValue NOTIFY valueChanged)
+    Q_PROPERTY(int value READ value NOTIFY valueChanged)
     Q_PROPERTY(int min READ min CONSTANT)
     Q_PROPERTY(int max READ max CONSTANT)
     Q_PROPERTY(bool used READ used CONSTANT)
@@ -25,7 +25,6 @@ public:
     const QString &name() const;
 
     int value() const;
-    void setValue(int newValue);
 
     int min() const;
     int max() const;
@@ -36,6 +35,8 @@ public:
 
 signals:
     void valueChanged();
+    void increased(const int value);
+    void decreased(const int value);
     void affordableChanged();
 
 public slots:
@@ -44,6 +45,8 @@ public slots:
 
 private:
     SkillData* m_data{nullptr};
+    int m_min{0};
+    int m_max{0};
     bool m_affordable;
 };
 

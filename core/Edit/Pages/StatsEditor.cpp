@@ -107,10 +107,11 @@ void StatsEditor::removeOtherSkill(OtherSkillEdit *otherSkill)
 
 void StatsEditor::init(const StatsData &data, const QString &costFile)
 {
-    qDebug() << "StatsEditor::init()" << costFile;
     m_data = data;
-
-    m_pExpEditor = new ExperienceEditor( costFile, &m_data.experience, this );
+    m_pExpEditor = new ExperienceEditor( costFile,
+                                         &m_data.experience,
+                                         &m_data.specialization,
+                                         this );
 
     connect(m_pExpEditor, &ExperienceEditor::availableChanged,
             this, &StatsEditor::setAffordableStats);
@@ -149,14 +150,12 @@ void StatsEditor::setStatsConnections()
         connect(pAttribute, &AttributeEdit::decreased,
                 m_pExpEditor, &ExperienceEditor::attributeDecreased);
 
-//        for ( SkillpackEdit* pSkillpack : pAttribute->skillpackList() ) {
-//            for ( SkillEdit* pSkill : pSkillpack->skillList() ) {
-//                pSkill->setAffordable(
-//                            m_pExpEditor->isSkillAfordable(
-//                                pSkill->max(),
-//                                pSkillpack->specializations()) );
-//            }
-//        }
+        for ( SkillpackEdit* pSkillpack : pAttribute->skillpackList() ) {
+            connect(pSkillpack, &SkillpackEdit::increased,
+                    m_pExpEditor, &ExperienceEditor::skillIncreased);
+            connect(pSkillpack, &SkillpackEdit::decreased,
+                    m_pExpEditor, &ExperienceEditor::skillDecreased);
+        }
     }
 }
 
@@ -193,6 +192,5 @@ const StatsData &StatsEditor::data() const
 
 ExperienceEditor *StatsEditor::experience() const
 {
-    qDebug() << "StatsEditor::experience()";
     return m_pExpEditor;
 }

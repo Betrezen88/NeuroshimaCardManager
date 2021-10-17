@@ -1,5 +1,6 @@
 ﻿#include "ExperienceEditor.h"
 #include "../../Data/Stats/ExperienceData.h"
+#include "../../Data/Stats/SpecializationData.h"
 #include "../../Utils/DataReader.h"
 
 #include <QJsonDocument>
@@ -16,10 +17,12 @@ ExperienceEditor::ExperienceEditor(QObject *parent) : QObject(parent)
 
 ExperienceEditor::ExperienceEditor(const QString &costFile,
                                    ExperienceData *data,
+                                   SpecializationData* specialization,
                                    QObject *parent)
     : QObject(parent)
     , m_costFile(costFile)
     , m_data(data)
+    , m_specialization(specialization)
 {
     loadCostData( m_costFile );
 }
@@ -40,13 +43,29 @@ int ExperienceEditor::attributeCost(const int level) const
     const int index = level - 6;
 
     if ( index < 0 || index > m_attributeCost.count() ) {
-        qDebug() << "ExperienceEditor::attributeCost(): wrong index:" << index << " of " << m_attributeCost.count();
-        return false;
+        qDebug() << "ExperienceEditor::attributeCost(): wrong index:"
+                 << index << " of " << m_attributeCost.count();
+        return 0;
     }
 
     return ( index >= m_attributeCost.size()-1 )
             ? m_attributeCost.last() * level
             : m_attributeCost.at(index);
+}
+
+int ExperienceEditor::skillCost(const int level, const bool discount) const
+{
+     if ( level < 0 || level > m_skillCost.count() ) {
+         qDebug() << "ExperienceEditor::skillCost(): wrong index:"
+                  << level << " of " << m_skillCost.count();
+         return 0;
+     }
+
+     const int cost = ( level >= m_skillCost.size()-1 )
+             ? m_skillCost.last() * level
+             : m_skillCost.at(level);
+
+     return (discount) ? cost * m_discount : cost;
 }
 
 bool ExperienceEditor::isAttributeAfordable(const int level) const
@@ -64,9 +83,10 @@ bool ExperienceEditor::isSkillAfordable(const int level,
         return false;
     }
 
-    const int cost = ( index >= m_skillCost.size()-1 )
+    int cost = ( index >= m_skillCost.size()-1 )
             ? m_skillCost.last() * level
             : m_skillCost.at(index);
+    cost = (specializations.contains(m_specialization->name)) ? cost * m_discount : cost;
 
     return cost <= available();
 }
@@ -80,6 +100,18 @@ void ExperienceEditor::attributeIncreased(const int level)
 void ExperienceEditor::attributeDecreased(const int level)
 {
     const int cost = attributeCost(level);
+    decreaseSpended( cost );
+}
+
+void ExperienceEditor::skillIncreased(const int level, const QStringList &specializations)
+{
+    const int cost = skillCost(level, specializations.contains(m_specialization->name));
+    increaseSpended( cost );
+}
+
+void ExperienceEditor::skillDecreased(const int level, const QStringList &specializations)
+{
+    const int cost = skillCost( level, specializations.contains(m_specialization->name) );
     decreaseSpended( cost );
 }
 
