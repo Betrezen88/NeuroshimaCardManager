@@ -34,12 +34,16 @@ signals:
 public slots:
     bool isAttributeAfordable(const int level) const;
     bool isSkillAfordable(const int level, const QStringList& specializations) const;
+    bool isOtherSkillAfordable(const int level) const;
 
     void attributeIncreased(const int level);
     void attributeDecreased(const int level);
 
     void skillIncreased(const int level, const QStringList& specializations);
     void skillDecreased(const int level, const QStringList& specializations);
+
+    void otherSkillIncreased(const int level);
+    void otherSkillDecreased(const int level);
 
     void increaseSpended(const int value);
     void decreaseSpended(const int value);

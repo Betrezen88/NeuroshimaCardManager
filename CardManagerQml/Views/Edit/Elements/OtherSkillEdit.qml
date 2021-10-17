@@ -37,18 +37,40 @@ Row {
     SpinBox {
         id: _value
         width: 100
+
+        up.onPressedChanged: {
+            if ( up.pressed ) {
+                up.pressed = false
+                main.otherSkillEdit.increase()
+            }
+        }
+        down.onPressedChanged: {
+            if ( down.pressed ) {
+                down.pressed = false
+                main.otherSkillEdit.decrease()
+            }
+        }
     }
 
     onOtherSkillEditChanged: {
         if ( null == otherSkillEdit )
             return
 
+        main.otherSkillEdit = otherSkillEdit
         _removeBtn.visible = otherSkillEdit.isNew
         _name.text = otherSkillEdit.name
         _attribute.text = otherSkillEdit.attributeShort
         _value.value = otherSkillEdit.value
         _value.from = otherSkillEdit.min
         _value.to = otherSkillEdit.max
-        _value.enabled = otherSkillEdit.used
+        _value.enabled = otherSkillEdit.used && otherSkillEdit.isAffordable
+
+        otherSkillEdit.isAffordableChanged.connect(function(){
+            _value.enabled = main.otherSkillEdit.used && main.otherSkillEdit.isAffordable
+        })
+        otherSkillEdit.valueChanged.connect(function(){
+            if ( main == null ) return
+            _value.value = main.otherSkillEdit.value
+        })
     }
 }

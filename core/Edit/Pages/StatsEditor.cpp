@@ -144,6 +144,10 @@ void StatsEditor::setAffordableStats()
             }
         }
     }
+
+    for ( OtherSkillEdit* pOtherSkill : m_otherSkills ) {
+        pOtherSkill->setIsAffordable( m_pExpEditor->isOtherSkillAfordable(pOtherSkill->max()) );
+    }
 }
 
 void StatsEditor::setStatsConnections()
@@ -160,6 +164,13 @@ void StatsEditor::setStatsConnections()
             connect(pSkillpack, &SkillpackEdit::decreased,
                     m_pExpEditor, &ExperienceEditor::skillDecreased);
         }
+    }
+
+    for ( OtherSkillEdit* pOtherSkill : m_otherSkills ) {
+        connect(pOtherSkill, &OtherSkillEdit::increased,
+                m_pExpEditor, &ExperienceEditor::otherSkillIncreased);
+        connect(pOtherSkill, &OtherSkillEdit::decreased,
+                m_pExpEditor, &ExperienceEditor::otherSkillDecreased);
     }
 }
 

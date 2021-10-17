@@ -95,6 +95,11 @@ bool ExperienceEditor::isSkillAfordable(const int level,
     return cost <= available();
 }
 
+bool ExperienceEditor::isOtherSkillAfordable(const int level) const
+{
+    return isSkillAfordable(level, QStringList());
+}
+
 void ExperienceEditor::attributeIncreased(const int level)
 {
     const int cost = attributeCost(level);
@@ -117,6 +122,16 @@ void ExperienceEditor::skillDecreased(const int level, const QStringList &specia
 {
     const int cost = skillCost( level, specializations.contains(m_specialization->name) );
     decreaseSpended( cost );
+}
+
+void ExperienceEditor::otherSkillIncreased(const int level)
+{
+    skillIncreased(level, QStringList());
+}
+
+void ExperienceEditor::otherSkillDecreased(const int level)
+{
+    skillDecreased(level, QStringList());
 }
 
 void ExperienceEditor::increaseSpended(const int value)

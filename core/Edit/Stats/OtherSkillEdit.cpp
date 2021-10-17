@@ -11,6 +11,8 @@ OtherSkillEdit::OtherSkillEdit(OtherSkillData *data,
                                QObject *parent)
     : QObject(parent)
     , m_data(data)
+    , m_min(m_data->value)
+    , m_max(m_data->value+1)
     , m_isNew(isNew)
 {
 
@@ -53,14 +55,6 @@ int OtherSkillEdit::value() const
     return m_data ? m_data->value : 0;
 }
 
-void OtherSkillEdit::setValue(int newValue)
-{
-    if (m_data->value == newValue)
-        return;
-    m_data->value = newValue;
-    emit valueChanged();
-}
-
 bool OtherSkillEdit::used() const
 {
     return m_data ? m_data->used : false;
@@ -68,15 +62,42 @@ bool OtherSkillEdit::used() const
 
 int OtherSkillEdit::min() const
 {
-    return m_data ? m_data->value : 0;
+    return m_min;
 }
 
 int OtherSkillEdit::max() const
 {
-    return m_data ? m_data->value + 1 : 0;
+    return m_max;
 }
 
 bool OtherSkillEdit::isNew() const
 {
     return m_isNew;
+}
+
+bool OtherSkillEdit::isAffordable() const
+{
+    return m_isAffordable;
+}
+
+void OtherSkillEdit::setIsAffordable(bool newIsAffordable)
+{
+    if (m_isAffordable == newIsAffordable)
+        return;
+    m_isAffordable = newIsAffordable;
+    emit isAffordableChanged();
+}
+
+void OtherSkillEdit::increase()
+{
+    ++m_data->value;
+    emit valueChanged();
+    emit increased(m_data->value);
+}
+
+void OtherSkillEdit::decrease()
+{
+    emit decreased(m_data->value);
+    --m_data->value;
+    emit valueChanged();
 }
