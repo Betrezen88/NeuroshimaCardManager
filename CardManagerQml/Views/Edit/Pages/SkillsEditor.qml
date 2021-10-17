@@ -79,6 +79,11 @@ Page {
         _perception.attributeEdit = statsEditor.attribute("Percepcja")
         _cleaverness.attributeEdit = statsEditor.attribute("Spryt")
         _otherSkills.statsEditor = statsEditor
+        _otherSkills.isNewSkillAffortable = statsEditor.experience.isNewSkillAffortable
         _otherSkillForm.attributesModel = statsEditor.attributesNames()
+
+        statsEditor.experience.isNewSkillAffortableChanged.connect(function(){
+            _otherSkills.isNewSkillAffortable = main.statsEditor.experience.isNewSkillAffortable
+        })
     }
 }

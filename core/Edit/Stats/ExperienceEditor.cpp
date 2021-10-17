@@ -24,7 +24,11 @@ ExperienceEditor::ExperienceEditor(const QString &costFile,
     , m_data(data)
     , m_specialization(specialization)
 {
+    connect( this, &ExperienceEditor::availableChanged,
+             this, &ExperienceEditor::checkIfNewSkillIsAffortable );
+
     loadCostData( m_costFile );
+    checkIfNewSkillIsAffortable();
 }
 
 int ExperienceEditor::available() const
@@ -129,6 +133,15 @@ void ExperienceEditor::decreaseSpended(const int value)
     emit availableChanged();
 }
 
+void ExperienceEditor::checkIfNewSkillIsAffortable()
+{
+    m_isNewSkillAffortable = m_skillCost.first() <= available();
+    emit isNewSkillAffortableChanged();
+
+    qDebug() << "ExperienceEditor::checkIfNewSkillIsAffortable()" << m_isNewSkillAffortable;
+    qDebug() << "??" << m_skillCost.first() << available();
+}
+
 void ExperienceEditor::loadCostData(const QString& costFile)
 {
     DataReader reader;
@@ -158,4 +171,9 @@ void ExperienceEditor::loadCostData(const QString& costFile)
     const QJsonObject& trickCost = json.value("trick").toObject();
     m_trickCost.first = trickCost.value("max").toInt();
     m_trickCost.second = trickCost.value("cost").toInt();
+}
+
+bool ExperienceEditor::isNewSkillAffortable() const
+{
+    return m_isNewSkillAffortable;
 }

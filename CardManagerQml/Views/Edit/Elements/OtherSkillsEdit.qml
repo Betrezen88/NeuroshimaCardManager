@@ -5,6 +5,7 @@ import core.edit.NSStatsEditor 1.0
 
 Item {
     property NSStatsEditor statsEditor
+    property bool isNewSkillAffortable
 
     signal newSkillPopup()
 
@@ -39,7 +40,12 @@ Item {
                     text: "+"
                     font.bold: true
                     font.pointSize: 16
-                    onClicked: main.newSkillPopup()
+                    onClicked: {
+                        if ( main.isNewSkillAffortable )
+                            main.newSkillPopup()
+                        else
+                            ToolTip.show("Za mało punktów doświadczenia.")
+                    }
                 }
             }
         }

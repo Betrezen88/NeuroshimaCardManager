@@ -13,6 +13,7 @@ class CORE_EXPORT ExperienceEditor : public QObject
     Q_OBJECT
     Q_PROPERTY(int available READ available NOTIFY availableChanged)
     Q_PROPERTY(int spended READ spended NOTIFY spendedChanged)
+    Q_PROPERTY(bool isNewSkillAffortable READ isNewSkillAffortable NOTIFY isNewSkillAffortableChanged)
 
 public:
     explicit ExperienceEditor(QObject *parent = nullptr);
@@ -23,10 +24,12 @@ public:
 
     int available() const;
     int spended() const;
+    bool isNewSkillAffortable() const;
 
 signals:
     void availableChanged();
     void spendedChanged();
+    void isNewSkillAffortableChanged();
 
 public slots:
     bool isAttributeAfordable(const int level) const;
@@ -40,6 +43,9 @@ public slots:
 
     void increaseSpended(const int value);
     void decreaseSpended(const int value);
+
+private slots:
+    void checkIfNewSkillIsAffortable();
 
 private:
     void loadCostData(const QString& costFile);
@@ -58,6 +64,7 @@ private:
     QPair<int, int> m_trickCost;
 
     const double m_discount{0.2};
+    bool m_isNewSkillAffortable;
 };
 
 #endif // EXPERIENCEEDITOR_H
