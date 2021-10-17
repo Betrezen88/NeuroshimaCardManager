@@ -90,6 +90,8 @@ void StatsEditor::addOtherSkill(const QString &name, const QString &attribute)
     m_data.otherSkills.push_back( QSharedPointer<OtherSkillData>(new OtherSkillData(data)) );
     m_otherSkills.push_back( new OtherSkillEdit(m_data.otherSkills.last().get(), true, this) );
 
+    m_pExpEditor->skillIncreased(0, QStringList());
+
     emit otherSkillsChanged();
 }
 
@@ -101,6 +103,8 @@ void StatsEditor::removeOtherSkill(OtherSkillEdit *otherSkill)
 
     m_otherSkills.takeAt( index )->deleteLater();
     m_data.otherSkills.takeAt( index );
+
+    m_pExpEditor->skillDecreased(0, QStringList());
 
     emit otherSkillsChanged();
 }

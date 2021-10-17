@@ -137,9 +137,6 @@ void ExperienceEditor::checkIfNewSkillIsAffortable()
 {
     m_isNewSkillAffortable = m_skillCost.first() <= available();
     emit isNewSkillAffortableChanged();
-
-    qDebug() << "ExperienceEditor::checkIfNewSkillIsAffortable()" << m_isNewSkillAffortable;
-    qDebug() << "??" << m_skillCost.first() << available();
 }
 
 void ExperienceEditor::loadCostData(const QString& costFile)
