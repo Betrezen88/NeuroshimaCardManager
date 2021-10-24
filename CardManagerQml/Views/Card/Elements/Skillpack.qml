@@ -38,7 +38,9 @@ Rectangle {
     }
 
     onSkillpackChanged: {
-        _title.text = skillpack.name + " (" + skillpack.specializationsShort + ")"
-        _skills.model = skillpack.skills
+        _title.text = (skillpack != null)
+                ? skillpack.name + " (" + skillpack.specializationsShort + ")"
+                : ""
+        _skills.model = (skillpack != null) ? skillpack.skills : []
     }
 }

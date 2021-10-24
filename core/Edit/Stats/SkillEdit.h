@@ -42,6 +42,7 @@ signals:
 public slots:
     void increase();
     void decrease();
+    void unuse();
 
 private:
     SkillData* m_data{nullptr};

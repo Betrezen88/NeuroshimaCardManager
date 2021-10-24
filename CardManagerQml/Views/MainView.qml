@@ -239,7 +239,12 @@ Page {
             onCurrentIndexChanged: {
                 if ((currentIndex !== -1) && (currentIndex !== secCurrentIndex)) {
                     console.log("MainView.qml onCurrentIndexChanged", currentIndex)
-                    cardsView.cardData = manager.cardManager.card(cardsList.currentItem.filePath)
+
+                    if ( stackView.depth == 0 ) {
+                        stackView.push( "qrc:/Views/Card/CardsView.qml", {})
+                    }
+
+                    stackView.currentItem.cardData = manager.cardManager.card(cardsList.currentItem.filePath)
                     manager.cardManager.selectedCard = cardsList.currentItem.filePath
                     secCurrentIndex = currentIndex
                 }
@@ -307,23 +312,22 @@ Page {
         shortcut: "Ctrl+E"
         onTriggered: {
             sidePanel.close()
-            if ( cardsView.cardData != undefined && cardsView.cardData.hasPage(NSPage.STATS) ) {
-                stackView.push( "qrc:/Views/Edit/StatsEditor.qml",
-                               {
-                                   "stats": cardsView.cardData.stats,
-                                   "width": stackView.width,
-                                   "height": stackView.height,
-                               }
-                        )
+            if ( stackView.currentItem.cardData !== undefined
+                    && stackView.currentItem.cardData.hasPage(NSPage.STATS) ) {
+                stackView.push( "qrc:/Views/Edit/StatsEditor.qml", {
+                   "stats": cardsView.cardData.stats,
+                   "width": stackView.width,
+                   "height": stackView.height,
+                })
                 stackView.currentItem.onClose.connect(function(){
                     stackView.pop()
                 })
             }
             else {
                 manager.cardManager.errorMessage(
-                            "Nie można rozwinąć postaci.",
-                            "Brak karty lub strony statystyk."
-                        )
+                    "Nie można rozwinąć postaci.",
+                    "Brak karty lub strony statystyk."
+                )
             }
         }
     }

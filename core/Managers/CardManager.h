@@ -39,6 +39,7 @@ signals:
 
 public slots:
     Card *card(const QString &fileName) const;
+    Card* currentCard() const;
     void loadCard(const QString &filePath);
     void closeCard(const QString &filePath);
     void saveSelectedCard();

@@ -193,20 +193,30 @@ Page {
                         pageView.pop()
 
                     if ( "" !== currentPage ) {
-                        pageView.push(currentPage)
-
                         switch (currentPage) {
                             case "qrc:/Views/Card/Pages/Stats.qml":
-                                currentItem.statsData = cardData.stats
+                                pageView.push( "qrc:/Views/Card/Pages/Stats.qml", {
+                                       "statsData": main.cardData.stats
+                                })
+                                main.cardData.stats.statsChanged.connect(function(){
+                                    pageView.pop()
+                                    pageView.push( "qrc:/Views/Card/Pages/Stats.qml", {
+                                           "statsData": main.cardData.stats
+                                    })
+                                })
                                 break
                             case "qrc:/Views/Card/Pages/Equipment.qml":
-                                currentItem.equipmentData = cardData.equipment
+                                pageView.push( "qrc:/Views/Card/Pages/Equipment.qml", {
+                                      "equipmentData": main.cardData.equipment
+                                   })
                                 break
                             case "qrc:/Views/Card/Pages/Notes.qml":
-                                currentItem.fullname = cardData.stats.fullname
-                                currentItem.profession = cardData.stats.profession.name
-                                currentItem.origin = cardData.stats.origin.name
-                                currentItem.notesData = cardData.notes
+                                pageView.push( "qrc:/Views/Card/Pages/Notes.qml", {
+                                      "fullname": main.cardData.stats.fullname,
+                                      "profession": main.cardData.stats.profession.name,
+                                      "origin": main.cardData.stats.origin.name,
+                                      "notesData": main.cardData.notes
+                                  })
                                 break
                             case "qrc:/Views/Card/Pages/Rules.qml":
                                 currentItem.rulesData = cardData.rules

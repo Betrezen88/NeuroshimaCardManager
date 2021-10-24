@@ -41,6 +41,7 @@ public slots:
     void addOtherSkill(const QString& name, const QString& attribute);
     void removeOtherSkill(OtherSkillEdit* otherSkill);
     void init(const StatsData& data, const QString& costFile);
+    void clearUsed();
 
 signals:
     void otherSkillsChanged();

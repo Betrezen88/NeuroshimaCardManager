@@ -107,13 +107,14 @@ Column {
     }
 
     onExperienceChanged: {
-        _gathered.text = experience.gathered
-        _spended.text = experience.spended
-        _available.text = experience.availble
+        _gathered.text = (experience != null) ? experience.gathered : 0
+        _spended.text = (experience != null) ? experience.spended : 0
+        _available.text = (experience != null) ? experience.availble : 0
 
-        experience.gatheredChanged.connect(function(){
-            _gathered.text = experience.gathered
-            _available.text = experience.availble
-        })
+        if (experience != null)
+            experience.gatheredChanged.connect(function(){
+                _gathered.text = experience.gathered
+                _available.text = experience.availble
+            })
     }
 }

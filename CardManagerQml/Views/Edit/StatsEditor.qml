@@ -59,7 +59,11 @@ Page {
                 display: AbstractButton.IconOnly
                 icon.source: "qrc:/icon/resources/icons/accept.svg"
                 width: height
-                onClicked: main.close()
+                onClicked: {
+                    _nsStatsEditor.clearUsed();
+                    stats.stats = _nsStatsEditor.data
+                    main.close()
+                }
             }
         }
 

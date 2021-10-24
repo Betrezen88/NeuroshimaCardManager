@@ -30,12 +30,12 @@ Rectangle {
         anchors.fill: main
         onClicked: {
             if ( 0 < toolip.text.length )
-                toolip.visible = !toolip.visible;
+                toolip.visible = !toolip.visible
         }
     }
 
     onTrickChanged: {
-        name.text = trick.name;
-        toolip.text = trick.action;
+        name.text = (trick != null) ? trick.name : ""
+        toolip.text = (trick != null) ? trick.action : ""
     }
 }

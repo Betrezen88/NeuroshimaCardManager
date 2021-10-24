@@ -130,6 +130,17 @@ void StatsEditor::init(const StatsData &data, const QString &costFile)
     setAffordableStats();
 }
 
+void StatsEditor::clearUsed()
+{
+    for ( AttributeEdit* pAttribute : m_attributes ) {
+        for ( SkillpackEdit* pSkillpack : pAttribute->skillpackList() ) {
+            for ( SkillEdit* pSkill : pSkillpack->skillList() ) {
+                pSkill->unuse();
+            }
+        }
+    }
+}
+
 void StatsEditor::setAffordableStats()
 {
     for ( AttributeEdit* pAttribute : m_attributes ) {

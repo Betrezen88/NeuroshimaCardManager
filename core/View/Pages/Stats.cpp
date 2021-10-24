@@ -11,33 +11,18 @@
 #include "../Stats/Wound.h"
 #include "../Stats/Experience.h"
 
+#include <QDebug>
+
 Stats::Stats(QObject *parent) : Page(Page::Type::STATS, parent)
 {
-
+    connect(this, &Stats::statsChanged, this, &Stats::init);
 }
 
 Stats::Stats(const StatsData &data, QObject *parent)
     : Page(Page::Type::STATS, parent)
-    , m_data(data)
-    , m_pOrigin( new Origin(&m_data.origin, this) )
-    , m_pProfession( new Profession(&m_data.profession, this) )
-    , m_pSpecialization( new Specialization(&m_data.specialization, this) )
-    , m_pDisease( new Disease(&m_data.disease, this) )
-    , m_pExperience( new Experience(&m_data.experience, this) )
 {
-    for ( AttributeData& attribute: m_data.attributes )
-        m_attributes.append( new Attribute(&attribute, this) );
-
-    for ( TrickData& trick : m_data.tricks )
-        m_tricks.append( new Trick(&trick, this) );
-
-    for ( QSharedPointer<OtherSkillData>& otherSkill : m_data.otherSkills )
-        m_otherSkills.append( new OtherSkill(otherSkill.get(), this) );
-
-    for ( ReputationData& reputation : m_data.reputation )
-        m_reputation.append( new Reputation(&reputation, this) );
-
-    setWounds( m_data.wounds );
+    connect(this, &Stats::statsChanged, this, &Stats::init);
+    setStats( data );
 }
 
 const QString &Stats::name() const
@@ -215,6 +200,31 @@ void Stats::addWound(const QString &location, const QString &type, const bool pa
     emit woundsChanged();
 }
 
+void Stats::init()
+{
+    clear();
+
+    m_pOrigin = new Origin(&m_data.origin, this);
+    m_pProfession = new Profession(&m_data.profession, this);
+    m_pSpecialization = new Specialization(&m_data.specialization, this);
+    m_pDisease = new Disease(&m_data.disease, this);
+    m_pExperience = new Experience(&m_data.experience, this);
+
+    for ( AttributeData& attribute: m_data.attributes )
+        m_attributes.append( new Attribute(&attribute, this) );
+
+    for ( TrickData& trick : m_data.tricks )
+        m_tricks.append( new Trick(&trick, this) );
+
+    for ( QSharedPointer<OtherSkillData>& otherSkill : m_data.otherSkills )
+        m_otherSkills.append( new OtherSkill(otherSkill.get(), this) );
+
+    for ( ReputationData& reputation : m_data.reputation )
+        m_reputation.append( new Reputation(&reputation, this) );
+
+    setWounds( m_data.wounds );
+}
+
 void Stats::addWound(WoundData* wound)
 {
     m_data.wounds.push_back( QSharedPointer<WoundData>(wound) );
@@ -257,6 +267,41 @@ void Stats::setWounds(QVector<QSharedPointer<WoundData>> &wounds)
 {
     for ( QSharedPointer<WoundData> &wound : wounds )
         m_wounds.append( new Wound(wound.get(), this) );
+}
+
+void Stats::clear()
+{
+    if ( m_pOrigin )
+        m_pOrigin->deleteLater();
+    if ( m_pProfession )
+        m_pProfession->deleteLater();
+    if ( m_pSpecialization )
+        m_pSpecialization->deleteLater();
+    if ( m_pDisease )
+        m_pDisease->deleteLater();
+    if ( m_pExperience )
+        m_pExperience->deleteLater();
+
+    if ( m_attributes.count() > 0 ) {
+        qDeleteAll(m_attributes);
+        m_attributes.clear();
+    }
+    if ( m_tricks.count() > 0 ) {
+        qDeleteAll(m_tricks);
+        m_tricks.clear();
+    }
+    if ( m_otherSkills.count() ) {
+        qDeleteAll(m_otherSkills);
+        m_otherSkills.clear();
+    }
+    if ( m_reputation.count() > 0 ) {
+        qDeleteAll(m_reputation);
+        m_reputation.clear();
+    }
+    if ( m_wounds.count() > 0 ) {
+        qDeleteAll(m_wounds);
+        m_wounds.clear();
+    }
 }
 
 int Stats::trickCount(QQmlListProperty<Trick> *list)

@@ -68,3 +68,8 @@ void SkillEdit::decrease()
     --m_data->value;
     emit valueChanged();
 }
+
+void SkillEdit::unuse()
+{
+    m_data->used = false;
+}

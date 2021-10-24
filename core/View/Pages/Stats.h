@@ -82,7 +82,6 @@ public:
 
 signals:
     void woundsChanged();
-
     void statsChanged();
 
 public slots:
@@ -90,10 +89,15 @@ public slots:
     QString wound(const QString& location) const;
     void addWound(const QString& location, const QString& type, const bool passed);
 
+private slots:
+    void init();
+
 private:
     void addWound(WoundData *wound);
     WoundData *mergeWounds(const QString& location, const QString &type);
     void setWounds(QVector<QSharedPointer<WoundData>>& wounds);
+
+    void clear();
 
     static int trickCount(QQmlListProperty<Trick> *list);
     static Trick* trick(QQmlListProperty<Trick> *list, int index);

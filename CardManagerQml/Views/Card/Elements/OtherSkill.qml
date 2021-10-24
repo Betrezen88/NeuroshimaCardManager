@@ -62,9 +62,9 @@ Row {
     }
 
     onSkillChanged: {
-        _title.text = skill.name
-        _attribute.text = skill.attributeShort
-        _value.text = skill.value
-        _used.checked = skill.used
+        _title.text = (skill != null) ? skill.name : ""
+        _attribute.text = (skill != null) ? skill.attributeShort : ""
+        _value.text = (skill != null) ? skill.value : 0
+        _used.checked = (skill != null) ? skill.used : false
     }
 }

@@ -96,6 +96,11 @@ Card *CardManager::card(const QString &fileName) const
     return card(m_cardsFilePaths.indexOf(fileName));
 }
 
+Card *CardManager::currentCard() const
+{
+    return card(m_selectedCard);
+}
+
 void CardManager::loadCard(const QString &filePath)
 {
     DataReader reader;
@@ -122,7 +127,7 @@ void CardManager::closeCard(const QString &filePath)
 
     const int index = m_cardsFilePaths.indexOf(filePath);
 
-    m_cards.removeAt( index );
+    m_cards.takeAt( index )->deleteLater();
     m_cardsFilePaths.removeAt( index );
 
     if ( 0 < m_cardsFilePaths.count() && filePath == m_selectedCard )

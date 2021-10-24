@@ -42,8 +42,8 @@ Rectangle {
     }
 
     onAttributeChanged: {
-        _valueRow.value = attribute.value
-        _title.text = attribute.name
-        _skillpacks.model = attribute.skillpacks
+        _valueRow.value = (attribute != null) ? attribute.value : 0
+        _title.text = (attribute != null) ? attribute.name : ""
+        _skillpacks.model = (attribute != null) ? attribute.skillpacks : []
     }
 }
