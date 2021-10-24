@@ -69,7 +69,7 @@ int ExperienceEditor::skillCost(const int level, const bool discount) const
              ? m_skillCost.last() * level
              : m_skillCost.at(level);
 
-     return (discount) ? cost * m_discount : cost;
+     return (discount) ? cost - (cost * m_discount) : cost;
 }
 
 bool ExperienceEditor::isAttributeAfordable(const int level) const
@@ -80,19 +80,8 @@ bool ExperienceEditor::isAttributeAfordable(const int level) const
 bool ExperienceEditor::isSkillAfordable(const int level,
                                         const QStringList &specializations) const
 {
-    const int index = level;
-
-    if ( index < 0 || index > m_skillCost.count() ) {
-        qDebug() << "ExperienceEditor::isSkillAfordable(): wrong index:" << index << " of " << m_skillCost.count();
-        return false;
-    }
-
-    int cost = ( index >= m_skillCost.size()-1 )
-            ? m_skillCost.last() * level
-            : m_skillCost.at(index);
-    cost = (specializations.contains(m_specialization->name)) ? cost * m_discount : cost;
-
-    return cost <= available();
+    return skillCost(level, specializations.contains(m_specialization->name))
+            <= available();
 }
 
 bool ExperienceEditor::isOtherSkillAfordable(const int level) const
