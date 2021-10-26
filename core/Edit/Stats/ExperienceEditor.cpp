@@ -8,8 +8,6 @@
 #include <QJsonArray>
 #include <QJsonValue>
 
-#include <QDebug>
-
 ExperienceEditor::ExperienceEditor(QObject *parent) : QObject(parent)
 {
 
@@ -59,17 +57,18 @@ int ExperienceEditor::attributeCost(const int level) const
 
 int ExperienceEditor::skillCost(const int level, const bool discount) const
 {
-     if ( level < 0 || level > m_skillCost.count() ) {
-         qDebug() << "ExperienceEditor::skillCost(): wrong index:"
-                  << level << " of " << m_skillCost.count();
-         return 0;
-     }
+    const int index = level - 1;
+    if ( index < 0 || index > m_skillCost.count() ) {
+        qDebug() << "ExperienceEditor::skillCost(): wrong index:"
+              << index << " of " << m_skillCost.count();
+        return 0;
+    }
 
-     const int cost = ( level >= m_skillCost.size()-1 )
-             ? m_skillCost.last() * level
-             : m_skillCost.at(level);
+    const int cost = ( index >= m_skillCost.size()-1 )
+         ? m_skillCost.last() * level
+         : m_skillCost.at(index);
 
-     return (discount) ? cost - (cost * m_discount) : cost;
+    return (discount) ? (cost - calculateDiscount(cost)) : cost;
 }
 
 bool ExperienceEditor::isAttributeAfordable(const int level) const
@@ -172,6 +171,11 @@ void ExperienceEditor::loadCostData(const QString& costFile)
     const QJsonObject& trickCost = json.value("trick").toObject();
     m_trickCost.first = trickCost.value("max").toInt();
     m_trickCost.second = trickCost.value("cost").toInt();
+}
+
+int ExperienceEditor::calculateDiscount(const int cost) const
+{
+    return static_cast<double>(cost) * m_discount;
 }
 
 bool ExperienceEditor::isNewSkillAffortable() const

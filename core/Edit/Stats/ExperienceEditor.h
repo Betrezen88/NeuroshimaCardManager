@@ -48,13 +48,17 @@ public slots:
     void increaseSpended(const int value);
     void decreaseSpended(const int value);
 
+    int attributeCost(const int level) const;
+    int skillCost(const int level, const bool discount) const;
+
 private slots:
     void checkIfNewSkillIsAffortable();
 
 private:
     void loadCostData(const QString& costFile);
-    int attributeCost(const int level) const;
-    int skillCost(const int level, const bool discount) const;
+
+    // Method calculates proper discount value
+    int calculateDiscount(const int cost) const;
 
 private:
     QString m_costFile;
