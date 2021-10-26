@@ -33,6 +33,10 @@ Column {
             SpinBox {
                 id: _value
                 padding: 1
+
+                ToolTip.text: (up.hovered ? "-" : "+") + main.attributeEdit.cost
+                ToolTip.visible: up.hovered || down.hovered
+
                 up.onPressedChanged: {
                     if ( up.pressed ) {
                         up.pressed = false

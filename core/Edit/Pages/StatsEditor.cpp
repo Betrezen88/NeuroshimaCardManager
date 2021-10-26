@@ -146,18 +146,24 @@ void StatsEditor::setAffordableStats()
     for ( AttributeEdit* pAttribute : m_attributes ) {
         pAttribute->setAffordable(
                     m_pExpEditor->isAttributeAfordable(pAttribute->max()) );
+        pAttribute->setCost( m_pExpEditor->attributeCost(pAttribute->max()) );
         for ( SkillpackEdit* pSkillpack : pAttribute->skillpackList() ) {
             for ( SkillEdit* pSkill : pSkillpack->skillList() ) {
                 pSkill->setAffordable(
                             m_pExpEditor->isSkillAfordable(
                                 pSkill->max(),
                                 pSkillpack->specializations()) );
+                pSkill->setCost(
+                            m_pExpEditor->skillCost(
+                                pSkill->max(),
+                                pSkillpack->specializations().contains(m_data.specialization.name)));
             }
         }
     }
 
     for ( OtherSkillEdit* pOtherSkill : m_otherSkills ) {
         pOtherSkill->setIsAffordable( m_pExpEditor->isOtherSkillAfordable(pOtherSkill->max()) );
+        pOtherSkill->setCost( m_pExpEditor->skillCost(pOtherSkill->max(), false) );
     }
 }
 

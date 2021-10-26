@@ -18,6 +18,7 @@ class CORE_EXPORT AttributeEdit : public QObject
     Q_PROPERTY(int min READ min CONSTANT)
     Q_PROPERTY(int max READ max CONSTANT)
     Q_PROPERTY(bool affordable READ affordable WRITE setAffordable NOTIFY affordableChanged)
+    Q_PROPERTY(int cost READ cost WRITE setCost NOTIFY costChanged)
     Q_PROPERTY(QQmlListProperty<SkillpackEdit> skillpacks READ skillpacks CONSTANT)
 
 public:
@@ -38,11 +39,15 @@ public:
     bool affordable() const;
     void setAffordable(bool newAffordable);
 
+    int cost() const;
+    void setCost(int newCost);
+
 signals:
     void valueChanged();
     void increased(const int value);
     void decreased(const int value);
     void affordableChanged();
+    void costChanged();
 
 public slots:
     void increase();
@@ -58,6 +63,7 @@ private:
     int m_min{0};
     int m_max{0};
     bool m_affordable;
+    int m_cost{0};
 };
 
 #endif // ATTRIBUTEEDIT_H

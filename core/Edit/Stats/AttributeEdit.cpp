@@ -110,3 +110,16 @@ SkillpackEdit *AttributeEdit::skillpack(QQmlListProperty<SkillpackEdit> *list, i
 {
     return reinterpret_cast<AttributeEdit*>(list->data)->skillpack(index);
 }
+
+int AttributeEdit::cost() const
+{
+    return m_cost;
+}
+
+void AttributeEdit::setCost(int newCost)
+{
+    if (m_cost == newCost)
+        return;
+    m_cost = newCost;
+    emit costChanged();
+}

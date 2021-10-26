@@ -38,6 +38,9 @@ Row {
         id: _value
         width: 100
 
+        ToolTip.text: (up.hovered ? "-" : "+") + main.otherSkillEdit.cost
+        ToolTip.visible: up.hovered || down.hovered
+
         up.onPressedChanged: {
             if ( up.pressed ) {
                 up.pressed = false

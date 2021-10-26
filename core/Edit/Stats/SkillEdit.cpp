@@ -1,6 +1,8 @@
 ﻿#include "SkillEdit.h"
 #include "../../Data/Stats/SkillData.h"
 
+#include <QDebug>
+
 SkillEdit::SkillEdit(QObject *parent) : QObject(parent)
 {
 
@@ -72,4 +74,18 @@ void SkillEdit::decrease()
 void SkillEdit::unuse()
 {
     m_data->used = false;
+}
+
+int SkillEdit::cost() const
+{
+    return m_cost;
+}
+
+void SkillEdit::setCost(int newCost)
+{
+
+    if (m_cost == newCost)
+        return;
+    m_cost = newCost;
+    emit costChanged();
 }

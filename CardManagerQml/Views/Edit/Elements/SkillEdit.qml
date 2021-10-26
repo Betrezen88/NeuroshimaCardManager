@@ -21,12 +21,16 @@ Row {
         id: _value
         width: 140
 
+        ToolTip.text: (up.hovered ? "-" : "+") + main.skillEdit.cost
+        ToolTip.visible: up.hovered || down.hovered
+
         up.onPressedChanged: {
             if ( up.pressed ) {
                 up.pressed = false
                 main.skillEdit.increase();
             }
         }
+
         down.onPressedChanged: {
             if ( down.pressed ) {
                 down.pressed = false

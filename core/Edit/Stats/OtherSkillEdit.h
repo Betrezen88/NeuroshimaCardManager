@@ -19,6 +19,7 @@ class CORE_EXPORT OtherSkillEdit : public QObject
     Q_PROPERTY(int max READ max CONSTANT)
     Q_PROPERTY(bool isNew READ isNew CONSTANT)
     Q_PROPERTY(bool isAffordable READ isAffordable WRITE setIsAffordable NOTIFY isAffordableChanged)
+    Q_PROPERTY(int cost READ cost WRITE setCost NOTIFY costChanged)
 
 public:
     explicit OtherSkillEdit(QObject *parent = nullptr);
@@ -37,11 +38,15 @@ public:
     bool isAffordable() const;
     void setIsAffordable(bool newIsAffordable);
 
+    int cost() const;
+    void setCost(int newCost);
+
 signals:
     void valueChanged();
     void increased(const int value);
     void decreased(const int value);
     void isAffordableChanged();
+    void costChanged();
 
 public slots:
     void increase();
@@ -53,6 +58,7 @@ private:
     int m_max{0};
     bool m_isNew;
     bool m_isAffordable;
+    int m_cost{0};
 };
 
 #endif // OTHERSKILLEDIT_H

@@ -101,3 +101,16 @@ void OtherSkillEdit::decrease()
     --m_data->value;
     emit valueChanged();
 }
+
+int OtherSkillEdit::cost() const
+{
+    return m_cost;
+}
+
+void OtherSkillEdit::setCost(int newCost)
+{
+    if (m_cost == newCost)
+        return;
+    m_cost = newCost;
+    emit costChanged();
+}
