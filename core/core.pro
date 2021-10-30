@@ -24,6 +24,7 @@ SOURCES += \
     Edit/Stats/AttributeEdit.cpp \
     Edit/Stats/ExperienceEditor.cpp \
     Edit/Stats/OtherSkillEdit.cpp \
+    Edit/Stats/ReputationEdit.cpp \
     Edit/Stats/SkillEdit.cpp \
     Edit/Stats/SkillpackEdit.cpp \
     Managers/CardManager.cpp \
@@ -96,6 +97,7 @@ HEADERS += \
     Edit/Stats/AttributeEdit.h \
     Edit/Stats/ExperienceEditor.h \
     Edit/Stats/OtherSkillEdit.h \
+    Edit/Stats/ReputationEdit.h \
     Edit/Stats/SkillEdit.h \
     Edit/Stats/SkillpackEdit.h \
     Managers/CardManager.h \
