@@ -51,8 +51,6 @@ private slots:
     void setStatsConnections();
 
 private:
-    void clear();
-
     static int attributeCount(QQmlListProperty<AttributeEdit>* list);
     static AttributeEdit* attribute(QQmlListProperty<AttributeEdit>* list, int index);
 

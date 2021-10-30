@@ -1,8 +1,6 @@
 ﻿#include "StatsEditor.h"
 #include "../Stats/ExperienceEditor.h"
 
-#include <QUrl>
-
 #include <QDebug>
 
 StatsEditor::StatsEditor(QObject *parent) : QObject(parent)
@@ -189,12 +187,6 @@ void StatsEditor::setStatsConnections()
         connect(pOtherSkill, &OtherSkillEdit::decreased,
                 m_pExpEditor, &ExperienceEditor::otherSkillDecreased);
     }
-}
-
-void StatsEditor::clear()
-{
-    qDebug() << "StatsEditor::clear()";
-    qDeleteAll(m_attributes);
 }
 
 int StatsEditor::attributeCount(QQmlListProperty<AttributeEdit> *list)
