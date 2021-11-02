@@ -1,6 +1,8 @@
 ﻿import QtQuick 2.15
 import QtQuick.Controls 2.12
 
+import "../Elements"
+
 Page {
     id: main
 
@@ -16,11 +18,7 @@ Page {
 
             Repeater {
                 model: 10
-                delegate: Row {
-                    spacing: 5
-                    Text { text: "Miejsce" }
-                    SpinBox {  }
-                }
+                delegate: ReputationEdit {}
             }
         }
     }
