@@ -89,6 +89,12 @@ Column {
             border.width: 2
             radius: 10
         }
+        onPressed: {
+            if ( _reputationView.visible )
+                _reputationView.close()
+            else
+                _reputationView.open()
+        }
     }
 
     PersonalField {
@@ -97,6 +103,13 @@ Column {
         name: "Sława"
         value: "0"
         description: "Określa jaki z Ciebie badass"
+    }
+
+    Reputation {
+        id: _reputationView
+        width: main.width
+        x: main.width
+        y: reputation.y / 2
     }
 
     onPersonalDataChanged: {
