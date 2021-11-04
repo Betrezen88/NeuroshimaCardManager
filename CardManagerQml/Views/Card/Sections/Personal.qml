@@ -126,5 +126,6 @@ Column {
         originFeature.description = personalData.origin.feature.description
         professionFeature.value = personalData.profession.feature.name
         professionFeature.description = personalData.profession.feature.description
+        _reputationView.model = personalData.reputation
     }
 }
