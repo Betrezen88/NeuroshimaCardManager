@@ -48,6 +48,26 @@ OtherSkillEdit *StatsEditor::otherSkill(const int index) const
     return m_otherSkills.at(index);
 }
 
+QQmlListProperty<ReputationEdit> StatsEditor::reputations()
+{
+    return QQmlListProperty<ReputationEdit>(this, this,
+                                            &StatsEditor::reputationCount,
+                                            &StatsEditor::reputation);
+}
+
+int StatsEditor::reputationCount() const
+{
+    return m_reputation.count();
+}
+
+ReputationEdit *StatsEditor::reputation(const int index) const
+{
+    if ( index < 0 || index > m_reputation.count() )
+        return nullptr;
+
+    return m_reputation.at(index);
+}
+
 AttributeEdit *StatsEditor::attribute(const QString &name)
 {
     for ( AttributeEdit* pAttribute : m_attributes )
@@ -123,6 +143,9 @@ void StatsEditor::init(const StatsData &data, const QString &costFile)
 
     for ( QSharedPointer<OtherSkillData>& otherSkill : m_data.otherSkills )
         m_otherSkills.push_back( new OtherSkillEdit(otherSkill.get(), false, this) );
+
+    for ( ReputationData& reputation : m_data.reputation )
+        m_reputation.push_back( new ReputationEdit(&reputation, this) );
 
     setStatsConnections();
     setAffordableStats();
@@ -207,6 +230,16 @@ int StatsEditor::otherSkillCount(QQmlListProperty<OtherSkillEdit> *list)
 OtherSkillEdit *StatsEditor::otherSkill(QQmlListProperty<OtherSkillEdit> *list, int index)
 {
     return reinterpret_cast<StatsEditor*>(list->data)->otherSkill(index);
+}
+
+int StatsEditor::reputationCount(QQmlListProperty<ReputationEdit> *list)
+{
+    return reinterpret_cast<StatsEditor*>(list->data)->reputationCount();
+}
+
+ReputationEdit *StatsEditor::reputation(QQmlListProperty<ReputationEdit> *list, int index)
+{
+    return reinterpret_cast<StatsEditor*>(list->data)->reputation(index);
 }
 
 const StatsData &StatsEditor::data() const

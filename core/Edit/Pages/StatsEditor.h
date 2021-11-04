@@ -7,6 +7,7 @@
 #include "../../Data/Stats/StatsData.h"
 #include "../Stats/AttributeEdit.h"
 #include "../Stats/OtherSkillEdit.h"
+#include "../Stats/ReputationEdit.h"
 #include "../../View/Pages/Stats.h"
 
 #include "core_global.h"
@@ -18,6 +19,7 @@ class CORE_EXPORT StatsEditor : public QObject
     Q_OBJECT
     Q_PROPERTY(QQmlListProperty<AttributeEdit> attributes READ attributes CONSTANT)
     Q_PROPERTY(QQmlListProperty<OtherSkillEdit> otherSkills READ otherSkills NOTIFY otherSkillsChanged)
+    Q_PROPERTY(QQmlListProperty<ReputationEdit> reputations READ reputations CONSTANT)
     Q_PROPERTY(StatsData data READ data CONSTANT)
     Q_PROPERTY(ExperienceEditor* experience READ experience CONSTANT)
 
@@ -31,6 +33,10 @@ public:
     QQmlListProperty<OtherSkillEdit> otherSkills();
     int otherSkillCount() const;
     OtherSkillEdit* otherSkill(const int index) const;
+
+    QQmlListProperty<ReputationEdit> reputations();
+    int reputationCount() const;
+    ReputationEdit* reputation(const int index) const;
 
     const StatsData &data() const;
     ExperienceEditor *experience() const;
@@ -57,11 +63,15 @@ private:
     static int otherSkillCount(QQmlListProperty<OtherSkillEdit>* list);
     static OtherSkillEdit* otherSkill(QQmlListProperty<OtherSkillEdit>* list, int index);
 
+    static int reputationCount(QQmlListProperty<ReputationEdit>* list);
+    static ReputationEdit* reputation(QQmlListProperty<ReputationEdit>* list, int index);
+
 private:
     StatsData m_data;
     ExperienceEditor* m_pExpEditor{nullptr};
     QVector<AttributeEdit*> m_attributes;
     QVector<OtherSkillEdit*> m_otherSkills;
+    QVector<ReputationEdit*> m_reputation;
 };
 
 #endif // STATSEDITOR_H

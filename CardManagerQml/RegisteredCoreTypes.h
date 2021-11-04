@@ -65,6 +65,7 @@
 #include "Edit/Stats/SkillEdit.h"
 #include "Edit/Stats/OtherSkillEdit.h"
 #include "Edit/Stats/ExperienceEditor.h"
+#include "Edit/Stats/ReputationEdit.h"
 
 // Managers
 #include "Managers/MainManager.h"
@@ -117,6 +118,7 @@ void registerQmlTypes() {
     qmlRegisterType<SkillpackEdit>("core.edit.NSSkillpackEdit", 1, 0, "NSSkillpackEdit");
     qmlRegisterType<SkillEdit>("core.edit.NSSkillEdit", 1, 0, "NSSkillEdit");
     qmlRegisterType<OtherSkillEdit>("core.edit.NSOtherSkillEdit", 1, 0, "NSOtherSkillEdit");
+    qmlRegisterType<ReputationEdit>("core.edit.NSReputationEdit", 1, 0, "NSReputationEdit");
     qmlRegisterType<ExperienceEditor>("core.edit.NSExperienceEditor", 1, 0, "NSExperienceEditor");
 
     qmlRegisterType<MainManager>("core.managers.NSMainManager", 1, 0, "NSMainManager");
