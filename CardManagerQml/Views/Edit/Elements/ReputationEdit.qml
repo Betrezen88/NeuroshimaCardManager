@@ -19,12 +19,41 @@ Row {
         leftPadding: 5
     }
 
-    SpinBox { id: _value }
+    SpinBox {
+        id: _value
+
+        ToolTip.text: (up.hovered ? "-" : "+") + main.reputationData.cost
+        ToolTip.visible: up.hovered || down.hovered
+
+        up.onPressedChanged: {
+            if ( up.pressed ) {
+                up.pressed = false
+                main.reputationData.increase()
+            }
+        }
+
+        down.onPressedChanged: {
+            if ( down.pressed ) {
+                down.pressed = false
+                main.reputationData.decrease()
+            }
+        }
+    }
 
     onReputationDataChanged: {
         _name.text = reputationData.name
         _value.from = reputationData.min
         _value.to = reputationData.max
         _value.value = reputationData.value
+
+        reputationData.isAffordableChanged.connect(function(){
+            _value.enabled = main.reputationData.isAffordable
+        })
+        reputationData.valueChanged.connect(function(){
+            _value.value = main.reputationData.value
+        })
+        reputationData.maxChanged.connect(function(){
+            _value.to = main.reputationData.max
+        })
     }
 }

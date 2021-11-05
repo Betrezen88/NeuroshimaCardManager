@@ -186,6 +186,11 @@ void StatsEditor::setAffordableStats()
         pOtherSkill->setIsAffordable( m_pExpEditor->isOtherSkillAfordable(pOtherSkill->max()) );
         pOtherSkill->setCost( m_pExpEditor->skillCost(pOtherSkill->max(), false) );
     }
+
+    for ( ReputationEdit* pReputation : m_reputation ) {
+        pReputation->setIsAffordable( m_pExpEditor->isReputationAffordable() );
+        pReputation->setCost( m_pExpEditor->reputationCost() );
+    }
 }
 
 void StatsEditor::setStatsConnections()
@@ -210,6 +215,29 @@ void StatsEditor::setStatsConnections()
         connect(pOtherSkill, &OtherSkillEdit::decreased,
                 m_pExpEditor, &ExperienceEditor::otherSkillDecreased);
     }
+
+    for ( ReputationEdit* pReputation : m_reputation ) {
+        connect(pReputation, &ReputationEdit::increased,
+                this, &StatsEditor::onReputationIncreased);
+        connect(pReputation, &ReputationEdit::decreased,
+                this, &StatsEditor::onReputationDecreased);
+    }
+}
+
+void StatsEditor::onReputationIncreased(ReputationEdit *reputation)
+{
+    for ( ReputationEdit* pReputation : m_reputation )
+        if ( pReputation != reputation )
+            pReputation->decreaseMax();
+    m_pExpEditor->reputationIncreased();
+}
+
+void StatsEditor::onReputationDecreased(ReputationEdit *reputation)
+{
+    for ( ReputationEdit* pReputation : m_reputation )
+        if ( pReputation != reputation )
+            pReputation->increaseMax();
+    m_pExpEditor->reputationDecreased();
 }
 
 int StatsEditor::attributeCount(QQmlListProperty<AttributeEdit> *list)

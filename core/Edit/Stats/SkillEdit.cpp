@@ -83,7 +83,6 @@ int SkillEdit::cost() const
 
 void SkillEdit::setCost(int newCost)
 {
-
     if (m_cost == newCost)
         return;
     m_cost = newCost;

@@ -71,6 +71,11 @@ int ExperienceEditor::skillCost(const int level, const bool discount) const
     return (discount) ? (cost - calculateDiscount(cost)) : cost;
 }
 
+int ExperienceEditor::reputationCost() const
+{
+    return m_reputationCost;
+}
+
 bool ExperienceEditor::isAttributeAfordable(const int level) const
 {
     return attributeCost(level) <= available();
@@ -86,6 +91,12 @@ bool ExperienceEditor::isSkillAfordable(const int level,
 bool ExperienceEditor::isOtherSkillAfordable(const int level) const
 {
     return isSkillAfordable(level, QStringList());
+}
+
+bool ExperienceEditor::isReputationAffordable() const
+{
+    return m_reputationCost <= available()
+            && m_reputationPoints.first < m_reputationPoints.second;
 }
 
 void ExperienceEditor::attributeIncreased(const int level)
@@ -120,6 +131,18 @@ void ExperienceEditor::otherSkillIncreased(const int level)
 void ExperienceEditor::otherSkillDecreased(const int level)
 {
     skillDecreased(level, QStringList());
+}
+
+void ExperienceEditor::reputationIncreased()
+{
+    ++m_reputationPoints.first;
+    increaseSpended( reputationCost() );
+}
+
+void ExperienceEditor::reputationDecreased()
+{
+    --m_reputationPoints.first;
+    decreaseSpended( reputationCost() );
 }
 
 void ExperienceEditor::increaseSpended(const int value)
@@ -165,8 +188,8 @@ void ExperienceEditor::loadCostData(const QString& costFile)
     }
 
     const QJsonObject& reputationCost = json.value("reputation").toObject();
-    m_reputationCost.first = reputationCost.value("max").toInt();
-    m_reputationCost.second = reputationCost.value("cost").toInt();
+    m_reputationPoints.second = reputationCost.value("max").toInt();
+    m_reputationCost = reputationCost.value("cost").toInt();
 
     const QJsonObject& trickCost = json.value("trick").toObject();
     m_trickCost.first = trickCost.value("max").toInt();

@@ -43,3 +43,55 @@ int ReputationEdit::max() const
 {
     return m_max;
 }
+
+void ReputationEdit::increaseMax()
+{
+    ++m_max;
+    emit maxChanged();
+}
+
+void ReputationEdit::decreaseMax()
+{
+    --m_max;
+    emit maxChanged();
+}
+
+bool ReputationEdit::isAffordable() const
+{
+    return m_isAffordable;
+}
+
+void ReputationEdit::setIsAffordable(bool newIsAffordable)
+{
+    if (m_isAffordable == newIsAffordable)
+        return;
+    m_isAffordable = newIsAffordable || m_data->value > m_min;
+    emit isAffordableChanged();
+}
+
+int ReputationEdit::cost() const
+{
+    return m_cost;
+}
+
+void ReputationEdit::setCost(int newCost)
+{
+    if (m_cost == newCost)
+        return;
+    m_cost = newCost;
+    emit costChanged();
+}
+
+void ReputationEdit::increase()
+{
+    ++m_data->value;
+    emit valueChanged();
+    emit increased(this);
+}
+
+void ReputationEdit::decrease()
+{
+    emit decreased(this);
+    --m_data->value;
+    emit valueChanged();
+}

@@ -55,6 +55,8 @@ signals:
 private slots:
     void setAffordableStats();
     void setStatsConnections();
+    void onReputationIncreased(ReputationEdit* reputation);
+    void onReputationDecreased(ReputationEdit* reputation);
 
 private:
     static int attributeCount(QQmlListProperty<AttributeEdit>* list);

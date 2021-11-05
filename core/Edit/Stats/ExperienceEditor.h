@@ -35,6 +35,7 @@ public slots:
     bool isAttributeAfordable(const int level) const;
     bool isSkillAfordable(const int level, const QStringList& specializations) const;
     bool isOtherSkillAfordable(const int level) const;
+    bool isReputationAffordable() const;
 
     void attributeIncreased(const int level);
     void attributeDecreased(const int level);
@@ -45,11 +46,15 @@ public slots:
     void otherSkillIncreased(const int level);
     void otherSkillDecreased(const int level);
 
+    void reputationIncreased();
+    void reputationDecreased();
+
     void increaseSpended(const int value);
     void decreaseSpended(const int value);
 
     int attributeCost(const int level) const;
     int skillCost(const int level, const bool discount) const;
+    int reputationCost() const;
 
 private slots:
     void checkIfNewSkillIsAffortable();
@@ -68,7 +73,8 @@ private:
     QVector<int> m_skillCost;
     QVector<int> m_attributeCost;
 
-    QPair<int, int> m_reputationCost;
+    int m_reputationCost;
+    QPair<int, int> m_reputationPoints;
     QPair<int, int> m_trickCost;
 
     const double m_discount{0.2};
