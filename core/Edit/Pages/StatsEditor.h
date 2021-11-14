@@ -8,6 +8,7 @@
 #include "../Stats/AttributeEdit.h"
 #include "../Stats/OtherSkillEdit.h"
 #include "../Stats/ReputationEdit.h"
+#include "../Stats/TrickEdit.h"
 #include "../../View/Pages/Stats.h"
 
 #include "core_global.h"
@@ -20,6 +21,7 @@ class CORE_EXPORT StatsEditor : public QObject
     Q_PROPERTY(QQmlListProperty<AttributeEdit> attributes READ attributes CONSTANT)
     Q_PROPERTY(QQmlListProperty<OtherSkillEdit> otherSkills READ otherSkills NOTIFY otherSkillsChanged)
     Q_PROPERTY(QQmlListProperty<ReputationEdit> reputations READ reputations CONSTANT)
+    Q_PROPERTY(QQmlListProperty<TrickEdit> tricks READ tricks CONSTANT)
     Q_PROPERTY(StatsData data READ data CONSTANT)
     Q_PROPERTY(ExperienceEditor* experience READ experience CONSTANT)
 
@@ -38,6 +40,10 @@ public:
     int reputationCount() const;
     ReputationEdit* reputation(const int index) const;
 
+    QQmlListProperty<TrickEdit> tricks();
+    int trickCount() const;
+    TrickEdit* trick(const int index) const;
+
     const StatsData &data() const;
     ExperienceEditor *experience() const;
 
@@ -51,6 +57,7 @@ public slots:
 
 signals:
     void otherSkillsChanged();
+    void tricksModelChanged();
 
 private slots:
     void setAffordableStats();
@@ -68,12 +75,16 @@ private:
     static int reputationCount(QQmlListProperty<ReputationEdit>* list);
     static ReputationEdit* reputation(QQmlListProperty<ReputationEdit>* list, int index);
 
+    static int trickCount(QQmlListProperty<TrickEdit>* list);
+    static TrickEdit* trick(QQmlListProperty<TrickEdit>* list, int index);
+
 private:
     StatsData m_data;
     ExperienceEditor* m_pExpEditor{nullptr};
     QVector<AttributeEdit*> m_attributes;
     QVector<OtherSkillEdit*> m_otherSkills;
     QVector<ReputationEdit*> m_reputation;
+    QVector<TrickEdit*> m_tricks;
 };
 
 #endif // STATSEDITOR_H

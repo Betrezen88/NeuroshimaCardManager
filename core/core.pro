@@ -27,9 +27,11 @@ SOURCES += \
     Edit/Stats/ReputationEdit.cpp \
     Edit/Stats/SkillEdit.cpp \
     Edit/Stats/SkillpackEdit.cpp \
+    Edit/Stats/TrickEdit.cpp \
     Managers/CardManager.cpp \
     Managers/MainManager.cpp \
     Managers/SettingsManager.cpp \
+    Models/TricksEditModel.cpp \
     Utils/CardBuilder.cpp \
     Utils/Converter.cpp \
     Utils/DataBuilder.cpp \
@@ -100,9 +102,11 @@ HEADERS += \
     Edit/Stats/ReputationEdit.h \
     Edit/Stats/SkillEdit.h \
     Edit/Stats/SkillpackEdit.h \
+    Edit/Stats/TrickEdit.h \
     Managers/CardManager.h \
     Managers/MainManager.h \
     Managers/SettingsManager.h \
+    Models/TricksEditModel.h \
     Utils/CardBuilder.h \
     Utils/Converter.h \
     Utils/DataBuilder.h \

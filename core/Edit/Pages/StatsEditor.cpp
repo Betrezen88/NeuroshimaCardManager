@@ -1,6 +1,8 @@
 ﻿#include "StatsEditor.h"
 #include "../Stats/ExperienceEditor.h"
 
+#include "../../Utils/DataReader.h"
+
 #include <QDebug>
 
 StatsEditor::StatsEditor(QObject *parent) : QObject(parent)
@@ -68,6 +70,26 @@ ReputationEdit *StatsEditor::reputation(const int index) const
     return m_reputation.at(index);
 }
 
+QQmlListProperty<TrickEdit> StatsEditor::tricks()
+{
+    return QQmlListProperty<TrickEdit>(this, this,
+                                       &StatsEditor::trickCount,
+                                       &StatsEditor::trick);
+}
+
+int StatsEditor::trickCount() const
+{
+    return m_tricks.count();
+}
+
+TrickEdit *StatsEditor::trick(const int index) const
+{
+    if ( index < 0 || index > m_tricks.count() )
+        return nullptr;
+
+    return m_tricks.at(index);
+}
+
 AttributeEdit *StatsEditor::attribute(const QString &name)
 {
     for ( AttributeEdit* pAttribute : m_attributes )
@@ -127,7 +149,8 @@ void StatsEditor::removeOtherSkill(OtherSkillEdit *otherSkill)
     emit otherSkillsChanged();
 }
 
-void StatsEditor::init(const StatsData &data, const QString &costFile)
+void StatsEditor::init(const StatsData &data,
+                       const QString &costFile)
 {
     m_data = data;
     m_pExpEditor = new ExperienceEditor( costFile,
@@ -146,6 +169,10 @@ void StatsEditor::init(const StatsData &data, const QString &costFile)
 
     for ( ReputationData& reputation : m_data.reputation )
         m_reputation.push_back( new ReputationEdit(&reputation, this) );
+
+    for ( TrickData trick : m_data.tricks )
+        m_tricks.push_back( new TrickEdit(trick, this) );
+
 
     setStatsConnections();
     setAffordableStats();
@@ -268,6 +295,16 @@ int StatsEditor::reputationCount(QQmlListProperty<ReputationEdit> *list)
 ReputationEdit *StatsEditor::reputation(QQmlListProperty<ReputationEdit> *list, int index)
 {
     return reinterpret_cast<StatsEditor*>(list->data)->reputation(index);
+}
+
+int StatsEditor::trickCount(QQmlListProperty<TrickEdit> *list)
+{
+    return reinterpret_cast<StatsEditor*>(list->data)->trickCount();
+}
+
+TrickEdit *StatsEditor::trick(QQmlListProperty<TrickEdit> *list, int index)
+{
+    return reinterpret_cast<StatsEditor*>(list->data)->trick(index);
 }
 
 const StatsData &StatsEditor::data() const

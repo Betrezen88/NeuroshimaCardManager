@@ -66,6 +66,10 @@
 #include "Edit/Stats/OtherSkillEdit.h"
 #include "Edit/Stats/ExperienceEditor.h"
 #include "Edit/Stats/ReputationEdit.h"
+#include "Edit/Stats/TrickEdit.h"
+
+// Models
+#include "Models/TricksEditModel.h"
 
 // Managers
 #include "Managers/MainManager.h"
@@ -119,7 +123,10 @@ void registerQmlTypes() {
     qmlRegisterType<SkillEdit>("core.edit.NSSkillEdit", 1, 0, "NSSkillEdit");
     qmlRegisterType<OtherSkillEdit>("core.edit.NSOtherSkillEdit", 1, 0, "NSOtherSkillEdit");
     qmlRegisterType<ReputationEdit>("core.edit.NSReputationEdit", 1, 0, "NSReputationEdit");
+    qmlRegisterType<TrickEdit>("core.edit.NSTrickEdit", 1, 0, "NSTrickEdit");
     qmlRegisterType<ExperienceEditor>("core.edit.NSExperienceEditor", 1, 0, "NSExperienceEditor");
+
+    qmlRegisterType<TricksEditModel>("core.models.NSTricksEditModel", 1, 0, "NSTricksEditModel");
 
     qmlRegisterType<MainManager>("core.managers.NSMainManager", 1, 0, "NSMainManager");
     qmlRegisterType<CardManager>("core.managers.NSCardManager", 1, 0, "NSCardManager");

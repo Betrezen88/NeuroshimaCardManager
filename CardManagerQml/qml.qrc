@@ -84,6 +84,8 @@
         <file>Views/Edit/Forms/OtherSkillForm.qml</file>
         <file>Views/Edit/Elements/ReputationEdit.qml</file>
         <file>Views/Card/Sections/Reputation.qml</file>
+        <file>Views/Edit/Elements/TrickDelegate.qml</file>
+        <file>Views/Edit/Elements/TrickDetails.qml</file>
     </qresource>
     <qresource prefix="/icon">
         <file>resources/icons/add.svg</file>

@@ -125,6 +125,7 @@ Page {
 
         _nsStatsEditor.init(stats.stats, ":/json/resources/json/Experience.json")
         _skillsEditor.statsEditor = _nsStatsEditor
+        _tricksEditor.statsEditor = _nsStatsEditor
         _reputationEditor.statsEditor = _nsStatsEditor
         _experienceToSpend.text = _nsStatsEditor.experience.available
 
