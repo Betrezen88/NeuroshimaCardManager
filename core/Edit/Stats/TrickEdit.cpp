@@ -1,5 +1,7 @@
 ﻿#include "TrickEdit.h"
 
+#include <QDebug>
+
 TrickEdit::TrickEdit(QObject *parent) : QObject(parent)
 {
 
@@ -48,6 +50,24 @@ Requirement *TrickEdit::requirement(const int index) const
     return m_requirements.at(index);
 }
 
+QVector<Requirement *> TrickEdit::attributes() const
+{
+    QVector<Requirement*> attributes;
+    for ( Requirement* requirement : qAsConst(m_requirements) )
+        if ( "attribute" == requirement->type() )
+            attributes.push_back(requirement);
+    return attributes;
+}
+
+QVector<Requirement *> TrickEdit::skills(const bool optional = false) const
+{
+    QVector<Requirement*> skills;
+    for ( Requirement* requirement : qAsConst(m_requirements) )
+        if ( "skill" == requirement->type() && optional == requirement->optional() )
+            skills.push_back( requirement );
+    return skills;
+}
+
 int TrickEdit::requirementCount(QQmlListProperty<Requirement> *list)
 {
     return reinterpret_cast<TrickEdit*>(list->data)->requirementCount();
@@ -56,4 +76,17 @@ int TrickEdit::requirementCount(QQmlListProperty<Requirement> *list)
 Requirement *TrickEdit::requirement(QQmlListProperty<Requirement> *list, int index)
 {
     return reinterpret_cast<TrickEdit*>(list->data)->requirement(index);
+}
+
+bool TrickEdit::meetsRequirements() const
+{
+    return m_meetsRequirements;
+}
+
+void TrickEdit::setMeetsRequirements(const bool meetsRequirements)
+{
+    if ( m_meetsRequirements == meetsRequirements )
+        return;
+    m_meetsRequirements = meetsRequirements;
+    emit meetsRequirementsChanged();
 }

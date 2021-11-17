@@ -16,6 +16,7 @@ class CORE_EXPORT TrickEdit : public QObject
     Q_PROPERTY(QString description READ description CONSTANT)
     Q_PROPERTY(QString action READ action CONSTANT)
     Q_PROPERTY(QQmlListProperty<Requirement> requirements READ requirements CONSTANT)
+    Q_PROPERTY(bool meetsRequirements READ meetsRequirements NOTIFY meetsRequirementsChanged)
 
 public:
     explicit TrickEdit(QObject *parent = nullptr);
@@ -29,6 +30,15 @@ public:
     int requirementCount() const;
     Requirement* requirement(const int index) const;
 
+    QVector<Requirement*> attributes() const;
+    QVector<Requirement*> skills(const bool optional) const;
+
+    bool meetsRequirements() const;
+    void setMeetsRequirements(const bool meetsRequirements);
+
+signals:
+    void meetsRequirementsChanged();
+
 private:
     static int requirementCount(QQmlListProperty<Requirement>* list);
     static Requirement* requirement(QQmlListProperty<Requirement>* list, int index);
@@ -36,6 +46,8 @@ private:
 private:
     TrickData m_data;
     QVector<Requirement*> m_requirements;
+    bool m_meetsRequirements;
+    //bool m_isNew;
 };
 
 #endif // TRICKEDIT_H

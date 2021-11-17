@@ -32,6 +32,8 @@ public:
     int attributeCount() const;
     AttributeEdit* attribute(const int index) const;
 
+    QHash<QString, SkillEdit *> skills() const;
+
     QQmlListProperty<OtherSkillEdit> otherSkills();
     int otherSkillCount() const;
     OtherSkillEdit* otherSkill(const int index) const;
@@ -43,6 +45,8 @@ public:
     QQmlListProperty<TrickEdit> tricks();
     int trickCount() const;
     TrickEdit* trick(const int index) const;
+
+    bool hasTrick(const QString& name) const;
 
     const StatsData &data() const;
     ExperienceEditor *experience() const;

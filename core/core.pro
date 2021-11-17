@@ -37,6 +37,7 @@ SOURCES += \
     Utils/DataBuilder.cpp \
     Utils/DataReader.cpp \
     Utils/DataWriter.cpp \
+    Validators/TrickValidator.cpp \
     View/Card.cpp \
     View/Common/Penalty.cpp \
     View/Common/Requirement.cpp \
@@ -113,6 +114,7 @@ HEADERS += \
     Utils/DataReader.h \
     Utils/DataWriter.h \
     Utils/Dice.h \
+    Validators/TrickValidator.h \
     View/Card.h \
     View/Common/Penalty.h \
     View/Common/Requirement.h \

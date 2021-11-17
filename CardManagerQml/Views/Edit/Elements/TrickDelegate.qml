@@ -52,6 +52,11 @@ Rectangle {
 
     onTrickDataChanged: {
         _title.text = trickData.name
+        _buyBtn.enabled = trickData.meetsRequirements
+
+        trickData.meetsRequirementsChanged.connect(function(){
+            _buyBtn.enabled = main.trickData.meetsRequirements
+        })
     }
 
     onBuyBtnVisibleChanged: {

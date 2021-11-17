@@ -30,6 +30,17 @@ AttributeEdit *StatsEditor::attribute(const int index) const
     return m_attributes.at(index);
 }
 
+QHash<QString, SkillEdit *> StatsEditor::skills() const
+{
+    QHash<QString, SkillEdit*> skills;
+    for ( AttributeEdit* attribute : m_attributes ) {
+        for ( SkillpackEdit* skillpack : attribute->m_skillpacks )
+            for ( SkillEdit* skill : skillpack->m_skills )
+                skills.insert( skill->name(), skill );
+    }
+    return skills;
+}
+
 QQmlListProperty<OtherSkillEdit> StatsEditor::otherSkills()
 {
     return QQmlListProperty<OtherSkillEdit>(this, this,
@@ -88,6 +99,15 @@ TrickEdit *StatsEditor::trick(const int index) const
         return nullptr;
 
     return m_tricks.at(index);
+}
+
+bool StatsEditor::hasTrick(const QString &name) const
+{
+    for ( TrickEdit* trick : m_tricks ) {
+        if ( trick->name() == name )
+            return true;
+    }
+    return false;
 }
 
 AttributeEdit *StatsEditor::attribute(const QString &name)

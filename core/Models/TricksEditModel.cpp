@@ -3,6 +3,7 @@
 #include "../Edit/Pages/StatsEditor.h"
 #include "../Edit/Stats/TrickEdit.h"
 #include "../Utils/DataReader.h"
+#include "../Validators/TrickValidator.h"
 
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -15,6 +16,14 @@ TricksEditModel::TricksEditModel(QObject *parent) : QObject(parent)
 {
     connect( this, &TricksEditModel::sourceFileChanged,
              this, &TricksEditModel::loadTricks );
+    connect( this, &TricksEditModel::statsChanged,
+             this, &TricksEditModel::validateTricks );
+    connect( this, &TricksEditModel::onlyAvailableChanged,
+             this, &TricksEditModel::showAvailable );
+    connect( this, &TricksEditModel::ascendingChanged,
+             this, &TricksEditModel::sort );
+    connect( this, &TricksEditModel::patternChanged,
+             this, &TricksEditModel::filter );
 }
 
 const QString &TricksEditModel::sourceFile() const
@@ -63,6 +72,50 @@ TrickEdit *TricksEditModel::modelItem(const int index) const
     return m_model.at(index);
 }
 
+void TricksEditModel::init(StatsEditor *statsEditor, const QString &sourceFile)
+{
+    m_pStatsEditor = statsEditor;
+    m_sourceFile = sourceFile;
+
+    loadTricks( m_sourceFile );
+    validateTricks();
+}
+
+void TricksEditModel::showAvailable(const bool available)
+{
+    m_model.clear();
+
+    for ( TrickEdit* trick : qAsConst(m_fullModel) ) {
+        if ( m_pStatsEditor && !m_pStatsEditor->hasTrick(trick->name()) ) {
+            if ( available ) {
+                if ( trick->meetsRequirements() )
+                    m_model.push_back( trick );
+            }
+            else {
+                m_model.push_back( trick );
+            }
+        }
+    }
+    sort( m_ascending );
+}
+
+void TricksEditModel::filter(const QString &pattern)
+{
+    m_model.clear();
+
+    for ( TrickEdit* trick : m_fullModel ) {
+        if ( m_onlyAvailable && trick->meetsRequirements()
+            && trick->name().toUpper().contains(pattern.toUpper()) ) {
+                 m_model.push_back( trick );
+        }
+        else {
+            if ( trick->name().toUpper().contains(pattern.toUpper()) )
+                m_model.push_back( trick );
+        }
+    }
+    emit modelChanged();
+}
+
 void TricksEditModel::loadTricks(const QString &file)
 {
     DataReader reader;
@@ -89,11 +142,32 @@ void TricksEditModel::loadTricks(const QString &file)
             requirements.push_back( req );
         }
 
-        m_model.push_back( new TrickEdit({.name = trick.value("name").toString(),
-                             .description = trick.value("description").toString(),
-                             .action = trick.value("action").toString(),
-                             .requirements = requirements}, this) );
+        m_fullModel.push_back( new TrickEdit({.name = trick.value("name").toString(),
+                                .description = trick.value("description").toString(),
+                                .action = trick.value("action").toString(),
+                                .requirements = requirements}, this) );
     }
+    showAvailable( m_onlyAvailable );
+}
+
+void TricksEditModel::validateTricks()
+{
+    if ( !m_pStatsEditor )
+        return;
+
+    TrickValidator validator(m_pStatsEditor, this);
+    for ( TrickEdit* trick : m_fullModel )
+        trick->setMeetsRequirements( validator.trickMeetsRequirements(trick) );
+}
+
+void TricksEditModel::sort(const bool ascending)
+{
+    std::sort(m_model.begin(), m_model.end(), [&ascending](const TrickEdit* first, const TrickEdit* second){
+        if ( ascending )
+            return first->name() < second->name();
+        return first->name() > second->name();
+    });
+    emit modelChanged();
 }
 
 int TricksEditModel::modelCount(QQmlListProperty<TrickEdit> *list)
@@ -104,4 +178,43 @@ int TricksEditModel::modelCount(QQmlListProperty<TrickEdit> *list)
 TrickEdit *TricksEditModel::modelItem(QQmlListProperty<TrickEdit> *list, int index)
 {
     return reinterpret_cast<TricksEditModel*>(list->data)->modelItem(index);
+}
+
+bool TricksEditModel::ascending() const
+{
+    return m_ascending;
+}
+
+void TricksEditModel::setAscending(bool newAscending)
+{
+    if (m_ascending == newAscending)
+        return;
+    m_ascending = newAscending;
+    emit ascendingChanged( m_ascending );
+}
+
+const QString &TricksEditModel::pattern() const
+{
+    return m_pattern;
+}
+
+void TricksEditModel::setPattern(const QString &newPattern)
+{
+    if (m_pattern == newPattern)
+        return;
+    m_pattern = newPattern;
+    emit patternChanged( m_pattern );
+}
+
+bool TricksEditModel::onlyAvailable() const
+{
+    return m_onlyAvailable;
+}
+
+void TricksEditModel::setOnlyAvailable(bool newOnlyAvailable)
+{
+    if (m_onlyAvailable == newOnlyAvailable)
+        return;
+    m_onlyAvailable = newOnlyAvailable;
+    emit onlyAvailableChanged( m_onlyAvailable );
 }
