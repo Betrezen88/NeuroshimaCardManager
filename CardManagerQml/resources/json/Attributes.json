@@ -15,7 +15,7 @@
                 "name": "Jeździectwo",
                 "specializations": [ "Ranger" ],
                 "skills": [
-                    "Jazda Konna",
+                    "Jazda konna",
                     "Powożenie",
                     "Ujeżdżanie"
                 ]
@@ -30,7 +30,7 @@
                 "specializations": [ "Wojownik" ],
                 "skills": [
                     "Bijatyka",
-                    "Broń Ręczna",
+                    "Broń ręczna",
                     "Rzucanie"
                 ]
             },
@@ -47,9 +47,9 @@
                 "name": "Zdolności Manualne",
                 "specializations": [ "Cwaniak" ],
                 "skills": [
-                    "Kradzież Kieszonkowa",
-                    "Otwieranie Zamków",
-                    "Zwinne Dłonie"
+                    "Kradzież kieszonkowa",
+                    "Otwieranie zamków",
+                    "Zwinne dłonie"
                 ]
             },
             {
@@ -58,7 +58,7 @@
                 "skills": [
                     "Pistolety",
                     "Karabiny",
-                    "Broń Maszynowa"
+                    "Broń maszynowa"
                 ]
             },
             {
@@ -81,23 +81,23 @@
                 "skills": [
                     "Zastraszanie",
                     "Perswazja",
-                    "Zdolności Przywódcze"
+                    "Zdolności przywódcze"
                 ]
             },
             {
                 "name": "Empatia",
                 "specializations": [ "Cwaniak" ],
                 "skills": [
-                    "Postrzeganie Emocji",
+                    "Postrzeganie emocji",
                     "Blef",
-                    "Opieka nad Zwierzętami"
+                    "Opieka nad zwierzętami"
                 ]
             },
             {
                 "name": "Siła Woli",
                 "specializations": [ "Wojownik" ],
                 "skills": [
-                    "Odporność na Ból",
+                    "Odporność na ból",
                     "Niezłomność",
                     "Morale"
                 ]
@@ -111,9 +111,9 @@
                 "name": "Medycyna",
                 "specializations": [ "Ranger", "Technik" ],
                 "skills": [
-                    "Pierwsza Pomoc",
-                    "Leczenie Ran",
-                    "Leczenie Chorób"
+                    "Pierwsza pomoc",
+                    "Leczenie ran",
+                    "Leczenie chorób"
                 ]
             },
             {
@@ -144,8 +144,8 @@
                 "name": "Sprzęt",
                 "specializations": [ "Technik" ],
                 "skills": [
-                    "Maszyny Ciężkie",
-                    "Wozy Bojowe",
+                    "Maszyny ciężkie",
+                    "Wozy bojowe",
                     "Kutry"
                 ]
             },
@@ -155,7 +155,7 @@
                 "skills": [
                     "Rusznikarstwo",
                     "Wyrzutnie",
-                    "Materiały Wybuchowe"
+                    "Mat. wybuchowe"
                 ]
             }
         ]
@@ -167,8 +167,8 @@
                 "name": "Orientacja w Terenie",
                 "specializations": [ "Ranger" ],
                 "skills": [
-                    "Wyczucie Kierunku",
-                    "Przygotowanie Pułapki",
+                    "Wyczucie kierunku",
+                    "Przygotowanie pułapki",
                     "Tropienie"
                 ]
             },
@@ -195,8 +195,8 @@
                 "specializations": [ "Ranger" ],
                 "skills": [
                     "Łowiectwo",
-                    "Znajomość Terenu",
-                    "Zdobywanie Wody"
+                    "Znajomość terenu",
+                    "Zdobywanie wody"
                 ]
             }
         ]
