@@ -20,6 +20,8 @@ class CORE_EXPORT SkillEdit : public QObject
     Q_PROPERTY(int cost READ cost WRITE setCost NOTIFY costChanged)
 
 public:
+    friend class StatsEditor;
+
     explicit SkillEdit(QObject* parent = nullptr);
     explicit SkillEdit(SkillData* data, QObject* parent = nullptr);
 

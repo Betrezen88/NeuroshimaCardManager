@@ -18,6 +18,8 @@ class CORE_EXPORT SkillpackEdit : public QObject
     Q_PROPERTY(QQmlListProperty<SkillEdit> skills READ skills CONSTANT)
 
 public:
+    friend class StatsEditor;
+
     explicit SkillpackEdit(QObject* parent = nullptr);
     explicit SkillpackEdit(SkillpackData* data, QObject* parent = nullptr);
 

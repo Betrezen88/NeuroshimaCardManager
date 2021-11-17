@@ -22,6 +22,8 @@ class CORE_EXPORT AttributeEdit : public QObject
     Q_PROPERTY(QQmlListProperty<SkillpackEdit> skillpacks READ skillpacks CONSTANT)
 
 public:
+    friend class StatsEditor;
+
     explicit AttributeEdit(QObject *parent = nullptr);
     explicit AttributeEdit(AttributeData *data, QObject* parent = nullptr);
 
