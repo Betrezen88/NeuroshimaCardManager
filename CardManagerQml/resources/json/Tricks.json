@@ -11,7 +11,7 @@
                 "type": "skill"
             },
             {
-                "name": "Materiały Wybuchowe",
+                "name": "Mat. wybuchowe",
                 "value": 3,
                 "optional": false,
                 "type": "skill"
@@ -30,7 +30,7 @@
                 "type": "attribute"
             },
             {
-                "name": "Broń Ręczna",
+                "name": "Broń ręczna",
                 "value": 5,
                 "optional": false,
                 "type": "skill"
@@ -56,7 +56,7 @@
         "action": "Za pomocą najprostrzych lekarst, Bohater potrafi utrzymywać chorego w stanie stabilnym, tak jkaby podpopieczny łukał potrzebne  mu lekarstwo. \"Aspirynę i Tik-Taki\" można podawać przez licznę dni równą wartości Umiejętności Blef. Potem trzeba przerzucić się na zalecane leki. Po dwóch tygodniach znów można wrócić do kuracji \"Aspiryną i Tik-Takami\".",
         "requirements": [
                 {
-                    "name": "Leczenie Chorób",
+                    "name": "Leczenie chorób",
                     "value": 4,
                     "optional": false,
                     "type": "skill"
@@ -100,7 +100,7 @@
                 "type": "attrubute"
             },
             {
-                "name": "Odporność na Ból",
+                "name": "Odporność na ból",
                 "value": 6,
                 "optional": false,
                 "type": "skill"
@@ -195,7 +195,7 @@
                 "type": "attribute"
             },
             {
-                "name": "Opieka nad Zwierzętami",
+                "name": "Opieka nad zwierzętami",
                 "value": 4,
                 "optional": false,
                 "type": "skill"
@@ -214,7 +214,7 @@
                 "type": "attribute"
             },
             {
-                "name": "Broń Ręczna",
+                "name": "Broń ręczna",
                 "value": 5,
                 "optional": false,
                 "type": "skill"
@@ -245,7 +245,7 @@
                 "type": "skill"
             },
             {
-                "name": "Zwinne Dłonie",
+                "name": "Zwinne dłonie",
                 "value": 2,
                 "optional": false,
                 "type": "skill"
@@ -303,7 +303,7 @@
         "action": "Jeśli Bohater kierujący maszyną ma w kokpicie trzech pomocników, z których każdy posiada Umiejętność Wozy bojowe lub Maszyny Ciężkie przynajmniej na 1, wszystkie jego testy związan z pojazdem są łatwiejsze o -20%. Jeżeli w załodze znajdzie się pies, testy są łatwiejsze o -30%.",
         "requirements": [
             {
-                "name": "Opieka nad Zwierzętami",
+                "name": "Opieka nad zwierzętami",
                 "value": 2,
                 "optional": false,
                 "type": "skill"
@@ -315,7 +315,7 @@
                 "type": "skill"
             },
             {
-                "name": "Maszyny Ciężkie",
+                "name": "Maszyny ciężkie",
                 "value": 3,
                 "optional": true,
                 "type": "skill"
@@ -334,7 +334,7 @@
                 "type": "attribute"
             },
             {
-                "name": "Broń Maszynowa",
+                "name": "Broń maszynowa",
                 "value": 4,
                 "optional": false,
                 "type": "skill"
@@ -423,7 +423,7 @@
                 "type": "skill"
             },
             {
-                "name": "Broń Ręczna",
+                "name": "Broń ręczna",
                 "value": 5,
                 "optional": true,
                 "type": "skill"
@@ -550,7 +550,7 @@
                 "type": "attribute"
             },
             {
-                "name": "Przygotowanie Pułapki",
+                "name": "Przygotowanie pułapki",
                 "value": 3,
                 "optional": false,
                 "type": "skill"
@@ -563,7 +563,7 @@
         "action": "Bohater potrafi podejść do kogoś z ukrytym pistoletem lub nożem w rękawie, tak że broń jest niedostrzegalna. Jeśli przeciwnicy spodziewają się ukrytej broni, muszą wykonać Bardzo Trudny test Czujności.",
         "requirements": [
             {
-                "name": "Zwinne Dłonie",
+                "name": "Zwinne dłonie",
                 "value": 4,
                 "optional": false,
                 "type": "skill"
@@ -633,7 +633,7 @@
         "action": "Bohater potrafi schować do kieszeni lub wyciągnąć z niej niewielki przedmiot w sposób zupełnie niedostrzegalny.",
         "requirements": [
             {
-                "name": "Zwinne Dłonie",
+                "name": "Zwinne dłonie",
                 "value": 4,
                 "optional": false,
                 "type": "skill"
@@ -652,7 +652,7 @@
                 "type": "attribute"
             },
             {
-                "name": "Leczenie Chorób",
+                "name": "Leczenie chorób",
                 "value": 4,
                 "optional": false,
                 "type": "skill"
@@ -665,7 +665,7 @@
         "action": "Dowódca zdaje Trudny test Zręczności Przywódczych. Jeśli go zda, obniża o jeden Poziom Trudności najbliższego testu Morale wszystkich swoich podkomendnych lub towarzyszy.",
         "requirements": [
             {
-                "name": "Zdolności Przywódcze",
+                "name": "Zdolności przywódcze",
                 "value": 3,
                 "optional": false,
                 "type": "skill"
@@ -703,7 +703,7 @@
                 "type": "attribute"
             },
             {
-                "name": "Wyczucie Kierunku",
+                "name": "Wyczucie kierunku",
                 "value": 4,
                 "optional": false,
                 "type": "skill"
@@ -779,7 +779,7 @@
         "action": "Jeśli okradasz kogoś w tłumie czy ścisku, test Kradzieży Kieszonkowej jest dla Ciebie łatwiejszy o -30%.",
         "requirements": [
             {
-                "name": "Kradzież Kieszonkowa",
+                "name": "Kradzież kieszonkowa",
                 "value": 2,
                 "optional": false,
                 "type": "skill"
@@ -874,7 +874,7 @@
                 "type": "attribute"
             },
             {
-                "name": "Maszyny Ciężkie",
+                "name": "Maszyny ciężkie",
                 "value": 4,
                 "optional": false,
                 "type": "skill"
@@ -899,7 +899,7 @@
                 "type": "attribute"
             },
             {
-                "name": "Wyczucie Kierunku",
+                "name": "Wyczucie kierunku",
                 "value": 1,
                 "optional": false,
                 "type": "skill"
@@ -924,7 +924,7 @@
                 "type": "attribute"
             },
             {
-                "name": "Pierwsza Pomoc",
+                "name": "Pierwsza pomoc",
                 "value": 3,
                 "optional": false,
                 "type": "skill"
@@ -949,7 +949,7 @@
                 "type": "attribute"
             },
             {
-                "name": "Broń Ręczna",
+                "name": "Broń ręczna",
                 "value": 6,
                 "optional": false,
                 "type": "skill"
@@ -962,7 +962,7 @@
         "action": "Po wykonaniu Bardzo Trudnego testu Postrzegania Emocji i Bardzo Trudnego testu Elektroniki. Bohater jest w stanie przewidzieć następne posunięcie maszyny Molocha. Sztuczki można użyć tylko raz przeciwko tej samej maszynie.",
         "requirements": [
             {
-                "name": "Postrzeganie Emocji",
+                "name": "Postrzeganie emocji",
                 "value": 11,
                 "optional": false,
                 "type": "skill"
@@ -1038,7 +1038,7 @@
                 "type": "attribute"
             },
             {
-                "name": "Odporność na Ból",
+                "name": "Odporność na ból",
                 "value": 4,
                 "optional": false,
                 "type": "skill"
@@ -1070,7 +1070,7 @@
                 "type": "attribute"
             },
             {
-                "name": "Broń Ręczna",
+                "name": "Broń ręczna",
                 "value": 5,
                 "optional": false,
                 "type": "skill"
@@ -1115,7 +1115,7 @@
         "action": "W swoich testach Bohater nie uwzględnia utrudnień za niesprzyjające warunki pogodowe.",
         "requirements": [
             {
-                "name": "Znajomość Terenu",
+                "name": "Znajomość terenu",
                 "value": 4,
                 "optional": false,
                 "type": "skill"
@@ -1128,7 +1128,7 @@
         "action": "Bohater wykonuje Przeciętny lub Trudny (decyzja MG) test Zdobywania Wody. Jeśli go zda, może odkazić również zatrute pożywienie.",
         "requirements": [
             {
-                "name": "Zdobywanie Wody",
+                "name": "Zdobywanie wody",
                 "value": 6,
                 "optional": false,
                 "type": "skill"
@@ -1147,7 +1147,7 @@
                 "type": "attribute"
             },
             {
-                "name": "Kradzież Kieszonkowa",
+                "name": "Kradzież kieszonkowa",
                 "value": 4,
                 "optional": false,
                 "type": "skill"
@@ -1197,7 +1197,7 @@
                 "type": "skill"
             },
             {
-                "name": "Broń Ręczna",
+                "name": "Broń ręczna",
                 "value": 4,
                 "optional": true,
                 "type": "skill"
@@ -1216,7 +1216,7 @@
                 "type": "skill"
             },
             {
-                "name": "Otwieranie Zamków",
+                "name": "Otwieranie zamków",
                 "value": 2,
                 "optional": false,
                 "type": "skill"
@@ -1286,7 +1286,7 @@
                 "type": "attribute"
             },
             {
-                "name": "Pierwsza Pomoc",
+                "name": "Pierwsza pomoc",
                 "value": 4,
                 "optional": false,
                 "type": "skill"
@@ -1386,13 +1386,13 @@
                 "type": "skill"
             },
             {
-                "name": "Wozy Bojowe",
+                "name": "Wozy bojowe",
                 "value": 2,
                 "optional": true,
                 "type": "skill"
             },
             {
-                "name": "Maszyny Ciężkie",
+                "name": "Maszyny ciężkie",
                 "value": 2,
                 "optional": true,
                 "type": "skill"
@@ -1506,7 +1506,7 @@
                 "type": "skill"
             },
             {
-                "name": "Jazda Konna",
+                "name": "Jazda konna",
                 "value": 3,
                 "optional": false,
                 "type": "skill"
@@ -1569,7 +1569,7 @@
                 "type": "attribute"
             },
             {
-                "name": "Broń Maszynowa",
+                "name": "Broń maszynowa",
                 "value": 6,
                 "optional": false,
                 "type": "skill"
@@ -1591,7 +1591,7 @@
                 "name": "Percepcja",
                 "value": 10,
                 "optional": false,
-                "type": "skill"
+                "type": "attribute"
             },
             {
                 "name": "Pistolety",
@@ -1606,7 +1606,7 @@
                 "type": "skill"
             },
             {
-                "name": "Broń Maszynowa",
+                "name": "Broń maszynowa",
                 "value": 4,
                 "optional": true,
                 "type": "skill"
@@ -1669,7 +1669,7 @@
                 "type": "attribute"
             },
             {
-                "name": "Broń Ręczna",
+                "name": "Broń ręczna",
                 "value": 3,
                 "optional": false,
                 "type": "skill"
@@ -1847,7 +1847,7 @@
                 "type": "skill"
             },
             {
-                "name": "Broń Ręczna",
+                "name": "Broń ręczna",
                 "value": 4,
                 "optional": false,
                 "type": "skill"
@@ -1885,7 +1885,7 @@
                 "type": "attribute"
             },
             {
-                "name": "Zwinne Dłonie",
+                "name": "Zwinne dłonie",
                 "value": 8,
                 "optional": false,
                 "type": "skill"
@@ -1981,7 +1981,7 @@
                 "type": "attribute"
             },
             {
-                "name": "Broń Ręczna",
+                "name": "Broń ręczna",
                 "value": 4,
                 "optional": false,
                 "type": "skill"
@@ -2032,7 +2032,7 @@
         "action": "Po udanym teście Zdolności Przywódczych Bohater może pokierować niewykwalifikowanymi pracownikami. Na czas jednego zadania uzyskują oni na poziomie 1 znaną Bohaterowi Umiejętność, opartą o Spryt, którą posiada na poziomie 3+. Niby niewiele, ale likwiduje negatywny efekt Suwaka.",
         "requirements": [
             {
-                "name": "Zdolności Przywódcze",
+                "name": "Zdolności przywódcze",
                 "value": 3,
                 "optional": false,
                 "type": "skill"
@@ -2070,7 +2070,7 @@
                 "type": "attribute"
             },
             {
-                "name": "Broń Ręczna",
+                "name": "Broń ręczna",
                 "value": 2,
                 "optional": false,
                 "type": "skill"
@@ -2152,13 +2152,13 @@
         "action": "Bohater ma prawo do Przeciętnego testu Opieki nad Zwierzętami. Jesli go zda, może właściwie odczytać nastawienie napotkanego zwierzęcia i przewidzieć jego następne działanie (nie w walce). Sztuczka nie dotyczy zmutowanych zwierząt.",
         "requirements": [
             {
-                "name": "Postrzeganie Emocji",
+                "name": "Postrzeganie emocji",
                 "value": 2,
                 "optional": false,
                 "type": "skill"
             },
             {
-                "name": "Opieka nad Zwierzętami",
+                "name": "Opieka nad zwierzętami",
                 "value": 2,
                 "optional": false,
                 "type": "skill"
@@ -2196,7 +2196,7 @@
                 "type": "attribute"
             },
             {
-                "name": "Znajomość Terenu",
+                "name": "Znajomość terenu",
                 "value": 2,
                 "optional": false,
                 "type": "skill"
@@ -2240,7 +2240,7 @@
                 "type": "attribute"
             },
             {
-                "name": "Otwieranie Zamków",
+                "name": "Otwieranie zamków",
                 "value": 4,
                 "optional": false,
                 "type": "skill"
@@ -2265,7 +2265,7 @@
                 "type": "skill"
             },
             {
-                "name": "Broń Ręczna",
+                "name": "Broń ręczna",
                 "value": 6,
                 "optional": true,
                 "type": "skill"
@@ -2290,7 +2290,7 @@
                 "type": "skill"
             },
             {
-                "name": "Zwinne Dłonie",
+                "name": "Zwinne dłonie",
                 "value": 3,
                 "optional": false,
                 "type": "skill"
