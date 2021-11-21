@@ -190,8 +190,8 @@ void StatsEditor::init(const StatsData &data,
     for ( ReputationData& reputation : m_data.reputation )
         m_reputation.push_back( new ReputationEdit(&reputation, this) );
 
-    for ( TrickData trick : m_data.tricks )
-        m_tricks.push_back( new TrickEdit(trick, this) );
+    for ( QSharedPointer<TrickData> trick : m_data.tricks )
+        m_tricks.push_back( new TrickEdit(*trick, this) );
 
 
     setStatsConnections();
@@ -211,7 +211,7 @@ void StatsEditor::clearUsed()
 
 void StatsEditor::addTrick(TrickEdit *trick)
 {
-//    m_data.tricks.push_back(  );
+    m_data.tricks.push_back( QSharedPointer<TrickData>(new TrickData(trick->data())) );
     m_tricks.push_back( new TrickEdit(trick->data(), true, this) );
     m_pExpEditor->trickBougth();
 
@@ -220,7 +220,13 @@ void StatsEditor::addTrick(TrickEdit *trick)
 
 void StatsEditor::removeTrick(TrickEdit *trick)
 {
-    m_tricks.removeOne( trick );
+    const int index = m_tricks.indexOf( trick );
+
+    if ( index < 0  )
+        return;
+
+    m_tricks.takeAt( index )->deleteLater();
+    m_data.tricks.takeAt( index );
     m_pExpEditor->trickSold();
 
     emit tricksChanged();

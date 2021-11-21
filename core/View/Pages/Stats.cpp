@@ -213,8 +213,8 @@ void Stats::init()
     for ( AttributeData& attribute: m_data.attributes )
         m_attributes.append( new Attribute(&attribute, this) );
 
-    for ( TrickData& trick : m_data.tricks )
-        m_tricks.append( new Trick(&trick, this) );
+    for ( QSharedPointer<TrickData>& trick : m_data.tricks )
+        m_tricks.append( new Trick(trick.get(), this) );
 
     for ( QSharedPointer<OtherSkillData>& otherSkill : m_data.otherSkills )
         m_otherSkills.append( new OtherSkill(otherSkill.get(), this) );

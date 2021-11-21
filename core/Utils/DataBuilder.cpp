@@ -34,7 +34,9 @@ StatsData DataBuilder::statsData(const QJsonObject &json)
                                  );
 
     for ( const QJsonValue& tTrick: json.value("tricks").toArray() )
-        data.tricks.append( trick(tTrick.toObject()) );
+        data.tricks.append( QSharedPointer<TrickData>(
+                                new TrickData(trick(tTrick.toObject()))
+                               ) );
 
     for ( const QJsonValue& tWound: json.value("wounds").toArray() )
         data.wounds.push_back( QSharedPointer<WoundData>(

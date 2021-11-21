@@ -35,7 +35,7 @@ public:
     DiseaseData disease;
     QVarLengthArray<AttributeData, 5> attributes;
     QVector<QSharedPointer<OtherSkillData>> otherSkills;
-    QVector<TrickData> tricks;
+    QVector<QSharedPointer<TrickData>> tricks;
     QVector<QSharedPointer<WoundData>> wounds;
     QVector<ReputationData> reputation;
     ExperienceData experience;

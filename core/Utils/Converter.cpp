@@ -56,8 +56,8 @@ QJsonObject Converter::stats(const StatsData &data)
         otherSkills.append( otherSkill(*tOtherSkill) );
 
     QJsonArray tricks;
-    for ( const TrickData& tTrick : data.tricks )
-        tricks.append( trick(tTrick) );
+    for ( const QSharedPointer<TrickData>& tTrick : data.tricks )
+        tricks.append( trick(*tTrick) );
 
     QJsonArray wounds;
     for ( const QSharedPointer<WoundData>& tWound : data.wounds )
