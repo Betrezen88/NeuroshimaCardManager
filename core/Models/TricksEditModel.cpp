@@ -78,6 +78,7 @@ void TricksEditModel::init(StatsEditor *statsEditor, const QString &sourceFile)
     m_sourceFile = sourceFile;
 
     loadTricks( m_sourceFile );
+    removeDoubles();
     validateTricks();
 }
 
@@ -86,17 +87,13 @@ void TricksEditModel::showAvailable(const bool available)
     m_model.clear();
 
     for ( TrickEdit* trick : qAsConst(m_fullModel) ) {
-        if ( m_pStatsEditor && !m_pStatsEditor->hasTrick(trick->name()) ) {
-            if ( available ) {
-                if ( trick->meetsRequirements() )
-                    m_model.push_back( trick );
-            }
-            else {
-                m_model.push_back( trick );
-            }
-        }
+        if ( !available )
+            m_model.push_back( trick );
+        else if ( trick->meetsRequirements() )
+            m_model.push_back( trick );
     }
     sort( m_ascending );
+    removeDoubles();
 }
 
 void TricksEditModel::filter(const QString &pattern)
@@ -128,6 +125,8 @@ void TricksEditModel::loadTricks(const QString &file)
 
     const QJsonArray json = std::get<1>(data).array();
 
+
+    TrickValidator validator;
     for ( const QJsonValue& tTrick : json ) {
         const QJsonObject& trick = tTrick.toObject();
 
@@ -146,6 +145,7 @@ void TricksEditModel::loadTricks(const QString &file)
                                 .description = trick.value("description").toString(),
                                 .action = trick.value("action").toString(),
                                 .requirements = requirements}, this) );
+        validator.trickMeetsRequirements( m_fullModel.last() );
     }
     showAvailable( m_onlyAvailable );
 }
@@ -157,7 +157,7 @@ void TricksEditModel::validateTricks()
 
     TrickValidator validator(m_pStatsEditor, this);
     for ( TrickEdit* trick : m_fullModel )
-        trick->setMeetsRequirements( validator.trickMeetsRequirements(trick) );
+        validator.trickMeetsRequirements( trick );
 }
 
 void TricksEditModel::sort(const bool ascending)
@@ -167,6 +167,26 @@ void TricksEditModel::sort(const bool ascending)
             return first->name() < second->name();
         return first->name() > second->name();
     });
+    emit modelChanged();
+}
+
+void TricksEditModel::refreashTricks()
+{
+    showAvailable( m_onlyAvailable );
+}
+
+void TricksEditModel::removeDoubles()
+{
+    if ( !m_pStatsEditor )
+        return;
+
+    m_model.erase( std::remove_if(
+                       m_model.begin(),
+                       m_model.end(),
+                       [this](TrickEdit* trick){
+                        return this->m_pStatsEditor->hasTrick( trick->name() );
+                   }),
+                   m_model.end());
     emit modelChanged();
 }
 

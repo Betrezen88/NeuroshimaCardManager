@@ -15,14 +15,14 @@ TrickValidator::TrickValidator(StatsEditor *statsEditor, QObject *parent)
 
 }
 
-bool TrickValidator::trickMeetsRequirements(TrickEdit *trick)
+void TrickValidator::trickMeetsRequirements(TrickEdit *trick)
 {
     if ( !m_pStatsEditor || !trick )
-        return false;
+        return;
 
-    return meetsAttributes(trick->attributes())
-            && meetsSkills(trick->skills(false))
-            && meetsSkills(trick->skills(true));
+    trick->setMeetsRequirements( meetsAttributes(trick->attributes())
+                                 && meetsSkills(trick->skills(false))
+                                 && meetsSkills(trick->skills(true)) );
 }
 
 bool TrickValidator::meetsAttributes(const QVector<Requirement*>& requirements)

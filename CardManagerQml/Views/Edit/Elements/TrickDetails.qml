@@ -5,6 +5,10 @@ import core.edit.NSTrickEdit 1.0
 
 Popup {
     property NSTrickEdit trickData
+    property bool buyBtnVisible: true
+
+    signal buyTrick(NSTrickEdit trickData)
+    signal sellTrick(NSTrickEdit trickData)
 
     id: main
     padding: 5
@@ -131,6 +135,19 @@ Popup {
         Button {
             id: _buyBtn
             text: qsTr("Kup")
+            onClicked: {
+                main.buyTrick(main.trickData)
+                main.close()
+            }
+        }
+
+        Button {
+            id: _sellBtn
+            text: qsTr("Sprzedaj")
+            onClicked: {
+                main.sellTrick(main.trickData)
+                main.close()
+            }
         }
     }
 
@@ -139,5 +156,8 @@ Popup {
         _requirements.model = trickData.requirements
         _description.text = trickData.description
         _action.text = trickData.action
+        _sellBtn.visible = trickData.isNew
     }
+
+    onBuyBtnVisibleChanged: _buyBtn.visible = buyBtnVisible
 }

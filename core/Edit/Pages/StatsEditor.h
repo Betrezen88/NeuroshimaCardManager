@@ -21,7 +21,7 @@ class CORE_EXPORT StatsEditor : public QObject
     Q_PROPERTY(QQmlListProperty<AttributeEdit> attributes READ attributes CONSTANT)
     Q_PROPERTY(QQmlListProperty<OtherSkillEdit> otherSkills READ otherSkills NOTIFY otherSkillsChanged)
     Q_PROPERTY(QQmlListProperty<ReputationEdit> reputations READ reputations CONSTANT)
-    Q_PROPERTY(QQmlListProperty<TrickEdit> tricks READ tricks CONSTANT)
+    Q_PROPERTY(QQmlListProperty<TrickEdit> tricks READ tricks NOTIFY tricksChanged)
     Q_PROPERTY(StatsData data READ data CONSTANT)
     Q_PROPERTY(ExperienceEditor* experience READ experience CONSTANT)
 
@@ -58,10 +58,12 @@ public slots:
     void removeOtherSkill(OtherSkillEdit* otherSkill);
     void init(const StatsData& data, const QString& costFile);
     void clearUsed();
+    void addTrick(TrickEdit *trick);
+    void removeTrick(TrickEdit *trick);
 
 signals:
     void otherSkillsChanged();
-    void tricksModelChanged();
+    void tricksChanged();
 
 private slots:
     void setAffordableStats();

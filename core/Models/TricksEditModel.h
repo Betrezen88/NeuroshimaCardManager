@@ -52,6 +52,7 @@ signals:
 
 public slots:
     void init(StatsEditor* statsEditor, const QString& sourceFile);
+    void refreashTricks();
 
 private slots:
     void showAvailable(const bool available);
@@ -59,6 +60,7 @@ private slots:
     void loadTricks(const QString& file);
     void validateTricks();
     void sort(const bool ascending);
+    void removeDoubles();
 
 private:
     static int modelCount(QQmlListProperty<TrickEdit>* list);

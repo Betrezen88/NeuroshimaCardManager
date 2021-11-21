@@ -15,6 +15,15 @@ TrickEdit::TrickEdit(const TrickData& data, QObject *parent)
         m_requirements.push_back( new Requirement(&requirement, this));
 }
 
+TrickEdit::TrickEdit(const TrickData &data, const bool isNew, QObject *parent)
+    : QObject(parent)
+    , m_data(data)
+    , m_isNew(isNew)
+{
+    for ( RequirementData& requirement : m_data.requirements )
+        m_requirements.push_back( new Requirement(&requirement, this));
+}
+
 const QString &TrickEdit::name() const
 {
     return m_data.name;
@@ -89,4 +98,40 @@ void TrickEdit::setMeetsRequirements(const bool meetsRequirements)
         return;
     m_meetsRequirements = meetsRequirements;
     emit meetsRequirementsChanged();
+}
+
+const TrickData &TrickEdit::data() const
+{
+    return m_data;
+}
+
+bool TrickEdit::isAffordable() const
+{
+    return m_isAffordable;
+}
+
+void TrickEdit::setIsAffordable(bool newIsAffordable)
+{
+    if (m_isAffordable == newIsAffordable)
+        return;
+    m_isAffordable = newIsAffordable;
+    emit isAffordableChanged();
+}
+
+int TrickEdit::cost() const
+{
+    return m_cost;
+}
+
+void TrickEdit::setCost(int newCost)
+{
+    if (m_cost == newCost)
+        return;
+    m_cost = newCost;
+    emit costChanged();
+}
+
+bool TrickEdit::isNew() const
+{
+    return m_isNew;
 }

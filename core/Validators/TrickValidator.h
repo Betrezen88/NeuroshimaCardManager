@@ -14,7 +14,7 @@ public:
     explicit TrickValidator(QObject *parent = nullptr);
     explicit TrickValidator(StatsEditor* statsEditor, QObject *parent = nullptr);
 
-    bool trickMeetsRequirements(TrickEdit* trick);
+    void trickMeetsRequirements(TrickEdit* trick);
 
 private:
     bool meetsAttributes(const QVector<Requirement*>& requirements);

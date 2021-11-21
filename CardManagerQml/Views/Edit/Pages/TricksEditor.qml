@@ -29,11 +29,12 @@ Page {
                 width: (main.width/2) - parent.spacing - 5
                 height: main.height
                 delegate: TrickDelegate {
-                    buyBtnVisible: false
+                    heroTrick: true
                     trickData: modelData
                     width: _tricks.width
                     onShowDetails: {
                         _trickDetails.trickData = trickData
+                        _trickDetails.buyBtnVisible = false
                         _trickDetails.open()
                     }
                 }
@@ -80,11 +81,12 @@ Page {
                     width: (main.width/2) - parent.spacing - 5
                     height: main.height - _filter.height - _search.height - (parent.spacing*2)
                     delegate: TrickDelegate {
-                        buyBtnVisible: true
+                        heroTrick: false
                         trickData: modelData
                         width: _availableTricks.width
                         onShowDetails: {
                             _trickDetails.trickData = trickData
+                            _trickDetails.buyBtnVisible = true
                             _trickDetails.open()
                         }
                     }
@@ -93,20 +95,31 @@ Page {
         } // Row
     } // ScrollView
 
+    NSTricksEditModel {
+        id: _tricksModel
+    }
+
     TrickDetails {
         id: _trickDetails
         width: main.width - 50
         height: main.height - 50
         anchors.centerIn: Overlay.overlay
-    }
-
-    NSTricksEditModel {
-        id: _tricksModel
+        onBuyTrick: {
+            main.statsEditor.addTrick( trickData )
+            _tricksModel.refreashTricks()
+        }
+        onSellTrick: {
+            main.statsEditor.removeTrick( trickData )
+            _tricksModel.refreashTricks()
+        }
     }
 
     onStatsEditorChanged: {
         _tricksModel.modelChanged.connect(function(){
             _availableTricks.model = _tricksModel.model
+        })
+        main.statsEditor.tricksChanged.connect(function(){
+            _tricks.model = main.statsEditor.tricks
         })
 
         _tricksModel.init( statsEditor, ":/json/resources/json/Tricks.json" )

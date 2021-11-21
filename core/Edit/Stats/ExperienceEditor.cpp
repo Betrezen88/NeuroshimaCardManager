@@ -76,6 +76,21 @@ int ExperienceEditor::reputationCost() const
     return m_reputationCost;
 }
 
+void ExperienceEditor::trickBougth()
+{
+    increaseSpended( m_trickCost.second );
+}
+
+void ExperienceEditor::trickSold()
+{
+    decreaseSpended( m_trickCost.second );
+}
+
+int ExperienceEditor::trickCost()
+{
+    return m_trickCost.second;
+}
+
 bool ExperienceEditor::isAttributeAfordable(const int level) const
 {
     return attributeCost(level) <= available();
@@ -97,6 +112,11 @@ bool ExperienceEditor::isReputationAffordable() const
 {
     return m_reputationCost <= available()
             && m_reputationPoints.first < m_reputationPoints.second;
+}
+
+bool ExperienceEditor::isTrickAffordable() const
+{
+    return available() >= m_trickCost.second;
 }
 
 void ExperienceEditor::attributeIncreased(const int level)

@@ -209,6 +209,23 @@ void StatsEditor::clearUsed()
     }
 }
 
+void StatsEditor::addTrick(TrickEdit *trick)
+{
+//    m_data.tricks.push_back(  );
+    m_tricks.push_back( new TrickEdit(trick->data(), true, this) );
+    m_pExpEditor->trickBougth();
+
+    emit tricksChanged();
+}
+
+void StatsEditor::removeTrick(TrickEdit *trick)
+{
+    m_tricks.removeOne( trick );
+    m_pExpEditor->trickSold();
+
+    emit tricksChanged();
+}
+
 void StatsEditor::setAffordableStats()
 {
     for ( AttributeEdit* pAttribute : m_attributes ) {
@@ -237,6 +254,11 @@ void StatsEditor::setAffordableStats()
     for ( ReputationEdit* pReputation : m_reputation ) {
         pReputation->setIsAffordable( m_pExpEditor->isReputationAffordable() );
         pReputation->setCost( m_pExpEditor->reputationCost() );
+    }
+
+    for ( TrickEdit* pTrick : m_tricks ) {
+        pTrick->setIsAffordable( m_pExpEditor->isTrickAffordable() );
+        pTrick->setCost( m_pExpEditor->trickCost() );
     }
 }
 

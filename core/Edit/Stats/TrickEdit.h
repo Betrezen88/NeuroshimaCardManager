@@ -17,10 +17,14 @@ class CORE_EXPORT TrickEdit : public QObject
     Q_PROPERTY(QString action READ action CONSTANT)
     Q_PROPERTY(QQmlListProperty<Requirement> requirements READ requirements CONSTANT)
     Q_PROPERTY(bool meetsRequirements READ meetsRequirements NOTIFY meetsRequirementsChanged)
+    Q_PROPERTY(bool isNew READ isNew CONSTANT)
+    Q_PROPERTY(bool isAffordable READ isAffordable WRITE setIsAffordable NOTIFY isAffordableChanged)
+    Q_PROPERTY(int cost READ cost WRITE setCost NOTIFY costChanged)
 
 public:
     explicit TrickEdit(QObject *parent = nullptr);
     explicit TrickEdit(const TrickData& data, QObject* parent = nullptr);
+    explicit TrickEdit(const TrickData& data, const bool isNew, QObject* parent = nullptr);
 
     const QString &name() const;
     const QString &description() const;
@@ -36,8 +40,19 @@ public:
     bool meetsRequirements() const;
     void setMeetsRequirements(const bool meetsRequirements);
 
+    const TrickData& data() const;
+
+    bool isAffordable() const;
+    void setIsAffordable(bool newIsAffordable);
+
+    int cost() const;
+    void setCost(int newCost);
+    bool isNew() const;
+
 signals:
     void meetsRequirementsChanged();
+    void isAffordableChanged();
+    void costChanged();
 
 private:
     static int requirementCount(QQmlListProperty<Requirement>* list);
@@ -46,8 +61,10 @@ private:
 private:
     TrickData m_data;
     QVector<Requirement*> m_requirements;
-    bool m_meetsRequirements;
-    //bool m_isNew;
+    bool m_meetsRequirements{false};
+    bool m_isNew{false};
+    bool m_isAffordable{false};
+    int m_cost{0};
 };
 
 #endif // TRICKEDIT_H

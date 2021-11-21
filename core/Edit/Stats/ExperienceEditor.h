@@ -36,6 +36,7 @@ public slots:
     bool isSkillAfordable(const int level, const QStringList& specializations) const;
     bool isOtherSkillAfordable(const int level) const;
     bool isReputationAffordable() const;
+    bool isTrickAffordable() const;
 
     void attributeIncreased(const int level);
     void attributeDecreased(const int level);
@@ -55,6 +56,10 @@ public slots:
     int attributeCost(const int level) const;
     int skillCost(const int level, const bool discount) const;
     int reputationCost() const;
+
+    void trickBougth();
+    void trickSold();
+    int trickCost();
 
 private slots:
     void checkIfNewSkillIsAffortable();
