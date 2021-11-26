@@ -135,6 +135,8 @@ Popup {
         Button {
             id: _buyBtn
             text: qsTr("Kup")
+            ToolTip.visible: hovered
+            ToolTip.text: "-" + ((main.trickData != null) ? main.trickData.cost : 0)
             onClicked: {
                 main.buyTrick(main.trickData)
                 main.close()
@@ -144,6 +146,8 @@ Popup {
         Button {
             id: _sellBtn
             text: qsTr("Sprzedaj")
+            ToolTip.visible: hovered
+            ToolTip.text: "+" + ((main.trickData != null) ? main.trickData.cost : 0)
             onClicked: {
                 main.sellTrick(main.trickData)
                 main.close()
@@ -152,6 +156,9 @@ Popup {
     }
 
     onTrickDataChanged: {
+        if ( trickData == null )
+            return
+
         _title.text = trickData.name
         _requirements.model = trickData.requirements
         _description.text = trickData.description

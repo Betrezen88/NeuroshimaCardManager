@@ -2,6 +2,7 @@
 
 #include "../Edit/Pages/StatsEditor.h"
 #include "../Edit/Stats/TrickEdit.h"
+#include "../Edit/Stats/ExperienceEditor.h"
 #include "../Utils/DataReader.h"
 #include "../Validators/TrickValidator.h"
 
@@ -141,11 +142,18 @@ void TricksEditModel::loadTricks(const QString &file)
             requirements.push_back( req );
         }
 
-        m_fullModel.push_back( new TrickEdit({.name = trick.value("name").toString(),
-                                .description = trick.value("description").toString(),
-                                .action = trick.value("action").toString(),
-                                .requirements = requirements}, this) );
-        validator.trickMeetsRequirements( m_fullModel.last() );
+        TrickEdit* pTrick = new TrickEdit({.name = trick.value("name").toString(),
+                                           .description = trick.value("description").toString(),
+                                           .action = trick.value("action").toString(),
+                                           .requirements = requirements});
+
+        connect( m_pStatsEditor->experience(),
+                 &ExperienceEditor::isNewTrickAffortableChanged,
+                 this, &TricksEditModel::checkAffordability );
+
+        pTrick->setCost( m_pStatsEditor->experience()->trickCost() );
+        validator.trickMeetsRequirements( pTrick );
+        m_fullModel.push_back( pTrick );
     }
     showAvailable( m_onlyAvailable );
 }
@@ -172,6 +180,7 @@ void TricksEditModel::sort(const bool ascending)
 
 void TricksEditModel::refreashTricks()
 {
+    validateTricks();
     showAvailable( m_onlyAvailable );
 }
 
