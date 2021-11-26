@@ -152,6 +152,7 @@ void TricksEditModel::loadTricks(const QString &file)
                  this, &TricksEditModel::checkAffordability );
 
         pTrick->setCost( m_pStatsEditor->experience()->trickCost() );
+        pTrick->setIsAffordable( m_pStatsEditor->experience()->isTrickAffordable() );
         validator.trickMeetsRequirements( pTrick );
         m_fullModel.push_back( pTrick );
     }
@@ -181,6 +182,7 @@ void TricksEditModel::sort(const bool ascending)
 void TricksEditModel::refreashTricks()
 {
     validateTricks();
+    checkAffordability();
     showAvailable( m_onlyAvailable );
 }
 
@@ -197,6 +199,12 @@ void TricksEditModel::removeDoubles()
                    }),
                    m_model.end());
     emit modelChanged();
+}
+
+void TricksEditModel::checkAffordability()
+{
+    for ( TrickEdit* trick : m_fullModel )
+        trick->setIsAffordable( m_pStatsEditor->experience()->isTrickAffordable() );
 }
 
 int TricksEditModel::modelCount(QQmlListProperty<TrickEdit> *list)

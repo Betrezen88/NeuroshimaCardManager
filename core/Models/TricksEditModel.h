@@ -61,6 +61,7 @@ private slots:
     void validateTricks();
     void sort(const bool ascending);
     void removeDoubles();
+    void checkAffordability();
 
 private:
     static int modelCount(QQmlListProperty<TrickEdit>* list);

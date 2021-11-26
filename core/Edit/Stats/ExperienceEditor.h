@@ -14,6 +14,7 @@ class CORE_EXPORT ExperienceEditor : public QObject
     Q_PROPERTY(int available READ available NOTIFY availableChanged)
     Q_PROPERTY(int spended READ spended NOTIFY spendedChanged)
     Q_PROPERTY(bool isNewSkillAffortable READ isNewSkillAffortable NOTIFY isNewSkillAffortableChanged)
+    Q_PROPERTY(bool isNewTrickAffortable READ isNewTrickAffortable NOTIFY isNewTrickAffortableChanged)
 
 public:
     explicit ExperienceEditor(QObject *parent = nullptr);
@@ -25,11 +26,13 @@ public:
     int available() const;
     int spended() const;
     bool isNewSkillAffortable() const;
+    bool isNewTrickAffortable() const;
 
 signals:
     void availableChanged();
     void spendedChanged();
     void isNewSkillAffortableChanged();
+    void isNewTrickAffortableChanged();
 
 public slots:
     bool isAttributeAfordable(const int level) const;
@@ -63,6 +66,7 @@ public slots:
 
 private slots:
     void checkIfNewSkillIsAffortable();
+    void checkIfNewTrickIsAffortable();
 
 private:
     void loadCostData(const QString& costFile);
@@ -78,12 +82,15 @@ private:
     QVector<int> m_skillCost;
     QVector<int> m_attributeCost;
 
-    int m_reputationCost;
+    int m_reputationCost{0};
     QPair<int, int> m_reputationPoints;
-    QPair<int, int> m_trickCost;
+
+    int m_trickCost{0};
+    QPair<int, int> m_trickPoints;
 
     const double m_discount{0.2};
-    bool m_isNewSkillAffortable;
+    bool m_isNewSkillAffortable{false};
+    bool m_isNewTrickAffortable{false};
 };
 
 #endif // EXPERIENCEEDITOR_H

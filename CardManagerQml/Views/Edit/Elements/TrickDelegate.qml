@@ -31,7 +31,7 @@ Rectangle {
     onTrickDataChanged: {
         _title.text = trickData.name
 
-        main.color = (!heroTrick && !trickData.meetsRequirements)
+        main.color = (!heroTrick && !trickData.canBeBougth())
                 ? "#a24c4c" // red
                 : (heroTrick && !trickData.isNew)
                   ? "lightgray"

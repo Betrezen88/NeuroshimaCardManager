@@ -9,6 +9,15 @@
 
 #include "core_global.h"
 
+/*
+TODO: ? Replace isNew with enum
+State {
+    BOUGTH,
+    NEWLY_BOUGTH,
+    TO_BUY
+}
+*/
+
 class CORE_EXPORT TrickEdit : public QObject
 {
     Q_OBJECT
@@ -53,6 +62,9 @@ signals:
     void meetsRequirementsChanged();
     void isAffordableChanged();
     void costChanged();
+
+public slots:
+    bool canBeBougth() const;
 
 private:
     static int requirementCount(QQmlListProperty<Requirement>* list);

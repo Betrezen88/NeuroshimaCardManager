@@ -135,3 +135,8 @@ bool TrickEdit::isNew() const
 {
     return m_isNew;
 }
+
+bool TrickEdit::canBeBougth() const
+{
+    return m_meetsRequirements && m_isAffordable;
+}

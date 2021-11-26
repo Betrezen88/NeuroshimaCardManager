@@ -24,6 +24,8 @@ ExperienceEditor::ExperienceEditor(const QString &costFile,
 {
     connect( this, &ExperienceEditor::availableChanged,
              this, &ExperienceEditor::checkIfNewSkillIsAffortable );
+    connect( this, &ExperienceEditor::availableChanged,
+             this, &ExperienceEditor::checkIfNewTrickIsAffortable );
 
     loadCostData( m_costFile );
     checkIfNewSkillIsAffortable();
@@ -78,17 +80,21 @@ int ExperienceEditor::reputationCost() const
 
 void ExperienceEditor::trickBougth()
 {
-    increaseSpended( m_trickCost.second );
+    increaseSpended( m_trickCost );
+    ++m_trickPoints.first;
+    checkIfNewTrickIsAffortable();
 }
 
 void ExperienceEditor::trickSold()
 {
-    decreaseSpended( m_trickCost.second );
+    decreaseSpended( m_trickCost );
+    --m_trickPoints.first;
+    checkIfNewTrickIsAffortable();
 }
 
 int ExperienceEditor::trickCost()
 {
-    return m_trickCost.second;
+    return m_trickCost;
 }
 
 bool ExperienceEditor::isAttributeAfordable(const int level) const
@@ -116,7 +122,7 @@ bool ExperienceEditor::isReputationAffordable() const
 
 bool ExperienceEditor::isTrickAffordable() const
 {
-    return available() >= m_trickCost.second;
+    return available() >= m_trickCost && m_trickPoints.first < m_trickPoints.second;
 }
 
 void ExperienceEditor::attributeIncreased(const int level)
@@ -185,6 +191,13 @@ void ExperienceEditor::checkIfNewSkillIsAffortable()
     emit isNewSkillAffortableChanged();
 }
 
+void ExperienceEditor::checkIfNewTrickIsAffortable()
+{
+    m_isNewTrickAffortable = m_trickCost <= available()
+            && m_trickPoints.first < m_trickPoints.second;
+    emit isNewTrickAffortableChanged();
+}
+
 void ExperienceEditor::loadCostData(const QString& costFile)
 {
     DataReader reader;
@@ -212,8 +225,9 @@ void ExperienceEditor::loadCostData(const QString& costFile)
     m_reputationCost = reputationCost.value("cost").toInt();
 
     const QJsonObject& trickCost = json.value("trick").toObject();
-    m_trickCost.first = trickCost.value("max").toInt();
-    m_trickCost.second = trickCost.value("cost").toInt();
+    m_trickPoints.first = 0;
+    m_trickPoints.second = trickCost.value("max").toInt();
+    m_trickCost = trickCost.value("cost").toInt();
 }
 
 int ExperienceEditor::calculateDiscount(const int cost) const
@@ -224,4 +238,9 @@ int ExperienceEditor::calculateDiscount(const int cost) const
 bool ExperienceEditor::isNewSkillAffortable() const
 {
     return m_isNewSkillAffortable;
+}
+
+bool ExperienceEditor::isNewTrickAffortable() const
+{
+    return m_isNewTrickAffortable;
 }

@@ -164,6 +164,7 @@ Popup {
         _description.text = trickData.description
         _action.text = trickData.action
         _sellBtn.visible = trickData.isNew
+        _buyBtn.enabled = trickData.canBeBougth()
     }
 
     onBuyBtnVisibleChanged: _buyBtn.visible = buyBtnVisible
