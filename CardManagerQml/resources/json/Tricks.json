@@ -239,7 +239,7 @@
                 "type": "skill"
             },
             {
-                "name": "Persfazja",
+                "name": "Perswazja",
                 "value": 2,
                 "optional": false,
                 "type": "skill"
@@ -309,7 +309,7 @@
                 "type": "skill"
             },
             {
-                "name": "Wozy Bojowe",
+                "name": "Wozy bojowe",
                 "value": 3,
                 "optional": true,
                 "type": "skill"
@@ -2403,7 +2403,7 @@
                 "type": "skill"
             },
             {
-                "name": "Broń Ręczna",
+                "name": "Broń ręczna",
                 "value": 5,
                 "optional": true,
                 "type": "skill"
