@@ -1,6 +1,8 @@
 # NeuroshimaCardManager
 
+### Technology
 
+Qt version: 5.15.2
 
 ### How to deploy app ?
 
