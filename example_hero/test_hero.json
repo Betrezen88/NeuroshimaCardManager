@@ -8,39 +8,8 @@
                 "QUANTITY": 1,
                 "STATS": {
                     "DURABILITY": {
-                        "current": 1,
-                        "max": 3
-                    },
-                    "LOCATIONS": [
-                        {
-                            "ARMOR": 1,
-                            "CUTTING": 0,
-                            "NAME": "Głowa"
-                        }
-                    ]
-                },
-                "TYPE": "ARMOR"
-            }
-        ],
-        "backpack": [
-            {
-                "DESCRIPTION": "Zwitek bibułki z tytoniem. Niewielki gambel",
-                "NAME": "Papieros",
-                "PRICE": 1,
-                "QUANTITY": 1,
-                "STATS": {
-                },
-                "TYPE": "OTHER"
-            },
-            {
-                "DESCRIPTION": "Wojskowy hełm kewlarowy w kolorach pustynnego moro.",
-                "NAME": "Hełm Kewlarowy",
-                "PRICE": 20,
-                "QUANTITY": 1,
-                "STATS": {
-                    "DURABILITY": {
-                        "current": 1,
-                        "max": 3
+                        "CURRENT": 4,
+                        "MAX": 4
                     },
                     "LOCATIONS": [
                         {
@@ -59,8 +28,8 @@
                 "QUANTITY": 1,
                 "STATS": {
                     "DURABILITY": {
-                        "current": 2,
-                        "max": 3
+                        "CURRENT": 4,
+                        "MAX": 10
                     },
                     "FEATURES": [
                         {
@@ -104,6 +73,33 @@
                     ]
                 },
                 "TYPE": "ARMOR"
+            }
+        ],
+        "backpack": [
+            {
+                "DESCRIPTION": "Zwitek bibułki z tytoniem. Niewielki gambel",
+                "NAME": "Papieros",
+                "PRICE": 1,
+                "QUANTITY": 1,
+                "STATS": {
+                },
+                "TYPE": "OTHER"
+            },
+            {
+                "DESCRIPTION": "Wojskowy hełm kewlarowy w kolorach pustynnego moro.",
+                "NAME": "Hełm Kewlarowy",
+                "PRICE": 20,
+                "QUANTITY": 1,
+                "STATS": {
+                    "LOCATIONS": [
+                        {
+                            "ARMOR": 1,
+                            "CUTTING": 0,
+                            "NAME": "Głowa"
+                        }
+                    ]
+                },
+                "TYPE": "ARMOR"
             },
             {
                 "DESCRIPTION": "Kaseta VHS z filmem Krwawy Sport.",
@@ -131,7 +127,7 @@
                 "DESCRIPTION": "Prosty nóż kuchenny.",
                 "NAME": "Nóż",
                 "PRICE": 5,
-                "QUANTITY": 1,
+                "QUANTITY": 4,
                 "STATS": {
                     "DAMAGE": [
                         "Draścięnie",
@@ -151,6 +147,15 @@
                     "PENETRATION": 1
                 },
                 "TYPE": "HANDWEAPON"
+            },
+            {
+                "DESCRIPTION": "Uszczelki, śrubki, itp.",
+                "NAME": "Części mechaniczne",
+                "PRICE": 5,
+                "QUANTITY": 5,
+                "STATS": {
+                },
+                "TYPE": "OTHER"
             }
         ],
         "supplies": {
@@ -173,13 +178,7 @@
                     "JAM": 18,
                     "MAGAZINE": 11,
                     "PENETRATION": 1,
-                    "REPUTATION": 1,
-                    "REQUIREMENT": {
-                        "name": "Budowa",
-                        "optional": false,
-                        "type": "ATTRIBUTE",
-                        "value": 12
-                    }
+                    "REPUTATION": 1
                 },
                 "TYPE": "RANGEDWEAPON"
             },
@@ -227,49 +226,43 @@
                             "NAME": "Grupa",
                             "VALUE": 1
                         }
-                    ],
-                    "REQUIREMENT": {
-                        "name": "Budowa",
-                        "optional": false,
-                        "type": "ATTRIBUTE",
-                        "value": 12
-                    }
+                    ]
                 },
                 "TYPE": "HANDWEAPON"
             }
         ]
     },
     "notes": {
-        "biography": "",
-        "notes": "",
+        "biography": "aaaaaaaaaaaa",
+        "notes": "ssssssssssssssssssssssss",
         "questions": [
             {
-                "answer": "",
+                "answer": "dobrze",
                 "question": "Jest późny wieczór, od zachodu zbliża się wichura, pierwsze podmuchy poruszają konarami skarłowaciałych drzew. Wyłaniasz się zza załomu muru, przekraczasz ulicę i wchodzisz do knajpy. Panujący w niej zgiełk ustaje, a zgromadzeni wewnątrz dostrzegają...",
                 "subquestion": "Jak wyglądasz? Jak się poruszasz, jak spoglądasz? Jesteś wysoki czy niski, ubierasz się niechlujnie czy szpanersko? Broń jest widoczna czy ukryta pod płaszczem? jesteś pewny siebie czy raczej czujnym wzrokiem spoglądasz w stronę nieznajomych?"
             },
             {
-                "answer": "",
+                "answer": "Jak zabijaka.",
                 "question": "Siedzisz przy barze, rozglądając się po zniszczonych, poprzecinanych seriami pocisków ścianach. W pewnym momencie dosiada się facet o krzywym spojrzeniu i stawia Ci piwo. Co robisz?",
                 "subquestion": "Jesteś kontaktowy czy mrukliwy? Łatwo nawiązujesz przyjaźnie czy raczej jesteś nieufny? A może Twój styl bycia sprawia, że takie patałachy nigdy się do Ciebie nie dostają? Gaasz jak najęty czy cedzisz słowa jak Clint Eastwood?"
             },
             {
-                "answer": "",
+                "answer": "Zero uczuć.",
                 "question": "W końcu jeden z tych palantów podchodzi do jakiejś laski i bez słowa uderza ją w twarz. Panienka przewraca się na ziemię, on kopie ją, a nastepnie łapie za włosy i wyciąga na zewnątrz knajpy. I co Ty na to?",
                 "subquestion": "Jak z uczuciami? Wiesz co to litość? Jesteś brutalny czy delikatny? Co sądzisz o przemocy? Zabiłeś już kogoś czy nie? Masz jakieś zasady morlane? No jak, co z Tobą?"
             },
             {
-                "answer": "",
+                "answer": "Nie pamiętam.",
                 "question": "Zamieszanie się kończy, sączysz piwo, cicha muzyka uspokaja Cię. Wracasz wspomnieniami do dawnych dni, do czasów młodości. Wspominasz rodzinę...",
                 "subquestion": "Jakie masz nastawienie do tradycji i rodziny? Co sądzisz o swoim ojcu i matce? Masz rodzeństwo? Jesteś samotny czy może gdzieś daleko stąd ktoś na Ciebie czeka?"
             },
             {
-                "answer": "",
+                "answer": "Pies.",
                 "question": "Przypominają Ci się słowa Twojego ojca. Możesz je powtórzyć?",
                 "subquestion": "Czy Twój ojciec, lub ktoś inny, bardzo dla Ciebie ważny, czegoś Cię nauczył? Zdradził Ci jakąś mądrość, prawdę życiową? Jest coś, za co go wyjątkowo szanujesz? Chciałbyś być taki jak on?"
             },
             {
-                "answer": "",
+                "answer": "Trochę.",
                 "question": "Nagle spokój zostaje brutalnie przerwany hukiem wystrzału. Ktoś kogoś postrzelił, teraz wychodzą na zewnątrz, słychać krzyki, jeszcze jeden huk wystrzału. Ktoś własnie kopnął w kalendarz. Dobrze, że to nie Ty, co?",
                 "subquestion": "Boisz się śmierci? Jak reagujesz w sytuacjach niebezpiecznych? Mięknie Ci rura czy dalej jesteś hardy? Myślisz czasami o końcu? Masz jakiś cel, który chciałbyś osiągnąć zanim wyciągniesz kopyta?"
             }
@@ -309,18 +302,18 @@
                         "name": "Jeździectwo",
                         "skills": [
                             {
-                                "name": "Jazda Konna",
-                                "used": true,
+                                "name": "Jazda konna",
+                                "used": false,
                                 "value": 1
                             },
                             {
                                 "name": "Powożenie",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             },
                             {
                                 "name": "Ujeżdżanie",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             }
                         ],
@@ -340,17 +333,17 @@
                         "skills": [
                             {
                                 "name": "Bijatyka",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             },
                             {
                                 "name": "Rzucanie",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             },
                             {
-                                "name": "Broń biała",
-                                "used": true,
+                                "name": "Broń ręczna",
+                                "used": false,
                                 "value": 1
                             }
                         ],
@@ -364,17 +357,17 @@
                         "skills": [
                             {
                                 "name": "Samochód",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             },
                             {
                                 "name": "Motocykl",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             },
                             {
                                 "name": "Ciężarówka",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             }
                         ],
@@ -388,17 +381,17 @@
                         "skills": [
                             {
                                 "name": "Kradzież kieszonkowa",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             },
                             {
                                 "name": "Otwieranie zamków",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             },
                             {
                                 "name": "Zwinne dłonie",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             }
                         ],
@@ -412,17 +405,17 @@
                         "skills": [
                             {
                                 "name": "Pistolety",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             },
                             {
                                 "name": "Karabiny",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             },
                             {
                                 "name": "Broń maszynowa",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             }
                         ],
@@ -436,17 +429,17 @@
                         "skills": [
                             {
                                 "name": "Łuk",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             },
                             {
                                 "name": "Kusza",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             },
                             {
                                 "name": "Proca",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             }
                         ],
@@ -467,17 +460,17 @@
                         "skills": [
                             {
                                 "name": "Zastraszanie",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             },
                             {
                                 "name": "Perswazja",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             },
                             {
                                 "name": "Zdolności przywódcze",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             }
                         ],
@@ -515,17 +508,17 @@
                         "skills": [
                             {
                                 "name": "Odporność na ból",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             },
                             {
                                 "name": "Niezłomność",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             },
                             {
                                 "name": "Morale",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             }
                         ],
@@ -545,17 +538,17 @@
                         "skills": [
                             {
                                 "name": "Wyczucie kierunku",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             },
                             {
                                 "name": "Przygotowanie pułapki",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             },
                             {
                                 "name": "Tropienie",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             }
                         ],
@@ -569,17 +562,17 @@
                         "skills": [
                             {
                                 "name": "Nasłuchiwanie",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             },
                             {
                                 "name": "Wypatrywanie",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             },
                             {
                                 "name": "Czujność",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             }
                         ],
@@ -593,17 +586,17 @@
                         "skills": [
                             {
                                 "name": "Skradanie się",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             },
                             {
                                 "name": "Ukrywanie się",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             },
                             {
                                 "name": "Maskowanie",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             }
                         ],
@@ -618,17 +611,17 @@
                         "skills": [
                             {
                                 "name": "Łowiectwo",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             },
                             {
                                 "name": "Znajomość terenu",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             },
                             {
                                 "name": "Zdobywanie wody",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             }
                         ],
@@ -648,17 +641,17 @@
                         "skills": [
                             {
                                 "name": "Leczenie chorób",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             },
                             {
                                 "name": "Leczenie ran",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             },
                             {
                                 "name": "Pierwsza pomoc",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             }
                         ],
@@ -673,17 +666,17 @@
                         "skills": [
                             {
                                 "name": "Mechanika",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             },
                             {
                                 "name": "Elektronika",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             },
                             {
                                 "name": "Komputery",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             }
                         ],
@@ -697,17 +690,17 @@
                         "skills": [
                             {
                                 "name": "Historia",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             },
                             {
                                 "name": "Biologia",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             },
                             {
                                 "name": "Chemia",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             }
                         ],
@@ -745,17 +738,17 @@
                         "skills": [
                             {
                                 "name": "Rusznikarstwo",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             },
                             {
                                 "name": "Wyrzutnie",
-                                "used": true,
+                                "used": false,
                                 "value": 1
                             },
                             {
-                                "name": "Mat. Wybuchowe",
-                                "used": true,
+                                "name": "Mat. wybuchowe",
+                                "used": false,
                                 "value": 1
                             }
                         ],
@@ -769,8 +762,8 @@
             }
         ],
         "experience": {
-            "gathered": 1500,
-            "spended": 1480
+            "gathered": 1700,
+            "spended": 100
         },
         "otherSkills": [
             {
@@ -822,11 +815,99 @@
                 "name": "Najemnik"
             },
             "reputation": [
-                {
-                    "name": "Vegas",
-                    "value": 1
-                }
-            ],
+				{
+					"name": "Kalifornia",
+					"value": 1
+				},
+				{
+					"name": "Nevada",
+					"value": 1
+				},
+				{
+					"name": "Vegas",
+					"value": 1
+				},
+				{
+					"name": "Południowa Hegemonia",
+					"value": 1
+				},
+				{
+					"name": "Meksyk",
+					"value": 1
+				},
+				{
+					"name": "Salt Lake City",
+					"value": 1
+				},
+				{
+					"name": "Wyoming",
+					"value": 1
+				},
+				{
+					"name": "Kolorado",
+					"value": 1
+				},
+				{
+					"name": "Nebraska",
+					"value": 1
+				},
+				{
+					"name": "Kansas i Oklahoma",
+					"value": 1
+				},
+				{
+					"name": "Teksas",
+					"value": 1
+				},
+				{
+					"name": "Minnesota",
+					"value": 1
+				},
+				{
+					"name": "Iowa",
+					"value": 1
+				},
+				{
+					"name": "Missouri",
+					"value": 1
+				},
+				{
+					"name": "Missisipi",
+					"value": 1
+				},
+				{
+					"name": "Wisconsin",
+					"value": 1
+				},
+				{
+					"name": "Illinois",
+					"value": 1
+				},
+				{
+					"name": "Federacja Apallachów",
+					"value": 1
+				},
+				{
+					"name": "Georgia",
+					"value": 1
+				},
+				{
+					"name": "Miami",
+					"value": 1
+				},
+				{
+					"name": "Detroit",
+					"value": 1
+				},
+				{
+					"name": "Nowy Jork",
+					"value": 1
+				},
+				{
+					"name": "Karolina",
+					"value": 1
+				}
+			],
             "specialization": {
                 "description": "Różne są umiejętności, jedni wspaniale gotują, inni potrafią grać na gitarze. Ty potrafisz walczyć. Jesteś w tym dobry. Jeden z najlepszych. Rozwalić ośmiu palantów bez zmiany magazynka? To proste. Odstrzelić łeb facetowi ochranianemu przez zgraję ochroniarzy, mając w Glocku jeden pocisk? To da radę zrobić. Wylatując z piątego piętra obrócić się w powietrzu i odstrzelić łby dwójce kretynów, nim zrzucą za Tobą granat? Tak...",
                 "name": "Wojownik"
@@ -853,6 +934,23 @@
                 "name": "Asekuracja",
                 "requirements": [
                 ]
+            }
+        ],
+        "wounds": [
+            {
+                "location": "Głowa",
+                "modifier": 10,
+                "type": "Draśnięcie"
+            },
+            {
+                "location": "Głowa",
+                "modifier": 10,
+                "type": "Draśnięcie"
+            },
+            {
+                "location": "Tułów",
+                "modifier": 30,
+                "type": "Ciężka"
             }
         ]
     }
