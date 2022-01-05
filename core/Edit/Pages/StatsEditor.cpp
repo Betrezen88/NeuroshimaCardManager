@@ -34,8 +34,8 @@ QHash<QString, SkillEdit *> StatsEditor::skills() const
 {
     QHash<QString, SkillEdit*> skills;
     for ( AttributeEdit* attribute : m_attributes ) {
-        for ( SkillpackEdit* skillpack : attribute->m_skillpacks )
-            for ( SkillEdit* skill : skillpack->m_skills )
+        for ( SkillpackEdit* skillpack : qAsConst(attribute->m_skillpacks) )
+            for ( SkillEdit* skill : qAsConst(skillpack->m_skills) )
                 skills.insert( skill->name(), skill );
     }
     return skills;
@@ -112,7 +112,7 @@ bool StatsEditor::hasTrick(const QString &name) const
 
 AttributeEdit *StatsEditor::attribute(const QString &name)
 {
-    for ( AttributeEdit* pAttribute : m_attributes )
+    for ( AttributeEdit* pAttribute : qAsConst(m_attributes) )
         if ( name == pAttribute->name() )
             return pAttribute;
 
@@ -123,7 +123,7 @@ QStringList StatsEditor::attributesNames() const
 {
     QStringList names;
 
-    for ( AttributeEdit* pAttribute : m_attributes )
+    for ( AttributeEdit* pAttribute : qAsConst(m_attributes) )
         names.push_back( pAttribute->name() );
 
     return names;
@@ -190,7 +190,7 @@ void StatsEditor::init(const StatsData &data,
     for ( ReputationData& reputation : m_data.reputation )
         m_reputation.push_back( new ReputationEdit(&reputation, this) );
 
-    for ( QSharedPointer<TrickData> trick : m_data.tricks )
+    for ( const QSharedPointer<TrickData> &trick : qAsConst(m_data.tricks) )
         m_tricks.push_back( new TrickEdit(*trick, this) );
 
 
@@ -200,7 +200,7 @@ void StatsEditor::init(const StatsData &data,
 
 void StatsEditor::clearUsed()
 {
-    for ( AttributeEdit* pAttribute : m_attributes ) {
+    for ( AttributeEdit* pAttribute : qAsConst(m_attributes) ) {
         for ( SkillpackEdit* pSkillpack : pAttribute->skillpackList() ) {
             for ( SkillEdit* pSkill : pSkillpack->skillList() ) {
                 pSkill->unuse();
@@ -234,7 +234,7 @@ void StatsEditor::removeTrick(TrickEdit *trick)
 
 void StatsEditor::setAffordableStats()
 {
-    for ( AttributeEdit* pAttribute : m_attributes ) {
+    for ( AttributeEdit* pAttribute : qAsConst(m_attributes) ) {
         pAttribute->setAffordable(
                     m_pExpEditor->isAttributeAfordable(pAttribute->max()) );
         pAttribute->setCost( m_pExpEditor->attributeCost(pAttribute->max()) );
@@ -252,17 +252,17 @@ void StatsEditor::setAffordableStats()
         }
     }
 
-    for ( OtherSkillEdit* pOtherSkill : m_otherSkills ) {
+    for ( OtherSkillEdit* pOtherSkill : qAsConst(m_otherSkills) ) {
         pOtherSkill->setIsAffordable( m_pExpEditor->isOtherSkillAfordable(pOtherSkill->max()) );
         pOtherSkill->setCost( m_pExpEditor->skillCost(pOtherSkill->max(), false) );
     }
 
-    for ( ReputationEdit* pReputation : m_reputation ) {
+    for ( ReputationEdit* pReputation : qAsConst(m_reputation) ) {
         pReputation->setIsAffordable( m_pExpEditor->isReputationAffordable() );
         pReputation->setCost( m_pExpEditor->reputationCost() );
     }
 
-    for ( TrickEdit* pTrick : m_tricks ) {
+    for ( TrickEdit* pTrick : qAsConst(m_tricks) ) {
         pTrick->setIsAffordable( m_pExpEditor->isTrickAffordable() );
         pTrick->setCost( m_pExpEditor->trickCost() );
     }
@@ -275,12 +275,18 @@ void StatsEditor::setStatsConnections()
                 m_pExpEditor, &ExperienceEditor::attributeIncreased);
         connect(pAttribute, &AttributeEdit::decreased,
                 m_pExpEditor, &ExperienceEditor::attributeDecreased);
+        connect(pAttribute, &AttributeEdit::valueChanged,
+                this, &StatsEditor::statsChanged);
 
         for ( SkillpackEdit* pSkillpack : pAttribute->skillpackList() ) {
             connect(pSkillpack, &SkillpackEdit::increased,
                     m_pExpEditor, &ExperienceEditor::skillIncreased);
             connect(pSkillpack, &SkillpackEdit::decreased,
                     m_pExpEditor, &ExperienceEditor::skillDecreased);
+            for ( SkillEdit* pSkill : pSkillpack->skillList() ) {
+                connect(pSkill, &SkillEdit::valueChanged,
+                        this, &StatsEditor::statsChanged);
+            }
         }
     }
 

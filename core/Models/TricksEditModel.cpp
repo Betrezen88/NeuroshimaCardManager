@@ -18,11 +18,11 @@ TricksEditModel::TricksEditModel(QObject *parent) : QObject(parent)
     connect( this, &TricksEditModel::sourceFileChanged,
              this, &TricksEditModel::loadTricks );
     connect( this, &TricksEditModel::statsChanged,
-             this, &TricksEditModel::validateTricks );
+             this, &TricksEditModel::refreashTricks );
     connect( this, &TricksEditModel::onlyAvailableChanged,
-             this, &TricksEditModel::showAvailable );
+             this, &TricksEditModel::refreashTricks );
     connect( this, &TricksEditModel::ascendingChanged,
-             this, &TricksEditModel::sort );
+             this, &TricksEditModel::refreashTricks );
     connect( this, &TricksEditModel::patternChanged,
              this, &TricksEditModel::filter );
 }
@@ -49,7 +49,16 @@ void TricksEditModel::setStats(StatsEditor *newStats)
 {
     if (m_pStatsEditor == newStats)
         return;
+
+    if (m_pStatsEditor)
+        disconnect(m_pStatsEditor, &StatsEditor::statsChanged,
+                   this, &TricksEditModel::refreashTricks);
+
     m_pStatsEditor = newStats;
+
+    connect(m_pStatsEditor, &StatsEditor::statsChanged,
+            this, &TricksEditModel::refreashTricks);
+
     emit statsChanged();
 }
 
@@ -78,9 +87,11 @@ void TricksEditModel::init(StatsEditor *statsEditor, const QString &sourceFile)
     m_pStatsEditor = statsEditor;
     m_sourceFile = sourceFile;
 
+    connect(m_pStatsEditor, &StatsEditor::statsChanged,
+            this, &TricksEditModel::refreashTricks);
+
     loadTricks( m_sourceFile );
-    removeDoubles();
-    validateTricks();
+    refreashTricks();
 }
 
 void TricksEditModel::showAvailable(const bool available)
@@ -94,14 +105,13 @@ void TricksEditModel::showAvailable(const bool available)
             m_model.push_back( trick );
     }
     sort( m_ascending );
-    removeDoubles();
 }
 
 void TricksEditModel::filter(const QString &pattern)
 {
     m_model.clear();
 
-    for ( TrickEdit* trick : m_fullModel ) {
+    for ( TrickEdit* trick : qAsConst(m_fullModel) ) {
         if ( m_onlyAvailable && trick->meetsRequirements()
             && trick->name().toUpper().contains(pattern.toUpper()) ) {
                  m_model.push_back( trick );
@@ -165,7 +175,7 @@ void TricksEditModel::validateTricks()
         return;
 
     TrickValidator validator(m_pStatsEditor, this);
-    for ( TrickEdit* trick : m_fullModel )
+    for ( TrickEdit* trick : qAsConst(m_fullModel) )
         validator.trickMeetsRequirements( trick );
 }
 
@@ -184,6 +194,8 @@ void TricksEditModel::refreashTricks()
     validateTricks();
     checkAffordability();
     showAvailable( m_onlyAvailable );
+    removeDoubles();
+    emit modelChanged();
 }
 
 void TricksEditModel::removeDoubles()
@@ -198,12 +210,11 @@ void TricksEditModel::removeDoubles()
                         return this->m_pStatsEditor->hasTrick( trick->name() );
                    }),
                    m_model.end());
-    emit modelChanged();
 }
 
 void TricksEditModel::checkAffordability()
 {
-    for ( TrickEdit* trick : m_fullModel )
+    for ( TrickEdit* trick : qAsConst(m_fullModel) )
         trick->setIsAffordable( m_pStatsEditor->experience()->isTrickAffordable() );
 }
 

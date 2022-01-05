@@ -64,6 +64,7 @@ public slots:
 signals:
     void otherSkillsChanged();
     void tricksChanged();
+    void statsChanged();
 
 private slots:
     void setAffordableStats();
