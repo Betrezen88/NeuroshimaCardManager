@@ -14,10 +14,7 @@ class CORE_EXPORT CardManager : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QQmlListProperty<Card> cards READ cards NOTIFY cardsChanged)
-    Q_PROPERTY(QString selectedCard
-               READ selectedCard
-               WRITE setSelectedCard
-               NOTIFY selectedCardChanged)
+    Q_PROPERTY(Card* selected READ selected NOTIFY selectedChanged)
 
 public:
     explicit CardManager(QObject *parent = nullptr);
@@ -28,23 +25,23 @@ public:
     Card *card(int index) const;
     void clearCards();
 
-    QString selectedCard() const;
-    void setSelectedCard(const QString &selectedCard);
+    Card *selected() const;
 
 signals:
     void cardsChanged();
-    void selectedCardChanged();
+    void selectedChanged();
     void errorMessage(const QString& title, const QString &message);
     void infoMessage(const QString& title, const QString& message);
 
 public slots:
-    Card *card(const QString &fileName) const;
-    Card* currentCard() const;
+    void showCard(const int index);
     void loadCard(const QString &filePath);
-    void closeCard(const QString &filePath);
+    void closeCard(const int index);
     void saveSelectedCard();
 
 private:
+    bool isCardLoaded(const QString &fileName);
+    void setSelected(Card* card);
     void createRulesPage(const QString& filePath);
 
     static void appendCard(QQmlListProperty<Card> *list, Card *card);
@@ -54,8 +51,7 @@ private:
 
 private:
     QVector<Card*> m_cards;
-    QStringList m_cardsFilePaths;
-    QString m_selectedCard;
+    Card* m_selected{nullptr};
     Page* m_pRulesPage{nullptr};
 };
 

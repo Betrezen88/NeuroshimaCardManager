@@ -236,8 +236,8 @@ Page {
             pageView.currentPage = ""
         }
 
-        if ( cardData !== "undefined" ) {
-            if ( cardData.stats !== null ) {
+        if ( cardData !== "undefined" && cardData != null ) {
+            if ( cardData.stats != null ) {
                 pageView.currentPage = "qrc:/Views/Card/Pages/Stats.qml"
             }
         }

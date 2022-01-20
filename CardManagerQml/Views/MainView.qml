@@ -202,9 +202,7 @@ Page {
                         icon.source: "qrc:/icon/resources/icons/close.svg"
                         height: parent.height
                         width: parent.height
-                        onClicked: {
-                            manager.cardManager.closeCard(cardItem.filePath)
-                        }
+                        onClicked: manager.cardManager.closeCard( index )
                     }
 
                     Rectangle {
@@ -224,31 +222,16 @@ Page {
                             onClicked: {
                                 sidePanel.close()
                                 if ( cardsList.currentIndex !== index ) {
+                                    manager.cardManager.showCard( index )
                                     cardsList.currentIndex = index
-                                    cardsView.cardData = manager.cardManager.card(cardItem.filePath)
-                                    manager.cardManager.selectedCard = cardItem.filePath
                                 }
                             }
                         }
-                    }
-                }
-            }
+                    } // Rectangle
+                } // Row
+            } // ItemDelegate
 
             model: manager.cardManager.cards
-
-            onCurrentIndexChanged: {
-                if ((currentIndex !== -1) && (currentIndex !== secCurrentIndex)) {
-                    console.log("MainView.qml onCurrentIndexChanged", currentIndex)
-
-                    if ( stackView.depth == 0 ) {
-                        stackView.push( "qrc:/Views/Card/CardsView.qml", {})
-                    }
-
-                    stackView.currentItem.cardData = manager.cardManager.card(cardsList.currentItem.filePath)
-                    manager.cardManager.selectedCard = cardsList.currentItem.filePath
-                    secCurrentIndex = currentIndex
-                }
-            }
         } // ListView
     }
 
@@ -375,6 +358,9 @@ Page {
             messageDialog.title = title
             messageDialog.text = message
             messageDialog.open()
+        }
+        function onSelectedChanged() {
+            cardsView.cardData = manager.cardManager.selected
         }
     }
 }

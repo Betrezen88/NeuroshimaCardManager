@@ -34,7 +34,10 @@ void CardManager::appendCard(Card *card)
     card->setParent(this);
 //    card->addPage(m_pRulesPage);
     m_cards.append(card);
-    m_cardsFilePaths.append(card->filePath());
+
+    if ( m_selected == nullptr )
+        setSelected( m_cards.first() );
+
     emit cardsChanged();
 }
 
@@ -74,37 +77,26 @@ void CardManager::clearCards(QQmlListProperty<Card> *list)
     reinterpret_cast<CardManager*>(list->data)->clearCards();
 }
 
-QString CardManager::selectedCard() const
+Card *CardManager::selected() const
 {
-    return m_selectedCard;
+    return m_selected;
 }
 
-void CardManager::setSelectedCard(const QString &selectedCard)
+void CardManager::showCard(const int index)
 {
-    if ( m_selectedCard == selectedCard )
+    if ( index < 0 || index >= m_cards.count() )
         return;
 
-    m_selectedCard = selectedCard;
-    emit selectedCardChanged();
-}
-
-Card *CardManager::card(const QString &fileName) const
-{
-    if ( !m_cardsFilePaths.contains(fileName) )
-        return nullptr;
-
-    return card(m_cardsFilePaths.indexOf(fileName));
-}
-
-Card *CardManager::currentCard() const
-{
-    return card(m_selectedCard);
+    setSelected( m_cards.at( index ) );
 }
 
 void CardManager::loadCard(const QString &filePath)
 {
     DataReader reader;
     QUrl file(filePath);
+
+    if ( isCardLoaded(file.toLocalFile()) )
+        return;
 
     std::tuple<bool, QJsonDocument, QString> data = reader.load( file.toLocalFile() );
 
@@ -118,24 +110,16 @@ void CardManager::loadCard(const QString &filePath)
     appendCard( builder.build(filePath, std::get<1>(data).object()) );
 }
 
-void CardManager::closeCard(const QString &filePath)
+void CardManager::closeCard(const int index)
 {
-    if ( !m_cardsFilePaths.contains(filePath) ) {
-        emit errorMessage("Błąd aplikacji", "Brak karty, którą chcesz zamknąć.");
+    if ( index < 0 || index >= m_cards.count() )
         return;
-    }
 
-    const int index = m_cardsFilePaths.indexOf(filePath);
-
-    m_cards.takeAt( index )->deleteLater();
-    m_cardsFilePaths.removeAt( index );
-
-    if ( 0 < m_cardsFilePaths.count() && filePath == m_selectedCard )
-        setSelectedCard( m_cardsFilePaths.first() );
-
-    qDebug() << "CardManager::closeCard()" << m_cards.count();
-
+    Card* toDelete = m_cards.takeAt( index );
     emit cardsChanged();
+
+    if ( m_selected == toDelete )
+        setSelected( (m_cards.count() == 0) ? nullptr : m_cards.first() );
 }
 
 void CardManager::saveSelectedCard()
@@ -143,18 +127,34 @@ void CardManager::saveSelectedCard()
     Converter converter;
     DataWriter writer;
 
-    const int& index = m_cardsFilePaths.indexOf(m_selectedCard);
-
-    QUrl file(m_selectedCard);
+    QUrl file(m_selected->filePath());
 
     std::tuple<bool, QString> msg = writer.save(
                 file.toLocalFile(),
-                QJsonDocument(converter.toJson(m_cards.at(index))) );
+                QJsonDocument(converter.toJson(m_selected)) );
 
     if ( !std::get<0>(msg) )
         emit errorMessage( "Błąd zapisu", std::get<1>(msg) );
     else
         emit infoMessage( "Potwierdzenie zapisu", std::get<1>(msg) );
+}
+
+bool CardManager::isCardLoaded(const QString &fileName)
+{
+    return m_cards.end() != std::find_if(m_cards.begin(),
+                                         m_cards.end(),
+                                         [&fileName](const Card* card){
+        return card->filePath() == fileName;
+    });
+}
+
+void CardManager::setSelected(Card *card)
+{
+    if ( m_selected == card )
+        return;
+
+    m_selected = card;
+    emit selectedChanged();
 }
 
 void CardManager::createRulesPage(const QString &filePath)
