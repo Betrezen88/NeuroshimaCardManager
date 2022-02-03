@@ -197,6 +197,7 @@ void Stats::addWound(const QString &location, const QString &type, const bool pa
 
     addWound( pWound );
 
+    emit wasModified();
     emit woundsChanged();
 }
 

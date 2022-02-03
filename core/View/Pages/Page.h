@@ -34,6 +34,9 @@ public:
         return m_type;
     }
 
+signals:
+    void wasModified();
+
 private:
     Page::Type m_type;
 };

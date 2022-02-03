@@ -18,6 +18,7 @@ class CORE_EXPORT Card : public QObject
     Q_PROPERTY(Stats* stats READ stats CONSTANT)
     Q_PROPERTY(Equipment* equipment READ equipment CONSTANT)
     Q_PROPERTY(Notes* notes READ notes CONSTANT)
+    Q_PROPERTY(bool modified READ modified NOTIFY modifiedChanged)
 
 public:
     explicit Card(QObject *parent = nullptr);
@@ -31,13 +32,19 @@ public:
 
     QString filePath() const;
 
+    bool modified() const;
+    void setModified(const bool& modified);
+
+signals:
+    void modifiedChanged();
+
 public slots:
     bool hasPage(const Page::Type& type) const;
 
 private:
     QMap<Page::Type, Page*> m_pages;
     QString m_filePath;
-    Notes *m_notes;
+    bool m_modified{false};
 };
 
 #endif // CARD_H

@@ -52,6 +52,7 @@ void Item::setQuantity(int newQuantity)
         return;
     m_data->quantity = newQuantity;
     emit quantityChanged();
+    emit wasModified();
 }
 
 ItemStats *Item::stats() const
@@ -76,10 +77,12 @@ void Item::increaseQuantity()
 {
     ++m_data->quantity;
     emit quantityChanged();
+    emit wasModified();
 }
 
 void Item::decreaseQuantity()
 {
     --m_data->quantity;
     emit quantityChanged();
+    emit wasModified();
 }

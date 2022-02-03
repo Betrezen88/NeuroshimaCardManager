@@ -211,7 +211,7 @@ Page {
                         color: cardItem.ListView.isCurrentItem ? "red" : "#fff"
 
                         Text {
-                            text: modelData.stats.fullname
+                            text: (modelData.modified ? "* - " : "") + modelData.stats.fullname
                             height: 40
                             width: parent.width - 45
                             verticalAlignment: Text.AlignVCenter

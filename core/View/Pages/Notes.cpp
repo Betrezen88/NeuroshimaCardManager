@@ -26,6 +26,7 @@ void Notes::setBiography(const QString &newBiography)
         return;
     m_data.biography = newBiography;
     emit biographyChanged();
+    emit wasModified();
 }
 
 const QString &Notes::notes() const
@@ -39,6 +40,7 @@ void Notes::setNotes(const QString &newNotes)
         return;
     m_data.notes = newNotes;
     emit notesChanged();
+    emit wasModified();
 }
 
 const NotesData &Notes::data() const

@@ -38,6 +38,7 @@ public:
 
 signals:
     void quantityChanged();
+    void wasModified();
 
 public slots:
     void increaseQuantity();

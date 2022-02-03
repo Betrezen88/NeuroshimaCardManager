@@ -16,14 +16,20 @@ Equipment::Equipment(const EquipmentData &data, QObject *parent)
     : Page(Type::EQUIPMENT, parent)
     , m_data(data)
 {
-    for ( QSharedPointer<ItemData> tItem : m_data.backpack )
+    for ( QSharedPointer<ItemData> tItem : m_data.backpack ) {
         m_backpack.append( new Item(tItem.get(), this) );
+        connect(m_backpack.last(), &Item::wasModified, this, &Equipment::wasModified);
+    }
 
-    for ( QSharedPointer<ItemData> tWeapon : m_data.weapon )
+    for ( QSharedPointer<ItemData> tWeapon : m_data.weapon ) {
         m_weapons.append( new Item(tWeapon.get(), this) );
+        connect(m_weapons.last(), &Item::wasModified, this, &Equipment::wasModified);
+    }
 
-    for ( QSharedPointer<ItemData> tArmor : m_data.armor )
+    for ( QSharedPointer<ItemData> tArmor : m_data.armor ) {
         m_armor.append( new Item(tArmor.get(), this) );
+        connect(m_armor.last(), &Item::wasModified, this, &Equipment::wasModified);
+    }
 }
 
 QQmlListProperty<Item> Equipment::backpack()
@@ -128,6 +134,7 @@ void Equipment::addItemToBackpack(const QVariantMap &data)
         addBackpackItem( item );
     else
         m_backpack.at( m_data.backpack.indexOf(*backpackIt) )->increaseQuantity();
+    emit wasModified();
 }
 
 void Equipment::removeItemFromBackpack(const int index)
@@ -139,6 +146,7 @@ void Equipment::removeItemFromBackpack(const int index)
     }
 
     eraseBackpackItem( index );
+    emit wasModified();
 }
 
 void Equipment::equipWeapon(const int index)

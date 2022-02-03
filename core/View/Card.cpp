@@ -21,6 +21,9 @@ void Card::addPage(Page *page)
 
     page->setParent(this);
     m_pages.insert(page->type(), page);
+
+    connect( page, &Page::wasModified, this,
+             [this](){ setModified(true); } );
 }
 
 Stats *Card::stats() const
@@ -40,7 +43,21 @@ Notes *Card::notes() const
 
 QString Card::filePath() const
 {
-      return m_filePath;
+    return m_filePath;
+}
+
+bool Card::modified() const
+{
+    return m_modified;
+}
+
+void Card::setModified(const bool &modified)
+{
+    if ( m_modified == modified )
+        return;
+
+    m_modified = modified;
+    emit modifiedChanged();
 }
 
 bool Card::hasPage(const Page::Type &type) const

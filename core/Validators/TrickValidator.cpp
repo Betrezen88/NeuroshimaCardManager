@@ -38,8 +38,9 @@ bool TrickValidator::meetsSkills(const QVector<Requirement*>& requirements)
 {
     const QHash<QString, SkillEdit*> skills = m_pStatsEditor->skills();
     for ( Requirement* requirement : requirements ) {
-        if ( skills.value(requirement->name())->value() < requirement->value()  )
+        if ( !skills.contains(requirement->name()) || skills.value(requirement->name())->value() < requirement->value()  ) {
             return false;
+        }
     }
     return true;
 }
