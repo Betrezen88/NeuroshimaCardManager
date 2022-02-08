@@ -82,6 +82,13 @@ Card *CardManager::selected() const
     return m_selected;
 }
 
+bool CardManager::hasUnsavedData() const
+{
+    return m_cards.end() != std::find_if(m_cards.begin(),
+                                         m_cards.end(),
+                                         [](const Card* card){ return card->modified(); });
+}
+
 void CardManager::showCard(const int index)
 {
     if ( index < 0 || index >= m_cards.count() )
@@ -115,11 +122,45 @@ void CardManager::closeCard(const int index)
     if ( index < 0 || index >= m_cards.count() )
         return;
 
-    Card* toDelete = m_cards.takeAt( index );
+    Card* toClose = m_cards.takeAt( index );
     emit cardsChanged();
 
-    if ( m_selected == toDelete )
+    if ( m_selected == toClose )
         setSelected( (m_cards.count() == 0) ? nullptr : m_cards.first() );
+
+    toClose->deleteLater();
+}
+
+void CardManager::closeCard(Card *card)
+{
+    closeCard( m_cards.indexOf(card) );
+}
+
+void CardManager::saveCard(const int index)
+{
+    if ( index < 0 || index >= m_cards.count() )
+        return;
+
+    saveCard( m_cards.at(index) );
+}
+
+void CardManager::saveCard(Card *card)
+{
+    Converter converter;
+    DataWriter writer;
+
+    QUrl file(card->filePath());
+
+    std::tuple<bool, QString> msg = writer.save(
+                file.toLocalFile(),
+                QJsonDocument(converter.toJson(card)) );
+
+    if ( !std::get<0>(msg) )
+        emit errorMessage( "Błąd zapisu", std::get<1>(msg) );
+    else {
+        card->setModified( false );
+        emit infoMessage( "Zapisano kartę", std::get<1>(msg) );
+    }
 }
 
 void CardManager::saveSelectedCard()
@@ -135,8 +176,30 @@ void CardManager::saveSelectedCard()
 
     if ( !std::get<0>(msg) )
         emit errorMessage( "Błąd zapisu", std::get<1>(msg) );
-    else
+    else {
+        m_selected->setModified( false );
         emit infoMessage( "Potwierdzenie zapisu", std::get<1>(msg) );
+    }
+}
+
+void CardManager::saveAndCloseAllCards()
+{
+    for ( auto it = m_cards.rbegin(); it != m_cards.rend(); ++it ) {
+        saveCard( *it );
+        closeCard( *it );
+    }
+}
+
+void CardManager::closeSelectedCard()
+{
+    const int index = m_cards.indexOf( m_selected );
+
+    if ( index == -1 ) {
+        emit errorMessage( "Błąd zamykania", "Karta, którą próbujesz zamknąć nie znajduje się już w pamięci." );
+        return;
+    }
+
+    closeCard( index );
 }
 
 bool CardManager::isCardLoaded(const QString &fileName)

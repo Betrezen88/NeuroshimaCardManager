@@ -27,6 +27,8 @@ public:
 
     Card *selected() const;
 
+    Q_INVOKABLE bool hasUnsavedData() const;
+
 signals:
     void cardsChanged();
     void selectedChanged();
@@ -37,7 +39,12 @@ public slots:
     void showCard(const int index);
     void loadCard(const QString &filePath);
     void closeCard(const int index);
+    void closeCard(Card* card);
+    void saveCard(const int index);
+    void saveCard(Card* card);
     void saveSelectedCard();
+    void saveAndCloseAllCards();
+    void closeSelectedCard();
 
 private:
     bool isCardLoaded(const QString &fileName);

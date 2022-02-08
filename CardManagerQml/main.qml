@@ -5,7 +5,9 @@ import QtQuick.Dialogs 1.2
 import "./Views"
 
 ApplicationWindow {
-    id: main
+    property bool forceClose: false
+
+    id: _main
     visible: true
     width: 640
     height: 480
@@ -13,5 +15,32 @@ ApplicationWindow {
 
     MainView {
         anchors.fill: parent
+    }
+
+    onClosing: {
+
+
+        close.accepted = forceClose ? true : manager.cardManager.cards.length === 0
+
+        if ( !close.accepted ) {
+            if ( manager.cardManager.hasUnsavedData() )
+                _saveOnCloseDialog.open()
+            else
+                close.accepted = true
+        }
+    }
+
+    MessageDialog {
+        id: _saveOnCloseDialog
+        text: "Czy chcesz zapisać ostatnie zmiany ?"
+        standardButtons: StandardButton.SaveAll | StandardButton.Close | StandardButton.No
+        onAccepted: {
+            manager.cardManager.saveAndCloseAllCards()
+            _main.close()
+        }
+        onRejected: {
+            forceClose = true
+            _main.close()
+        }
     }
 }
