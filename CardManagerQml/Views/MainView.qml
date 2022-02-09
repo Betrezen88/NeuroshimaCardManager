@@ -208,10 +208,12 @@ Page {
                     Rectangle {
                         height: parent.height
                         width: parent.width - parent.height - 5
-                        color: cardItem.ListView.isCurrentItem ? "red" : "#fff"
+                        color: cardItem.ListView.isCurrentItem ? "lightgray" : "#fff"
 
                         Text {
                             text: (modelData.modified ? "* - " : "") + modelData.stats.fullname
+                            font.bold: cardItem.ListView.isCurrentItem
+                            padding: 5
                             height: 40
                             width: parent.width - 45
                             verticalAlignment: Text.AlignVCenter
