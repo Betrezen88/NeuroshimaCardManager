@@ -1,6 +1,7 @@
 ﻿import QtQuick 2.14
 import QtQuick.Controls 2.5
 import QtQuick.Dialogs 1.2
+import QtQuick.Window 2.15
 
 import "./Views"
 
@@ -9,8 +10,8 @@ ApplicationWindow {
 
     id: _main
     visible: true
-    width: 640
-    height: 480
+    width: Screen.width / 2
+    height: Screen.height / 2
     title: qsTr("Neuroshima Card Manager")
 
     MainView {
@@ -18,8 +19,6 @@ ApplicationWindow {
     }
 
     onClosing: {
-
-
         close.accepted = forceClose ? true : manager.cardManager.cards.length === 0
 
         if ( !close.accepted ) {
