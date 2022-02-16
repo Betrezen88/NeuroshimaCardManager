@@ -10,6 +10,7 @@ Row {
 
     Text {
         id: _label
+        width: 83
         height: _wounds.height
         text: qsTr("Głowa:")
         verticalAlignment: Text.AlignVCenter
